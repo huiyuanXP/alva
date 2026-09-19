@@ -9,3 +9,5 @@
 - [部署与恢复](../ops/alva/DEPLOYMENT.md)：实际运行布局。
 
 新专题放在本目录对应分类下；当前状态保留在根交接文件，不复制到架构规范。
+
+- [剩余 Ticket 细化审核稿](../Research/REMAINING-TICKETS-REVIEW.md)：R01–R40，未发布、未实施。

@@ -1,10 +1,10 @@
 # alva Handoff
 
-当前任务：已为六张已发布 Ticket 及 tracker 补充统一目录规范入口，并核对迁移旧目录均已移除。票据范围、验收、依赖和状态未改变；未删除仍含独有内容的旧工程、附件或私有迁移备份。
+当前任务：用户要求继续细化剩余 Ticket 供审核。已形成 [R01–R40 审核稿](Research/REMAINING-TICKETS-REVIEW.md)：39张覆盖原T03–T15，1张补齐已有U30设计师只读范围；120条验收，依赖无环，U16最后功能顺序已核对。本轮未发正式票、未实现代码、未操作生产。等待用户审核粒度/依赖及最小角色授权范围。
 
 此前已按用户要求完成仓库扁平化。唯一根目录为 `/home/ubuntu/Alva`；后端 `api/`、前端 `web/`、研究 `Research/`，不再有内层 alva 或现役 apps 包装。Git 历史、数据库和附件随原文件保留；结构规范在 [docs/PROJECT-STRUCTURE.md](docs/PROJECT-STRUCTURE.md)。现役启动、构建、导入和 systemd 路径已适配，alva.service 已重启恢复，MCP/Tunnel 配置未改。
 
-首批 ALVA-008–013 仅定义就绪，尚未实施；原 T03–T15 冻结。统一验证码和新 Codex 建筑生成仍待后续实施指令，不能把目录迁移说成功能上线。正式票据入口 [.scratch/alva-completion/README.md](.scratch/alva-completion/README.md)。
+首批 ALVA-008–013 仅定义就绪，尚未实施；原 T03–T15 已解除细化限制，正式发布与实施仍待指令。统一验证码和新 Codex 建筑生成仍待后续实施指令，不能把目录迁移说成功能上线。正式票据入口 [.scratch/alva-completion/README.md](.scratch/alva-completion/README.md)。
 
 ## 已确认方向与本轮边界
 
@@ -58,4 +58,6 @@
 | 记忆 | out-of-scope | 未读写生成记忆；GlobalHandoff 在根目录同步 |
 | 工作区 | changed-and-verified | Git 历史保留；原同名文档及配置私有备份，旧证据不改 |
 
-pending：首批票实施授权、统一验证码和新建筑生成验收；其余功能冻结。生产业务回归与生成记忆不在本次范围。现有大 chunk 构建提示未处理。原根文件的迁移前副本位于 .runtime/root-migration-20260919/，保留供复核，不自动删除；MCP 配置及原 Docs 附件不变。
+pending：R01–R40审核、首批票实施授权、统一验证码和新建筑生成验收；其余功能未实施。生产业务回归与生成记忆不在本次范围。现有大 chunk 构建提示未处理。原根文件的迁移前副本位于 .runtime/root-migration-20260919/，保留供复核，不自动删除；MCP 配置及原 Docs 附件不变。
+
+本轮验证边界：仅文档/规则对齐，40草案/120验收、依赖DAG及U16前置闭包、链接检查通过；六张正式票逐字未变。代码、运行态沿用上轮验证，不重新声称本轮业务实测；记忆不在范围，无新增清理项。

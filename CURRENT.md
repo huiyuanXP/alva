@@ -1,3 +1,5 @@
+当前待审核：[剩余40张细票草案](Research/REMAINING-TICKETS-REVIEW.md)。仅草案，未发布或实施；首批六张正式票未变。
+
 # 恢复索引
 
 当前已完成目录扁平化：根目录 /home/ubuntu/Alva，后端 api/、前端 web/、研究 Research/。规范已接入 AGENTS.md；首批6张细化Ticket已发布但未实施。
