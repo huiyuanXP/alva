@@ -1,0 +1,12 @@
+✔ document parser reads real PDF text and DOCX text without OCR, execution or external resource access (3460.190429ms)
+✔ document text preserves untrusted content verbatim and rejects MIME spoofing/binary text (340.734592ms)
+Warning: Indexing all PDF objects
+✔ document uploads are private, room-bound, idempotent and preserve original bytes and parser failures (8151.677245ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13563.123686

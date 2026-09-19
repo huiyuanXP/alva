@@ -1,0 +1,10 @@
+✔ spoken unknown answers are pending, traceable, not re-asked and cannot overwrite manual input (3.853407ms)
+✔ canonical JSON ignores PostgreSQL object-key order without ignoring changed values or array order (0.470064ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 776.759057

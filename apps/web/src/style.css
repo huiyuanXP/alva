@@ -1,0 +1,534 @@
+:root {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  color: #29332c;
+  background: #f5f4f0;
+  font-synthesis: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.55;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  border: 1px solid #dce0d8;
+  background: #fff;
+  color: #354b3b;
+  border-radius: 9px;
+  padding: 9px 14px;
+  transition: background 0.15s;
+}
+button:hover {
+  background: #f0f4ed;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+a {
+  color: #4d654f;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #a6bba0;
+  outline-offset: 3px;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #dce0d8;
+  border-radius: 9px;
+  background: #fff;
+  padding: 10px 12px;
+  color: #2b352c;
+}
+textarea {
+  resize: vertical;
+}
+.primary {
+  background: #4b644d;
+  color: white;
+  border-color: #4b644d;
+}
+.primary:hover {
+  background: #3a523d;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 1.7px;
+  color: #344c39;
+  white-space: nowrap;
+}
+.brand span {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-left: 18px;
+  color: #788374;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: #7b8976;
+  font-weight: 600;
+}
+.login {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 70px;
+  align-items: center;
+  padding: 70px max(60px, 8vw);
+  background:
+    radial-gradient(ellipse at 30% 65%, #e8eddf 0, transparent 45%), #f5f4f0;
+}
+.login-intro .brand {
+  margin-bottom: 110px;
+}
+.login h1 {
+  font-family: Georgia, "Songti SC", serif;
+  font-weight: 500;
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 1.35;
+  margin: 25px 0;
+}
+.login-intro p {
+  color: #7d8278;
+  font-size: 17px;
+  line-height: 2;
+}
+.login-meta {
+  font-size: 12px;
+  color: #727d6e;
+  margin-top: 65px;
+}
+.login-meta span {
+  padding: 0 14px;
+}
+.login-card {
+  background: #ffffffd9;
+  border: 1px solid #e4e7df;
+  border-radius: 20px;
+  box-shadow: 0 18px 80px #37473109;
+  padding: 40px;
+  max-width: 430px;
+}
+.login-card h2 {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 14px 0;
+}
+.login-card p {
+  color: #7c8279;
+}
+.login-card label {
+  display: block;
+  font-size: 12px;
+  margin: 30px 0 18px;
+}
+.login-card input {
+  margin-top: 8px;
+}
+.login-card .primary {
+  width: 100%;
+  padding: 12px;
+}
+.login-card small {
+  display: block;
+  color: #8b9187;
+  line-height: 1.8;
+  margin: 22px 0;
+}
+.login-card a {
+  display: block;
+  font-size: 12px;
+}
+.topbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: #fffefa;
+  border-bottom: 1px solid #e3e5dc;
+  padding: 0 26px;
+  position: relative;
+  z-index: 30;
+}
+.topbar .brand b {
+  font-size: 15px;
+}
+.nav-separator {
+  height: 26px;
+  width: 1px;
+  background: #e2e5de;
+}
+.project-name {
+  display: flex;
+  flex-direction: column;
+  min-width: 170px;
+}
+.project-name strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+.project-name small {
+  color: #899281;
+  font-size: 10px;
+  margin-top: 2px;
+}
+.mode-switch {
+  display: flex;
+  gap: 2px;
+  margin: auto;
+  background: #f0f1eb;
+  padding: 4px;
+  border-radius: 11px;
+}
+.mode-switch button {
+  background: transparent;
+  border: 0;
+  padding: 7px 15px;
+  font-size: 12px;
+  color: #8a9085;
+  white-space: nowrap;
+}
+.mode-switch .active {
+  background: white;
+  color: #38543b;
+  box-shadow: 0 2px 4px #00000008;
+}
+.nav-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.nav-actions button {
+  font-size: 12px;
+  padding: 10px 18px;
+}
+.workspace {
+  display: flex;
+  height: calc(100dvh - 76px);
+  position: relative;
+  padding: 14px;
+  gap: 14px;
+}
+.scene {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ebece6;
+  border: 1px solid #e2e4dc;
+}
+.scene iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.scene-label {
+  position: absolute;
+  top: 20px;
+  left: 23px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #fffefad9;
+  backdrop-filter: blur(12px);
+  padding: 9px 13px;
+  border: 1px solid #fff;
+  border-radius: 9px;
+  font-size: 11px;
+  color: #677663;
+  pointer-events: none;
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #799573;
+}
+.muted {
+  color: #a3a99e;
+}
+.room-pills {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: 20px;
+  right: 22px;
+}
+.room-pills button {
+  background: #fffefae6;
+  border-color: white;
+  font-size: 11px;
+  padding: 8px 12px;
+  display: flex;
+  gap: 10px;
+}
+.room-pills .active {
+  color: #36573b;
+  border-color: #728d6d;
+  background: #f0f6ed;
+}
+.room-pills span {
+  color: #8c9a86;
+  font-size: 10px;
+}
+.scene-controls {
+  position: absolute;
+  right: 22px;
+  bottom: 62px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.scene-controls button {
+  font-size: 19px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background: #fffefae6;
+  border-color: #fff;
+}
+.scene-footer {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #74826d;
+  pointer-events: none;
+}
+.selection {
+  position: absolute;
+  bottom: 110px;
+  left: 24px;
+  padding: 12px;
+  border: 1px solid #d8e2d2;
+  border-radius: 10px;
+  background: #fffefaf5;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.selection button {
+  font-size: 11px;
+}
+.starter-actions {
+  position: absolute;
+  left: 24px;
+  bottom: 57px;
+}
+.starter-actions button {
+  font-size: 11px;
+  background: #fffefae6;
+}
+.starter-actions .apply-scene {
+  color: #fff;
+  background: #596f58;
+  border-color: #596f58;
+}
+.starter-actions .apply-scene:disabled {
+  opacity: .55;
+}
+.scene-notice {
+  position: absolute;
+  left: 24px;
+  bottom: 92px;
+  max-width: min(520px, calc(100% - 48px));
+  padding: 8px 11px;
+  border: 1px solid #d8e2d2;
+  border-radius: 9px;
+  background: #fffefaf0;
+  color: #596f58;
+  font-size: 10px;
+  box-shadow: 0 5px 18px #35482d12;
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: #fffefb;
+  border: 1px solid #ddc9b9;
+  box-shadow: 0 8px 30px #0001;
+  border-radius: 12px;
+  padding: 14px 18px;
+  max-width: calc(100vw - 32px);
+  z-index: 100;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.toast button {
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+}
+.error {
+  color: #a54c35 !important;
+}
+.boot {
+  height: 100dvh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  justify-items: center;
+  color: #74816e;
+}
+.boot p {
+  margin-top: 20px;
+}
+@media (max-width: 1000px) {
+  .topbar {
+    gap: 12px;
+    padding: 0 16px;
+  }
+  .nav-actions a {
+    display: none;
+  }
+  .mode-switch button {
+    padding: 7px 10px;
+  }
+  .brand b {
+    display: none;
+  }
+  .nav-separator {
+    display: none;
+  }
+  .login {
+    gap: 30px;
+    padding: 40px;
+  }
+  .login-intro .brand {
+    margin-bottom: 60px;
+  }
+  .login-card {
+    padding: 28px;
+  }
+}
+@media (max-width: 600px) {
+  .topbar {
+    height: 116px;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 16px;
+    align-content: flex-start;
+  }
+  .project-name {
+    min-width: 0;
+    flex: 1;
+  }
+  .project-name strong {
+    font-size: 11px;
+  }
+  .nav-actions {
+    margin-left: auto;
+  }
+  .nav-actions button {
+    padding: 8px 10px;
+  }
+  .mode-switch {
+    order: 5;
+    width: 100%;
+    margin: 5px 0 0;
+    justify-content: center;
+  }
+  .mode-switch button {
+    flex: 1;
+  }
+  .workspace {
+    height: calc(100dvh - 116px);
+    padding: 8px;
+  }
+  .scene-label {
+    top: 12px;
+    left: 12px;
+    padding: 7px 10px;
+  }
+  .room-pills {
+    top: 54px;
+    left: 12px;
+    right: auto;
+  }
+  .scene-footer {
+    left: 12px;
+    right: 12px;
+  }
+  .scene-footer span:last-child {
+    display: none;
+  }
+  .scene-controls {
+    right: 12px;
+  }
+  .selection {
+    left: 12px;
+    max-width: calc(100% - 68px);
+    flex-wrap: wrap;
+  }
+  .starter-actions {
+    left: 12px;
+  }
+  .login {
+    display: block;
+    padding: 26px 20px;
+  }
+  .login-intro .brand {
+    margin-bottom: 45px;
+  }
+  .login h1 {
+    font-size: 44px;
+  }
+  .login-intro p,
+  .login-meta {
+    display: none;
+  }
+  .login-card {
+    margin: 32px auto 0;
+    padding: 26px;
+    max-width: none;
+  }
+  .login-card label {
+    margin-top: 20px;
+  }
+}

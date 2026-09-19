@@ -1,0 +1,10 @@
+✔ postcondition formatting pass creates one genuinely validated card, never treats prose as saved data (4713.079384ms)
+✔ chat completion cannot claim success when the model says a card exists but none was saved (2838.044809ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9280.76107

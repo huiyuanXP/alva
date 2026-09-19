@@ -1,0 +1,7 @@
+{
+  "probe": "text",
+  "model": "gpt-5.5",
+  "response": "ALVA_OK",
+  "error_status": null,
+  "error_type": null
+}

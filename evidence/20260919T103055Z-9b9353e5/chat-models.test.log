@@ -1,0 +1,11 @@
+✔ model IDs exclude non-chat modalities and injection-shaped identifiers (1.349719ms)
+✔ model catalogue requires session; malformed model cannot create a run or mutate a project (6658.115246ms)
+✔ selected model binds primary and formatting turns, persisted messages, and idempotency identity (3159.087924ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12019.749029

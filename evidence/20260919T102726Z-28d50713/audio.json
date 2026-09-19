@@ -1,0 +1,7 @@
+{
+  "probe": "audio",
+  "model": "gemini-3-flash",
+  "response": "How old is the Brooklyn Bridge?",
+  "error_status": null,
+  "error_type": null
+}

@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/laanlabs/openPlan3D",
+  "commit": "511ff08f57526784c0bf3bc48466bfea04204bbc",
+  "license": "MIT",
+  "copyright": "2026 theLodgeStudio",
+  "node": "v24.21.0",
+  "nodeArchiveSha256": "fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6",
+  "integration": "Self-hosted /engine/embed route, upstream renderer and stores; patches documented in docs/ENGINE.md."
+}

@@ -1,0 +1,10 @@
+✔ durable object chat: scope, provider replay, explicit confirmation, conflicts and failure evidence (5660.644382ms)
+✔ cancel during generation stays rejected and duplicate request never invokes provider again (2844.568265ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10469.305792

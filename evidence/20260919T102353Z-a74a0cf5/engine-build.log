@@ -1,0 +1,656 @@
+
+> open3dfloorplan@0.9.0 build
+> vite build
+
+vite v7.3.6 building ssr environment for production...
+transforming...
+10:29:40 AM [vite-plugin-svelte] src/lib/components/sidebar/BuildPanel.svelte:641:37 `node_invalid_placement` is not a recognised code (did you mean `node_invalid_placement_ssr`?)
+https://svelte.dev/e/unknown_code
+639:                   onmouseleave={onItemMouseLeave}
+640:                 >
+641:                   <!-- svelte-ignore node_invalid_placement -->
+                                                                ^
+642:                   <span
+643:                     role="button"
+10:29:40 AM [vite-plugin-svelte] src/lib/components/sidebar/BuildPanel.svelte:672:33 `node_invalid_placement` is not a recognised code (did you mean `node_invalid_placement_ssr`?)
+https://svelte.dev/e/unknown_code
+670:               onmouseleave={onItemMouseLeave}
+671:             >
+672:               <!-- svelte-ignore node_invalid_placement -->
+                                                            ^
+673:               <span
+674:                 role="button"
+10:29:42 AM [vite-plugin-svelte] src/lib/components/editor/FloorPlanCanvas.svelte:3765:6 Avoid using autofocus
+https://svelte.dev/e/a11y_autofocus
+3763:         }
+3764:       }}
+3765:       autofocus
+                     ^
+3766:     />
+3767:   {/if}
+10:29:42 AM [vite-plugin-svelte] src/lib/components/editor/FloorPlanCanvas.svelte:3829:6 Avoid using autofocus
+https://svelte.dev/e/a11y_autofocus
+3827:         }
+3828:       }}
+3829:       autofocus
+                     ^
+3830:     />
+3831:   {/if}
+10:29:46 AM [vite-plugin-svelte] src/lib/components/editor/ContextMenu.svelte:28:6 `menuEl` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+26:   let { x, y, visible, targetType, targetId, targetWall, targetFurniture, targetRoom, clipboard, onclose, onaction }: Props = $props();
+27: 
+28:   let menuEl: HTMLDivElement;
+                                ^
+29: 
+30:   // Adjust position to keep menu within viewport
+10:29:47 AM [vite-plugin-svelte] src/lib/components/viewer3d/MaterialPicker.svelte:152:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+150: 
+151: <!-- svelte-ignore a11y_no_static_element_interactions -->
+152: <div
+         ^
+153:   class="fixed z-[100] bg-gray-900/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-700 text-white w-[320px] select-none"
+154:   style="left: {clampX(screenX + 20)}px; top: {clampY(screenY - 40)}px;"
+10:29:47 AM [vite-plugin-svelte] src/lib/components/viewer3d/MaterialPicker.svelte:164:4 Buttons and links should either contain text or have an `aria-label`, `aria-labelledby` or `title` attribute
+https://svelte.dev/e/a11y_consider_explicit_label
+162:       <span class="font-semibold text-sm">Material Editor</span>
+163:     </div>
+164:     <button
+                ^
+165:       onclick={onclose}
+166:       class="text-gray-400 hover:text-white p-1 rounded hover:bg-gray-700 transition-colors"
+"PerspectiveCamera" is imported from external module "three" but never used in "src/lib/utils/frameScene.ts".
+✓ 255 modules transformed.
+Generated an empty chunk: "entries/pages/_layout.ts".
+rendering chunks...
+vite v7.3.6 building client environment for production...
+transforming...
+10:29:56 AM [vite-plugin-svelte] src/lib/components/sidebar/BuildPanel.svelte:641:37 `node_invalid_placement` is not a recognised code (did you mean `node_invalid_placement_ssr`?)
+https://svelte.dev/e/unknown_code
+639:                   onmouseleave={onItemMouseLeave}
+640:                 >
+641:                   <!-- svelte-ignore node_invalid_placement -->
+                                                                ^
+642:                   <span
+643:                     role="button"
+10:29:56 AM [vite-plugin-svelte] src/lib/components/sidebar/BuildPanel.svelte:672:33 `node_invalid_placement` is not a recognised code (did you mean `node_invalid_placement_ssr`?)
+https://svelte.dev/e/unknown_code
+670:               onmouseleave={onItemMouseLeave}
+671:             >
+672:               <!-- svelte-ignore node_invalid_placement -->
+                                                            ^
+673:               <span
+674:                 role="button"
+10:29:57 AM [vite-plugin-svelte] src/lib/components/editor/FloorPlanCanvas.svelte:3765:6 Avoid using autofocus
+https://svelte.dev/e/a11y_autofocus
+3763:         }
+3764:       }}
+3765:       autofocus
+                     ^
+3766:     />
+3767:   {/if}
+10:29:57 AM [vite-plugin-svelte] src/lib/components/editor/FloorPlanCanvas.svelte:3829:6 Avoid using autofocus
+https://svelte.dev/e/a11y_autofocus
+3827:         }
+3828:       }}
+3829:       autofocus
+                     ^
+3830:     />
+3831:   {/if}
+10:29:58 AM [vite-plugin-svelte] src/lib/components/editor/ContextMenu.svelte:28:6 `menuEl` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+26:   let { x, y, visible, targetType, targetId, targetWall, targetFurniture, targetRoom, clipboard, onclose, onaction }: Props = $props();
+27: 
+28:   let menuEl: HTMLDivElement;
+                                ^
+29: 
+30:   // Adjust position to keep menu within viewport
+10:29:59 AM [vite-plugin-svelte] src/lib/components/viewer3d/MaterialPicker.svelte:152:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+150: 
+151: <!-- svelte-ignore a11y_no_static_element_interactions -->
+152: <div
+         ^
+153:   class="fixed z-[100] bg-gray-900/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-700 text-white w-[320px] select-none"
+154:   style="left: {clampX(screenX + 20)}px; top: {clampY(screenY - 40)}px;"
+10:29:59 AM [vite-plugin-svelte] src/lib/components/viewer3d/MaterialPicker.svelte:164:4 Buttons and links should either contain text or have an `aria-label`, `aria-labelledby` or `title` attribute
+https://svelte.dev/e/a11y_consider_explicit_label
+162:       <span class="font-semibold text-sm">Material Editor</span>
+163:     </div>
+164:     <button
+                ^
+165:       onclick={onclose}
+166:       class="text-gray-400 hover:text-white p-1 rounded hover:bg-gray-700 transition-colors"
+✓ 550 modules transformed.
+rendering chunks...
+computing gzip size...
+.svelte-kit/output/client/_app/version.json                                                     0.03 kB │ gzip:   0.05 kB
+.svelte-kit/output/client/_app/immutable/assets/floorFull.hPckjhyh.glb                          2.26 kB
+.svelte-kit/output/client/_app/immutable/assets/floorHalf.BKSC3EwQ.glb                          2.26 kB
+.svelte-kit/output/client/_app/immutable/assets/floorCorner.Cp3nOCZk.glb                        2.52 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_rock_smallA.DcpX9vsi.glb                3.04 kB
+.svelte-kit/output/client/_app/immutable/assets/rugSquare.Bxmhh7KQ.glb                          3.18 kB
+.svelte-kit/output/client/_app/immutable/assets/rugRectangle.CZMx9w0p.glb                       3.19 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_plant_bushSmall.CRjlvToK.glb            3.21 kB
+.svelte-kit/output/client/_app/immutable/assets/doorwayOpen.zEulxkrJ.glb                        3.26 kB
+.svelte-kit/output/client/_app/immutable/assets/wall.Eswdy6wj.glb                               3.34 kB
+.svelte-kit/output/client/_app/immutable/assets/wallHalf.Bkf4I7jH.glb                           3.35 kB
+.svelte-kit/output/client/_app/immutable/assets/computerKeyboard.uDiwE_Yl.glb                   3.48 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_rock_smallB.KN4M6aO1.glb                3.53 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_plant_bushTriangle.DkdoE3IQ.glb         3.96 kB
+.svelte-kit/output/client/_app/immutable/assets/paneling.DNhxM6DP.glb                           3.96 kB
+.svelte-kit/output/client/_app/immutable/assets/hoodModern.DblBPNbL.glb                         3.97 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_plant_bush.OKb8oW2E.glb                 4.40 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_statue_obelisk.Cspfp61G.glb             4.42 kB
+.svelte-kit/output/client/_app/immutable/assets/wallCorner.Cxp52idU.glb                         4.46 kB
+.svelte-kit/output/client/_app/immutable/assets/televisionAntenna.CD8Hip6s.glb                  4.50 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_plant_bushLargeTriangle.DvvfD5bX.glb    4.56 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_grass_leafs.LkP_c2fL.glb                4.61 kB
+.svelte-kit/output/client/_app/immutable/assets/hoodLarge.DXWNWD9V.glb                          4.65 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_hanging_moss.CcjOQ4UH.glb               4.78 kB
+.svelte-kit/output/client/_app/immutable/assets/lampWall.CKApYKbX.glb                           4.83 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_sign.D9gdRCb0.glb                       5.04 kB
+.svelte-kit/output/client/_app/immutable/assets/pillow.CDFcejnI.glb                             5.04 kB
+.svelte-kit/output/client/_app/immutable/assets/pillowBlue.ByBAGNR9.glb                         5.06 kB
+.svelte-kit/output/client/_app/immutable/assets/pillowLong.Du5hrVpQ.glb                         5.07 kB
+.svelte-kit/output/client/_app/immutable/assets/pillowBlueLong.C_TqP6Ju.glb                     5.09 kB
+.svelte-kit/output/client/_app/immutable/assets/floorCornerRound.C7tSUizv.glb                   5.17 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinetCornerInner.DqUvzOsi.glb          5.18 kB
+.svelte-kit/output/client/_app/immutable/assets/cardboardBoxClosed.yoTgKfuH.glb                 5.40 kB
+.svelte-kit/output/client/_app/immutable/assets/cardboardBoxOpen.g5ZZbHlg.glb                   5.40 kB
+.svelte-kit/output/client/_app/immutable/assets/laptop.__TffL_5.glb                             5.54 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_fat.t81E4Z9b.glb                   5.58 kB
+.svelte-kit/output/client/_app/immutable/assets/lampSquareFloor.C07Tqkcf.glb                    5.62 kB
+.svelte-kit/output/client/_app/immutable/assets/lampSquareTable.BH3nafgM.glb                    5.62 kB
+.svelte-kit/output/client/_app/immutable/assets/lampSquareCeiling.DEn96tPI.glb                  5.63 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_stump_round.gI2wk-vt.glb                5.64 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_fence_simple.CH9vm1-1.glb               5.71 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_mushroom_tan.DCm0m6uO.glb               5.80 kB
+.svelte-kit/output/client/_app/immutable/assets/computerMouse.Bk3L4LlU.glb                      5.87 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenBar.Drw2F6Se.glb                         6.00 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_pot_large.BDKbpZqC.glb                  6.17 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_mushroom_red.C9nJXNxQ.glb               6.36 kB
+.svelte-kit/output/client/_app/immutable/assets/televisionModern.BBrbvK6T.glb                   6.37 kB
+.svelte-kit/output/client/_app/immutable/assets/computerScreen.DFGirIDw.glb                     6.40 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_plant_bushLarge.BLvTfwBP.glb            6.44 kB
+.svelte-kit/output/client/_app/immutable/assets/tableRound.VuLFhPqJ.glb                         6.44 kB
+.svelte-kit/output/client/_app/immutable/assets/wallDoorway.2cAOv-29.glb                        6.44 kB
+.svelte-kit/output/client/_app/immutable/assets/trashcan.5uO5frcf.glb                           6.45 kB
+.svelte-kit/output/client/_app/immutable/assets/wallDoorwayWide.DB67PXVy.glb                    6.47 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_simple.BHpIt8iT.glb                6.50 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_small.D4dxM6rM.glb                 6.50 kB
+.svelte-kit/output/client/_app/immutable/assets/lampRoundFloor.2g4oVJ2h.glb                     6.60 kB
+.svelte-kit/output/client/_app/immutable/assets/lampRoundTable.D_3gtD_k.glb                     6.60 kB
+.svelte-kit/output/client/_app/immutable/assets/bathroomMirror.DNz-cQxr.glb                     6.79 kB
+.svelte-kit/output/client/_app/immutable/assets/books.CG9tFN5j.glb                              6.86 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeSofaOttoman.CI9_3PqG.glb                  6.96 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_tall.BEMahoC2.glb                  7.00 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_pot_small.U5g3zd1G.glb                  7.00 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_flower_redA.D5lYA14n.glb                7.10 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_flower_purpleA.Di-ZUcAf.glb             7.11 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_flower_yellowA.BHOYf2KP.glb             7.12 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_stone_largeA.Buy_esKU.glb               7.12 kB
+.svelte-kit/output/client/_app/immutable/assets/bathroomCabinet.1HljCWua.glb                    7.22 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinetUpperLow.BF9IxNDY.glb             7.22 kB
+.svelte-kit/output/client/_app/immutable/assets/chairModernCushion.C9ITEepM.glb                 7.38 kB
+.svelte-kit/output/client/_app/immutable/assets/cabinetBed.CIteRbRH.glb                         7.50 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_rock_largeA.DfGDKCmH.glb                7.55 kB
+.svelte-kit/output/client/_app/immutable/assets/pottedPlant.CiuEMi3g.glb                        7.58 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_fence_planks.CFeU8Ek1.glb               7.72 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_log_large.DeZR4s9H.glb                  7.92 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_lily_large.BkJUPJ4X.glb                 8.04 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_flower_redB.B3z5ah9x.glb                8.08 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_flower_purpleB.CXIzXJ46.glb             8.08 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinetUpper.B6g9rHUp.glb                8.17 kB
+.svelte-kit/output/client/_app/immutable/assets/table.BAd9vipQ.glb                              8.20 kB
+.svelte-kit/output/client/_app/immutable/assets/plantSmall1.LGWcyByb.glb                        8.22 kB
+.svelte-kit/output/client/_app/immutable/assets/tableCoffee.BuZM08pv.glb                        8.26 kB
+.svelte-kit/output/client/_app/immutable/assets/tableCoffeeSquare.CI5Ae3sT.glb                  8.28 kB
+.svelte-kit/output/client/_app/immutable/assets/plantSmall3.vqFP40xq.glb                        8.42 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_rock_largeB.BCDjlufE.glb                8.56 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_fence_corner.Db-OdAIf.glb               8.64 kB
+.svelte-kit/output/client/_app/immutable/assets/sideTable.C4TvE4y8.glb                          8.80 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_cactus_short.BkL4aSE8.glb               8.84 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeDesignSofa.B2xZoFrc.glb                   9.13 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeDesignChair.BWDdp3c9.glb                  9.14 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_campfire_logs.B8Bx5p6F.glb              9.28 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_default.BVPrFQ50.glb               9.43 kB
+.svelte-kit/output/client/_app/immutable/assets/tableCoffeeGlass.CmO83Cgb.glb                   9.43 kB
+.svelte-kit/output/client/_app/immutable/assets/tableCoffeeGlassSquare.sYr2CrB-.glb             9.45 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_stump_old.Dcw8j7ER.glb                  9.56 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeSofa.DQhXyauC.glb                         9.64 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeChair.py61lRVY.glb                        9.65 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_cactus_tall.fN1PjXF0.glb                9.67 kB
+.svelte-kit/output/client/_app/immutable/assets/stoolBarSquare.DK5GjeU1.glb                     9.78 kB
+.svelte-kit/output/client/_app/immutable/assets/tableGlass.CPJO73ah.glb                         9.85 kB
+.svelte-kit/output/client/_app/immutable/assets/tableCloth.BlUYVz3-.glb                         9.92 kB
+.svelte-kit/output/client/_app/immutable/assets/coatRack.BZeUv_oQ.glb                           9.95 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_blocks.C6KJIF2v.glb               10.13 kB
+.svelte-kit/output/client/_app/immutable/assets/rugRound.Du6mM6X_.glb                          10.16 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_plant_bushDetailed.CrcCib4N.glb        10.17 kB
+.svelte-kit/output/client/_app/immutable/assets/benchCushionLow.B1JoktLy.glb                   10.27 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinet.qquF71O5.glb                    10.44 kB
+.svelte-kit/output/client/_app/immutable/assets/wallCornerRond.CdiWOjpb.glb                    10.45 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_statue_column.Uxu-xJ5J.glb             10.47 kB
+.svelte-kit/output/client/_app/immutable/assets/cabinetTelevision.BSP-WbOY.glb                 10.52 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_pineTallA_detailed.Dwup5pQY.glb   10.71 kB
+.svelte-kit/output/client/_app/immutable/assets/wallWindow.D8upIzkf.glb                        10.74 kB
+.svelte-kit/output/client/_app/immutable/assets/bench.gwNlFNvW.glb                             10.76 kB
+.svelte-kit/output/client/_app/immutable/assets/chair.yDxv6fF4.glb                             10.76 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_crop_pumpkin.B4nMml01.glb              10.84 kB
+.svelte-kit/output/client/_app/immutable/assets/rugRounded.CUxIQQuq.glb                        10.88 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_log_stack.u2JI2sWz.glb                 10.90 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_cone.CRPUcUEO.glb                 10.92 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenBarEnd.CEkLvWuc.glb                     11.08 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenMicrowave.Bhxd3yYL.glb                  11.25 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_flower_yellowB.BSYvkebo.glb            11.26 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_grass.GB9br4NG.glb                     11.50 kB
+.svelte-kit/output/client/_app/immutable/assets/bookcaseOpenLow.Dti1sBHf.glb                   11.52 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_stone_tallA.CBviim-p.glb               11.64 kB
+.svelte-kit/output/client/_app/immutable/assets/stoolBar.CgwLbXaQ.glb                          11.82 kB
+.svelte-kit/output/client/_app/immutable/assets/bear.CP_K7Jss.glb                              11.88 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_rock_tallA.Q1hhexFR.glb                12.07 kB
+.svelte-kit/output/client/_app/immutable/assets/tableCross.DOBjWydi.glb                        12.14 kB
+.svelte-kit/output/client/_app/immutable/assets/cabinetBedDrawerTable.nYGcBJip.glb             12.20 kB
+.svelte-kit/output/client/_app/immutable/assets/benchCushion.BJstdVqM.glb                      12.50 kB
+.svelte-kit/output/client/_app/immutable/assets/chairCushion.BOBBqjYg.glb                      12.59 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenFridgeSmall.Ctvc4Ua6.glb                12.99 kB
+.svelte-kit/output/client/_app/immutable/assets/plantSmall2.Ce0ITKt9.glb                       13.00 kB
+.svelte-kit/output/client/_app/immutable/assets/doorwayFront.xQF2d7bO.glb                      13.02 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeSofaLong.zgvrmk-X.glb                    13.11 kB
+.svelte-kit/output/client/_app/immutable/assets/coatRackStanding.DeUigxYH.glb                  13.29 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCoffeeMachine.CYNWoD4u.glb              13.33 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeSofaCorner.kXYWTV1k.glb                  13.41 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_palm.BEEAKdDk.glb                 13.62 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinetCornerRound.BpyvHut5.glb         13.66 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinetUpperCorner.nVoSbALX.glb         13.71 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeDesignSofaCorner.BGSlQG4o.glb            13.74 kB
+.svelte-kit/output/client/_app/immutable/assets/rugDoormat.BkTucRz8.glb                        13.81 kB
+.svelte-kit/output/client/_app/immutable/assets/tableCrossCloth.D5DYbmsy.glb                   13.85 kB
+.svelte-kit/output/client/_app/immutable/assets/loungeChairRelax.Br15o1Dv.glb                  13.90 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_grass_leafsLarge.DyfRKlUe.glb          13.99 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_log.BAyZhRBw.glb                       14.29 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_pineRoundA.Ci4Gf58C.glb           14.49 kB
+.svelte-kit/output/client/_app/immutable/assets/doorway.a5kioHTD.glb                           14.53 kB
+.svelte-kit/output/client/_app/immutable/assets/wallWindowSlide.Dvsj6Ueh.glb                   14.56 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_oak.DRiJ_qxq.glb                  14.64 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_palmBend.CQDkKgc9.glb             14.82 kB
+.svelte-kit/output/client/_app/immutable/assets/toaster.DAihinxI.glb                           14.92 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_mushroom_redGroup.CENXS883.glb         14.96 kB
+.svelte-kit/output/client/_app/immutable/assets/desk.iH0MYlC0.glb                              15.05 kB
+.svelte-kit/output/client/_app/immutable/assets/bathroomSinkSquare.Bjn2ol7e.glb                15.11 kB
+.svelte-kit/output/client/_app/immutable/assets/speakerSmall.BRwGxwEX.glb                      15.24 kB
+.svelte-kit/output/client/_app/immutable/assets/ceilingFan.B3IF2hwB.glb                        15.28 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tent_detailedOpen.hzMzrGdW.glb         15.32 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinetDrawer.CShJH_dx.glb              15.38 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_palmTall.BKlEnhoO.glb             15.59 kB
+.svelte-kit/output/client/_app/immutable/assets/speaker.DDP4J7fT.glb                           15.74 kB
+.svelte-kit/output/client/_app/immutable/assets/cabinetBedDrawer.CmI8umwY.glb                  16.09 kB
+.svelte-kit/output/client/_app/immutable/assets/cabinetTelevisionDoors.BEgePvuJ.glb            16.88 kB
+.svelte-kit/output/client/_app/immutable/assets/chairRounded.B9jlqJSK.glb                      17.16 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_thin.DVItm2Xl.glb                 17.20 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_campfire_stones.DYYvT9qj.glb           17.34 kB
+.svelte-kit/output/client/_app/immutable/assets/toiletSquare.N8XV1Q0c.glb                      17.55 kB
+.svelte-kit/output/client/_app/immutable/assets/dryer.srCg8vQ0.glb                             17.76 kB
+.svelte-kit/output/client/_app/immutable/assets/deskCorner.BsuwvuiK.glb                        17.98 kB
+.svelte-kit/output/client/_app/immutable/assets/bookcaseOpen.Ba5SBYP_.glb                      18.02 kB
+.svelte-kit/output/client/_app/immutable/assets/toilet.BTocmpGe.glb                            18.11 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenCabinetUpperDouble.DXKFr7IA.glb         18.18 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_grass_large.Dy8tUdcG.glb               18.50 kB
+.svelte-kit/output/client/_app/immutable/assets/chairModernFrameCushion.CV1-xyN3.glb           18.59 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenStoveElectric.uOt0sNRh.glb              18.60 kB
+.svelte-kit/output/client/_app/immutable/assets/bedSingle.B9NOEjJt.glb                         18.64 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenBlender.DRE-kT0X.glb                    18.73 kB
+.svelte-kit/output/client/_app/immutable/assets/sideTableDrawers.J47iijDR.glb                  19.07 kB
+.svelte-kit/output/client/_app/immutable/assets/televisionVintage.BuldLGJR.glb                 19.39 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenFridge.CpPMxoby.glb                     20.12 kB
+.svelte-kit/output/client/_app/immutable/assets/stairsCorner.DCT5vn_0.glb                      21.58 kB
+.svelte-kit/output/client/_app/immutable/assets/stairs.DSYuNSOc.glb                            21.62 kB
+.svelte-kit/output/client/_app/immutable/assets/bathroomSink.77Jvhigi.glb                      22.54 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenFridgeBuiltIn.mKo-bl2m.glb              22.62 kB
+.svelte-kit/output/client/_app/immutable/assets/bookcaseClosedDoors.CNpoJ8T7.glb               22.64 kB
+.svelte-kit/output/client/_app/immutable/assets/bookcaseClosed.Dkd4M5FT.glb                    23.13 kB
+.svelte-kit/output/client/_app/immutable/assets/bookcaseClosedWide.DYu0eAcw.glb                23.14 kB
+.svelte-kit/output/client/_app/immutable/assets/bedDouble.CPuDfmfH.glb                         23.37 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenSink.uIP19tTO.glb                       23.48 kB
+.svelte-kit/output/client/_app/immutable/assets/stairsOpenSingle.CYjpRtzr.glb                  24.60 kB
+.svelte-kit/output/client/_app/immutable/assets/radio.D1Ngh9-Q.glb                             25.02 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_fence_gate.CFxFQHxU.glb                27.65 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-concrete.BtX2zrVZ.webp                   27.69 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_crops_cornStageD.BogzTahT.glb          29.32 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenFridgeLarge.CnJIayCQ.glb                30.63 kB
+.svelte-kit/output/client/_app/immutable/assets/outdoor_tree_detailed.Bj1KgEOz.glb             31.41 kB
+.svelte-kit/output/client/_app/immutable/assets/bathroomCabinetDrawer.cBtLmnLX.glb             34.74 kB
+.svelte-kit/output/client/_app/immutable/assets/bathtub.v-1EkLTC.glb                           35.50 kB
+.svelte-kit/output/client/_app/immutable/assets/chairDesk.DdO08CSC.glb                         39.02 kB
+.svelte-kit/output/client/_app/immutable/assets/stairsOpen.BaP4aw0-.glb                        39.92 kB
+.svelte-kit/output/client/_app/immutable/assets/bedBunk.QbOfr_vb.glb                           40.78 kB
+.svelte-kit/output/client/.vite/manifest.json                                                  43.64 kB │ gzip:   6.49 kB
+.svelte-kit/output/client/_app/immutable/assets/washer.B2o7Vzm8.glb                            48.10 kB
+.svelte-kit/output/client/_app/immutable/assets/shower.L7iOZuHW.glb                            52.02 kB
+.svelte-kit/output/client/_app/immutable/assets/kitchenStove.CRxRLl05.glb                      54.32 kB
+.svelte-kit/output/client/_app/immutable/assets/wood-panel.DJOqAZ3F.webp                       54.64 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-walnut.B8Rq7VqY.webp                     63.37 kB
+.svelte-kit/output/client/_app/immutable/assets/washerDryerStacked.DxDdLL4H.glb                64.06 kB
+.svelte-kit/output/client/_app/immutable/assets/showerRound.DYz0jiaw.glb                       72.05 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-laminate.DzDqr6tm.webp                   88.08 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-light-oak.DJl-omJ9.webp                  99.34 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-bamboo.4EkxZble.webp                    103.93 kB
+.svelte-kit/output/client/_app/immutable/assets/concrete.DJrNbnHk.webp                        112.45 kB
+.svelte-kit/output/client/_app/immutable/assets/brick.BGHhMzxL.webp                           116.18 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-tile-white.xn_xyahy.webp                119.05 kB
+.svelte-kit/output/client/_app/immutable/assets/subway-tile.Bd34mZbG.webp                     119.77 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-vinyl.KuYzm1yM.webp                     133.40 kB
+.svelte-kit/output/client/_app/immutable/assets/exposed-brick.DRVdtq-8.webp                   174.42 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-marble-white.uV9xILLF.webp              231.88 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-marble-dark.BfXAY7ky.webp               237.05 kB
+.svelte-kit/output/client/_app/immutable/assets/stone.D3TVRoBz.webp                           269.74 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-carpet-gray.BFW3a-7x.webp               270.19 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-slate.CirlFNLU.webp                     291.12 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-tile-gray.D4vsnc1k.webp                 305.50 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-carpet-beige.BJ-DRfYO.webp              331.02 kB
+.svelte-kit/output/client/_app/immutable/assets/floor-porcelain.DL8O2Qbd.webp                 513.43 kB
+.svelte-kit/output/client/_app/immutable/assets/4.B4zv8Bs5.css                                  0.26 kB │ gzip:   0.20 kB
+.svelte-kit/output/client/_app/immutable/assets/FloorPlanCanvas.VOlBO4FT.css                    0.47 kB │ gzip:   0.26 kB
+.svelte-kit/output/client/_app/immutable/assets/0.BjQMlrfo.css                                 62.90 kB │ gzip:  11.46 kB
+.svelte-kit/output/client/_app/immutable/nodes/3.Bglwh0oH.js                                    0.07 kB │ gzip:   0.08 kB
+.svelte-kit/output/client/_app/immutable/entry/start.BToLVdxh.js                                0.12 kB │ gzip:   0.11 kB
+.svelte-kit/output/client/_app/immutable/chunks/Cpj98o6Y.js                                     0.24 kB │ gzip:   0.18 kB
+.svelte-kit/output/client/_app/immutable/chunks/DHXjNKtR.js                                     0.24 kB │ gzip:   0.21 kB
+.svelte-kit/output/client/_app/immutable/chunks/DrgFDGZz.js                                     0.28 kB │ gzip:   0.16 kB
+.svelte-kit/output/client/_app/immutable/chunks/BUaCkcaB.js                                     0.35 kB │ gzip:   0.25 kB
+.svelte-kit/output/client/_app/immutable/chunks/D-IZSwII.js                                     0.37 kB │ gzip:   0.26 kB
+.svelte-kit/output/client/_app/immutable/chunks/VTrit6jU.js                                     0.67 kB │ gzip:   0.36 kB
+.svelte-kit/output/client/_app/immutable/chunks/CnHRbfht.js                                     0.92 kB │ gzip:   0.58 kB
+.svelte-kit/output/client/_app/immutable/chunks/BQBNs1jD.js                                     1.23 kB │ gzip:   0.68 kB
+.svelte-kit/output/client/_app/immutable/chunks/CsKFXAEb.js                                     1.24 kB │ gzip:   0.72 kB
+.svelte-kit/output/client/_app/immutable/chunks/qdpVWAiz.js                                     1.28 kB │ gzip:   0.75 kB
+.svelte-kit/output/client/_app/immutable/chunks/wbPk3Yxo.js                                     1.37 kB │ gzip:   0.66 kB
+.svelte-kit/output/client/_app/immutable/nodes/1.C93DIa13.js                                    1.51 kB │ gzip:   0.88 kB
+.svelte-kit/output/client/_app/immutable/nodes/0.DBN2K0HL.js                                    3.46 kB │ gzip:   1.86 kB
+.svelte-kit/output/client/_app/immutable/chunks/ZJOBGhL6.js                                     3.71 kB │ gzip:   1.80 kB
+.svelte-kit/output/client/_app/immutable/entry/app.DLVF3ajN.js                                  4.93 kB │ gzip:   2.19 kB
+.svelte-kit/output/client/_app/immutable/chunks/CbMGC5by.js                                     5.70 kB │ gzip:   2.65 kB
+.svelte-kit/output/client/_app/immutable/nodes/4.DpanZ1ML.js                                    7.74 kB │ gzip:   3.42 kB
+.svelte-kit/output/client/_app/immutable/chunks/C_B2aJQq.js                                     7.80 kB │ gzip:   3.63 kB
+.svelte-kit/output/client/_app/immutable/chunks/B5YWPmmk.js                                    11.88 kB │ gzip:   4.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/BEV0Vd6G.js                                    13.43 kB │ gzip:   5.35 kB
+.svelte-kit/output/client/_app/immutable/chunks/CSGpbE7v.js                                    16.41 kB │ gzip:   6.40 kB
+.svelte-kit/output/client/_app/immutable/chunks/EQS7wFFL.js                                    22.18 kB │ gzip:   8.73 kB
+.svelte-kit/output/client/_app/immutable/chunks/4eNOHKSq.js                                    28.74 kB │ gzip:  11.02 kB
+.svelte-kit/output/client/_app/immutable/chunks/DQMAi6zb.js                                    35.26 kB │ gzip:  13.62 kB
+.svelte-kit/output/client/_app/immutable/nodes/2.DPflxC_T.js                                   38.77 kB │ gzip:  12.20 kB
+.svelte-kit/output/client/_app/immutable/chunks/8UeM0L6S.js                                    78.69 kB │ gzip:  23.93 kB
+.svelte-kit/output/client/_app/immutable/chunks/BrUlYJYU.js                                    97.14 kB │ gzip:  30.09 kB
+.svelte-kit/output/client/_app/immutable/chunks/Cq4yruEC.js                                   115.14 kB │ gzip:  34.52 kB
+.svelte-kit/output/client/_app/immutable/chunks/DSgHhBqY.js                                   158.60 kB │ gzip:  52.93 kB
+.svelte-kit/output/client/_app/immutable/chunks/BswIkUxB.js                                   186.29 kB │ gzip:  55.29 kB
+.svelte-kit/output/client/_app/immutable/chunks/DXEQVQnt.js                                   201.04 kB │ gzip:  47.43 kB
+.svelte-kit/output/client/_app/immutable/chunks/CyPBTiuj.js                                   626.14 kB │ gzip: 163.22 kB
+.svelte-kit/output/client/_app/immutable/chunks/Djmrl-xF.js                                   638.21 kB │ gzip: 197.33 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 16.31s
+.svelte-kit/output/server/_app/immutable/assets/floorFull.hPckjhyh.glb                          2.26 kB
+.svelte-kit/output/server/_app/immutable/assets/floorHalf.BKSC3EwQ.glb                          2.26 kB
+.svelte-kit/output/server/_app/immutable/assets/floorCorner.Cp3nOCZk.glb                        2.52 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_rock_smallA.DcpX9vsi.glb                3.04 kB
+.svelte-kit/output/server/_app/immutable/assets/rugSquare.Bxmhh7KQ.glb                          3.18 kB
+.svelte-kit/output/server/_app/immutable/assets/rugRectangle.CZMx9w0p.glb                       3.19 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_plant_bushSmall.CRjlvToK.glb            3.21 kB
+.svelte-kit/output/server/_app/immutable/assets/doorwayOpen.zEulxkrJ.glb                        3.26 kB
+.svelte-kit/output/server/_app/immutable/assets/wall.Eswdy6wj.glb                               3.34 kB
+.svelte-kit/output/server/_app/immutable/assets/wallHalf.Bkf4I7jH.glb                           3.35 kB
+.svelte-kit/output/server/_app/immutable/assets/computerKeyboard.uDiwE_Yl.glb                   3.48 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_rock_smallB.KN4M6aO1.glb                3.53 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_plant_bushTriangle.DkdoE3IQ.glb         3.96 kB
+.svelte-kit/output/server/_app/immutable/assets/paneling.DNhxM6DP.glb                           3.96 kB
+.svelte-kit/output/server/_app/immutable/assets/hoodModern.DblBPNbL.glb                         3.97 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_plant_bush.OKb8oW2E.glb                 4.40 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_statue_obelisk.Cspfp61G.glb             4.42 kB
+.svelte-kit/output/server/_app/immutable/assets/wallCorner.Cxp52idU.glb                         4.46 kB
+.svelte-kit/output/server/_app/immutable/assets/televisionAntenna.CD8Hip6s.glb                  4.50 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_plant_bushLargeTriangle.DvvfD5bX.glb    4.56 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_grass_leafs.LkP_c2fL.glb                4.61 kB
+.svelte-kit/output/server/_app/immutable/assets/hoodLarge.DXWNWD9V.glb                          4.65 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_hanging_moss.CcjOQ4UH.glb               4.78 kB
+.svelte-kit/output/server/_app/immutable/assets/lampWall.CKApYKbX.glb                           4.83 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_sign.D9gdRCb0.glb                       5.04 kB
+.svelte-kit/output/server/_app/immutable/assets/pillow.CDFcejnI.glb                             5.04 kB
+.svelte-kit/output/server/_app/immutable/assets/pillowBlue.ByBAGNR9.glb                         5.06 kB
+.svelte-kit/output/server/_app/immutable/assets/pillowLong.Du5hrVpQ.glb                         5.07 kB
+.svelte-kit/output/server/_app/immutable/assets/pillowBlueLong.C_TqP6Ju.glb                     5.09 kB
+.svelte-kit/output/server/_app/immutable/assets/floorCornerRound.C7tSUizv.glb                   5.17 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinetCornerInner.DqUvzOsi.glb          5.18 kB
+.svelte-kit/output/server/_app/immutable/assets/cardboardBoxClosed.yoTgKfuH.glb                 5.40 kB
+.svelte-kit/output/server/_app/immutable/assets/cardboardBoxOpen.g5ZZbHlg.glb                   5.40 kB
+.svelte-kit/output/server/_app/immutable/assets/laptop.__TffL_5.glb                             5.54 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_fat.t81E4Z9b.glb                   5.58 kB
+.svelte-kit/output/server/_app/immutable/assets/lampSquareFloor.C07Tqkcf.glb                    5.62 kB
+.svelte-kit/output/server/_app/immutable/assets/lampSquareTable.BH3nafgM.glb                    5.62 kB
+.svelte-kit/output/server/_app/immutable/assets/lampSquareCeiling.DEn96tPI.glb                  5.63 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_stump_round.gI2wk-vt.glb                5.64 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_fence_simple.CH9vm1-1.glb               5.71 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_mushroom_tan.DCm0m6uO.glb               5.80 kB
+.svelte-kit/output/server/_app/immutable/assets/computerMouse.Bk3L4LlU.glb                      5.87 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenBar.Drw2F6Se.glb                         6.00 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_pot_large.BDKbpZqC.glb                  6.17 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_mushroom_red.C9nJXNxQ.glb               6.36 kB
+.svelte-kit/output/server/_app/immutable/assets/televisionModern.BBrbvK6T.glb                   6.37 kB
+.svelte-kit/output/server/_app/immutable/assets/computerScreen.DFGirIDw.glb                     6.40 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_plant_bushLarge.BLvTfwBP.glb            6.44 kB
+.svelte-kit/output/server/_app/immutable/assets/tableRound.VuLFhPqJ.glb                         6.44 kB
+.svelte-kit/output/server/_app/immutable/assets/wallDoorway.2cAOv-29.glb                        6.44 kB
+.svelte-kit/output/server/_app/immutable/assets/trashcan.5uO5frcf.glb                           6.45 kB
+.svelte-kit/output/server/_app/immutable/assets/wallDoorwayWide.DB67PXVy.glb                    6.47 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_simple.BHpIt8iT.glb                6.50 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_small.D4dxM6rM.glb                 6.50 kB
+.svelte-kit/output/server/_app/immutable/assets/lampRoundFloor.2g4oVJ2h.glb                     6.60 kB
+.svelte-kit/output/server/_app/immutable/assets/lampRoundTable.D_3gtD_k.glb                     6.60 kB
+.svelte-kit/output/server/_app/immutable/assets/bathroomMirror.DNz-cQxr.glb                     6.79 kB
+.svelte-kit/output/server/_app/immutable/assets/books.CG9tFN5j.glb                              6.86 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeSofaOttoman.CI9_3PqG.glb                  6.96 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_tall.BEMahoC2.glb                  7.00 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_pot_small.U5g3zd1G.glb                  7.00 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_flower_redA.D5lYA14n.glb                7.10 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_flower_purpleA.Di-ZUcAf.glb             7.11 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_flower_yellowA.BHOYf2KP.glb             7.12 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_stone_largeA.Buy_esKU.glb               7.12 kB
+.svelte-kit/output/server/_app/immutable/assets/bathroomCabinet.1HljCWua.glb                    7.22 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinetUpperLow.BF9IxNDY.glb             7.22 kB
+.svelte-kit/output/server/_app/immutable/assets/chairModernCushion.C9ITEepM.glb                 7.38 kB
+.svelte-kit/output/server/_app/immutable/assets/cabinetBed.CIteRbRH.glb                         7.50 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_rock_largeA.DfGDKCmH.glb                7.55 kB
+.svelte-kit/output/server/_app/immutable/assets/pottedPlant.CiuEMi3g.glb                        7.58 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_fence_planks.CFeU8Ek1.glb               7.72 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_log_large.DeZR4s9H.glb                  7.92 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_lily_large.BkJUPJ4X.glb                 8.04 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_flower_redB.B3z5ah9x.glb                8.08 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_flower_purpleB.CXIzXJ46.glb             8.08 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinetUpper.B6g9rHUp.glb                8.17 kB
+.svelte-kit/output/server/_app/immutable/assets/table.BAd9vipQ.glb                              8.20 kB
+.svelte-kit/output/server/_app/immutable/assets/plantSmall1.LGWcyByb.glb                        8.22 kB
+.svelte-kit/output/server/_app/immutable/assets/tableCoffee.BuZM08pv.glb                        8.26 kB
+.svelte-kit/output/server/_app/immutable/assets/tableCoffeeSquare.CI5Ae3sT.glb                  8.28 kB
+.svelte-kit/output/server/_app/immutable/assets/plantSmall3.vqFP40xq.glb                        8.42 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_rock_largeB.BCDjlufE.glb                8.56 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_fence_corner.Db-OdAIf.glb               8.64 kB
+.svelte-kit/output/server/_app/immutable/assets/sideTable.C4TvE4y8.glb                          8.80 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_cactus_short.BkL4aSE8.glb               8.84 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeDesignSofa.B2xZoFrc.glb                   9.13 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeDesignChair.BWDdp3c9.glb                  9.14 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_campfire_logs.B8Bx5p6F.glb              9.28 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_default.BVPrFQ50.glb               9.43 kB
+.svelte-kit/output/server/_app/immutable/assets/tableCoffeeGlass.CmO83Cgb.glb                   9.43 kB
+.svelte-kit/output/server/_app/immutable/assets/tableCoffeeGlassSquare.sYr2CrB-.glb             9.45 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_stump_old.Dcw8j7ER.glb                  9.56 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeSofa.DQhXyauC.glb                         9.64 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeChair.py61lRVY.glb                        9.65 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_cactus_tall.fN1PjXF0.glb                9.67 kB
+.svelte-kit/output/server/_app/immutable/assets/stoolBarSquare.DK5GjeU1.glb                     9.78 kB
+.svelte-kit/output/server/_app/immutable/assets/tableGlass.CPJO73ah.glb                         9.85 kB
+.svelte-kit/output/server/_app/immutable/assets/tableCloth.BlUYVz3-.glb                         9.92 kB
+.svelte-kit/output/server/_app/immutable/assets/coatRack.BZeUv_oQ.glb                           9.95 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_blocks.C6KJIF2v.glb               10.13 kB
+.svelte-kit/output/server/_app/immutable/assets/rugRound.Du6mM6X_.glb                          10.16 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_plant_bushDetailed.CrcCib4N.glb        10.17 kB
+.svelte-kit/output/server/_app/immutable/assets/benchCushionLow.B1JoktLy.glb                   10.27 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinet.qquF71O5.glb                    10.44 kB
+.svelte-kit/output/server/_app/immutable/assets/wallCornerRond.CdiWOjpb.glb                    10.45 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_statue_column.Uxu-xJ5J.glb             10.47 kB
+.svelte-kit/output/server/_app/immutable/assets/cabinetTelevision.BSP-WbOY.glb                 10.52 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_pineTallA_detailed.Dwup5pQY.glb   10.71 kB
+.svelte-kit/output/server/_app/immutable/assets/wallWindow.D8upIzkf.glb                        10.74 kB
+.svelte-kit/output/server/_app/immutable/assets/bench.gwNlFNvW.glb                             10.76 kB
+.svelte-kit/output/server/_app/immutable/assets/chair.yDxv6fF4.glb                             10.76 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_crop_pumpkin.B4nMml01.glb              10.84 kB
+.svelte-kit/output/server/_app/immutable/assets/rugRounded.CUxIQQuq.glb                        10.88 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_log_stack.u2JI2sWz.glb                 10.90 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_cone.CRPUcUEO.glb                 10.92 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenBarEnd.CEkLvWuc.glb                     11.08 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenMicrowave.Bhxd3yYL.glb                  11.25 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_flower_yellowB.BSYvkebo.glb            11.26 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_grass.GB9br4NG.glb                     11.50 kB
+.svelte-kit/output/server/_app/immutable/assets/bookcaseOpenLow.Dti1sBHf.glb                   11.52 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_stone_tallA.CBviim-p.glb               11.64 kB
+.svelte-kit/output/server/_app/immutable/assets/stoolBar.CgwLbXaQ.glb                          11.82 kB
+.svelte-kit/output/server/_app/immutable/assets/bear.CP_K7Jss.glb                              11.88 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_rock_tallA.Q1hhexFR.glb                12.07 kB
+.svelte-kit/output/server/_app/immutable/assets/tableCross.DOBjWydi.glb                        12.14 kB
+.svelte-kit/output/server/_app/immutable/assets/cabinetBedDrawerTable.nYGcBJip.glb             12.20 kB
+.svelte-kit/output/server/_app/immutable/assets/benchCushion.BJstdVqM.glb                      12.50 kB
+.svelte-kit/output/server/_app/immutable/assets/chairCushion.BOBBqjYg.glb                      12.59 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenFridgeSmall.Ctvc4Ua6.glb                12.99 kB
+.svelte-kit/output/server/_app/immutable/assets/plantSmall2.Ce0ITKt9.glb                       13.00 kB
+.svelte-kit/output/server/_app/immutable/assets/doorwayFront.xQF2d7bO.glb                      13.02 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeSofaLong.zgvrmk-X.glb                    13.11 kB
+.svelte-kit/output/server/_app/immutable/assets/coatRackStanding.DeUigxYH.glb                  13.29 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCoffeeMachine.CYNWoD4u.glb              13.33 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeSofaCorner.kXYWTV1k.glb                  13.41 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_palm.BEEAKdDk.glb                 13.62 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinetCornerRound.BpyvHut5.glb         13.66 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinetUpperCorner.nVoSbALX.glb         13.71 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeDesignSofaCorner.BGSlQG4o.glb            13.74 kB
+.svelte-kit/output/server/_app/immutable/assets/rugDoormat.BkTucRz8.glb                        13.81 kB
+.svelte-kit/output/server/_app/immutable/assets/tableCrossCloth.D5DYbmsy.glb                   13.85 kB
+.svelte-kit/output/server/_app/immutable/assets/loungeChairRelax.Br15o1Dv.glb                  13.90 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_grass_leafsLarge.DyfRKlUe.glb          13.99 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_log.BAyZhRBw.glb                       14.29 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_pineRoundA.Ci4Gf58C.glb           14.49 kB
+.svelte-kit/output/server/_app/immutable/assets/doorway.a5kioHTD.glb                           14.53 kB
+.svelte-kit/output/server/_app/immutable/assets/wallWindowSlide.Dvsj6Ueh.glb                   14.56 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_oak.DRiJ_qxq.glb                  14.64 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_palmBend.CQDkKgc9.glb             14.82 kB
+.svelte-kit/output/server/_app/immutable/assets/toaster.DAihinxI.glb                           14.92 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_mushroom_redGroup.CENXS883.glb         14.96 kB
+.svelte-kit/output/server/_app/immutable/assets/desk.iH0MYlC0.glb                              15.05 kB
+.svelte-kit/output/server/_app/immutable/assets/bathroomSinkSquare.Bjn2ol7e.glb                15.11 kB
+.svelte-kit/output/server/_app/immutable/assets/speakerSmall.BRwGxwEX.glb                      15.24 kB
+.svelte-kit/output/server/_app/immutable/assets/ceilingFan.B3IF2hwB.glb                        15.28 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tent_detailedOpen.hzMzrGdW.glb         15.32 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinetDrawer.CShJH_dx.glb              15.38 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_palmTall.BKlEnhoO.glb             15.59 kB
+.svelte-kit/output/server/_app/immutable/assets/speaker.DDP4J7fT.glb                           15.74 kB
+.svelte-kit/output/server/_app/immutable/assets/cabinetBedDrawer.CmI8umwY.glb                  16.09 kB
+.svelte-kit/output/server/_app/immutable/assets/cabinetTelevisionDoors.BEgePvuJ.glb            16.88 kB
+.svelte-kit/output/server/_app/immutable/assets/chairRounded.B9jlqJSK.glb                      17.16 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_thin.DVItm2Xl.glb                 17.20 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_campfire_stones.DYYvT9qj.glb           17.34 kB
+.svelte-kit/output/server/_app/immutable/assets/toiletSquare.N8XV1Q0c.glb                      17.55 kB
+.svelte-kit/output/server/_app/immutable/assets/dryer.srCg8vQ0.glb                             17.76 kB
+.svelte-kit/output/server/_app/immutable/assets/deskCorner.BsuwvuiK.glb                        17.98 kB
+.svelte-kit/output/server/_app/immutable/assets/bookcaseOpen.Ba5SBYP_.glb                      18.02 kB
+.svelte-kit/output/server/_app/immutable/assets/toilet.BTocmpGe.glb                            18.11 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenCabinetUpperDouble.DXKFr7IA.glb         18.18 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_grass_large.Dy8tUdcG.glb               18.50 kB
+.svelte-kit/output/server/_app/immutable/assets/chairModernFrameCushion.CV1-xyN3.glb           18.59 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenStoveElectric.uOt0sNRh.glb              18.60 kB
+.svelte-kit/output/server/_app/immutable/assets/bedSingle.B9NOEjJt.glb                         18.64 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenBlender.DRE-kT0X.glb                    18.73 kB
+.svelte-kit/output/server/_app/immutable/assets/sideTableDrawers.J47iijDR.glb                  19.07 kB
+.svelte-kit/output/server/_app/immutable/assets/televisionVintage.BuldLGJR.glb                 19.39 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenFridge.CpPMxoby.glb                     20.12 kB
+.svelte-kit/output/server/_app/immutable/assets/stairsCorner.DCT5vn_0.glb                      21.58 kB
+.svelte-kit/output/server/_app/immutable/assets/stairs.DSYuNSOc.glb                            21.62 kB
+.svelte-kit/output/server/_app/immutable/assets/bathroomSink.77Jvhigi.glb                      22.54 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenFridgeBuiltIn.mKo-bl2m.glb              22.62 kB
+.svelte-kit/output/server/_app/immutable/assets/bookcaseClosedDoors.CNpoJ8T7.glb               22.64 kB
+.svelte-kit/output/server/_app/immutable/assets/bookcaseClosed.Dkd4M5FT.glb                    23.13 kB
+.svelte-kit/output/server/_app/immutable/assets/bookcaseClosedWide.DYu0eAcw.glb                23.14 kB
+.svelte-kit/output/server/_app/immutable/assets/bedDouble.CPuDfmfH.glb                         23.37 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenSink.uIP19tTO.glb                       23.48 kB
+.svelte-kit/output/server/_app/immutable/assets/stairsOpenSingle.CYjpRtzr.glb                  24.60 kB
+.svelte-kit/output/server/_app/immutable/assets/radio.D1Ngh9-Q.glb                             25.02 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_fence_gate.CFxFQHxU.glb                27.65 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-concrete.BtX2zrVZ.webp                   27.69 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_crops_cornStageD.BogzTahT.glb          29.32 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenFridgeLarge.CnJIayCQ.glb                30.63 kB
+.svelte-kit/output/server/_app/immutable/assets/outdoor_tree_detailed.Bj1KgEOz.glb             31.41 kB
+.svelte-kit/output/server/_app/immutable/assets/bathroomCabinetDrawer.cBtLmnLX.glb             34.74 kB
+.svelte-kit/output/server/_app/immutable/assets/bathtub.v-1EkLTC.glb                           35.50 kB
+.svelte-kit/output/server/_app/immutable/assets/chairDesk.DdO08CSC.glb                         39.02 kB
+.svelte-kit/output/server/.vite/manifest.json                                                  39.11 kB
+.svelte-kit/output/server/_app/immutable/assets/stairsOpen.BaP4aw0-.glb                        39.92 kB
+.svelte-kit/output/server/_app/immutable/assets/bedBunk.QbOfr_vb.glb                           40.78 kB
+.svelte-kit/output/server/_app/immutable/assets/washer.B2o7Vzm8.glb                            48.10 kB
+.svelte-kit/output/server/_app/immutable/assets/shower.L7iOZuHW.glb                            52.02 kB
+.svelte-kit/output/server/_app/immutable/assets/kitchenStove.CRxRLl05.glb                      54.32 kB
+.svelte-kit/output/server/_app/immutable/assets/wood-panel.DJOqAZ3F.webp                       54.64 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-walnut.B8Rq7VqY.webp                     63.37 kB
+.svelte-kit/output/server/_app/immutable/assets/washerDryerStacked.DxDdLL4H.glb                64.06 kB
+.svelte-kit/output/server/_app/immutable/assets/showerRound.DYz0jiaw.glb                       72.05 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-laminate.DzDqr6tm.webp                   88.08 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-light-oak.DJl-omJ9.webp                  99.34 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-bamboo.4EkxZble.webp                    103.93 kB
+.svelte-kit/output/server/_app/immutable/assets/concrete.DJrNbnHk.webp                        112.45 kB
+.svelte-kit/output/server/_app/immutable/assets/brick.BGHhMzxL.webp                           116.18 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-tile-white.xn_xyahy.webp                119.05 kB
+.svelte-kit/output/server/_app/immutable/assets/subway-tile.Bd34mZbG.webp                     119.77 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-vinyl.KuYzm1yM.webp                     133.40 kB
+.svelte-kit/output/server/_app/immutable/assets/exposed-brick.DRVdtq-8.webp                   174.42 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-marble-white.uV9xILLF.webp              231.88 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-marble-dark.BfXAY7ky.webp               237.05 kB
+.svelte-kit/output/server/_app/immutable/assets/stone.D3TVRoBz.webp                           269.74 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-carpet-gray.BFW3a-7x.webp               270.19 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-slate.CirlFNLU.webp                     291.12 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-tile-gray.D4vsnc1k.webp                 305.50 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-carpet-beige.BJ-DRfYO.webp              331.02 kB
+.svelte-kit/output/server/_app/immutable/assets/floor-porcelain.DL8O2Qbd.webp                 513.43 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.B4zv8Bs5.css                              0.26 kB
+.svelte-kit/output/server/_app/immutable/assets/_layout.BjQMlrfo.css                           62.90 kB
+.svelte-kit/output/server/entries/pages/_layout.ts.js                                           0.00 kB
+.svelte-kit/output/server/entries/pages/embed/_page.ts.js                                       0.04 kB
+.svelte-kit/output/server/chunks/internal.js                                                    0.19 kB
+.svelte-kit/output/server/env.js                                                                0.23 kB
+.svelte-kit/output/server/chunks/shared-server.js                                               0.28 kB
+.svelte-kit/output/server/chunks/state.svelte.js                                                0.43 kB
+.svelte-kit/output/server/chunks/server.js                                                      0.45 kB
+.svelte-kit/output/server/internal.js                                                           0.46 kB
+.svelte-kit/output/server/entries/pages/embed/_page.svelte.js                                   0.88 kB
+.svelte-kit/output/server/chunks/utils.js                                                       1.09 kB
+.svelte-kit/output/server/chunks/theme.js                                                       1.22 kB
+.svelte-kit/output/server/entries/pages/_error.svelte.js                                        1.63 kB
+.svelte-kit/output/server/entries/pages/_layout.svelte.js                                       2.02 kB
+.svelte-kit/output/server/entries/pages/editor/_page.svelte.js                                  2.08 kB
+.svelte-kit/output/server/chunks/exports.js                                                     2.39 kB
+.svelte-kit/output/server/chunks/internal2.js                                                   3.16 kB
+.svelte-kit/output/server/chunks/url.js                                                         5.85 kB
+.svelte-kit/output/server/entries/pages/_page.svelte.js                                         7.89 kB
+.svelte-kit/output/server/entries/endpoints/api/handoffs/_server.ts.js                         14.50 kB
+.svelte-kit/output/server/chunks/project.js                                                    27.56 kB
+.svelte-kit/output/server/chunks/ContextMenu.svelte_svelte_type_style_lang.js                  30.00 kB
+.svelte-kit/output/server/chunks/utils2.js                                                     34.21 kB
+.svelte-kit/output/server/remote-entry.js                                                      36.85 kB
+.svelte-kit/output/server/chunks/root.js                                                      129.02 kB
+.svelte-kit/output/server/index.js                                                            130.97 kB
+✓ built in 34.59s
+
+Run npm run preview to preview your production build locally.
+
+> Using @sveltejs/adapter-node
+Generated an empty chunk: "chunks/internal.js".
+  ✔ done

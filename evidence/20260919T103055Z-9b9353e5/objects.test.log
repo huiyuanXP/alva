@@ -1,0 +1,10 @@
+✔ object API validates scope, strict values, replay, conflict and atomic revision/outbox (5045.545249ms)
+✔ API and login limits survive static asset exemption (3283.040928ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10530.609086

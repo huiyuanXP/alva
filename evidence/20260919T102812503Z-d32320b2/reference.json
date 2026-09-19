@@ -1,0 +1,51 @@
+{
+  "scope": "Supplied static reference, not alva product acceptance",
+  "results": [
+    {
+      "name": "WebGL2 context",
+      "ok": true
+    },
+    {
+      "name": "Scene objects exist",
+      "ok": true,
+      "detail": {
+        "objects": 50,
+        "rooms": 6,
+        "colliders": 40
+      }
+    },
+    {
+      "name": "Six room viewpoints",
+      "ok": true
+    },
+    {
+      "name": "Time changes sun direction",
+      "ok": true,
+      "detail": {
+        "before": [
+          -0.793292951714915,
+          0.5209936469332086,
+          0.31504271553977037
+        ],
+        "after": [
+          0.9238092085247018,
+          0.3252192617185284,
+          0.20201232153564125
+        ]
+      }
+    },
+    {
+      "name": "Bed collision active",
+      "ok": true
+    },
+    {
+      "name": "Walk mode",
+      "ok": true
+    },
+    {
+      "name": "No JavaScript or console errors",
+      "ok": true,
+      "detail": []
+    }
+  ]
+}

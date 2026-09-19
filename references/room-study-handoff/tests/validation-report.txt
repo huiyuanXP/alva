@@ -1,0 +1,8 @@
+PASS  WebGL2 context
+PASS  Application initialized
+PASS  Scene objects exist  50
+PASS  Six room viewpoints
+PASS  Time changes sun direction
+PASS  Bed collision active
+PASS  Walk mode
+PASS  No JavaScript page errors

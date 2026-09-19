@@ -1,0 +1,23 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "./components/tool-ui";
+@source "./components/ui";
+@theme inline {
+ --color-primary: var(--foreground);
+ --color-primary-foreground: var(--background);
+ --color-background: var(--card);
+ --color-card: var(--card);
+ --color-foreground: var(--foreground);
+ --color-muted: var(--field);
+ --color-muted-foreground: var(--muted-foreground);
+ --color-border: var(--border);
+ --color-ring: var(--ring);
+ --color-accent: var(--field);
+ --color-accent-foreground: var(--foreground);
+}
+.agent-intake [data-slot="option-list"]{width:100%;min-width:0;max-width:none;white-space:normal}
+.agent-intake [role="option"]{white-space:normal;height:auto;min-height:48px;text-align:left;padding:12px;line-height:1.6}
+.agent-intake [role="option"][aria-selected="true"]{background:var(--field);outline:2px solid var(--ring);outline-offset:-2px}
+.agent-intake .ask-basis{display:none}
+.agent-intake .intake-card{margin-top:12px}
+.agent-intake .intake-card legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}

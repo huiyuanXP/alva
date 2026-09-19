@@ -1,0 +1,14 @@
+✔ 02: per-room persistence, cm geometry vs target meters, unknown budget and scope validation (6468.141857ms)
+✔ 04: explicit scoped adoption, idempotency, stale hand-edit protection and group rollback (3179.594198ms)
+✔ 04: five question groups, max two questions, no repeat of answered/unknown/skipped fields (6.375886ms)
+✔ 05: fixed original evidence, unknown budget scope, professional checks, retained stale reports (3421.349033ms)
+✔ 03: provider failure preserves user input and replay does not create another run (2808.680446ms)
+✔ 03: cancellation during model initialization preserves input; outbox replay is strictly ordered (2948.814824ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21925.479604

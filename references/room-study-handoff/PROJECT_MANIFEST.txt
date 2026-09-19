@@ -1,0 +1,35 @@
+Room Study 3D Prototype Package
+===============================
+
+Primary entry points
+--------------------
+room-study-standalone.html   Single-file offline demo
+index.html                   Multi-file development entry
+HANDOFF.md                   Project handoff / continuation document
+README.md                    Quick start and repository structure
+
+Implementation
+--------------
+src/math.js                  Vector and matrix helpers
+src/model.js                 Floorplan reconstruction, furniture, collisions, viewpoints
+src/renderer.js              Native WebGL 2 renderer and shadow pass
+src/app.js                   Camera, walking, sun/season controls, picking and UI
+styles.css                   Desktop/mobile UI
+build_standalone.py          Bundles CSS/JS/image into one HTML
+
+Documentation
+-------------
+docs/FEATURES.md             Full feature list and non-goals
+docs/IMPLEMENTATION.md       Architecture and reproduction notes
+references/assistant-ui-design.md  UI design reference from project context
+
+Verification
+------------
+tests/smoke.py               Chromium/WebGL 2 smoke test
+tests/validation-report.txt  Latest smoke result
+preview.png                  Screenshot produced during smoke test
+SHA256SUMS.txt               Checksums of distributable files
+
+Source material
+---------------
+public/floorplan.png         Original floor plan supplied by the user

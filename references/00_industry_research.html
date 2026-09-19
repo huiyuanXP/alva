@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>行业参照与双受众交付架构</title><style>
+@page { size: A4; margin: 19mm 17mm 19mm 17mm; @top-left { content: "ROOMNOTE  /  DELIVERY LAB"; font-family: "Noto Sans CJK SC"; font-size: 8pt; color: #63746c; } @bottom-left { content: "2026.09.11 · 研究与虚构示例 / 非施工文件"; font-family: "Noto Sans CJK SC"; font-size: 7pt; color: #63746c; } @bottom-right { content: counter(page); font-size: 9pt; color: #263f39; } }
+* { box-sizing: border-box; } body { font-family: "Noto Sans CJK SC", sans-serif; color: #263f39; font-size: 10pt; line-height: 1.75; margin: 0; } h1,h2,h3 { font-weight:700; line-height:1.4; break-after:avoid; } h1 { font-size:26pt; margin:12mm 0 7mm; letter-spacing:-.7px; } h2 { font-size:16pt; margin-top:9mm; border-top:2px solid #b5c4b5; padding-top:4mm; } h3 { font-size:12pt; margin-top:6mm; } p { margin: 2.4mm 0; orphans:3; widows:3; } a { color: #54755a; text-decoration:none; overflow-wrap:anywhere; } table { width:100%; border-collapse:collapse; font-size:8.4pt; line-height:1.55; table-layout:fixed; margin:4mm 0; } th { background:#e1e7dc; color:#263f39; text-align:left; padding:2.4mm; } td { vertical-align:top; border-bottom:1px solid #d7ded5; padding:2.4mm; overflow-wrap:anywhere; } tr { break-inside:avoid; } thead { display:table-header-group; } blockquote { margin:4mm 0; padding:4mm; background:#f1e9db; border-left:4px solid #b38a62; font-size:9pt; } img { width:100%; max-height:114mm; object-fit:contain; display:block; margin:3mm 0; } pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:8pt; line-height:1.7; padding:3mm; background:#edf1eb; } code { font-family:"DejaVu Sans Mono","Noto Sans CJK SC",monospace; font-size:.9em; overflow-wrap:anywhere; } ul { padding-left:5mm; } li { margin:2mm 0; } hr { border:0; border-top:1px solid #cbd6c9; margin:7mm 0; } .cover { page-break-after:always; padding-top:28mm; } .cover .eyebrow { letter-spacing:3px; font-size:10pt; color:#738675; } .cover h1 { font-size:38pt; margin-top:16mm; } .cover .rule { height:4px; width:80px; background:#b38a62; margin:12mm 0; } .cover .sub { font-size:15pt; max-width:130mm; } .cover .note { font-size:10pt; margin-top:18mm; color:#64776d; } .q-card { break-inside:avoid; padding-bottom:2mm; border-bottom:1px solid #cad6c8; } .q-card p { font-size:9pt; margin:2mm 0; } .q-card h3 { margin-top:5mm; } .q-card h3 + p { font-size:8pt; color:#64776d; }
+@media screen { body { max-width:1050px; margin:40px auto; padding:30px; background:#fcfcf8; font-size:16px; } .cover { min-height:600px; } h1 {font-size:40px;} h2 {font-size:28px;} h3 {font-size:21px;} table{font-size:13px;} .q-card p{font-size:15px;} img {max-height:none;} }
+</style></head><body><div class="cover"><div class="eyebrow">ROOMNOTE / RESEARCH &amp; DELIVERY / V1.0</div><h1>交付，不止摘要</h1><div class="rule"></div><p class="sub">行业参照与双受众交付架构</p><p class="note">桌面研究 · 产品建议 · 8项一手来源<br>2026年9月11日<br>样例、需求、建议和专业核实始终分开。</p></div><h1>从聊天记录，到可交付的设计输入</h1>
+<h2>研究结论</h2>
+<p>ROOMNOTE 不应只交付一份聊天摘要。建议以<strong>同一份带来源的需求数据，生成业主版与设计师版两种视图</strong>。前者回答“你理解我了吗、我的家会怎样、接下来怎么办”；后者回答“具体要做什么、为什么、哪些已确认、还缺什么、谁负责下一步”。以下是桌面研究与产品设计建议，不是假称完成了设计师访谈。</p>
+<h2>行业参照：拿走结构，不照搬商业承诺</h2>
+<table>
+<thead>
+<tr>
+<th>参照</th>
+<th>已查到的公开交付结构</th>
+<th>对本产品的启发</th>
+<th>不能据此声称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IKEA Singapore [S01]</td>
+<td>情绪板、产品清单、平面、纺织品和灯光建议</td>
+<td>视觉、物品、功能动线应一起交付</td>
+<td>图里的家具一定适合用户现场</td>
+</tr>
+<tr>
+<td>Havenly [S02]</td>
+<td>设计师协作、布局、产品方案与3D呈现</td>
+<td>用户需要可想象的“完成状态”，不只是形容词</td>
+<td>本产品已提供同等渲染或采购服务</td>
+</tr>
+<tr>
+<td>Houzz Pro [S03–S04]</td>
+<td>概念情绪板与具体选型板分工；按项目管理材料与预算</td>
+<td>灵感认可不等于型号、预算或采购批准</td>
+<td>点赞一张图就是批准整套设计</td>
+</tr>
+<tr>
+<td>NBS / RIBA [S05]</td>
+<td>分阶段信息交换、责任矩阵、逐渐深化的信息要求</td>
+<td>初访可以做到便于设计接手，但不能伪装为施工级资料</td>
+<td>初访报告是施工图、结构审查或法定批准</td>
+</tr>
+<tr>
+<td>AIDED [S06]</td>
+<td>12名设计师研究中，问卷体验信号与解释方式影响可信度</td>
+<td>保留用户原话，并说明AI如何将其解释为设计意图</td>
+<td>本产品已验证提升满意度，或小样本结论可普遍外推</td>
+</tr>
+<tr>
+<td>IKEA实际住宅案例 [S07–S08]</td>
+<td>全屋平面、分房间图、色材与生活故事共同出现</td>
+<td>同时提供总览、局部细节和“为什么适合你”</td>
+<td>第三方案例照片就是本产品生成或用户未来实景</td>
+</tr>
+</tbody>
+</table>
+<h2>设计师版：10类必要交付</h2>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>内容与最低字段</th>
+<th>接手者如何用</th>
+<th>信息不足时怎么写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D01</td>
+<td>项目摘要：目标、常住者、决策人、前三优先级、禁用项</td>
+<td>3分钟理解项目，不重做整轮初访</td>
+<td>未透露的家庭信息不推断</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>现状条件：房型、尺寸来源、门窗、机电、可改范围</td>
+<td>判断是否能开始布局与现场核查</td>
+<td>估计／图纸／实测分层；测量负责人待定</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>房间任务书：用途、活动、时间、人数、兼用、冲突</td>
+<td>将抽象偏好转成房间设计目标</td>
+<td>没谈过的房间写未调研，不补编</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>家具／设备／材料需求：保留物、容量、频率、性能、规格、产品证据</td>
+<td>做家具与材料筛选、尺寸深化</td>
+<td>参数区分需求、候选、实测、厂家值</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>原话与参考媒体：消息、图片标注、视频时间点、喜欢／不喜欢的局部</td>
+<td>理解隐含动机和不应照搬的细节</td>
+<td>未解析链接标未读取，不能假称看过</td>
+</tr>
+<tr>
+<td>D06</td>
+<td>决策与取舍：方案A/B、被拒理由、确认人、范围、版本、撤回</td>
+<td>避免反复讨论和把临时倾向当最终决定</td>
+<td>存在分歧时并列，不替家人裁决</td>
+</tr>
+<tr>
+<td>D07</td>
+<td>预算：币种、目标、上限、包含／排除、预留、来源日期</td>
+<td>确定可用额度及报价边界</td>
+<td>无报价时写示例分配或待询价</td>
+</tr>
+<tr>
+<td>D08</td>
+<td>实现计划：阶段、输入、责任人、依赖、出口条件</td>
+<td>排测量、深化、报价、审批、交付</td>
+<td>不是承诺工期；未聘任的人不写成已指派</td>
+</tr>
+<tr>
+<td>D09</td>
+<td>待核实与风险：类别、影响、证据、专业角色、关闭条件</td>
+<td>优先处理影响方案成立的缺口</td>
+<td>区分用户确认与技术／安全核验</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>交接包与权限：PDF、可编辑场景、sidecar、版本、单位、许可、签收</td>
+<td>核对文件能否继续编辑并合法分享</td>
+<td>未测试的格式不写“可无损导入”</td>
+</tr>
+</tbody>
+</table>
+<h2>业主版：让情绪价值有具体证据</h2>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>交付内容</th>
+<th>可感知的价值</th>
+<th>不能做的事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U01</td>
+<td>一页“我们听到的你”：原话、重视的生活、三个设计原则</td>
+<td>被记住、被理解</td>
+<td>空泛夸奖或编造用户人生故事</td>
+</tr>
+<tr>
+<td>U02</td>
+<td>整屋功能总览、统一色材方向、每个房间的角色、指定视角</td>
+<td>看见完整的家，而不是零散房间</td>
+<td>未建模却声称真实场景截图</td>
+</tr>
+<tr>
+<td>U03</td>
+<td>回家、工作、相处、夜间四个生活片段</td>
+<td>把功能与日常体验连接</td>
+<td>把概念写成保证实现的结果</td>
+</tr>
+<tr>
+<td>U04</td>
+<td>每个关键细节都有图、采用理由、替代项、代价和待核实项</td>
+<td>能想象也能挑错</td>
+<td>只给漂亮图，没有具体取舍</td>
+</tr>
+<tr>
+<td>U05</td>
+<td>已确认／未决定／交给专业人员三张清单；下一步与修订入口</td>
+<td>有掌控感，不必一次决定所有事</td>
+<td>用焦虑、倒计时或虚假完整率逼迫确认</td>
+</tr>
+</tbody>
+</table>
+<p>每张参考图必须包含：图ID、类型（第三方案例／原创示意／当前版本场景截图）、来源、适用房间、参考哪一点、不参考哪一点、对应需求ID、用户反馈、授权状态。第三方图片在可下载包里使用前需核查使用授权。本包提供原创示意与官方案例出处，没有搬用第三方照片。</p>
+<h2>“初访完成”的产品验收门槛（建议，尚未用户研究验证）</h2>
+<p>初访稿可以带缺口发布；设计师接手稿则必须显式呈现全部关键缺口。已确认需求必须有用户动作或原话证据；预算必须同币种同口径；所有尺寸必须有来源等级；每个重点房间至少一个生活场景和一个可检验设计要求；冲突、未读媒体和未批准事项不能藏在附录里。</p>
+<p>可编辑交付仅在实际通过“导出 → 清空／新会话导入 → 对照稳定ID与关键属性 → 修改 → 再保存”后标记通过。OpenPlan3D原生JSON和业务sidecar应按同一版本冻结；不把JSON等同于专业BIM或施工图。</p>
+<h2>评价方式：避免把“用户一路点推荐”当成功</h2>
+<p>建议记录四类指标：用户对“理解我”的评分与理由；完成关键需求所需的主动操作次数；设计师对摘要的纠错量与重复追问次数；错误确认、无证据推断及手填覆盖事件。推荐项接受率只作诊断，不作为单一优化目标。具体目标值待试用后确定。</p>
+<h2>下一轮人工验证提纲（尚未执行）</h2>
+<p>向设计师展示同一案例的普通摘要与结构化交付，请他完成：找预算范围、找最不能牺牲的需求、找尺寸来源、判断哪些能开始画方案、指出最想追问的三件事、估计重复初访工作、检查被拒方案能否避免返工、确认常用交付格式。</p>
+<p>向业主询问：哪一句最像你、哪一句理解错了、你能否区分建议与已决定、是否知道下一步该做什么、哪张图帮助最大、是否有被迫选推荐项的感觉。推荐与替代项可交换顺序做对照；比较主观理解与错误确认，不只比较点击率。</p>
+<h2>来源与研究边界</h2>
+<ul>
+<li><strong>S01</strong> · <a href="https://www.ikea.com/sg/en/customer-service/services/interior-design-service-home/">IKEA Singapore · Home design service</a>。官方服务说明：情绪板、产品清单、平面图、纺织品与灯光建议；先理解需求，再测量与确认。 检索日期：2026-09-11。</li>
+<li><strong>S02</strong> · <a href="https://havenly.com/">Havenly · Online Interior Design</a>。官方服务展示：与设计师协作，结合产品选择、布局和真实空间的3D呈现。仅用于交付结构参考，不引用价格或保证。 检索日期：2026-09-11。</li>
+<li><strong>S03</strong> · <a href="https://pro.houzz.com/pro-help/r/mood-boards-vs-selection-boards">Houzz Pro · Mood Boards vs Selection Boards</a>。官方帮助：情绪／概念沟通与具体选型管理应区分。 检索日期：2026-09-11。</li>
+<li><strong>S04</strong> · <a href="https://pro.houzz.com/pro-help/r/how-to-use-selections-in-houzz-pro">Houzz Pro · How to Use Selection Boards</a>。官方帮助：按项目组织产品、材料、预算和展示，并管理变化。 检索日期：2026-09-11。</li>
+<li><strong>S05</strong> · <a href="https://www.thenbs.com/knowledge/riba-plan-of-work">NBS · RIBA Plan of Work</a>。行业信息平台且参与数字工作计划开发：信息交换、责任矩阵、分阶段信息深度。2022-07-05。 检索日期：2026-09-11。</li>
+<li><strong>S06</strong> · <a href="https://arxiv.org/abs/2602.10054">Lin et al. · AIDED · CHI 2026</a>。作者公开论文摘要：12名专业设计师的被试内研究；问卷数据的可信度与体验信号解释值得重视。小样本、非本产品效果验证。 检索日期：2026-09-11。</li>
+<li><strong>S07</strong> · <a href="https://www.ikea.com/sg/en/ideas/scandi-4-room-bto-flat-pub4050c730/">IKEA Singapore · Scandinavian 4-room BTO case</a>。官方已完成项目展示：全屋平面、色板、分房间画面与生活故事。第三方案例不是本样例房屋。 检索日期：2026-09-11。</li>
+<li><strong>S08</strong> · <a href="https://www.ikea.co.id/in/layanan-pelanggan/about-service/interior-design">IKEA Indonesia · Interior design service</a>。官方交付展示图将情绪板、房间视觉和轴测布局组合呈现；用于版式参照，不推定新加坡服务范围。 检索日期：2026-09-11。</li>
+</ul>
+</body></html>

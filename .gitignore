@@ -1,0 +1,12 @@
+node_modules/
+.data/
+.runtime/
+.env
+.env.*
+!.env.example
+**/dist/
+**/build/
+**/.svelte-kit/
+**/__pycache__/
+*.tsbuildinfo
+evidence/**/baseline-source.tar

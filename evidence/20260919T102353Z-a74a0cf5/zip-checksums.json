@@ -1,0 +1,74 @@
+[
+  {
+    "file": "./HANDOFF.md",
+    "matches": true
+  },
+  {
+    "file": "./README.md",
+    "matches": true
+  },
+  {
+    "file": "./build_standalone.py",
+    "matches": true
+  },
+  {
+    "file": "./docs/FEATURES.md",
+    "matches": true
+  },
+  {
+    "file": "./docs/IMPLEMENTATION.md",
+    "matches": true
+  },
+  {
+    "file": "./index.html",
+    "matches": true
+  },
+  {
+    "file": "./preview.png",
+    "matches": true
+  },
+  {
+    "file": "./public/floorplan.png",
+    "matches": true
+  },
+  {
+    "file": "./references/assistant-ui-design.md",
+    "matches": true
+  },
+  {
+    "file": "./room-study-standalone.html",
+    "matches": true
+  },
+  {
+    "file": "./src/app.js",
+    "matches": true
+  },
+  {
+    "file": "./src/math.js",
+    "matches": true
+  },
+  {
+    "file": "./src/model.js",
+    "matches": true
+  },
+  {
+    "file": "./src/renderer.js",
+    "matches": true
+  },
+  {
+    "file": "./styles.css",
+    "matches": true
+  },
+  {
+    "file": "./tests/smoke.png",
+    "matches": true
+  },
+  {
+    "file": "./tests/smoke.py",
+    "matches": true
+  },
+  {
+    "file": "./tests/validation-report.txt",
+    "matches": true
+  }
+]

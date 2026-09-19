@@ -1,0 +1,1 @@
+Image: supplied room-study-handoff/public/floorplan.png. Audio: Google public speech fixture; not a physical microphone test. CLI adapter not covered by these API probes.

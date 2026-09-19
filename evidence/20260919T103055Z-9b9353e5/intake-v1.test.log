@@ -1,0 +1,14 @@
+✔ intake v1: every existing field has exactly A+B+C+D and free input; generation is read only (4.421296ms)
+✔ intake v1: same-room information guides recommendation; other room and unscoped evidence do not leak (1.123048ms)
+✔ intake v1: missing facts have no fabricated amount, dimension, currency or household (1.130447ms)
+✔ intake v1: arbitrary free response is one field only; skipped answers are not repeated (0.907919ms)
+✔ intake v1: existing evidence-backed proposal keeps its adoption ID; mismatched-room references rejected (0.648993ms)
+✔ intake v1: existing answer route persists choices with idempotency and optimistic-concurrency protection (4809.16336ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6970.084886

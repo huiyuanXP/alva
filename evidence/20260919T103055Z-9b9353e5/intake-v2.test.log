@@ -1,0 +1,18 @@
+✔ v2 catalogue: 48+12 unique definitions, four choices plus free space, facts have no fabricated defaults (5.770503ms)
+✔ v2 answers: project/room isolation and deliberate legacy mappings without geometric changes (5.736709ms)
+✔ v2 budgets: range remains text; explicit target/ceiling/currency is structured, no implicit scalar or approval (4.553886ms)
+✔ v2 unknown/skipped answers persist with next owner/action, do not get asked again or inflate delivery completion (1.742342ms)
+✔ v2 extraction: exact current-room quote only, pending not owner-confirmed, manual input protected (2.398941ms)
+✔ v2 recommendation: exact 1+3, source isolation, no repeated questions, fact-guess structural guard (2.114346ms)
+✔ v2 branches do not borrow another room or infer accessibility from age alone (0.423235ms)
+✔ v2 designer delivery defaults private; explicit selection only, pending extraction and raw sources separated (2.831828ms)
+✔ v2 API: auth, idempotency, optimistic conflict, persisted snapshots, stale reports and revoked export (5103.170415ms)
+✔ v2 chat binds arbitrary selected attachments, rejects cross-room reuse, preserves input on provider failure (2937.86799ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10121.080142

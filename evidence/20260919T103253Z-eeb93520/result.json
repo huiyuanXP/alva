@@ -1,0 +1,163 @@
+{
+  "run_id": "20260919T103253Z-eeb93520",
+  "hostname": "ip-172-26-4-140",
+  "inputs": [
+    {
+      "path": "/home/ubuntu/Alva/alva/references/项目定位.md",
+      "exists": true,
+      "sha256": "d5e7270f6739923479dc5ec75807a8f04d1c1feba3a9b71d7dbfe5f264d03735"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/提议审批.md",
+      "exists": true,
+      "sha256": "e90a6593c276f374447a137a1bec8e51648dd2bdca630776cab84fabbd1e53a9"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/00_industry_research.html",
+      "exists": true,
+      "sha256": "f252a92ba2f39d65c8800a0e927d85c8ce087f3259e65f68d32e7ca603f90c90"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/01_sample_delivery.html",
+      "exists": true,
+      "sha256": "54f6a8d70edbba744693842137d64f15778845431483e5ea7961836ca4287bf5"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/02_intake_form.html",
+      "exists": true,
+      "sha256": "44b17537093b7ab80f562cfe80a5186b23e0d2f954c9af9a29691e97aa867048"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/room-study-handoff/references/assistant-ui-design.md",
+      "exists": true,
+      "sha256": "b40395cb095ac8a74afea842e0d0fe5a20dd731fee22276038c7d5f8a1e927e9"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/room-study-handoff/room-study-standalone.html",
+      "exists": true,
+      "sha256": "6f1ffc2af54708b176340fe35de2892540fa9b98a40312627c58820201a81d28"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/room-study-handoff/src/math.js",
+      "exists": true,
+      "sha256": "1894f1e19d33386e4a9ad2a168a43927cc62836698c5558260d8e63a866c6956"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/room-study-handoff/src/model.js",
+      "exists": true,
+      "sha256": "41a432aa54cf299cdbe10ca26207cd56657dd313e3e33a21d3a3ed143b1602ae"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/room-study-handoff/src/renderer.js",
+      "exists": true,
+      "sha256": "ec2d09857370165f945de831ab7dc73ffc480b380328949fb8eeae986535da29"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/room-study-handoff/src/app.js",
+      "exists": true,
+      "sha256": "9bebfe143af6b5a578f64ea20b03dc0bd14d1818c61d6120a563b8c395be883a"
+    },
+    {
+      "path": "/home/ubuntu/Alva/alva/references/room-study-handoff/public/floorplan.png",
+      "exists": true,
+      "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8"
+    }
+  ],
+  "original_floorplan": "references/room-study-handoff/public/floorplan.png",
+  "old_head": {
+    "command": [
+      "git",
+      "-C",
+      "/home/ubuntu/aws-hackthon/renovation-consultation",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout": "2825f36d7777d2219c6b007ea43735d90ec042ad",
+    "stderr": ""
+  },
+  "old_worktree": {
+    "command": [
+      "git",
+      "-C",
+      "/home/ubuntu/aws-hackthon/renovation-consultation",
+      "status",
+      "--short"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "runtime": [
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "v24.21.0",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "npm",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "11.19.0",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.12.3",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "git version 2.43.0",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "codex",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "codex-cli 0.155.1",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cloudflared",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cloudflared version 2026.9.0 (built 2026-09-09-16:30 UTC)",
+      "stderr": ""
+    }
+  ],
+  "listeners": {
+    "command": [
+      "ss",
+      "-ltn"
+    ],
+    "exit_code": 0,
+    "stdout": "State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess\nLISTEN 0      511        127.0.0.1:4173       0.0.0.0:*          \nLISTEN 0      4096         0.0.0.0:22         0.0.0.0:*          \nLISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*          \nLISTEN 0      4096       127.0.0.1:20241      0.0.0.0:*          \nLISTEN 0      4096       127.0.0.1:20242      0.0.0.0:*          \nLISTEN 0      5          127.0.0.1:8000       0.0.0.0:*          \nLISTEN 0      4096      127.0.0.54:53         0.0.0.0:*          \nLISTEN 0      4096            [::]:22            [::]:*",
+    "stderr": ""
+  },
+  "blockers": {
+    "missing_required_inputs": [],
+    "alva_destination": "/home/ubuntu/Alva/alva",
+    "domain": "prod.huiyuanxp.com (authorized by user); release not performed"
+  },
+  "status": "inputs_verified",
+  "product_acceptance": "not run"
+}

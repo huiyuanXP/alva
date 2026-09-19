@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a0b936-218c-7581-a1b8-1c195e2ba345"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"ALVA_CODEX_OK"}}
+{"type":"turn.completed","usage":{"input_tokens":11924,"cached_input_tokens":0,"cache_write_input_tokens":0,"output_tokens":9,"reasoning_output_tokens":0}}

@@ -1,0 +1,12 @@
+✔ accepted reference cannot cross its bound room or floor through generic scene save (5584.462173ms)
+✔ reference adoption and accepted scene saves reject unsupported scaling without changing confirmation (3104.253527ms)
+✔ failed concurrent re-analysis preserves explicitly confirmed corrected transcript and attachment status (2899.767444ms)
+✔ reloaded media form displays the persisted correction instead of the original transcription (14.206194ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13885.764023

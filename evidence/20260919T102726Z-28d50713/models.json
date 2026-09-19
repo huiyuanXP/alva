@@ -1,0 +1,187 @@
+{
+  "data": [
+    {
+      "id": "claude-opus-4-6-thinking",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "codex-auto-review",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3-flash",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3.1-flash-image",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3.1-pro-low",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3.5-flash-lite",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3.6-flash-high",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3.7-flash-high",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-3.8-flash-high",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gemini-pro-agent",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-5.5",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-6-astra",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-image-1.5",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-image-2",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "id": "gpt-oss-120b-medium",
+      "object": "model",
+      "created": 1626777600,
+      "owned_by": "openai",
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "object": "list",
+  "success": true
+}

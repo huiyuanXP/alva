@@ -1,0 +1,208 @@
+
+> open3dfloorplan@0.9.0 check
+> svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+
+Loading Svelte config from Vite config failed: Error: Production builds require NODE_ENV=production. Use NPM_CONFIG_INCLUDE=dev to install build tools.
+    at BasicMinimalPluginContext.configResolved (file:///home/ubuntu/Alva/alva/vendor/openplan3d/node_modules/.vite-temp/vite.config.ts.timestamp-1789813730110-9997d857b2928.mjs:49:17)
+    at file:///home/ubuntu/Alva/alva/vendor/openplan3d/node_modules/vite/dist/node/chunks/config.js:35762:87
+    at Array.map (<anonymous>)
+    at resolveConfig (file:///home/ubuntu/Alva/alva/vendor/openplan3d/node_modules/vite/dist/node/chunks/config.js:35762:68)
+    at async load_config_from_vite (file:///home/ubuntu/Alva/alva/vendor/openplan3d/node_modules/@sveltejs/kit/src/core/config/index.js:192:14)
+    at async load_config (file:///home/ubuntu/Alva/alva/vendor/openplan3d/node_modules/@sveltejs/kit/src/core/config/index.js:131:23)
+    at async file:///home/ubuntu/Alva/alva/vendor/openplan3d/node_modules/@sveltejs/kit/src/cli.js:98:18 
+
+Falling back to loading svelte.config.js
+Loading svelte-check in workspace: /home/ubuntu/Alva/alva/vendor/openplan3d
+Getting Svelte diagnostics...
+
+/home/ubuntu/Alva/alva/vendor/openplan3d/src/lib/components/editor/ContextMenu.svelte:28:7
+Warn: `menuEl` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update (svelte)
+
+  let menuEl: HTMLDivElement;
+
+/home/ubuntu/Alva/alva/vendor/openplan3d/src/lib/components/editor/FloorPlanCanvas.svelte:3765:7
+Warn: Avoid using autofocus
+https://svelte.dev/e/a11y_autofocus (svelte)
+      }}
+      autofocus
+    />
+
+/home/ubuntu/Alva/alva/vendor/openplan3d/src/lib/components/editor/FloorPlanCanvas.svelte:3829:7
+Warn: Avoid using autofocus
+https://svelte.dev/e/a11y_autofocus (svelte)
+      }}
+      autofocus
+    />
+
+/home/ubuntu/Alva/alva/vendor/openplan3d/src/lib/components/sidebar/BuildPanel.svelte:641:38
+Warn: `node_invalid_placement` is not a recognised code (did you mean `node_invalid_placement_ssr`?)
+https://svelte.dev/e/unknown_code (svelte)
+                >
+                  <!-- svelte-ignore node_invalid_placement -->
+                  <span
+
+/home/ubuntu/Alva/alva/vendor/openplan3d/src/lib/components/sidebar/BuildPanel.svelte:672:34
+Warn: `node_invalid_placement` is not a recognised code (did you mean `node_invalid_placement_ssr`?)
+https://svelte.dev/e/unknown_code (svelte)
+            >
+              <!-- svelte-ignore node_invalid_placement -->
+              <span
+
+/home/ubuntu/Alva/alva/vendor/openplan3d/src/lib/components/viewer3d/MaterialPicker.svelte:152:1
+Warn: Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events (svelte)
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div
+  class="fixed z-[100] bg-gray-900/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-700 text-white w-[320px] select-none"
+  style="left: {clampX(screenX + 20)}px; top: {clampY(screenY - 40)}px;"
+  onclick={(e) => e.stopPropagation()}
+  onpointerdown={(e) => e.stopPropagation()}
+>
+  <!-- Header -->
+  <div class="flex items-center justify-between px-3 py-2 border-b border-gray-700">
+    <div class="flex items-center gap-2">
+      <span class="text-lg">🎨</span>
+      <span class="font-semibold text-sm">Material Editor</span>
+    </div>
+    <button
+      onclick={onclose}
+      class="text-gray-400 hover:text-white p-1 rounded hover:bg-gray-700 transition-colors"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Interior / Exterior Tabs -->
+  <div class="flex border-b border-gray-700">
+    <button
+      class="flex-1 py-2 text-xs font-medium transition-colors {activeTab === 'interior' ? 'text-blue-400 border-b-2 border-blue-400 bg-blue-500/10' : 'text-gray-400 hover:text-gray-200'}"
+      onclick={() => activeTab = 'interior'}
+    >
+      🏠 Interior
+    </button>
+    <button
+      class="flex-1 py-2 text-xs font-medium transition-colors {activeTab === 'exterior' ? 'text-orange-400 border-b-2 border-orange-400 bg-orange-500/10' : 'text-gray-400 hover:text-gray-200'}"
+      onclick={() => activeTab = 'exterior'}
+    >
+      🏗️ Exterior
+    </button>
+  </div>
+
+  <div class="p-3 space-y-3 max-h-[420px] overflow-y-auto">
+    <!-- Current preview -->
+    <div class="flex items-center gap-2 text-xs text-gray-400">
+      <span>Current:</span>
+      <div
+        class="w-6 h-6 rounded border border-gray-600"
+        style="background-color: {getCurrentColor(activeTab)}"
+      ></div>
+      {#if getCurrentTexture(activeTab)}
+        <span class="text-gray-300">{getCurrentTexture(activeTab)}</span>
+      {/if}
+      <div class="ml-auto">
+        <input
+          type="color"
+          value={getCurrentColor(activeTab)}
+          oninput={applyCustomColor}
+          class="w-6 h-6 rounded border border-gray-600 cursor-pointer bg-transparent"
+          title="Custom color"
+        />
+      </div>
+    </div>
+
+    <!-- Quick Materials -->
+    <div>
+      <div class="text-xs text-gray-400 mb-1.5 font-medium">Quick Materials</div>
+      <div class="grid grid-cols-4 gap-1.5">
+        {#each quickMaterials as preset}
+          {@const wc = wallColors.find(c => c.id === preset.wallColorId)}
+          {@const isActive = wc && getCurrentColor(activeTab) === wc.color && (wc.texture ? getCurrentTexture(activeTab) === wc.id : !getCurrentTexture(activeTab))}
+          <button
+            class="flex flex-col items-center gap-0.5 p-1.5 rounded-lg border transition-all {isActive ? 'border-blue-400 bg-blue-500/20 ring-1 ring-blue-400' : 'border-gray-700 hover:border-gray-500 hover:bg-gray-800'}"
+            onclick={() => applyQuickMaterial(preset)}
+            title={preset.name}
+          >
+            {#if textureThumbs[preset.wallColorId]}
+              <img src={textureThumbs[preset.wallColorId]} alt={preset.name} class="w-10 h-10 rounded object-cover" />
+            {:else}
+              <div class="w-10 h-10 rounded flex items-center justify-center text-xl" style="background-color: {wc?.color ?? '#888'}">{preset.icon}</div>
+            {/if}
+            <span class="text-[10px] text-gray-300 leading-tight text-center">{preset.name}</span>
+          </button>
+        {/each}
+      </div>
+    </div>
+
+    <!-- Paint Colors -->
+    <div>
+      <div class="text-xs text-gray-400 mb-1.5 font-medium">Paint Colors</div>
+      <div class="flex flex-wrap gap-1">
+        {#each plainColors as wc}
+          {@const isActive = getCurrentColor(activeTab) === wc.color && !getCurrentTexture(activeTab)}
+          <button
+            class="w-7 h-7 rounded-md border-2 transition-all hover:scale-110 {isActive ? 'border-blue-400 ring-1 ring-blue-400 scale-110' : 'border-gray-600 hover:border-gray-400'}"
+            style="background-color: {wc.color}"
+            onclick={() => { applyColor(wc); clearTexture(); }}
+            title={wc.name}
+          ></button>
+        {/each}
+      </div>
+    </div>
+
+    <!-- Textured Materials -->
+    <div>
+      <div class="text-xs text-gray-400 mb-1.5 font-medium">Textures</div>
+      <div class="grid grid-cols-3 gap-1.5">
+        {#each texturedColors as wc}
+          {@const thumbUrl = textureThumbs[wc.id]}
+          {@const isActive = getCurrentTexture(activeTab) === wc.id}
+          <button
+            class="relative rounded-lg border-2 overflow-hidden transition-all hover:scale-105 {isActive ? 'border-blue-400 ring-1 ring-blue-400' : 'border-gray-700 hover:border-gray-500'}"
+            onclick={() => applyTexture(wc)}
+            title={wc.name}
+          >
+            {#if thumbUrl}
+              <img src={thumbUrl} alt={wc.name} class="w-full h-14 object-cover" />
+            {:else}
+              <div class="w-full h-14" style="background-color: {wc.color}"></div>
+            {/if}
+            <div class="absolute bottom-0 inset-x-0 bg-black/60 text-[10px] py-0.5 text-center">{wc.name}</div>
+          </button>
+        {/each}
+        <!-- Clear texture button -->
+        <button
+          class="relative rounded-lg border-2 overflow-hidden transition-all hover:scale-105 {!getCurrentTexture(activeTab) ? 'border-blue-400 ring-1 ring-blue-400' : 'border-gray-700 hover:border-gray-500'}"
+          onclick={clearTexture}
+          title="No Texture"
+        >
+          <div class="w-full h-14 flex items-center justify-center bg-gray-800 text-gray-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 bg-black/60 text-[10px] py-0.5 text-center">None</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+/home/ubuntu/Alva/alva/vendor/openplan3d/src/lib/components/viewer3d/MaterialPicker.svelte:164:5
+Warn: Buttons and links should either contain text or have an `aria-label`, `aria-labelledby` or `title` attribute
+https://svelte.dev/e/a11y_consider_explicit_label (svelte)
+    </div>
+    <button
+      onclick={onclose}
+      class="text-gray-400 hover:text-white p-1 rounded hover:bg-gray-700 transition-colors"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+====================================
+svelte-check found 0 errors and 7 warnings in 4 files

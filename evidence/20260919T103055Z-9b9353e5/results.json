@@ -1,0 +1,173 @@
+[
+  {
+    "file": "tests/business.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/business.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/chat-models.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/chat-models.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/closeout-regressions.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/closeout-regressions.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/collaboration.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/collaboration.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/documents-v2.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/documents-v2.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/evidence-path.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/evidence-path.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/foundation.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/foundation.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/geometry.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/geometry.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/intake-v1.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/intake-v1.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/intake-v2-context.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/intake-v2-context.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/intake-v2-guard.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/intake-v2-guard.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/intake-v2.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/intake-v2.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/media.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/media.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/new-ui-route.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/new-ui-route.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/object-agent.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/object-agent.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/object-chat.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/object-chat.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/objects.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/objects.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/provenance.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/provenance.test.ts"
+    ],
+    "exit_code": 0
+  },
+  {
+    "file": "tests/references.test.ts",
+    "command": [
+      "/home/ubuntu/Alva/alva/node_modules/.bin/tsx",
+      "--test",
+      "/home/ubuntu/Alva/alva/tests/references.test.ts"
+    ],
+    "exit_code": 0
+  }
+]

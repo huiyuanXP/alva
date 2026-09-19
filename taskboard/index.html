@@ -1,0 +1,56 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目任务看板 · Renovation</title>
+<style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;color:#182d38;background:#f3f6f6;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a,select{touch-action:manipulation}button{cursor:pointer}header{background:#fff;border-bottom:1px solid #dfe7e7;padding:22px 4%;display:flex;align-items:center;gap:18px}.brand{background:#145c55;color:#fff;border-radius:11px;padding:11px;font-weight:750}header strong{font-size:18px}header small{display:block;color:#65757d;margin-top:5px}.live{margin-left:auto;color:#396a59;font-size:14px}main{max-width:1600px;padding:30px 4% 60px;margin:auto}.heading{display:flex;justify-content:space-between;align-items:center;gap:20px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 10px}p{line-height:1.65}.muted{color:#61727b;font-size:14px}.btn{border:1px solid #ccd9da;border-radius:8px;background:white;padding:10px 16px;color:#24454b}.btn:hover{background:#eaf2ef}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:24px 0}.stat{padding:19px 22px;background:white;border:1px solid #dfe7e7;border-radius:12px}.stat b{display:block;font-size:28px;margin-top:9px}.stat span{font-size:14px;color:#61727b}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:23px}.tabs{display:flex;gap:5px;background:#e5ecec;padding:4px;border-radius:9px}.tab{border:0;background:transparent;padding:10px 15px;border-radius:6px;color:#51646b}.tab[aria-selected=true]{background:white;color:#145c55;box-shadow:0 1px 4px #0001}.filters{display:flex;gap:10px;margin-left:auto}input,select{padding:10px 12px;border:1px solid #ccd9da;border-radius:8px;background:white;min-width:0}input{width:230px}.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:start}.column{background:#e9eeee;border-radius:12px;padding:14px;min-height:310px}.colhead{display:flex;align-items:center;gap:9px;font-weight:650;margin:3px 0 16px;font-size:15px}.dot{width:8px;height:8px;border-radius:50%;background:var(--color)}.count{margin-left:auto;font-size:13px;color:#687c82}.card{display:block;width:100%;text-align:left;padding:17px;border:1px solid #dae4e4;border-radius:10px;background:#fff;margin-bottom:12px;box-shadow:0 2px 3px #102f3010;color:inherit}.card:hover{border-color:#4a877e;transform:translateY(-1px)}.card:focus-visible,button:focus-visible{outline:3px solid #5dafa1;outline-offset:2px}.cardtop{display:flex;justify-content:space-between;color:#52756f;font-size:12px;font-weight:650;gap:6px}.card h3{font-size:16px;line-height:1.5;margin:12px 0 9px}.card p{font-size:14px;color:#65767d;margin:0 0 13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.cardfoot{font-size:12px;color:#6d7e84;border-top:1px solid #edf1f1;padding-top:11px;line-height:1.8}.empty{color:#7b8b90;font-size:14px;text-align:center;padding:38px 12px;line-height:1.8}.document{background:white;padding:28px 36px;border:1px solid #dfe7e7;border-radius:12px;max-width:1100px;line-height:1.8;overflow-wrap:anywhere}.document h1{font-size:25px;margin-top:10px}.document h2{font-size:21px;margin:26px 0 10px}.document h3{font-size:18px}.document p{margin:10px 0}.document table{border-collapse:collapse;font-size:14px;width:100%}.document td,.document th{border:1px solid #dae4e4;padding:9px;text-align:left}.tablewrap{overflow:auto}.document code{background:#edf2f2;border-radius:4px;padding:2px 5px;font-size:13px}.document pre{overflow:auto;background:#edf2f2;padding:15px}.document pre code{padding:0}.document a{color:#12635d}.document li{margin:6px 0}.statusline{font-size:13px;color:#677c80;margin:20px 0}dialog{border:0;border-radius:15px;padding:0;width:min(860px,94vw);max-height:90vh;box-shadow:0 25px 100px #0004}dialog::backdrop{background:#173d4780}.modalbar{position:sticky;top:0;background:white;padding:16px 22px;border-bottom:1px solid #dce6e6;display:flex;justify-content:space-between;align-items:center;z-index:1}.modalbody{border:0;border-radius:0;padding:18px 28px 35px}.error{background:#fff0df;border:1px solid #dca961;padding:14px;border-radius:8px;margin:12px 0} [hidden]{display:none!important}
+@media(max-width:1050px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{margin-left:0}.toolbar{align-items:stretch}}@media(max-width:580px){header{padding:16px}.live{display:none}main{padding:22px 16px}.heading{align-items:start}h1{font-size:25px}.stats{grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:15px}.board{grid-template-columns:1fr}.toolbar,.filters{width:100%}.filters input{flex:1;width:100px}.tabs{width:100%}.tab{flex:1;padding:10px}.document{padding:20px 16px}.heading .btn{padding:9px;font-size:14px;white-space:nowrap}.modalbody{padding:18px}.column{min-height:180px}}
+</style>
+<header><div class="brand">R /</div><div><strong>Renovation 工作空间</strong><small>OpenPlan3D · Pi Agent · 三周交付</small></div><div class="live">● 服务器任务文件同步</div></header>
+<main><div class="heading"><div><h1>项目任务看板</h1><div class="muted">从需求规格到可验收的交付。每张任务保留完整范围、依赖与验收记录。</div></div><button class="btn" id="refresh">刷新状态</button></div>
+<div id="error" class="error" role="alert" hidden></div>
+<div class="stats" id="stats"></div>
+<div class="toolbar"><div class="tabs" role="tablist" aria-label="项目文档"><button class="tab" role="tab" data-tab="board" aria-selected="true">任务看板</button><button class="tab" role="tab" data-tab="spec" aria-selected="false">Spec 规格</button><button class="tab" role="tab" data-tab="plan" aria-selected="false">三周 Plan</button></div><div class="filters" id="filters"><input id="search" type="search" placeholder="搜索任务、范围或验收项…" aria-label="搜索任务"><select id="phase" aria-label="按周筛选"><option value="">全部阶段</option><option value="Week 1">第 1 周</option><option value="Week 2">第 2 周</option><option value="Week 3">第 3 周</option></select></div></div>
+<div id="content" aria-live="polite"><p>正在读取任务计划…</p></div><div id="sync" class="statusline"></div>
+<div class="muted">状态来自任务文件，不会将规划完成计作产品完成。完成项需在 ticket 中记录验收证据。</div></main>
+<dialog id="detail" aria-labelledby="detailtitle"><div class="modalbar"><strong id="detailtitle">任务详情</strong><button class="btn" id="close">关闭</button></div><article class="document modalbody" id="detailbody"></article></dialog>
+<script>
+let data=null,tab='board',selected=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function inline(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')}
+function markdown(raw){
+ const lines=raw.split('\n');let out='',list=false,code=false,table=false;
+ const closeList=()=>{if(list){out+='</ul>';list=false}};
+ const closeTable=()=>{if(table){out+='</tbody></table></div>';table=false}};
+ for(const line of lines){
+  if(line.startsWith('```')){closeList();closeTable();out+=code?'</code></pre>':'<pre><code>';code=!code;continue}
+  if(code){out+=esc(line)+'\n';continue}
+  if(/^\s*\|/.test(line)){closeList();if(/^\s*\|[\s:|\-]+$/.test(line))continue;const cells=line.trim().replace(/^\||\|$/g,'').split('|');if(!table){out+='<div class="tablewrap"><table><tbody>';table=true}out+='<tr>'+cells.map(c=>'<td>'+inline(c.trim())+'</td>').join('')+'</tr>';continue}
+  closeTable();const h=line.match(/^(#{1,6})\s+(.*)/);if(h){closeList();const n=h[1].length;out+='<h'+n+'>'+inline(h[2])+'</h'+n+'>';continue}
+  if(/^\s*(?:[-*]|\d+\.)\s+/.test(line)){if(!list){out+='<ul>';list=true}let s=line.replace(/^\s*(?:[-*]|\d+\.)\s+/,'');out+='<li>'+inline(s).replace(/^\[ \]/,'☐').replace(/^\[[xX]\]/,'☑')+'</li>';continue}
+  closeList();if(line.trim())out+='<p>'+inline(line)+'</p>';
+ }
+ closeList();closeTable();return out;
+}
+const columns=[['ready','可开始','#368a7a'],['progress','进行中','#4284bf'],['blocked','等待依赖','#b19150'],['done','已完成','#587265']];
+function showTicket(id){selected=id;const t=data.tickets.find(t=>t.id===id);if(!t)return;$('detailtitle').textContent='Ticket '+id+' · '+columns.find(c=>c[0]===t.column)[1];$('detailbody').innerHTML=markdown(t.raw);if(!$('detail').open)$('detail').showModal()}
+function render(){
+ if(!data)return;
+ const counts=Object.fromEntries(columns.map(([k])=>[k,data.tickets.filter(t=>t.column===k).length]));
+ $('stats').innerHTML=[['产品任务',data.tickets.length],['可开始',counts.ready],['进行中',counts.progress],['已完成',counts.done+' / '+data.tickets.length]].map(([k,v])=>'<div class="stat"><span>'+k+'</span><b>'+v+'</b></div>').join('');
+ document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));
+ $('filters').hidden=tab!=='board';
+ if(tab!=='board'){$('content').innerHTML='<article class="document">'+markdown(data[tab])+'</article>';return}
+ const search=$('search').value.toLowerCase(),phase=$('phase').value;
+ const filtered=data.tickets.filter(t=>t.raw.toLowerCase().includes(search)&&t.phase.includes(phase));
+ $('content').innerHTML='<div class="board">'+columns.map(([k,label,color])=>{
+ const ts=filtered.filter(t=>t.column===k);
+ return '<section class="column"><div class="colhead"><i class="dot" style="--color:'+color+'"></i>'+label+'<span class="count">'+ts.length+'</span></div>'+ (ts.map(t=>'<button class="card" data-ticket="'+t.id+'"><div class="cardtop"><span>TICKET '+t.id+'</span><span>'+esc(t.phase.split(' /')[0])+'</span></div><h3>'+esc(t.title)+'</h3><p>'+esc(t.summary)+'</p><div class="cardfoot">'+esc(t.owner)+'<br>验收 '+t.checked+' / '+t.checks+(t.waiting.length?' · 等待 '+t.waiting.map(d=>'#'+d).join('、'):'')+'</div></button>').join('')||'<div class="empty">'+(k==='done'?'暂无已验收完成的任务':k==='progress'?'尚无正在执行的任务':'当前筛选下没有任务')+'</div>')+'</section>'
+ }).join('')+'</div>';
+ document.querySelectorAll('[data-ticket]').forEach(b=>b.onclick=()=>{location.hash='ticket-'+b.dataset.ticket});
+}
+async function refresh(){try{const r=await fetch('/todo/api/board',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);data=await r.json();$('error').hidden=true;render();$('sync').textContent='最近同步 '+new Date(data.updated).toLocaleString('zh-CN')+' · 文档版本 '+data.revision+' · 每 30 秒自动刷新';if($('detail').open&&selected)showTicket(selected);route()}catch(e){$('error').hidden=false;$('error').textContent='同步失败，当前内容可能已过期。请刷新重试。'+e.message}}
+function route(){const h=location.hash.slice(1);if(/^ticket-\d{2}$/.test(h)&&data){showTicket(h.slice(7))}else if(['spec','plan','board'].includes(h)){tab=h;render()}}
+$('refresh').onclick=refresh;$('search').oninput=render;$('phase').onchange=render;
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;location.hash=tab;render()});
+$('close').onclick=()=>$('detail').close();$('detail').addEventListener('close',()=>{selected=null;history.replaceState(null,'','#'+tab)});
+window.addEventListener('hashchange',route);refresh();setInterval(refresh,30000);
+</script></html>

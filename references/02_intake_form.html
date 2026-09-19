@@ -1,0 +1,734 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>48道基础题 + 12道条件题｜逐题提问示例</title><style>
+@page { size: A4; margin: 19mm 17mm 19mm 17mm; @top-left { content: "ROOMNOTE  /  DELIVERY LAB"; font-family: "Noto Sans CJK SC"; font-size: 8pt; color: #63746c; } @bottom-left { content: "2026.09.11 · 研究与虚构示例 / 非施工文件"; font-family: "Noto Sans CJK SC"; font-size: 7pt; color: #63746c; } @bottom-right { content: counter(page); font-size: 9pt; color: #263f39; } }
+* { box-sizing: border-box; } body { font-family: "Noto Sans CJK SC", sans-serif; color: #263f39; font-size: 10pt; line-height: 1.75; margin: 0; } h1,h2,h3 { font-weight:700; line-height:1.4; break-after:avoid; } h1 { font-size:26pt; margin:12mm 0 7mm; letter-spacing:-.7px; } h2 { font-size:16pt; margin-top:9mm; border-top:2px solid #b5c4b5; padding-top:4mm; } h3 { font-size:12pt; margin-top:6mm; } p { margin: 2.4mm 0; orphans:3; widows:3; } a { color: #54755a; text-decoration:none; overflow-wrap:anywhere; } table { width:100%; border-collapse:collapse; font-size:8.4pt; line-height:1.55; table-layout:fixed; margin:4mm 0; } th { background:#e1e7dc; color:#263f39; text-align:left; padding:2.4mm; } td { vertical-align:top; border-bottom:1px solid #d7ded5; padding:2.4mm; overflow-wrap:anywhere; } tr { break-inside:avoid; } thead { display:table-header-group; } blockquote { margin:4mm 0; padding:4mm; background:#f1e9db; border-left:4px solid #b38a62; font-size:9pt; } img { width:100%; max-height:114mm; object-fit:contain; display:block; margin:3mm 0; } pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:8pt; line-height:1.7; padding:3mm; background:#edf1eb; } code { font-family:"DejaVu Sans Mono","Noto Sans CJK SC",monospace; font-size:.9em; overflow-wrap:anywhere; } ul { padding-left:5mm; } li { margin:2mm 0; } hr { border:0; border-top:1px solid #cbd6c9; margin:7mm 0; } .cover { page-break-after:always; padding-top:28mm; } .cover .eyebrow { letter-spacing:3px; font-size:10pt; color:#738675; } .cover h1 { font-size:38pt; margin-top:16mm; } .cover .rule { height:4px; width:80px; background:#b38a62; margin:12mm 0; } .cover .sub { font-size:15pt; max-width:130mm; } .cover .note { font-size:10pt; margin-top:18mm; color:#64776d; } .q-card { break-inside:avoid; padding-bottom:2mm; border-bottom:1px solid #cad6c8; } .q-card p { font-size:9pt; margin:2mm 0; } .q-card h3 { margin-top:5mm; } .q-card h3 + p { font-size:8pt; color:#64776d; }
+@media screen { body { max-width:1050px; margin:40px auto; padding:30px; background:#fcfcf8; font-size:16px; } .cover { min-height:600px; } h1 {font-size:40px;} h2 {font-size:28px;} h3 {font-size:21px;} table{font-size:13px;} .q-card p{font-size:15px;} img {max-height:none;} }
+</style></head><body><div class="cover"><div class="eyebrow">ROOMNOTE / RESEARCH &amp; DELIVERY / V1.0</div><h1>先理解生活，<br>再问清细节</h1><div class="rule"></div><p class="sub">48道基础题 + 12道条件题｜逐题提问示例</p><p class="note">完整题库 · 交付反推 · 分层访谈，不一次性轰炸用户<br>2026年9月11日<br>样例、需求、建议和专业核实始终分开。</p></div><h1>用户询问表单与逐题示例</h1>
+<h2>使用方式</h2>
+<p>这是一份<strong>完整资料库，不是一次性发给用户的60道问卷</strong>。48道基础题覆盖项目、居住、偏好、预算、现场、房间、细节与确认；另12道题只在相关场景出现时触发。当前产品既有字段只接入已实现部分，其余题目是声明式规格，不代表功能已开发。</p>
+<p>默认每轮只问1题，确有共同决策关系时最多2题。首轮可从Q01、Q04、Q07、Q08、Q13、Q18、Q19、Q23、Q25按已有信息挑出缺失项，不重复问已知项。问完一组就展示可更正的小结，而不是先把所有表格填满。</p>
+<h2>从交付物反推问题</h2>
+<table>
+<thead>
+<tr>
+<th>交付</th>
+<th>主要问题入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D01／U01 项目与被理解的总结</td>
+<td>Q01–04、Q07–09、Q13、Q17–18</td>
+</tr>
+<tr>
+<td>D02 现场条件与权限</td>
+<td>Q02–06、Q26–28</td>
+</tr>
+<tr>
+<td>D03 房间任务书与U02全屋预期</td>
+<td>Q10–12、Q25、Q31–36、Q49–52</td>
+</tr>
+<tr>
+<td>D04 家具／材料／设备与U04细节</td>
+<td>Q17、Q28–30、Q37–42、Q53–55</td>
+</tr>
+<tr>
+<td>D05 原话与媒体证据</td>
+<td>Q05–06、Q15–16、Q45、Q57–58</td>
+</tr>
+<tr>
+<td>D06 决策、冲突与修订</td>
+<td>Q08、Q18、Q43、Q46–48、Q59</td>
+</tr>
+<tr>
+<td>D07 预算框架</td>
+<td>Q19–22、Q60</td>
+</tr>
+<tr>
+<td>D08 实现计划</td>
+<td>Q23–24、Q56</td>
+</tr>
+<tr>
+<td>D09 专业核实</td>
+<td>Q26–28、Q33、Q35、Q39、Q50–55</td>
+</tr>
+<tr>
+<td>D10／U05 交接、下一步、安心感</td>
+<td>Q06、Q44–48</td>
+</tr>
+</tbody>
+</table>
+<h2>表单字段与状态要求</h2>
+<p>每条回答至少保存：稳定question_id与field_key、project／room作用域、原始文字、标准化值与单位、来源证据ID、回答状态、建议／正式值、确认范围、操作者、版本与时间。多人意见不得合并覆盖。对有来源的测量另保存来源类型、方法、日期与核实责任人。</p>
+<p>回答状态为answered、unknown、skipped、not_applicable。未知、跳过和不适用是独立控制按钮，不占用三个实质替代选项。不要用缺失默认值伪装回答；不适用需要能解释原因。恢复访谈时保留原状态，除非用户主动重开或出现直接相关的新证据。</p>
+<p>预算不能把字符串“五万含家电”直接存进金额字段：金额、币种、包含范围与上限应分别提取；不清楚时只确认有歧义的部分。面积、宽、深、净高分开，用户希望的尺寸与实际测量分开。数量与单位不得隐式转换。</p>
+<h3>提问卡统一行为</h3>
+<p>A是依据已有信息的推荐答案（无证据时为中性补充路径）；B/C/D为三个真正不同的选择；E为始终可见的自由补充。选择只形成草稿，点击“确认此回答”才保存；自由补充可以单独提交，也能修正任一选项。提交前显示本次影响的字段范围，不能一键确认整套方案。</p>
+<p>所有下面的“已有信息”均为<strong>虚构提问示例</strong>，不能在真实对话中套用为用户事实。事实缺失时不得推荐猜测金额、身份、币种、尺寸或工程许可。示例“基于已有信息”可以包含之前已经说过但尚未正式确认的内容，此时只作一次针对性确认，不当作全新问题重问。</p>
+<h2>48道基础题 + 12道条件题</h2>
+<section class="q-card"><h3>Q01｜这次咨询结束，你最希望手里多出什么？</h3>
+<p><strong>分组／时机：</strong> 项目边界／首轮。<strong>字段：</strong> <code>project_goal</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D01项目摘要；U01被理解的总结。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “我有想法，但每次和设计师聊都说不清。”</p>
+<p><strong>实际提问示例：</strong> “你提到我有想法，但每次和设计师聊都说不清。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先形成可转交设计师的需求任务书。</p>
+<p><strong>B · 另一种选择：</strong> 先看整体空间方向。</p>
+<p><strong>C · 另一种选择：</strong> 先解决一个重点房间。</p>
+<p><strong>D · 另一种选择：</strong> 先梳理预算与取舍。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q02｜房屋在哪个城市、属于什么类型？</h3>
+<p><strong>分组／时机：</strong> 项目边界／交付前。<strong>字段：</strong> <code>property_context</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D02条件与适用规则核实。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “房子在新加坡，是一套公寓。”</p>
+<p><strong>实际提问示例：</strong> “你提到房子在新加坡，是一套公寓。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 按“新加坡／公寓”记录，具体地址暂不需要。</p>
+<p><strong>B · 另一种选择：</strong> 修正城市或房型。</p>
+<p><strong>C · 另一种选择：</strong> 只提供城市。</p>
+<p><strong>D · 另一种选择：</strong> 暂不提供房屋信息。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q03｜哪些改动需要房东、共同业主或物业同意？</h3>
+<p><strong>分组／时机：</strong> 项目边界／交付前。<strong>字段：</strong> <code>tenure_authority</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D02权限与改造边界。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “我们租住，房东说不能改墙。”</p>
+<p><strong>实际提问示例：</strong> “你提到我们租住，房东说不能改墙。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 只考虑可恢复的家具与软装调整。</p>
+<p><strong>B · 另一种选择：</strong> 先取得房东书面同意。</p>
+<p><strong>C · 另一种选择：</strong> 列出希望申请的改动。</p>
+<p><strong>D · 另一种选择：</strong> 保持现状只收集风格。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q04｜这轮先做哪些空间、做到什么程度？</h3>
+<p><strong>分组／时机：</strong> 项目边界／首轮。<strong>字段：</strong> <code>scope</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03房间范围；U02全屋地图。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “先解决客厅和宝宝房，厨卫暂时不动。”</p>
+<p><strong>实际提问示例：</strong> “你提到先解决客厅和宝宝房，厨卫暂时不动。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 客厅与宝宝房优先，厨卫保持现状。</p>
+<p><strong>B · 另一种选择：</strong> 全屋同时做概念方向。</p>
+<p><strong>C · 另一种选择：</strong> 只深化客厅。</p>
+<p><strong>D · 另一种选择：</strong> 只深化宝宝房。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q05｜现有户型图或现场资料，哪一种最方便提供？</h3>
+<p><strong>分组／时机：</strong> 项目边界／按需。<strong>字段：</strong> <code>plans_media</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D02现状与证据索引。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “手上只有开发商户型图，还没拿钥匙。”</p>
+<p><strong>实际提问示例：</strong> “你提到手上只有开发商户型图，还没拿钥匙。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先上传开发商图，并标记尚未现场复核。</p>
+<p><strong>B · 另一种选择：</strong> 提供现场照片。</p>
+<p><strong>C · 另一种选择：</strong> 安排测量后再补。</p>
+<p><strong>D · 另一种选择：</strong> 先画房间与门窗草图。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q06｜哪些资料可以共享给设计师？</h3>
+<p><strong>分组／时机：</strong> 项目边界／交付前。<strong>字段：</strong> <code>privacy_consent</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D10交付权限与脱敏。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “我愿意给户型图，但不想公开家人照片。”</p>
+<p><strong>实际提问示例：</strong> “你提到我愿意给户型图，但不想公开家人照片。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 仅共享户型与需求，排除家人照片。</p>
+<p><strong>B · 另一种选择：</strong> 仅共享整理后的摘要。</p>
+<p><strong>C · 另一种选择：</strong> 逐张审核后分享。</p>
+<p><strong>D · 另一种选择：</strong> 只在本人账户保存。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q07｜这个家主要由哪些人使用？</h3>
+<p><strong>分组／时机：</strong> 居住与日常／首轮。<strong>字段：</strong> <code>occupants</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D01用户画像；D03房间用途。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “平时两位成人住，准备给孩子留一个房间。”</p>
+<p><strong>实际提问示例：</strong> “你提到平时两位成人住，准备给孩子留一个房间。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 记录两位成人，并保留儿童房需求；不推断年龄或健康。</p>
+<p><strong>B · 另一种选择：</strong> 只记录当前居住者。</p>
+<p><strong>C · 另一种选择：</strong> 补充长期同住家人。</p>
+<p><strong>D · 另一种选择：</strong> 区分常住者与偶尔来访者。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q08｜哪些人共同决定，分歧时怎么确认？</h3>
+<p><strong>分组／时机：</strong> 居住与日常／首轮。<strong>字段：</strong> <code>decision_makers</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D06决策记录与签认。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “我负责找资料，但最后和伴侣一起定。”</p>
+<p><strong>实际提问示例：</strong> “你提到我负责找资料，但最后和伴侣一起定。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 由你整理，两人共同确认重要选择。</p>
+<p><strong>B · 另一种选择：</strong> 指定一位最终确认人。</p>
+<p><strong>C · 另一种选择：</strong> 按房间分工。</p>
+<p><strong>D · 另一种选择：</strong> 重大事项全体确认。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q09｜工作日回家后，最常发生的一个场景是什么？</h3>
+<p><strong>分组／时机：</strong> 居住与日常／首轮。<strong>字段：</strong> <code>weekday_routine</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> U03生活场景；D03行为需求。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “下班很累，包和快递常堆在餐桌上。”</p>
+<p><strong>实际提问示例：</strong> “你提到下班很累，包和快递常堆在餐桌上。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 优先设计进门放包与快递临时位。</p>
+<p><strong>B · 另一种选择：</strong> 先改善回家休息区。</p>
+<p><strong>C · 另一种选择：</strong> 先优化换鞋与收纳。</p>
+<p><strong>D · 另一种选择：</strong> 先处理餐桌多用途。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q10｜家里需要怎样的工作或学习空间？</h3>
+<p><strong>分组／时机：</strong> 居住与日常／按需。<strong>字段：</strong> <code>work_study</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03工作场景；D04设备条件。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “每周在家两天，会开视频会。”</p>
+<p><strong>实际提问示例：</strong> “你提到每周在家两天，会开视频会。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 安排可收线、背景整洁的固定工作位。</p>
+<p><strong>B · 另一种选择：</strong> 可收起的临时工作位。</p>
+<p><strong>C · 另一种选择：</strong> 独立书房。</p>
+<p><strong>D · 另一种选择：</strong> 共享大桌但分时使用。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q11｜亲友来访时，最常需要家里支持什么？</h3>
+<p><strong>分组／时机：</strong> 居住与日常／按需。<strong>字段：</strong> <code>guests</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03来访与兼用空间。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “爸妈偶尔住一周，朋友大概每月来吃饭。”</p>
+<p><strong>实际提问示例：</strong> “你提到爸妈偶尔住一周，朋友大概每月来吃饭。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 保留偶尔过夜能力，不让客床常占主要活动区。</p>
+<p><strong>B · 另一种选择：</strong> 设置固定客房。</p>
+<p><strong>C · 另一种选择：</strong> 只支持聚餐不留宿。</p>
+<p><strong>D · 另一种选择：</strong> 客厅灵活改为临时休息区。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q12｜你愿意为整理、清洁花多少精力？</h3>
+<p><strong>分组／时机：</strong> 居住与日常／按需。<strong>字段：</strong> <code>maintenance</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04维护性能；U04细节卡。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “不想每天归位很多小摆件。”</p>
+<p><strong>实际提问示例：</strong> “你提到不想每天归位很多小摆件。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 封闭收纳为主，减少需要逐件擦拭的陈列。</p>
+<p><strong>B · 另一种选择：</strong> 开放展示为主。</p>
+<p><strong>C · 另一种选择：</strong> 开放与封闭各半。</p>
+<p><strong>D · 另一种选择：</strong> 先保留现状观察习惯。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q13｜用生活感受而不是风格名，你希望家像什么？</h3>
+<p><strong>分组／时机：</strong> 感受与偏好／首轮。<strong>字段：</strong> <code>desired_feeling</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> U01情绪主张；D03设计原则。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “不想像样板间，回家要能放松。”</p>
+<p><strong>实际提问示例：</strong> “你提到不想像样板间，回家要能放松。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 温暖、松弛、有日常生活痕迹。</p>
+<p><strong>B · 另一种选择：</strong> 利落安静。</p>
+<p><strong>C · 另一种选择：</strong> 明亮活泼。</p>
+<p><strong>D · 另一种选择：</strong> 有仪式感、适合招待。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q14｜你喜欢的冷暖和明暗更接近哪一种？</h3>
+<p><strong>分组／时机：</strong> 感受与偏好／按需。<strong>字段：</strong> <code>tone</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> U02色材方向；D04色彩偏好。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “喜欢奶油色和浅木头，不喜欢冷灰。”</p>
+<p><strong>实际提问示例：</strong> “你提到喜欢奶油色和浅木头，不喜欢冷灰。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 暖白加浅木色，冷灰不作为主色。</p>
+<p><strong>B · 另一种选择：</strong> 暖灰加深木。</p>
+<p><strong>C · 另一种选择：</strong> 明亮白色加少量彩色。</p>
+<p><strong>D · 另一种选择：</strong> 保持中性再看实物样本。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q15｜你喜欢参考图里的哪一部分？</h3>
+<p><strong>分组／时机：</strong> 感受与偏好／按需。<strong>字段：</strong> <code>style_reference</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D05参考图标注；U04细节卡。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “这张图看着舒服，但说不清风格。”</p>
+<p><strong>实际提问示例：</strong> “你提到这张图看着舒服，但说不清风格。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先拆成色调、材质、家具形状逐项确认。</p>
+<p><strong>B · 另一种选择：</strong> 主要看布局。</p>
+<p><strong>C · 另一种选择：</strong> 主要看灯光与氛围。</p>
+<p><strong>D · 另一种选择：</strong> 主要看收纳和整洁程度。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q16｜有没有一看到就不想要的做法？</h3>
+<p><strong>分组／时机：</strong> 感受与偏好／交付前。<strong>字段：</strong> <code>dislikes</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03负面偏好／禁止项。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “不喜欢镜面和大片亮金色。”</p>
+<p><strong>实际提问示例：</strong> “你提到不喜欢镜面和大片亮金色。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 避免大面积高反光表面及亮金装饰。</p>
+<p><strong>B · 另一种选择：</strong> 只避免镜面。</p>
+<p><strong>C · 另一种选择：</strong> 只避免亮金色。</p>
+<p><strong>D · 另一种选择：</strong> 先看局部样板再决定。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q17｜有什么必须留在新家，理由不仅是实用？</h3>
+<p><strong>分组／时机：</strong> 感受与偏好／按需。<strong>字段：</strong> <code>meaningful_items</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04保留物清单；U01情绪回应。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “那张旧餐桌是家人送的，想留下。”</p>
+<p><strong>实际提问示例：</strong> “你提到那张旧餐桌是家人送的，想留下。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 把旧餐桌作为设计锚点，先核对尺寸与状况。</p>
+<p><strong>B · 另一种选择：</strong> 换位置继续使用。</p>
+<p><strong>C · 另一种选择：</strong> 局部修复后保留。</p>
+<p><strong>D · 另一种选择：</strong> 只保留其中有纪念意义的部分。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q18｜当预算或空间不够时，哪两件事最不能牺牲？</h3>
+<p><strong>分组／时机：</strong> 感受与偏好／首轮。<strong>字段：</strong> <code>priorities</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D06取舍矩阵。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “最烦乱和清洁麻烦，好不好拍照其次。”</p>
+<p><strong>实际提问示例：</strong> “你提到最烦乱和清洁麻烦，好不好拍照其次。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 收纳便利和易维护优先于装饰表现。</p>
+<p><strong>B · 另一种选择：</strong> 活动空间与采光优先。</p>
+<p><strong>C · 另一种选择：</strong> 视觉效果与接待优先。</p>
+<p><strong>D · 另一种选择：</strong> 控制总投入与快速完成优先。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q19｜你已经考虑过的预算范围是什么？</h3>
+<p><strong>分组／时机：</strong> 预算与时间／首轮。<strong>字段：</strong> <code>budget</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D07预算基线与上限。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “总额希望五万新币，最多六万。”</p>
+<p><strong>实际提问示例：</strong> “你提到总额希望五万新币，最多六万。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先记录目标50,000 SGD、上限60,000 SGD；均为用户意向。</p>
+<p><strong>B · 另一种选择：</strong> 只记录目标数。</p>
+<p><strong>C · 另一种选择：</strong> 只记录上限数。</p>
+<p><strong>D · 另一种选择：</strong> 先做范围规划再提供金额。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q20｜刚才的金额使用哪一种币种？</h3>
+<p><strong>分组／时机：</strong> 预算与时间／交付前。<strong>字段：</strong> <code>currency</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D07预算口径。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “我说的是新币。”</p>
+<p><strong>实际提问示例：</strong> “你提到我说的是新币。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 记录 SGD，不根据城市代猜。</p>
+<p><strong>B · 另一种选择：</strong> 改成 CNY。</p>
+<p><strong>C · 另一种选择：</strong> 改成 USD。</p>
+<p><strong>D · 另一种选择：</strong> 填写其他三位币种代码。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q21｜这笔预算实际包含哪些费用？</h3>
+<p><strong>分组／时机：</strong> 预算与时间／交付前。<strong>字段：</strong> <code>budget_scope</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D07包含／排除范围。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “希望一共五万，把家具家电也算上。”</p>
+<p><strong>实际提问示例：</strong> “你提到希望一共五万，把家具家电也算上。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 施工、家具、家电合并考虑，再核对税费与服务费。</p>
+<p><strong>B · 另一种选择：</strong> 仅施工。</p>
+<p><strong>C · 另一种选择：</strong> 施工加固定柜体。</p>
+<p><strong>D · 另一种选择：</strong> 仅家具软装与家电。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q22｜预算里是否已经留了不可预见事项的余量？</h3>
+<p><strong>分组／时机：</strong> 预算与时间／交付前。<strong>字段：</strong> <code>contingency</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D07预留与审批线。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “五万是所有钱，但还没细分。”</p>
+<p><strong>实际提问示例：</strong> “你提到五万是所有钱，但还没细分。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先单列一笔待确认预留，不把全额分完。</p>
+<p><strong>B · 另一种选择：</strong> 已有明确预留金额。</p>
+<p><strong>C · 另一种选择：</strong> 按用户自定比例留存。</p>
+<p><strong>D · 另一种选择：</strong> 不设固定比例但保留逐项审批。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q23｜什么时候需要能入住，哪些日期不能延后？</h3>
+<p><strong>分组／时机：</strong> 预算与时间／首轮。<strong>字段：</strong> <code>timeline</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D08里程碑与依赖。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “年底想搬进去，但拿钥匙日期还没定。”</p>
+<p><strong>实际提问示例：</strong> “你提到年底想搬进去，但拿钥匙日期还没定。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 记录年底为目标；交房、测量、交付日期暂列待定。</p>
+<p><strong>B · 另一种选择：</strong> 以拿钥匙后分阶段完成。</p>
+<p><strong>C · 另一种选择：</strong> 先保证基本入住。</p>
+<p><strong>D · 另一种选择：</strong> 待条件确定再承诺日期。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q24｜哪些可以先做，哪些愿意以后再补？</h3>
+<p><strong>分组／时机：</strong> 预算与时间／按需。<strong>字段：</strong> <code>phasing</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D08分期；U05下一步。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “先把主要生活功能弄好，装饰以后慢慢买。”</p>
+<p><strong>实际提问示例：</strong> “你提到先把主要生活功能弄好，装饰以后慢慢买。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 优先基本起居与收纳，装饰和非必要单品后补。</p>
+<p><strong>B · 另一种选择：</strong> 所有空间一次完成。</p>
+<p><strong>C · 另一种选择：</strong> 先完成一个示范房间。</p>
+<p><strong>D · 另一种选择：</strong> 按每阶段预算上限推进。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q25｜这个房间最常做什么，偶尔又会做什么？</h3>
+<p><strong>分组／时机：</strong> 现状与物品／首轮。<strong>字段：</strong> <code>room_purpose</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03房间任务书。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “客厅主要陪孩子玩，晚上看电视。”</p>
+<p><strong>实际提问示例：</strong> “你提到客厅主要陪孩子玩，晚上看电视。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 以活动和陪伴为主，电视为兼用功能。</p>
+<p><strong>B · 另一种选择：</strong> 电视观影优先。</p>
+<p><strong>C · 另一种选择：</strong> 接待会客优先。</p>
+<p><strong>D · 另一种选择：</strong> 工作学习兼用优先。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q26｜房间尺寸来自实测、图纸还是估计？</h3>
+<p><strong>分组／时机：</strong> 现状与物品／交付前。<strong>字段：</strong> <code>measured_dimensions</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D02测量可信度与来源。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “图上看着大约3乘3米，没有量。”</p>
+<p><strong>实际提问示例：</strong> “你提到图上看着大约3乘3米，没有量。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 保存为图纸估算，不写成现场实测。</p>
+<p><strong>B · 另一种选择：</strong> 已有实测并注明日期。</p>
+<p><strong>C · 另一种选择：</strong> 请设计师复测。</p>
+<p><strong>D · 另一种选择：</strong> 先不填尺寸只讨论功能。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q27｜门窗、柱梁或管井中，哪些位置已知不能变？</h3>
+<p><strong>分组／时机：</strong> 现状与物品／交付前。<strong>字段：</strong> <code>openings_structure</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D02固定条件与风险。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “知道窗户在右边，墙能不能拆不清楚。”</p>
+<p><strong>实际提问示例：</strong> “你提到知道窗户在右边，墙能不能拆不清楚。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先把现有门窗作为约束，墙体可改性待专业核实。</p>
+<p><strong>B · 另一种选择：</strong> 上传有标记的户型图。</p>
+<p><strong>C · 另一种选择：</strong> 安排现场勘查。</p>
+<p><strong>D · 另一种选择：</strong> 仅讨论不涉及墙体的摆放。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q28｜哪些电器和水电位置会影响布局？</h3>
+<p><strong>分组／时机：</strong> 现状与物品／按需。<strong>字段：</strong> <code>utilities</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04设备／机电协同。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “工作位有双显示器，还需要网络稳定。”</p>
+<p><strong>实际提问示例：</strong> “你提到工作位有双显示器，还需要网络稳定。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先收集设备尺寸、插座和网络条件。</p>
+<p><strong>B · 另一种选择：</strong> 优先核对厨房设备。</p>
+<p><strong>C · 另一种选择：</strong> 优先核对空调与通风。</p>
+<p><strong>D · 另一种选择：</strong> 先制作设备清单再定位置。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q29｜保留物品有哪些，能提供哪些尺寸？</h3>
+<p><strong>分组／时机：</strong> 现状与物品／按需。<strong>字段：</strong> <code>retained</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04现有物品清单。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “旧沙发想保留，但暂时没量。”</p>
+<p><strong>实际提问示例：</strong> “你提到旧沙发想保留，但暂时没量。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 记入保留清单，宽深高和搬运条件待补。</p>
+<p><strong>B · 另一种选择：</strong> 仅保留小件。</p>
+<p><strong>C · 另一种选择：</strong> 先比较保留与替换。</p>
+<p><strong>D · 另一种选择：</strong> 逐件拍照后决定。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q30｜哪些东西最占空间，哪些需要随手拿？</h3>
+<p><strong>分组／时机：</strong> 现状与物品／按需。<strong>字段：</strong> <code>storage_inventory</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04容量与分区；U04收纳图。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “尿布和衣物很多，还有玩具和备品。”</p>
+<p><strong>实际提问示例：</strong> “你提到尿布和衣物很多，还有玩具和备品。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先按四类物品盘点容量，不直接决定四个大柜子。</p>
+<p><strong>B · 另一种选择：</strong> 按每日／每周使用频率分。</p>
+<p><strong>C · 另一种选择：</strong> 按每位家人分。</p>
+<p><strong>D · 另一种选择：</strong> 先拍现有收纳和外溢物品。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q31｜客厅中心的位置，更希望留给什么？</h3>
+<p><strong>分组／时机：</strong> 房间使用／按需。<strong>字段：</strong> <code>living_layout</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03客厅布局；U02全屋预期。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “孩子常在地上玩，茶几总要搬。”</p>
+<p><strong>实际提问示例：</strong> “你提到孩子常在地上玩，茶几总要搬。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 减少固定中心家具，优先连续活动区。</p>
+<p><strong>B · 另一种选择：</strong> 保留大茶几。</p>
+<p><strong>C · 另一种选择：</strong> 使用可移动边几。</p>
+<p><strong>D · 另一种选择：</strong> 改成阅读与会客组合。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q32｜餐桌平时与来客时分别需要坐几个人？</h3>
+<p><strong>分组／时机：</strong> 房间使用／按需。<strong>字段：</strong> <code>dining</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03餐区；D04容量。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “平时两人，来客时六人。”</p>
+<p><strong>实际提问示例：</strong> “你提到平时两人，来客时六人。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 日常紧凑、来客可扩展的用餐方案。</p>
+<p><strong>B · 另一种选择：</strong> 固定六人桌。</p>
+<p><strong>C · 另一种选择：</strong> 吧台或小圆桌优先。</p>
+<p><strong>D · 另一种选择：</strong> 餐桌兼办公大桌。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q33｜做饭的频率和最在意的不便是什么？</h3>
+<p><strong>分组／时机：</strong> 房间使用／按需。<strong>字段：</strong> <code>kitchen</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03厨房需求；D09专业核实。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “每天做中餐，担心油烟。”</p>
+<p><strong>实际提问示例：</strong> “你提到每天做中餐，担心油烟。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先评估操作动线与排烟条件，再选开放程度。</p>
+<p><strong>B · 另一种选择：</strong> 独立厨房优先。</p>
+<p><strong>C · 另一种选择：</strong> 可开合厨房方向。</p>
+<p><strong>D · 另一种选择：</strong> 轻食为主、更多社交台面。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q34｜卧室里最影响你放松或入睡体验的是什么？</h3>
+<p><strong>分组／时机：</strong> 房间使用／按需。<strong>字段：</strong> <code>bedroom</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03卧室需求；U03夜间场景。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “晚上窗外很亮，床边东西总没地方放。”</p>
+<p><strong>实际提问示例：</strong> “你提到晚上窗外很亮，床边东西总没地方放。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先处理遮光和床边随手收纳。</p>
+<p><strong>B · 另一种选择：</strong> 优先隔离工作区。</p>
+<p><strong>C · 另一种选择：</strong> 优先增加衣柜。</p>
+<p><strong>D · 另一种选择：</strong> 优先保留更大活动空间。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q35｜卫生间更需要解决收纳、清洁还是使用不便？</h3>
+<p><strong>分组／时机：</strong> 房间使用／按需。<strong>字段：</strong> <code>bathroom</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03卫生间；D09风险。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “地面容易湿，清洁很麻烦。”</p>
+<p><strong>实际提问示例：</strong> “你提到地面容易湿，清洁很麻烦。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先核查干湿使用和清洁路径，具体防滑与排水待专业设计。</p>
+<p><strong>B · 另一种选择：</strong> 优先扩大收纳。</p>
+<p><strong>C · 另一种选择：</strong> 优先改善照明通风。</p>
+<p><strong>D · 另一种选择：</strong> 仅更换可移动小件。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q36｜洗晒与进门的杂物，最常卡在哪一步？</h3>
+<p><strong>分组／时机：</strong> 房间使用／按需。<strong>字段：</strong> <code>laundry_entry</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03家务路径；U04玄关图。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “扫地机和快递没有固定位置。”</p>
+<p><strong>实际提问示例：</strong> “你提到扫地机和快递没有固定位置。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 预留清洁设备停靠位和包裹临时位。</p>
+<p><strong>B · 另一种选择：</strong> 优先解决鞋包。</p>
+<p><strong>C · 另一种选择：</strong> 优先优化洗晒。</p>
+<p><strong>D · 另一种选择：</strong> 先减少设备和物品。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q37｜柜子内部，你更在意容量、拿取还是展示？</h3>
+<p><strong>分组／时机：</strong> 细节与性能／按需。<strong>字段：</strong> <code>cabinet_access</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04柜体性能；U04剖分示意。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “小物经常被压在深处找不到。”</p>
+<p><strong>实际提问示例：</strong> “你提到小物经常被压在深处找不到。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 常用小物采用可分隔、易查看的储物方式。</p>
+<p><strong>B · 另一种选择：</strong> 最大容量优先。</p>
+<p><strong>C · 另一种选择：</strong> 部分开放展示。</p>
+<p><strong>D · 另一种选择：</strong> 减少柜体、精简物品。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q38｜未来变化时，你愿意移动或替换哪些家具？</h3>
+<p><strong>分组／时机：</strong> 细节与性能／按需。<strong>字段：</strong> <code>furniture_flexibility</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04适应性；U04成长路径。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “宝宝房可能两年后变儿童房。”</p>
+<p><strong>实际提问示例：</strong> “你提到宝宝房可能两年后变儿童房。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 优先独立可调整家具，固定部分只做长期需要。</p>
+<p><strong>B · 另一种选择：</strong> 本次就按长期儿童房规划。</p>
+<p><strong>C · 另一种选择：</strong> 照护功能优先。</p>
+<p><strong>D · 另一种选择：</strong> 保留为多功能空房。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q39｜材料触感、外观、维护与检测资料，你最在意什么？</h3>
+<p><strong>分组／时机：</strong> 细节与性能／按需。<strong>字段：</strong> <code>materials</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04材料性能要求。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “喜欢木头，但不想难打理，也担心材料质量。”</p>
+<p><strong>实际提问示例：</strong> “你提到喜欢木头，但不想难打理，也担心材料质量。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先筛选好维护的木感表面，并向供应商索取具体产品资料。</p>
+<p><strong>B · 另一种选择：</strong> 真实木质触感优先。</p>
+<p><strong>C · 另一种选择：</strong> 耐磨易清洁优先。</p>
+<p><strong>D · 另一种选择：</strong> 成本优先但保留必要验证。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q40｜白天、工作时和夜晚，灯光分别要支持什么？</h3>
+<p><strong>分组／时机：</strong> 细节与性能／按需。<strong>字段：</strong> <code>lighting</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04灯光场景；U04灯光图。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “晚上不想开很亮的顶灯，但还要读书。”</p>
+<p><strong>实际提问示例：</strong> “你提到晚上不想开很亮的顶灯，但还要读书。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 分别规划阅读照明与较柔和的环境照明。</p>
+<p><strong>B · 另一种选择：</strong> 简单统一照明。</p>
+<p><strong>C · 另一种选择：</strong> 照明分区但不联网。</p>
+<p><strong>D · 另一种选择：</strong> 按场景做可调控制。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q41｜目前最在意的舒适度问题是什么？</h3>
+<p><strong>分组／时机：</strong> 细节与性能／按需。<strong>字段：</strong> <code>comfort</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03舒适度；D09待核实。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “怕闷热，又不想一直开空调。”</p>
+<p><strong>实际提问示例：</strong> “你提到怕闷热，又不想一直开空调。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先了解日照、通风与使用习惯，再讨论遮阳和设备。</p>
+<p><strong>B · 另一种选择：</strong> 优先降噪。</p>
+<p><strong>C · 另一种选择：</strong> 优先遮光。</p>
+<p><strong>D · 另一种选择：</strong> 优先温度分区。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q42｜智能功能希望做到哪一步？</h3>
+<p><strong>分组／时机：</strong> 细节与性能／按需。<strong>字段：</strong> <code>smart_home</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04控制与维护。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “不想为了开灯先打开手机。”</p>
+<p><strong>实际提问示例：</strong> “你提到不想为了开灯先打开手机。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 物理开关可独立使用，智能功能仅作附加。</p>
+<p><strong>B · 另一种选择：</strong> 完全不做智能。</p>
+<p><strong>C · 另一种选择：</strong> 仅少量自动化。</p>
+<p><strong>D · 另一种选择：</strong> 整屋联动但保留手动控制。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q43｜在已讨论的两种方案中，你愿意接受哪个代价？</h3>
+<p><strong>分组／时机：</strong> 确认与交付／交付前。<strong>字段：</strong> <code>option_tradeoff</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D06被选／被拒及原因。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “喜欢整面储物墙，但也想客厅开阔。”</p>
+<p><strong>实际提问示例：</strong> “你提到喜欢整面储物墙，但也想客厅开阔。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先比较减少柜体后的留白与收纳缺口。</p>
+<p><strong>B · 另一种选择：</strong> 收纳容量优先。</p>
+<p><strong>C · 另一种选择：</strong> 开阔感优先。</p>
+<p><strong>D · 另一种选择：</strong> 局部柜体加分散收纳。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q44｜报告里哪些画面最能帮助你做决定？</h3>
+<p><strong>分组／时机：</strong> 确认与交付／交付前。<strong>字段：</strong> <code>visual_coverage</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> U02视角清单；U04细节参考。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “看平面图没感觉，想知道进门和坐在沙发上的样子。”</p>
+<p><strong>实际提问示例：</strong> “你提到看平面图没感觉，想知道进门和坐在沙发上的样子。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 优先入口与沙发视角，同时保留全屋总览。</p>
+<p><strong>B · 另一种选择：</strong> 主要看收纳内部。</p>
+<p><strong>C · 另一种选择：</strong> 主要看夜间灯光。</p>
+<p><strong>D · 另一种选择：</strong> 主要比较两个布局。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q45｜交给设计师时，哪些内容你希望原话保留？</h3>
+<p><strong>分组／时机：</strong> 确认与交付／交付前。<strong>字段：</strong> <code>designer_handoff</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D05证据；D10权限。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> ““别像酒店”这句话，希望设计师真的看到。”</p>
+<p><strong>实际提问示例：</strong> “你提到“别像酒店”这句话，希望设计师真的看到。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 将原话与具体设计原则并排保留。</p>
+<p><strong>B · 另一种选择：</strong> 仅保留标准化需求。</p>
+<p><strong>C · 另一种选择：</strong> 敏感原话仅自己可见。</p>
+<p><strong>D · 另一种选择：</strong> 逐条审核后共享。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q46｜还有哪个决定让你拿不准？</h3>
+<p><strong>分组／时机：</strong> 确认与交付／交付前。<strong>字段：</strong> <code>open_questions</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D06待决策；U05安心清单。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “不确定宝宝房是否需要固定大床。”</p>
+<p><strong>实际提问示例：</strong> “你提到不确定宝宝房是否需要固定大床。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 把固定大床保留为待决策，不当作已确认配置。</p>
+<p><strong>B · 另一种选择：</strong> 先看无大床方案。</p>
+<p><strong>C · 另一种选择：</strong> 先比较兼客房方案。</p>
+<p><strong>D · 另一种选择：</strong> 交由设计师现场讨论。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q47｜这次确认只覆盖哪部分内容？</h3>
+<p><strong>分组／时机：</strong> 确认与交付／交付前。<strong>字段：</strong> <code>revision_approval</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D06确认范围与版本。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “布局方向可以，颜色还要和伴侣商量。”</p>
+<p><strong>实际提问示例：</strong> “你提到布局方向可以，颜色还要和伴侣商量。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 只确认布局意向，颜色保留待共同确认。</p>
+<p><strong>B · 另一种选择：</strong> 只确认功能需求。</p>
+<p><strong>C · 另一种选择：</strong> 只确认色材方向。</p>
+<p><strong>D · 另一种选择：</strong> 暂不确认，继续修改。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q48｜这份总结哪里像你，哪里还没有理解对？</h3>
+<p><strong>分组／时机：</strong> 确认与交付／交付前。<strong>字段：</strong> <code>satisfaction</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> U05反馈与修订；D06变更。<strong>触发：</strong> 字段缺失或存在明确冲突；不得重复追问已回答、未知、跳过或不适用状态。</p>
+<p><strong>示例已有信息：</strong> “整体对，但我更想要活泼一点，不是全屋米白。”</p>
+<p><strong>实际提问示例：</strong> “你提到整体对，但我更想要活泼一点，不是全屋米白。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 保留功能方案，重新调整色彩的活泼程度。</p>
+<p><strong>B · 另一种选择：</strong> 整体方向重新讨论。</p>
+<p><strong>C · 另一种选择：</strong> 只修改一个房间。</p>
+<p><strong>D · 另一种选择：</strong> 先看实际材料再判断。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q49｜宝宝房里哪些用品需要在照护时随手拿？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>nursery_storage</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04照护收纳；U04细节图。<strong>触发：</strong> 明确提到婴幼儿用品收纳。</p>
+<p><strong>示例已有信息：</strong> “已经说过需要宝宝房，常用尿布、衣物和备品。”</p>
+<p><strong>实际提问示例：</strong> “你提到已经说过需要宝宝房，常用尿布、衣物和备品。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先分日常护理、衣物、喂养相关用品、备品四个储物区。</p>
+<p><strong>B · 另一种选择：</strong> 一座组合柜。</p>
+<p><strong>C · 另一种选择：</strong> 两个低柜分担。</p>
+<p><strong>D · 另一种选择：</strong> 移动收纳搭配现有柜体。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q50｜婴幼儿睡眠家具已有确定型号或安排吗？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>nursery_sleep</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D09安全复核；D04产品限制。<strong>触发：</strong> 明确提到婴幼儿睡眠家具。</p>
+<p><strong>示例已有信息：</strong> “暂时没有买，也不确定房间是否兼照护。”</p>
+<p><strong>实际提问示例：</strong> “你提到暂时没有买，也不确定房间是否兼照护。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先保留家具与照护空间，型号及摆放交由合适专业资料核查。</p>
+<p><strong>B · 另一种选择：</strong> 提供已有产品说明。</p>
+<p><strong>C · 另一种选择：</strong> 先讨论照护动线。</p>
+<p><strong>D · 另一种选择：</strong> 只记录需求暂不排布。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q51｜哪些动作或通行场景需要更方便？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>accessibility</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03可及性；D09核实。<strong>触发：</strong> 用户主动提出行动或使用便利需求。</p>
+<p><strong>示例已有信息：</strong> “长辈会来住，希望进出和起身省力。”</p>
+<p><strong>实际提问示例：</strong> “你提到长辈会来住，希望进出和起身省力。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 按具体动作和辅助器具核对空间，不根据年龄代猜能力。</p>
+<p><strong>B · 另一种选择：</strong> 优先核对门口通行。</p>
+<p><strong>C · 另一种选择：</strong> 优先核对坐卧转换。</p>
+<p><strong>D · 另一种选择：</strong> 邀请使用者一起走查。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q52｜宠物的休息、活动和清洁用品如何安排？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>pets</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D03宠物场景。<strong>触发：</strong> 用户提到宠物。</p>
+<p><strong>示例已有信息：</strong> “猫砂盆没有合适位置。”</p>
+<p><strong>实际提问示例：</strong> “你提到猫砂盆没有合适位置。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先安排便于清洁且不干扰主要活动的候选位置。</p>
+<p><strong>B · 另一种选择：</strong> 独立宠物用品区。</p>
+<p><strong>C · 另一种选择：</strong> 多处分散设置。</p>
+<p><strong>D · 另一种选择：</strong> 先改善现有位置。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q53｜有哪些不舒适的气味或接触体验需要避开？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>material_sensitivity</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04材料排除；D10敏感权限。<strong>触发：</strong> 用户主动提出材料感受或自愿分享的特殊要求。</p>
+<p><strong>示例已有信息：</strong> “不喜欢强烈气味，但没有准备分享医疗信息。”</p>
+<p><strong>实际提问示例：</strong> “你提到不喜欢强烈气味，但没有准备分享医疗信息。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 仅记录气味与使用偏好，不要求诊断或健康资料。</p>
+<p><strong>B · 另一种选择：</strong> 只列不想用的材质。</p>
+<p><strong>C · 另一种选择：</strong> 提供愿意分享的专业要求。</p>
+<p><strong>D · 另一种选择：</strong> 暂不讨论这一项。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q54｜定制柜最主要解决什么，哪些尺寸有依据？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>custom_joinery</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D04柜体任务书；D09核实。<strong>触发：</strong> 计划定制柜体。</p>
+<p><strong>示例已有信息：</strong> “想做一整面柜，但还没测量。”</p>
+<p><strong>实际提问示例：</strong> “你提到想做一整面柜，但还没测量。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先写容量与用途，尺寸和固定方式留待设计深化。</p>
+<p><strong>B · 另一种选择：</strong> 以成品柜为主。</p>
+<p><strong>C · 另一种选择：</strong> 局部定制。</p>
+<p><strong>D · 另一种选择：</strong> 测量后再讨论。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q55｜重台面或悬挂物的具体材料、重量与支撑资料齐全吗？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>stone_load</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D09结构与家具风险。<strong>触发：</strong> 涉及重物台面、悬挑、悬挂或承重。</p>
+<p><strong>示例已有信息：</strong> “想木柜配石台面，但没有石材厚度和连接做法。”</p>
+<p><strong>实际提问示例：</strong> “你提到想木柜配石台面，但没有石材厚度和连接做法。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 暂停可承重结论，收集重量、跨度与连接资料交专业复核。</p>
+<p><strong>B · 另一种选择：</strong> 先换轻量方案比较。</p>
+<p><strong>C · 另一种选择：</strong> 提供厂家设计资料。</p>
+<p><strong>D · 另一种选择：</strong> 仅保留外观参考。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q56｜施工或安装期间是否还需要住在家里？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>renovation_while_living</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D08分期与依赖。<strong>触发：</strong> 居住期间施工。</p>
+<p><strong>示例已有信息：</strong> “不能整体搬走，需要保留一间能用的房。”</p>
+<p><strong>实际提问示例：</strong> “你提到不能整体搬走，需要保留一间能用的房。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 先规划可居住区与分区施工约束，工序由施工方确认。</p>
+<p><strong>B · 另一种选择：</strong> 短期临时住宿。</p>
+<p><strong>C · 另一种选择：</strong> 先做非居住空间。</p>
+<p><strong>D · 另一种选择：</strong> 延后噪声或粉尘较大工作。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q57｜这张参考图里，请指出一个喜欢和一个不想照搬的点。</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>image_annotation</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D05图像证据与禁用项。<strong>触发：</strong> 已成功读取图片或有用户文字标注。</p>
+<p><strong>示例已有信息：</strong> “喜欢图里的木色，但不喜欢满墙格子。”</p>
+<p><strong>实际提问示例：</strong> “你提到喜欢图里的木色，但不喜欢满墙格子。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 保留木色方向，排除密集开放格。</p>
+<p><strong>B · 另一种选择：</strong> 只借用灯光。</p>
+<p><strong>C · 另一种选择：</strong> 只借用家具比例。</p>
+<p><strong>D · 另一种选择：</strong> 整体不参考、换一张。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q58｜视频中最值得保留的是哪个时间点或动作？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>video_reference</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D05视频来源与时间戳。<strong>触发：</strong> 提交视频或视频链接。</p>
+<p><strong>示例已有信息：</strong> “视频里收起餐桌的办法很好。”</p>
+<p><strong>实际提问示例：</strong> “你提到视频里收起餐桌的办法很好。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 请标出时间点并描述动作；未成功读取前不声称看过。</p>
+<p><strong>B · 另一种选择：</strong> 提供关键帧截图。</p>
+<p><strong>C · 另一种选择：</strong> 文字描述使用过程。</p>
+<p><strong>D · 另一种选择：</strong> 先只保存链接待解析。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q59｜两位使用者的不同偏好，先按什么方式比较？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>conflicting_preferences</code>（room）。</p>
+<p><strong>为什么问／写到哪里：</strong> D06冲突与决策人。<strong>触发：</strong> 多个决策者存在冲突。</p>
+<p><strong>示例已有信息：</strong> “一位想深色稳重，一位想明亮。”</p>
+<p><strong>实际提问示例：</strong> “你提到一位想深色稳重，一位想明亮。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 保留两人的原始选择，比较公共区与私人区分区方案。</p>
+<p><strong>B · 另一种选择：</strong> 先比较两套完整方向。</p>
+<p><strong>C · 另一种选择：</strong> 选择共同接受的中性底色。</p>
+<p><strong>D · 另一种选择：</strong> 邀请双方共同讨论。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><section class="q-card"><h3>Q60｜当前意向超出预算时，先保住哪些结果？</h3>
+<p><strong>分组／时机：</strong> 条件分支／条件。<strong>字段：</strong> <code>over_budget</code>（project）。</p>
+<p><strong>为什么问／写到哪里：</strong> D07降配路径；D08分期。<strong>触发：</strong> 同币种同口径意向超过上限。</p>
+<p><strong>示例已有信息：</strong> “不想减少收纳，但愿意晚点买装饰。”</p>
+<p><strong>实际提问示例：</strong> “你提到不想减少收纳，但愿意晚点买装饰。我会先按下面A的方向理解；你更接近哪种？也可以直接改写。”</p>
+<p><strong>A · 建议：</strong> 保留必要收纳，延后非必要装饰；重新询价后再确认。</p>
+<p><strong>B · 另一种选择：</strong> 减少本期房间范围。</p>
+<p><strong>C · 另一种选择：</strong> 替换部分材质或型号。</p>
+<p><strong>D · 另一种选择：</strong> 调整用户认可的总预算。</p>
+<p><strong>E · 自由补充：</strong> 都不完全符合，我来描述／补充：________。</p>
+<p><strong>状态控制：</strong> 暂不确定／暂时跳过／不适用。<strong>确认：</strong> □ 我确认本次填写范围。</p>
+</section><h2>专业人员补填页：不要把技术工作丢回普通用户</h2>
+<p>需要在交付中保留、但不要求普通用户回答的问题：墙体和结构可改性；实际净尺寸；重物承载与连接；机电容量和安装约束；材料和产品的合适验证；物业或法定手续适用性；实际报价和供货。用户负责陈述目标与已知资料，系统负责列出缺口和适合的核实角色。</p>
+<h2>与当前实现的关系</h2>
+<p>当前既有字段是occupants、decision_makers、purpose、budget、currency、budget_scope、timeline、scope、target_width、target_depth、target_height、retained、tone、style、functions、priorities。题库中多个问题可以为这些字段提供访谈输入，但不能把不同结构的数据直接挤入一个字符串而宣称完整实现。例如预算上限、测量证据对象、媒体标注、多人独立确认仍须独立数据模型与对应票验收。本次完整题库作为文件交付，不自动扩展未实现字段。</p>
+<h2>研究依据</h2>
+<p>问题到交付的映射为本项目设计建议；行业交付结构参考S01–S05，保留体验信号与可解释性参考S06。不是已完成的设计师访谈量表，也未声称经过心理测量或市场效果验证。</p>
+</body></html>

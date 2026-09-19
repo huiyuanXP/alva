@@ -1,0 +1,11 @@
+✔ occupied boxes: rotated hit, vertical separation, rug exclusion, boundary and unknown (4.80758ms)
+✔ store transaction recomputes and archives stable IDs; replay and owner gates remain (4643.140509ms)
+✔ invalid polygons and concave crossing are uncertain or boundary; floor metadata rejects (138.525096ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5356.493307
