@@ -1,6 +1,8 @@
 # alva Handoff
 
-当前任务：已按用户要求建立Worktree并行认领与提交/集成规则，权威入口[NextTask](NextTask.md)。44票已补Parallel lane；当前依赖就绪的ALVA-008、014、017、023、036已列入署名表，全部未认领。用户最新并行安排覆盖旧串行及先全做完首批的统一门槛，但保留技术依赖、首批优先与U16最后约束。本轮没有创建Worktree、启动子Agent或实施任何票。
+当前任务：ALVA-052将正式44张Ticket接回 https://prod.huiyuanxp.com/todo 。已完成独立Worktree实现、main集成验证与公网发布复核。解析器读取正式票和主目录NextTask，5张可认领、39张等待依赖、0进行中、0已完成。产品票均未认领或实施。实现与数据合同见[TODO-LIST](docs/TODO-LIST.md)。
+
+44票均有Parallel lane；当前依赖就绪ALVA-008、014、017、023、036，署名为空。协作权威入口仍为NextTask，网页只读展示，不开放网页认领或修改状态。
 
 认领在主目录署名即生效，协调锁内提交；每票独立Worktree/分支及运行资源。同组或共享文件冲突先协调。个人完成提交后不移除署名；main集成验证通过后，同一实现提交更新done、移除任务行和署名、补充所有新解锁任务，保留票内署名及原实现SHA供追溯。
 
@@ -69,3 +71,11 @@ pending：全部44张正式票的实施指令、统一验证码和新建筑生�
 本次发票验证：38新票/44总票、115条验收保持、依赖链接与编号有效；原六票正文未变。当前代码和线上状态不在本轮复测范围。审核稿仅保留来源，实施以正式票为准。
 
 本轮收尾：仅修改规则、票据协作元信息与交接；44票验收/依赖不变，5项就绪清单及署名空值已核对。未运行产品测试或变更服务，生产事实沿用此前核验。记忆不在范围，未清理他人Worktree。
+
+## ALVA-052 看板收尾
+
+https://prod.huiyuanxp.com/todo 已实测44票/150条验收/5可认领/39等待依赖，搜索、并行组筛选、详情深链刷新、文档和窄屏检查通过，控制台错误0。证据`evidence/20260919T165930206Z-ALVA-052-todo/`；首次启动窗口502与第二次Cloudflare脚本CSP冲突保留在各自failure.json，后者已修复。产品首页与healthz正常，MCP/Tunnel单元仍active且配置未改。
+
+个人实现提交d902557及修正9fae8e6；main按ALVA-052一次实现集成提交。3项看板测试、4项原基础/入口回归、类型检查、构建和真实浏览器检查通过；已有大chunk构建提示未处理。只读源无需重复上传，版本随源内容变化。回滚文件在`.runtime/alva-todo-rollback/20260919T170000Z/api.ts`，操作见TODO-LIST。
+
+neat-freak：代码/运行态/文档changed-and-verified；规则verified-current；生成记忆out-of-scope；工作区changed-and-verified，本票个人Worktree/分支保留供复核，不影响main权威源。产品44票实施仍pending，没有因此完成或解锁产品票。

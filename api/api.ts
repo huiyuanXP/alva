@@ -8,6 +8,7 @@ import {resolve} from 'node:path';
 import {existsSync} from 'node:fs';
 import {AlvaStore,type Session} from './store.js';
 import {DomainError,validateScene,calibrate,reject,type Project} from './model.js';
+import {registerTodo} from './todo/routes.js';
 import {registerExports} from './export.js';
 import {registerConsultation} from './chat.js';
 import {review} from './business.js';
@@ -45,6 +46,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
    if(s.role==='designer'&&!['GET','HEAD'].includes(req.method))throw new DomainError(403,'设计师入口为只读');
   }
  });
+ registerTodo(app);
  app.get('/healthz',async()=>({ok:true,application:'alva'}));
  app.post('/api/access',async(req,reply)=>{const {token}=z.object({token:z.string().min(32).max(100)}).parse(req.body);const s=await store.exchange(token);reply.setCookie('alva_session',s.token,{httpOnly:true,sameSite:'strict',secure:origin.startsWith('https:'),path:'/',maxAge:604800});return {projectId:s.projectId,role:s.role}});
  app.post('/api/public-access',async(req,reply)=>{

@@ -11,3 +11,5 @@
 范围：无预算；理想WebGL机器Demo；仅手动全局快照、预览与恢复，无逐操作存档。现有代码尚未实现这些删减，不把发票视为上线。
 
 当前依赖就绪：ALVA-008、014、017、023、036；署名均为空。以主目录NextTask实时清单为准，不能使用个人Worktree的旧副本认领。
+
+只读任务网页：https://prod.huiyuanxp.com/todo ；数据直接来自正式tracker与主目录NextTask，说明见[TODO-LIST](docs/TODO-LIST.md)。ALVA-052为独立维护任务，不加入44张产品票。

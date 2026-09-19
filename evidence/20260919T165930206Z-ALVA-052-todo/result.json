@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "origin": "https://prod.huiyuanxp.com",
+  "revision": "9748b8b8341f",
+  "tickets": 44,
+  "ready": 5,
+  "blocked": 39,
+  "checks": 150,
+  "assertions": [
+    "count",
+    "source-revision",
+    "search",
+    "detail",
+    "deep-link-reload",
+    "lane-filter",
+    "refresh-retains-filter",
+    "plan",
+    "spec",
+    "mobile-overflow",
+    "console"
+  ],
+  "errors": []
+}

@@ -9,10 +9,12 @@
 ```text
 /home/ubuntu/Alva/                 唯一仓库根目录，Git/package.json 都在这里
 ├── api/                          后端：server、api、model、store、codex、import 等
+│   ├── todo/                     只读Ticket源适配与看板路由
 │   ├── auth/              [规划] 验证码与会话
 │   ├── topology/          [规划] 墙线、门窗、校准与确认
 │   └── building/          [规划] Codex 建筑生成与结果校验
 ├── web/                          前端：index.html、vite.config.ts
+│   ├── todo/index.html           独立任务看板，由api/todo直接提供
 │   └── src/                      main.tsx、Panels.tsx、SceneView.tsx 等
 │       ├── auth/、import/、topology/、building/ [规划] 功能界面
 │       ├── scene/         [规划] 3D 网格、材质、相机与剖切
@@ -102,3 +104,7 @@ Codex 进程协议统一经过 `api/codex.ts`。`import.ts` 管识图提示与�
 ## 并行工作区
 
 主目录 `/home/ubuntu/Alva` 是 main 集成与认领协调入口。每票工作区位于 `/home/ubuntu/Alva-worktrees/ALVA-xxx-<owner>`，分支 `task/ALVA-xxx-<owner>`；所有应用路径相对各自Worktree根目录使用，不能仍写主目录的api/web。依赖安装、构建、测试数据库、端口与运行配置独立。忽略文件和本机技能不会随Git自动复制：技能从主目录只读使用，测试配置在本Worktree独立建立，不复制生产运行数据。认领、共享文件归属、提交/集成及清理按NextTask执行。
+
+## Ticket 看板
+
+ALVA-052现役看板位于`api/todo/`与`web/todo/`，通过已有alva服务提供`/todo`和`/todo/api/board`；不增加顶层工程或依赖。只读正式tracker与主目录NextTask，不使用旧taskboard服务或业务数据库。入口与验证见[TODO-LIST](TODO-LIST.md)。

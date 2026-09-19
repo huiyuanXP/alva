@@ -1,6 +1,6 @@
 # What's next · 任务认领与并行开发
 
-当前44张正式票均未完成。本次仅建立协作规则，没有自动认领、启动子Agent或实施功能。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
+当前44张正式票均未完成。本次ALVA-052只接入只读任务看板，没有认领或实施这些产品票。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
 
 ## 当前可以认领的全部任务
 
@@ -74,10 +74,5 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 
 无预算；只考虑理想WebGL机器。只有手动保存创建全局快照，点击快照预览、明确恢复后整体替换；无逐操作历史、撤销或自动存档。ALVA-046/047在其他功能完成后，ALVA-048–051负责最终验收与发布复核。协作规则本身不授予生产变更或第三方通讯权限。
 
-## 本次用户授权的维护任务
 
-| Ticket | 任务 | 署名 | 分支 / Worktree | 共享文件与状态 |
-|---|---|---|---|---|
-| ALVA-052 | 当前 Ticket 接入 To Do List | codex-todo | task/ALVA-052-codex-todo / /home/ubuntu/Alva-worktrees/ALVA-052-codex-todo | api/api.ts、api/todo/、web/todo/、scripts/alva-todo-*、tests/alva-todo*；in-progress；先准备适配与验收，目标网址待确认 |
-
-维护任务独立于44张产品票，不改变其依赖或认领。
+只读展示入口：https://prod.huiyuanxp.com/todo 。Ticket与本表在main更新后自动反映到看板；认领仍在本表进行。ALVA-052维护任务已完成本地验收，集成收尾见Handoff。

@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "origin": "http://127.0.0.1:37279",
+  "revision": "690f8fe198c8",
+  "tickets": 44,
+  "ready": 5,
+  "blocked": 39,
+  "checks": 150,
+  "assertions": [
+    "count",
+    "source-revision",
+    "search",
+    "detail",
+    "deep-link-reload",
+    "lane-filter",
+    "refresh-retains-filter",
+    "plan",
+    "spec",
+    "mobile-overflow",
+    "console"
+  ],
+  "errors": []
+}

@@ -66,3 +66,9 @@ ALVA-007公网复测：首次20260919T123714558Z-55d629ab在服务重启尚未�
 2026-09-19 剩余正式发票任务：用户明确“做成正式ticket”，按to-tickets把38张获批草案发布为ALVA-014–051（本地07–44），与首批六票共44张。删除R04/R29不发票；115条验收逐字保留，依赖转换正式ID/相对链接，顺序无环；保留手动快照和理想Demo范围。同步tracker、CURRENT/Handoff/NextTask/GlobalHandoff及审核来源；原六票不变，历史父票不关。未实施/部署/调用模型/发送消息。neat-freak仅做文档与入口一致性收尾，验证见本次evidence/*-remaining-tickets/validation.json。
 
 2026-09-19 Worktree并行协作规则任务：用户要求票据并行可行性、NextTask署名认领、独立Worktree实施与完成后解锁。44票添加Parallel lane，保持验收与技术依赖不变；计算当前frontier为ALVA-008/014/017/023/036，全部空署名。NextTask定义短锁认领事务、共享文件协调、独立运行资源、个人提交与main squash集成、验证后同一提交done/移行/新增解锁任务、释放及清理条件。更新AGENTS/SPEC等旧串行边界并按neat-freak同步交接。只更新协作规则，无新Worktree/子Agent/功能实施/生产变更。
+
+2026-09-19 ALVA-052 To Do List源接入：用户确认prod.huiyuanxp.com/todo。发现旧看板只读旧两位编号/旧目录且新服务缺失路由，实际返回SPA首页。独立Worktree认领27208bf，实现d902557、CSP修正9fae8e6；新增api/todo、web/todo与导出/浏览器探针，兼容两种依赖格式、正式ID/并行组、NextTask署名、依赖DAG校验与30秒读取源刷新。原44票正文和状态逐字未变，不认领产品票。3项看板测试、4项原入口/基础回归、check/build退出0；现有chunk提示保留。
+
+发布前保存原api/api.ts到.runtime/alva-todo-rollback/20260919T170000Z，仅重启alva.service。首次公网run 20260919T165813473Z遇启动窗口502；第二次20260919T165853229Z功能通过但Cloudflare注入脚本受旧CSP阻拦，修正精确域名后重启并等待健康。最终20260919T165930206Z-ALVA-052-todo：44票、150验收、5ready/39blocked/0progress/0done，公网数据版本与本地相同，搜索/筛选/详情深链刷新/文档/窄屏通过，控制台0错误。首页及healthz正常，MCP/Tunnel active且配置不变，不调用模型或业务会话。失败和成功证据均保留。
+
+neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTask并更新GlobalHandoff、CURRENT、目录规范与旧看板入口说明。ALVA-052维护认领移除，五张可认领产品票及空署名不变；无产品任务新解锁。生成记忆out-of-scope，本票分支/Worktree保留复核，不清理他人文件。
