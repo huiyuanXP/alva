@@ -1,0 +1,139 @@
+{
+  "source_head": "e943d26bca808ad64279353524224a44e983cd30",
+  "ticket_drafts": 15,
+  "dependencies": {
+    "01": [],
+    "02": [],
+    "03": [],
+    "04": [],
+    "05": [],
+    "06": [],
+    "07": [
+      "03",
+      "06"
+    ],
+    "08": [
+      "01",
+      "02",
+      "05"
+    ],
+    "09": [
+      "08"
+    ],
+    "10": [],
+    "11": [
+      "02",
+      "06"
+    ],
+    "12": [],
+    "13": [
+      "03",
+      "07",
+      "09",
+      "10",
+      "12"
+    ],
+    "14": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13"
+    ],
+    "15": [
+      "14"
+    ]
+  },
+  "scope_required": [
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18",
+    "U19",
+    "U20",
+    "U21",
+    "U22",
+    "U23",
+    "U24",
+    "U25",
+    "U26",
+    "U27",
+    "U28",
+    "U29",
+    "U30",
+    "U31",
+    "U32"
+  ],
+  "scope_covered": [
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18",
+    "U19",
+    "U20",
+    "U21",
+    "U22",
+    "U23",
+    "U24",
+    "U25",
+    "U26",
+    "U27",
+    "U28",
+    "U29",
+    "U30",
+    "U31",
+    "U32"
+  ],
+  "local_links_checked": 14,
+  "broken_links": [],
+  "product_code_changed": false,
+  "permissions_or_service_changed": false,
+  "issue_tracker": "not configured; proposals not published",
+  "knowledge_surfaces": {
+    "code": "verified-current",
+    "runtime": "verified-current: health/service only",
+    "docs": "changed-and-verified",
+    "rules": "verified-current",
+    "memory": "out-of-scope",
+    "workspace": "changed-and-verified: docs only"
+  },
+  "open_items": [
+    "Approve draft granularity/dependencies",
+    "Configure tracker",
+    "Decide public visitor privileges inside T01"
+  ]
+}

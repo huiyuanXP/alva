@@ -1,0 +1,42 @@
+{
+  "only_ticket_scope_fields_checked": true,
+  "retained_ui": [
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18",
+    "U19",
+    "U20",
+    "U21",
+    "U22",
+    "U23",
+    "U24",
+    "U25",
+    "U26",
+    "U27",
+    "U28",
+    "U29",
+    "U30",
+    "U31",
+    "U32"
+  ],
+  "pain_analysis": true,
+  "parent_handoff_hashes": {
+    "GlobalHandoff.md": "19175005215671dfbb31c151d85b02840bd8ac3946f89468a97095180c9bd214",
+    "Handoff.md": "6ba6ce2a57b98536bbccfcb653417b5a82147053f8f1cb53427788d0c55b959c",
+    "NextTask.md": "585f3e0fa999b6b051ca1417cfe92716856f6c0e6586d8a59fa389bc7c6affff"
+  }
+}

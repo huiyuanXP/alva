@@ -44,3 +44,7 @@ ALVA-000协议补验：首次App Server探针因配置对象使用JSON而不是T
 ALVA-007 公共跨设备入口：复现旧完整链接200可用、无hash新会话出现会话过期提示。新增显式配置的公共项目引导入口，复用原项目不迁移数据；每设备独立会话，过期可重取，保留设计师身份。tests/alva-public-entry.test.ts + alva-foundation.test.ts 4通过0失败0跳过；类型检查、构建退出0，已重启alva.service发布。证据evidence/20260919-public-entry；未修改Tunnel/MCP。
 
 ALVA-007公网复测：首次20260919T123714558Z-55d629ab在服务重启尚未就绪时首页502失败，保留证据；确认/healthz 200后，evidence/20260919T123833084Z-97cca135 七项通过：桌面与手机浏览器模拟各首次/刷新/清除Cookie后进入，同项目内容SHA一致；原完整链接仍有效，控制台错误0。手机为模拟环境，不宣称实体手机实测。
+
+2026-09-19 上下文整理与拆票草案任务：用户明确先建立Ticket，公共入口权限作为其中子任务，未选择访客读写方案。本轮读取to-tickets/neat-freak技能、项目规则与旧来源；只读核验两个生产单元active/enabled和healthz alva/ok，不建立新会话、不操作数据或服务。整理T01–T15草案（未发布、待审阅/选tracker），校正SPEC权限误述及SCOPE U17误删，更新交接/恢复/README与旧taskboard历史定位。历史ALVA票与旧父Issue不改状态。无产品代码改动、不跑模型/业务回归；验证文档链接、范围覆盖、DAG和无运行配置变更。正式发票遵循技能“Iterate until the user approves the breakdown.”，不将本次整理授权当发票批准。
+
+整理验收：evidence/20260919T130045Z-ticket-context，15票draft、阻塞边均引用已定义前置票、31个保留UI实际映射字段全部覆盖及U++痛点映射；14个项目文档链接与上级交接指针有效。无产品代码/运行配置变更，无生成记忆改写。GlobalHandoff按上级规则更新为恢复入口与权限待决边界，未写入密钥或客户内容。

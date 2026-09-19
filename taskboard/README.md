@@ -1,7 +1,5 @@
-# 任务看板运维
+# 旧任务看板来源说明
 
-当前 `/todo`、`/todo/api/board` 已由正式 `renovation-workbench.service` 集成提供，统一监听 127.0.0.1:4173。公网 https://prod.huiyuanxp.com 是工作台首页，https://prod.huiyuanxp.com/todo 是看板。
+这里是从旧项目复用的看板代码，尚未接入alva，不是新项目的tracker或现役`/todo`服务。旧`.scratch/openplan3d-consultation/`任务数据没有迁入新仓库；不要把旧票状态当作alva完成状态，也不要因此启动旧服务。
 
-数据源仍是 `.scratch/openplan3d-consultation/` 的 spec、PLAN 和 issues。只读看板每30秒同步；只有完成实际验收的票设 done。
-
-不要在正式服务运行时启动旧 `python3 taskboard/server.py`。旧 PID 文件是历史记录，不能据此停止进程。服务管理、私有数据保护和回滚见 [部署说明](../docs/DEPLOYMENT.md)。
+新项目现状以[Handoff](../Handoff.md)为准，待确认拆票在[TICKET-PROPOSAL](../TICKET-PROPOSAL.md)。正式tracker尚待用户选择；本轮不部署看板、不修改旧父票。
