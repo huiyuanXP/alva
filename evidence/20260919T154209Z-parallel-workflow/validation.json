@@ -1,0 +1,18 @@
+{
+  "tickets": 44,
+  "acceptance_checks_unchanged": 150,
+  "dependencies_unchanged": true,
+  "statuses_unchanged": true,
+  "frontier": [
+    "ALVA-008",
+    "ALVA-014",
+    "ALVA-017",
+    "ALVA-023",
+    "ALVA-036"
+  ],
+  "all_signatures_empty": true,
+  "five_frontier_transition_checks": "passed",
+  "links_checked": 233,
+  "feature_work_started": false,
+  "worktrees_created": 0
+}

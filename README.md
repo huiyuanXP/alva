@@ -13,3 +13,5 @@
 `apps/api`、`apps/web`、`vendor/openplan3d` 是只读来源复用到本仓库的保留基线；旧 `start`、`build` 与旧测试入口保留兼容，新产品使用带 `alva` 的命令。
 
 全部44张正式票见[本地tracker](.scratch/alva-completion/README.md)，研究见[登录与建筑3D](Research/LOGIN-IMPORT-3D.md)。用户明确本轮只发票；原主题保留在[范围来源](TICKET-PROPOSAL.md)，现役执行定义以正式tracker为准。
+
+并行协作从[NextTask认领表](NextTask.md)进入：署名认领、每票独立Worktree、main串行集成后解锁后继。

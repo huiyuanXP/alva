@@ -85,7 +85,7 @@ Codex 进程协议统一经过 `api/codex.ts`。`import.ts` 管识图提示与�
 | ALVA-012 Codex 建筑生成 | `building/generate.ts`、`building/validate.ts`，接入存储；共享建筑合同 | `building/GenerationPanel.tsx`、`scene/building-meshes.ts` | `tests/alva-building.test.ts`、`scripts/alva-building-check.ts` |
 | ALVA-013 示例式视角 | 仅必要的场景合同配合 | `scene/cameras.ts`、`scene/cutaway.ts`，接入 `SceneView.tsx` | `scripts/alva-building-views-check.ts`，独立截图证据 |
 
-本表服务端相对 `api/`，前端相对 `web/src/`；门窗的 CalibrationPanel 与 OpeningEditor 同目录。008–013按[本地 tracker](../.scratch/alva-completion/README.md)依赖串行，其余票仍冻结。
+本表服务端相对 `api/`，前端相对 `web/src/`；门窗的 CalibrationPanel 与 OpeningEditor 同目录。008–013仍按[本地tracker](../.scratch/alva-completion/README.md)依赖推进，其余独立票可按[NextTask](../NextTask.md)署名并行。
 
 ## 命名、验证与交付约定
 
@@ -95,6 +95,10 @@ Codex 进程协议统一经过 `api/codex.ts`。`import.ts` 管识图提示与�
 - `main.tsx`、`api.ts`、`SceneView.tsx` 已有集中实现；新增独立功能优先进入上述模块，入口只保留装配。提取旧逻辑与调用方在同一票完成，避免留下两个行为不同的入口。
 - 原项目 `/home/ubuntu/aws-hackthon/renovation-consultation`、本库旧工程、vendor、taskboard 与 references 不作为新功能写入位置。复用时先确认需求/许可/依赖，再将所需实现纳入现役模块并记录来源。
 - `.runtime/` 存放有效验证码/密钥配置、上传和数据库等私有数据；实际生产布局以[部署文档](../ops/alva/DEPLOYMENT.md)为准，不因本文迁移运行目录。`.scratch/alva-completion/` 是已入库 tracker，不是随手清除的临时目录。
-- 新顶层工程或跨层依赖改变时，先在 `docs/` 说明理由并同步本文及相关构建/测试入口；普通功能沿既定模块放置。每票结束提交一次，更新 PROGRESS，覆盖 Handoff/NextTask，按项目规则同步 GlobalHandoff。
+- 新顶层工程或跨层依赖改变时，先在 `docs/` 说明理由并同步本文及相关构建/测试入口；普通功能沿既定模块放置。每票在独立Worktree完成实现提交，集成人串行合入main并更新PROGRESS、Handoff/NextTask和必要的GlobalHandoff；开发分支不覆盖共享协调文件。
 
 迁移前后的对应关系：`Alva/alva/apps/alva/` → `Alva/api/`；`Alva/alva/apps/alva-web/` → `Alva/web/`；`Alva/alva/docs/research/` → `Alva/Research/`。其他仓库内容上移一级。历史 evidence、PROGRESS 与原始附件里的旧路径属于当时记录，不批量改写。原根目录同名文档已合并，迁移前副本私有保留在 `.runtime/root-migration-20260919/`；原远端接入说明在 [REMOTE-ACCESS.md](REMOTE-ACCESS.md)，MCP 服务未改。
+
+## 并行工作区
+
+主目录 `/home/ubuntu/Alva` 是 main 集成与认领协调入口。每票工作区位于 `/home/ubuntu/Alva-worktrees/ALVA-xxx-<owner>`，分支 `task/ALVA-xxx-<owner>`；所有应用路径相对各自Worktree根目录使用，不能仍写主目录的api/web。依赖安装、构建、测试数据库、端口与运行配置独立。忽略文件和本机技能不会随Git自动复制：技能从主目录只读使用，测试配置在本Worktree独立建立，不复制生产运行数据。认领、共享文件归属、提交/集成及清理按NextTask执行。
