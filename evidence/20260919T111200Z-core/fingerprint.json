@@ -1,0 +1,28 @@
+{
+  "head": "d9afd1597a67b0b1d4897479c40d784335e414f1",
+  "source_sha256": "2a98f2d2eebbe630adbe67dbb5bd72546dbdf9914981724828677a4eb6dffefd",
+  "files": {
+    "apps/alva/api.ts": "43da0bd2d8be97111b3edb85d230c656f5b2dc7096be43256c14115a5f640253",
+    "apps/alva/business.ts": "e7bb563687956307eb19785da3d5e34db727a8c0492e98a6ccd64713658e815a",
+    "apps/alva/chat.ts": "35c2e4b7ae59d407eeaa88f277e5a0f2dd556f4570a126ce61293a2dbd894ad8",
+    "apps/alva/codex.ts": "17421c5e6e3d8829c4b46aff1e7fb911d9af3bc6a661f037535bb96fbb9cb8a7",
+    "apps/alva/export.ts": "5afe3b51a1a079c9a3dd3d85e63bb441bc02c189024f20f990dd49bd3bbf749d",
+    "apps/alva/import.ts": "1eceff8dd9a95f8e9a6d25eca3586e1e0b4a386c64e549353e9f236e53b65bf6",
+    "apps/alva/model.ts": "d6f9855c9b1b776e89c7eefa243005d258243f3830c00bb7c5a8b554ec98c470",
+    "apps/alva/server.ts": "601d00cfba085922a869be9584ea8bcf4e1ad6fd1385fc7508e4edc0248d7267",
+    "apps/alva/store.ts": "2134ce59ceff240b28299d627eecdd6271c6f75feec27c007c71cc6ed02872f8",
+    "apps/alva-web/src/Panels.tsx": "0bc474657f46d3c4ce8ea1b1ea3fd6fcc010305e1ba9face6600fb3f53f086af",
+    "apps/alva-web/src/SceneView.tsx": "7423011f073b5d22f148a0dbee4917418c49a20733899307d34ddb1f859a197b",
+    "apps/alva-web/src/audio.ts": "04cc915a16a77fdb1a34357f1c17046d7c948abf6e270575075a2573724b2192",
+    "apps/alva-web/src/main.tsx": "6c1005691cca88824d129dd8a961bd796366f6b60a753ba1d16d12e510ce32b1",
+    "apps/alva-web/src/style.css": "96c985346ec683ea3dcde9cea65ed4b186f9e12d4d8e6ea39f7cadb3d7d4a14c",
+    "packages/contracts/ask-question.ts": "ffc1a6aeb6e4788ecbd5d0ce8ce09ede35d02c9bd1f9708c8ad10b226cc4a1e1",
+    "packages/contracts/canonical.ts": "e33329d648d7ece117aec43698cdfb629a59da07f31ce63008596acef7cd5b38",
+    "packages/contracts/index.ts": "fd86b2d6a0db78447760710e0d081643ef83103a8abf09a49dcacecb0bcecce8",
+    "packages/contracts/intake.ts": "edbc1c197d5aa0f9e1649e21c5dc57594e267e00fb463ca0a56dd5fa7acdf92d",
+    "package.json": "76f1696ac7edbb41a32aaaadb72176e6471dc9b616925315e0791fb5ad083888",
+    "package-lock.json": "61c0ce65033193fdaa6964e43cbec5006cd5095f52acf18bbcbc8b942c8ddb9a",
+    "apps/alva-web/index.html": "281d7599be6661f532cdac35d13ac9d821ca1a4306c0baec5a305a41f194f449",
+    "apps/alva-web/vite.config.ts": "c86a709d6d4be9a1af97413096a287e8faa74df5215b08a5bf0ed00d6cbd406b"
+  }
+}

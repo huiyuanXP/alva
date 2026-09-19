@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "name": "project-specific entry",
+      "ok": true
+    },
+    {
+      "name": "real image import and explicit calibration",
+      "ok": true
+    },
+    {
+      "name": "manual asset instance edit",
+      "ok": true
+    },
+    {
+      "name": "real Codex consultation",
+      "ok": true,
+      "detail": "已先把你的原话提取为待确认需求：**咖啡角以方便清理、好维护的表面为优先**。\n\n我也已发出一张选择卡，请你点选材料/维护偏好；本轮不会改变家具。"
+    },
+    {
+      "name": "save/export",
+      "ok": false,
+      "detail": "TimeoutError: page.waitForEvent: Timeout 150000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================"
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ]
+}

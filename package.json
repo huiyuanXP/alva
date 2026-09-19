@@ -12,7 +12,9 @@
     "check": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "test:browser": "playwright test",
-    "probe:provider": "tsx scripts/probe-provider.ts"
+    "probe:provider": "tsx scripts/probe-provider.ts",
+    "start:alva": "tsx apps/alva/server.ts",
+    "build:alva": "vite build --config apps/alva-web/vite.config.ts"
   },
   "dependencies": {
     "@assistant-ui/react": "0.15.18",
@@ -22,6 +24,7 @@
     "@fastify/cookie": "11.1.2",
     "@fastify/rate-limit": "11.2.0",
     "@fastify/static": "10.1.3",
+    "@napi-rs/canvas": "1.0.9",
     "@playwright/test": "1.63.0",
     "@radix-ui/react-dropdown-menu": "2.1.24",
     "@radix-ui/react-separator": "^1.1.15",
@@ -30,6 +33,7 @@
     "@types/node": "22.20.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "@types/three": "0.182.0",
     "@vitejs/plugin-react": "6.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -43,6 +47,7 @@
     "react-dom": "19.3.0",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.3",
+    "three": "0.182.0",
     "tsx": "4.23.13",
     "typebox": "1.3.30",
     "typescript": "7.0.2",

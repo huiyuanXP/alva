@@ -1,0 +1,17 @@
+✔ alva atomic edit group, distinct instance identities, immutable asset pool and protected walls (29.140992ms)
+✔ alva pain findings have positive and negative coffee/pet/plant controls at both analysis stages (5.436315ms)
+✔ alva 60 stable question IDs, disabled Q58, separate answer states and server-enforced locked fields (13.146ms)
+✔ alva topology rejects self-intersection/non-finite coordinates; measured wall scales consistently (20.302654ms)
+[alva request error] /api/save Error: isolated_save_fault
+    at <anonymous> (/home/ubuntu/Alva/alva/apps/alva/store.ts:34:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async <anonymous> (/home/ubuntu/Alva/alva/node_modules/@electric-sql/pglite/src/base.ts:514:24)
+✔ alva revoked project links, read-only designer, atomic failed save, retry and complete snapshot restore (10676.429843ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15406.887721

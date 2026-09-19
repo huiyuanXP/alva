@@ -9,7 +9,8 @@ try:
  key=os.environ['OPENAI_API_KEY']
  (run/'codex.jsonl').write_text(p.stdout.replace(key,'[REDACTED]'))
  (run/'codex-stderr.log').write_text(p.stderr.replace(key,'[REDACTED]'))
- result={'exit_code':p.returncode,'expected_response_present':'ALVA_CODEX_OK' in p.stdout,'command':args,'scope':'CLI text only; business-tool adapter not implemented'}
+ events=[json.loads(line) for line in p.stdout.splitlines() if line.startswith('{')];exact=any(e.get('item',{}).get('type')=='agent_message' and e['item'].get('text')=='ALVA_CODEX_OK' for e in events)
+ result={'exit_code':p.returncode if exact else 1,'expected_response_present':exact,'command':args,'scope':'CLI text only; business-tool adapter not implemented'}
 except subprocess.TimeoutExpired:
  result={'exit_code':124,'scope':'CLI text timed out; not accepted'}
 (run/'codex-result.json').write_text(json.dumps(result,indent=2)+'\n')

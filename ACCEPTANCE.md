@@ -14,7 +14,7 @@
 
 命令中的密钥由执行环境传入，不把值写入命令记录或 Git。`vendor` 的 prepare 含 `|| echo`，安装通过不能替代显式 check/build；已单独实跑。
 
-## 八组产品断言（实现期间逐组接入测试入口，尚未执行）
+## 八组产品断言（仅部分入口已执行，完整八组尚未通过）
 
 | 组 | 必验断言 |
 |---|---|
@@ -30,3 +30,15 @@
 交付闸门：八组100%通过、skip 0；公网固定HTTPS连续10/10、真实流式Chat、跨项目拒绝、服务/隧道重启后保存项目恢复、隔离备份恢复与干净安装各一次。模型失败、保存失败、越权各一次隔离故障必须被检测。仅全部满足后标 ready_for_review。
 
 已实现真实流式/工具/图片探针：`OPENAI_API_KEY=... node_modules/.bin/tsx scripts/probe-codex-stream.ts`。要求工具调用恰好1次、非空delta至少2、拼接逐字等于最终回复；图片接口非空仅代表协议通过。
+
+## 新核心入口与证据边界
+
+- `npm run build:alva`：构建新产品，勿以旧build:web替代。
+- `node_modules/.bin/tsx --test tests/alva-foundation.test.ts tests/alva-business.test.ts`：5项测试包含真实本地数据库/API、保存故障注入和越权，以及编辑/问卷/三类痛点正反例。无模型mock；不覆盖所有Chat和专业正向流程。
+- `node_modules/.bin/tsx scripts/probe-layout.ts [图片路径]`：真实模型识图并执行几何校验；两图证据见Handoff，合成来源明确登记。
+- `node_modules/.bin/tsx scripts/alva-browser.ts`：6项核心真实浏览器流程与同版本文件检查，console/page error须0；不是每个保留UI的验收。
+- `node_modules/.bin/tsx scripts/alva-export-probe.ts`：独立导出验证，使用已识别场景fixture，不能计作重新识图。
+- `node_modules/.bin/tsx scripts/alva-backup-check.ts`：6表停写备份/隔离恢复校验，本地service恢复；不替代公网或Tunnel重启。
+- `python3 scripts/alva-clean-install.py`：干净安装/类型/构建/独立启动健康鉴权，任何命令非0失败；不是完整八组复跑。
+
+上述入口实际结果、准确run ID及历史失败见PROGRESS/Handoff。实体麦克风未验；公网未验；受控墙体正向流程等未实现仍为待完成，不是跳过。全范围闸门保持原样。

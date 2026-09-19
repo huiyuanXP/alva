@@ -1,0 +1,204 @@
+{
+  "walls": [
+    {
+      "id": "be6bea46-dfcf-46de-8163-094117674792",
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 4.62,
+        "y": 0
+      },
+      "thickness": 0.15,
+      "height": 2.8,
+      "structural": "unknown",
+      "evidence": []
+    },
+    {
+      "id": "c1e8e840-dce9-4743-beb2-d3b2fb68d832",
+      "a": {
+        "x": 4.62,
+        "y": 0
+      },
+      "b": {
+        "x": 10,
+        "y": 0
+      },
+      "thickness": 0.15,
+      "height": 2.8,
+      "structural": "unknown",
+      "evidence": []
+    },
+    {
+      "id": "8cb52b71-b19e-4b0c-8979-725ff08eddb2",
+      "a": {
+        "x": 10,
+        "y": 0
+      },
+      "b": {
+        "x": 10,
+        "y": 6.67
+      },
+      "thickness": 0.15,
+      "height": 2.8,
+      "structural": "unknown",
+      "evidence": []
+    },
+    {
+      "id": "acee947a-300f-45b9-b500-670c6627453c",
+      "a": {
+        "x": 10,
+        "y": 6.67
+      },
+      "b": {
+        "x": 0,
+        "y": 6.67
+      },
+      "thickness": 0.15,
+      "height": 2.8,
+      "structural": "unknown",
+      "evidence": []
+    },
+    {
+      "id": "561d0954-e5ef-49ca-b5ef-5f2e7b755e55",
+      "a": {
+        "x": 0,
+        "y": 6.67
+      },
+      "b": {
+        "x": 0,
+        "y": 0
+      },
+      "thickness": 0.15,
+      "height": 2.8,
+      "structural": "unknown",
+      "evidence": []
+    },
+    {
+      "id": "1e73b657-6ad7-4229-aa41-046cea4451ac",
+      "a": {
+        "x": 4.62,
+        "y": 0
+      },
+      "b": {
+        "x": 4.62,
+        "y": 6.67
+      },
+      "thickness": 0.15,
+      "height": 2.8,
+      "structural": "unknown",
+      "evidence": []
+    },
+    {
+      "id": "8145b944-b4d7-46f2-acaa-8653a60d7e2a",
+      "a": {
+        "x": 7.56,
+        "y": 5.51
+      },
+      "b": {
+        "x": 7.56,
+        "y": 6.67
+      },
+      "thickness": 0.15,
+      "height": 2.8,
+      "structural": "unknown",
+      "evidence": []
+    }
+  ],
+  "rooms": [
+    {
+      "id": "ac6ddcfc-1125-40a3-9ca2-3abfa10953f3",
+      "name": "客厅",
+      "purpose": "客厅",
+      "polygon": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 4.62,
+          "y": 0
+        },
+        {
+          "x": 4.62,
+          "y": 6.67
+        },
+        {
+          "x": 0,
+          "y": 6.67
+        }
+      ],
+      "locked": false
+    },
+    {
+      "id": "8a5ffd1b-72d1-4374-a140-83885e975e3d",
+      "name": "卧室",
+      "purpose": "卧室",
+      "polygon": [
+        {
+          "x": 4.62,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 6.67
+        },
+        {
+          "x": 4.62,
+          "y": 6.67
+        }
+      ],
+      "locked": false
+    }
+  ],
+  "openings": [
+    {
+      "id": "f89b99b1-ef19-46a1-979b-53bb76caa0bc",
+      "wallId": "be6bea46-dfcf-46de-8163-094117674792",
+      "kind": "window",
+      "offset": 0.22,
+      "width": 1.54,
+      "height": 1.2,
+      "sill": 0.9
+    },
+    {
+      "id": "a2c5d50f-60b7-4194-9dea-3b490268fbe1",
+      "wallId": "c1e8e840-dce9-4743-beb2-d3b2fb68d832",
+      "kind": "window",
+      "offset": 0.43,
+      "width": 1.54,
+      "height": 1.2,
+      "sill": 0.9
+    },
+    {
+      "id": "461c8c8c-f243-498c-a714-f693601aff9a",
+      "wallId": "1e73b657-6ad7-4229-aa41-046cea4451ac",
+      "kind": "door",
+      "offset": 0.6,
+      "width": 1.15,
+      "height": 2.1,
+      "sill": 0
+    },
+    {
+      "id": "e5f1968c-326a-49d4-836a-d7ebc01e4778",
+      "wallId": "acee947a-300f-45b9-b500-670c6627453c",
+      "kind": "door",
+      "offset": 0.13,
+      "width": 1.15,
+      "height": 2.1,
+      "sill": 0
+    }
+  ],
+  "items": [],
+  "calibration": null,
+  "geography": {
+    "latitude": 31,
+    "north": 0,
+    "assumption": "暂用纬度31°、图上方为北；待用户确认"
+  }
+}

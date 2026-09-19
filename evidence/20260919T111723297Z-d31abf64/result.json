@@ -1,0 +1,14 @@
+{
+  "checks": [
+    {
+      "name": "project-specific entry",
+      "ok": true
+    },
+    {
+      "name": "real import",
+      "ok": false,
+      "detail": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: '按这条长度校准' })\nExpected: visible\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('button', { name: '按这条长度校准' }) with timeout 260000ms\n  - waiting for getByRole('button', { name: '按这条长度校准' })\n  - Target page, context or browser has been closed\n"
+    }
+  ],
+  "errors": []
+}

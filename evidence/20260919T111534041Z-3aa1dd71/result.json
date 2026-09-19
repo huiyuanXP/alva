@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "projectId": "ecb87bbe-3b8f-4f59-be5e-08bf5fd64203",
+  "version": 1,
+  "files": [
+    "scene.json",
+    "sidecar.json",
+    "floorplan.svg",
+    "floorplan.png",
+    "designer.docx",
+    "whole-home.png",
+    "room-1a531b03-648e-4293-bcfa-df62afe3d404.png",
+    "room-47494ff5-ec86-48a4-9dd3-a2f0b7ec3f14.png",
+    "room-8be20ec4-739c-4e13-a4d6-7e5b32d70875.png",
+    "room-8e7d6622-1d71-4ff4-9d96-e994fd4e74fc.png",
+    "room-7a35605b-e2fd-4a7e-b448-5782f183f06d.png",
+    "room-a578e556-8e86-43bb-8474-eb5d2ab41ac5.png",
+    "owner.pdf",
+    "manifest.json"
+  ],
+  "scope": "Export-only test; candidate reused from recorded real model result; does not rerun import."
+}

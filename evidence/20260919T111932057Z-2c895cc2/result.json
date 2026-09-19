@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "name": "project-specific entry",
+      "ok": true
+    },
+    {
+      "name": "real image import and explicit calibration",
+      "ok": true
+    },
+    {
+      "name": "manual asset instance edit",
+      "ok": true
+    },
+    {
+      "name": "real Codex consultation",
+      "ok": true,
+      "detail": "已提取一条待你确认的需求：  \n**每天喝咖啡；咖啡角需要方便清理，优先考虑易维护。**\n\n我没有改变家具，也不会自动采用；需要你点击确认后才算确认。"
+    },
+    {
+      "name": "same-version export and editable DOCX",
+      "ok": true,
+      "detail": {
+        "version": 1,
+        "files": [
+          "scene.json",
+          "sidecar.json",
+          "floorplan.svg",
+          "floorplan.png",
+          "designer.docx",
+          "whole-home.png",
+          "room-8870f878-fc35-4d29-8d93-57c73ef848a4.png",
+          "room-3cea5a09-3107-4b65-81da-04317da6cf4e.png",
+          "room-39c572d5-9d82-4353-bdde-ab8a740cf5c3.png",
+          "room-e25a79da-ca5f-41f7-a942-dc853dfa6d5b.png",
+          "room-28dd003f-d2b4-4695-8b69-bb8d30d5146d.png",
+          "room-09c70d87-babd-4b38-8f15-9077ded2b7f1.png",
+          "owner.pdf",
+          "manifest.json"
+        ]
+      }
+    },
+    {
+      "name": "console and page errors",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}
