@@ -9,3 +9,5 @@
 - to-tickets技能为`.agents/skills/to-tickets/SKILL.md`；neat-freak用于交接一致性，不扩大运行或数据权限。规则以canonical AGENTS.md为准。
 
 - 文件归属规范已建立：`docs/PROJECT-STRUCTURE.md`；开发前必读，区分现役与规划目录，首批票实施按其落点执行。本轮已将仓库迁至外层 Alva，现役工程为 api/、web/；路径调整与服务重启不实施功能票。
+
+- 六张已发布 Ticket 均已链接统一目录规范；迁移前的内层 alva 与现役旧路径均已移除。apps/api、apps/web 是独有旧源码，继续保留，不当作迁移残留删除。
