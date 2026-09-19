@@ -5,7 +5,7 @@
 ## 当前成果与恢复入口
 
 - 应用：apps/alva（Fastify、Codex App Server）、apps/alva-web（React、assistant-ui、Three.js）。`npm run build:alva`、`npm run start:alva`；旧 npm start/build 仍对应保留基线，勿混用。
-- 生产服务 alva.service 与 alva-tunnel.service 已安装并 enable，应用监听 127.0.0.1:4173。私有配置 .runtime/alva-prod.env；初始业主链接 .runtime/alva-data/initial-access-link 已更新为HTTPS地址。配置及链接均不提交Git，入口只交给项目业主。旧 alva-dev.service 已停用，避免双进程写同一数据库。
+- 生产服务 alva.service 与 alva-tunnel.service 已安装并 enable，应用监听 127.0.0.1:4173。私有配置 .runtime/alva-prod.env；用户要求公共、多次、跨设备访问，现直接打开 https://prod.huiyuanxp.com/ 即进入同一公共项目。服务端私有 ALVA_PUBLIC_ACCESS_TOKEN 绑定原项目，每个设备独立会话，过期后可重新进入；旧完整链接继续兼容。已有有效的设计师会话保持只读，不被公共入口升级。配置及令牌不提交Git。旧 alva-dev.service 已停用，避免双进程写同一数据库。
 - 独立 PGlite 持久化于 .runtime/alva-data/db，保留 PostgreSQL SQL/事务能力但为单写进程的 WASM 数据库；不是已部署网络 PostgreSQL。选择理由：复用核验过的旧持久化依赖，独立目录即可运行，未增加网络数据库服务。备份期间须停唯一写进程。
 - 场景为空起步；真实图片/PDF识图生成候选，2D拖墙校正、已知长度校准后确认。手动家具与3D/2D同源；服务端锁定、原子命令、版本校验、幂等与保存失败保护。
 - 真实 Codex 仅调用白名单业务工具；咨询增量流、问卷待确认提取、局部候选、录音转可编辑文本。问卷60题，Q58禁用；预算字段独立。
@@ -36,3 +36,9 @@ Node原生fetch探针被Cloudflare挑战页403拦截（20260919T113516638Z-81347
 旧库 /home/ubuntu/aws-hackthon/renovation-consultation 源码只读，HEAD 2825f36d7777d2219c6b007ea43735d90ec042ad、工作树干净。运行服务已按用户授权停用；不迁移旧客户数据。
 
 Node24.21.0、npm11.19.0、Codex0.155.1、Python3.12.3、cloudflared2026.9.0；Chromium软件WebGL2可用。保留原始失败证据，不覆盖旧run。每个完成任务提交一次并覆盖Handoff/NextTask。
+
+## ALVA-007 公共入口修复
+
+2026-09-19 用户要求不依赖专属链接，可公共重复跨设备访问。本轮复现：完整旧链接可用；去掉hash后的普通域名在新浏览器会显示会话已过期。现在前端通过/api/public-access引导会话，已有有效会话保持原项目/角色；无会话时进入服务器显式配置的公共项目。未配置时不开放任意其他项目。4项入口/原持久化与鉴权回归通过、0跳过，类型与构建通过；公网跨浏览器检查结果见PROGRESS。完整产品未完范围保持上述记录。
+
+公共入口公网验收：evidence/20260919T123833084Z-97cca135/result.json，两个隔离浏览器环境共6次访问以及原链接兼容通过、控制台错误0。手机环境为浏览器模拟。最初重启未就绪的502已记录，健康后复测成功。

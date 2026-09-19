@@ -1,0 +1,16 @@
+✔ alva topology rejects self-intersection/non-finite coordinates; measured wall scales consistently (25.187339ms)
+[alva request error] /api/save Error: isolated_save_fault
+    at <anonymous> (/home/ubuntu/Alva/alva/apps/alva/store.ts:34:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async <anonymous> (/home/ubuntu/Alva/alva/node_modules/@electric-sql/pglite/src/base.ts:514:24)
+✔ alva revoked project links, read-only designer, atomic failed save, retry and complete snapshot restore (10441.588615ms)
+✔ public entry supports independent devices, repeated visits and expired sessions without overriding designer access (5583.188785ms)
+✔ public entry stays disabled unless explicitly configured (2938.11642ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27190.83198

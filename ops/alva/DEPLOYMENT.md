@@ -21,3 +21,5 @@
 先 `sudo systemctl disable --now alva.service alva-tunnel.service`，再 `sudo systemctl enable --now renovation-workbench.service cloudflared.service`，随后检查旧站点HTTPS。alva数据与备份保留，无需覆盖旧数据或移动源文件。回切alva时先停旧两单元，再enable/start alva两单元。任何切换保持4173仅一个应用监听。
 
 当前发布为已验核心成果，不意味着完整八组产品范围验收完成；最新证据及未完功能见Handoff。
+
+公共入口：生产私有环境中ALVA_PUBLIC_ACCESS_TOKEN绑定现有公共项目链接。浏览器POST /api/public-access：已有有效会话保持角色/项目，否则交换配置的公共链接为本设备会话。令牌不返回前端；公开域名即可重复进入。取消公共入口可删除该变量并重启alva.service，恢复仅项目链接进入。当前用户明确要求公共访问，不主动关闭此配置。

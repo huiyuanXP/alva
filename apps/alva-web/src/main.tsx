@@ -31,7 +31,7 @@ function App(){
  useEffect(()=>()=>{recorder.current?.stream.getTracks().forEach(t=>t.stop());if(recordTimer.current)clearTimeout(recordTimer.current)},[]);
  useEffect(()=>{if(project)void api('/questions').then(setQuestions).catch(()=>{})},[!!project]);
 
- useEffect(()=>{void(async()=>{try{const params=new URLSearchParams(location.hash.slice(1));if(params.has('access')){await api('/access',{token:params.get('access')});history.replaceState(null,'',location.pathname)}const session=await api('/session');setRole(session.role);setProject(await api(new URLSearchParams(location.search).has('version')?'/versions/'+new URLSearchParams(location.search).get('version'):'/project'))}catch(e){setError((e as Error).message)}})()},[]);
+ useEffect(()=>{void(async()=>{try{const params=new URLSearchParams(location.hash.slice(1));if(params.has('access')){await api('/access',{token:params.get('access')});history.replaceState(null,'',location.pathname)}const session=await api('/public-access',{});setRole(session.role);setProject(await api(new URLSearchParams(location.search).has('version')?'/versions/'+new URLSearchParams(location.search).get('version'):'/project'))}catch(e){setError((e as Error).message)}})()},[]);
  const command=()=>({requestId:crypto.randomUUID(),expectedRevision:project!.revision});
  const mutate=async(path:string,body:Record<string,unknown>)=>{setError('');setBusy(true);try{const p=await api(path,{...command(),...body});setProject(p);return p}catch(e){setError((e as Error).message);throw e}finally{setBusy(false)}};
  const scene=project?.candidate||project?.scene,candidate=!!project?.candidate,wall=scene?.walls.find(w=>w.id===selected),readOnly=role!=='owner';

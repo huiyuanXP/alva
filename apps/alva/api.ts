@@ -28,7 +28,7 @@ export async function imageData(mime:string,base64:string):Promise<{mime:string;
  }
  return reject('仅支持内容有效的PNG、JPEG或PDF');
 }
-export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180'}={}){
+export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',publicAccessToken=process.env.ALVA_PUBLIC_ACCESS_TOKEN}={}){
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
  await app.register(cookie);await app.register(rateLimit,{max:180,timeWindow:'1 minute'});
  const sessions=new WeakMap<object,Session>();
@@ -39,7 +39,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   reply.header('X-Content-Type-Options','nosniff').header('Referrer-Policy','no-referrer');
   if(req.url.startsWith('/api/'))reply.header('Cache-Control','no-store');
   if(req.headers.origin&&req.headers.origin!==origin&&!['GET','HEAD'].includes(req.method))throw new DomainError(403,'来源不匹配');
-  if(req.url.startsWith('/api/')&&req.url.split('?')[0]!=='/api/access'){
+  if(req.url.startsWith('/api/')&&!['/api/access','/api/public-access'].includes(req.url.split('?')[0])){
    const s=await store.session(req.cookies.alva_session||'');sessions.set(req,s);
    const id=req.url.match(/^\/api\/projects\/([^/?]+)/)?.[1];if(id&&id!==s.projectId)throw new DomainError(403,'无权访问其他项目');
    if(s.role==='designer'&&!['GET','HEAD'].includes(req.method))throw new DomainError(403,'设计师入口为只读');
@@ -47,6 +47,13 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  });
  app.get('/healthz',async()=>({ok:true,application:'alva'}));
  app.post('/api/access',async(req,reply)=>{const {token}=z.object({token:z.string().min(32).max(100)}).parse(req.body);const s=await store.exchange(token);reply.setCookie('alva_session',s.token,{httpOnly:true,sameSite:'strict',secure:origin.startsWith('https:'),path:'/',maxAge:604800});return {projectId:s.projectId,role:s.role}});
+ app.post('/api/public-access',async(req,reply)=>{
+  if(req.cookies.alva_session){try{return await store.session(req.cookies.alva_session)}catch(e){if(!(e instanceof DomainError)||e.statusCode!==401)throw e}}
+  if(!publicAccessToken)throw new DomainError(404,'当前站点未开启公共项目入口');
+  const s=await store.exchange(publicAccessToken);
+  reply.setCookie('alva_session',s.token,{httpOnly:true,sameSite:'strict',secure:origin.startsWith('https:'),path:'/',maxAge:604800});
+  return {projectId:s.projectId,role:s.role};
+ });
  app.get('/api/session',async req=>session(req));
  app.get('/api/projects/:id',async req=>store.get(session(req).projectId));
  app.get('/api/project',async req=>store.get(session(req).projectId));

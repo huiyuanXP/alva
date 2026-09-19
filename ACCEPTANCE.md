@@ -44,3 +44,5 @@
 上述入口实际结果、准确run ID及历史失败见PROGRESS/Handoff。实体麦克风未验；公网未验；受控墙体正向流程等未实现仍为待完成，不是跳过。全范围闸门保持原样。
 
 公网入口：`ALVA_TEST_ORIGIN=https://prod.huiyuanxp.com node_modules/.bin/tsx scripts/alva-browser.ts`；`node_modules/.bin/tsx scripts/alva-public-check.ts`。后者实际浏览器10次HTTPS health+HTML、至少2真实非空增量且至少2网络块、401/403隔离、服务与命名Tunnel重启后完整项目及快照SHA不变。真实执行通过见PROGRESS。原生Node探针Cloudflare403单独保留，不计作浏览器通过。
+
+ALVA-007公共入口：`npx tsx --test tests/alva-public-entry.test.ts tests/alva-foundation.test.ts`；`npx tsx scripts/alva-public-entry-check.ts`。公共模式为服务器显式开启：两独立会话同项目，重复/过期可重建，有效设计师会话不升级，配置缺失不开放；桌面/手机模拟首次、刷新、清Cookie后普通域名进入，内容SHA一致，旧链接兼容、console error 0。

@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "device": "desktop",
+      "visit": "first",
+      "projectUnchanged": true
+    },
+    {
+      "device": "desktop",
+      "visit": "reload",
+      "projectUnchanged": true
+    },
+    {
+      "device": "desktop",
+      "visit": "cleared-cookies",
+      "projectUnchanged": true
+    },
+    {
+      "device": "mobile-emulation",
+      "visit": "first",
+      "projectUnchanged": true
+    },
+    {
+      "device": "mobile-emulation",
+      "visit": "reload",
+      "projectUnchanged": true
+    },
+    {
+      "device": "mobile-emulation",
+      "visit": "cleared-cookies",
+      "projectUnchanged": true
+    },
+    {
+      "legacyLink": true,
+      "consoleErrors": 0
+    }
+  ],
+  "scope": "Two isolated browser contexts; mobile is browser emulation, not a physical handset"
+}

@@ -7,3 +7,5 @@
 运行入口与私有配置路径见 Handoff.md，运维见 ops/alva/README.md。不要重新移植旧库，不要把旧 npm start 当作新应用入口。
 
 本轮可复现源码包：evidence/20260919T113939Z-1906c48f/alva-source.tar.gz（含manifest与安装记录，不含私有配置/数据/参考附件）。
+
+最新任务ALVA-007：公共入口直接访问域名，原项目跨浏览器共享；恢复详情见Handoff。
