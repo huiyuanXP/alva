@@ -73,3 +73,11 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 ## 不变的产品范围
 
 无预算；只考虑理想WebGL机器。只有手动保存创建全局快照，点击快照预览、明确恢复后整体替换；无逐操作历史、撤销或自动存档。ALVA-046/047在其他功能完成后，ALVA-048–051负责最终验收与发布复核。协作规则本身不授予生产变更或第三方通讯权限。
+
+## 本次用户授权的维护任务
+
+| Ticket | 任务 | 署名 | 分支 / Worktree | 共享文件与状态 |
+|---|---|---|---|---|
+| ALVA-052 | 当前 Ticket 接入 To Do List | codex-todo | task/ALVA-052-codex-todo / /home/ubuntu/Alva-worktrees/ALVA-052-codex-todo | api/api.ts、api/todo/、web/todo/、scripts/alva-todo-*、tests/alva-todo*；in-progress；先准备适配与验收，目标网址待确认 |
+
+维护任务独立于44张产品票，不改变其依赖或认领。
