@@ -1,0 +1,23 @@
+{
+  "scope": "Isolated supplied reference inspection; no production access or model invocation",
+  "stats": {
+    "objects": 50,
+    "walls": 14,
+    "rooms": 6,
+    "colliders": 40,
+    "finiteGeometry": true,
+    "mode": "orbit",
+    "cutaway": false
+  },
+  "errors": [],
+  "hashes": {
+    "references/room-study-handoff/src/model.js": "41a432aa54cf299cdbe10ca26207cd56657dd313e3e33a21d3a3ed143b1602ae",
+    "references/room-study-handoff/src/renderer.js": "ec2d09857370165f945de831ab7dc73ffc480b380328949fb8eeae986535da29",
+    "references/room-study-handoff/src/app.js": "9bebfe143af6b5a578f64ea20b03dc0bd14d1818c61d6120a563b8c395be883a",
+    "apps/alva/import.ts": "1eceff8dd9a95f8e9a6d25eca3586e1e0b4a386c64e549353e9f236e53b65bf6",
+    "apps/alva/codex.ts": "17421c5e6e3d8829c4b46aff1e7fb911d9af3bc6a661f037535bb96fbb9cb8a7",
+    "apps/alva-web/src/SceneView.tsx": "7423011f073b5d22f148a0dbee4917418c49a20733899307d34ddb1f859a197b",
+    "apps/alva/api.ts": "b4f935b378c1daf18eed970187770c7a2f763fdf14292f26e1872a666f107213",
+    "apps/alva/store.ts": "2134ce59ceff240b28299d627eecdd6271c6f75feec27c007c71cc6ed02872f8"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "tickets": [
+    {
+      "file": ".scratch/alva-completion/issues/01-shared-login-code.md",
+      "id": "ALVA-008",
+      "blocked_by": [],
+      "acceptance_count": 7
+    },
+    {
+      "file": ".scratch/alva-completion/issues/02-import-codex-draft.md",
+      "id": "ALVA-009",
+      "blocked_by": [
+        "01"
+      ],
+      "acceptance_count": 5
+    },
+    {
+      "file": ".scratch/alva-completion/issues/03-edit-wall-topology.md",
+      "id": "ALVA-010",
+      "blocked_by": [
+        "02"
+      ],
+      "acceptance_count": 5
+    },
+    {
+      "file": ".scratch/alva-completion/issues/04-openings-scale-confirm.md",
+      "id": "ALVA-011",
+      "blocked_by": [
+        "03"
+      ],
+      "acceptance_count": 5
+    },
+    {
+      "file": ".scratch/alva-completion/issues/05-codex-architectural-scene.md",
+      "id": "ALVA-012",
+      "blocked_by": [
+        "04"
+      ],
+      "acceptance_count": 7
+    },
+    {
+      "file": ".scratch/alva-completion/issues/06-example-building-views.md",
+      "id": "ALVA-013",
+      "blocked_by": [
+        "05"
+      ],
+      "acceptance_count": 6
+    }
+  ],
+  "local_markdown_tracker": true,
+  "external_issues_created": false,
+  "later_drafts_unchanged": true,
+  "links_checked": 38,
+  "product_code_changed": false,
+  "runtime_changed": false,
+  "login_code_created": false,
+  "user_execution_scope": "publish detailed tickets only",
+  "source_head": "737a9be5627fff3ecd946226a6bc65a591c6fe47"
+}

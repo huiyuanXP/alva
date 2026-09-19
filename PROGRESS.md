@@ -48,3 +48,7 @@ ALVA-007公网复测：首次20260919T123714558Z-55d629ab在服务重启尚未�
 2026-09-19 上下文整理与拆票草案任务：用户明确先建立Ticket，公共入口权限作为其中子任务，未选择访客读写方案。本轮读取to-tickets/neat-freak技能、项目规则与旧来源；只读核验两个生产单元active/enabled和healthz alva/ok，不建立新会话、不操作数据或服务。整理T01–T15草案（未发布、待审阅/选tracker），校正SPEC权限误述及SCOPE U17误删，更新交接/恢复/README与旧taskboard历史定位。历史ALVA票与旧父Issue不改状态。无产品代码改动、不跑模型/业务回归；验证文档链接、范围覆盖、DAG和无运行配置变更。正式发票遵循技能“Iterate until the user approves the breakdown.”，不将本次整理授权当发票批准。
 
 整理验收：evidence/20260919T130045Z-ticket-context，15票draft、阻塞边均引用已定义前置票、31个保留UI实际映射字段全部覆盖及U++痛点映射；14个项目文档链接与上级交接指针有效。无产品代码/运行配置变更，无生成记忆改写。GlobalHandoff按上级规则更新为恢复入口与权限待决边界，未写入密钥或客户内容。
+
+2026-09-19 首批研究与发票：用户认可原T01粒度并决定统一验证码准入，要求细分T02并优先研究Codex建筑3D生成，随后澄清“先发布细化后的Ticket”。采用本地Markdown tracker，仅发ALVA-008–013六票（原T01+T02的五步），状态ready-for-agent并显式标明未实施；原T03–T15冻结不展开。研究现有Codex导入/会话/渲染及提供的原型，证实示例为手工参数化WebGL模型而非运行时AI。隔离浏览器证据evidence/20260919T131207987Z-priority-research：50对象、14墙、6房间、40碰撞体、有限值有效、控制台0错误，保留总览剖切/完整墙体图。未调用生产模型、未建立生产会话、未改代码/服务/权限/数据，未生成验证码或发送消息。研究结论见docs/research/LOGIN-IMPORT-3D.md。
+
+首批发票检查：tickets-validation.json核验6票ID/状态/35条验收标准、依赖按01→06有效、38个文档链接有效，原T03–T15正文逐字保持不变。git diff --check通过；产品代码与运行配置未变，因此未重跑业务构建/模型回归。按neat-freak同步Handoff/NextTask/CURRENT与GlobalHandoff，未清除历史证据或改写生成记忆。
