@@ -1,6 +1,6 @@
 # alva Handoff
 
-当前任务：已完成首批研究并发布6张细化本地Ticket，用户明确本轮只发票、不实施上线。正式索引为 [.scratch/alva-completion/README.md](.scratch/alva-completion/README.md)，研究在 [LOGIN-IMPORT-3D.md](docs/research/LOGIN-IMPORT-3D.md)。原T03–T15冻结，未继续细化或发布。核心可运行，但全保留范围与八组验收未完成，未 ready_for_review。
+当前任务：已完成整体目录图、工程归属、依赖边界和六张票的文件落点规范，见[项目结构规范](docs/architecture/PROJECT-STRUCTURE.md)；已接入 AGENTS/README/CURRENT。未搬动源码或建立空工程。此前已完成首批研究并发布6张细化本地Ticket，用户明确本轮只发票、不实施上线。正式索引为 [.scratch/alva-completion/README.md](.scratch/alva-completion/README.md)，研究在 [LOGIN-IMPORT-3D.md](docs/research/LOGIN-IMPORT-3D.md)。原T03–T15冻结，未继续细化或发布。核心可运行，但全保留范围与八组验收未完成，未 ready_for_review。
 
 ## 已确认方向与本轮边界
 
@@ -14,9 +14,9 @@
 
 ## 当前代码与运行态
 
-产品代码基线仍是e943d26（公共入口）；之前核心提交a6eefa7、发布提交41b3895；上轮文档整理提交737a9be。本轮仅研究/票据/交接文档与隔离示例证据，未改产品代码。
+产品代码基线仍是e943d26（公共入口）；之前核心提交a6eefa7、发布提交41b3895；上轮文档整理提交737a9be。本轮仅更新目录规范、规则入口及交接文档，未改产品代码。
 
-上轮只读核验记录：alva.service/alva-tunnel.service active/enabled，healthz返回alva/ok。本轮只观察本地示例，不重新访问生产项目、不读取客户内容、不调用模型或变更会话；不将历史在线验收冒充本轮业务复测。
+上轮只读核验记录：alva.service/alva-tunnel.service active/enabled，healthz返回alva/ok。本轮只读核对源码、目录及命令，不重新访问生产项目、不读取客户内容、不调用模型或变更会话；不将历史在线验收冒充本轮业务复测。
 
 应用：React/assistant-ui/Three.js与Fastify/Codex App Server，入口apps/alva-web、apps/alva；`npm run check`、`npm run build:alva`、`npm run start:alva`。旧start/build对应复用旧基线，不是新应用入口。
 
@@ -48,9 +48,9 @@
 | 事实面 | 状态 | 边界 |
 |---|---|---|
 | 代码 | verified-current | 只读核对入口权限与Git；不改产品代码 |
-| 运行态 | pending（本轮不复测生产） | 仅隔离示例浏览器观察；生产沿用历史证据 |
-| 文档 | changed-and-verified | 六张正式本地票、依赖与研究依据对齐；其余冻结 |
-| 规则 | verified-current | 上级AGENTS为规则来源；技能工作流不自动授予线上变更权限 |
+| 运行态 | pending（本轮不复测生产） | 本轮不访问生产；生产沿用历史证据 |
+| 文档 | changed-and-verified | 目录规范、现役路径、规划路径、命令与交接入口对齐；票据未变 |
+| 规则 | changed-and-verified | 项目 AGENTS 强制读取目录规范；上级规则与实施授权边界不变 |
 | 记忆 | out-of-scope | 不读写生成记忆；仅按项目约定更新GlobalHandoff指针 |
 | 工作区 | changed-and-verified | 本轮只有文档/盘点记录；无分支、库、证据清场 |
 

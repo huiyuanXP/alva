@@ -1,6 +1,8 @@
 # 恢复索引
 
-当前已研究并发布首批6张细化Ticket，用户明确本轮仅发票，不实施上线。
+当前已完成项目文件结构与开发归属规范，并接入 AGENTS.md；首批6张细化Ticket已发布但未实施。
+
+开发前必读[目录规范](docs/architecture/PROJECT-STRUCTURE.md)，图中规划模块在获准实施对应票时创建。
 
 1. [Handoff.md](Handoff.md)：当前状态与执行边界。
 2. [本地tracker](.scratch/alva-completion/README.md)：ALVA-008–013，一票一文件，前置依赖和验收。

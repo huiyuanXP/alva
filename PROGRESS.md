@@ -52,3 +52,5 @@ ALVA-007公网复测：首次20260919T123714558Z-55d629ab在服务重启尚未�
 2026-09-19 首批研究与发票：用户认可原T01粒度并决定统一验证码准入，要求细分T02并优先研究Codex建筑3D生成，随后澄清“先发布细化后的Ticket”。采用本地Markdown tracker，仅发ALVA-008–013六票（原T01+T02的五步），状态ready-for-agent并显式标明未实施；原T03–T15冻结不展开。研究现有Codex导入/会话/渲染及提供的原型，证实示例为手工参数化WebGL模型而非运行时AI。隔离浏览器证据evidence/20260919T131207987Z-priority-research：50对象、14墙、6房间、40碰撞体、有限值有效、控制台0错误，保留总览剖切/完整墙体图。未调用生产模型、未建立生产会话、未改代码/服务/权限/数据，未生成验证码或发送消息。研究结论见docs/research/LOGIN-IMPORT-3D.md。
 
 首批发票检查：tickets-validation.json核验6票ID/状态/35条验收标准、依赖按01→06有效、38个文档链接有效，原T03–T15正文逐字保持不变。git diff --check通过；产品代码与运行配置未变，因此未重跑业务构建/模型回归。按neat-freak同步Handoff/NextTask/CURRENT与GlobalHandoff，未清除历史证据或改写生成记忆。
+
+2026-09-19 文件结构规范任务：建立 docs/architecture/PROJECT-STRUCTURE.md 与 docs/README.md，规定现役后端/前端、共享合同、拓扑/Codex建筑生成/渲染职责、首批六票落点、测试发现与私有数据位置；明确现有与规划目录，保留当前 model.ts 权威定义及未来原子提取规则。接入 AGENTS/README/CURRENT，覆盖 Handoff/NextTask，同步 GlobalHandoff。只改文档，不创建空工程、不迁移源码、不实施票据或操作生产。neat-freak 只读盘点完成；文档链接、入口、Git差异检查作为本次验证，不以旧浏览器配置冒充 alva 验收。
