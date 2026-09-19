@@ -1,4 +1,4 @@
-当前待审核：[剩余40张细票草案](Research/REMAINING-TICKETS-REVIEW.md)。仅草案，未发布或实施；首批六张正式票未变。
+当前待审核：[剩余38张细票草案](Research/REMAINING-TICKETS-REVIEW.md)。仅草案，未发布或实施；首批六张正式票未变。
 
 # 恢复索引
 

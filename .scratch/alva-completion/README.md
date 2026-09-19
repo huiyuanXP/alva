@@ -18,3 +18,5 @@
 开发位置：仓库根目录为 `/home/ubuntu/Alva`，现役后端 `api/`、前端 `web/`。实施前必须阅读[目录规范与各票落点](../../docs/PROJECT-STRUCTURE.md)，不在旧工程目录中新建功能。
 
 实施前读取[研究结论](../../Research/LOGIN-IMPORT-3D.md)及项目Handoff/NextTask。本轮不生成登录验证码，不更改线上入口；实施01时再生成有效验证码交给用户。原T03–T15冻结，不继续细分或发布，待首批研究/票据处理完后另行推进。
+
+最新范围：删除预算；Demo仅在理想WebGL环境验收；仅手动保存创建全局快照，快照可预览及整体恢复，无逐操作历史。其余待审细票见[修订稿](../../Research/REMAINING-TICKETS-REVIEW.md)，R04/R29删除后剩38张。功能尚未实施。
