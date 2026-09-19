@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build:alva"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "clean-start-health-and-auth"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "archive": "/home/ubuntu/Alva/alva/evidence/20260919T113939Z-1906c48f/alva-source.tar.gz",
+  "sha256": "e096c3000cd12fd299c8e9a9064449f9034deb9925f123dc076102abe3fb7cf3",
+  "scope": "Clean install/typecheck/build and anonymous-auth startup smoke, not full eight-group acceptance. Reference attachments and customer/runtime data excluded."
+}

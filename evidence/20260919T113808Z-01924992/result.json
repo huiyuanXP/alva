@@ -1,0 +1,28 @@
+{
+  "ok": false,
+  "checks": [
+    {
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "exit_code": 1
+    },
+    {
+      "failure": "typecheck failed",
+      "exit_code": 1
+    }
+  ],
+  "archive": "/home/ubuntu/Alva/alva/evidence/20260919T113808Z-01924992/alva-source.tar.gz",
+  "sha256": "33ff3b4ff64b6a332876aa2d67ff12f1e86d797ff9bb8d95a086949137f94123",
+  "scope": "Clean install/typecheck/build and anonymous-auth startup smoke, not full eight-group acceptance. Reference attachments and customer/runtime data excluded."
+}

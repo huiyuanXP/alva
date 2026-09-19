@@ -1,0 +1,18 @@
+[Unit]
+Description=alva production application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/Alva/alva
+EnvironmentFile=/home/ubuntu/Alva/alva/.runtime/alva-prod.env
+ExecStart=/home/ubuntu/.nvm/versions/node/v24.21.0/bin/node /home/ubuntu/Alva/alva/node_modules/tsx/dist/cli.mjs apps/alva/server.ts
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

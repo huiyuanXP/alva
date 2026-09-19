@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "backup": "/home/ubuntu/Alva/alva/.runtime/alva-backups/20260919T113809595Z-130d7739/data.tar.gz",
+  "tables": {
+    "alva_projects": {
+      "rows": 8,
+      "sha256": "ce7140071056a21b734c6ab21938d14675e94d187b4dea606dbff6d105ed0ccc"
+    },
+    "alva_links": {
+      "rows": 13,
+      "sha256": "f91d43c5e5cc7b4bf608861fbb877765bcc0f5c21034d4aabf3cc02b290d9926"
+    },
+    "alva_sessions": {
+      "rows": 19,
+      "sha256": "ba13ded3e21f95fbf87005523a80f6d9deb60dcda891f8e68886e85f2e10d282"
+    },
+    "alva_commands": {
+      "rows": 40,
+      "sha256": "365d428c6e803ca45417f3d1751d587ccae3dc18780cbdbad04d7421414e291c"
+    },
+    "alva_versions": {
+      "rows": 6,
+      "sha256": "a23d82e4aa19ede1d1be14bb4bad25667073552aa42c8a917d7d756c8cee6adb"
+    },
+    "alva_failures": {
+      "rows": 1,
+      "sha256": "4e7b076ea014f8c35d6c86182aea7bc79b85667a434f977cd13c9769ef9e0824"
+    }
+  },
+  "serviceRecovered": true,
+  "scope": "Stopped-writer isolated backup restore and local service restart; no old production data accessed."
+}

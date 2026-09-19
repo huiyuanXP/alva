@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "checks": [],
+  "error": "AssertionError [ERR_ASSERTION]: /healthz: 403\n\n403 !== 200\n"
+}

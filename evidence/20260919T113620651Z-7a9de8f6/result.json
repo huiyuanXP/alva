@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "origin": "https://prod.huiyuanxp.com",
+  "checks": [
+    {
+      "name": "HTTPS health and application HTML",
+      "detail": "10/10 pairs"
+    },
+    {
+      "name": "Secure project session and cross-project rejection",
+      "detail": "anonymous 401; foreign project 403; Secure HttpOnly cookie"
+    },
+    {
+      "name": "Real public multimodal Codex SSE",
+      "detail": {
+        "deltas": 120,
+        "network": {
+          "chunks": 96,
+          "firstChunkMs": 45.10000002384186,
+          "elapsedMs": 14896.199999928474
+        },
+        "completed": true,
+        "savedSnapshotUnchanged": true
+      }
+    },
+    {
+      "name": "Application and named tunnel restart persistence",
+      "detail": {
+        "projectHash": "fa1d8b13b88b58ea9afa880dc575adddc6e0a13939a7942fcf682600f6707bcb",
+        "snapshotHash": "6f8f82276961ede5db95cfac7bd43f1d96e17182478225bcafcb2cbf889ff19a",
+        "sessionSurvived": true
+      }
+    }
+  ],
+  "scope": "Public core release acceptance; not complete eight-group product acceptance"
+}

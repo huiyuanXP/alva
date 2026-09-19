@@ -1,4 +1,6 @@
-# 本地运行与恢复
+# 本地运行与恢复（历史本地配置）
+
+当前生产配置请优先读取 [DEPLOYMENT.md](DEPLOYMENT.md)。alva-dev.service 已停用，不能与生产服务同时启动；本页本地配置只用于恢复旧验收环境。
 
 alva-dev.service 是专用常驻单元，仅监听 127.0.0.1:4180。环境文件 .runtime/alva.env 权限600；样例 .env.example 不含密钥。Node/Codex执行路径由环境 PATH 配置。部署前先 `npm ci --ignore-scripts`、`npm run check`、`npm run build:alva`。
 
@@ -8,6 +10,6 @@ alva-dev.service 是专用常驻单元，仅监听 127.0.0.1:4180。环境文件
 
 干净安装复现：`python3 scripts/alva-clean-install.py`。新隔离目录 npm ci/check/build，隔离端口4182健康与鉴权检查，成功后清理临时副本；证据和不含凭据的源码包保留。此脚本不替代完整八组验收。
 
-回滚代码：停本服务，在独立目录检出明确的已验收提交、按锁文件安装构建，再调整本专用单元WorkingDirectory/ExecStart；不要对有未提交修改的工作树执行reset。数据若需回滚按上述备份恢复流程执行。正式版本发布后补充该版本的具体回滚命令与Tunnel重启验证；当前没有正式alva公网部署。
+回滚代码：停本服务，在独立目录检出明确的已验收提交、按锁文件安装构建，再调整本专用单元WorkingDirectory/ExecStart；不要对有未提交修改的工作树执行reset。数据若需回滚按上述备份恢复流程执行。正式版本发布后补充该版本的具体回滚命令与Tunnel重启验证；当前核心公网部署已完成，具体见DEPLOYMENT.md。
 
 首轮备份验收发现临时systemd单元停止后消失，已改成本目录持久单元，后续恢复检查通过。未修改旧workbench和任何MCP/Tunnel配置。

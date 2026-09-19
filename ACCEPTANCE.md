@@ -42,3 +42,5 @@
 - `python3 scripts/alva-clean-install.py`：干净安装/类型/构建/独立启动健康鉴权，任何命令非0失败；不是完整八组复跑。
 
 上述入口实际结果、准确run ID及历史失败见PROGRESS/Handoff。实体麦克风未验；公网未验；受控墙体正向流程等未实现仍为待完成，不是跳过。全范围闸门保持原样。
+
+公网入口：`ALVA_TEST_ORIGIN=https://prod.huiyuanxp.com node_modules/.bin/tsx scripts/alva-browser.ts`；`node_modules/.bin/tsx scripts/alva-public-check.ts`。后者实际浏览器10次HTTPS health+HTML、至少2真实非空增量且至少2网络块、401/403隔离、服务与命名Tunnel重启后完整项目及快照SHA不变。真实执行通过见PROGRESS。原生Node探针Cloudflare403单独保留，不计作浏览器通过。

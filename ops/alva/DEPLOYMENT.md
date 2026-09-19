@@ -1,0 +1,23 @@
+# alva 当前发布与回滚
+
+用户2026-09-19已授权停用旧站点并复用旧Tunnel文件。业务地址 https://prod.huiyuanxp.com；既有远端路由回源 http://localhost:4173，无DNS修改。
+
+应用单元 alva.service、隧道单元 alva-tunnel.service 已enable。仓库 /home/ubuntu/Alva/alva；私有环境 .runtime/alva-prod.env；数据 .runtime/alva-data/db。应用只监听127.0.0.1:4173。Tunnel复用 /etc/cloudflared/prod-token；该令牌不在仓库，也不公开裸模型/数据库端口。
+
+旧 renovation-workbench.service、cloudflared.service 及本地 alva-dev.service 已stop/disable。旧源代码、发布目录、令牌文件均保留；不同时启动两个写入同一PGlite目录的alva进程。MCP单元保持不动。
+
+## 常用操作
+
+`sudo systemctl status alva.service alva-tunnel.service`；`curl -f https://prod.huiyuanxp.com/healthz`；`sudo journalctl -u alva.service -u alva-tunnel.service`。
+
+`node_modules/.bin/tsx scripts/alva-backup-check.ts` 现在默认 alva.service/4173，停写备份后在隔离目录恢复校验，最后启动。测试本地其他实例时显式指定ALVA_SERVICE、ALVA_PORT；数据目录仍为本仓库.runtime/alva-data。
+
+`ALVA_TEST_ORIGIN=https://prod.huiyuanxp.com node_modules/.bin/tsx scripts/alva-browser.ts` 在公网跑真实导入/咨询/交付核心链。
+
+`node_modules/.bin/tsx scripts/alva-public-check.ts` 检查HTTPS10/10、Secure会话、越权拒绝、真实多模态SSE、应用/Tunnel重启后项目及快照SHA一致。此命令会重启生产服务，应在其他验收调用完成后执行。
+
+## 回退至保留旧站点
+
+先 `sudo systemctl disable --now alva.service alva-tunnel.service`，再 `sudo systemctl enable --now renovation-workbench.service cloudflared.service`，随后检查旧站点HTTPS。alva数据与备份保留，无需覆盖旧数据或移动源文件。回切alva时先停旧两单元，再enable/start alva两单元。任何切换保持4173仅一个应用监听。
+
+当前发布为已验核心成果，不意味着完整八组产品范围验收完成；最新证据及未完功能见Handoff。

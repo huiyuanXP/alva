@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "name": "project-specific entry",
+      "ok": true
+    },
+    {
+      "name": "real image import and explicit calibration",
+      "ok": true
+    },
+    {
+      "name": "manual asset instance edit",
+      "ok": true
+    },
+    {
+      "name": "real Codex consultation",
+      "ok": true,
+      "detail": "已先记录为待确认需求：你希望有“每日使用、方便清理的咖啡角”。\n\n我没有改动家具。请先在卡片里确认一条相关信息：咖啡角会受哪些电器、水电或插座位置影响。"
+    },
+    {
+      "name": "same-version export and editable DOCX",
+      "ok": true,
+      "detail": {
+        "version": 1,
+        "files": [
+          "scene.json",
+          "sidecar.json",
+          "floorplan.svg",
+          "floorplan.png",
+          "designer.docx",
+          "whole-home.png",
+          "room-281df5b2-cfd2-40e6-837b-32c7da7e013f.png",
+          "room-2067acaf-4263-441b-ba7b-0b19331b09a7.png",
+          "room-a9cfdcd4-567b-4a00-85a8-dd9ccf841de5.png",
+          "room-1173ab1e-b4a1-40d3-bf80-560d579d0bf9.png",
+          "room-1a948341-b3cf-477a-9784-5163d706fbdc.png",
+          "room-65599ae5-49dc-4913-b4b4-9fb71bf5f390.png",
+          "owner.pdf",
+          "manifest.json"
+        ]
+      }
+    },
+    {
+      "name": "console and page errors",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

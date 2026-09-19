@@ -1,0 +1,5 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+scripts/alva-public-check.ts(40,51): error TS2339: Property 'chunks' does not exist on type 'never'.
