@@ -1,0 +1,243 @@
+{
+  "published": 38,
+  "total_tickets": 44,
+  "new_ids": [
+    "ALVA-014",
+    "ALVA-051"
+  ],
+  "acceptance_checks": 115,
+  "acceptance_preserved": true,
+  "dependency_order_valid": true,
+  "links_valid": true,
+  "implementation_started": false,
+  "mapping": [
+    {
+      "review": "R01",
+      "id": "ALVA-014",
+      "local": "07",
+      "file": "07-questionnaire-scope.md"
+    },
+    {
+      "review": "R02",
+      "id": "ALVA-015",
+      "local": "08",
+      "file": "08-chat-answer-confirmation.md"
+    },
+    {
+      "review": "R03",
+      "id": "ALVA-016",
+      "local": "09",
+      "file": "09-unanswered-followup.md"
+    },
+    {
+      "review": "R05",
+      "id": "ALVA-017",
+      "local": "10",
+      "file": "10-multimodal-chat.md"
+    },
+    {
+      "review": "R06",
+      "id": "ALVA-018",
+      "local": "11",
+      "file": "11-cancel-retry.md"
+    },
+    {
+      "review": "R07",
+      "id": "ALVA-019",
+      "local": "12",
+      "file": "12-voice-transcription.md"
+    },
+    {
+      "review": "R08",
+      "id": "ALVA-020",
+      "local": "13",
+      "file": "13-scope-confirmation.md"
+    },
+    {
+      "review": "R09",
+      "id": "ALVA-021",
+      "local": "14",
+      "file": "14-candidate-adoption.md"
+    },
+    {
+      "review": "R10",
+      "id": "ALVA-022",
+      "local": "15",
+      "file": "15-room-purpose.md"
+    },
+    {
+      "review": "R11",
+      "id": "ALVA-023",
+      "local": "16",
+      "file": "16-furniture-add-copy.md"
+    },
+    {
+      "review": "R12",
+      "id": "ALVA-024",
+      "local": "17",
+      "file": "17-furniture-transform.md"
+    },
+    {
+      "review": "R13",
+      "id": "ALVA-025",
+      "local": "18",
+      "file": "18-furniture-properties.md"
+    },
+    {
+      "review": "R14",
+      "id": "ALVA-026",
+      "local": "19",
+      "file": "19-furniture-return.md"
+    },
+    {
+      "review": "R15",
+      "id": "ALVA-027",
+      "local": "20",
+      "file": "20-furniture-transfer.md"
+    },
+    {
+      "review": "R16",
+      "id": "ALVA-028",
+      "local": "21",
+      "file": "21-initial-pain-analysis.md"
+    },
+    {
+      "review": "R17",
+      "id": "ALVA-029",
+      "local": "22",
+      "file": "22-layout-review.md"
+    },
+    {
+      "review": "R18",
+      "id": "ALVA-030",
+      "local": "23",
+      "file": "23-professional-unknowns.md"
+    },
+    {
+      "review": "R19",
+      "id": "ALVA-031",
+      "local": "24",
+      "file": "24-designer-readonly.md"
+    },
+    {
+      "review": "R20",
+      "id": "ALVA-032",
+      "local": "25",
+      "file": "25-wall-evidence.md"
+    },
+    {
+      "review": "R21",
+      "id": "ALVA-033",
+      "local": "26",
+      "file": "26-wall-renovation.md"
+    },
+    {
+      "review": "R22",
+      "id": "ALVA-034",
+      "local": "27",
+      "file": "27-room-merge.md"
+    },
+    {
+      "review": "R23",
+      "id": "ALVA-035",
+      "local": "28",
+      "file": "28-room-split.md"
+    },
+    {
+      "review": "R24",
+      "id": "ALVA-036",
+      "local": "29",
+      "file": "29-manual-snapshot.md"
+    },
+    {
+      "review": "R25",
+      "id": "ALVA-037",
+      "local": "30",
+      "file": "30-snapshot-preview.md"
+    },
+    {
+      "review": "R26",
+      "id": "ALVA-038",
+      "local": "31",
+      "file": "31-snapshot-restore.md"
+    },
+    {
+      "review": "R27",
+      "id": "ALVA-039",
+      "local": "32",
+      "file": "32-desktop-walkthrough.md"
+    },
+    {
+      "review": "R28",
+      "id": "ALVA-040",
+      "local": "33",
+      "file": "33-sunlight-seasons.md"
+    },
+    {
+      "review": "R30",
+      "id": "ALVA-041",
+      "local": "34",
+      "file": "34-reference-annotation.md"
+    },
+    {
+      "review": "R31",
+      "id": "ALVA-042",
+      "local": "35",
+      "file": "35-preference-confirmation.md"
+    },
+    {
+      "review": "R32",
+      "id": "ALVA-043",
+      "local": "36",
+      "file": "36-business-guidance.md"
+    },
+    {
+      "review": "R33",
+      "id": "ALVA-044",
+      "local": "37",
+      "file": "37-audience-documents.md"
+    },
+    {
+      "review": "R34",
+      "id": "ALVA-045",
+      "local": "38",
+      "file": "38-delivery-bundle.md"
+    },
+    {
+      "review": "R35",
+      "id": "ALVA-046",
+      "local": "39",
+      "file": "39-reference-furniture.md"
+    },
+    {
+      "review": "R36",
+      "id": "ALVA-047",
+      "local": "40",
+      "file": "40-group-proposals.md"
+    },
+    {
+      "review": "R37",
+      "id": "ALVA-048",
+      "local": "41",
+      "file": "41-acceptance-groups-1-4.md"
+    },
+    {
+      "review": "R38",
+      "id": "ALVA-049",
+      "local": "42",
+      "file": "42-acceptance-groups-5-8.md"
+    },
+    {
+      "review": "R39",
+      "id": "ALVA-050",
+      "local": "43",
+      "file": "43-public-verification.md"
+    },
+    {
+      "review": "R40",
+      "id": "ALVA-051",
+      "local": "44",
+      "file": "44-recovery-handoff.md"
+    }
+  ]
+}

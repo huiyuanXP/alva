@@ -1,14 +1,11 @@
-当前待审核：[剩余38张细票草案](Research/REMAINING-TICKETS-REVIEW.md)。仅草案，未发布或实施；首批六张正式票未变。
-
 # 恢复索引
 
-当前已完成目录扁平化：根目录 /home/ubuntu/Alva，后端 api/、前端 web/、研究 Research/。规范已接入 AGENTS.md；首批6张细化Ticket已发布但未实施。
+全部44张正式Ticket已发布，尚未实施：首批ALVA-008–013，本次ALVA-014–051。用户本轮只要求正式发票。
 
-开发前必读[目录规范](docs/PROJECT-STRUCTURE.md)，图中规划模块在获准实施对应票时创建。
+1. [正式tracker](.scratch/alva-completion/README.md)：唯一票据入口、状态与前置依赖。
+2. [Handoff](Handoff.md)：现状与边界。
+3. [NextTask](NextTask.md)：取得执行指令后串行实施。
+4. [目录规范](docs/PROJECT-STRUCTURE.md)：根目录 /home/ubuntu/Alva，现役 api/、web/。
+5. [已批准的审核来源](Research/REMAINING-TICKETS-REVIEW.md)：R04/R29已删除，其余映射为正式票。
 
-1. [Handoff.md](Handoff.md)：当前状态与执行边界。
-2. [本地tracker](.scratch/alva-completion/README.md)：ALVA-008–013，一票一文件，前置依赖和验收。
-3. [研究结论](Research/LOGIN-IMPORT-3D.md)：统一验证码、示例如何生成3D、两阶段Codex调用。
-4. [NextTask.md](NextTask.md)：取得后续执行指令后串行推进。
-
-原T03–T15在TICKET-PROPOSAL中冻结；线上仍是公共入口，验证码尚未生成/生效，新建筑生成链路尚未实现。不得误称已上线。
+范围：无预算；理想WebGL机器Demo；仅手动全局快照、预览与恢复，无逐操作存档。现有代码尚未实现这些删减，不把发票视为上线。
