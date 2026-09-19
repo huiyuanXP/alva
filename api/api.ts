@@ -89,6 +89,6 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  });
  app.post('/api/cancel',async req=>{active.get(session(req).projectId)?.abort();return {cancelled:true}});
  app.addHook('onClose',async()=>{for(const controller of active.values())controller.abort()});
- if(assets){const dir=resolve('apps/alva-web/dist');if(existsSync(dir)){await app.register(staticPlugin,{root:dir});app.setNotFoundHandler(async(req,reply)=>{if(req.url.startsWith('/api/'))return reply.code(404).send({error:'接口不存在'});return reply.sendFile('index.html')})}}
+ if(assets){const dir=resolve('web/dist');if(existsSync(dir)){await app.register(staticPlugin,{root:dir});app.setNotFoundHandler(async(req,reply)=>{if(req.url.startsWith('/api/'))return reply.code(404).send({error:'接口不存在'});return reply.sendFile('index.html')})}}
  return app;
 }

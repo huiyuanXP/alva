@@ -4,7 +4,7 @@
 
 ## 本轮追加决策
 
-- 2026-09-19 用户指定新仓库 /home/ubuntu/Alva/alva；旧库只读。
+- 2026-09-19 用户指定新仓库 /home/ubuntu/Alva；旧库只读。
 - 用户以 Docs/room-study-handoff.zip 提供设计、全屋原型与原户型图；按实际文件映射，不沿用 Roomscape 的旧计数。
 - 正式域名 prod.huiyuanxp.com；用户授权查找 AWS hackthon 发布凭据。业务切换前准备回滚，不改 MCP。
 - 桌面网页、单层住宅、业主写入、设计师只读；墙体专业解锁须证据。

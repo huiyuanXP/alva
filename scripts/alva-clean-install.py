@@ -21,7 +21,7 @@ try:
   if r.returncode:raise RuntimeError(name+' failed')
  env={k:v for k,v in os.environ.items() if not any(x in k for x in ['OPENAI','CLOUDFLARE','CODEX'])};env.update(ALVA_PORT='4182',ALVA_ORIGIN='http://127.0.0.1:4182',ALVA_DATA_DIR=str(work/'.runtime/test-data'))
  with (out/'start.log').open('w') as log:
-  server=subprocess.Popen(['node',str(work/'node_modules/tsx/dist/cli.mjs'),'apps/alva/server.ts'],cwd=work,env=env,stdout=log,stderr=subprocess.STDOUT)
+  server=subprocess.Popen(['node',str(work/'node_modules/tsx/dist/cli.mjs'),'api/server.ts'],cwd=work,env=env,stdout=log,stderr=subprocess.STDOUT)
   for _ in range(30):
    if server.poll() is not None:raise RuntimeError('server exited')
    try:

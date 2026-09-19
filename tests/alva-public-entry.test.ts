@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {AlvaStore} from '../apps/alva/store.js';
-import {buildAlva} from '../apps/alva/api.js';
+import {AlvaStore} from '../api/store.js';
+import {buildAlva} from '../api/api.js';
 
 test('public entry supports independent devices, repeated visits and expired sessions without overriding designer access',async()=>{
  const store=new AlvaStore();await store.init();const project=await store.create('Shared');

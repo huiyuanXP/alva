@@ -1,7 +1,7 @@
 import React,{useEffect,useRef} from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
-import type {SceneData} from '../../alva/model.js';
+import type {SceneData} from '../../api/model.js';
 export function SceneView({scene,selected,onSelect,onMove,mode='3d',time=14,day=172,focusRoom}:{scene:SceneData;selected?:string;onSelect?:(id:string)=>void;onMove?:(id:string,x:number,y:number)=>void;mode?:'3d'|'walk';time?:number;day?:number;focusRoom?:string}){
  const root=useRef<HTMLDivElement>(null),latest=useRef({onSelect,onMove});latest.current={onSelect,onMove};
  useEffect(()=>{

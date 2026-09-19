@@ -1,0 +1,24 @@
+{
+  "task": "flatten-root",
+  "root": "/home/ubuntu/Alva",
+  "backend": "api",
+  "frontend": "web",
+  "research": "Research",
+  "typecheck": "passed",
+  "build": "passed; existing large chunk warning",
+  "tests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "local_home": 200,
+  "local_health": "alva/ok",
+  "public_health": "alva/ok",
+  "services": [
+    "alva.service active",
+    "alva-tunnel.service active"
+  ],
+  "first_attempt": "npm ENOENT from removed old cwd; rerun from new root passed",
+  "production_business_test": "not run",
+  "feature_tickets": "not implemented",
+  "historical_evidence": "unchanged"
+}

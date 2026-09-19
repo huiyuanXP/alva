@@ -6,5 +6,5 @@
     "resolveJsonModule": true, "allowImportingTsExtensions": true, "noEmit": true,
     "types": ["node", "vite/client"]
   },
-  "include": ["apps", "packages", "scripts", "tests", "playwright.config.ts"]
+  "include": ["api", "web", "apps", "packages", "scripts", "tests", "playwright.config.ts"]
 }

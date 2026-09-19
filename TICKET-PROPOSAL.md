@@ -17,7 +17,7 @@
 
 ## 首批已发布
 
-用户确认本轮只发布细化后的Ticket。T01保持单票，T02拆为5张；正式文件和依赖见[本地tracker](.scratch/alva-completion/README.md)。研究依据见[登录与建筑3D](docs/research/LOGIN-IMPORT-3D.md)。
+用户确认本轮只发布细化后的Ticket。T01保持单票，T02拆为5张；正式文件和依赖见[本地tracker](.scratch/alva-completion/README.md)。研究依据见[登录与建筑3D](Research/LOGIN-IMPORT-3D.md)。
 
 1. ALVA-008：统一登录验证码与多设备访问；无前置。
 2. ALVA-009：导入户型图并由Codex生成二维初稿；前置008。

@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';import type {Project,SceneData,Proposal} from '../../alva/model.js';import {SceneView} from './SceneView.js';
+import React,{useEffect,useState} from 'react';import type {Project,SceneData,Proposal} from '../../api/model.js';import {SceneView} from './SceneView.js';
 type Props={project:Project;roomId:string;selected:string;onSelect:(id:string)=>void;mutate:(path:string,body:Record<string,unknown>)=>Promise<any>;readOnly:boolean};
 const call=async(path:string)=>{const r=await fetch('/api'+path);const d=await r.json();if(!r.ok)throw new Error(d.error);return d};
 export function QuestionCard({project,roomId,mutate,readOnly,definition}:{project:Project;roomId:string;mutate:Props['mutate'];readOnly:boolean;definition:any}){

@@ -1,3 +1,3 @@
-import {recognizeLayout} from '../apps/alva/import.js';import {mkdir,readFile,writeFile} from 'node:fs/promises';import {randomUUID} from 'node:crypto';
+import {recognizeLayout} from '../api/import.js';import {mkdir,readFile,writeFile} from 'node:fs/promises';import {randomUUID} from 'node:crypto';
 const run=`evidence/${new Date().toISOString().replace(/[-:.]/g,'')}-${randomUUID().slice(0,8)}`;await mkdir(run,{recursive:true});
 try{const image=await readFile(process.argv[2]||'references/room-study-handoff/public/floorplan.png');const scene=await recognizeLayout('data:image/png;base64,'+image.toString('base64'));await writeFile(`${run}/candidate.json`,JSON.stringify(scene,null,2));console.log(JSON.stringify({run,walls:scene.walls.length,rooms:scene.rooms.map(r=>r.name),openings:scene.openings.length,calibrated:scene.calibration!==null}));}catch(e){await writeFile(`${run}/failure.txt`,String(e));console.error(run,String(e));process.exitCode=1}

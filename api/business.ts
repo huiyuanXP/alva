@@ -1,6 +1,6 @@
 import {randomUUID} from 'node:crypto';
 import {z} from 'zod';
-import {intakeCatalogue} from '../../packages/contracts/intake.js';
+import {intakeCatalogue} from '../packages/contracts/intake.js';
 import {validateScene,itemFromAsset,pointInPolygon,reject,Item,type Project,type Change,type Finding,type SceneData} from './model.js';
 export const catalogue=intakeCatalogue.map(q=>({...q,enabled:q.id!=='Q58'}));
 export const ChangeSchema=z.object({action:z.enum(['add','update','remove','copy','transfer','purpose','wall']),targetId:z.string(),values:z.record(z.string(),z.unknown())}).strict();

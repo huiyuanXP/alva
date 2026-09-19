@@ -1,7 +1,7 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {AssistantRuntimeProvider,useExternalStoreRuntime,ThreadPrimitive,MessagePrimitive} from '@assistant-ui/react';
-import type {Project,SceneData,Message,XY} from '../../alva/model.js';
+import type {Project,SceneData,Message,XY} from '../../api/model.js';
 import {SceneView} from './SceneView.js';
 import {WorkspacePanel,ProposalCard,QuestionCard} from './Panels.js';
 import {toWav} from './audio.js';

@@ -13,8 +13,8 @@
     "test": "tsx --test tests/*.test.ts",
     "test:browser": "playwright test",
     "probe:provider": "tsx scripts/probe-provider.ts",
-    "start:alva": "tsx apps/alva/server.ts",
-    "build:alva": "vite build --config apps/alva-web/vite.config.ts"
+    "start:alva": "tsx api/server.ts",
+    "build:alva": "vite build --config web/vite.config.ts"
   },
   "dependencies": {
     "@assistant-ui/react": "0.15.18",

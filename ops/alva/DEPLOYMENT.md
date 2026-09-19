@@ -2,7 +2,7 @@
 
 用户2026-09-19已授权停用旧站点并复用旧Tunnel文件。业务地址 https://prod.huiyuanxp.com；既有远端路由回源 http://localhost:4173，无DNS修改。
 
-应用单元 alva.service、隧道单元 alva-tunnel.service 已enable。仓库 /home/ubuntu/Alva/alva；私有环境 .runtime/alva-prod.env；数据 .runtime/alva-data/db。应用只监听127.0.0.1:4173。Tunnel复用 /etc/cloudflared/prod-token；该令牌不在仓库，也不公开裸模型/数据库端口。
+应用单元 alva.service、隧道单元 alva-tunnel.service 已enable。仓库 /home/ubuntu/Alva；私有环境 .runtime/alva-prod.env；数据 .runtime/alva-data/db。应用只监听127.0.0.1:4173。Tunnel复用 /etc/cloudflared/prod-token；该令牌不在仓库，也不公开裸模型/数据库端口。
 
 旧 renovation-workbench.service、cloudflared.service 及本地 alva-dev.service 已stop/disable。旧源代码、发布目录、令牌文件均保留；不同时启动两个写入同一PGlite目录的alva进程。MCP单元保持不动。
 

@@ -54,3 +54,5 @@ ALVA-007公网复测：首次20260919T123714558Z-55d629ab在服务重启尚未�
 首批发票检查：tickets-validation.json核验6票ID/状态/35条验收标准、依赖按01→06有效、38个文档链接有效，原T03–T15正文逐字保持不变。git diff --check通过；产品代码与运行配置未变，因此未重跑业务构建/模型回归。按neat-freak同步Handoff/NextTask/CURRENT与GlobalHandoff，未清除历史证据或改写生成记忆。
 
 2026-09-19 文件结构规范任务：建立 docs/architecture/PROJECT-STRUCTURE.md 与 docs/README.md，规定现役后端/前端、共享合同、拓扑/Codex建筑生成/渲染职责、首批六票落点、测试发现与私有数据位置；明确现有与规划目录，保留当前 model.ts 权威定义及未来原子提取规则。接入 AGENTS/README/CURRENT，覆盖 Handoff/NextTask，同步 GlobalHandoff。只改文档，不创建空工程、不迁移源码、不实施票据或操作生产。neat-freak 只读盘点完成；文档链接、入口、Git差异检查作为本次验证，不以旧浏览器配置冒充 alva 验收。
+
+2026-09-19 扁平化任务：用户要求外层 Alva 为根并至少减少两级。移动 Git/仓库内容到 /home/ubuntu/Alva，apps/alva→api、apps/alva-web→web、docs/research→Research；目录规范移到 docs/PROJECT-STRUCTURE.md。更新源码相对导入、脚本、构建、服务及私有数据配置路径；先停服务后移动数据库，再恢复运行。根同名文档/私有配置备份到 .runtime/root-migration-20260919；原规则合并但有效凭据不入 Git；旧 README 作为 docs/REMOTE-ACCESS.md 保留，MCP/旧库未改。第一次 npm 检查因 shell 旧 cwd 已移除报 ENOENT，改用新 cwd 后 check/build 均通过；7项核心测试通过，服务 active、本机/公网 healthz 正常、本机首页200；现有大chunk提示保留。未实施ALVA-008–013，不做新登录或真实模型业务验收。neat-freak 盘点及文档链接同步完成，历史证据不改。

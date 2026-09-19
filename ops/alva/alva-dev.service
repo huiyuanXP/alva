@@ -6,9 +6,9 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=ubuntu
-WorkingDirectory=/home/ubuntu/Alva/alva
-EnvironmentFile=/home/ubuntu/Alva/alva/.runtime/alva.env
-ExecStart=/home/ubuntu/.nvm/versions/node/v24.21.0/bin/node /home/ubuntu/Alva/alva/node_modules/tsx/dist/cli.mjs apps/alva/server.ts
+WorkingDirectory=/home/ubuntu/Alva
+EnvironmentFile=/home/ubuntu/Alva/.runtime/alva.env
+ExecStart=/home/ubuntu/.nvm/versions/node/v24.21.0/bin/node /home/ubuntu/Alva/node_modules/tsx/dist/cli.mjs api/server.ts
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=30

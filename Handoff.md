@@ -1,11 +1,13 @@
 # alva Handoff
 
-当前任务：已完成整体目录图、工程归属、依赖边界和六张票的文件落点规范，见[项目结构规范](docs/architecture/PROJECT-STRUCTURE.md)；已接入 AGENTS/README/CURRENT。未搬动源码或建立空工程。此前已完成首批研究并发布6张细化本地Ticket，用户明确本轮只发票、不实施上线。正式索引为 [.scratch/alva-completion/README.md](.scratch/alva-completion/README.md)，研究在 [LOGIN-IMPORT-3D.md](docs/research/LOGIN-IMPORT-3D.md)。原T03–T15冻结，未继续细化或发布。核心可运行，但全保留范围与八组验收未完成，未 ready_for_review。
+当前任务：已按用户要求完成仓库扁平化。唯一根目录为 `/home/ubuntu/Alva`；后端 `api/`、前端 `web/`、研究 `Research/`，不再有内层 alva 或现役 apps 包装。Git 历史、数据库和附件随原文件保留；结构规范在 [docs/PROJECT-STRUCTURE.md](docs/PROJECT-STRUCTURE.md)。现役启动、构建、导入和 systemd 路径已适配，alva.service 已重启恢复，MCP/Tunnel 配置未改。
+
+首批 ALVA-008–013 仅定义就绪，尚未实施；原 T03–T15 冻结。统一验证码和新 Codex 建筑生成仍待后续实施指令，不能把目录迁移说成功能上线。正式票据入口 [.scratch/alva-completion/README.md](.scratch/alva-completion/README.md)。
 
 ## 已确认方向与本轮边界
 
-- 持久项目名alva；新仓库 /home/ubuntu/Alva/alva；原完整需求在SPEC和references/initial-task，来源在SOURCES。串行，不派子Agent。
-- 用户已授权复用旧Tunnel并停旧站点，旧文件保留、MCP不改。本轮不做部署或生产会话/数据操作。
+- 持久项目名alva；新仓库 /home/ubuntu/Alva；原完整需求在SPEC和references/initial-task，来源在SOURCES。串行，不派子Agent。
+- 用户已授权复用旧Tunnel并停旧站点，旧文件保留、MCP不改。本轮仅做路径迁移所需的服务停启与配置适配，不建立生产业务会话、不改变权限或业务数据。
 - 用户已明确把公共免验证入口改为统一登录验证码：验证码由用户分发，持有人可重复、跨设备登录当前授权项目；不建设短信或个人账号体系。当前线上仍是上一轮公共owner入口，尚未改为验证码登录，不可误称已限制。
 - 用户明确“先发布细化后的Ticket”。验证码在实施ALVA-008时生成并交给用户，本轮没有生成生效凭证或发给第三方。
 - 原T01粒度保留，成为ALVA-008；原T02拆成ALVA-009至013：导入识图、墙线修改、门窗/校准、Codex建筑生成、示例视角。
@@ -14,11 +16,11 @@
 
 ## 当前代码与运行态
 
-产品代码基线仍是e943d26（公共入口）；之前核心提交a6eefa7、发布提交41b3895；上轮文档整理提交737a9be。本轮仅更新目录规范、规则入口及交接文档，未改产品代码。
+业务行为基线仍是 e943d26（公共入口）；本轮更改源文件位置、相对导入、静态构建路径、脚本和服务路径，没有实现新业务功能。
 
-上轮只读核验记录：alva.service/alva-tunnel.service active/enabled，healthz返回alva/ok。本轮只读核对源码、目录及命令，不重新访问生产项目、不读取客户内容、不调用模型或变更会话；不将历史在线验收冒充本轮业务复测。
+本轮验证：npm run check、npm run build:alva 通过，7 项核心测试通过；alva.service/alva-tunnel.service active，本机及公网 /healthz 返回 alva/ok，本机首页 200。未建立生产业务会话、未调用真实模型，不把健康检查称为业务全流程验收。构建仍有现有大 chunk 提示。迁移后首次检查因 shell 仍在已移除的旧目录而失败，切换新根目录后复跑通过。
 
-应用：React/assistant-ui/Three.js与Fastify/Codex App Server，入口apps/alva-web、apps/alva；`npm run check`、`npm run build:alva`、`npm run start:alva`。旧start/build对应复用旧基线，不是新应用入口。
+应用：React/assistant-ui/Three.js与Fastify/Codex App Server，入口web、api；`npm run check`、`npm run build:alva`、`npm run start:alva`。旧start/build对应复用旧基线，不是新应用入口。
 
 持久化为独立单写进程PGlite（PostgreSQL WASM），不是网络PostgreSQL。生产只监听127.0.0.1:4173；运行/私有配置路径、备份及回滚见 [ops/alva/DEPLOYMENT.md](ops/alva/DEPLOYMENT.md)。不得同时启动dev和production写同一数据库。运行密钥/链接/项目数据不复制进票或Git。
 
@@ -47,11 +49,11 @@
 
 | 事实面 | 状态 | 边界 |
 |---|---|---|
-| 代码 | verified-current | 只读核对入口权限与Git；不改产品代码 |
-| 运行态 | pending（本轮不复测生产） | 本轮不访问生产；生产沿用历史证据 |
-| 文档 | changed-and-verified | 目录规范、现役路径、规划路径、命令与交接入口对齐；票据未变 |
-| 规则 | changed-and-verified | 项目 AGENTS 强制读取目录规范；上级规则与实施授权边界不变 |
-| 记忆 | out-of-scope | 不读写生成记忆；仅按项目约定更新GlobalHandoff指针 |
-| 工作区 | changed-and-verified | 本轮只有文档/盘点记录；无分支、库、证据清场 |
+| 代码 | changed-and-verified | 路径迁移，类型/构建及7项核心测试通过 |
+| 运行态 | changed-and-verified | 服务路径适配、恢复运行、首页与本机/公网健康通过；不做业务模型复测 |
+| 文档 | changed-and-verified | 结构图、研究、规则入口、交接和当前链接同步 |
+| 规则 | changed-and-verified | 原根与项目 AGENTS 合并，不将私有凭据写入 Git |
+| 记忆 | out-of-scope | 未读写生成记忆；GlobalHandoff 在根目录同步 |
+| 工作区 | changed-and-verified | Git 历史保留；原同名文档及配置私有备份，旧证据不改 |
 
-pending：首批实施指令、验证码实际生成/上线及新建筑生成链路验收；其余产品范围冻结。原Cloudflare原生Node挑战记录保留为已知限制，不在本轮调整防护配置。没有需要本轮删除的旧证据或工作区；复核现场保留。
+pending：首批票实施授权、统一验证码和新建筑生成验收；其余功能冻结。生产业务回归与生成记忆不在本次范围。现有大 chunk 构建提示未处理。原根文件的迁移前副本位于 .runtime/root-migration-20260919/，保留供复核，不自动删除；MCP 配置及原 Docs 附件不变。

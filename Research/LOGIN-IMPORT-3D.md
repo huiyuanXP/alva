@@ -1,6 +1,6 @@
 # 统一验证码与导入→建筑3D：首批研究结论
 
-2026-09-19；用户已明确本轮只发布细化Ticket，不实施或上线。未生成验证码、未调用生产登录或数据接口、未改服务/权限/代码。正式首批索引：[本地tracker](../../.scratch/alva-completion/README.md)。
+2026-09-19；用户已明确本轮只发布细化Ticket，不实施或上线。未生成验证码、未调用生产登录或数据接口、未改服务/权限/代码。正式首批索引：[本地tracker](../.scratch/alva-completion/README.md)。
 
 ## 1. 本轮结论
 
@@ -14,22 +14,22 @@
 
 | 步骤 | 示例实际实现 | 对alva的意义 |
 |---|---|---|
-| 空间解释 | [model.js](../../references/room-study-handoff/src/model.js)手写单户型坐标，估算11.2×6.8m、层高2.8m | 换图不能沿用这些常数，更不能声称示例本身已做AI自动建模 |
+| 空间解释 | [model.js](../references/room-study-handoff/src/model.js)手写单户型坐标，估算11.2×6.8m、层高2.8m | 换图不能沿用这些常数，更不能声称示例本身已做AI自动建模 |
 | 几何 | 一个单位立方体，按每对象position/size/yaw变换；地面、墙和基础家具分别记录 | 3D是实时几何，不是图片；新生成结果需要明确构件和尺寸 |
 | 开口 | 墙体手动拆段留洞，窗玻璃为透明片 | 新链路应从确认门窗关系得到墙段/洞口，不能让模型独立重猜洞口 |
-| 渲染 | [renderer.js](../../references/room-study-handoff/src/renderer.js)原生WebGL2：先1536²深度阴影，再着色；3×3 PCF、玻璃Alpha Blend | 不必重写当前Three.js引擎即可实现对应画面能力 |
+| 渲染 | [renderer.js](../references/room-study-handoff/src/renderer.js)原生WebGL2：先1536²深度阴影，再着色；3×3 PCF、玻璃Alpha Blend | 不必重写当前Three.js引擎即可实现对应画面能力 |
 | 剖切 | 总览模式过滤墙对象（中心高度>0.9），不是改变存储拓扑 | 学习看清内部的交互目标，不照搬删墙语义或使碰撞跟着失效 |
-| 视角 | [app.js](../../references/room-study-handoff/src/app.js)固定Orbit目标和6个房间视点 | 任意户型应自动取景并按真实房间生成/校验视点 |
+| 视角 | [app.js](../references/room-study-handoff/src/app.js)固定Orbit目标和6个房间视点 | 任意户型应自动取景并按真实房间生成/校验视点 |
 | 光照 | 日期/太阳时/纬度/北向计算太阳方向、色彩和强度 | 延续既有日照；这是视觉预览，不是精确日照结论 |
 
-本轮隔离浏览器复核：50对象、14墙、6房间视点、40碰撞体，几何值有限，控制台错误0。已切换剖切/完整墙体并截图；[证据](../../evidence/20260919T131207987Z-priority-research/result.json)、[完整墙体](../../evidence/20260919T131207987Z-priority-research/reference-walls.png)、[剖切](../../evidence/20260919T131207987Z-priority-research/reference-cutaway.png)。这些是参考原型研究，不是新功能验收。
+本轮隔离浏览器复核：50对象、14墙、6房间视点、40碰撞体，几何值有限，控制台错误0。已切换剖切/完整墙体并截图；[证据](../evidence/20260919T131207987Z-priority-research/result.json)、[完整墙体](../evidence/20260919T131207987Z-priority-research/reference-walls.png)、[剖切](../evidence/20260919T131207987Z-priority-research/reference-cutaway.png)。这些是参考原型研究，不是新功能验收。
 
 原型预设家具与材质使画面丰富；当前首批聚焦建筑，不把固定家具复制进用户户型。U16等后续家具主题保持冻结。
 
 ## 3. alva已有链路与缺口
 
-- [import.ts](../../apps/alva/import.ts)已真实调用[Codex适配器](../../apps/alva/codex.ts)，从图片得到墙/房间/开口JSON，坏几何最多请求一次修正。当前items被置空、尺寸先估算、之后用户校准；已有两布局历史证据，不需重做模型接入基础。
-- [SceneView.tsx](../../apps/alva-web/src/SceneView.tsx)由通用Three.js规则把墙挤出、给开口留洞、画房间地面和家具盒体；相机按范围取景。**现在没有“确认拓扑后再次调用Codex生成建筑场景”的独立步骤。**
+- [import.ts](../api/import.ts)已真实调用[Codex适配器](../api/codex.ts)，从图片得到墙/房间/开口JSON，坏几何最多请求一次修正。当前items被置空、尺寸先估算、之后用户校准；已有两布局历史证据，不需重做模型接入基础。
+- [SceneView.tsx](../web/src/SceneView.tsx)由通用Three.js规则把墙挤出、给开口留洞、画房间地面和家具盒体；相机按范围取景。**现在没有“确认拓扑后再次调用Codex生成建筑场景”的独立步骤。**
 - 现有二维端点拖动和校准只是部分基础：完整墙段/轮廓编辑、门窗专门编辑、可追溯拓扑确认版本、失效状态还需补齐。
 - 当前没有示例的明确剖切开关；默认完整高墙会遮挡内部。建筑生成和视角展示拆成两票，可分别验生成内容与观看体验。
 - 已有Codex调用证据只证明现有识图/工具协议可用；本轮未执行未来的新建筑生成协议，不声称其已成功。
@@ -66,7 +66,7 @@ flowchart LR
 
 ## 5. 验证码入口研究
 
-当前[api.ts](../../apps/alva/api.ts)的public-access会自动交换已配置项目链接，[store.ts](../../apps/alva/store.ts)按链接role建立7天会话。只删除登录按钮或只限制主页不足以阻止现有API/旧链接进入。
+当前[api.ts](../api/api.ts)的public-access会自动交换已配置项目链接，[store.ts](../api/store.ts)按链接role建立7天会话。只删除登录按钮或只限制主页不足以阻止现有API/旧链接进入。
 
 01必须同时处理登录页、服务端验证码核验、会话来源/有效期、旧匿名会话失效及旧链接绕过。现有项目/版本不删；验证码持有人获准进入当前项目，设计师角色不被升级，专业与跨项目权限不新增。错误尝试受限；正确同一码可在新设备重复建立会话。
 

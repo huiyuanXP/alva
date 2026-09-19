@@ -1,4 +1,4 @@
-import {runCodex} from '../apps/alva/codex.js';
+import {runCodex} from '../api/codex.js';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
 const run=`evidence/${new Date().toISOString().replace(/[-:.]/g,'')}-${randomUUID().slice(0,8)}`;await mkdir(run,{recursive:true});

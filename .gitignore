@@ -10,3 +10,10 @@ node_modules/
 **/__pycache__/
 *.tsbuildinfo
 evidence/**/baseline-source.tar
+
+# Existing workspace-local inputs and agent tooling
+.agents/
+Docs/
+lexie.md
+skills-lock.json
+ops/coding-tools-mcp/

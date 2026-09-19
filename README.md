@@ -2,7 +2,7 @@
 
 业主通过 Chat 整理生活需求、校准户型、预览确认修改，再导出设计师可编辑的同版本交付。当前核心链已发布于 https://prod.huiyuanxp.com ，当前公共域名仍可进入共享项目；用户已决定改为统一验证码准入，ALVA-008已发票但未实施，现状见Handoff。完整保留范围仍未完成，不是最终验收状态。
 
-开发必读[文件结构与工程归属](docs/architecture/PROJECT-STRUCTURE.md)，专题索引见[docs](docs/README.md)。
+开发必读[文件结构与工程归属](docs/PROJECT-STRUCTURE.md)，专题索引见[docs](docs/README.md)。
 
 恢复入口 [Handoff.md](Handoff.md)，规格 [SPEC.md](SPEC.md)，范围 [SCOPE.md](SCOPE.md)，验证 [ACCEPTANCE.md](ACCEPTANCE.md)。
 
@@ -12,4 +12,4 @@
 
 `apps/api`、`apps/web`、`vendor/openplan3d` 是只读来源复用到本仓库的保留基线；旧 `start`、`build` 与旧测试入口保留兼容，新产品使用带 `alva` 的命令。
 
-首批6张细票见[本地tracker](.scratch/alva-completion/README.md)，研究见[登录与建筑3D](docs/research/LOGIN-IMPORT-3D.md)。用户明确本轮只发票；其余[草案](TICKET-PROPOSAL.md)冻结。
+首批6张细票见[本地tracker](.scratch/alva-completion/README.md)，研究见[登录与建筑3D](Research/LOGIN-IMPORT-3D.md)。用户明确本轮只发票；其余[草案](TICKET-PROPOSAL.md)冻结。
