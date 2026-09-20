@@ -40,7 +40,8 @@
 
 ## Final implementation handoff
 
-- Delivery location: `/home/ubuntu/Alva` main（按用户后续指示改为主目录直接协作）。
+- Development location: `/home/ubuntu/Alva-worktrees/ALVA-008-codex`（独立 Worktree，分支 `task/ALVA-008-codex`）。
+- Integration location: `/home/ubuntu/Alva` `main`；由集成人合入并提交最终集成记录。
 - Implementation: `api/store.ts` 的授权代次与限时会话、`api/api.ts` 的统一门禁/退出/错误限流、`api/server.ts` 的私有随机码初始化、`web/src/main.tsx` 的验证码登录页、旧邀请的验证码绑定、内部导出会话及轮换脚本/运维步骤。
 - Verification: `npm run check`；`npm test` with `RENOVATION_MEDIA_FIXTURES=/home/ubuntu/Alva/.runtime/fixtures`（64/64）；`npm run build:alva`；`node_modules/.bin/tsx scripts/alva-auth-check.ts`（双浏览器）；`git diff --check`，均通过。
 - Security boundary: 验证码只写入 `.runtime/alva-access-code` 等私有运行目录；不会进入 Git、URL、前端包、票据、截图或日志。旧 `/api/public-access` 返回 404，未登录业务接口返回 401。
