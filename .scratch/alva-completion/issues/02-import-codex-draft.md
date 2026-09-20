@@ -8,7 +8,7 @@
 
 **Blocked by:** 01：统一登录验证码与多设备访问
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
 
@@ -25,3 +25,13 @@
 **Snapshot scope:** 确认操作只更新当前工作状态；只有用户手动点击全局保存才建立存档快照。点击已有快照只读预览，明确恢复才整体替换；不要求逐操作历史、撤销或自动存档。
 
 **Parallel lane:** `import`；同组默认串行，不同组满足依赖且文件归属不重叠时可并行。共享入口/schema/存储改动需先登记并协调，详见[认领与集成规则](../../../NextTask.md)。
+
+## Implementation handoff
+
+- Owner: Codex
+- Branch: `task/ALVA-009-codex`
+- Worktree: `/home/ubuntu/Alva-worktrees/ALVA-009-codex`
+- Shared files registered: `api/api.ts`, `api/import.ts`, `api/store.ts`, `web/src/main.tsx`
+- Verification port: `4182`
+- Scope: PNG/JPEG/PDF upload provenance, PDF page-1 disclosure, real Codex layout recognition, original/candidate comparison, failure/cancel/replay protection, dual-layout browser acceptance.
+- Started from main HEAD `6292b96`; implementation and evidence remain in this worktree.
