@@ -30,7 +30,7 @@
 
 ## Implementation handoff
 
-- Owner: Codex
+- Owner: lzy
 - Branch: `task/ALVA-008-codex`
 - Worktree: `/home/ubuntu/Alva-worktrees/ALVA-008-codex`
 - Shared files registered: `api/api.ts`, `api/server.ts`, `api/store.ts`, `web/src/main.tsx`

@@ -10,7 +10,7 @@
 
 **Status:** in-progress
 
-**Execution:** 已认领，正在独立 Worktree `/home/ubuntu/Alva-worktrees/ALVA-010-codex`（分支 `task/ALVA-010-codex`）实施；验证端口 `4183`。
+**Execution:** 已由 lzy 认领，正在独立 Worktree `/home/ubuntu/Alva-worktrees/ALVA-010-codex`（分支 `task/ALVA-010-codex`）实施；验证端口 `4183`。
 
 - [ ] 选择、拖动和数值修改墙端点；补画、分段或移除误识别墙线时能看到候选变化；房间轮廓可修正。
 - [ ] 共用连接点保持连接；实体ID尽量保留，分段/替换记录来源；影响已有门窗时显示迁移或待核对，不静默丢失引用。

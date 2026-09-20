@@ -28,7 +28,7 @@
 
 ## Implementation handoff
 
-- Owner: Codex
+- Owner: lzy
 - Branch: `task/ALVA-009-codex`
 - Worktree: `/home/ubuntu/Alva-worktrees/ALVA-009-codex`
 - Shared files registered: `api/api.ts`, `api/import.ts`, `api/store.ts`, `web/src/main.tsx`
