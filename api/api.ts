@@ -29,12 +29,13 @@ export async function imageData(mime:string,base64:string):Promise<{mime:string;
  }
  return reject('仅支持内容有效的PNG、JPEG或PDF');
 }
-export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',publicAccessToken=process.env.ALVA_PUBLIC_ACCESS_TOKEN}={}){
+export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180'}={}){
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
  await app.register(cookie);await app.register(rateLimit,{max:180,timeWindow:'1 minute'});
  const sessions=new WeakMap<object,Session>();
  const session=(req:object)=>{const s=sessions.get(req);if(!s)throw new DomainError(401,'请通过项目链接进入');return s};
  const active=new Map<string,AbortController>();
+ const failedAccess=new Map<string,{count:number;resetAt:number}>();
  app.setErrorHandler((err,req,reply)=>{if(!(err instanceof DomainError)&&!(err instanceof z.ZodError)){const detail=String(err instanceof Error?err.stack:err).replaceAll(process.env.OPENAI_API_KEY||'__absent_key__','[REDACTED]');console.error('[alva request error]',req.url.split('?')[0],detail)}const code=err instanceof DomainError?err.statusCode:err instanceof z.ZodError?400:500;reply.code(code).send({error:code===500?'处理失败，草稿已保留，请重试':err instanceof Error?err.message:'请求无效'})});
  app.addHook('onRequest',async(req,reply)=>{
   reply.header('X-Content-Type-Options','nosniff').header('Referrer-Policy','no-referrer');
@@ -48,14 +49,13 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  });
  registerTodo(app);
  app.get('/healthz',async()=>({ok:true,application:'alva'}));
- app.post('/api/access',async(req,reply)=>{const {token}=z.object({token:z.string().min(32).max(100)}).parse(req.body);const s=await store.exchange(token);reply.setCookie('alva_session',s.token,{httpOnly:true,sameSite:'strict',secure:origin.startsWith('https:'),path:'/',maxAge:604800});return {projectId:s.projectId,role:s.role}});
- app.post('/api/public-access',async(req,reply)=>{
-  if(req.cookies.alva_session){try{return await store.session(req.cookies.alva_session)}catch(e){if(!(e instanceof DomainError)||e.statusCode!==401)throw e}}
-  if(!publicAccessToken)throw new DomainError(404,'当前站点未开启公共项目入口');
-  const s=await store.exchange(publicAccessToken);
-  reply.setCookie('alva_session',s.token,{httpOnly:true,sameSite:'strict',secure:origin.startsWith('https:'),path:'/',maxAge:604800});
-  return {projectId:s.projectId,role:s.role};
+ app.post('/api/access',async(req,reply)=>{
+  const b=z.object({code:z.string().trim().min(16).max(200),inviteToken:z.string().min(32).max(200).optional()}).parse(req.body),key=req.ip,now=Date.now(),prior=failedAccess.get(key);
+  if(prior&&prior.resetAt>now&&prior.count>=8)throw new DomainError(429,'尝试次数过多，请稍后再试');
+  try{const s=await store.exchangeAccessCode(b.code,b.inviteToken);failedAccess.delete(key);reply.setCookie('alva_session',s.token,{httpOnly:true,sameSite:'strict',secure:origin.startsWith('https:'),path:'/',maxAge:store.sessionMaxAgeSeconds()});return {projectId:s.projectId,role:s.role}}
+  catch(error){if(error instanceof DomainError&&error.statusCode===401){const current=failedAccess.get(key);failedAccess.set(key,{count:(current&&current.resetAt>now?current.count:0)+1,resetAt:current&&current.resetAt>now?current.resetAt:now+600_000})}throw error}
  });
+ app.post('/api/logout',async(req,reply)=>{const token=req.cookies.alva_session;const s=session(req);await store.logout(token||'');reply.clearCookie('alva_session',{path:'/',httpOnly:true,sameSite:'strict',secure:origin.startsWith('https:')});return {loggedOut:true,projectId:s.projectId}});
  app.get('/api/session',async req=>session(req));
  app.get('/api/projects/:id',async req=>store.get(session(req).projectId));
  app.get('/api/project',async req=>store.get(session(req).projectId));

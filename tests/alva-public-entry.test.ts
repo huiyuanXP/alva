@@ -3,25 +3,24 @@ import assert from 'node:assert/strict';
 import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
 
-test('public entry supports independent devices, repeated visits and expired sessions without overriding designer access',async()=>{
- const store=new AlvaStore();await store.init();const project=await store.create('Shared');
- const app=await buildAlva(store,{assets:false,publicAccessToken:project.token});
+test('统一验证码支持多设备、刷新、退出、过期和轮换，不再提供公共入口',async()=>{
+ const previousCode=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE='test-unified-code-123456';
+ const store=new AlvaStore();await store.init();const project=await store.create('Shared');await store.ensureAccessCode(project.project.id);const app=await buildAlva(store,{assets:false});
  try{
-  const enter=()=>app.inject({method:'POST',url:'/api/public-access',payload:{}});
-  const a=await enter(),b=await enter();assert.equal(a.statusCode,200);assert.equal(b.statusCode,200);
-  assert.equal(a.json().projectId,project.project.id);assert.equal(b.json().projectId,project.project.id);assert.notEqual(a.cookies[0].value,b.cookies[0].value);
-  const cookie=`alva_session=${a.cookies[0].value}`;
-  assert.equal((await app.inject({url:'/api/project',headers:{cookie}})).json().id,project.project.id);
-  assert.equal((await app.inject({method:'POST',url:'/api/public-access',headers:{cookie},payload:{}})).json().projectId,project.project.id);
-  await store.db.exec("UPDATE alva_sessions SET expires_at=now()-interval '1 day'");
-  const refreshed=await app.inject({method:'POST',url:'/api/public-access',headers:{cookie},payload:{}});assert.equal(refreshed.statusCode,200);assert.notEqual(refreshed.cookies[0].value,a.cookies[0].value);
-  const invite=await store.invite(project.project.id,'designer');const auth=await app.inject({method:'POST',url:'/api/access',payload:{token:invite.token}});
-  const designer=await app.inject({method:'POST',url:'/api/public-access',headers:{cookie:`alva_session=${auth.cookies[0].value}`},payload:{}});assert.equal(designer.json().role,'designer');
-  await store.revoke(project.project.id,project.linkId);assert.equal((await enter()).statusCode,401);
- }finally{await app.close();await store.close()}
+  const a=await app.inject({method:'POST',url:'/api/access',payload:{code:'test-unified-code-123456'}}),b=await app.inject({method:'POST',url:'/api/access',payload:{code:'test-unified-code-123456'}});
+  assert.equal(a.statusCode,200);assert.equal(b.statusCode,200);assert.notEqual(a.cookies[0].value,b.cookies[0].value);
+  const cookie=`alva_session=${a.cookies[0].value}`,cookieB=`alva_session=${b.cookies[0].value}`;
+  assert.equal((await app.inject({url:'/api/project',headers:{cookie}})).json().id,project.project.id);assert.equal((await app.inject({url:'/api/project',headers:{cookie:cookieB}})).statusCode,200);
+  assert.equal((await app.inject({method:'POST',url:'/api/logout',headers:{cookie},payload:{}})).statusCode,200);assert.equal((await app.inject({url:'/api/project',headers:{cookie}})).statusCode,401);
+  await store.db.exec("UPDATE alva_sessions SET expires_at=now()-interval '1 day'");assert.equal((await app.inject({url:'/api/project',headers:{cookie:cookieB}})).statusCode,401);
+  const fresh=await app.inject({method:'POST',url:'/api/access',payload:{code:'test-unified-code-123456'}});assert.equal(fresh.statusCode,200);const freshCookie=`alva_session=${fresh.cookies[0].value}`;
+  const rotated=await store.rotateAccessCode('rotated-unified-code-123456');assert.equal(rotated,'rotated-unified-code-123456');assert.equal((await app.inject({url:'/api/project',headers:{cookie:freshCookie}})).statusCode,401);assert.equal((await app.inject({method:'POST',url:'/api/access',payload:{code:'test-unified-code-123456'}})).statusCode,401);assert.equal((await app.inject({method:'POST',url:'/api/access',payload:{code:rotated}})).statusCode,200);
+  assert.equal((await app.inject({method:'POST',url:'/api/public-access',payload:{}})).statusCode,404);
+ }finally{await app.close();await store.close();if(previousCode===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=previousCode}
 });
 
-test('public entry stays disabled unless explicitly configured',async()=>{
- const store=new AlvaStore();await store.init();const app=await buildAlva(store,{assets:false,publicAccessToken:''});
- try{assert.equal((await app.inject({method:'POST',url:'/api/public-access',payload:{}})).statusCode,404);assert.equal((await app.inject({url:'/api/project'})).statusCode,401)}finally{await app.close();await store.close()}
+test('旧邀请需要统一验证码且保持设计师只读身份',async()=>{
+ const previousCode=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE='test-unified-code-123456';
+ const store=new AlvaStore();await store.init();const project=await store.create('Designer');await store.ensureAccessCode(project.project.id);const invite=await store.invite(project.project.id,'designer');const app=await buildAlva(store,{assets:false});
+ try{assert.equal((await app.inject({method:'POST',url:'/api/access',payload:{inviteToken:invite.token}})).statusCode,400);assert.equal((await app.inject({method:'POST',url:'/api/access',payload:{code:'test-unified-code-123456',inviteToken:invite.token}})).json().role,'designer');await store.revoke(project.project.id,invite.linkId);assert.equal((await app.inject({method:'POST',url:'/api/access',payload:{code:'test-unified-code-123456',inviteToken:invite.token}})).statusCode,401)}finally{await app.close();await store.close();if(previousCode===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=previousCode}
 });

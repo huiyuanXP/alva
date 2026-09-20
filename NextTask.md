@@ -8,7 +8,6 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-008](.scratch/alva-completion/issues/01-shared-login-code.md) | 统一登录验证码与多设备访问 | `access` | Codex | `/home/ubuntu/Alva-worktrees/ALVA-008-codex` / `task/ALVA-008-codex` | `api/api.ts`, `api/server.ts`, `api/store.ts`, `web/src/main.tsx`；验证端口 `4181`；in-progress |
 | [ALVA-014](.scratch/alva-completion/issues/07-questionnaire-scope.md) | 问卷范围精简与逐题回答 | `questions` |  |  | 待认领；开工前登记 |
 | [ALVA-017](.scratch/alva-completion/issues/10-multimodal-chat.md) | 文字与图片真实流式咨询 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
