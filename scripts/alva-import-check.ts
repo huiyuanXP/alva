@@ -1,0 +1,16 @@
+import {createHash,randomUUID} from 'node:crypto';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {createCanvas} from '@napi-rs/canvas';
+import {recognizeLayout} from '../api/import.js';
+
+const runId=`${new Date().toISOString().replace(/[-:.]/g,'')}-${randomUUID().slice(0,8)}`;
+const evidenceDir=resolve('evidence',runId);await mkdir(evidenceDir,{recursive:true});
+const syntheticDir=resolve('.runtime','alva009-fixtures');await mkdir(syntheticDir,{recursive:true});
+const syntheticPath=resolve(syntheticDir,'layout-b-synthetic.png');
+const canvas=createCanvas(1200,800),ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,800);ctx.strokeStyle='#111';ctx.lineWidth=12;
+ctx.strokeRect(70,70,1060,660);ctx.beginPath();ctx.moveTo(500,70);ctx.lineTo(500,450);ctx.moveTo(500,450);ctx.lineTo(70,450);ctx.moveTo(800,450);ctx.lineTo(800,730);ctx.stroke();ctx.strokeStyle='#477';ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(500,70);ctx.lineTo(500,180);ctx.moveTo(1130,300);ctx.lineTo(1130,420);ctx.moveTo(70,520);ctx.lineTo(70,650);ctx.stroke();ctx.fillStyle='#333';ctx.font='32px sans-serif';ctx.fillText('LIVING',170,260);ctx.fillText('BEDROOM',650,260);ctx.fillText('KITCHEN',180,610);ctx.fillText('STUDY',870,610);await writeFile(syntheticPath,canvas.toBuffer('image/png'));
+const cases=[{name:'real-floorplan',kind:'真实附件',path:resolve('references/room-study-handoff/public/floorplan.png')},{name:'synthetic-layout-b',kind:'合成对照',path:syntheticPath}];
+const reports=[] as any[];
+for(const item of cases){const bytes=await readFile(item.path),events:string[]=[];const startedAt=new Date().toISOString();try{const scene=await recognizeLayout(`data:image/png;base64,${bytes.toString('base64')}`,undefined,undefined);reports.push({name:item.name,kind:item.kind,path:item.path,sha256:createHash('sha256').update(bytes).digest('hex'),startedAt,finishedAt:new Date().toISOString(),events,scene:{wallIds:scene.walls.map(w=>w.id),roomIds:scene.rooms.map(r=>r.id),openingIds:scene.openings.map(o=>o.id),wallCount:scene.walls.length,roomCount:scene.rooms.length,openingCount:scene.openings.length,calibration:scene.calibration,roomNames:scene.rooms.map(r=>r.name)}})}catch(error){reports.push({name:item.name,kind:item.kind,path:item.path,sha256:createHash('sha256').update(bytes).digest('hex'),startedAt,finishedAt:new Date().toISOString(),events,error:String(error)})}}
+const successful=reports.filter(r=>r.scene),distinct=successful.length===2&&JSON.stringify(successful[0].scene)!==JSON.stringify(successful[1].scene);const result={ticket:'ALVA-009',runId,provider:'Codex via api/import.ts',sources:cases.map(c=>({name:c.name,kind:c.kind,path:c.path})),reports,assertions:{two_layouts_completed:successful.length===2,each_has_walls_rooms_openings:successful.every(r=>r.scene.wallCount>0&&r.scene.roomCount>0&&r.scene.openingCount>0),candidates_are_distinct:distinct,uncalibrated:successful.every(r=>r.scene.calibration===null)}};await writeFile(resolve(evidenceDir,'result.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({runId,evidence:evidenceDir,assertions:result.assertions}));if(!Object.values(result.assertions).every(Boolean))process.exitCode=1;

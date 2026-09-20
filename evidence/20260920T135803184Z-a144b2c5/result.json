@@ -1,0 +1,130 @@
+{
+  "ticket": "ALVA-009",
+  "runId": "20260920T135803184Z-a144b2c5",
+  "provider": "Codex via api/import.ts",
+  "sources": [
+    {
+      "name": "real-floorplan",
+      "kind": "真实附件",
+      "path": "/home/ubuntu/Alva-worktrees/ALVA-009-codex/references/room-study-handoff/public/floorplan.png"
+    },
+    {
+      "name": "synthetic-layout-b",
+      "kind": "合成对照",
+      "path": "/home/ubuntu/Alva-worktrees/ALVA-009-codex/.runtime/alva009-fixtures/layout-b-synthetic.png"
+    }
+  ],
+  "reports": [
+    {
+      "name": "real-floorplan",
+      "kind": "真实附件",
+      "path": "/home/ubuntu/Alva-worktrees/ALVA-009-codex/references/room-study-handoff/public/floorplan.png",
+      "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+      "startedAt": "2026-09-20T13:58:03.319Z",
+      "finishedAt": "2026-09-20T14:00:07.929Z",
+      "events": [],
+      "scene": {
+        "wallIds": [
+          "b6b8d10a-b17b-440c-9e8e-e26ef6fecb41",
+          "4c7bf089-ed03-45c0-b2a8-6c5dc0c990ca",
+          "37681d0e-2df5-4fba-8288-315eda1db8e9",
+          "a5867310-ff41-4dd8-899c-a949618d7fde",
+          "eafa1748-5fb6-4b97-bb80-9216598788dd",
+          "baf112ec-1a5c-42e6-9a27-11f522eced4a",
+          "4e823411-f159-4e87-8991-f960eb3c2c2a",
+          "cd82b138-2c55-4e0b-a9b4-ef90285f00f1",
+          "2e1d9dee-0953-476c-82c8-bd8135355243",
+          "a46d385b-cfe2-4768-bd66-1e031540d83c",
+          "29fedc51-70e1-46cf-9e41-fa8647927a37",
+          "51db0fb5-19d0-49e9-ab8c-df7682820ef0",
+          "152ff0a6-4a01-49b0-b081-9a436496ed55",
+          "0f10654b-9216-48d4-9fd3-3e583c3fb2e2"
+        ],
+        "roomIds": [
+          "0807bfa0-2f4e-41dd-acd0-48144a4a7242",
+          "42eacad3-62c0-4c5b-a17b-0bba9b649adc",
+          "21e0a89b-9dfc-431f-b3c6-752c7146f08a",
+          "f402f946-b62e-4590-80d2-09abdd782c5c",
+          "26513470-c615-408d-b0d7-9c1a4a69d5b6",
+          "79ea1acf-ec94-4470-91d7-9a81f67dd3ee",
+          "1b254f21-4779-40d9-9e06-4651274b9995",
+          "f0b55d6e-bde7-4c33-99d6-bfed98377c1c"
+        ],
+        "openingIds": [
+          "f7b9e866-7f06-47e0-9587-c4cc0bcef5fd",
+          "c2b76eb1-25b0-45ae-8e00-455f1c31e351",
+          "8c4017a6-9cdb-4681-baac-9fef9be60daf",
+          "5951df9f-ca4d-4a66-9c26-a9174e94516c",
+          "e3e50d3f-427c-44d9-a818-c847090cca1f",
+          "faa6c528-a1c4-4a23-b153-66ddfec9c9c8",
+          "fd70330b-075b-4b8e-a00f-1db28c3d3806",
+          "54519dab-0a67-43e4-86d1-98f28e8e78af",
+          "dc66d262-7b83-4045-9502-2ce2b779b71b",
+          "a898f09e-ad82-4821-a6cd-44dab9b3894d",
+          "e2cf1197-1653-4e6e-b76a-26da25f5c356"
+        ],
+        "wallCount": 14,
+        "roomCount": 8,
+        "openingCount": 11,
+        "calibration": null,
+        "roomNames": [
+          "卧室候选1",
+          "卧室候选2",
+          "北侧房间候选",
+          "入户过道候选",
+          "厨房候选",
+          "客餐厅候选",
+          "卫生间候选",
+          "右下空间候选"
+        ]
+      }
+    },
+    {
+      "name": "synthetic-layout-b",
+      "kind": "合成对照",
+      "path": "/home/ubuntu/Alva-worktrees/ALVA-009-codex/.runtime/alva009-fixtures/layout-b-synthetic.png",
+      "sha256": "3d65f4b8f44b8de29b6d6b0f8b2e2ada1c93992ee1b96d62be8f8679828df94a",
+      "startedAt": "2026-09-20T14:00:07.930Z",
+      "finishedAt": "2026-09-20T14:00:40.733Z",
+      "events": [],
+      "scene": {
+        "wallIds": [
+          "ed98d2bc-9a01-4a4c-aa8a-ea65da07231a",
+          "80110a88-1178-42fd-aa31-31c8cf9eb58c",
+          "6f17b861-7ec1-46ff-8bcc-48f4a448cc81",
+          "87d9a669-4f7f-4f99-8b0f-b3329575c491",
+          "ca1ef211-f59d-4b05-82b8-71b01e344fa2",
+          "a5cd8033-888f-475e-bcfa-68c4fc60e5b6",
+          "c833f8ee-0fe2-442f-80dc-18429a3549f5"
+        ],
+        "roomIds": [
+          "17b13e57-78da-47a4-9665-a22d6ba735a7",
+          "f63d23ab-2eca-485b-936c-8b7abd3e60b0",
+          "1c17e0f1-c62e-4dfd-ad0e-1631a8b4a640",
+          "93ccfc7d-6ab1-4ded-9a11-af59b9b944e3"
+        ],
+        "openingIds": [
+          "e934eaeb-5e5d-4c64-a97b-57b41d49f30f",
+          "5ea4351f-35f2-4260-a92e-f1b0497b2621",
+          "0f9a4f14-6a51-4bca-8bc5-11df86e5386c"
+        ],
+        "wallCount": 7,
+        "roomCount": 4,
+        "openingCount": 3,
+        "calibration": null,
+        "roomNames": [
+          "LIVING",
+          "KITCHEN",
+          "BEDROOM",
+          "STUDY"
+        ]
+      }
+    }
+  ],
+  "assertions": {
+    "two_layouts_completed": true,
+    "each_has_walls_rooms_openings": true,
+    "candidates_are_distinct": true,
+    "uncalibrated": true
+  }
+}

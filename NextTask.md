@@ -1,6 +1,6 @@
 # What's next · 任务认领与并行开发
 
-当前44张正式票均未完成。本次ALVA-052只接入只读任务看板，没有认领或实施这些产品票。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
+当前已集成 ALVA-009，其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
 
 ## 当前集成偏好
 
@@ -12,7 +12,7 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-009](.scratch/alva-completion/issues/02-import-codex-draft.md) | 导入户型图并由Codex生成二维初稿 | `import` | Codex | `/home/ubuntu/Alva-worktrees/ALVA-009-codex` / `task/ALVA-009-codex` | `api/api.ts`, `api/import.ts`, `api/store.ts`, `web/src/main.tsx`；验证端口 `4182`；in-progress |
+| [ALVA-010](.scratch/alva-completion/issues/03-edit-wall-topology.md) | 编辑墙线拓扑 | `topology` |  |  | 待认领；开工前登记 |
 | [ALVA-014](.scratch/alva-completion/issues/07-questionnaire-scope.md) | 问卷范围精简与逐题回答 | `questions` |  |  | 待认领；开工前登记 |
 | [ALVA-017](.scratch/alva-completion/issues/10-multimodal-chat.md) | 文字与图片真实流式咨询 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |

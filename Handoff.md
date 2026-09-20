@@ -79,3 +79,11 @@ https://prod.huiyuanxp.com/todo 已实测44票/150条验收/5可认领/39等待�
 个人实现提交d902557及修正9fae8e6；main按ALVA-052一次实现集成提交。3项看板测试、4项原基础/入口回归、类型检查、构建和真实浏览器检查通过；已有大chunk构建提示未处理。只读源无需重复上传，版本随源内容变化。回滚文件在`.runtime/alva-todo-rollback/20260919T170000Z/api.ts`，操作见TODO-LIST。
 
 neat-freak：代码/运行态/文档changed-and-verified；规则verified-current；生成记忆out-of-scope；工作区changed-and-verified，本票个人Worktree/分支保留供复核，不影响main权威源。产品44票实施仍pending，没有因此完成或解锁产品票。
+
+## ALVA-009 导入户型图与二维初稿
+
+ALVA-009 已在独立 Worktree `task/ALVA-009-codex` 完成，并在完整验证通过后合入 `main`。实现覆盖 PNG/JPEG/PDF 来源保留、PDF 页码说明、处理状态、真实 Codex 多模态识别、稳定候选 ID、原图与二维初稿对照、未校准提示、重复请求幂等，以及失败/取消时保留上一个已确认场景。
+
+验证记录：`npm run check`、`npm run build:alva`、ALVA-009 定向测试 3/3、两个不同布局的真实模型调用、浏览器刷新持久化和退出验证码门禁均通过。完整测试为 66/67；唯一失败是既有 ALVA-031 tracker 预期与当前依赖状态不一致，和本票无关。
+
+证据目录：`evidence/20260920T135517780Z-dad4bde2/`、`evidence/20260920T135803184Z-a144b2c5/`、`evidence/20260920T142711689Z-browser-reload/`。

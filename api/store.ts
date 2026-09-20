@@ -1,7 +1,7 @@
 import {PGlite} from '@electric-sql/pglite';
 import {createHash,randomBytes,randomUUID,timingSafeEqual} from 'node:crypto';
 import {mkdir,readFile,writeFile,chmod} from 'node:fs/promises';
-import {emptyProject,DomainError,type Project} from './model.js';
+import {emptyProject,DomainError,type ImportState,type Project} from './model.js';
 export type Role='owner'|'designer'|'professional';
 export type Session={projectId:string;role:Role;linkId?:string;authGeneration:number};
 const hash=(text:string)=>createHash('sha256').update(text).digest('hex');
@@ -37,6 +37,8 @@ export class AlvaStore{
  async versions(id:string){return (await this.db.query<{version:number;summary:string;created_at:string}>('SELECT version,summary,created_at FROM alva_versions WHERE project_id=$1 ORDER BY version DESC',[id])).rows}
  async snapshot(id:string,version:number):Promise<Project>{const row=(await this.db.query<{state:Project}>('SELECT state FROM alva_versions WHERE project_id=$1 AND version=$2',[id,version])).rows[0];if(!row)throw new DomainError(404,'保存版本不存在');return row.state}
  async failure(id:string,operation:string,reason:string){await this.db.query('INSERT INTO alva_failures(id,project_id,operation,reason) VALUES($1,$2,$3,$4)',[randomUUID(),id,operation,reason.slice(0,300)])}
+ async setImportState(id:string,state:ImportState){await this.db.query(`UPDATE alva_projects SET state=jsonb_set(state,'{importState}',$2::jsonb,true) WHERE id=$1`,[id,JSON.stringify(state)])}
+ async replay(id:string,requestId:string,operation:string,input:unknown):Promise<Project|null>{const row=(await this.db.query<{fingerprint:string;response:Project}>('SELECT fingerprint,response FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];if(!row)return null;const fingerprint=hash(JSON.stringify({operation,input}));if(row.fingerprint!==fingerprint)throw new DomainError(409,'同一请求ID不能用于不同内容');return row.response}
  async mutate(id:string,requestId:string,expectedRevision:number|null,operation:string,input:unknown,fn:(p:Project)=>void|Promise<void>):Promise<Project>{
   const fingerprint=hash(JSON.stringify({operation,input}));
   try{return await this.db.transaction(async tx=>{

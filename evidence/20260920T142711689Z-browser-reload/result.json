@@ -1,0 +1,16 @@
+{
+  "ticket": "ALVA-009",
+  "evidence": "/home/ubuntu/Alva-worktrees/ALVA-009-codex/evidence/20260920T142711689Z-browser-reload",
+  "assertions": {
+    "persisted_candidate": true,
+    "source_and_status_visible": true,
+    "reload_preserved": true,
+    "logout_gate": true,
+    "no_unexpected_browser_errors": false
+  },
+  "candidate": {
+    "walls": 15,
+    "rooms": 6,
+    "openings": 11
+  }
+}

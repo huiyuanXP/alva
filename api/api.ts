@@ -7,7 +7,7 @@ import {randomUUID} from 'node:crypto';
 import {resolve} from 'node:path';
 import {existsSync} from 'node:fs';
 import {AlvaStore,type Session} from './store.js';
-import {DomainError,validateScene,calibrate,reject,type Project} from './model.js';
+import {DomainError,validateScene,calibrate,reject,type ImportState,type Project,type SourceImage} from './model.js';
 import {registerTodo} from './todo/routes.js';
 import {registerExports} from './export.js';
 import {registerConsultation} from './chat.js';
@@ -15,17 +15,17 @@ import {review} from './business.js';
 import {recognizeLayout} from './import.js';
 import {createCanvas,DOMMatrix,ImageData,Path2D} from '@napi-rs/canvas';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
-export async function imageData(mime:string,base64:string):Promise<{mime:string;data:string}>{
+export async function imageData(mime:string,base64:string,filename='户型图'):Promise<SourceImage>{
  if(base64.length>16_000_000||!base64.length)reject('文件最大12MB');
  const data=Buffer.from(base64,'base64');
- if(mime==='image/png'&&data.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))return {mime,data:base64};
- if(mime==='image/jpeg'&&data[0]===255&&data[1]===216&&data[2]===255)return {mime,data:base64};
+ if(mime==='image/png'&&data.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))return {mime,data:base64,originalMime:mime,filename};
+ if(mime==='image/jpeg'&&data[0]===255&&data[1]===216&&data[2]===255)return {mime,data:base64,originalMime:mime,filename};
  if(mime==='application/pdf'&&data.subarray(0,5).toString()==='%PDF-'){
   // Single-floor import uses page one and shows that choice to the owner.
   Object.assign(globalThis,{DOMMatrix,ImageData,Path2D});
   const {getDocument}=await import('pdfjs-dist/legacy/build/pdf.mjs');
   const task=getDocument({data:new Uint8Array(data),useSystemFonts:true});const doc=await task.promise;
-  try{const page=await doc.getPage(1),initial=page.getViewport({scale:1}),view=page.getViewport({scale:Math.min(2,1800/Math.max(initial.width,initial.height))});const canvas=createCanvas(Math.ceil(view.width),Math.ceil(view.height));await page.render({canvasContext:canvas.getContext('2d') as never,viewport:view,canvas:canvas as never}).promise;return {mime:'image/png',data:canvas.toBuffer('image/png').toString('base64')}}finally{await task.destroy()}
+  try{const page=await doc.getPage(1),initial=page.getViewport({scale:1}),view=page.getViewport({scale:Math.min(2,1800/Math.max(initial.width,initial.height))});const canvas=createCanvas(Math.ceil(view.width),Math.ceil(view.height));await page.render({canvasContext:canvas.getContext('2d') as never,viewport:view,canvas:canvas as never}).promise;return {mime:'image/png',data:canvas.toBuffer('image/png').toString('base64'),originalMime:mime,originalData:base64,filename,page:1,pages:doc.numPages}}finally{await task.destroy()}
  }
  return reject('仅支持内容有效的PNG、JPEG或PDF');
 }
@@ -73,20 +73,28 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  app.post('/api/restore',async req=>{const b=Command.extend({version:z.number().int().positive(),confirmed:z.literal(true)}).parse(req.body);const snap=await store.snapshot(session(req).projectId,b.version);return mutate(req,b,'restore',p=>{const revision=p.revision,savedVersion=p.savedVersion;Object.assign(p,structuredClone(snap),{revision,savedVersion,dirty:true});p.changes.push({id:randomUUID(),description:`回退到保存版本${b.version}（工作稿）`,evidenceIds:[],context:[],createdAt:new Date().toISOString()})})});
  app.post('/api/import',async(req,reply)=>{
   const s=session(req);if(s.role!=='owner')reject('仅业主可导入',403);
-  const b=Command.extend({mime:z.string(),data:z.string()}).parse(req.body);
+  const b=Command.extend({mime:z.string(),data:z.string(),filename:z.string().trim().min(1).max(255).optional()}).parse(req.body);
   if(active.has(s.projectId))reject('当前项目仍在处理，请取消或等待',409);
-  const current=await store.get(s.projectId);if(current.revision!==b.expectedRevision)reject('项目已更新，请重新导入',409);
-  const image=await imageData(b.mime,b.data);const controller=new AbortController();active.set(s.projectId,controller);
+  const filename=b.filename||'户型图',input={mime:b.mime,data:b.data,filename};
+  const replay=await store.replay(s.projectId,b.requestId,'import',input);
+  if(!replay){const current=await store.get(s.projectId);if(current.revision!==b.expectedRevision)reject('项目已更新，请重新导入',409)}
+  const controller=new AbortController();active.set(s.projectId,controller);
   reply.hijack();reply.raw.writeHead(200,{'Content-Type':'text/event-stream','Cache-Control':'no-cache','X-Accel-Buffering':'no','Connection':'keep-alive'});
   const emit=(type:string,data:unknown)=>{if(!reply.raw.destroyed)reply.raw.write(`event: ${type}\ndata: ${JSON.stringify(data)}\n\n`)};
   const heartbeat=setInterval(()=>emit('status',{text:'正在识别墙、门窗和房间…'}),12000);
   const disconnect=()=>{if(!reply.raw.writableEnded)controller.abort()};reply.raw.on('close',disconnect);
+ const startedAt=new Date().toISOString();
   try{
+   if(replay){emit('status',{text:'正在返回已完成的导入结果…'});emit('project',replay);emit('done',{ok:true,replayed:true});return}
    emit('status',{text:b.mime==='application/pdf'?'正在读取PDF第1页…':'正在读取户型图…'});
+   await store.setImportState(s.projectId,{status:'processing',message:b.mime==='application/pdf'?'正在读取PDF第1页并交给Codex识别…':'正在读取户型图并交给Codex识别…',requestId:b.requestId,sourceMime:b.mime,filename,startedAt});
+   const image=await imageData(b.mime,b.data,filename);
+   await store.setImportState(s.projectId,{status:'processing',message:image.page?`正在识别PDF第${image.page}页（共${image.pages}页）…`:'正在由Codex识别当前附件…',requestId:b.requestId,sourceMime:b.mime,filename,page:image.page,pages:image.pages,startedAt});
    const candidate=await recognizeLayout(`data:${image.mime};base64,${image.data}`,undefined,controller.signal);
    if(controller.signal.aborted)throw new Error('已取消');
-   const p=await store.mutate(s.projectId,b.requestId,b.expectedRevision,'import',{mime:b.mime,data:b.data},p=>{p.candidate=candidate;p.sourceImage=image;p.evidence.push({id:randomUUID(),quote:'用户上传户型图；待校准候选，尺寸不是实测',source:'image',createdAt:new Date().toISOString()})});emit('project',p);emit('done',{ok:true});
-  }catch(e){await store.failure(s.projectId,'import',controller.signal.aborted?'取消':'识图失败');emit('error',{error:controller.signal.aborted?'已取消导入':e instanceof DomainError?e.message:'识图未成功，原设计保持不变，请重试或更换清晰图片'})}
+   const finishedAt=new Date().toISOString();
+   const p=await store.mutate(s.projectId,b.requestId,b.expectedRevision,'import',input,p=>{p.candidate=candidate;p.sourceImage=image;p.importState={status:'succeeded',message:'Codex已完成识别，二维候选待你核对和校准。',requestId:b.requestId,sourceMime:image.originalMime,filename:image.filename,page:image.page,pages:image.pages,provider:'codex',model:process.env.OPENAI_MODEL||'gpt-5.5',startedAt,finishedAt};p.dirty=true;p.evidence.push({id:randomUUID(),quote:`用户上传${image.originalMime==='application/pdf'?'PDF第1页预览':'户型图'}；Codex实际读取该附件并生成墙、房间、门窗候选，尺寸仍未校准`,source:'image',createdAt:finishedAt})});emit('project',p);emit('done',{ok:true});
+  }catch(e){const cancelled=controller.signal.aborted;const status:ImportState={status:cancelled?'cancelled':'failed',message:cancelled?'导入已取消，原工作稿和已确认场景保持不变':'识图未成功，原工作稿和已确认场景保持不变；请重试或更换清晰附件',requestId:b.requestId,sourceMime:b.mime,filename,startedAt,finishedAt:new Date().toISOString()};try{await store.setImportState(s.projectId,status);await store.failure(s.projectId,'import',cancelled?'取消':'识图失败')}catch{}emit('error',{error:cancelled?'已取消导入':e instanceof DomainError?e.message:'识图未成功，原设计保持不变，请重试或更换清晰图片'})}
   finally{clearInterval(heartbeat);active.delete(s.projectId);reply.raw.end()}
  });
  app.post('/api/cancel',async req=>{active.get(session(req).projectId)?.abort();return {cancelled:true}});
