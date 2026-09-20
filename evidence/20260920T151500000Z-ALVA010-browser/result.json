@@ -1,0 +1,19 @@
+{
+  "run": "20260920T151500000Z-ALVA010-browser",
+  "assertions": {
+    "login": true,
+    "numericWallEndpoint": true,
+    "roomVertexHandlesBeforeDrag": true,
+    "roomDragPersisted": true,
+    "wallAdded": true,
+    "reloadPreserved": true,
+    "logoutGate": true
+  },
+  "persistedEndpoint": "4.5",
+  "expectedConsoleNoise": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    "Failed to load resource: the server responded with a status of 409 (Conflict)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "unexpectedConsoleErrors": []
+}

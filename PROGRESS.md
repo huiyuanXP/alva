@@ -72,3 +72,6 @@ ALVA-007公网复测：首次20260919T123714558Z-55d629ab在服务重启尚未�
 发布前保存原api/api.ts到.runtime/alva-todo-rollback/20260919T170000Z，仅重启alva.service。首次公网run 20260919T165813473Z遇启动窗口502；第二次20260919T165853229Z功能通过但Cloudflare注入脚本受旧CSP阻拦，修正精确域名后重启并等待健康。最终20260919T165930206Z-ALVA-052-todo：44票、150验收、5ready/39blocked/0progress/0done，公网数据版本与本地相同，搜索/筛选/详情深链刷新/文档/窄屏通过，控制台0错误。首页及healthz正常，MCP/Tunnel active且配置不变，不调用模型或业务会话。失败和成功证据均保留。
 
 neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTask并更新GlobalHandoff、CURRENT、目录规范与旧看板入口说明。ALVA-052维护认领移除，五张可认领产品票及空署名不变；无产品任务新解锁。生成记忆out-of-scope，本票分支/Worktree保留复核，不清理他人文件。
+
+
+2026-09-20 ALVA-010 修改墙线与房间轮廓：在独立 Worktree `task/ALVA-010-lzy` 完成并验证后合入 main。新增服务端拓扑命令/定位校验和前端二维编辑，覆盖共享连接、稳定ID、房间顶点、补画/分段/移除、门窗引用保护、校准失效与刷新持久化。类型检查、构建、定向测试3/3及隔离浏览器核心断言通过；证据 `evidence/20260920T151500000Z-ALVA010-browser/`。下一项拓扑票 ALVA-011 已解锁。

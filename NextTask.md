@@ -12,7 +12,7 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-010](.scratch/alva-completion/issues/03-edit-wall-topology.md) | 编辑墙线拓扑 | `topology` | lzy | `/home/ubuntu/Alva-worktrees/ALVA-010-lzy` / `task/ALVA-010-lzy` | `api/api.ts`, `api/model.ts`, `api/store.ts`, `web/src/main.tsx`, `api/topology/commands.ts`, `api/topology/validate.ts`；验证端口 `4183`；in-progress |
+| [ALVA-011](.scratch/alva-completion/issues/04-openings-scale-confirm.md) | 修正门窗、校准尺寸并确认拓扑 | `topology` |  |  | 待认领；开工前登记 |
 | [ALVA-014](.scratch/alva-completion/issues/07-questionnaire-scope.md) | 问卷范围精简与逐题回答 | `questions` |  |  | 待认领；开工前登记 |
 | [ALVA-017](.scratch/alva-completion/issues/10-multimodal-chat.md) | 文字与图片真实流式咨询 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |

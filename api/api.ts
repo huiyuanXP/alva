@@ -8,6 +8,8 @@ import {resolve} from 'node:path';
 import {existsSync} from 'node:fs';
 import {AlvaStore,type Session} from './store.js';
 import {DomainError,validateScene,calibrate,reject,type ImportState,type Project,type SourceImage} from './model.js';
+import {applyTopologyCommand} from './topology/commands.js';
+import {validateTopology} from './topology/validate.js';
 import {registerTodo} from './todo/routes.js';
 import {registerExports} from './export.js';
 import {registerConsultation} from './chat.js';
@@ -65,7 +67,8 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  app.post('/api/invites/:id/revoke',async req=>{const s=session(req);if(s.role!=='owner')reject('仅业主可撤销链接',403);await store.revoke(s.projectId,(req.params as {id:string}).id);return {revoked:true}});
  app.post('/api/projects',async req=>{if(session(req).role!=='owner')reject('仅业主可新建',403);const {name}=z.object({name:z.string().min(1).max(100)}).parse(req.body);return store.create(name)});
  const mutate=async(req:object,body:unknown,operation:string,fn:(p:Project)=>void|Promise<void>)=>{const s=session(req);if(s.role!=='owner')reject('仅业主可修改设计',403);const b=Command.parse(body);return store.mutate(s.projectId,b.requestId,b.expectedRevision,operation,body,fn)};
- app.post('/api/candidate/correct',async req=>{const b=Command.extend({scene:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-correct',p=>{const candidate=validateScene(b.scene);candidate.calibration=null;for(const w of candidate.walls){w.structural='unknown';w.evidence=[]}p.candidate=candidate})});
+ app.post('/api/candidate/correct',async req=>{const b=Command.extend({scene:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-correct',p=>{const candidate=validateTopology(b.scene);candidate.calibration=null;for(const w of candidate.walls){w.structural='unknown';w.evidence=[]}p.candidate=candidate})});
+ app.post('/api/candidate/topology',async req=>{const b=Command.extend({operation:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-topology',p=>{if(!p.candidate)reject('请先导入户型');const result=applyTopologyCommand(p.candidate!,b.operation);result.scene.calibration=null;p.candidate=result.scene;p.changes.push({id:randomUUID(),description:result.description,evidenceIds:[],context:['ALVA-010 墙线与房间轮廓校正'],createdAt:new Date().toISOString()})})});
  app.post('/api/candidate/calibrate',async req=>{const b=Command.extend({wallId:z.string(),length:z.number().positive(),source:z.string().min(1)}).parse(req.body);return mutate(req,b,'calibrate',p=>{if(!p.candidate)reject('请先导入户型');p.candidate=calibrate(p.candidate!,b.wallId,b.length,b.source)})});
  app.post('/api/candidate/confirm',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'confirm-layout',p=>{if(!p.candidate?.calibration?.confirmed)reject('请先用已知墙长完成校准');p.scene=validateScene(p.candidate);p.candidate=null;p.dirty=true;p.changes.push({id:randomUUID(),description:'确认已校准户型',evidenceIds:[],context:[],createdAt:new Date().toISOString()})})});
  registerConsultation(app,store,session,active);registerExports(app,store,session);
