@@ -1,7 +1,7 @@
 import type {FastifyInstance} from 'fastify';import {z} from 'zod';import {randomUUID} from 'node:crypto';
 import {runCodex,type BusinessTool} from './codex.js';import {AlvaStore,type Session} from './store.js';import {catalogue,applyAnswer,applyChanges,ChangeSchema,review} from './business.js';import {reject,DomainError,type Project,type Proposal,type Change} from './model.js';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
-export const chatModels=['gemini-3-flash'] as const;
+export const chatModels=['gemini-3.1-flash-lite'] as const;
 const ChatModel=z.enum(chatModels);
 export function validateChatImage(image:{mime:'image/png'|'image/jpeg';data:string}){const data=image.data.trim();if(!data||data.length>12_000_000||!/^[A-Za-z0-9+/]+={0,2}$/.test(data)||data.length%4===1)reject('参考图内容无效');const bytes=Buffer.from(data,'base64');if(bytes.length>9_000_000)reject('参考图最大9MB');const png=bytes.length>=8&&bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])),jpeg=bytes.length>=3&&bytes[0]===255&&bytes[1]===216&&bytes[2]===255;if((image.mime==='image/png'&&!png)||(image.mime==='image/jpeg'&&!jpeg))reject('参考图内容与类型不匹配');return {...image,data}}
 export function registerConsultation(app:FastifyInstance,store:AlvaStore,session:(r:object)=>Session,active:Map<string,AbortController>){
