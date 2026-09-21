@@ -1,4 +1,5 @@
 import {DomainError,Scene,validateScene,type SceneData,type XY,distance} from '../model.js';
+import {validateOpenings} from './calibration.js';
 
 export type TopologyIssue={path:string;message:string};
 
@@ -12,7 +13,7 @@ function sameUndirected(a:XY,b:XY,c:XY,d:XY){return (samePoint(a,c)&&samePoint(b
 export function validateTopology(raw:unknown):SceneData{
  let scene:SceneData;
  try{scene=Scene.parse(raw)}catch(error){throw new DomainError(422,`拓扑校验失败：${error instanceof Error?error.message:'坐标或字段格式无效'}`)}
- try{scene=validateScene(scene)}catch(error){throw new DomainError(422,`拓扑校验失败：${error instanceof Error?error.message:'候选几何无效'}`)}
+ try{scene=validateOpenings(validateScene(scene))}catch(error){throw new DomainError(422,`拓扑校验失败：${error instanceof Error?error.message:'候选几何无效'}`)}
  for(let i=0;i<scene.walls.length;i++){
   const a=scene.walls[i];
   for(let j=i+1;j<scene.walls.length;j++){
