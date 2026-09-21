@@ -17,7 +17,8 @@ export type Change={action:'add'|'update'|'remove'|'copy'|'transfer'|'purpose'|'
 export type Proposal={id:string;title:string;rationale:string;evidenceIds:string[];baseRevision:number;changes:Change[];status:'proposed'|'accepted'|'rejected'};
 export type SourceImage={mime:string;data:string;originalMime:string;originalData?:string;filename:string;page?:number;pages?:number};
 export type ImportState={status:'processing'|'succeeded'|'failed'|'cancelled';message:string;requestId:string;sourceMime:string;filename:string;page?:number;pages?:number;provider?:'codex';model?:string;startedAt:string;finishedAt?:string};
-export type Project={id:string;name:string;revision:number;savedVersion:number;dirty:boolean;scene:SceneData|null;candidate:SceneData|null;answers:Answer[];evidence:Evidence[];messages:Message[];findings:Finding[];proposals:Proposal[];changes:{id:string;description:string;evidenceIds:string[];context:string[];createdAt:string}[];assets:typeof assets;sourceImage?:SourceImage;importState?:ImportState;lastAnalysisEvidence:number;createdAt:string};
+export type TopologyVersion={id:string;version:number;sourceFingerprint:string;scene:SceneData;calibration:NonNullable<SceneData['calibration']>;assumptions:string[];confirmedAt:string};
+export type Project={id:string;name:string;revision:number;savedVersion:number;dirty:boolean;scene:SceneData|null;candidate:SceneData|null;answers:Answer[];evidence:Evidence[];messages:Message[];findings:Finding[];proposals:Proposal[];changes:{id:string;description:string;evidenceIds:string[];context:string[];createdAt:string}[];assets:typeof assets;sourceImage?:SourceImage;importState?:ImportState;topologyVersions:TopologyVersion[];confirmedTopology?:TopologyVersion;lastAnalysisEvidence:number;createdAt:string};
 export const assets=[
 {id:'alva-sofa',name:'沙发',width:2.1,depth:.9,height:.8,material:'fabric',color:'#9da991',license:'CC0 · alva程序几何'},
 {id:'alva-table',name:'操作台 / 书桌',width:1.4,depth:.65,height:.75,material:'wood',color:'#b49a75',license:'CC0 · alva程序几何'},
@@ -27,7 +28,7 @@ export const assets=[
 {id:'alva-plant',name:'绿植',width:.45,depth:.45,height:1.2,material:'wood',color:'#648268',license:'CC0 · alva程序几何'},
 {id:'alva-coffee',name:'咖啡机',width:.35,depth:.4,height:.4,material:'metal',color:'#535958',license:'CC0 · alva程序几何'},
 ] as {id:string;name:string;width:number;depth:number;height:number;material:string;color:string;license:string}[];
-export function emptyProject(name='我们的家'):Project{return {id:randomUUID(),name,revision:0,savedVersion:0,dirty:false,scene:null,candidate:null,answers:[],evidence:[],messages:[],findings:[],proposals:[],changes:[],assets:structuredClone(assets),lastAnalysisEvidence:0,createdAt:new Date().toISOString()}}
+export function emptyProject(name='我们的家'):Project{return {id:randomUUID(),name,revision:0,savedVersion:0,dirty:false,scene:null,candidate:null,answers:[],evidence:[],messages:[],findings:[],proposals:[],changes:[],assets:structuredClone(assets),topologyVersions:[],lastAnalysisEvidence:0,createdAt:new Date().toISOString()}}
 export class DomainError extends Error{constructor(public statusCode:number,message:string){super(message)}}
 export const reject=(message:string,status=422):never=>{throw new DomainError(status,message)};
 export const distance=(a:XY,b:XY)=>Math.hypot(a.x-b.x,a.y-b.y);
@@ -39,7 +40,8 @@ export function validateScene(raw:unknown):SceneData{
  for(const room of s.rooms){
   const p=room.polygon;let area=0;for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];area+=a.x*b.y-b.x*a.y;if(distance(a,b)<.01)reject('房间轮廓有重复顶点');for(let j=i+2;j<p.length;j++){if(i===0&&j===p.length-1)continue;const c=p[j],d=p[(j+1)%p.length];if(cross(a,b,c)*cross(a,b,d)<0&&cross(c,d,a)*cross(c,d,b)<0)reject('房间轮廓自交，请修正')}}if(Math.abs(area)<.1)reject('房间面积无效');
  }
- for(const o of s.openings){const w=s.walls.find(w=>w.id===o.wallId);if(!w)reject('门窗未关联墙体');const len=distance(w!.a,w!.b);if(o.width>len+.01||o.offset*len-o.width/2<-.01||o.offset*len+o.width/2>len+.01)reject(`门窗${o.id}超出墙体${w!.id}范围：墙长${len.toFixed(3)}，中心比例${o.offset}，开口宽${o.width}`)}
+ for(const o of s.openings){const w=s.walls.find(w=>w.id===o.wallId);if(!w)reject(`门窗${o.id}未关联墙体`);const len=distance(w!.a,w!.b);if(o.width>len+.01||o.offset*len-o.width/2<-.01||o.offset*len+o.width/2>len+.01)reject(`门窗${o.id}超出墙体${w!.id}范围：墙长${len.toFixed(3)}，中心比例${o.offset}，开口宽${o.width}`);if(o.sill+o.height>w!.height+.01)reject(`门窗${o.id}超出墙高${w!.height.toFixed(2)}m：窗台${o.sill.toFixed(2)}m + 高${o.height.toFixed(2)}m`)}
+ for(let i=0;i<s.openings.length;i++){const a=s.openings[i],wa=s.walls.find(w=>w.id===a.wallId);if(!wa)continue;const len=distance(wa.a,wa.b),a0=a.offset*len-a.width/2,a1=a.offset*len+a.width/2;for(let j=i+1;j<s.openings.length;j++){const b=s.openings[j];if(a.wallId!==b.wallId)continue;const b0=b.offset*len-b.width/2,b1=b.offset*len+b.width/2;if(Math.min(a1,b1)-Math.max(a0,b0)>.01)reject(`门窗${a.id}与${b.id}在墙${a.wallId}上重叠，请调整位置或宽度`)}}
  for(const i of s.items){if(!s.rooms.some(r=>r.id===i.roomId))reject('家具未关联有效房间');if(!assets.some(a=>a.id===i.assetId))reject('资产不在许可目录')}
  return s;
 }

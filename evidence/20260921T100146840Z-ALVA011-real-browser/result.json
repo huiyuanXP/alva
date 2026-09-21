@@ -1,0 +1,32 @@
+{
+  "ticket": "ALVA-011",
+  "runId": "20260921T100146840Z-ALVA011-real-browser",
+  "pass": true,
+  "checks": {
+    "real_attachment": true,
+    "wall_split_route": true,
+    "opening_update": true,
+    "invalid_opening_rejected": true,
+    "opening_add": true,
+    "opening_remove": true,
+    "calibration": true,
+    "confirmed_version": true,
+    "stable_fingerprint": true,
+    "reload_persisted": true,
+    "topology_statuses": [
+      200,
+      200,
+      422,
+      200,
+      200,
+      200,
+      200
+    ],
+    "no_topology_404": true,
+    "console_errors": []
+  },
+  "source": {
+    "filename": "floorplan.png",
+    "bytes": 36268
+  }
+}
