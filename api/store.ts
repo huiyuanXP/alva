@@ -33,7 +33,8 @@ export class AlvaStore{
  async logout(token:string){await this.db.query('DELETE FROM alva_sessions WHERE token_hash=$1',[hash(token)])}
  async rotateAccessCode(next?:string){const code=(next||'').trim()||randomBytes(24).toString('base64url');if(code.length<16)throw new Error('验证码至少需要16个字符');const config=await this.config();await this.db.query('UPDATE alva_access_config SET code_hash=$1,generation=generation+1,updated_at=now() WHERE id=1',[hash(code)]);await this.db.query('DELETE FROM alva_sessions');const path=this.accessCodePath();await mkdir(path.slice(0,path.lastIndexOf('/'))||'.runtime',{recursive:true,mode:0o700});await writeFile(path,`${code}\n`,{mode:0o600});await chmod(path,0o600);return code}
  async revoke(projectId:string,linkId:string){await this.db.query('UPDATE alva_links SET revoked=true WHERE id=$1 AND project_id=$2',[linkId,projectId])}
- async get(id:string):Promise<Project>{const row=(await this.db.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1',[id])).rows[0];if(!row)throw new DomainError(404,'项目不存在');return row.state}
+ private normalizeProject(project:Project):Project{if(!project.buildingState)project.buildingState={status:'idle',attempts:0,updatedAt:new Date().toISOString()};return project}
+ async get(id:string):Promise<Project>{const row=(await this.db.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1',[id])).rows[0];if(!row)throw new DomainError(404,'项目不存在');return this.normalizeProject(row.state)}
  async versions(id:string){return (await this.db.query<{version:number;summary:string;created_at:string}>('SELECT version,summary,created_at FROM alva_versions WHERE project_id=$1 ORDER BY version DESC',[id])).rows}
  async snapshot(id:string,version:number):Promise<Project>{const row=(await this.db.query<{state:Project}>('SELECT state FROM alva_versions WHERE project_id=$1 AND version=$2',[id,version])).rows[0];if(!row)throw new DomainError(404,'保存版本不存在');return row.state}
  async failure(id:string,operation:string,reason:string){await this.db.query('INSERT INTO alva_failures(id,project_id,operation,reason) VALUES($1,$2,$3,$4)',[randomUUID(),id,operation,reason.slice(0,300)])}
@@ -45,7 +46,7 @@ export class AlvaStore{
    const prior=(await tx.query<{fingerprint:string;response:Project}>('SELECT fingerprint,response FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];
    if(prior){if(prior.fingerprint!==fingerprint)throw new DomainError(409,'同一请求ID不能用于不同内容');return prior.response}
    const row=(await tx.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1 FOR UPDATE',[id])).rows[0];if(!row)throw new DomainError(404,'项目不存在');
-   const p=row.state;if(expectedRevision!==null&&p.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后确认');
+   const p=this.normalizeProject(row.state);if(expectedRevision!==null&&p.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后确认');
    await fn(p);p.revision++;
    if(operation==='save'){
     if(this.failNextSave){this.failNextSave=false;throw new Error('isolated_save_fault')}

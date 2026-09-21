@@ -1,0 +1,28 @@
+{
+  "ticket": "ALVA-012",
+  "runId": "20260921T122536684Z-ALVA012-real-browser",
+  "pass": true,
+  "checks": {
+    "real_attachment": true,
+    "first_generated": true,
+    "first_component_trace": true,
+    "first_confirmed": true,
+    "first_reload": true,
+    "expired_visible": true,
+    "second_generated": true,
+    "second_confirmed": true,
+    "second_reload": true,
+    "console_errors": true
+  },
+  "responses": [
+    200,
+    200
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "source": {
+    "filename": "floorplan.png",
+    "bytes": 36268
+  }
+}

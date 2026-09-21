@@ -59,5 +59,5 @@ export async function runCodex(input:CodexInput):Promise<string>{
   const turn=await rpc('turn/start',{threadId,input:[{type:'text',text:input.text},...(input.images||[]).map(url=>({type:'image',url}))],...(input.outputSchema?{outputSchema:input.outputSchema}:{})});
   turnId=turn.turn.id;
   return await completion;
- }finally{clearTimeout(timer);input.signal?.removeEventListener('abort',abort);lines.close();child.kill('SIGTERM');for(const p of pending.values())p.reject(new Error('调用已结束'));pending.clear();await rm(work,{recursive:true,force:true})}
+ }finally{clearTimeout(timer);input.signal?.removeEventListener('abort',abort);lines.close();child.kill('SIGTERM');for(const p of pending.values())p.reject(new Error('调用已结束'));pending.clear();await rm(work,{recursive:true,force:true}).catch(()=>{})}
 }
