@@ -1,11 +1,14 @@
 import type {FastifyInstance} from 'fastify';import {z} from 'zod';import {randomUUID} from 'node:crypto';
 import {runCodex,type BusinessTool} from './codex.js';import {AlvaStore,type Session} from './store.js';import {catalogue,applyAnswer,applyChanges,ChangeSchema,review} from './business.js';import {reject,DomainError,type Project,type Proposal,type Change} from './model.js';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
+export const chatModels=['gemini-3-flash'] as const;
+const ChatModel=z.enum(chatModels);
+export function validateChatImage(image:{mime:'image/png'|'image/jpeg';data:string}){const data=image.data.trim();if(!data||data.length>12_000_000||!/^[A-Za-z0-9+/]+={0,2}$/.test(data)||data.length%4===1)reject('参考图内容无效');const bytes=Buffer.from(data,'base64');if(bytes.length>9_000_000)reject('参考图最大9MB');const png=bytes.length>=8&&bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])),jpeg=bytes.length>=3&&bytes[0]===255&&bytes[1]===216&&bytes[2]===255;if((image.mime==='image/png'&&!png)||(image.mime==='image/jpeg'&&!jpeg))reject('参考图内容与类型不匹配');return {...image,data}}
 export function registerConsultation(app:FastifyInstance,store:AlvaStore,session:(r:object)=>Session,active:Map<string,AbortController>){
  const owner=(r:object)=>{const s=session(r);if(s.role!=='owner')reject('仅业主可修改',403);return s.projectId};
  const mutate=(req:object,b:any,op:string,fn:(p:Project)=>void|Promise<void>)=>store.mutate(owner(req),b.requestId,b.expectedRevision,op,b,fn);
  app.get('/api/questions',async()=>catalogue);
- app.get('/api/models',async()=>({models:['gpt-5.5'],evidence:'gpt-5.5已通过本轮真实Codex调用'}));
+ app.get('/api/models',async()=>({models:[...chatModels]}));
  app.post('/api/answers',async req=>{const b=Command.extend({answer:z.unknown()}).parse(req.body);return mutate(req,b,'answer',p=>applyAnswer(p,b.answer))});
  app.post('/api/answers/unlock',async req=>{const b=Command.extend({questionId:z.string(),roomId:z.string().nullable(),confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'unlock-answer',p=>{const a=p.answers.find(a=>a.questionId===b.questionId&&a.roomId===b.roomId);if(a)a.locked=false})});
  app.post('/api/analyze',async req=>{const b=Command.parse(req.body);return mutate(req,b,'analyze',p=>{if(p.evidence.length!==p.lastAnalysisEvidence){p.findings=[...p.findings.filter(f=>f.stage!=='intake'),...review(p,'intake')];p.lastAnalysisEvidence=p.evidence.length}})});
@@ -21,8 +24,8 @@ export function registerConsultation(app:FastifyInstance,store:AlvaStore,session
   if(!r.ok){await store.failure(session(req).projectId,'transcribe','模型转写服务失败');throw new DomainError(503,'转写失败，请重试')}const result=await r.json() as any;const text=result.choices?.[0]?.message?.content;if(typeof text!=='string'||!text.trim())reject('未识别到文字，请重试');return {text};
  });
  app.post('/api/chat',async(req,reply)=>{
-  const id=owner(req);const b=Command.extend({text:z.string().min(1).max(6000),roomId:z.string().nullable(),model:z.literal('gpt-5.5'),image:z.object({mime:z.enum(['image/png','image/jpeg']),data:z.string().max(12_000_000)}).optional()}).parse(req.body);
-  if(active.has(id))reject('已有进行中的请求',409);const current=await store.get(id);if(b.roomId&&!current.scene?.rooms.some(r=>r.id===b.roomId))reject('房间不存在');
+  const id=owner(req);const b=Command.extend({text:z.string().min(1).max(6000),roomId:z.string().nullable(),model:ChatModel,image:z.object({mime:z.enum(['image/png','image/jpeg']),data:z.string().max(12_000_000)}).optional()}).parse(req.body);
+  if(b.image)b.image=validateChatImage(b.image);if(active.has(id))reject('已有进行中的请求',409);const current=await store.get(id);if(b.roomId&&!current.scene?.rooms.some(r=>r.id===b.roomId))reject('房间不存在');
   const assistantId=randomUUID(),evidenceId=randomUUID();const started=await store.mutate(id,b.requestId,b.expectedRevision,'chat-start',b,p=>{if(p.messages.some(m=>m.id===b.requestId))reject('请使用重试按钮发起新请求',409);p.messages.push({id:b.requestId,role:'user',text:b.text,status:'completed',createdAt:new Date().toISOString()},{id:assistantId,role:'assistant',text:'',status:'running',createdAt:new Date().toISOString()});p.evidence.push({id:evidenceId,quote:b.text,source:'chat',...(b.roomId?{roomId:b.roomId}:{}),createdAt:new Date().toISOString()});p.dirty=true});
   // A replay returns the stored start response but never starts another model run.
   if(current.messages.some(m=>m.id===b.requestId))return reply.code(409).send({error:'该消息已经发送，请读取项目或使用新的重试请求'});

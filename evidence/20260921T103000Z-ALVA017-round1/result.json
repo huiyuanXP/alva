@@ -1,0 +1,24 @@
+{
+  "ticket": "ALVA-017",
+  "runId": "20260921T103000Z-ALVA017-round1",
+  "pass": true,
+  "model": "gemini-3-flash",
+  "checks": {
+    "model_catalogue": true,
+    "text_real_call": {
+      "deltas": 5,
+      "statuses": 6,
+      "completed": true
+    },
+    "image_real_call": {
+      "deltas": 4,
+      "statuses": 3,
+      "completed": true
+    },
+    "scene_unchanged": true,
+    "saved_snapshot_unchanged": true,
+    "cross_project_denied": 403,
+    "raw_codex_route": 404,
+    "image_not_persisted": true
+  }
+}

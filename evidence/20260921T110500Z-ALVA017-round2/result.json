@@ -1,0 +1,16 @@
+{
+  "ticket": "ALVA-017",
+  "runId": "20260921T110500Z-ALVA017-round2",
+  "pass": true,
+  "checks": {
+    "assistant_ui_three_columns": true,
+    "model_option": "gemini-3-flash",
+    "text_ui_real_call": true,
+    "image_ui_real_call": true,
+    "loading_state_visible": true,
+    "completed_state_visible": true,
+    "scene_unchanged": true,
+    "image_not_persisted": true,
+    "console_errors": []
+  }
+}

@@ -109,3 +109,10 @@ Lexie 在 `task/ALVA-014-lexie` 完成实现，原实现提交 `9e309ec241116f27
 ALVA-011 已由 lzy 在独立 Worktree task/ALVA-011-lzy 完成，原实现提交 b113ba9，已合入 main。服务端新增门窗增删改、墙段/墙高/同墙重叠校验、已知墙长同比例校准、不可变拓扑版本与来源指纹；前端新增门窗校核面板，并保留墙线分段入口，确认后显示版本指纹。
 
 验证：npm run check、npm run build:alva、ALVA-010/011 定向测试 5/5 通过；真实 floorplan.png 的 Chromium 网页验收覆盖登录、原图显示、墙线分段 200、门窗增删改、非法几何 422、校准、确认 v1、刷新重载和 /api/candidate/topology 无 404。证据：evidence/20260921T100146840Z-ALVA011-real-browser/。实时 Codex 复试因供应商 usage limit 返回 429，未伪造成功结果；本票网页验收使用真实附件及既有实际识别候选来源。
+
+
+## ALVA-017 文字与图片真实流式咨询
+
+Lexie 在独立 Worktree `task/ALVA-017-lexie` 完成；实现提交 `0356cef4fe98df84bb172e5550ec11f193b6fbb2`、`c35e707256d6d24e117b602df68df42a87d4f7d5`。三栏工作台继续使用 assistant-ui 原语，模型选择器改为读取 `/api/models`。供应端目录仍列出 GPT 系列，但本轮真实调用发现当前凭据对 `gpt-5.5`/`gpt-5.6` 已达使用上限；`gemini-3-flash` 通过真实 Codex App Server 调用，因此当前聊天模型目录只暴露该已验证可用模型。
+
+两轮验收均通过。Round 1 `evidence/20260921T103000Z-ALVA017-round1/`：真实文字调用 5 个非空增量、图片调用 4 个非空增量，均完成；跨项目访问 403、原始 Codex 路由 404、scene 与 savedVersion 不变、参考图字节未持久化。Round 2 `evidence/20260921T110500Z-ALVA017-round2/`：Chromium 三栏工作台、动态模型选项、文字与图片 UI 真实调用、加载/完成状态均通过，scene 不被模型直接修改，console error 0。
