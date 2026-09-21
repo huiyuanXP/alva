@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | [ALVA-011](.scratch/alva-completion/issues/04-openings-scale-confirm.md) | 修正门窗、校准尺寸并确认拓扑 | `topology` | lzy | `task/ALVA-011-lzy` / `/home/ubuntu/Alva-worktrees/ALVA-011-lzy` | 已认领；共享入口 `api/api.ts`、`api/store.ts`、`web/src/main.tsx`，端口 4192 |
 | [ALVA-015](.scratch/alva-completion/issues/08-chat-answer-confirmation.md) | Chat提取与手填双向确认 | `questions` |  |  | 待认领；开工前登记 |
-| [ALVA-017](.scratch/alva-completion/issues/10-multimodal-chat.md) | 文字与图片真实流式咨询 | `chat` |  |  | 待认领；开工前登记 |
+| [ALVA-017](.scratch/alva-completion/issues/10-multimodal-chat.md) | 文字与图片真实流式咨询 | `chat` | Lexie | `task/ALVA-017-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-017-lexie` | 占用 `api/chat.ts`、聊天专项测试与验收脚本；测试独立端口 4217；不修改 ALVA-011 占用的 `api/api.ts`、`api/store.ts`、`web/src/main.tsx` |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` |  |  | 待认领；开工前登记 |
