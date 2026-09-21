@@ -44,3 +44,8 @@
 - 隔离浏览器证据：`evidence/20260920T151500000Z-ALVA010-browser/result.json`；登录、数值端点、房间顶点控制、补画墙线、刷新保留和退出门禁核心断言通过；`topology-editor.png` 为实际界面截图。
 - 浏览器控制台残留仅为验收过程的首次未登录 401、一次拖动与后续请求竞争产生的 409、favicon 404，未影响业务断言。
 - 带媒体 fixture 的全量 `npm test`：Worktree 状态下 69/70；唯一失败为票仍处于 in-progress 时 tracker ready 预期与既有 ALVA-031 frontier 偏差的组合。合入 main 标记 done 后需复跑，ALVA-031 仍为既有无关偏差。
+
+## Known issue / follow-up
+
+- 2026-09-21：用户反馈网页端点击“墙线分段”仍显示“接口不存在”。本地隔离网页验收中 `/api/candidate/topology` 对分段操作返回 200，但用户当前环境仍可复现，说明问题尚未定位，不能视为已解决。
+- 本问题暂不并入 ALVA-012；后续排查应核对部署版本、静态资源缓存、请求方法/路径以及服务器路由日志。若确认是独立缺陷，再单独修复或拆 ticket。
