@@ -1,0 +1,1 @@
+{"ticket":"ALVA-014","round":1,"pass":true,"checks":["typescript","production-build","ticket-contract","foundation-regression","active-business-regression"],"note":"full npm test separately: 70/73 pass; 3 failures are tracker-state/media-fixture conditions outside ALVA-014"}

@@ -1,8 +1,8 @@
 # alva Handoff
 
-当前任务：ALVA-052将正式44张Ticket接回 https://prod.huiyuanxp.com/todo 。已完成独立Worktree实现、main集成验证与公网发布复核。解析器读取正式票和主目录NextTask，5张可认领、39张等待依赖、0进行中、0已完成。产品票均未认领或实施。实现与数据合同见[TODO-LIST](docs/TODO-LIST.md)。
+当前 44 张产品 Ticket 中，ALVA-008–010、ALVA-014 已完成并集成 `main`。ALVA-014 由 Lexie 完成问卷范围精简：Q19–Q22/Q58/Q60 停用，预算从现役问卷/API/UI/Chat工具/导出合同移除，历史持久数据不自动删除。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
 
-44票均有Parallel lane；当前依赖就绪ALVA-008、014、017、023、036，署名为空。协作权威入口仍为NextTask，网页只读展示，不开放网页认领或修改状态。
+44票均有 Parallel lane；当前依赖就绪且未认领为 ALVA-011、015、017、023、031、036。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
 
 认领在主目录署名即生效，协调锁内提交；每票独立Worktree/分支及运行资源。同组或共享文件冲突先协调。个人完成提交后不移除署名；main集成验证通过后，同一实现提交更新done、移除任务行和署名、补充所有新解锁任务，保留票内署名及原实现SHA供追溯。
 
@@ -96,3 +96,10 @@ ALVA-010 已由 lzy 在独立 Worktree `task/ALVA-010-lzy` 完成并验证，随
 验证记录：类型检查、生产构建、ALVA-010 定向测试 3/3、隔离浏览器登录/数值修改/房间顶点控制/补画/刷新/退出门禁均通过。完整回归在 main 标记 done 后复跑；既有 ALVA-031 tracker frontier 偏差仍单独保留。
 
 证据目录：`evidence/20260920T151500000Z-ALVA010-browser/`。
+
+
+## ALVA-014 问卷范围精简与逐题回答
+
+Lexie 在 `task/ALVA-014-lexie` 完成实现，原实现提交 `9e309ec241116f276c738c9d7ef4aecd7ea6a06c`。现役问卷保留 Q01–Q60 稳定 ID，停用 Q19–Q22、Q58、Q60；可用题继续支持 A 推荐、B/C/D、自由回答以及 unknown/skipped/not_applicable，房间/项目 scope 隔离且锁定答案服务端拒绝覆盖。预算能力已从现役 Project 合同、写接口、UI、Chat 工具快照和导出移除，旧数据库/快照字段不迁移、不自动删除。
+
+两轮验收均通过：Round 1 `evidence/20260921T073000Z-ALVA014-round1/` 包含 TypeScript、生产构建和 8 个相关回归；Round 2 `evidence/20260921T074000Z-ALVA014-round2/` 为真实 Chromium，验证 54 个可用题、6 个停用题隐藏、无预算 UI、跨房间不串值、unknown 显示、锁定写入 422、刷新持久化且登录后无 console error。全量 `npm test` 补充跑到 70/73，两个 media 失败仅因未提供 `RENOVATION_MEDIA_FIXTURES`；原 tracker frontier 偏差在本次全量重算后同步修正。

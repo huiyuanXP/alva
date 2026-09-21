@@ -2,7 +2,18 @@ import {randomUUID} from 'node:crypto';
 import {z} from 'zod';
 import {intakeCatalogue} from '../packages/contracts/intake.js';
 import {validateScene,itemFromAsset,pointInPolygon,reject,Item,type Project,type Change,type Finding,type SceneData} from './model.js';
-export const catalogue=intakeCatalogue.map(q=>({...q,enabled:q.id!=='Q58'}));
+const disabledQuestions=new Set(['Q19','Q20','Q21','Q22','Q58','Q60']);
+const questionOverrides:Record<string,{question?:string;group?:string;choices?:[string,string,string,string]}>= {
+ Q01:{choices:['先形成可转交设计师的需求任务书','先看整体空间方向','先解决一个重点房间','先梳理优先级与取舍']},
+ Q18:{question:'当空间或条件受限时，哪两件事最不能牺牲？'},
+ Q23:{group:'时间安排'},
+ Q24:{group:'时间安排',choices:['基本起居与收纳先做，装饰和非必要单品后补','所有空间一次完成','先完成一个示范房间','按每阶段完成条件推进']},
+ Q39:{choices:['好维护的表面，并索取具体产品资料','真实木质触感','耐磨易清洁','耐久与可维护优先，并保留必要验证']},
+};
+export const catalogue=intakeCatalogue.map(q=>{
+ const disabled=disabledQuestions.has(q.id),override=questionOverrides[q.id]||{};
+ return {...q,...override,delivery_sections:disabled?[]:q.delivery_sections.filter(section=>section!=='D07'),...(disabled?{field_key:'disabled',group:'已停用',question:'此题在当前范围已停用。',choices:['当前不收集','保留题号','稍后再议','不适用'] as [string,string,string,string],factual:false}:{}),enabled:!disabled};
+});
 export const ChangeSchema=z.object({action:z.enum(['add','update','remove','copy','transfer','purpose','wall']),targetId:z.string(),values:z.record(z.string(),z.unknown())}).strict();
 export function applyChanges(scene:SceneData,changes:Change[],professional=false):SceneData{
  const s=structuredClone(scene);

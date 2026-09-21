@@ -1,0 +1,43 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+
+> alva@0.1.0 build:alva
+> vite build --config web/vite.config.ts
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 709 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-Bkq5Kzbd.css      8.45 kB │ gzip:   2.58 kB
+web/dist/assets/index-COwKOnRt.js   1,041.81 kB │ gzip: 288.75 kB
+
+✓ built in 958ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✔ alva atomic edit group, distinct instance identities, immutable asset pool and protected walls (18.916352ms)
+✔ alva pain findings have positive and negative coffee/pet/plant controls at both analysis stages (2.511082ms)
+✔ alva 60 stable question IDs, disabled Q58, separate answer states and server-enforced locked fields (8.912293ms)
+✔ alva topology rejects self-intersection/non-finite coordinates; measured wall scales consistently (12.254573ms)
+[alva request error] /api/save Error: isolated_save_fault
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-014-lexie/api/store.ts:51:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-014-lexie/node_modules/@electric-sql/pglite/src/base.ts:514:24)
+✔ alva revoked project links, read-only designer, atomic failed save, retry and complete snapshot restore (5053.483119ms)
+✔ ALVA-014 keeps 60 IDs, disables removed scope and keeps time planning (2.270806ms)
+✔ ALVA-014 answers stay scoped, preserve explicit states and enforce locks (10.730149ms)
+✔ ALVA-014 HTTP contract omits legacy budget and removed write route (5042.912072ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14627.096934

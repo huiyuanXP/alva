@@ -75,3 +75,5 @@ neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTas
 
 
 2026-09-20 ALVA-010 修改墙线与房间轮廓：在独立 Worktree `task/ALVA-010-lzy` 完成并验证后合入 main。新增服务端拓扑命令/定位校验和前端二维编辑，覆盖共享连接、稳定ID、房间顶点、补画/分段/移除、门窗引用保护、校准失效与刷新持久化。类型检查、构建、定向测试3/3及隔离浏览器核心断言通过；证据 `evidence/20260920T151500000Z-ALVA010-browser/`。下一项拓扑票 ALVA-011 已解锁。
+
+2026-09-21 ALVA-014 问卷范围精简与逐题回答：Lexie 在独立 Worktree `task/ALVA-014-lexie` 完成，原实现提交 `9e309ec241116f276c738c9d7ef4aecd7ea6a06c`。保留 Q01–Q60，停用 Q19–Q22/Q58/Q60，清除其他现役题预算措辞并保留时间安排；预算从现役 Project/API/UI/Chat工具/导出移除，旧持久层与快照历史不迁移。Round 1 类型/构建/相关回归 8/8，Round 2 Chromium 业务断言全部通过；证据位于 `evidence/20260921T073000Z-ALVA014-round1/` 与 `evidence/20260921T074000Z-ALVA014-round2/`。集成后 frontier 全量重算为 ALVA-011/015/017/023/031/036。

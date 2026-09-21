@@ -1,0 +1,17 @@
+{
+  "ticket": "ALVA-014",
+  "runId": "20260921T074000Z-ALVA014-round2",
+  "pass": true,
+  "checks": {
+    "disabled_hidden": true,
+    "active_count": 54,
+    "no_budget_ui": true,
+    "study_initial_empty": true,
+    "living_restored": true,
+    "unknown_displayed": true,
+    "lock_button_disabled": true,
+    "lock_server_status": 422,
+    "reload_persisted": true,
+    "console_errors": []
+  }
+}

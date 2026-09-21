@@ -32,7 +32,9 @@ export async function imageData(mime:string,base64:string,filename='户型图'):
  return reject('仅支持内容有效的PNG、JPEG或PDF');
 }
 export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180'}={}){
+ const publicPayload=(value:unknown):unknown=>{if(Array.isArray(value))return value.map(publicPayload);if(value&&typeof value==='object'){const result:Record<string,unknown>={};for(const [key,item] of Object.entries(value as Record<string,unknown>)){if(key==='budget')continue;result[key]=publicPayload(item)}return result}return value};
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
+ app.addHook('preSerialization',async(_req,_reply,payload)=>publicPayload(payload));
  await app.register(cookie);await app.register(rateLimit,{max:180,timeWindow:'1 minute'});
  const sessions=new WeakMap<object,Session>();
  const session=(req:object)=>{const s=sessions.get(req);if(!s)throw new DomainError(401,'请通过项目链接进入');return s};

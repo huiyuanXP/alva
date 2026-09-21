@@ -17,7 +17,7 @@ export type Change={action:'add'|'update'|'remove'|'copy'|'transfer'|'purpose'|'
 export type Proposal={id:string;title:string;rationale:string;evidenceIds:string[];baseRevision:number;changes:Change[];status:'proposed'|'accepted'|'rejected'};
 export type SourceImage={mime:string;data:string;originalMime:string;originalData?:string;filename:string;page?:number;pages?:number};
 export type ImportState={status:'processing'|'succeeded'|'failed'|'cancelled';message:string;requestId:string;sourceMime:string;filename:string;page?:number;pages?:number;provider?:'codex';model?:string;startedAt:string;finishedAt?:string};
-export type Project={id:string;name:string;revision:number;savedVersion:number;dirty:boolean;scene:SceneData|null;candidate:SceneData|null;answers:Answer[];evidence:Evidence[];messages:Message[];findings:Finding[];proposals:Proposal[];changes:{id:string;description:string;evidenceIds:string[];context:string[];createdAt:string}[];assets:typeof assets;budget:{amount:number|null;currency:string|null;ceiling:number|null;scope:string};sourceImage?:SourceImage;importState?:ImportState;lastAnalysisEvidence:number;createdAt:string};
+export type Project={id:string;name:string;revision:number;savedVersion:number;dirty:boolean;scene:SceneData|null;candidate:SceneData|null;answers:Answer[];evidence:Evidence[];messages:Message[];findings:Finding[];proposals:Proposal[];changes:{id:string;description:string;evidenceIds:string[];context:string[];createdAt:string}[];assets:typeof assets;sourceImage?:SourceImage;importState?:ImportState;lastAnalysisEvidence:number;createdAt:string};
 export const assets=[
 {id:'alva-sofa',name:'沙发',width:2.1,depth:.9,height:.8,material:'fabric',color:'#9da991',license:'CC0 · alva程序几何'},
 {id:'alva-table',name:'操作台 / 书桌',width:1.4,depth:.65,height:.75,material:'wood',color:'#b49a75',license:'CC0 · alva程序几何'},
@@ -27,7 +27,7 @@ export const assets=[
 {id:'alva-plant',name:'绿植',width:.45,depth:.45,height:1.2,material:'wood',color:'#648268',license:'CC0 · alva程序几何'},
 {id:'alva-coffee',name:'咖啡机',width:.35,depth:.4,height:.4,material:'metal',color:'#535958',license:'CC0 · alva程序几何'},
 ] as {id:string;name:string;width:number;depth:number;height:number;material:string;color:string;license:string}[];
-export function emptyProject(name='我们的家'):Project{return {id:randomUUID(),name,revision:0,savedVersion:0,dirty:false,scene:null,candidate:null,answers:[],evidence:[],messages:[],findings:[],proposals:[],changes:[],assets:structuredClone(assets),budget:{amount:null,currency:null,ceiling:null,scope:''},lastAnalysisEvidence:0,createdAt:new Date().toISOString()}}
+export function emptyProject(name='我们的家'):Project{return {id:randomUUID(),name,revision:0,savedVersion:0,dirty:false,scene:null,candidate:null,answers:[],evidence:[],messages:[],findings:[],proposals:[],changes:[],assets:structuredClone(assets),lastAnalysisEvidence:0,createdAt:new Date().toISOString()}}
 export class DomainError extends Error{constructor(public statusCode:number,message:string){super(message)}}
 export const reject=(message:string,status=422):never=>{throw new DomainError(status,message)};
 export const distance=(a:XY,b:XY)=>Math.hypot(a.x-b.x,a.y-b.y);
