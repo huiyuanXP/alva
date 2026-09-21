@@ -15,3 +15,5 @@
 只读任务网页：https://prod.huiyuanxp.com/todo ；数据直接来自正式tracker与主目录NextTask，说明见[TODO-LIST](docs/TODO-LIST.md)。ALVA-052为独立维护任务，不加入44张产品票。
 
 ALVA-017 已完成真实文字与图片流式咨询：前端模型列表来自 `/api/models`，当前真实可用聊天模型为 `gemini-3-flash`；文字与参考图片均通过真实 Codex App Server 流式验收。当前可认领：ALVA-012、015、018、019、020、023、031、036、041、043。
+
+ALVA-015 已完成双向确认：Chat 原话确认后保留 chat evidence，手填答案可被后续 Chat 读取；当前 ready：ALVA-013、016、018、019、020、023、028、031、036、041、043。

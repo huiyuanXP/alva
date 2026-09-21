@@ -1,0 +1,17 @@
+{
+  "ticket": "ALVA-015",
+  "runId": "20260921T145000Z-ALVA015-round2",
+  "pass": true,
+  "checks": {
+    "real_codex_pending_ui": true,
+    "unconfirmed_not_written": true,
+    "click_confirm": true,
+    "exact_quote_preserved": true,
+    "chat_evidence": true,
+    "manual_answer": true,
+    "manual_lock_visible": true,
+    "later_chat_reads_manual": true,
+    "explicit_unlock": true,
+    "console_errors": []
+  }
+}

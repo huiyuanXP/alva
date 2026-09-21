@@ -116,3 +116,10 @@ ALVA-011 已由 lzy 在独立 Worktree task/ALVA-011-lzy 完成，原实现提�
 Lexie 在独立 Worktree `task/ALVA-017-lexie` 完成；实现提交 `0356cef4fe98df84bb172e5550ec11f193b6fbb2`、`c35e707256d6d24e117b602df68df42a87d4f7d5`。三栏工作台继续使用 assistant-ui 原语，模型选择器改为读取 `/api/models`。供应端目录仍列出 GPT 系列，但本轮真实调用发现当前凭据对 `gpt-5.5`/`gpt-5.6` 已达使用上限；`gemini-3-flash` 通过真实 Codex App Server 调用，因此当前聊天模型目录只暴露该已验证可用模型。
 
 两轮验收均通过。Round 1 `evidence/20260921T103000Z-ALVA017-round1/`：真实文字调用 5 个非空增量、图片调用 4 个非空增量，均完成；跨项目访问 403、原始 Codex 路由 404、scene 与 savedVersion 不变、参考图字节未持久化。Round 2 `evidence/20260921T110500Z-ALVA017-round2/`：Chromium 三栏工作台、动态模型选项、文字与图片 UI 真实调用、加载/完成状态均通过，scene 不被模型直接修改，console error 0。
+
+
+## ALVA-015 Chat提取与手填双向确认
+
+Lexie 在 `task/ALVA-015-lexie` 完成，原实现提交 `1db54df0245788e67330c32e95ad61cf6c21a3a5`。Chat 待确认答案确认后以精确用户原话保存为 `chat` evidence，手填答案保留 `questionnaire` evidence，两类答案均进入后续 Chat 的 `get_snapshot`。重复确认返回 422 且不重复写入；锁定值服务端拒绝覆盖，解锁必须明确 `confirmed:true`。
+
+两轮验收均通过：Round 1 `evidence/20260921T143000Z-ALVA015-round1/` 为真实 Codex API 链路；Round 2 `evidence/20260921T145000Z-ALVA015-round2/` 为 Chromium UI 链路。补充回归中 ALVA-017 的 2 个模型目录断言仍硬编码旧 `gemini-3-flash`，而当前 main 已由后续任务切到 `gemini-3.1-flash-lite`，属于主线既有陈旧测试，不是 ALVA-015 功能失败。

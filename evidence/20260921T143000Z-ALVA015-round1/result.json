@@ -1,0 +1,16 @@
+{
+  "ticket": "ALVA-015",
+  "runId": "20260921T143000Z-ALVA015-round1",
+  "pass": true,
+  "model": "gemini-3.1-flash-lite",
+  "checks": {
+    "real_codex_pending": true,
+    "first_deltas": 4,
+    "unconfirmed_did_not_write": true,
+    "exact_quote_preserved": true,
+    "evidence_source_chat": true,
+    "duplicate_confirm_status": 422,
+    "manual_answer_visible_to_later_chat": true,
+    "second_deltas": 4
+  }
+}

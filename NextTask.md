@@ -12,17 +12,19 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-015](.scratch/alva-completion/issues/08-chat-answer-confirmation.md) | Chat提取与手填双向确认 | `questions` | Lexie | `task/ALVA-015-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-015-lexie` | 占用 `api/chat.ts`、`api/business.ts`、`web/src/Panels.tsx`、问卷专项测试；测试独立端口 4215 |
+| [ALVA-013](.scratch/alva-completion/issues/06-example-building-views.md) | 建筑3D总览、剖切与房间视角 | `render` |  |  | 待认领；开工前登记 |
+| [ALVA-016](.scratch/alva-completion/issues/09-unanswered-followup.md) | 未答看板与退出问卷分析 | `questions` |  |  | 待认领；开工前登记 |
 | [ALVA-018](.scratch/alva-completion/issues/11-cancel-retry.md) | 咨询取消与故障重试 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-019](.scratch/alva-completion/issues/12-voice-transcription.md) | 录音转写、纠正与发送 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-020](.scratch/alva-completion/issues/13-scope-confirmation.md) | 作用范围澄清与确认 | `proposals` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
+| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` |  |  | 待认领；开工前登记 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` |  |  | 待认领；开工前登记 |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
 | [ALVA-043](.scratch/alva-completion/issues/36-business-guidance.md) | 业务指导依据用于咨询 | `chat` |  |  | 待认领；开工前登记 |
 
-当前十项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
+当前十一项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 ## 认领与 Worktree 规则
 

@@ -37,13 +37,15 @@ export function applyChanges(scene:SceneData,changes:Change[],professional=false
  }
  return validateScene(s);
 }
-export function applyAnswer(p:Project,raw:unknown){
- const b=z.object({questionId:z.string(),roomId:z.string().nullable(),text:z.string().max(3000),state:z.enum(['answered','unknown','skipped','not_applicable']),locked:z.boolean(),confirmed:z.literal(true)}).strict().parse(raw);
+const AnswerInput=z.object({questionId:z.string(),roomId:z.string().nullable(),text:z.string().max(3000),state:z.enum(['answered','unknown','skipped','not_applicable']),locked:z.boolean(),confirmed:z.literal(true)}).strict();
+export function applyAnswerWithEvidence(p:Project,raw:unknown,evidence?:{quote:string;source:'chat'|'questionnaire'|'image'|'manual'}){
+ const b=AnswerInput.parse(raw);
  const q=catalogue.find(q=>q.id===b.questionId);if(!q?.enabled)reject('问题不存在或已禁用');if(q!.scope==='room'&&!p.scene?.rooms.some(r=>r.id===b.roomId))reject('请选择有效房间');if(q!.scope==='project'&&b.roomId!==null)reject('项目问题不能写入房间范围');if(b.state==='answered'&&!b.text.trim())reject('请填写回答或选择独立状态');
  const previous=p.answers.find(a=>a.questionId===b.questionId&&a.roomId===b.roomId);if(previous?.locked)reject('该回答已锁定，请先解除锁定');
- const quote=b.state==='answered'?b.text:({unknown:'暂不确定',skipped:'跳过',not_applicable:'不适用'}[b.state]);const id=randomUUID();p.evidence.push({id,quote,source:'questionnaire',...(b.roomId?{roomId:b.roomId}:{}),createdAt:new Date().toISOString()});
+ const quote=evidence?.quote||(b.state==='answered'?b.text:({unknown:'暂不确定',skipped:'跳过',not_applicable:'不适用'}[b.state]));const id=randomUUID();p.evidence.push({id,quote,source:evidence?.source||'questionnaire',...(b.roomId?{roomId:b.roomId}:{}),createdAt:new Date().toISOString()});
  const answer={...b,evidenceId:id};p.answers=p.answers.filter(a=>!(a.questionId===b.questionId&&a.roomId===b.roomId));p.answers.push(answer);p.dirty=true;
 }
+export function applyAnswer(p:Project,raw:unknown){return applyAnswerWithEvidence(p,raw)}
 export function review(p:Project,stage:'intake'|'review'):Finding[]{
  const findings:Finding[]=[];if(!p.scene)return findings;const scene=p.scene;
  const add=(kind:Finding['kind'],title:string,reason:string,suggestion:string,objectIds:string[],roomIds:string[],evidenceIds:string[]=[],confidence:Finding['confidence']='medium')=>findings.push({id:`${stage}-${kind}-${title}-${objectIds.join('-')}`,kind,title,reason,suggestion,objectIds,roomIds,evidenceIds,confidence,status:'pending',stage});
