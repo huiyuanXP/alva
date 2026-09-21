@@ -13,7 +13,7 @@
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
 | [ALVA-011](.scratch/alva-completion/issues/04-openings-scale-confirm.md) | 修正门窗、校准尺寸并确认拓扑 | `topology` |  |  | 待认领；开工前登记 |
-| [ALVA-014](.scratch/alva-completion/issues/07-questionnaire-scope.md) | 问卷范围精简与逐题回答 | `questions` |  |  | 待认领；开工前登记 |
+| [ALVA-014](.scratch/alva-completion/issues/07-questionnaire-scope.md) | 问卷范围精简与逐题回答 | `questions` | Lexie | `task/ALVA-014-lexie` / `../Alva-worktrees/ALVA-014-lexie` | 占用 `api/business.ts`、`api/chat.ts`、`api/model.ts`、`api/store.ts`、`api/export.ts`、`api/api.ts`、`web/src/Panels.tsx`；测试独立端口 4214 |
 | [ALVA-017](.scratch/alva-completion/issues/10-multimodal-chat.md) | 文字与图片真实流式咨询 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` |  |  | 待认领；开工前登记 |

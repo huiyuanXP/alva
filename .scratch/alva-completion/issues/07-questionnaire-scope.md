@@ -10,9 +10,9 @@
 
 **Blocked by:** None（已有核心可独立验证）
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** Lexie 已按 NextTask 正式认领；分支 `task/ALVA-014-lexie`，独立 Worktree `../Alva-worktrees/ALVA-014-lexie`。
 
 - [ ] Q01–Q60 ID保留；Q19–Q22、Q60预算题及Q58视频题禁用且不进入问答/未答统计；清除其他题的预算选项，时间安排仍保留。每轮1题，直接相关最多2题。
 - [ ] A推荐/B/C/D不同替代及自由回答可用；未知、跳过、不适用分别存储与显示。
