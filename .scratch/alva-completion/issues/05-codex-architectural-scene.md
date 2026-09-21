@@ -8,7 +8,11 @@
 
 **Blocked by:** 04：修正门窗、校准尺寸并确认拓扑
 
-**Status:** ready-for-agent
+**Status:** in-progress
+
+**Owner:** lzy
+
+**Implementation handoff:** in progress; branch `task/ALVA-012-lzy`, Worktree `/home/ubuntu/Alva-worktrees/ALVA-012-lzy`.
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
 

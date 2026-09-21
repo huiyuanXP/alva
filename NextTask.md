@@ -12,7 +12,7 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-012](.scratch/alva-completion/issues/05-codex-architectural-scene.md) | 调用Codex生成建筑3D场景 | `generation` |  |  | 待认领；开工前登记 |
+| [ALVA-012](.scratch/alva-completion/issues/05-codex-architectural-scene.md) | 调用Codex生成建筑3D场景 | `generation` | lzy | `task/ALVA-012-lzy` / `/home/ubuntu/Alva-worktrees/ALVA-012-lzy` | 已认领；共享入口 `api/api.ts`、`api/store.ts`、`web/src/main.tsx`，端口 4222 |
 | [ALVA-015](.scratch/alva-completion/issues/08-chat-answer-confirmation.md) | Chat提取与手填双向确认 | `questions` |  |  | 待认领；开工前登记 |
 | [ALVA-018](.scratch/alva-completion/issues/11-cancel-retry.md) | 咨询取消与故障重试 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-019](.scratch/alva-completion/issues/12-voice-transcription.md) | 录音转写、纠正与发送 | `chat` |  |  | 待认领；开工前登记 |
