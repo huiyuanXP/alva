@@ -12,7 +12,7 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-015](.scratch/alva-completion/issues/08-chat-answer-confirmation.md) | Chat提取与手填双向确认 | `questions` |  |  | 待认领；开工前登记 |
+| [ALVA-015](.scratch/alva-completion/issues/08-chat-answer-confirmation.md) | Chat提取与手填双向确认 | `questions` | Lexie | `task/ALVA-015-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-015-lexie` | 占用 `api/chat.ts`、`api/business.ts`、`web/src/Panels.tsx`、问卷专项测试；测试独立端口 4215 |
 | [ALVA-018](.scratch/alva-completion/issues/11-cancel-retry.md) | 咨询取消与故障重试 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-019](.scratch/alva-completion/issues/12-voice-transcription.md) | 录音转写、纠正与发送 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-020](.scratch/alva-completion/issues/13-scope-confirmation.md) | 作用范围澄清与确认 | `proposals` |  |  | 待认领；开工前登记 |

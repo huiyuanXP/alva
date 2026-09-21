@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-014](07-questionnaire-scope.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** Lexie 已按 NextTask 正式认领；分支 `task/ALVA-015-lexie`，独立 Worktree `/home/ubuntu/Alva-worktrees/ALVA-015-lexie`。
 
 - [ ] 真实Codex产生待确认答案，未确认不覆盖已确认值。
 - [ ] 确认保存来源原话、题ID、房间及状态；手填与Chat结果一致。
