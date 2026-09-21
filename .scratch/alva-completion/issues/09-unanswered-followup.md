@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-015](08-chat-answer-confirmation.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** Lexie 已按 NextTask 正式认领；分支 `task/ALVA-016-lexie`，独立 Worktree `/home/ubuntu/Alva-worktrees/ALVA-016-lexie`。
 
 - [ ] 按房间/全屋范围统计，不因另一房间答过同题就消失；禁用项不计入。
 - [ ] 点击未答项带题目和房间进入Chat，不仅切换问卷标签。

@@ -13,7 +13,7 @@
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
 | [ALVA-013](.scratch/alva-completion/issues/06-example-building-views.md) | 建筑3D总览、剖切与房间视角 | `render` |  |  | 待认领；开工前登记 |
-| [ALVA-016](.scratch/alva-completion/issues/09-unanswered-followup.md) | 未答看板与退出问卷分析 | `questions` |  |  | 待认领；开工前登记 |
+| [ALVA-016](.scratch/alva-completion/issues/09-unanswered-followup.md) | 未答看板与退出问卷分析 | `questions` | Lexie | `task/ALVA-016-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-016-lexie` | 占用 `api/chat.ts`、`web/src/Panels.tsx`、问卷/Chat专项测试；测试独立端口 4216 |
 | [ALVA-018](.scratch/alva-completion/issues/11-cancel-retry.md) | 咨询取消与故障重试 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-019](.scratch/alva-completion/issues/12-voice-transcription.md) | 录音转写、纠正与发送 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-020](.scratch/alva-completion/issues/13-scope-confirmation.md) | 作用范围澄清与确认 | `proposals` |  |  | 待认领；开工前登记 |
