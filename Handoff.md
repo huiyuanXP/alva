@@ -103,3 +103,9 @@ ALVA-010 已由 lzy 在独立 Worktree `task/ALVA-010-lzy` 完成并验证，随
 Lexie 在 `task/ALVA-014-lexie` 完成实现，原实现提交 `9e309ec241116f276c738c9d7ef4aecd7ea6a06c`。现役问卷保留 Q01–Q60 稳定 ID，停用 Q19–Q22、Q58、Q60；可用题继续支持 A 推荐、B/C/D、自由回答以及 unknown/skipped/not_applicable，房间/项目 scope 隔离且锁定答案服务端拒绝覆盖。预算能力已从现役 Project 合同、写接口、UI、Chat 工具快照和导出移除，旧数据库/快照字段不迁移、不自动删除。
 
 两轮验收均通过：Round 1 `evidence/20260921T073000Z-ALVA014-round1/` 包含 TypeScript、生产构建和 8 个相关回归；Round 2 `evidence/20260921T074000Z-ALVA014-round2/` 为真实 Chromium，验证 54 个可用题、6 个停用题隐藏、无预算 UI、跨房间不串值、unknown 显示、锁定写入 422、刷新持久化且登录后无 console error。全量 `npm test` 补充跑到 70/73，两个 media 失败仅因未提供 `RENOVATION_MEDIA_FIXTURES`；原 tracker frontier 偏差在本次全量重算后同步修正。
+
+## ALVA-011 门窗、校准与拓扑确认
+
+ALVA-011 已由 lzy 在独立 Worktree task/ALVA-011-lzy 完成，原实现提交 b113ba9，已合入 main。服务端新增门窗增删改、墙段/墙高/同墙重叠校验、已知墙长同比例校准、不可变拓扑版本与来源指纹；前端新增门窗校核面板，并保留墙线分段入口，确认后显示版本指纹。
+
+验证：npm run check、npm run build:alva、ALVA-010/011 定向测试 5/5 通过；真实 floorplan.png 的 Chromium 网页验收覆盖登录、原图显示、墙线分段 200、门窗增删改、非法几何 422、校准、确认 v1、刷新重载和 /api/candidate/topology 无 404。证据：evidence/20260921T100146840Z-ALVA011-real-browser/。实时 Codex 复试因供应商 usage limit 返回 429，未伪造成功结果；本票网页验收使用真实附件及既有实际识别候选来源。

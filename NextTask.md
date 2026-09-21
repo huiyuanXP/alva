@@ -1,6 +1,6 @@
 # What's next · 任务认领与并行开发
 
-当前已集成 ALVA-009，其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
+当前已集成 ALVA-011，其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
 
 ## 当前集成偏好
 
@@ -12,7 +12,7 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-011](.scratch/alva-completion/issues/04-openings-scale-confirm.md) | 修正门窗、校准尺寸并确认拓扑 | `topology` | lzy | `task/ALVA-011-lzy` / `/home/ubuntu/Alva-worktrees/ALVA-011-lzy` | 已认领；共享入口 `api/api.ts`、`api/store.ts`、`web/src/main.tsx`，端口 4192 |
+| [ALVA-012](.scratch/alva-completion/issues/05-codex-architectural-scene.md) | 调用Codex生成建筑3D场景 | `generation` |  |  | 待认领；开工前登记 |
 | [ALVA-015](.scratch/alva-completion/issues/08-chat-answer-confirmation.md) | Chat提取与手填双向确认 | `questions` |  |  | 待认领；开工前登记 |
 | [ALVA-017](.scratch/alva-completion/issues/10-multimodal-chat.md) | 文字与图片真实流式咨询 | `chat` | Lexie | `task/ALVA-017-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-017-lexie` | 占用 `api/chat.ts`、聊天专项测试与验收脚本；测试独立端口 4217；不修改 ALVA-011 占用的 `api/api.ts`、`api/store.ts`、`web/src/main.tsx` |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
