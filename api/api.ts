@@ -18,7 +18,7 @@ import {registerExports} from './export.js';
 import {registerConsultation,type TranscriptionCall} from './chat.js';
 import type {CodexInput} from './codex.js';
 import {review} from './business.js';
-import {recognizeLayout} from './import.js';
+import {recognizeLayout,layoutRecognitionModel} from './import.js';
 import {createCanvas,DOMMatrix,ImageData,Path2D} from '@napi-rs/canvas';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
 export async function imageData(mime:string,base64:string,filename='户型图'):Promise<SourceImage>{
@@ -111,7 +111,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
    const candidate=await recognizeLayout(`data:${image.mime};base64,${image.data}`,undefined,controller.signal);
    if(controller.signal.aborted)throw new Error('已取消');
    const finishedAt=new Date().toISOString();
-   const p=await store.mutate(s.projectId,b.requestId,b.expectedRevision,'import',input,p=>{p.candidate=candidate;p.sourceImage=image;p.importState={status:'succeeded',message:'Codex已完成识别，二维候选待你核对和校准。',requestId:b.requestId,sourceMime:image.originalMime,filename:image.filename,page:image.page,pages:image.pages,provider:'codex',model:process.env.OPENAI_MODEL||'gpt-5.5',startedAt,finishedAt};p.dirty=true;p.evidence.push({id:randomUUID(),quote:`用户上传${image.originalMime==='application/pdf'?'PDF第1页预览':'户型图'}；Codex实际读取该附件并生成墙、房间、门窗候选，尺寸仍未校准`,source:'image',createdAt:finishedAt})});emit('project',p);emit('done',{ok:true});
+   const p=await store.mutate(s.projectId,b.requestId,b.expectedRevision,'import',input,p=>{p.candidate=candidate;p.sourceImage=image;p.importState={status:'succeeded',message:'Codex已完成识别，二维候选待你核对和校准。',requestId:b.requestId,sourceMime:image.originalMime,filename:image.filename,page:image.page,pages:image.pages,provider:'codex',model:layoutRecognitionModel(),startedAt,finishedAt};p.dirty=true;p.evidence.push({id:randomUUID(),quote:`用户上传${image.originalMime==='application/pdf'?'PDF第1页预览':'户型图'}；Codex实际读取该附件并生成墙、房间、门窗候选，尺寸仍未校准`,source:'image',createdAt:finishedAt})});emit('project',p);emit('done',{ok:true});
   }catch(e){const cancelled=controller.signal.aborted;const status:ImportState={status:cancelled?'cancelled':'failed',message:cancelled?'导入已取消，原工作稿和已确认场景保持不变':'识图未成功，原工作稿和已确认场景保持不变；请重试或更换清晰附件',requestId:b.requestId,sourceMime:b.mime,filename,startedAt,finishedAt:new Date().toISOString()};try{await store.setImportState(s.projectId,status);await store.failure(s.projectId,'import',cancelled?'取消':'识图失败')}catch{}emit('error',{error:cancelled?'已取消导入':e instanceof DomainError?e.message:'识图未成功，原设计保持不变，请重试或更换清晰图片'})}
   finally{clearInterval(heartbeat);active.delete(s.projectId);reply.raw.end()}
  });
