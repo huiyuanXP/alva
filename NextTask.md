@@ -83,3 +83,10 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 
 
 只读展示入口：https://prod.huiyuanxp.com/todo 。Ticket与本表在main更新后自动反映到看板；认领仍在本表进行。ALVA-052维护任务已完成本地验收，集成收尾见Handoff。
+
+
+## 独立维护任务（不计入44张产品票）
+
+| 任务 | 署名 | 工作区与边界 | 状态 |
+|---|---|---|---|
+| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) | chatgpt-audit | `task/ALVA-053-chatgpt-audit` / `/home/ubuntu/Alva-worktrees/ALVA-053-chatgpt-audit`；仅诊断脚本/证据/文档，不改产品源码或配置，不重启服务 | in-progress |
