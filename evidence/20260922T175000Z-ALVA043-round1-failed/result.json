@@ -1,0 +1,7 @@
+{
+  "ticket": "ALVA-043",
+  "roundAttempt": 1,
+  "passed": false,
+  "reason": "acceptance script inherited an unrelated >=2 delta threshold; ALVA-043 grounds model output after completion and only requires non-empty streamed guidance",
+  "action": "acceptance criterion corrected to >=1 grounded SSE delta; product code unchanged"
+}

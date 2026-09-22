@@ -1,0 +1,7 @@
+{
+  "ticket": "ALVA-043",
+  "roundAttempt": 2,
+  "passed": false,
+  "reason": "browser saw streamed BG05 before chat-complete persistence; test read the store too early and observed empty assistant text",
+  "action": "wait for composer send button and completed assistant persistence before reading store; rerun under a new run ID"
+}

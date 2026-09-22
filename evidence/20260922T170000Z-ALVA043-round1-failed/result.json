@@ -1,0 +1,8 @@
+{
+  "ticket": "ALVA-043",
+  "roundAttempt": 1,
+  "passed": false,
+  "reason": "real model followed questionnaire-first behavior and did not cite/use BG01 despite the read-only tool being available",
+  "observedAnswer": "请问在进行视频会议时，您更倾向于使用什么样的背景？",
+  "action": "server-side relevant guidance context added; acceptance rerun under a new run ID"
+}

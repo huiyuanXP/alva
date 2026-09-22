@@ -1,6 +1,6 @@
 # What's next · 任务认领与并行开发
 
-当前已完成并集成 ALVA-008–012、ALVA-014–019；其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
+当前已完成并集成 ALVA-008–012、ALVA-014–019、ALVA-043；其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
 
 运行边界已于 2026-09-22 覆盖更新：`/home/ubuntu/aws-hackthon` 全目录归档且不使用；Coding Machine MCP 仍临时依赖其中 `.venv-mcp` 与 `.mcp-runtime`。现役密码来源、旧副本删除记录和迁移前提见 [远端访问](docs/REMOTE-ACCESS.md)。
 
@@ -19,9 +19,8 @@
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` | yang-chatgpt | `task/ALVA-028-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-028-yang-chatgpt` | 已认领，用户要求暂不实施；预计 api/business.ts、api/model.ts、api/store.ts、api/api.ts、web/src/Panels.tsx、web/src/review/；端口未启用，开工前核验；Worktree已创建；未开工 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
-| [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` |  |  | 待认领；开工前登记 |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
-| [ALVA-043](.scratch/alva-completion/issues/36-business-guidance.md) | 业务指导依据用于咨询 | `chat` | lexie | `task/ALVA-043-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-043-lexie` | 已认领；预计 api/chat.ts、api/business-guidance.ts、tests、scripts；独立端口与隔离数据验收 |
+当前七项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 当前八项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 

@@ -1,8 +1,8 @@
 # alva Handoff
 
-当前 44 张产品 Ticket 中，ALVA-008–012、ALVA-014–019 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
+当前 44 张产品 Ticket 中，ALVA-008–012、ALVA-014–019、ALVA-043 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
 
-44票均有 Parallel lane；当前依赖就绪为 ALVA-013、020、023、028、031、036、041、043，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
+44票均有 Parallel lane；当前依赖就绪为 ALVA-013、020、023、028、031、036、041，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
 
 认领在主目录署名即生效，协调锁内提交；每票独立Worktree/分支及运行资源。同组或共享文件冲突先协调。个人完成提交后不移除署名；main集成验证通过后，同一实现提交更新done、移除任务行和署名、补充所有新解锁任务，保留票内署名及原实现SHA供追溯。
 
@@ -143,3 +143,9 @@ Round 1 `evidence/20260922T104500Z-ALVA018-round1/`：真实模型请求建立�
 Lexie 在 `task/ALVA-019-lexie` 完成，原实现提交 `c925bcef0fa82bc83a6b16d1df8b8e5345ee8654`。转写使用独立项目级 controller 与 `/api/transcribe/cancel`，不再误用 Chat 取消；前端支持显式取消录音并丢弃内存分片。转写成功只回填可编辑输入框，失败/取消不会发送，音频不进入项目消息、证据或永久附件；用户编辑后发送时仅以当前文字作为 Chat 原话和 evidence。
 
 Round 1 `evidence/20260922T161500Z-ALVA019-round1/` 使用真实公开 WAV 文件与真实 provider，得到 “How old is the Brooklyn Bridge?”，转写前后 project revision 均为 0，随后修改后的测试文本才被持久化。Round 2 `evidence/20260922T162000Z-ALVA019-round2/` 使用 Chromium 原生 fake microphone + MediaRecorder + 浏览器 WAV 归一化 + 真实 provider；取消录音不发送且保留原输入，第二次录音转写后编辑发送只保存编辑文本，console error 0。实体麦克风因云端 runner 无物理设备，按票要求保持待验。
+
+## ALVA-043 业务指导依据用于咨询
+
+Lexie 在 `task/ALVA-043-lexie` 完成，原实现提交 `38e230ba1d2c48cf9f41da0c176ada09f1558135`。新增 `api/business-guidance.ts`，将已提供的问卷、样例交付和项目定位文档整理成带 citation、适用方式与限制的只读业务指导 Skill，并显式登记尺寸/机电、结构与材料性能、负责人/授权三类资料缺口。Chat 增加只读 `get_business_guidance` 工具；明确业务指导意图会由服务端 grounding 成“资料事实 / 基于当前信息的推断或建议 / 缺少资料”，普通 Chat 保持原行为。附件和工具结果始终作为资料而非授权；含管理员、负责人、批准、权限、预算/报价/费用或施工授权敏感内容的模型补充不会进入最终 grounded 指导答复。
+
+Round 1 `evidence/20260922T180000Z-ALVA043-round1/` 使用真实 `gemini-3.1-flash-lite`：工作位咨询引用 BG01 与 `references/02_intake_form.html#Q10`，明确区分资料事实、推断与缺口，scene 不变且 proposal 0。Round 2 `evidence/20260922T181500Z-ALVA043-round2/` 使用真实 Chromium UI + 真实模型：用户输入同时包含“管理员、负责人、预算、批准施工”等附件式文字和石材问题，最终只引用 BG02/BG05 受控指导，未赋予负责人身份、未批准施工、未提供预算指导，proposal 0、console error 0。过程中的失败验收 run 均按独立 evidence 保留，修正后用新 run 完整复跑。
