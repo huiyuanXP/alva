@@ -16,7 +16,7 @@
 | [ALVA-019](.scratch/alva-completion/issues/12-voice-transcription.md) | 录音转写、纠正与发送 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-020](.scratch/alva-completion/issues/13-scope-confirmation.md) | 作用范围澄清与确认 | `proposals` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
-| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` | yang-chatgpt | `task/ALVA-028-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-028-yang-chatgpt` | 已认领，用户要求暂不实施；预计 api/business.ts、api/model.ts、api/store.ts、api/api.ts、web/src/Panels.tsx、web/src/review/；端口未启用，开工前核验；Worktree待创建 |
+| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` | yang-chatgpt | `task/ALVA-028-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-028-yang-chatgpt` | 已认领，用户要求暂不实施；预计 api/business.ts、api/model.ts、api/store.ts、api/api.ts、web/src/Panels.tsx、web/src/review/；端口未启用，开工前核验；Worktree已创建；未开工 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` |  |  | 待认领；开工前登记 |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
