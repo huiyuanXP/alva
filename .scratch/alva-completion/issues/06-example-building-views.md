@@ -8,13 +8,9 @@
 
 **Blocked by:** 05：调用Codex生成建筑3D场景
 
-**Status:** in-progress
+**Status:** ready-for-agent
 
-**Owner:** yang-chatgpt
-
-**Claim branch / Worktree:** `task/ALVA-013-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt`（已创建，未开工）
-
-**Execution:** 2026-09-22 由 yang-chatgpt 认领；用户明确要求仅认领并说明，暂不实施。未修改产品代码、未运行开发测试、未部署。
+**Execution:** 已释放，待重新认领；未实施。
 
 - [ ] 默认总览根据实际建筑边界取景，建筑完整落入视野；支持旋转、缩放及一键复位，不把6个固定房间或固定相机坐标套给任意户型。
 - [ ] 提供墙体剖切/完整墙体切换，让室内轮廓可见；剖切只影响显示，不删除建筑实体或改变已确认拓扑。
@@ -30,3 +26,7 @@
 **Snapshot scope:** 确认操作只更新当前工作状态；只有用户手动点击全局保存才建立存档快照。点击已有快照只读预览，明确恢复才整体替换；不要求逐操作历史、撤销或自动存档。
 
 **Parallel lane:** `render`；同组默认串行，不同组满足依赖且文件归属不重叠时可并行。共享入口/schema/存储改动需先登记并协调，详见[认领与集成规则](../../../NextTask.md)。
+
+## Claim release handoff
+
+2026-09-22：yang-chatgpt 按用户要求改领非3D任务，释放本票；无产品代码修改或实施进度。原分支 `task/ALVA-013-yang-chatgpt`、Worktree `/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt` 保留，仅含认领时基线；不再占用 render 或共享文件，接手应从最新 main 建立自己的工作区。
