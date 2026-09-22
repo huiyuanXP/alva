@@ -19,7 +19,7 @@
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` |  |  | 待认领；开工前登记 |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
-| [ALVA-043](.scratch/alva-completion/issues/36-business-guidance.md) | 业务指导依据用于咨询 | `chat` |  |  | 待认领；开工前登记 |
+| [ALVA-043](.scratch/alva-completion/issues/36-business-guidance.md) | 业务指导依据用于咨询 | `chat` | lexie | `task/ALVA-043-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-043-lexie` | 已认领；预计 api/chat.ts、api/business-guidance.ts、tests、scripts；独立端口与隔离数据验收 |
 
 当前八项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 

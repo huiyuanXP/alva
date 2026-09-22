@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-017](10-multimodal-chat.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 已由 lexie 认领；分支 `task/ALVA-043-lexie`，Worktree `/home/ubuntu/Alva-worktrees/ALVA-043-lexie`。预计修改 `api/chat.ts`、`api/business-guidance.ts`、相关 tests/scripts；使用独立端口、隔离数据与真实咨询验收。
 
 - [ ] 从可用文档整理指导Skills及出处，对缺资料明确登记。
 - [ ] 真实咨询至少一例验证指导被使用，区分引用事实与推断。
