@@ -4,7 +4,7 @@ import {randomUUID} from 'node:crypto';
 import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
 import {applyTopologyCommand} from '../api/topology/commands.js';
-import {validateTopology} from '../api/topology/validate.js';
+import {describeWall,validateTopology} from '../api/topology/validate.js';
 import type {SceneData} from '../api/model.js';
 
 const scene=():SceneData=>({walls:[
@@ -45,3 +45,11 @@ test('ALVA-010 persists topology changes, clears calibration, survives reload an
  const previous=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE='alva-010-test-code-123456';const store=new AlvaStore();await store.init();const app=await buildAlva(store,{assets:false});
  try{const created=await store.create('Topology test');await store.ensureAccessCode(created.project.id);const login=await app.inject({method:'POST',url:'/api/access',payload:{code:'alva-010-test-code-123456'}});assert.equal(login.statusCode,200);const headers={cookie:cookie(login)};const requestId=randomUUID();const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.candidate=scene();p.dirty=true});const changed=await app.inject({method:'POST',url:'/api/candidate/topology',headers,payload:{requestId,expectedRevision:seeded.revision,operation:{kind:'move-wall-endpoint',wallId:'wall-a',end:'b',point:{x:4.5,y:0}}}});assert.equal(changed.statusCode,200);const body=changed.json();assert.equal(body.candidate.calibration,null);assert.equal(body.candidate.walls.find((w:any)=>w.id==='wall-a').b.x,4.5);assert.equal(body.candidate.walls.find((w:any)=>w.id==='wall-b').a.x,4.5);const replay=await app.inject({method:'POST',url:'/api/candidate/topology',headers,payload:{requestId,expectedRevision:seeded.revision,operation:{kind:'move-wall-endpoint',wallId:'wall-a',end:'b',point:{x:4.5,y:0}}}});assert.equal(replay.statusCode,200);assert.equal(replay.json().revision,body.revision);const reloaded=await app.inject({method:'GET',url:'/api/project',headers});assert.equal(reloaded.json().candidate.walls.find((w:any)=>w.id==='wall-a').id,'wall-a');assert.equal(reloaded.json().candidate.calibration,null);const bad=await app.inject({method:'POST',url:'/api/candidate/topology',headers,payload:{requestId:randomUUID(),expectedRevision:body.revision,operation:{kind:'add-wall',a:{x:1,y:1},b:{x:1,y:1}}}});assert.equal(bad.statusCode,422);assert.match(bad.json().error,/拓扑校验失败/);assert.equal((await store.get(created.project.id)).candidate!.walls.length,6)}finally{await app.close();await store.close();if(previous===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=previous}}
 );
+
+
+test('topology errors identify walls by room and direction, explain T-junction cause and give repair options',()=>{
+ const base=scene();assert.match(describeWall(base,base.walls[0]),/客餐厅上侧墙/);
+ const tScene:SceneData={...base,walls:[...base.walls.filter(w=>w.id!=='wall-f'),{id:'wall-t',a:{x:2,y:0},b:{x:2,y:1.5},thickness:.15,height:2.8,structural:'unknown',evidence:[]}],openings:[]};
+ let message='';try{validateTopology(tScene)}catch(error){message=(error as Error).message}
+ assert.match(message,/客餐厅/);assert.match(message,/中间/);assert.match(message,/可能原因/);assert.match(message,/T 型/);assert.match(message,/建议修正/);assert.match(message,/分成两段/);assert.match(message,/墙角/);assert.match(message,/误识别墙/);assert.match(message,/技术信息（供开发排查）/);assert.doesNotMatch(message,/拓扑校验失败：墙 wall-t/);
+});
