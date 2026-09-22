@@ -6,7 +6,7 @@
 
 **Blocked by:** ALVA-055、ALVA-009
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Parallel lane:** topology / import，串行执行。
 
@@ -18,4 +18,4 @@
 ## Implementation handoff
 
 用户于2026-09-22直接授权创建并实施。基线HEAD `9454057f93a0f9d5780f6ed71efb095ae1d62366`。原44票与旧week/step编号不变。
-未认领，等待ALVA-055集成。
+Owner：chatgpt-mimo。基线main c25fa79；分支task/ALVA-056-chatgpt-mimo；独立Worktree .runtime/worktrees/ALVA-056-chatgpt-mimo（编辑工具工作区边界内）。只新增可复跑Codex识图探针、输出分阶段分析与证据；不修改现役import.ts、生产模型配置或用户场景。正常使用Codex现有鉴权，不读取/复制宿主机凭据。
