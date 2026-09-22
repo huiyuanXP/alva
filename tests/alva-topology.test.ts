@@ -5,7 +5,7 @@ import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
 import {applyTopologyCommand} from '../api/topology/commands.js';
 import {describeWall,validateTopology} from '../api/topology/validate.js';
-import {applyTopologyRepair,firstTopologyRepairIssue} from '../api/topology/repair.js';
+import {addWallFromClicks,applyTopologyRepair,firstTopologyRepairIssue,snapWallPoint} from '../api/topology/repair.js';
 import type {SceneData} from '../api/model.js';
 
 const scene=():SceneData=>({walls:[
@@ -77,4 +77,28 @@ test('automatic T-junction split migrates openings to the correct new wall segme
  ],rooms:[{id:'room',name:'客厅',purpose:'客厅',polygon:[{x:0,y:0},{x:6,y:0},{x:6,y:3},{x:0,y:3}],locked:false}],openings:[{id:'window',wallId:'host',kind:'window',offset:.8,width:.8,height:1.2,sill:.9}],items:[],calibration:null,geography:{latitude:31,north:0,assumption:'test'}};
  const issue=firstTopologyRepairIssue(base)!,option=issue.options.find(o=>o.id.startsWith('split-host:'))!;const fixed=applyTopologyRepair(base,issue.id,option.id);const opening=fixed.scene.openings[0];assert.notEqual(opening.wallId,'host');assert.ok(opening.offset>0&&opening.offset<1);
  const unsafe=structuredClone(base);unsafe.openings[0]={id:'door',wallId:'host',kind:'door',offset:.5,width:1,height:2.1,sill:0};const unsafeIssue=firstTopologyRepairIssue(unsafe)!,unsafeOption=unsafeIssue.options.find(o=>o.id.startsWith('split-host:'))!;assert.throws(()=>applyTopologyRepair(unsafe,unsafeIssue.id,unsafeOption.id),/跨有门窗/);
+});
+
+test('canvas wall drawing snaps to wall bodies, splits hosts and creates connected wall without user coordinates',()=>{
+ const base:SceneData={walls:[
+  {id:'top',a:{x:0,y:0},b:{x:6,y:0},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+  {id:'right',a:{x:6,y:0},b:{x:6,y:4},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+  {id:'bottom',a:{x:6,y:4},b:{x:0,y:4},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+  {id:'left',a:{x:0,y:4},b:{x:0,y:0},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+ ],rooms:[{id:'room',name:'客厅',purpose:'客厅',polygon:[{x:0,y:0},{x:6,y:0},{x:6,y:4},{x:0,y:4}],locked:false}],openings:[],items:[],calibration:null,geography:{latitude:31,north:0,assumption:'test'}};
+ const result=addWallFromClicks(base,{x:3.08,y:.12},{x:2.94,y:3.87});
+ assert.equal(result.scene.walls.length,7);
+ const added=result.scene.walls.find(w=>w.id===result.wallId)!;
+ assert.deepEqual(added.a,{x:3.08,y:0});
+ assert.deepEqual(added.b,{x:2.94,y:4});
+ assert.equal(result.aSnap.kind,'wall');assert.equal(result.bSnap.kind,'wall');
+ assert.equal(firstTopologyRepairIssue(result.scene),null);
+ assert.ok(result.scene.rooms[0].polygon.some(p=>nearPoint(p,added.a)));
+ assert.ok(result.scene.rooms[0].polygon.some(p=>nearPoint(p,added.b)));
+});
+
+test('canvas wall drawing prefers nearby endpoints and rejects accidental tiny walls',()=>{
+ const base=scene();
+ const snap=snapWallPoint(base,{x:.12,y:.08});assert.equal(snap.kind,'endpoint');assert.deepEqual(snap.point,{x:0,y:0});
+ assert.throws(()=>addWallFromClicks(base,{x:.1,y:.1},{x:.15,y:.15}),/起点和终点太近/);
 });
