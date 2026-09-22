@@ -109,3 +109,23 @@ test('building generation normalizes provider items alias and fixed units before
  const codex:BuildingCodexCall=async()=>JSON.stringify(provider);const result=await generateBuilding(project,topology,version,fingerprint,undefined,codex);
  assert.equal(result.units,'meters');assert.equal(result.components.length,expected.components.length);assert.ok(result.components.every((c:BuildingSceneData['components'][number])=>typeof c.id==='string'&&c.id.length>0));
 });
+
+test('reopen confirmed topology returns to 2D candidate and discards downstream room design while preserving source context',async()=>{
+ const previous=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE='alva-reopen-topology-123456';
+ const store=new AlvaStore();await store.init();const app=await buildAlva(store,{assets:false});
+ try{
+  const created=await store.create('重新修改户型');await store.ensureAccessCode(created.project.id);const topology=scene(false),version=createTopologyVersion(created.project,topology),building=buildingFor(topology,version.version,version.sourceFingerprint);
+  const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed-reopen',{},p=>{
+   p.sourceImage={mime:'image/png',data:'aW1hZ2U=',originalMime:'image/png',filename:'original.png'};
+   p.messages=[{id:'m1',role:'user',text:'我喜欢开放式客厅',status:'completed',createdAt:new Date().toISOString()}];
+   p.topologyVersions=[version];p.confirmedTopology=version;p.scene=structuredClone(topology);p.scene.items=[{id:'furniture-1',assetId:'alva-sofa',roomId:'room-main',name:'沙发',x:2,y:2,width:2.1,depth:.9,height:.8,rotation:0,color:'#9da991',material:'fabric',clearance:.6,locked:false}];
+   p.buildingCandidate=structuredClone(building);p.confirmedBuilding=structuredClone(building);p.buildingState={status:'confirmed',topologyVersion:version.version,topologyFingerprint:version.sourceFingerprint,attempts:2,updatedAt:new Date().toISOString()};
+   p.proposals=[{id:'proposal-1',title:'旧布局',rationale:'旧户型方案',evidenceIds:[],baseRevision:0,changes:[],status:'accepted'}];
+   p.findings=[{id:'review-1',kind:'furniture',title:'旧布局检查',reason:'旧户型',suggestion:'旧建议',objectIds:[],roomIds:['room-main'],evidenceIds:[],confidence:'medium',status:'pending',stage:'review'},{id:'intake-1',kind:'requirement',title:'需求保留',reason:'用户输入',suggestion:'继续确认',objectIds:[],roomIds:[],evidenceIds:[],confidence:'high',status:'pending',stage:'intake'}];
+  });
+  const internal=await store.issueInternalSession(created.project.id),headers={cookie:`alva_session=${internal.token}`};
+  const response=await app.inject({method:'POST',url:'/api/topology/reopen',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,confirmed:true,discardDownstream:true}});assert.equal(response.statusCode,200,response.body);const reopened=response.json();
+  assert.equal(reopened.scene,null);assert.ok(reopened.candidate);assert.equal(reopened.candidate.items.length,0);assert.deepEqual(reopened.candidate.walls,topology.walls);assert.equal(reopened.confirmedTopology,undefined);assert.equal(reopened.buildingCandidate,undefined);assert.equal(reopened.confirmedBuilding,undefined);assert.equal(reopened.buildingState.status,'idle');assert.equal(reopened.buildingState.attempts,0);assert.deepEqual(reopened.proposals,[]);assert.deepEqual(reopened.findings.map((f:any)=>f.id),['intake-1']);assert.equal(reopened.sourceImage.filename,'original.png');assert.equal(reopened.messages[0].text,'我喜欢开放式客厅');assert.equal(reopened.topologyVersions.length,1);assert.match(reopened.changes.at(-1).description,/返回修改户型/);
+  const second=await app.inject({method:'POST',url:'/api/topology/reopen',headers,payload:{requestId:randomUUID(),expectedRevision:reopened.revision,confirmed:true,discardDownstream:true}});assert.equal(second.statusCode,422);assert.match(second.json().error,/没有已确认户型/);
+ }finally{await app.close();await store.close();if(previous===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=previous;}
+});

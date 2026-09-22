@@ -9,3 +9,5 @@
 .room-name-hit{cursor:text;pointer-events:all}
 
 .room-name-editor-floating{position:fixed;z-index:50;width:220px;height:42px;transform:translate(-50%,-50%);padding:8px 12px;border:2px solid var(--live);border-radius:9px;background:#fffdf8;box-shadow:0 8px 28px #28302533;font-size:15px;font-weight:600;text-align:center;color:var(--ink)}
+
+.reopen-topology{width:100%;margin:0 0 12px;border-color:#b96a55;color:#8d3f31;background:#fff7f3}.reopen-topology:hover:not(:disabled){background:#f7e7df}
