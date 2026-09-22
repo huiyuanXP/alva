@@ -7,3 +7,5 @@
 .room-name-label{cursor:text;user-select:none}.room-name-editor{width:100%;height:100%;padding:.02px .05px;border:1px solid #2478b2;border-radius:.05px;background:#fff;font-size:.16px;text-align:center;color:#363a32}
 .room-name-layer,.room-name-label{pointer-events:all}.room-name-label{paint-order:stroke;stroke:#f5f3ea;stroke-width:.04;stroke-linejoin:round}
 .room-name-hit{cursor:text;pointer-events:all}
+
+.room-name-editor-floating{position:fixed;z-index:50;width:220px;height:42px;transform:translate(-50%,-50%);padding:8px 12px;border:2px solid var(--live);border-radius:9px;background:#fffdf8;box-shadow:0 8px 28px #28302533;font-size:15px;font-weight:600;text-align:center;color:var(--ink)}
