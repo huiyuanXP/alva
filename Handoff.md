@@ -123,3 +123,10 @@ Lexie 在独立 Worktree `task/ALVA-017-lexie` 完成；实现提交 `0356cef4fe
 Lexie 在 `task/ALVA-015-lexie` 完成，原实现提交 `1db54df0245788e67330c32e95ad61cf6c21a3a5`。Chat 待确认答案确认后以精确用户原话保存为 `chat` evidence，手填答案保留 `questionnaire` evidence，两类答案均进入后续 Chat 的 `get_snapshot`。重复确认返回 422 且不重复写入；锁定值服务端拒绝覆盖，解锁必须明确 `confirmed:true`。
 
 两轮验收均通过：Round 1 `evidence/20260921T143000Z-ALVA015-round1/` 为真实 Codex API 链路；Round 2 `evidence/20260921T145000Z-ALVA015-round2/` 为 Chromium UI 链路。补充回归中 ALVA-017 的 2 个模型目录断言仍硬编码旧 `gemini-3-flash`，而当前 main 已由后续任务切到 `gemini-3.1-flash-lite`，属于主线既有陈旧测试，不是 ALVA-015 功能失败。
+
+
+## ALVA-016 未答看板与退出问卷分析
+
+Lexie 在 `task/ALVA-016-lexie` 完成，原实现提交 `04ca6de1a3e1f58f70c9f84bfe6e091c40d3f68a`。未答看板按全屋与各房间 scope 分开统计，仅计启用问题；点击未答项会携带题目文本和房间上下文进入 Chat。退出问卷分析使用 `lastAnalysisEvidence` 增量游标：只处理新增 evidence，模型失败时游标不推进可重试，无新增 evidence 时直接返回且 revision 不变，已排队问题按题号+scope 去重。
+
+Round 1 `evidence/20260921T151500Z-ALVA016-round1/` 验证失败游标保持、真实模型重试成功、只消费新增 evidence、重复退出 no-op 与问题 scope 去重；Round 2 `evidence/20260921T153000Z-ALVA016-round2/` 为 Chromium，验证全屋/客厅/书房独立未答、禁用项排除、点击书房 Q25 后 Chat 自动带入题目与房间并完成真实咨询，console error 0。

@@ -1,0 +1,15 @@
+{
+  "ticket": "ALVA-016",
+  "runId": "20260921T151500Z-ALVA016-round1",
+  "pass": true,
+  "checks": {
+    "failure_keeps_cursor": true,
+    "retry_succeeds": true,
+    "new_evidence_only_cursor": 2,
+    "repeated_exit_no_revision_change": true,
+    "no_duplicate_question_scope": true,
+    "cards": [
+      "Q25:living"
+    ]
+  }
+}

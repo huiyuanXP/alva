@@ -14,6 +14,8 @@ export const catalogue=intakeCatalogue.map(q=>{
  const disabled=disabledQuestions.has(q.id),override=questionOverrides[q.id]||{};
  return {...q,...override,delivery_sections:disabled?[]:q.delivery_sections.filter(section=>section!=='D07'),...(disabled?{field_key:'disabled',group:'已停用',question:'此题在当前范围已停用。',choices:['当前不收集','保留题号','稍后再议','不适用'] as [string,string,string,string],factual:false}:{}),enabled:!disabled};
 });
+
+export function unansweredForScope(p:Project,roomId:string|null){return catalogue.filter(q=>q.enabled&&((q.scope==='project'&&roomId===null)||(q.scope==='room'&&roomId!==null))&&!p.answers.some(a=>a.questionId===q.id&&a.roomId===(q.scope==='project'?null:roomId)))}
 export const ChangeSchema=z.object({action:z.enum(['add','update','remove','copy','transfer','purpose','wall']),targetId:z.string(),values:z.record(z.string(),z.unknown())}).strict();
 export function applyChanges(scene:SceneData,changes:Change[],professional=false):SceneData{
  const s=structuredClone(scene);

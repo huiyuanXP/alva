@@ -20,3 +20,5 @@
 - ALVA-017 已完成真实文字/图片流式咨询；当前聊天模型目录动态来自 `/api/models`，本轮真实可用并通过验收的是 `gemini-3-flash`。GPT 系列仍出现在供应端模型目录，但当前凭据已达使用上限，不作为现役可用选项。证据：`evidence/20260921T103000Z-ALVA017-round1/`、`evidence/20260921T110500Z-ALVA017-round2/`。
 
 - ALVA-015 已完成 Chat 提取与手填双向确认：确认后保留精确原话来源，手填与 Chat 确认统一进入 answers/evidence，重复确认幂等拒绝，锁定值须显式解锁。证据见 `evidence/20260921T143000Z-ALVA015-round1/`、`evidence/20260921T145000Z-ALVA015-round2/`。
+
+- ALVA-016 已完成未答看板与退出问卷分析：scope 独立统计、未答跳转 Chat、增量 evidence 游标、失败可重试和重复退出 no-op 均已验证。证据：`evidence/20260921T151500Z-ALVA016-round1/`、`evidence/20260921T153000Z-ALVA016-round2/`。

@@ -1,0 +1,16 @@
+{
+  "ticket": "ALVA-016",
+  "runId": "20260921T153000Z-ALVA016-round2",
+  "pass": true,
+  "checks": {
+    "project_scope_group": true,
+    "living_scope_independent": true,
+    "study_scope_independent": true,
+    "disabled_excluded": true,
+    "click_prefills_chat": true,
+    "room_context_study": true,
+    "composer_focused": true,
+    "real_chat_from_unanswered": true,
+    "console_errors": []
+  }
+}
