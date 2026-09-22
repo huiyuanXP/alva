@@ -8,9 +8,13 @@
 
 **Blocked by:** 05：调用Codex生成建筑3D场景
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Owner:** yang-chatgpt
+
+**Claim branch / Worktree:** `task/ALVA-013-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt`（待创建）
+
+**Execution:** 2026-09-22 由 yang-chatgpt 认领；用户明确要求仅认领并说明，暂不实施。未修改产品代码、未运行开发测试、未部署。
 
 - [ ] 默认总览根据实际建筑边界取景，建筑完整落入视野；支持旋转、缩放及一键复位，不把6个固定房间或固定相机坐标套给任意户型。
 - [ ] 提供墙体剖切/完整墙体切换，让室内轮廓可见；剖切只影响显示，不删除建筑实体或改变已确认拓扑。
