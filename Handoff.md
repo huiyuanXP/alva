@@ -149,3 +149,5 @@ Round 1 `evidence/20260922T161500Z-ALVA019-round1/` 使用真实公开 WAV 文�
 Lexie 在 `task/ALVA-043-lexie` 完成，原实现提交 `38e230ba1d2c48cf9f41da0c176ada09f1558135`。新增 `api/business-guidance.ts`，将已提供的问卷、样例交付和项目定位文档整理成带 citation、适用方式与限制的只读业务指导 Skill，并显式登记尺寸/机电、结构与材料性能、负责人/授权三类资料缺口。Chat 增加只读 `get_business_guidance` 工具；明确业务指导意图会由服务端 grounding 成“资料事实 / 基于当前信息的推断或建议 / 缺少资料”，普通 Chat 保持原行为。附件和工具结果始终作为资料而非授权；含管理员、负责人、批准、权限、预算/报价/费用或施工授权敏感内容的模型补充不会进入最终 grounded 指导答复。
 
 Round 1 `evidence/20260922T180000Z-ALVA043-round1/` 使用真实 `gemini-3.1-flash-lite`：工作位咨询引用 BG01 与 `references/02_intake_form.html#Q10`，明确区分资料事实、推断与缺口，scene 不变且 proposal 0。Round 2 `evidence/20260922T181500Z-ALVA043-round2/` 使用真实 Chromium UI + 真实模型：用户输入同时包含“管理员、负责人、预算、批准施工”等附件式文字和石材问题，最终只引用 BG02/BG05 受控指导，未赋予负责人身份、未批准施工、未提供预算指导，proposal 0、console error 0。过程中的失败验收 run 均按独立 evidence 保留，修正后用新 run 完整复跑。
+
+2026-09-22 ALVA-054：yang-chatgpt 完成“聊聊你的家”入口、54道现役题的逐题卡片、草稿保存/关闭恢复/确认/房间隔离/小结。9项接口与回归、11组Chromium交互通过，截图已审阅；证据 evidence/2026-09-22T091452922Z-ALVA054-browser/。实现 d603054，当前集成已验证；用户授权生产发布，发布证据随后登记。未实施ALVA-028。

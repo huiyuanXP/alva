@@ -1,3 +1,4 @@
+import type {IntakeProgress} from './intake/routes.js';
 import {z} from 'zod';
 import {randomUUID} from 'node:crypto';
 import type {BuildingSceneData} from './building/types.js';
@@ -20,7 +21,7 @@ export type SourceImage={mime:string;data:string;originalMime:string;originalDat
 export type ImportState={status:'processing'|'succeeded'|'failed'|'cancelled';message:string;requestId:string;sourceMime:string;filename:string;page?:number;pages?:number;provider?:'codex';model?:string;startedAt:string;finishedAt?:string};
 export type TopologyVersion={id:string;version:number;sourceFingerprint:string;scene:SceneData;calibration:NonNullable<SceneData['calibration']>;assumptions:string[];confirmedAt:string};
 export type BuildingGenerationState={status:'idle'|'processing'|'succeeded'|'failed'|'cancelled'|'expired'|'confirmed';requestId?:string;topologyVersion?:number;topologyFingerprint?:string;error?:string;attempts:number;updatedAt:string};
-export type Project={id:string;name:string;revision:number;savedVersion:number;dirty:boolean;scene:SceneData|null;candidate:SceneData|null;answers:Answer[];evidence:Evidence[];messages:Message[];findings:Finding[];proposals:Proposal[];changes:{id:string;description:string;evidenceIds:string[];context:string[];createdAt:string}[];assets:typeof assets;sourceImage?:SourceImage;importState?:ImportState;topologyVersions:TopologyVersion[];confirmedTopology?:TopologyVersion;buildingState:BuildingGenerationState;buildingCandidate?:BuildingSceneData;confirmedBuilding?:BuildingSceneData;lastAnalysisEvidence:number;createdAt:string};
+export type Project={intakeProgress?:IntakeProgress;id:string;name:string;revision:number;savedVersion:number;dirty:boolean;scene:SceneData|null;candidate:SceneData|null;answers:Answer[];evidence:Evidence[];messages:Message[];findings:Finding[];proposals:Proposal[];changes:{id:string;description:string;evidenceIds:string[];context:string[];createdAt:string}[];assets:typeof assets;sourceImage?:SourceImage;importState?:ImportState;topologyVersions:TopologyVersion[];confirmedTopology?:TopologyVersion;buildingState:BuildingGenerationState;buildingCandidate?:BuildingSceneData;confirmedBuilding?:BuildingSceneData;lastAnalysisEvidence:number;createdAt:string};
 export const assets=[
 {id:'alva-sofa',name:'沙发',width:2.1,depth:.9,height:.8,material:'fabric',color:'#9da991',license:'CC0 · alva程序几何'},
 {id:'alva-table',name:'操作台 / 书桌',width:1.4,depth:.65,height:.75,material:'wood',color:'#b49a75',license:'CC0 · alva程序几何'},

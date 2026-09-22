@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "checks": [
+    "selection draft, close protection, save-and-close",
+    "saved draft restored after reload",
+    "confirmation writes canonical answer and evidence",
+    "save failure retains draft and retry succeeds",
+    "room questions cannot leak into project scope",
+    "unknown and explained not-applicable states; conditional branch",
+    "editable summary",
+    "390px responsive dialog",
+    "Escape and discard",
+    "two rooms keep separate answers",
+    "no global snapshots; zero page errors"
+  ],
+  "errors": []
+}

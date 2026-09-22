@@ -1,3 +1,4 @@
+import {IntakeDialog} from './intake/IntakeDialog.js';
 import React,{useEffect,useRef,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {AssistantRuntimeProvider,useExternalStoreRuntime,ThreadPrimitive,MessagePrimitive} from '@assistant-ui/react';
@@ -31,6 +32,7 @@ function Plan({scene,selected,onSelect,onSelectVertex,onChange,onItemMove,image}
 function importSourceLabel(source:Project['sourceImage']){if(!source)return '';if(source.originalMime==='application/pdf')return `${source.filename} · PDF 第${source.page||1}页${source.pages?` / 共${source.pages}页`:''}`;return `${source.filename} · ${source.originalMime}`}
 function importStatusLabel(state:Project['importState']){if(!state)return '';return `${state.message}${state.status==='failed'||state.status==='cancelled'?'（原工作稿未被覆盖）':''}`}
 function App(){
+ const [intakeOpen,setIntakeOpen]=useState(false);
  const [project,setProject]=useState<Project|null>(null),[role,setRole]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[status,setStatus]=useState(''),[selected,setSelected]=useState(''),[mode,setMode]=useState<'2d'|'3d'|'walk'>('2d'),[wallLength,setWallLength]=useState(''),[lengthSource,setLengthSource]=useState('现场测量'),[time,setTime]=useState(14),[day,setDay]=useState(172),[room,setRoom]=useState(''),[versions,setVersions]=useState<{version:number;summary:string}[]>([]),[link,setLink]=useState('');
  const upload=useRef<HTMLInputElement>(null),referenceUpload=useRef<HTMLInputElement>(null),audioUpload=useRef<HTMLInputElement>(null),recorder=useRef<MediaRecorder|null>(null),recordTimer=useRef<ReturnType<typeof setTimeout>|null>(null),discardRecording=useRef(false);
  const [accessCode,setAccessCode]=useState(''),[inviteToken,setInviteToken]=useState<string>();
@@ -68,7 +70,8 @@ function App(){
  {error&&<div className="error banner" role="alert">{error}<button onClick={()=>setError('')}>关闭</button></div>}
  {project.importState&&<div className="status banner" role="status">导入状态：{importStatusLabel(project.importState)}{project.sourceImage&&project.importState.status==='succeeded'&&<> · 来源：{importSourceLabel(project.sourceImage)}</>}</div>}
  {status&&<div className="status banner" role="status">{status}</div>}
- <main className={scene?'workspace':'workspace onboarding'}><aside className="chat"><div className="panel-heading"><span className="eyebrow">咨询</span><span>{readOnly?'只读视图':'你的生活需求'}</span></div><Conversation messages={project.messages}>
+ {intakeOpen&&<IntakeDialog project={project} readOnly={readOnly} onUpdate={setProject} onClose={()=>setIntakeOpen(false)}/>}
+ <main className={scene?'workspace':'workspace onboarding'}><aside className="chat"><div className="panel-heading"><span className="eyebrow">咨询</span><button className="home-intake-button" onClick={()=>setIntakeOpen(true)}>聊聊你的家</button></div><Conversation messages={project.messages}>
  <div className="conversation-cards">{(project as any).questionCards?.map((card:any)=>{const def=questions.find(q=>q.id===card.questionId);return def?<details key={`${card.questionId}-${card.roomId||'project'}`} open><summary>{card.reason}</summary><QuestionCard definition={def} project={project} roomId={card.roomId||room||project.scene?.rooms[0]?.id||''} mutate={mutate} readOnly={readOnly||busy}/></details>:null})}
  {(project as any).pendingAnswers?.map((a:any)=><article key={a.id}><small>待你确认 · {a.questionId}</small><p>原话：{a.quote}</p><p>拟记录：{a.text}</p><button disabled={busy||readOnly} onClick={()=>void mutate('/pending-answers/confirm',{id:a.id,confirmed:true}).catch(()=>{})}>确认写入问卷</button></article>)}
  {project.proposals.filter(p=>p.status==='proposed').map(p=><ProposalCard key={p.id} proposal={p} onAccept={selectedIds=>{if(!readOnly&&!busy)void mutate('/proposals/accept',{id:p.id,selectedIds,confirmed:true}).catch(()=>{})}}/>)}</div>

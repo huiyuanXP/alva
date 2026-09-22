@@ -92,4 +92,5 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 |---|---|---|---|
 | [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) | chatgpt-audit | `task/ALVA-053-chatgpt-audit` / `/home/ubuntu/Alva-worktrees/ALVA-053-chatgpt-audit`；仅诊断脚本/证据/文档，不改产品源码或配置，不重启服务 | in-progress |
 
-| [ALVA-054 聊聊你的家逐题问卷](docs/ALVA-054-home-intake.md) | yang-chatgpt | `task/ALVA-054-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-054-yang-chatgpt`；web/src/main.tsx、api/api.ts、api/model.ts、新增intake模块；4284 | in-progress；用户授权开发及生产发布 |
+
+ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028仍按用户要求暂停。
