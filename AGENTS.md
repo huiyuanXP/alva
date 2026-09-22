@@ -46,7 +46,7 @@
 
 持久项目名为 alva；根目录 /home/ubuntu/Alva。通用规则与项目规则在本文件统一维护。
 
-新任务单独编号 ALVA-000 起，不重排旧库 week/step。旧库 /home/ubuntu/aws-hackthon/renovation-consultation 只读；不读取业主数据。用户后续已授权查找旧发布凭据并使用prod.huiyuanxp.com；发布切换仅在验收后执行并准备回滚，MCP不变。
+新任务单独编号 ALVA-000 起，不重排旧库 week/step。`/home/ubuntu/aws-hackthon` 全目录已归档且不再使用；不读取其中产品源码、样例、业主数据或旧部署状态。当前 Coding Machine MCP 是唯一临时例外，仍依赖该目录下 `.venv-mcp` 与 `.mcp-runtime`；只保留和读取运行所需内容，待迁移到 `alva-*` 目录后再删除旧目录。凭据查找只以 [远端访问](docs/REMOTE-ACCESS.md) 指定的现役私有运行配置为准。用户已授权使用prod.huiyuanxp.com；发布切换仅在验收后执行并准备回滚，MCP服务配置不变。
 
 恢复读取 CURRENT.md、Handoff.md、NextTask.md、SPEC.md、ACCEPTANCE.md 和 PROGRESS.md；拆票阶段再读 TICKET-PROPOSAL.md，草案不等于获准执行；已发布票以 `.scratch/alva-completion/README.md` 为入口，用户限定只发票时不得自动开工。每票个人Worktree提交后，由集成人在main完成一次实现集成提交并覆盖Handoff/NextTask；认领提交独立记录；失败和证据按新 run ID 保留。
 

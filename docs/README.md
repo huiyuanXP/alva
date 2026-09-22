@@ -7,6 +7,7 @@
 - [当前交接](../Handoff.md) / [下一任务](../NextTask.md)：最新状态和执行边界。
 - [需求](../SPEC.md) / [范围](../SCOPE.md) / [验收](../ACCEPTANCE.md)：产品合同。
 - [部署与恢复](../ops/alva/DEPLOYMENT.md)：实际运行布局。
+- [远端访问](REMOTE-ACCESS.md)：Coding Machine MCP 地址、现役凭据来源与旧归档边界。
 
 新专题放在本目录对应分类下；当前状态保留在根交接文件，不复制到架构规范。
 

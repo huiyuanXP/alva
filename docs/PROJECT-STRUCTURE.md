@@ -95,7 +95,7 @@ Codex 进程协议统一经过 `api/codex.ts`。`import.ts` 管识图提示与�
 - 当前 `npm test` 只发现 `tests/*.test.ts`。不把新测试放到深层目录后假定会被执行。`tests/browser/` 和根 `playwright.config.ts` 仍启动旧工程；在另票明确建立 alva 专用配置前，不能把旧 `npm run test:browser` 当新产品验收。
 - 现役命令：`npm run check`、`npm run build:alva`、`npm run start:alva`。旧 `dev`、`start`、`build` 不指向新应用。开发测试针对当前票选取，如 `node_modules/.bin/tsx --test tests/alva-auth.test.ts`（文件实施后才可运行）。
 - `main.tsx`、`api.ts`、`SceneView.tsx` 已有集中实现；新增独立功能优先进入上述模块，入口只保留装配。提取旧逻辑与调用方在同一票完成，避免留下两个行为不同的入口。
-- 原项目 `/home/ubuntu/aws-hackthon/renovation-consultation`、本库旧工程、vendor、taskboard 与 references 不作为新功能写入位置。复用时先确认需求/许可/依赖，再将所需实现纳入现役模块并记录来源。
+- `/home/ubuntu/aws-hackthon` 全目录已归档且不作为产品源码、样例、验收或新功能来源；本库旧工程、vendor、taskboard 与 references 同样不作为新功能写入位置。唯一临时例外是 Coding Machine MCP 仍依赖该目录下 `.venv-mcp` 与 `.mcp-runtime`，详见[远端访问](REMOTE-ACCESS.md)。复用本库旧实现时先确认需求/许可/依赖，再将所需实现纳入现役模块并记录来源。
 - `.runtime/` 存放有效验证码/密钥配置、上传和数据库等私有数据；实际生产布局以[部署文档](../ops/alva/DEPLOYMENT.md)为准，不因本文迁移运行目录。`.scratch/alva-completion/` 是已入库 tracker，不是随手清除的临时目录。
 - 新顶层工程或跨层依赖改变时，先在 `docs/` 说明理由并同步本文及相关构建/测试入口；普通功能沿既定模块放置。每票在独立Worktree完成实现提交，集成人串行合入main并更新PROGRESS、Handoff/NextTask和必要的GlobalHandoff；开发分支不覆盖共享协调文件。
 

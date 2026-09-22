@@ -13,6 +13,7 @@
 ## 已确认方向与本轮边界
 
 - 持久项目名alva；新仓库 /home/ubuntu/Alva；原完整需求在SPEC和references/initial-task，来源在SOURCES。协作按最新NextTask，允许认领后独立Worktree条件并行。
+- `/home/ubuntu/aws-hackthon` 已全目录归档且不使用；Coding Machine MCP 仍临时依赖其中 `.venv-mcp` 与 `.mcp-runtime`。MCP 地址、唯一现役密码来源和迁移边界见 [docs/REMOTE-ACCESS.md](docs/REMOTE-ACCESS.md)，旧密码副本已删除。
 - 用户已授权复用旧Tunnel并停旧站点，旧文件保留、MCP不改。本轮仅做路径迁移所需的服务停启与配置适配，不建立生产业务会话、不改变权限或业务数据。
 - 用户已明确把公共免验证入口改为统一登录验证码：验证码由用户分发，持有人可重复、跨设备登录当前授权项目；不建设短信或个人账号体系。当前线上仍是上一轮公共owner入口，尚未改为验证码登录，不可误称已限制。
 - 用户明确“先发布细化后的Ticket”。验证码在实施ALVA-008时生成并交给用户，本轮没有生成生效凭证或发给第三方。

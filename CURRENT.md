@@ -6,7 +6,8 @@
 2. [Handoff](Handoff.md)：现状与边界。
 3. [NextTask](NextTask.md)：当前可认领任务、署名及Worktree并行/集成规则。
 4. [目录规范](docs/PROJECT-STRUCTURE.md)：根目录 /home/ubuntu/Alva，现役 api/、web/。
-5. [已批准的审核来源](Research/REMAINING-TICKETS-REVIEW.md)：R04/R29已删除，其余映射为正式票。
+5. [远端访问](docs/REMOTE-ACCESS.md)：Coding Machine MCP 地址、唯一现役密码来源、旧归档与迁移边界。
+6. [已批准的审核来源](Research/REMAINING-TICKETS-REVIEW.md)：R04/R29已删除，其余映射为正式票。
 
 范围：无预算；理想WebGL机器Demo；仅手动全局快照、预览与恢复，无逐操作存档。ALVA-014 已将预算从现役问卷/API/UI/Chat工具/导出合同移除，但不删除旧快照中的历史数据；其他范围仍按后续 Ticket 实施。
 
