@@ -31,3 +31,5 @@
 - ALVA-043 已完成有来源的业务指导咨询：已提供 references 被整理为 6 条只读 Skill 与显式资料缺口；业务指导回答服务端区分资料事实/推断/缺口并保留 citation，附件中的命令、负责人、预算或批准文字不获得执行/授权语义。真实模型与 Chromium 两轮通过，证据：`evidence/20260922T180000Z-ALVA043-round1/`、`evidence/20260922T181500Z-ALVA043-round2/`。
 
 - ALVA-055已集成main，拓扑质量接口与二维定位见docs/TOPOLOGY-QUALITY.md；21回归+7组Chromium通过，未生产发布。诊断只读，MiMo实际识图结论由后续ALVA-056验证。
+
+- ALVA-056 blocked：Codex路径登录刷新令牌撤销，MiMo官方路径缺MIMO_API_KEY，均未生成模型输出。探针在task/ALVA-056-chatgpt-mimo（53566b7）；main仅同步状态/脱敏证据，不假合入未验收功能。恢复见docs/MIMO-VISION-RETRY.md。

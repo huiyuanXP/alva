@@ -99,4 +99,4 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
-| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | chatgpt-mimo | task/ALVA-056-chatgpt-mimo / .runtime/worktrees/ALVA-056-chatgpt-mimo；仅探针、证据、报告，不改业务模型配置或生产数据 | in-progress |
+| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | chatgpt-mimo | task/ALVA-056-chatgpt-mimo / .runtime/worktrees/ALVA-056-chatgpt-mimo；53566b7；Codex登录刷新令牌撤销，官方路径缺MIMO_API_KEY；两次无模型输出，功能代码未合入 | blocked |

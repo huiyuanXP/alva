@@ -28,4 +28,4 @@ ALVA-043 已完成有来源的业务指导咨询：现有 references 被整理�
 
 本轮ALVA-055已完成main集成：三类只读拓扑告警、二维定位和21项回归/7组Chromium通过，未生产发布。下一步：[ALVA-056 MiMo真实识图复测](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md)。保留ALVA-053原诊断分支、ALVA-028暂停状态与structured-output-preview工作。
 
-ALVA-056已由chatgpt-mimo认领并在独立Worktree执行MiMo真实识图复测，前置ALVA-055已done/main；尚未有MiMo调用成功证据，读取单票恢复。
+ALVA-056当前blocked：正常Codex路径刷新令牌已撤销，MiMo官方Responses路径缺MIMO_API_KEY；两次都没有模型输出。探针/证据分支task/ALVA-056-chatgpt-mimo，提交53566b7，Worktree位于.runtime/worktrees/ALVA-056-chatgpt-mimo，功能未合入main。主线只同步blocked记录与脱敏证据；恢复步骤见docs/MIMO-VISION-RETRY.md。前置ALVA-055已done/main（c25fa79），未生产发布。

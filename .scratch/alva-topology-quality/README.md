@@ -6,3 +6,5 @@
 - [ALVA-056 MiMo真实识图复测](issues/02-mimo-vision-retry.md)
 
 状态与验收以单票为准，认领以主目录NextTask为准。
+
+2026-09-22：ALVA-055已done并集成main c25fa79；ALVA-056因当前MCP鉴权不可用保持blocked，独立代码53566b7未合入。具体复核以单票与evidence为准。

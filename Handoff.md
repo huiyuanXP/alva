@@ -156,3 +156,10 @@ Round 1 `evidence/20260922T180000Z-ALVA043-round1/` 使用真实 `gemini-3.1-fla
 ## 2026-09-22 ALVA-055 拓扑三类告警
 
 已在独立Worktree完成并集成main：内部空洞、相对整屋主轴的倾斜、孤立墙体/门窗，增加鉴权只读诊断接口和二维问题列表/定位。T形节点与共线包含校验改为顺序无关。原实现06b63c0，21项测试和类型/构建通过，Chromium七组实际交互及截图复核通过，证据evidence/20260922T104414767Z-ALVA055-browser-85278c。main集成源码指纹一致并复跑类型/21项测试。未更新生产web/dist、重启服务或覆盖生产户型。规则参数及局限见docs/TOPOLOGY-QUALITY.md；旧全站窄屏溢出和大chunk警告保留。下一票ALVA-056执行MiMo复测，不把合成错误夹具称为模型输出。
+
+
+## 2026-09-22 ALVA-056 MiMo探针与鉴权阻塞
+
+独立实现提交53566b7，类型检查和5项探针逻辑/真实失败证据回放通过；真实MiMo识图未通过，因此不合入功能代码、不标done。正常Codex路径在5174.052ms后报告刷新令牌撤销；本次参数设置MiMo官方Responses provider后，在2555.246ms报告缺少MIMO_API_KEY。原始输出均0字符、未返回token用量；耗时是鉴权失败时间，不是模型识图推理。证据为evidence/20260922T105705151Z-ALVA056-mimo-ff43a8与evidence/20260922T105903721Z-ALVA056-mimo-455835，原result.json保留，review.json按权威turn错误复核分类。
+
+尚缺当前MCP的有效MiMo环境凭据及最新标注截图的未标注原图。已保留ALVA-056署名与独立Worktree，恢复用新run ID；不读取宿主机凭据、不注销用户、不修改生产模型配置或候选。文档docs/MIMO-VISION-RETRY.md说明实际命令与边界。ALVA-055的21项回归和7组Chromium验收已独立完成并合入c25fa79，不受本外部阻塞回退。代码、文档与证据已核验；生产发布未执行，生成记忆out-of-scope，所有复核工作区保留。

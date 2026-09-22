@@ -1,0 +1,22 @@
+{
+  "reviewedAt": "2026-09-22T11:05:48.007407+00:00",
+  "reviewType": "offline evidence classification, not another model call",
+  "runId": "20260922T105903721Z-ALVA056-mimo-455835",
+  "originalResultUnchanged": true,
+  "authoritativeEvidence": "turn.failed / error protocol messages",
+  "failureClass": "missing-provider-environment-credential",
+  "modelOutputCharacters": 0,
+  "modelInferenceCompleted": false,
+  "downstreamPhases": "not run: no model output",
+  "productionMutations": false,
+  "typecheckExit": 0,
+  "probeTests": {
+    "pass": 5,
+    "fail": 0,
+    "skipped": 0
+  },
+  "limits": [
+    "First run did not record the probe script SHA; current import/prompt/schema hashes were captured.",
+    "Second run classifier originally included background account warnings; turn error is the authoritative missing-MIMO_API_KEY result."
+  ]
+}
