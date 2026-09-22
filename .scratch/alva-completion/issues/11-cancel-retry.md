@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-017](10-multimodal-chat.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** Lexie 已按 NextTask 正式认领；分支 `task/ALVA-018-lexie`，独立 Worktree `/home/ubuntu/Alva-worktrees/ALVA-018-lexie`。
 
 - [ ] 取消终止后续增量与工具副作用，不污染下一次会话。
 - [ ] 超时及真实不可用模型故障均可见，保留文本与附件输入并可重试。
