@@ -151,3 +151,8 @@ Lexie 在 `task/ALVA-043-lexie` 完成，原实现提交 `38e230ba1d2c48cf9f41da
 Round 1 `evidence/20260922T180000Z-ALVA043-round1/` 使用真实 `gemini-3.1-flash-lite`：工作位咨询引用 BG01 与 `references/02_intake_form.html#Q10`，明确区分资料事实、推断与缺口，scene 不变且 proposal 0。Round 2 `evidence/20260922T181500Z-ALVA043-round2/` 使用真实 Chromium UI + 真实模型：用户输入同时包含“管理员、负责人、预算、批准施工”等附件式文字和石材问题，最终只引用 BG02/BG05 受控指导，未赋予负责人身份、未批准施工、未提供预算指导，proposal 0、console error 0。过程中的失败验收 run 均按独立 evidence 保留，修正后用新 run 完整复跑。
 
 2026-09-22 ALVA-054：yang-chatgpt 完成“聊聊你的家”入口、54道现役题的逐题卡片、草稿保存/关闭恢复/确认/房间隔离/小结。9项接口与回归、11组Chromium交互通过，截图已审阅；证据 evidence/2026-09-22T091452922Z-ALVA054-browser/。实现 d603054，当前集成已验证；用户授权生产发布，发布证据随后登记。未实施ALVA-028。
+
+
+## 2026-09-22 ALVA-055 拓扑三类告警
+
+已在独立Worktree完成并集成main：内部空洞、相对整屋主轴的倾斜、孤立墙体/门窗，增加鉴权只读诊断接口和二维问题列表/定位。T形节点与共线包含校验改为顺序无关。原实现06b63c0，21项测试和类型/构建通过，Chromium七组实际交互及截图复核通过，证据evidence/20260922T104414767Z-ALVA055-browser-85278c。main集成源码指纹一致并复跑类型/21项测试。未更新生产web/dist、重启服务或覆盖生产户型。规则参数及局限见docs/TOPOLOGY-QUALITY.md；旧全站窄屏溢出和大chunk警告保留。下一票ALVA-056执行MiMo复测，不把合成错误夹具称为模型输出。

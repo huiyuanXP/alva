@@ -94,3 +94,8 @@ neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTas
 2026-09-22 ALVA-043 业务指导依据用于咨询：Lexie 在独立 Worktree `task/ALVA-043-lexie` 完成，原实现提交 `38e230ba1d2c48cf9f41da0c176ada09f1558135`。将现有业务资料整理为 6 条带 source citation/限制的只读指导 Skill，并登记尺寸机电、结构材料性能、负责人授权三类资料缺口；Chat 对明确业务指导意图使用服务端 grounding，区分资料事实、推断建议与缺资料，普通 Chat 不受影响。Round 1 真实 `gemini-3.1-flash-lite` 使用 BG01 引用 Q10，scene 不变、proposal 0；Round 2 真实 Chromium + 模型在含“管理员/负责人/预算/批准施工”附件式文字的情况下只输出 BG02/BG05 受控指导，不赋权、不批施工、不提供预算，proposal 0、console error 0。证据 `evidence/20260922T180000Z-ALVA043-round1/`、`evidence/20260922T181500Z-ALVA043-round2/`；失败调试 run 独立保留。
 
 2026-09-22 ALVA-054：yang-chatgpt 完成“聊聊你的家”入口、54道现役题的逐题卡片、草稿保存/关闭恢复/确认/房间隔离/小结。9项接口与回归、11组Chromium交互通过，截图已审阅；证据 evidence/2026-09-22T091452922Z-ALVA054-browser/。实现 d603054，当前集成已验证；用户授权生产发布，发布证据随后登记。未实施ALVA-028。
+
+
+## 2026-09-22 ALVA-055 拓扑三类告警
+
+已在独立Worktree完成并集成main：内部空洞、相对整屋主轴的倾斜、孤立墙体/门窗，增加鉴权只读诊断接口和二维问题列表/定位。T形节点与共线包含校验改为顺序无关。原实现06b63c0，21项测试和类型/构建通过，Chromium七组实际交互及截图复核通过，证据evidence/20260922T104414767Z-ALVA055-browser-85278c。main集成源码指纹一致并复跑类型/21项测试。未更新生产web/dist、重启服务或覆盖生产户型。规则参数及局限见docs/TOPOLOGY-QUALITY.md；旧全站窄屏溢出和大chunk警告保留。下一票ALVA-056执行MiMo复测，不把合成错误夹具称为模型输出。

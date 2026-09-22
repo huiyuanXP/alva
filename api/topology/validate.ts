@@ -20,7 +20,7 @@ export function validateTopology(raw:unknown):SceneData{
    const b=scene.walls[j];
    if(sameUndirected(a.a,a.b,b.a,b.b))throw new DomainError(422,`拓扑校验失败：墙 ${a.id} 与墙 ${b.id} 重复`)
    if(properCross(a.a,a.b,b.a,b.b))throw new DomainError(422,`拓扑校验失败：墙 ${a.id} 与墙 ${b.id} 自交，请调整端点或分段`)
-   for(const [label,p] of [['a',b.a],['b',b.b]] as const)if(onSegment(a.a,a.b,p)&&!samePoint(p,a.a)&&!samePoint(p,a.b))throw new DomainError(422,`拓扑校验失败：墙 ${b.id} 的 ${label} 端点落在墙 ${a.id} 中段，请连接或分段`)
+   for(const [host,guest] of [[a,b],[b,a]])for(const [label,p] of [['a',guest.a],['b',guest.b]] as const)if(onSegment(host.a,host.b,p)&&!samePoint(p,host.a)&&!samePoint(p,host.b))throw new DomainError(422,`拓扑校验失败：墙 ${guest.id} 的 ${label} 端点落在墙 ${host.id} 中段，请连接或分段`)
   }
  }
  for(const room of scene.rooms)for(let i=0;i<room.polygon.length;i++)if(!Number.isFinite(room.polygon[i].x)||!Number.isFinite(room.polygon[i].y))throw new DomainError(422,`拓扑校验失败：房间 ${room.id} 顶点 ${i} 不是有限坐标`)

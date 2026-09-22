@@ -1,0 +1,42 @@
+{
+  "ticket": "ALVA-055",
+  "runId": "20260922T104414767Z-ALVA055-browser-85278c",
+  "pass": true,
+  "finishedAt": "2026-09-22T10:44:23.802Z",
+  "sourceHead": "c9d39aa8ff8b4f0b904323e4185249a7372a9159",
+  "sourceFingerprint": "48b3429ea681831c906e677a0db1ce30a2a23534de6d2fbdcded2b39890ba03b",
+  "fingerprintFiles": [
+    "api/api.ts",
+    "api/model.ts",
+    "api/store.ts",
+    "api/topology/diagnostics.ts",
+    "api/topology/planar-graph.ts",
+    "api/topology/routes.ts",
+    "api/topology/validate.ts",
+    "packages/contracts/alva/topology-diagnostics.ts",
+    "web/src/main.tsx",
+    "web/src/topology/Diagnostics.tsx",
+    "web/src/topology/diagnostics.css",
+    "tests/fixtures/alva/topology-quality.ts",
+    "scripts/alva-topology-quality-browser.ts",
+    "package-lock.json"
+  ],
+  "fixtureSha256": "871274de138a9f21ec768e7a3e635bfb3e25c1eccfa3b6aeed9bdd6dd0dc37d4",
+  "fixtureKind": "synthetic error reproduction; not user image or model output",
+  "checks": [
+    "real API reports all three synthetic error classes in the existing UI",
+    "each category selects its entities, highlights geometry and zooms; full-plan reset works",
+    "reload recomputes warnings without changing project revision, source or confirmed scene",
+    "real service fault is not reported as zero warnings; retry invokes the real handler",
+    "warning location preserves existing opening-reference deletion protection",
+    "real correction followed by reload clears warnings for normal control",
+    "new panel fits actual mobile device emulation"
+  ],
+  "errors": [],
+  "expectedFaults": [
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "expectedRejections": [
+    "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "ticket": "ALVA-055",
+  "observedAt": "2026-09-22T10:49:45.267209+00:00",
+  "typecheckExit": 0,
+  "buildExit": 0,
+  "focusedTests": {
+    "pass": 21,
+    "fail": 0,
+    "skipped": 0
+  },
+  "browserExit": 0,
+  "browserRunId": "20260922T104414767Z-ALVA055-browser-85278c",
+  "visualReview": [
+    "overview",
+    "internal_void",
+    "unreasonable_skew",
+    "isolated_component",
+    "narrow"
+  ],
+  "warnings": [
+    "pre-existing bundle >500kB",
+    "new panel fits but existing whole-page mobile layout overflows"
+  ],
+  "deployment": "not performed",
+  "productionDataWrites": false,
+  "firstFailure": "synthetic duplicate ID fixed, full suite rerun; assertions unchanged"
+}

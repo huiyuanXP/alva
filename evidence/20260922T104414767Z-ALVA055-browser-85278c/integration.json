@@ -1,0 +1,20 @@
+{
+  "ticket": "ALVA-055",
+  "integrationRunId": "20260922T105216Z-ALVA055-integration",
+  "verifiedAt": "2026-09-22T10:53:00.639801+00:00",
+  "sourceFingerprint": "48b3429ea681831c906e677a0db1ce30a2a23534de6d2fbdcded2b39890ba03b",
+  "sourceFingerprintMatched": true,
+  "typecheckExit": 0,
+  "tests": {
+    "pass": 21,
+    "fail": 0,
+    "skipped": 0
+  },
+  "implementationCommit": "06b63c0",
+  "productionDeploy": false,
+  "retainedWarnings": [
+    "raw build/typecheck stdout whitespace unchanged",
+    "existing large chunk warning",
+    "existing whole-page mobile overflow"
+  ]
+}

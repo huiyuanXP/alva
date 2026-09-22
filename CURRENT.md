@@ -26,4 +26,4 @@ ALVA-019 已完成录音转写、纠正与发送：文件音源与 Chromium 模�
 
 ALVA-043 已完成有来源的业务指导咨询：现有 references 被整理为 6 条只读业务指导 Skill 与 3 类显式资料缺口；命中业务指导意图时，Chat 以“资料事实 / 基于当前信息的推断或建议 / 缺少资料”三段返回并显示 source citation。真实模型与 Chromium 两轮验收均通过；附件式管理员/负责人/预算/批准施工文字不构成授权，不生成 proposal、不修改 scene，也不输出预算指导。证据见 `evidence/20260922T180000Z-ALVA043-round1/` 与 `evidence/20260922T181500Z-ALVA043-round2/`。
 
-本轮在途：[ALVA-055 拓扑三类告警](.scratch/alva-topology-quality/issues/01-topology-warnings.md)，chatgpt-topology独立Worktree实施；随后ALVA-056做MiMo真实复测。保留ALVA-053原诊断分支、ALVA-028暂停状态与structured-output-preview未提交工作。
+本轮ALVA-055已完成main集成：三类只读拓扑告警、二维定位和21项回归/7组Chromium通过，未生产发布。下一步：[ALVA-056 MiMo真实识图复测](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md)。保留ALVA-053原诊断分支、ALVA-028暂停状态与structured-output-preview工作。

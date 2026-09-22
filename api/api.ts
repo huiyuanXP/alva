@@ -11,6 +11,7 @@ import {AlvaStore,type Session} from './store.js';
 import {DomainError,validateScene,calibrate,reject,type ImportState,type Project,type SourceImage} from './model.js';
 import {applyTopologyCommand} from './topology/commands.js';
 import {validateTopology} from './topology/validate.js';
+import {registerTopologyDiagnostics} from './topology/routes.js';
 import {createTopologyVersion} from './topology/calibration.js';
 import {generateBuilding,buildingFailureMessage,type BuildingCodexCall} from './building/generate.js';
 import {registerTodo} from './todo/routes.js';
@@ -58,6 +59,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   }
  });
  registerTodo(app);
+ registerTopologyDiagnostics(app,store,session);
  app.get('/healthz',async()=>({ok:true,application:'alva'}));
  app.post('/api/access',async(req,reply)=>{
   const b=z.object({code:z.string().trim().min(16).max(200),inviteToken:z.string().min(32).max(200).optional()}).parse(req.body),key=req.ip,now=Date.now(),prior=failedAccess.get(key);

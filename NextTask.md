@@ -19,10 +19,10 @@
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` | yang-chatgpt | `task/ALVA-028-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-028-yang-chatgpt` | 已认领，用户要求暂不实施；预计 api/business.ts、api/model.ts、api/store.ts、api/api.ts、web/src/Panels.tsx、web/src/review/；端口未启用，开工前核验；Worktree已创建；未开工 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
+| [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` | | | 待认领；状态与依赖重算补回遗漏行 |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
 当前七项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
-当前八项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 ## 认领与 Worktree 规则
 
@@ -99,5 +99,4 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
-| [ALVA-055](.scratch/alva-topology-quality/issues/01-topology-warnings.md) | chatgpt-topology | task/ALVA-055-chatgpt-topology / .runtime/worktrees/ALVA-055-chatgpt-topology（编辑工具范围内的独立Worktree）；4195；topology、API/二维接线、packages/contracts/alva诊断类型、package.json/锁文件（polygon-clipping）；不改import.ts和模型/存储合同，保留structured-output-preview | in-progress |
-| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | | 等待ALVA-055集成；MiMo真实复测与证据 | ready-for-agent |
+| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | | ALVA-055已集成；待认领MiMo真实复测与证据 | ready-for-agent |

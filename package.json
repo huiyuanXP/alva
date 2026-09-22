@@ -43,6 +43,7 @@
     "lucide-react": "^1.46.0",
     "mammoth": "1.12.3",
     "pdfjs-dist": "6.3.289",
+    "polygon-clipping": "0.15.7",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "tailwind-merge": "^3.7.0",

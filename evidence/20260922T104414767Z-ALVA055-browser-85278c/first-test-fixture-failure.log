@@ -1,0 +1,45 @@
+✔ ALVA-011 validates opening bounds, overlap, wall association and vertical clearance (1.929251ms)
+✔ ALVA-011 edits openings, calibrates, confirms immutable topology and survives reload (5201.271359ms)
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.432785ms)
+✔ ALVA-009 preserves PDF origin and discloses the rendered page (2400.437012ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (5690.427338ms)
+✔ ALVA-055 fully defined rectangular home with a door is connected and has no warnings (46.01548ms)
+✔ ALVA-055 detects all three annotated error classes with useful entity and position references (9.204819ms)
+✔ ALVA-055 subtracts room union rather than room area sum; overlaps cannot hide undefined space (3.777339ms)
+✔ ALVA-055 excludes outside concavities and wall thickness from internal voids (7.157343ms)
+✖ ALVA-055 finds unassigned closed subspaces and deduplicates nested enclosure faces (1.052132ms)
+✔ ALVA-055 void location never falls inside a defined island/inner ring (1.889035ms)
+✔ ALVA-055 rotation, wall direction and array order do not create false skew or disconnection (26.752761ms)
+✔ ALVA-055 short curved-wall approximation is warned rather than bypassing length threshold (2.533197ms)
+✔ ALVA-055 missing hosts and opening bounds produce errors, not invented position or connections (3.557707ms)
+✔ ALVA-055 tiny omitted area is below documented threshold; open boundaries are inconclusive (2.548705ms)
+✔ ALVA-055 no scene, invalid coordinates, self-crossing rooms and unsupported curves are not safe results (2.851375ms)
+✔ ALVA-055 T-junction and collinear overlap rejection is symmetric without changing the analysis graph (3.141407ms)
+✔ ALVA-055 authenticated GET diagnoses current candidate, edits refresh, read-only access never changes design (6412.750825ms)
+✔ ALVA-010 keeps shared vertices and stable IDs while correcting a non-rectangular multi-room candidate (23.114801ms)
+✔ ALVA-010 rejects zero, duplicate and crossing topology with a located 422 error (4.53167ms)
+✔ ALVA-010 persists topology changes, clears calibration, survives reload and replays idempotently (4991.593386ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 20
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33275.96074
+
+✖ failing tests:
+
+test at tests/alva-topology-quality.test.ts:39:1
+✖ ALVA-055 finds unassigned closed subspaces and deduplicates nested enclosure faces (1.052132ms)
+  Error: 拓扑诊断无法执行：实体ID重复
+      at analyzeTopology (/home/ubuntu/Alva/.runtime/worktrees/ALVA-055-chatgpt-topology/api/topology/diagnostics.ts:54:65)
+      at TestContext.<anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-055-chatgpt-topology/tests/alva-topology-quality.test.ts:41:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    statusCode: 422
+  }

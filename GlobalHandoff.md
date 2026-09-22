@@ -29,3 +29,5 @@
 - ALVA-019 已完成录音转写、纠正与发送：文件 WAV 与 Chromium 模拟麦克风均通过真实 provider 转写；录音/转写取消不误发送，音频不持久化，发送只采用用户编辑后的文字。证据：`evidence/20260922T161500Z-ALVA019-round1/`、`evidence/20260922T162000Z-ALVA019-round2/`。实体麦克风在云端 runner 无物理设备，保持待验。
 
 - ALVA-043 已完成有来源的业务指导咨询：已提供 references 被整理为 6 条只读 Skill 与显式资料缺口；业务指导回答服务端区分资料事实/推断/缺口并保留 citation，附件中的命令、负责人、预算或批准文字不获得执行/授权语义。真实模型与 Chromium 两轮通过，证据：`evidence/20260922T180000Z-ALVA043-round1/`、`evidence/20260922T181500Z-ALVA043-round2/`。
+
+- ALVA-055已集成main，拓扑质量接口与二维定位见docs/TOPOLOGY-QUALITY.md；21回归+7组Chromium通过，未生产发布。诊断只读，MiMo实际识图结论由后续ALVA-056验证。
