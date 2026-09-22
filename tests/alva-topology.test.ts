@@ -5,6 +5,7 @@ import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
 import {applyTopologyCommand} from '../api/topology/commands.js';
 import {describeWall,validateTopology} from '../api/topology/validate.js';
+import {applyTopologyRepair,firstTopologyRepairIssue} from '../api/topology/repair.js';
 import type {SceneData} from '../api/model.js';
 
 const scene=():SceneData=>({walls:[
@@ -52,4 +53,28 @@ test('topology errors identify walls by room and direction, explain T-junction c
  const tScene:SceneData={...base,walls:[...base.walls.filter(w=>w.id!=='wall-f'),{id:'wall-t',a:{x:2,y:0},b:{x:2,y:1.5},thickness:.15,height:2.8,structural:'unknown',evidence:[]}],openings:[]};
  let message='';try{validateTopology(tScene)}catch(error){message=(error as Error).message}
  assert.match(message,/客餐厅/);assert.match(message,/中间/);assert.match(message,/可能原因/);assert.match(message,/T 型/);assert.match(message,/建议修正/);assert.match(message,/分成两段/);assert.match(message,/墙角/);assert.match(message,/误识别墙/);assert.match(message,/技术信息（供开发排查）/);assert.doesNotMatch(message,/拓扑校验失败：墙 wall-t/);
+});
+
+
+test('owner can choose a T-junction repair and backend performs exact split, snap or removal',()=>{
+ const base:SceneData={walls:[
+  {id:'host',a:{x:0,y:0},b:{x:4,y:0},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+  {id:'guest',a:{x:2,y:0},b:{x:2,y:2},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+ ],rooms:[{id:'room',name:'客厅',purpose:'客厅',polygon:[{x:0,y:0},{x:4,y:0},{x:4,y:3},{x:0,y:3}],locked:false}],openings:[],items:[],calibration:null,geography:{latitude:31,north:0,assumption:'test'}};
+ const issue=firstTopologyRepairIssue(base);assert.equal(issue?.kind,'t-junction');assert.ok(issue?.options.some(o=>o.id.startsWith('split-host:')));
+ const splitOption=issue!.options.find(o=>o.id.startsWith('split-host:'))!;const split=applyTopologyRepair(base,issue!.id,splitOption.id);assert.equal(split.scene.walls.length,3);assert.equal(firstTopologyRepairIssue(split.scene),null);assert.ok(split.scene.walls.filter(w=>nearPoint(w.a,{x:2,y:0})||nearPoint(w.b,{x:2,y:0})).length>=3);
+ const snapOption=issue!.options.find(o=>o.id.startsWith('snap-guest:'))!;const snapped=applyTopologyRepair(base,issue!.id,snapOption.id);assert.equal(firstTopologyRepairIssue(snapped.scene),null);assert.deepEqual(snapped.scene.walls.find(w=>w.id==='guest')!.a,{x:0,y:0});
+ const removeOption=issue!.options.find(o=>o.id.startsWith('remove-guest:'))!;const removed=applyTopologyRepair(base,issue!.id,removeOption.id);assert.equal(removed.scene.walls.some(w=>w.id==='guest'),false);assert.equal(firstTopologyRepairIssue(removed.scene),null);
+ assert.throws(()=>applyTopologyRepair(base,'stale-issue',splitOption.id),/问题已经变化/);
+});
+
+function nearPoint(a:{x:number;y:number},b:{x:number;y:number}){return Math.hypot(a.x-b.x,a.y-b.y)<.001}
+
+test('automatic T-junction split migrates openings to the correct new wall segment and rejects an opening spanning the split',()=>{
+ const base:SceneData={walls:[
+  {id:'host',a:{x:0,y:0},b:{x:6,y:0},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+  {id:'guest',a:{x:3,y:0},b:{x:3,y:2},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
+ ],rooms:[{id:'room',name:'客厅',purpose:'客厅',polygon:[{x:0,y:0},{x:6,y:0},{x:6,y:3},{x:0,y:3}],locked:false}],openings:[{id:'window',wallId:'host',kind:'window',offset:.8,width:.8,height:1.2,sill:.9}],items:[],calibration:null,geography:{latitude:31,north:0,assumption:'test'}};
+ const issue=firstTopologyRepairIssue(base)!,option=issue.options.find(o=>o.id.startsWith('split-host:'))!;const fixed=applyTopologyRepair(base,issue.id,option.id);const opening=fixed.scene.openings[0];assert.notEqual(opening.wallId,'host');assert.ok(opening.offset>0&&opening.offset<1);
+ const unsafe=structuredClone(base);unsafe.openings[0]={id:'door',wallId:'host',kind:'door',offset:.5,width:1,height:2.1,sill:0};const unsafeIssue=firstTopologyRepairIssue(unsafe)!,unsafeOption=unsafeIssue.options.find(o=>o.id.startsWith('split-host:'))!;assert.throws(()=>applyTopologyRepair(unsafe,unsafeIssue.id,unsafeOption.id),/跨有门窗/);
 });
