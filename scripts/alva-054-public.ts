@@ -8,15 +8,17 @@ const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA054-public',dir='ev
 await mkdir(dir,{recursive:true});
 const browser=await chromium.launch({headless:true});const context=await browser.newContext({viewport:{width:1440,height:1000}});
 try{
- const health=await context.request.get(origin+'/healthz');if(!health.ok())throw new Error('public health failed');
- const login=await context.request.post(origin+'/api/access',{data:{code}});if(!login.ok())throw new Error('public login failed: '+login.status());
- const before=await (await context.request.get(origin+'/api/project')).json();
  const page=await context.newPage(),errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(origin);await page.getByRole('button',{name:'聊聊你的家',exact:true}).click();
+ const health=await page.goto(origin+'/healthz');if(!health?.ok())throw new Error('public browser health failed');
+ await page.goto(origin);await page.getByPlaceholder('输入项目发起人提供的验证码').fill(code);const loginResponse=page.waitForResponse(r=>r.url().endsWith('/api/access')&&r.request().method()==='POST');await page.getByRole('button',{name:'验证并进入 →',exact:true}).click();
+ const login=await loginResponse;if(!login.ok()){await page.getByPlaceholder('输入项目发起人提供的验证码').fill('');throw new Error('Configured access code rejected; HTTP '+login.status())}
+ await expect(page.getByRole('button',{name:'聊聊你的家',exact:true})).toBeVisible();
+ const before=await page.evaluate(async()=>{const r=await fetch('/api/project');if(!r.ok)throw new Error('project GET failed');return r.json()});
+ await page.getByRole('button',{name:'聊聊你的家',exact:true}).click();
  const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();await expect(page.getByLabel('选择问卷题目')).toBeVisible();
- const intake=await (await context.request.get(origin+'/api/intake')).json();if(intake.questions.length!==54)throw new Error('question count');
+ const intake=await page.evaluate(async()=>{const r=await fetch('/api/intake');if(!r.ok)throw new Error('intake GET failed');return r.json()});if(intake.questions.length!==54)throw new Error('question count');
  await page.getByLabel('关闭问卷').click();await expect(dialog).toBeHidden();await page.getByRole('button',{name:'聊聊你的家',exact:true}).click();await expect(dialog).toBeVisible();await page.getByLabel('关闭问卷').click();
- const after=await (await context.request.get(origin+'/api/project')).json();if(before.revision!==after.revision)throw new Error('read-only smoke changed project revision or concurrent mutation; inspect');if(errors.length)throw new Error(errors.join(';'));
+ const after=await page.evaluate(async()=>{const r=await fetch('/api/project');if(!r.ok)throw new Error('project GET failed');return r.json()});if(before.revision!==after.revision)throw new Error('read-only smoke changed project revision or concurrent mutation; inspect');if(errors.length)throw new Error(errors.join(';'));
  const result={ok:true,origin,questions:intake.questions.length,checks:['HTTPS health','authenticated new entry','questionnaire opens/closes/reopens','no business data written','zero page errors'],errors};await writeFile(dir+'/result.json',JSON.stringify(result,null,2));console.log(JSON.stringify({dir,...result}));
- await context.request.post(origin+'/api/logout',{data:{}});
-}finally{await browser.close()}
+ await page.getByRole('button',{name:'退出',exact:true}).click();
+}catch(e){await writeFile(dir+'/result.json',JSON.stringify({ok:false,error:String(e)},null,2));console.error(dir);throw e}finally{await browser.close()}
