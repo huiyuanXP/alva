@@ -14,7 +14,7 @@ import {createTopologyVersion} from './topology/calibration.js';
 import {generateBuilding,buildingFailureMessage,type BuildingCodexCall} from './building/generate.js';
 import {registerTodo} from './todo/routes.js';
 import {registerExports} from './export.js';
-import {registerConsultation} from './chat.js';
+import {registerConsultation,type TranscriptionCall} from './chat.js';
 import type {CodexInput} from './codex.js';
 import {review} from './business.js';
 import {recognizeLayout} from './import.js';
@@ -34,7 +34,7 @@ export async function imageData(mime:string,base64:string,filename='户型图'):
  }
  return reject('仅支持内容有效的PNG、JPEG或PDF');
 }
-export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex}:{assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>}={}){
+export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,transcriptionCall}:{assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;transcriptionCall?:TranscriptionCall}={}){
  const publicPayload=(value:unknown):unknown=>{if(Array.isArray(value))return value.map(publicPayload);if(value&&typeof value==='object'){const result:Record<string,unknown>={};for(const [key,item] of Object.entries(value as Record<string,unknown>)){if(key==='budget')continue;result[key]=publicPayload(item)}return result}return value};
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
  app.addHook('preSerialization',async(_req,_reply,payload)=>publicPayload(payload));
@@ -43,6 +43,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  const session=(req:object)=>{const s=sessions.get(req);if(!s)throw new DomainError(401,'请通过项目链接进入');return s};
  const active=new Map<string,AbortController>();
  const activeBuilding=new Map<string,AbortController>();
+ const activeTranscriptions=new Map<string,AbortController>();
  const failedAccess=new Map<string,{count:number;resetAt:number}>();
  app.setErrorHandler((err,req,reply)=>{if(!(err instanceof DomainError)&&!(err instanceof z.ZodError)){const detail=String(err instanceof Error?err.stack:err).replaceAll(process.env.OPENAI_API_KEY||'__absent_key__','[REDACTED]');console.error('[alva request error]',req.url.split('?')[0],detail)}const code=err instanceof DomainError?err.statusCode:err instanceof z.ZodError?400:500;reply.code(code).send({error:code===500?'处理失败，草稿已保留，请重试':err instanceof Error?err.message:'请求无效'})});
  app.addHook('onRequest',async(req,reply)=>{
@@ -83,7 +84,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  app.post('/api/building/generate',async req=>{const b=Command.parse(req.body);const s=session(req);if(s.role!=='owner')reject('仅业主可生成建筑',403);const before=await store.get(s.projectId),topology=before.confirmedTopology!;if(!topology)reject('请先确认拓扑版本');if(before.buildingState?.status==='processing')reject('当前已有建筑生成任务，请等待或取消',409);if((before.buildingState?.attempts||0)>=3)reject('建筑生成失败次数已达上限，请先确认拓扑后再重试');const controller=new AbortController();activeBuilding.set(s.projectId,controller);const started=await store.mutate(s.projectId,randomUUID(),b.expectedRevision,'building-start',{requestId:b.requestId,topologyVersion:topology!.version,topologyFingerprint:topology!.sourceFingerprint},p=>{p.buildingState={status:'processing',requestId:b.requestId,topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:(p.buildingState?.attempts||0)+1,updatedAt:new Date().toISOString()}});
   try{const generated=await generateBuilding(started,topology!.scene,topology!.version,topology!.sourceFingerprint,controller.signal,buildingCodex);return await store.mutate(s.projectId,randomUUID(),started.revision,'building-complete',{requestId:b.requestId},p=>{p.buildingCandidate=generated;p.buildingState={status:'succeeded',requestId:b.requestId,topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:p.buildingState.attempts,updatedAt:new Date().toISOString()}})}catch(error){const cancelled=controller.signal.aborted,current=await store.get(s.projectId);const message=cancelled?'建筑生成已取消，已有场景保持不变':buildingFailureMessage(error);await store.mutate(s.projectId,randomUUID(),current.revision,'building-failed',{requestId:b.requestId,error:message},p=>{p.buildingState={status:cancelled?'cancelled':'failed',requestId:b.requestId,topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:p.buildingState.attempts,error:message,updatedAt:new Date().toISOString()}});throw new DomainError(cancelled?409:422,message)}finally{activeBuilding.delete(s.projectId)}});
  app.post('/api/building/confirm',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'confirm-building',p=>{if(!p.buildingCandidate)reject('请先生成并预览建筑场景');if(!p.confirmedTopology||p.buildingState.topologyFingerprint!==p.confirmedTopology!.sourceFingerprint)reject('建筑场景已过期，请针对当前拓扑重新生成');p.confirmedBuilding=structuredClone(p.buildingCandidate);p.buildingCandidate=undefined;p.buildingState={...p.buildingState,status:'confirmed',updatedAt:new Date().toISOString()};p.dirty=true;p.changes.push({id:randomUUID(),description:`确认建筑场景（拓扑 v${p.confirmedTopology!.version}）`,evidenceIds:[],context:[`建筑生成回指来源指纹 ${p.confirmedTopology!.sourceFingerprint}`],createdAt:new Date().toISOString()})})});
- registerConsultation(app,store,session,active,chatCodex);registerExports(app,store,session);
+ registerConsultation(app,store,session,active,chatCodex,activeTranscriptions,transcriptionCall);registerExports(app,store,session);
  app.post('/api/save',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'save',p=>{if(!p.scene)reject('请先确认户型');validateScene(p.scene);p.findings=[...p.findings.filter(f=>f.stage!=='review'),...review(p,'review')]})});
  app.post('/api/restore',async req=>{const b=Command.extend({version:z.number().int().positive(),confirmed:z.literal(true)}).parse(req.body);const snap=await store.snapshot(session(req).projectId,b.version);return mutate(req,b,'restore',p=>{const revision=p.revision,savedVersion=p.savedVersion;Object.assign(p,structuredClone(snap),{revision,savedVersion,dirty:true});p.changes.push({id:randomUUID(),description:`回退到保存版本${b.version}（工作稿）`,evidenceIds:[],context:[],createdAt:new Date().toISOString()})})});
  app.post('/api/import',async(req,reply)=>{
@@ -114,7 +115,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  });
  app.post('/api/cancel',async req=>{const id=session(req).projectId;active.get(id)?.abort();activeBuilding.get(id)?.abort();return {cancelled:true}});
  app.post('/api/building/cancel',async req=>{activeBuilding.get(session(req).projectId)?.abort();return {cancelled:true}});
- app.addHook('onClose',async()=>{for(const controller of active.values())controller.abort();for(const controller of activeBuilding.values())controller.abort()});
+ app.addHook('onClose',async()=>{for(const controller of active.values())controller.abort();for(const controller of activeBuilding.values())controller.abort();for(const controller of activeTranscriptions.values())controller.abort()});
  if(assets){const dir=resolve('web/dist');if(existsSync(dir)){await app.register(staticPlugin,{root:dir});app.setNotFoundHandler(async(req,reply)=>{if(req.url.startsWith('/api/'))return reply.code(404).send({error:'接口不存在'});return reply.sendFile('index.html')})}}
  return app;
 }

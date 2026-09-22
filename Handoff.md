@@ -1,8 +1,8 @@
 # alva Handoff
 
-当前 44 张产品 Ticket 中，ALVA-008–012、ALVA-014–018 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
+当前 44 张产品 Ticket 中，ALVA-008–012、ALVA-014–019 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
 
-44票均有 Parallel lane；当前依赖就绪且未认领为 ALVA-013、019、020、023、028、031、036、041、043。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
+44票均有 Parallel lane；当前依赖就绪为 ALVA-013、020、023、028、031、036、041、043，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
 
 认领在主目录署名即生效，协调锁内提交；每票独立Worktree/分支及运行资源。同组或共享文件冲突先协调。个人完成提交后不移除署名；main集成验证通过后，同一实现提交更新done、移除任务行和署名、补充所有新解锁任务，保留票内署名及原实现SHA供追溯。
 
@@ -136,3 +136,9 @@ Round 1 `evidence/20260921T151500Z-ALVA016-round1/` 验证失败游标保持、�
 Lexie 在 `task/ALVA-018-lexie` 完成，原实现提交 `42b592b263a553dbdb50b06bfa39bab9502000d4`。Chat 使用专属 `/api/chat/cancel`；取消/失败仅更新当前 assistant 状态和故障留证，正常完成前累积的 proposal / pending answer 不进入项目。前端保留完整重试草稿（文本、附件、房间、模型），失败后恢复输入，重试使用新 requestId，成功后清空草稿。
 
 Round 1 `evidence/20260922T104500Z-ALVA018-round1/`：真实模型请求建立后取消，scene/answers/pending/accepted proposal 均无副作用；重试成功并收到 8 个流式增量。Round 2 `evidence/20260922T112500Z-ALVA018-round2/`：Chromium 首次通过真实供应端不存在模型触发不可用故障，文本与参考图恢复；点击重试后正常真实模型成功完成，scene 不变、无自动采用、图片不持久化、console error 0。
+
+## ALVA-019 录音转写、纠正与发送
+
+Lexie 在 `task/ALVA-019-lexie` 完成，原实现提交 `c925bcef0fa82bc83a6b16d1df8b8e5345ee8654`。转写使用独立项目级 controller 与 `/api/transcribe/cancel`，不再误用 Chat 取消；前端支持显式取消录音并丢弃内存分片。转写成功只回填可编辑输入框，失败/取消不会发送，音频不进入项目消息、证据或永久附件；用户编辑后发送时仅以当前文字作为 Chat 原话和 evidence。
+
+Round 1 `evidence/20260922T161500Z-ALVA019-round1/` 使用真实公开 WAV 文件与真实 provider，得到 “How old is the Brooklyn Bridge?”，转写前后 project revision 均为 0，随后修改后的测试文本才被持久化。Round 2 `evidence/20260922T162000Z-ALVA019-round2/` 使用 Chromium 原生 fake microphone + MediaRecorder + 浏览器 WAV 归一化 + 真实 provider；取消录音不发送且保留原输入，第二次录音转写后编辑发送只保存编辑文本，console error 0。实体麦克风因云端 runner 无物理设备，按票要求保持待验。

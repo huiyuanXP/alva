@@ -86,3 +86,5 @@ neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTas
 2026-09-22 ALVA-016 未答看板与退出问卷分析：Lexie 完成。未答统计按全屋/房间独立且排除禁用题；未答项可直接携题目+房间进入 Chat；退出问卷只处理新增 evidence，失败不推进游标、无新增 evidence 重复退出不增 revision。Round 1 API/真实模型与 Round 2 Chromium 均通过，证据位于 `evidence/20260921T151500Z-ALVA016-round1/`、`evidence/20260921T153000Z-ALVA016-round2/`。完成后当前 ready 为 ALVA-013/018/019/020/023/028/031/036/041/043。
 
 2026-09-22 ALVA-018 咨询取消与故障重试：Lexie 完成。Chat 改为专属取消 controller；取消/超时/模型不可用保留完整重试草稿，失败只落 assistant/failure 记录，不落 proposal/pending answer/正式 scene。Round 1 真实取消后重试 8 个增量；Round 2 Chromium 真实供应端不可用后恢复文本+附件并重试成功，console error 0。证据 `evidence/20260922T104500Z-ALVA018-round1/`、`evidence/20260922T112500Z-ALVA018-round2/`。
+
+2026-09-22 ALVA-019 录音转写、纠正与发送：Lexie 在独立 Worktree `task/ALVA-019-lexie` 完成，原实现提交 `c925bcef0fa82bc83a6b16d1df8b8e5345ee8654`。新增独立转写取消 controller/API、录音显式取消与临时分片清理；成功只回填可编辑文字，失败/取消不发送、不持久化音频，最终 Chat 仅保存用户编辑后的文字。Round 1 真实 WAV + 真实 provider 通过，转写前后 revision 不变；Round 2 Chromium fake microphone + MediaRecorder + 真实 provider 通过，取消录音无副作用、编辑后发送正确、console error 0。证据 `evidence/20260922T161500Z-ALVA019-round1/` 与 `evidence/20260922T162000Z-ALVA019-round2/`。实体麦克风因云端 runner 无物理设备保持待验。

@@ -1,6 +1,6 @@
 # What's next · 任务认领与并行开发
 
-当前已集成 ALVA-012，其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
+当前已完成并集成 ALVA-008–012、ALVA-014–019；其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
 
 ## 当前集成偏好
 
@@ -13,7 +13,6 @@
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
 | [ALVA-013](.scratch/alva-completion/issues/06-example-building-views.md) | 建筑3D总览、剖切与房间视角 | `render` | | | 待认领；yang-chatgpt 按用户要求释放，未实施；原分支与Worktree保留，详见票内交接 |
-| [ALVA-019](.scratch/alva-completion/issues/12-voice-transcription.md) | 录音转写、纠正与发送 | `chat` | lexie | `task/ALVA-019-lexie` / `/home/ubuntu/Alva-worktrees/ALVA-019-lexie` | 已认领；预计 api/api.ts、api/chat.ts、web/src/main.tsx、web/src/chat/、tests、scripts；独立端口验收 |
 | [ALVA-020](.scratch/alva-completion/issues/13-scope-confirmation.md) | 作用范围澄清与确认 | `proposals` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` | yang-chatgpt | `task/ALVA-028-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-028-yang-chatgpt` | 已认领，用户要求暂不实施；预计 api/business.ts、api/model.ts、api/store.ts、api/api.ts、web/src/Panels.tsx、web/src/review/；端口未启用，开工前核验；Worktree已创建；未开工 |
@@ -22,7 +21,7 @@
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
 | [ALVA-043](.scratch/alva-completion/issues/36-business-guidance.md) | 业务指导依据用于咨询 | `chat` |  |  | 待认领；开工前登记 |
 
-当前九项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
+当前八项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 ## 认领与 Worktree 规则
 

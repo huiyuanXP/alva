@@ -1,0 +1,17 @@
+{
+  "ticket": "ALVA-019",
+  "round": 2,
+  "source": "simulated-microphone",
+  "provider": "real-transcription",
+  "cancelRecordingPreservedText": true,
+  "cancelRecordingDidNotSend": true,
+  "transcriptLength": 63,
+  "transcriptPreview": "How old is the Brooklyn Bridge? How old is the Brooklyn Bridge?",
+  "editedText": "ALVA019_EDITED_FROM_SIMULATED_MIC",
+  "storedUserText": "ALVA019_EDITED_FROM_SIMULATED_MIC",
+  "audioPersisted": false,
+  "recordingButtonReset": true,
+  "consoleErrors": 0,
+  "physicalMicrophone": "pending-no-physical-device-in-cloud-runner",
+  "passed": true
+}
