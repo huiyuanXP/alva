@@ -99,5 +99,5 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
-| [ALVA-055](.scratch/alva-topology-quality/issues/01-topology-warnings.md) | chatgpt-topology | task/ALVA-055-chatgpt-topology；独立4195；topology模块、API/二维展示接线；不改import.ts和模型/存储合同，保留structured-output-preview | in-progress |
+| [ALVA-055](.scratch/alva-topology-quality/issues/01-topology-warnings.md) | chatgpt-topology | task/ALVA-055-chatgpt-topology / .runtime/worktrees/ALVA-055-chatgpt-topology（编辑工具范围内的独立Worktree）；4195；topology、API/二维接线、packages/contracts/alva诊断类型、package.json/锁文件（polygon-clipping）；不改import.ts和模型/存储合同，保留structured-output-preview | in-progress |
 | [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | | 等待ALVA-055集成；MiMo真实复测与证据 | ready-for-agent |
