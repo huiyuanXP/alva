@@ -12,7 +12,7 @@
 
 **Owner:** yang-chatgpt
 
-**Claim branch / Worktree:** `task/ALVA-013-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt`（待创建）
+**Claim branch / Worktree:** `task/ALVA-013-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt`（已创建，未开工）
 
 **Execution:** 2026-09-22 由 yang-chatgpt 认领；用户明确要求仅认领并说明，暂不实施。未修改产品代码、未运行开发测试、未部署。
 

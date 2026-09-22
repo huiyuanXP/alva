@@ -12,7 +12,7 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-013](.scratch/alva-completion/issues/06-example-building-views.md) | 建筑3D总览、剖切与房间视角 | `render` | yang-chatgpt | `task/ALVA-013-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt` | 已认领，用户要求暂不实施；预计 web/src/SceneView.tsx、web/src/scene/、scripts/alva-building-views-check.ts；端口未启用，开工前核验登记；Worktree待创建 |
+| [ALVA-013](.scratch/alva-completion/issues/06-example-building-views.md) | 建筑3D总览、剖切与房间视角 | `render` | yang-chatgpt | `task/ALVA-013-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt` | 已认领，用户要求暂不实施；预计 web/src/SceneView.tsx、web/src/scene/、scripts/alva-building-views-check.ts；端口未启用，开工前核验登记；Worktree已创建；未开工 |
 | [ALVA-019](.scratch/alva-completion/issues/12-voice-transcription.md) | 录音转写、纠正与发送 | `chat` |  |  | 待认领；开工前登记 |
 | [ALVA-020](.scratch/alva-completion/issues/13-scope-confirmation.md) | 作用范围澄清与确认 | `proposals` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
