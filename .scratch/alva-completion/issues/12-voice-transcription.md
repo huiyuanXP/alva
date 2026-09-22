@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-017](10-multimodal-chat.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 已由 lexie 认领；分支 `task/ALVA-019-lexie`，Worktree `/home/ubuntu/Alva-worktrees/ALVA-019-lexie`。预计修改 `api/api.ts`、`api/chat.ts`、`web/src/main.tsx`、`web/src/chat/`、相关 tests/scripts；使用独立端口与隔离数据验收。
 
 - [ ] 真实转写可编辑，取消/失败不误发送；发送以用户修改后的文字为准。
 - [ ] 成功、失败和取消后清除录音临时内容，不作为项目永久附件。
