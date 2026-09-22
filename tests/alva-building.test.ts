@@ -6,7 +6,7 @@ import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
 import {createTopologyVersion} from '../api/topology/calibration.js';
 import type {SceneData} from '../api/model.js';
-import type {BuildingCodexCall} from '../api/building/generate.js';
+import {buildingGenerationModel,generateBuilding,type BuildingCodexCall} from '../api/building/generate.js';
 import type {BuildingSceneData} from '../api/building/types.js';
 
 const scene=(lShape=false):SceneData=>({
@@ -94,4 +94,18 @@ test('ALVA-012 rejects a forged output and retains no unverified building',async
     const response=await app.inject({method:'POST',url:'/api/building/generate',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision}});assert.equal(response.statusCode,422,response.body);
     const after=await store.get(created.project.id);assert.equal(after.confirmedBuilding,undefined);assert.equal(after.buildingState.status,'failed');assert.equal(calls,2);
   }finally{await app.close();await store.close();if(previous===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=previous;}
+});
+
+
+test('building generation uses dedicated OPENAI_BUILDING_MODEL without changing general OPENAI_MODEL',()=>{
+ const previousBuilding=process.env.OPENAI_BUILDING_MODEL,previousGeneral=process.env.OPENAI_MODEL;process.env.OPENAI_BUILDING_MODEL='building-model-test';process.env.OPENAI_MODEL='general-model-kept';
+ try{assert.equal(buildingGenerationModel(),'building-model-test');assert.equal(process.env.OPENAI_MODEL,'general-model-kept')}finally{if(previousBuilding===undefined)delete process.env.OPENAI_BUILDING_MODEL;else process.env.OPENAI_BUILDING_MODEL=previousBuilding;if(previousGeneral===undefined)delete process.env.OPENAI_MODEL;else process.env.OPENAI_MODEL=previousGeneral}
+});
+
+
+test('building generation normalizes provider items alias and fixed units before strict validation',async()=>{
+ const topology=scene(false),fingerprint='a'.repeat(64),version=3,project:any={sourceImage:undefined};const expected=buildingFor(topology,version,fingerprint);
+ const provider:any={camera:expected.camera,topologyVersion:version,topologyFingerprint:fingerprint,items:expected.components.map(({id,...component}:any)=>component)};
+ const codex:BuildingCodexCall=async()=>JSON.stringify(provider);const result=await generateBuilding(project,topology,version,fingerprint,undefined,codex);
+ assert.equal(result.units,'meters');assert.equal(result.components.length,expected.components.length);assert.ok(result.components.every((c:BuildingSceneData['components'][number])=>typeof c.id==='string'&&c.id.length>0));
 });
