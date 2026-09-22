@@ -1,0 +1,18 @@
+{
+  "ticket": "ALVA-018",
+  "runId": "20260922T112500Z-ALVA018-round2",
+  "pass": true,
+  "checks": {
+    "provider_failure_visible": true,
+    "text_restored": true,
+    "attachment_restored": true,
+    "retry_button_visible": true,
+    "retry_completed": true,
+    "input_cleared_after_success": true,
+    "attachment_cleared_after_success": true,
+    "scene_unchanged": true,
+    "no_auto_accept": true,
+    "image_not_persisted": true,
+    "console_errors": []
+  }
+}

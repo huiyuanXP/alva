@@ -1,8 +1,8 @@
 # alva Handoff
 
-当前 44 张产品 Ticket 中，ALVA-008–010、ALVA-014 已完成并集成 `main`。ALVA-014 由 Lexie 完成问卷范围精简：Q19–Q22/Q58/Q60 停用，预算从现役问卷/API/UI/Chat工具/导出合同移除，历史持久数据不自动删除。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
+当前 44 张产品 Ticket 中，ALVA-008–012、ALVA-014–018 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
 
-44票均有 Parallel lane；当前依赖就绪且未认领为 ALVA-011、015、017、023、031、036。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
+44票均有 Parallel lane；当前依赖就绪且未认领为 ALVA-013、019、020、023、028、031、036、041、043。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
 
 认领在主目录署名即生效，协调锁内提交；每票独立Worktree/分支及运行资源。同组或共享文件冲突先协调。个人完成提交后不移除署名；main集成验证通过后，同一实现提交更新done、移除任务行和署名、补充所有新解锁任务，保留票内署名及原实现SHA供追溯。
 
@@ -130,3 +130,9 @@ Lexie 在 `task/ALVA-015-lexie` 完成，原实现提交 `1db54df0245788e67330c3
 Lexie 在 `task/ALVA-016-lexie` 完成，原实现提交 `04ca6de1a3e1f58f70c9f84bfe6e091c40d3f68a`。未答看板按全屋与各房间 scope 分开统计，仅计启用问题；点击未答项会携带题目文本和房间上下文进入 Chat。退出问卷分析使用 `lastAnalysisEvidence` 增量游标：只处理新增 evidence，模型失败时游标不推进可重试，无新增 evidence 时直接返回且 revision 不变，已排队问题按题号+scope 去重。
 
 Round 1 `evidence/20260921T151500Z-ALVA016-round1/` 验证失败游标保持、真实模型重试成功、只消费新增 evidence、重复退出 no-op 与问题 scope 去重；Round 2 `evidence/20260921T153000Z-ALVA016-round2/` 为 Chromium，验证全屋/客厅/书房独立未答、禁用项排除、点击书房 Q25 后 Chat 自动带入题目与房间并完成真实咨询，console error 0。
+
+## ALVA-018 咨询取消与故障重试
+
+Lexie 在 `task/ALVA-018-lexie` 完成，原实现提交 `42b592b263a553dbdb50b06bfa39bab9502000d4`。Chat 使用专属 `/api/chat/cancel`；取消/失败仅更新当前 assistant 状态和故障留证，正常完成前累积的 proposal / pending answer 不进入项目。前端保留完整重试草稿（文本、附件、房间、模型），失败后恢复输入，重试使用新 requestId，成功后清空草稿。
+
+Round 1 `evidence/20260922T104500Z-ALVA018-round1/`：真实模型请求建立后取消，scene/answers/pending/accepted proposal 均无副作用；重试成功并收到 8 个流式增量。Round 2 `evidence/20260922T112500Z-ALVA018-round2/`：Chromium 首次通过真实供应端不存在模型触发不可用故障，文本与参考图恢复；点击重试后正常真实模型成功完成，scene 不变、无自动采用、图片不持久化、console error 0。

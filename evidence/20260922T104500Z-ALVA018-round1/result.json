@@ -1,0 +1,17 @@
+{
+  "ticket": "ALVA-018",
+  "runId": "20260922T104500Z-ALVA018-round1",
+  "pass": true,
+  "model": "gemini-3.1-flash-lite",
+  "checks": {
+    "cancelled": true,
+    "cancel_error_visible": true,
+    "scene_unchanged_after_cancel": true,
+    "no_answer_side_effect": true,
+    "no_accepted_proposal": true,
+    "no_pending_answer_after_cancel": true,
+    "retry_completed": true,
+    "retry_deltas": 8,
+    "retry_scene_unchanged": true
+  }
+}
