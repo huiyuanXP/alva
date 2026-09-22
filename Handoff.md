@@ -163,3 +163,5 @@ Round 1 `evidence/20260922T180000Z-ALVA043-round1/` 使用真实 `gemini-3.1-fla
 独立实现提交53566b7，类型检查和5项探针逻辑/真实失败证据回放通过；真实MiMo识图未通过，因此不合入功能代码、不标done。正常Codex路径在5174.052ms后报告刷新令牌撤销；本次参数设置MiMo官方Responses provider后，在2555.246ms报告缺少MIMO_API_KEY。原始输出均0字符、未返回token用量；耗时是鉴权失败时间，不是模型识图推理。证据为evidence/20260922T105705151Z-ALVA056-mimo-ff43a8与evidence/20260922T105903721Z-ALVA056-mimo-455835，原result.json保留，review.json按权威turn错误复核分类。
 
 尚缺当前MCP的有效MiMo环境凭据及最新标注截图的未标注原图。已保留ALVA-056署名与独立Worktree，恢复用新run ID；不读取宿主机凭据、不注销用户、不修改生产模型配置或候选。文档docs/MIMO-VISION-RETRY.md说明实际命令与边界。ALVA-055的21项回归和7组Chromium验收已独立完成并合入c25fa79，不受本外部阻塞回退。代码、文档与证据已核验；生产发布未执行，生成记忆out-of-scope，所有复核工作区保留。
+
+2026-09-22 ALVA-054 发布核验：9454057实现已发布，新前端资源index-Bq_Jy-gM.js在线，公网首页/healthz/资源200，鉴权边界正常。隔离9项回归与11组浏览器交互通过；线上登录后验证因现役私有验证码文件被拒绝而blocked，未修改验证码或绕过鉴权。证据 evidence/2026-09-22T122724115Z-ALVA054-deployment/；详见docs/ALVA-054-home-intake.md。

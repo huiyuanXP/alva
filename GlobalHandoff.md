@@ -33,3 +33,5 @@
 - ALVA-055已集成main，拓扑质量接口与二维定位见docs/TOPOLOGY-QUALITY.md；21回归+7组Chromium通过，未生产发布。诊断只读，MiMo实际识图结论由后续ALVA-056验证。
 
 - ALVA-056 blocked：Codex路径登录刷新令牌撤销，MiMo官方路径缺MIMO_API_KEY，均未生成模型输出。探针在task/ALVA-056-chatgpt-mimo（53566b7）；main仅同步状态/脱敏证据，不假合入未验收功能。恢复见docs/MIMO-VISION-RETRY.md。
+
+2026-09-22 ALVA-054 发布核验：9454057实现已发布，新前端资源index-Bq_Jy-gM.js在线，公网首页/healthz/资源200，鉴权边界正常。隔离9项回归与11组浏览器交互通过；线上登录后验证因现役私有验证码文件被拒绝而blocked，未修改验证码或绕过鉴权。证据 evidence/2026-09-22T122724115Z-ALVA054-deployment/；详见docs/ALVA-054-home-intake.md。

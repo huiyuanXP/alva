@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "asset": "/assets/index-Bq_Jy-gM.js",
+  "health": 200,
+  "home": 200,
+  "bundle": 200,
+  "questionnaireRequiresLogin": true,
+  "git": "d6a7b0106be8931a341e5ee8da3ed70299a52ba4",
+  "authenticatedVerification": "blocked: configured private access-code file rejected by login"
+}

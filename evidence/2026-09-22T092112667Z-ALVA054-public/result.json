@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "stage": "public-health-api-request",
+  "error": "public health failed; subsequent diagnosis: Cloudflare returned HTTP403 to Playwright APIRequestContext while normal Chromium navigation returned HTTP200"
+}

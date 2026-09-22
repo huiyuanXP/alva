@@ -23,3 +23,11 @@ Worktree: /home/ubuntu/Alva-worktrees/ALVA-054-yang-chatgpt
 验证：npm run check、build:alva通过（原有大chunk提示保留）；新接口/鉴权/问卷范围5项、Chat确认/未答分析4项全部通过。真实Chromium合成项目11组交互通过，1440px与390px截图已审阅，页面异常0。证据 evidence/2026-09-22T091452922Z-ALVA054-browser/；生产待发布后验收。
 
 实现提交：d603054e30f75950a1002c98c037f47350a820ea。集成后类型检查、隔离输出构建通过；生产发布待下节记录。回滚备份位于 .runtime/alva054-rollback-20260922T091951Z。
+
+## Production release and verification
+
+2026-09-22：实现集成9454057已发布，alva.service与alva-tunnel.service均active；回滚备份保留在.runtime/alva054-rollback-20260922T091951Z。浏览器公网首页/healthz/新bundle均HTTP200，新bundle index-Bq_Jy-gM.js包含“聊聊你的家”和“保存进度”；问卷API未授权返回401。证据 evidence/2026-09-22T122724115Z-ALVA054-deployment/result.json。
+
+已完成隔离环境9项接口/回归与11组真实浏览器交互。公网登录后验证仍blocked：当前ops/alva/ACCESS-CODE.md指定的私有验证码文件被/api/access拒绝，未轮换或绕过鉴权；请现役登录配置负责人核对ALVA-008的运行配置与有效验证码一致性。失败证据 evidence/2026-09-22T122435740Z-ALVA054-public/result.json。此前APIRequestContext请求受Cloudflare403拦截，已改正常浏览器登录，不改Cloudflare/MCP配置。
+
+本次发布后其他人已继续集成ALVA-055/056；部署核验仅确认054所需资源，不将当前Git HEAD等同于全部最新功能已发布。ALVA-028仍暂停，其他票认领与代码不变。

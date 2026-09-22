@@ -1,0 +1,4 @@
+{
+  "ok": false,
+  "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: '聊聊你的家', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('button', { name: '聊聊你的家', exact: true }) with timeout 5000ms\n  - waiting for getByRole('button', { name: '聊聊你的家', exact: true })\n"
+}
