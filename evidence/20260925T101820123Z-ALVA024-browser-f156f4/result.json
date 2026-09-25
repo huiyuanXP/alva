@@ -1,0 +1,8 @@
+{
+  "ticket": "ALVA-024",
+  "runId": "20260925T101820123Z-ALVA024-browser-f156f4",
+  "pass": false,
+  "checks": [],
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 2.05\nReceived: 2.0500000000000003\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+  "errors": []
+}

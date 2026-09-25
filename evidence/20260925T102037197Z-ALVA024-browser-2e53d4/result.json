@@ -1,0 +1,11 @@
+{
+  "ticket": "ALVA-024",
+  "runId": "20260925T102037197Z-ALVA024-browser-2e53d4",
+  "pass": false,
+  "checks": [
+    "真实2D拖动使用服务端5cm网格吸附并持久化位置",
+    "手动旋转经服务端统一归一化为15度吸附"
+  ],
+  "error": "Error: 3D raycast missed selected chair: {\"point\":{\"x\":221.846002051109,\"y\":376.0274610377439},\"hits\":[]}",
+  "errors": []
+}

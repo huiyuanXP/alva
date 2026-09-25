@@ -17,6 +17,53 @@ export const catalogue=intakeCatalogue.map(q=>{
 
 export function unansweredForScope(p:Project,roomId:string|null){return catalogue.filter(q=>q.enabled&&((q.scope==='project'&&roomId===null)||(q.scope==='room'&&roomId!==null))&&!p.answers.some(a=>a.questionId===q.id&&a.roomId===(q.scope==='project'?null:roomId)))}
 export const ChangeSchema=z.object({action:z.enum(['add','update','remove','copy','transfer','purpose','wall']),targetId:z.string(),values:z.record(z.string(),z.unknown())}).strict();
+const furnitureGrid = 0.05;
+type PlacementItem = SceneData['items'][number];
+
+function snapFurniture(value:number){return Math.round(value/furnitureGrid)*furnitureGrid}
+function normalizedRotation(value:number){
+  const snapped=Math.round(value/15)*15;
+  return ((snapped%360)+360)%360;
+}
+function furnitureCorners(item:PlacementItem){
+  const angle=item.rotation*Math.PI/180,cos=Math.cos(angle),sin=Math.sin(angle);
+  return [[-1,-1],[1,-1],[1,1],[-1,1]].map(([x,y])=>({
+    x:item.x+x*item.width/2*cos-y*item.depth/2*sin,
+    y:item.y+x*item.width/2*sin+y*item.depth/2*cos
+  }));
+}
+function projections(points:{x:number;y:number}[],axis:{x:number;y:number}){
+  const values=points.map(point=>point.x*axis.x+point.y*axis.y);
+  return {min:Math.min(...values),max:Math.max(...values)};
+}
+function furnitureOverlaps(a:PlacementItem,b:PlacementItem){
+  const cornersA=furnitureCorners(a),cornersB=furnitureCorners(b),axes:number[][]=[];
+  for(const item of [a,b]){
+    const angle=item.rotation*Math.PI/180;
+    axes.push([Math.cos(angle),Math.sin(angle)],[-Math.sin(angle),Math.cos(angle)]);
+  }
+  return axes.every(([x,y])=>{
+    const aRange=projections(cornersA,{x,y}),bRange=projections(cornersB,{x,y});
+    return Math.min(aRange.max,bRange.max)-Math.max(aRange.min,bRange.min)>.01;
+  });
+}
+function validateFurniturePlacement(scene:SceneData,item:PlacementItem,checkCollisions:boolean){
+  const room=scene.rooms.find(value=>value.id===item.roomId);
+  if(!room)reject('家具未关联有效房间');
+  if(!furnitureCorners(item).every(point=>pointInPolygon(point,room!.polygon)))reject('家具超出所属房间边界，请调整位置或方向');
+  if(checkCollisions){
+    const other=scene.items.find(value=>value.id!==item.id&&value.roomId===item.roomId&&furnitureOverlaps(item,value));
+    if(other)reject('家具与“'+other.name+'”占地重叠，请调整位置或方向');
+  }
+}
+function normalizedFurniturePatch(raw:Record<string,unknown>){
+  const patch=Item.omit({id:true,roomId:true,locked:true,sourceId:true}).partial().strict().parse(raw);
+  if(patch.x!==undefined)patch.x=snapFurniture(patch.x);
+  if(patch.y!==undefined)patch.y=snapFurniture(patch.y);
+  if(patch.rotation!==undefined)patch.rotation=normalizedRotation(patch.rotation);
+  return patch;
+}
+
 export function applyChanges(scene:SceneData,changes:Change[],professional=false,allowPurpose=false):SceneData{
  const s=structuredClone(scene);
  for(const change of changes){const room=s.rooms.find(r=>r.id===change.targetId),wall=s.walls.find(w=>w.id===change.targetId),item=s.items.find(i=>i.id===change.targetId);
@@ -26,15 +73,15 @@ export function applyChanges(scene:SceneData,changes:Change[],professional=false
   }
   if(change.action==='purpose'){if(!allowPurpose)reject('房间用途必须通过独立确认流程');if(!room)reject('房间不存在');if(room!.locked)reject('房间已锁定');const v=z.object({purpose:z.string().min(1).max(120)}).strict().parse(change.values);room!.purpose=v.purpose;continue}
   if(change.action==='add'){
-   const v=z.object({assetId:z.string(),roomId:z.string(),x:z.number(),y:z.number(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const added=itemFromAsset(v.assetId,v.roomId,v.x,v.y);if(v.newId)added.id=v.newId;s.items.push(added);continue;
+   const v=z.object({assetId:z.string(),roomId:z.string(),x:z.number().finite(),y:z.number().finite(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const added=itemFromAsset(v.assetId,v.roomId,snapFurniture(v.x),snapFurniture(v.y));if(v.newId)added.id=v.newId;validateFurniturePlacement(s,added,false);s.items.push(added);continue;
   }
   if(!item)reject('家具实例不存在');if(item!.locked||s.rooms.find(r=>r.id===item!.roomId)?.locked)reject('家具或房间已锁定，请单独解除');
   if(change.action==='remove'){s.items=s.items.filter(i=>i.id!==item!.id);continue}
   if(change.action==='copy'||change.action==='transfer'){
-   const v=z.object({roomId:z.string(),x:z.number(),y:z.number(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const cloned={...item!,id:v.newId||randomUUID(),sourceId:item!.id,roomId:v.roomId,x:v.x,y:v.y};if(change.action==='transfer')s.items=s.items.filter(i=>i.id!==item!.id);s.items.push(cloned);continue;
+   const v=z.object({roomId:z.string(),x:z.number().finite(),y:z.number().finite(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const cloned={...item!,id:v.newId||randomUUID(),sourceId:item!.id,roomId:v.roomId,x:snapFurniture(v.x),y:snapFurniture(v.y)};validateFurniturePlacement(s,cloned,false);if(change.action==='transfer')s.items=s.items.filter(i=>i.id!==item!.id);s.items.push(cloned);continue;
   }
   if(change.action==='update'){
-   const patch=Item.omit({id:true,roomId:true,locked:true,sourceId:true}).partial().strict().parse(change.values);Object.assign(item!,patch);
+   const patch=normalizedFurniturePatch(change.values);Object.assign(item!,patch);if(['x','y','rotation','width','depth','height'].some(key=>key in patch))validateFurniturePlacement(s,item!,true);
   }
  }
  return validateScene(s);

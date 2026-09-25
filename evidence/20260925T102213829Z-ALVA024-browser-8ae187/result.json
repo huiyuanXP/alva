@@ -1,0 +1,19 @@
+{
+  "ticket": "ALVA-024",
+  "runId": "20260925T102213829Z-ALVA024-browser-8ae187",
+  "pass": false,
+  "checks": [
+    "真实2D拖动使用服务端5cm网格吸附并持久化位置",
+    "手动旋转经服务端统一归一化为15度吸附",
+    "真实Three.js三维拖动复用同一服务端吸附规则",
+    "家具碰撞被服务端拒绝且没有部分坐标写入",
+    "家具越界被服务端拒绝并给出可理解反馈",
+    "锁定家具无法通过界面或直接命令绕过",
+    "刷新后位置、方向和锁定状态保持一致"
+  ],
+  "error": "Error: Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)\nFailed to load resource: the server responded with a status of 422 (Unprocessable Entity)",
+  "errors": [
+    "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)",
+    "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+  ]
+}

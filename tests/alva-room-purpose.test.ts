@@ -14,7 +14,7 @@ const scene=():SceneData=>({
   openings:[],
   items:[
     {id:'sofa',assetId:'alva-sofa',roomId:'living',name:'沙发',x:2,y:2,width:2.1,depth:.9,height:.8,rotation:0,color:'#9da991',material:'fabric',clearance:0,locked:false},
-    {id:'table',assetId:'alva-table',roomId:'living',name:'书桌',x:4,y:2,width:1.4,depth:.65,height:.75,rotation:0,color:'#b49a75',material:'wood',clearance:0,locked:false},
+    {id:'table',assetId:'alva-table',roomId:'living',name:'书桌',x:4.3,y:2,width:1.4,depth:.65,height:.75,rotation:0,color:'#b49a75',material:'wood',clearance:0,locked:false},
     {id:'locked-bed',assetId:'alva-bed',roomId:'study',name:'床',x:7,y:2,width:1.8,depth:2,height:.55,rotation:0,color:'#c8baa8',material:'fabric',clearance:0,locked:false}
   ],
   calibration:null,
@@ -62,7 +62,7 @@ test('ALVA-022 purpose can produce previewable layout proposals and only a separ
         {action:'update',targetId:'sofa',values:{x:2.4}}
       ]},
       {title:'阅读布局 B',rationale:'另一组可比较的桌面位置。',changes:[
-        {action:'update',targetId:'table',values:{x:4.8}}
+        {action:'update',targetId:'table',values:{x:4.2}}
       ]}
     ]});
     return '已根据新用途生成两个布局候选，请分别预览后决定是否采用。';
@@ -84,14 +84,14 @@ test('ALVA-022 purpose can produce previewable layout proposals and only a separ
     assert.equal(reject.statusCode,200,reject.body);
     current=await store.get(created.project.id);
     assert.equal(current.scene!.items.find(i=>i.id==='sofa')!.x,2);
-    assert.equal(current.scene!.items.find(i=>i.id==='table')!.x,4);
+    assert.equal(current.scene!.items.find(i=>i.id==='table')!.x,4.3);
     assert.equal(current.proposals.find(p=>p.id===rejected.id)!.status,'rejected');
     const candidate=current.proposals[1]!;
     const accept=await app.inject({method:'POST',url:'/api/proposals/accept',headers,payload:{requestId:randomUUID(),expectedRevision:current.revision,id:candidate.id,selectedIds:['table'],confirmed:true}});
     assert.equal(accept.statusCode,200,accept.body);
     current=await store.get(created.project.id);
     assert.equal(current.scene!.items.find(i=>i.id==='sofa')!.x,2);
-    assert.equal(current.scene!.items.find(i=>i.id==='table')!.x,4.8);
+    assert.equal(current.scene!.items.find(i=>i.id==='table')!.x,4.2);
     assert.equal(current.proposals.find(p=>p.id===candidate.id)!.status,'accepted');
     assert.equal(current.proposals[0]!.status,'rejected');
     assert.equal(current.layoutConfirmations?.length,1);

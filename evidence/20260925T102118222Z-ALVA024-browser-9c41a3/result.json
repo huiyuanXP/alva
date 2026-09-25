@@ -1,0 +1,11 @@
+{
+  "ticket": "ALVA-024",
+  "runId": "20260925T102118222Z-ALVA024-browser-9c41a3",
+  "pass": false,
+  "checks": [
+    "真实2D拖动使用服务端5cm网格吸附并持久化位置",
+    "手动旋转经服务端统一归一化为15度吸附"
+  ],
+  "error": "Error: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 2.55\nReceived: 2.15\n\nExpected precision:    6\nExpected difference: < 0.0000005\nReceived difference:   0.3999999999999999\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+  "errors": []
+}
