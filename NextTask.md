@@ -8,9 +8,13 @@
 
 本机 Codex 用户配置已有单一 `gemini` profile，复用 `newapi` provider；模型目录包含 `gemini-3.6-flash-high`、`gemini-3.7-flash-high`、`gemini-3.8-flash-high`，默认 3.8，可在 Codex 模型设置中切换。三个型号均已通过原生 CLI 的最小真实调用。此任务无后续执行占用；业务服务模型和生产配置未变。交接见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。
 
-## 2026-09-25 ALVA-062 已完成，Gemini 预览待用户核对
+## 2026-09-25 ALVA-063 已完成，同会话自查待用户核对
 
-当前临时公网入口展示 Gemini 3.8 的 20 墙/6 房/9 门窗候选；原生业务导入因两轮 schema 不合格而失败，隔离字段映射后可渲染并通过结构检查。完整证据、原始结果和服务位置见[ALVA-062](docs/ALVA-062-gemini-preview.md)。本任务不占用产品票认领；028 继续暂停。
+原测试 tunnel 现展示新生成并在同一个 Codex thread 自查的 Gemini 候选：19 墙/5 房/7 门窗。模型自评 `mismatch`，疑点和仅平面截图见[ALVA-063](docs/ALVA-063-floorplan-self-review.md)；原生业务 schema 仍失败，隔离字段映射仅供预览。项目 Skill 只通过 prompt 显式调用，不在标准目录。本票不占用产品票认领；028 继续暂停。
+
+## 2026-09-25 ALVA-062 已完成，历史预览已切换
+
+该临时公网入口此前展示 Gemini 3.8 的 20 墙/6 房/9 门窗候选；原生业务导入因两轮 schema 不合格而失败，隔离字段映射后可渲染并通过结构检查。完整证据、原始结果和服务位置见[ALVA-062](docs/ALVA-062-gemini-preview.md)。本任务不占用产品票认领；028 继续暂停。
 
 ## 2026-09-25 ALVA-060 已集成，历史预览已切换
 
@@ -18,7 +22,7 @@
 
 ## 2026-09-25 ALVA-059 预览交接
 
-ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完成并验证，历史截图与隔离数据见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。同一链接曾由 ALVA-060 展示 Luna 候选，现由 ALVA-062 展示 Gemini 候选；不占用产品票认领，028 继续暂停。后续若要评价户型准确性，需对照原图由用户校核，不能以结构检查和渲染替代。
+ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完成并验证，历史截图与隔离数据见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。同一链接曾由 ALVA-060 展示 Luna 候选，后来由 ALVA-062 展示 Gemini 候选，现由 ALVA-063 展示同会话自查候选；不占用产品票认领，028 继续暂停。后续若要评价户型准确性，需对照原图由用户校核，不能以结构检查和渲染替代。
 
 ## 2026-09-25 ALVA-053/056已完成
 

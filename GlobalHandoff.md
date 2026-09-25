@@ -6,9 +6,13 @@
 
 Codex 用户配置增加单一 `gemini` profile，复用已有 `newapi` provider、网关和 `NEWAPI_KEY` 环境变量。模型目录可选 Gemini 3.6/3.7/3.8 Flash High，默认 3.8；三款已通过原生 CLI 真实最小调用。使用和边界见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。配置仅在本机，不代表业务 App Server、生产模型或其他机器已切换。
 
-## 2026-09-25 ALVA-062 当前预览
+## 2026-09-25 ALVA-063 当前预览与手动 Skill
 
-临时 Cloudflare 链接现展示 Gemini 3.8 户型候选，20 墙/6 房/9 门窗。模型两轮原始输出未通过业务严格 schema；仅隔离预览字段映射后通过几何/拓扑并在公网验证二维/3D。原 MiMo/Luna 数据保留，生产未改；准确性待用户对照原图。入口、服务与证据见[ALVA-062](docs/ALVA-062-gemini-preview.md)。
+临时 tunnel 现展示 Gemini 3.8 同会话自查候选（19 墙/5 房/7 门窗）。同一 thread 接收生成后的仅平面截图和原图；模型判为 `mismatch`，疑点待人工核对。业务原生 schema 未通过，隔离字段映射后可渲染，旧候选及生产保持不变。Skill 位于 `docs/skills/alva-floorplan-self-review/SKILL.md`，未装进标准目录；脚本在自查 prompt 中显式附入全文。详情见[ALVA-063](docs/ALVA-063-floorplan-self-review.md)。
+
+## 2026-09-25 ALVA-062 历史预览
+
+临时 Cloudflare 链接当时展示 Gemini 3.8 户型候选，20 墙/6 房/9 门窗。模型两轮原始输出未通过业务严格 schema；仅隔离预览字段映射后通过几何/拓扑并在公网验证二维/3D。原 MiMo/Luna 数据保留，生产未改；准确性待用户对照原图。入口、服务与证据见[ALVA-062](docs/ALVA-062-gemini-preview.md)。
 
 ## 2026-09-25 ALVA-060 历史预览
 

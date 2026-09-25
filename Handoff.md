@@ -8,9 +8,13 @@
 
 本机 `~/.codex/gemini.config.toml` 复用现有 `newapi` provider 和 `NEWAPI_KEY`，独立模型目录提供 Gemini 3.6、3.7、3.8 Flash High。`codex exec --profile gemini` 默认 3.8，启动后可在模型设置中选其他两款；三个型号的 `--strict-config` 原生调用均返回 `OK`。详情见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。用户级文件不入 Git；仓库只保存脱敏交接。业务服务与生产配置未改。
 
+## 2026-09-25 ALVA-063 Gemini 同会话平面自查
+
+新隔离 run `20260925T114342944Z-ALVA063-selfreview-d5bf96` 在同一 Codex thread 依次完成生成、修正和仅平面截图自查。新候选 19 墙/5 房/7 门窗；原生输出 schema 失败，隔离字段映射后几何与拓扑诊断通过。模型自评 `mismatch`，报告卫生间和门、主卧墙体及左侧开窗疑点，未自动改候选。项目 Skill 位于非标准目录 `docs/skills/alva-floorplan-self-review/`，由 prompt 显式附入全文。原测试 tunnel 现展示本次新候选，公网二维/3D 验证通过。详情见[ALVA-063](docs/ALVA-063-floorplan-self-review.md)，生产未改，028 继续暂停。
+
 ## 2026-09-25 ALVA-062 Gemini 3.8 识图预览
 
-个人实现 `ea3de2c` 已生成 Gemini 3.8 候选并切换原临时 Tunnel。两轮原始回复都不符合严格 Scene schema；只在隔离预览中映射字段，保留墙、房间多边形和开口几何。映射后 20 墙/6 房/9 门窗通过几何/拓扑诊断；公网二维、3D 与浏览器脚本错误 0 实测通过。运行服务 `alva-gemini-preview-app-v2.service`，MiMo/Luna 数据保留，业务原生导入仍未通过。详情见[ALVA-062](docs/ALVA-062-gemini-preview.md)，生产未改，028 继续暂停。
+个人实现 `ea3de2c` 当时生成 Gemini 3.8 候选并切换原临时 Tunnel。两轮原始回复都不符合严格 Scene schema；只在隔离预览中映射字段，保留墙、房间多边形和开口几何。映射后 20 墙/6 房/9 门窗通过几何/拓扑诊断；公网二维、3D 与浏览器脚本错误 0 实测通过。运行服务 `alva-gemini-preview-app-v2.service`，MiMo/Luna 数据保留，业务原生导入仍未通过。详情见[ALVA-062](docs/ALVA-062-gemini-preview.md)，生产未改，028 继续暂停。
 
 ## 2026-09-25 ALVA-060 Luna 识图预览
 

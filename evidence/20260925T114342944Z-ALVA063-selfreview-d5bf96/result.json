@@ -1,0 +1,43 @@
+{
+  "runId": "20260925T114342944Z-ALVA063-selfreview-d5bf96",
+  "model": "gemini-3.8-flash-high",
+  "sourceSha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+  "skillPath": "docs/skills/alva-floorplan-self-review/SKILL.md",
+  "startedAt": "2026-09-25T11:43:42.991Z",
+  "turns": [
+    {
+      "kind": "generate",
+      "turnId": "01a0d860-e646-7b32-8819-ff6fff2fdda4"
+    },
+    {
+      "kind": "repair",
+      "turnId": "01a0d863-8c9e-7ae2-81d5-73bad80c2643"
+    },
+    {
+      "kind": "self-review",
+      "turnId": "01a0d864-416f-71b1-a7c8-ea2c7d3c0fcb"
+    }
+  ],
+  "contract": "preview-field-map",
+  "candidateSha256": "33882b3fce6b56d9dc20ad358d9d27ff62c63e57a508492371e0f5a65604ac8e",
+  "counts": {
+    "walls": 19,
+    "rooms": 5,
+    "openings": 7
+  },
+  "topologyError": "",
+  "diagnostics": {
+    "status": "complete",
+    "issues": 0,
+    "undefinedAreaM2": 0,
+    "wallComponents": 1
+  },
+  "screenshotSha256": "7b871a3885b562335bd247eae7f4bc912c223f557ef0ad6f6e911bedbd7e0bdb",
+  "screenshotKind": "largest visible plan SVG",
+  "reviewRawSha256": "da65f468e313980898a3514f9180b196b795a45f2a412cf11b33bab275144ab5",
+  "sameThread": true,
+  "ok": true,
+  "finishedAt": "2026-09-25T11:47:57.297Z",
+  "reviewOverall": "mismatch",
+  "reviewFindingCount": 5
+}

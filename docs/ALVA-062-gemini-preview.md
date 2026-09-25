@@ -9,3 +9,5 @@
 隔离数据库位于该 Worktree 的 `.runtime/preview-data-gemini38`，原始两轮回复与映射候选位于其 `.runtime/<run-id>/`，均不入 Git。MiMo 和 Luna 原数据库及截图保留。`alva-gemini-preview-app-v2.service` 在 `127.0.0.1:4181` 提供当前预览；沿用原 `alva-mimo-preview-tunnel.service` 和原验证码，公网入口为 `https://immune-indoor-coat-pose.trycloudflare.com`。没有修改 `alva.service`、生产数据或 MCP。首次以 900 MiB 内存上限启动被任务 OOM 终止；调至 1500 MiB 后服务运行，公网 `/healthz` 返回 200。
 
 `npm run check` 与 `npm run build:alva` 通过（构建保留现有大 chunk 提示）。公网 Chromium 登录读取候选，确认二维 SVG 和全屋 3D canvas 可见，页面脚本错误 0；截图及检查结果见 `evidence/20260925T112501654Z-ALVA062-public/`。模型失败摘要见 `evidence/20260925T111820350Z-ALVA062-gemini38-aa64b9/`。预览结束后先停应用和 tunnel，再审查保留现场；用户看完前不清理隔离数据。
+
+2026-09-25 后续状态：ALVA-063 为了在同一个模型 thread 中回传平面截图，重新生成并切换了临时入口。ALVA-062 的候选、数据库、原始输出和截图保留；当前入口与自查结果见 [ALVA-063](ALVA-063-floorplan-self-review.md)。
