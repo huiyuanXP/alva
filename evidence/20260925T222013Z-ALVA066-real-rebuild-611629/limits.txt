@@ -1,0 +1,6 @@
+run=20260925T222013Z-ALVA066-real-rebuild-611629
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2556
+ba1c9e68bffca9717fac899fadc2da45e8b6aa88

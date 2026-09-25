@@ -1,0 +1,18 @@
+{
+  "pass": false,
+  "run": "20260925T221357006Z-ALVA066-answer",
+  "step": "answer",
+  "checks": {
+    "draftNoRecommendation": true,
+    "job": {
+      "id": "ea5b95bb-6bb3-4b7e-97ef-4853c42e983d",
+      "error": "本轮未取得家具候选或明确的无建议工具结果，不能标记为完成",
+      "roomId": "b0067df4-6047-40a8-ae9b-9aaea021e8e3",
+      "status": "failed",
+      "createdAt": "2026-09-25T22:14:06.536Z",
+      "evidenceId": "eca58447-ead7-4e3f-8989-12f72e82517b",
+      "questionId": "Q25"
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(current.messages.slice(before.messages.length).some(m=>m.toolCalls?.some(t=>t.name==='suggest_furniture'&&!t.isError)))\n"
+}

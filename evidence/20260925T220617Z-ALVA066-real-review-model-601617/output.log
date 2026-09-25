@@ -1,0 +1,35 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: missing request_save: 根据您的指令，我已经完成了用户信息读取与布局复核工作，以下是本次操作的结果汇总：
+
+### 1. 用户信息状态读取 (`read_user_context`)
+当前项目已记录的确认项中，包含一条核心生活习惯：
+*   **生活习惯条目**：业主习惯于每天晚上在客餐厅（验收标注）阅读半小时。
+*   **状态**：已确认。
+*   此外，还有多项历史识别与记录任务仍在 `unresolved.md` 索引中，主要涉及户型图的原始识图与拓扑修复指令。
+
+### 2. 布局复核结果 (`run_layout_review`)
+本次复核基于当前已确认的家具布局（客餐厅阅读椅）进行，结果如下：
+*   **几何、功能、行为与家具配置**：检查结果均为正常（Checked）。
+*   **导航（通行）检查**：状态为 **`needs_information`**。目前系统演示环境尚缺乏详细的门洞开启模型和连通性数据，无法就全屋动线的连通性给出最终结论。
+
+### 3. 保存状态分析
+鉴于目前复核结论中导航部分仍存在 `needs_information` 缺口，且存在大量未处理的原始识图任务（见 `unresolved.md`），尚不满足理想状态下的“确认取舍”条件。
+
+**建议：**
+由于目前存在待处理的原始信息缺口（导航数据及历史识图指令），我尚未调用 `request_save`。如果您认为当前布局与风格已达到预期，可以明确指示我忽略这些未决项并出示保存卡，或者我们可以先解决 `unresolved.md` 中的遗留识图指令。
+
+请问您接下来的偏好是什么？
+    at model (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/scripts/alva-066-living-actions.ts:21:629)
+    at async <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/scripts/alva-066-living-actions.ts:29:27) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

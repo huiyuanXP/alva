@@ -1,0 +1,6 @@
+run=20260925T221803Z-ALVA066-real-reopen-model-610158
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2554
+ba1c9e68bffca9717fac899fadc2da45e8b6aa88

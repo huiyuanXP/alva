@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
 import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
-import {applyAnswer} from '../api/business.js';
+import {applyAnswer,applyChanges} from '../api/business.js';
 import {recommendationTools} from '../api/furniture/recommendations.js';
 import {seedLivingStage} from './fixtures/alva/living-stage.js';
 import type {Proposal} from '../api/model.js';
@@ -34,7 +34,7 @@ test('recommendation tools reject unconfirmed invocation, disallowed assets, col
   const job=p.answerRecommendations![0],proposals:Proposal[]=[];
   const input=(assetId:string,x=1,y=1)=>({expectedRevision:p.revision,roomIds:['room'],variants:[{title:'候选',rationale:'确认回答的建议',changes:[{action:'add',targetId:'room',values:{assetId,roomId:'room',x,y}}]}]});
   await assert.rejects(recommendationTools(store,p.id,undefined,proposals)[0].run(input('alva-chair')),/先确认问卷/);
-  const tool=recommendationTools(store,p.id,job.id,proposals)[0];const malformed=input('alva-chair');(malformed.variants[0].changes[0] as any).values={position:{x:5.5,y:3.5}};await assert.rejects(tool.run(malformed),(e:any)=>e.detail?.code==='FURNITURE_ARGUMENTS_INVALID'&&e.detail.repairActions[0].message.includes('position'));const mismatch=input('alva-chair');mismatch.variants[0].changes[0].targetId='alva-chair';await assert.rejects(tool.run(mismatch),(e:any)=>e.detail?.code==='FURNITURE_ROOM_MISMATCH');await assert.rejects(tool.run(input('unlicensed')),/资产不存在/);await assert.rejects(tool.run(input('alva-chair',2,2)),/重叠/);assert.equal(proposals.length,0);
+  const tools=recommendationTools(store,p.id,job.id,proposals,()=>assert.fail('failed candidate cannot complete as no furniture'));const tool=tools[0];const malformed=input('alva-chair');(malformed.variants[0].changes[0] as any).values={position:{x:5.5,y:3.5}};await assert.rejects(tool.run(malformed),(e:any)=>e.detail?.code==='FURNITURE_ARGUMENTS_INVALID'&&e.detail.repairActions[0].message.includes('position'));const mismatch=input('alva-chair');mismatch.variants[0].changes[0].targetId='alva-chair';await assert.rejects(tool.run(mismatch),(e:any)=>e.detail?.code==='FURNITURE_ROOM_MISMATCH');await assert.rejects(tool.run(input('unlicensed')),/资产不存在/);await assert.rejects(tool.run(input('alva-chair',2,2)),(e:any)=>{assert.equal(e.detail?.code,'FURNITURE_PLACEMENT_INVALID');const hints=JSON.parse(e.detail.repairActions.find((a:any)=>a.action==='validated_positions').message).positions;assert.ok(hints.length);const original=structuredClone(p.scene);for(const hint of hints)assert.doesNotThrow(()=>applyChanges(p.scene!,[{action:'add',targetId:'room',values:{assetId:'alva-chair',roomId:'room',...hint}}]));assert.deepEqual(p.scene,original);return true});await assert.rejects(tools[1].run({reason:'建议稍后重新安排空间，目前先保持原样'}),(e:any)=>e.detail?.code==='RECOMMENDATION_UNRESOLVED_ERROR');assert.equal(proposals.length,0);
   p=await store.mutate(p.id,randomUUID(),p.revision,'replace',{},p=>applyAnswer(p,{questionId:'Q01',roomId:null,text:'不需要阅读空间',state:'answered',locked:false,confirmed:true}));
   await assert.rejects(tool.run(input('alva-chair')),/失效/);assert.equal(p.answerRecommendations![0].status,'invalidated');
  }finally{await store.close()}

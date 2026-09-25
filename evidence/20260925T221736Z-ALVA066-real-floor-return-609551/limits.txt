@@ -1,0 +1,6 @@
+run=20260925T221736Z-ALVA066-real-floor-return-609551
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2560
+ba1c9e68bffca9717fac899fadc2da45e8b6aa88

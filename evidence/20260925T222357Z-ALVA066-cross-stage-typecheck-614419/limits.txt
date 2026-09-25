@@ -1,0 +1,6 @@
+run=20260925T222357Z-ALVA066-cross-stage-typecheck-614419
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2551
+ba1c9e68bffca9717fac899fadc2da45e8b6aa88
