@@ -10,6 +10,8 @@
 
 本票不实施ALVA-037的列表/只读预览或ALVA-038的全局替换恢复；既有恢复入口不是这两票的完成证明。集成不等于部署，不自动重建生产`web/dist`或重启服务。
 
+2026-09-25 后续 ALVA-064 发布了包含本票的 main 构建，正式页面已显示手动保存控件。当前发布证据和未执行的生产保存写入验收边界见[本票交接](../.scratch/alva-completion/issues/29-manual-snapshot.md)。旧“历史”按钮及恢复入口仍不代表 ALVA-037/038 已完成。
+
 ## HTTP与持久化合同
 
 `POST /api/save`接收严格对象`{requestId, expectedRevision, confirmed:true}`；requestId为UUID，版本非负整数。身份和项目由服务器会话决定；未登录401、非业主403、无明确确认400、版本冲突409。

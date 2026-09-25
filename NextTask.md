@@ -4,9 +4,9 @@
 
 图片户型识别默认 Gemini 3.8 Flash High/high 已在生产 `alva.service` 生效；公网登录后只读验收通过，项目 revision 不变、页面错误 0。实现提交 `4870b0d`，备份、回滚和证据见[发布记录](docs/ALVA-064-gemini-default-release.md)。同会话截图自查仍是隔离流程；户型准确性待用户对照原图。ALVA-028 继续暂停，其他认领不变。
 
-## 2026-09-25 ALVA-036 已验收集成
+## 2026-09-25 ALVA-036 正式完结
 
-手动全局快照、失败回滚与幂等重试已通过 main 集成态的类型检查、24/24 相关回归、构建和真实 Chromium 验收。后续移除无效用途提案夹具与 422 豁免，main 再跑快照 13/13 和 Chromium 8 项流程通过；证据见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。本票执行占用释放，后继 ALVA-037 已依赖就绪，可在署名认领后开工。未部署或重启生产服务；其他署名保持不变。
+手动全局快照已验收并集成，后随 ALVA-064 的 main 构建发布到生产；公网资源与本机构建哈希一致。生产保存写入未单独验收，隔离保存验收和发布边界见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。ALVA-037 仍可认领，ALVA-038 仍依赖 037；旧“历史”入口不代表两票完成。
 
 ## 2026-09-25 ALVA-061 Codex Gemini profile 已完成
 

@@ -4,7 +4,7 @@
 
 # GlobalHandoff
 
-2026-09-25 ALVA-036 已在 main 完成集成验收；只有显式保存创建全局快照，失败回滚与同请求重试已验证。快照列表/只读预览和恢复仍由 ALVA-037/038 实施；未部署生产。恢复入口见 [ALVA-036 单票](.scratch/alva-completion/issues/29-manual-snapshot.md)和 NextTask。
+2026-09-25 ALVA-036 已在 main 完成集成验收，随后随 ALVA-064 的 main 构建发布到生产；公网资源与本机构建 SHA256 一致，登录后只读页面检查通过，生产保存写入尚未单独验收。只有显式保存创建全局快照，失败回滚与同请求重试已在隔离验收中验证。快照只读预览和明确恢复仍由 ALVA-037/038 实施；旧“历史”入口不是两票的完成证明。恢复入口见 [ALVA-036 单票](.scratch/alva-completion/issues/29-manual-snapshot.md)和 NextTask。
 
 ## 2026-09-25 ALVA-061 本机 Codex Gemini 接入
 
