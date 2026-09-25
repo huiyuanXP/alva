@@ -1,6 +1,6 @@
 ## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
 
-[ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；用户已授权处理原未提交修改；codex-stage-mcp 已认领；隔离探针已完成：原生 MCP 列目录/Resume 通过但无实际调用，dynamicTools→HTTP MCP 三次实际调用与原 thread Resume 通过。个人过程提交 `2bcfa6b`，尚未集成产品；下一步实现持久阶段 Harness 与业务接入。主 Chat 后续功能按新版 MCP 合同同票验收。
+[ALVA-066](docs/ALVA-066-stage-mcp.md) 由 codex-stage-mcp 持续执行，目标保持完整业务接入、隔离验收、集成与发布。个人 Worktree `/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp` 最新过程提交 `e731910`：阶段 MCP 运行层、持久 thread/摘要去重、附件与共用户型服务已实现；修改后 Harness 真实调用/错误解释/Resume 通过，33项定向回归与类型检查通过。尚未装配主 Chat、未整票集成或发布。下一步确认卡与阶段 Chat 页面、生活设计工具和后续完整验收。029 协作合同已回复 `.runtime/alva-coordination/ALVA-066-029-reply.md`；029独立模块，066装配共享入口。验证脚本有共享重任务锁、heartbeat与持久日志，等待必须核验原session/unit。
 
 # What's next · 任务认领与并行开发
 
