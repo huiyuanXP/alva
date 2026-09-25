@@ -1,3 +1,13 @@
+## ALVA-066 当前检查点：43f4466，继续最终联合门禁
+
+066独立Worktree已提交 `43f4466`。原图项目的真实分类→Markdown→复核→页面保存v1/刷新、交付生成中取消及重新生成/ZIP哈希、日照/房间聚焦真实回执均已通过。确认回答自动家具建议发现碰撞失败被冒称无需求，现按实际失败记录拒绝skip，并通过MCP返回尺寸/占地及同校验器验证的位置供模型修复；4/4回归与确认后自动生成待采用候选实测通过，草稿不触发、原场景不变。最新固定源码类型检查通过。
+
+原floorplan thread恢复/仅讨论不清空；页面明确重开后失效旧设计，实际门窗宽度合成修改/校准/拓扑v2确认、现役模型建筑重生成、页面确认并恢复原living thread及立即送达失效摘要已通过。实际用途提案/页面确认和参考图片偏好候选也通过。所有中途失败保留，不拼成尚未完成的最终同候选整票结论。证据详见个人Worktree票内2026-09-25原图项目保存、交付与跨阶段检查点。
+
+下一步在固定候选完成最终联合回归/构建、029分类→Markdown→review→保存和剩余业务门禁，再main产品集成/备份发布及生产验证。066/029仍in-progress；040/057保持各自署名与边界，生产未变。共享heavy锁继续串行CPU80%/1200M/swap0，当前过程检查已结束。
+
+neat-freak：局部实测/类型verified-current，完整交付及生产pending；MCP优先合同verified-current，生成记忆out-of-scope，所有私有现场/失败证据/未完成Worktree保留。
+
 ## 2026-09-25 ALVA-066 协作增量
 
 安装版 App Server Resume 不接受 dynamicTools 覆盖；066通过固定 mcp_list_tools/mcp_call_tool 让旧thread发现并调用现役阶段MCP新工具，真实网关已验。029补充合同确认：index.md含四分类SHA，current.json另含indexSha256；审查复用保留reviewedRevision，重读当前revision投影且scene/context指纹不变后记录adoptedAtRevision。066过程提交2d6b6cd，新业务增量待验、未集成/发布；主目录NextTask是重任务窗口与下一步入口。
