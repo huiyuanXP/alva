@@ -114,3 +114,11 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
 | [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) |  | 历史chatgpt-mimo；task/ALVA-056-chatgpt-mimo / .runtime/worktrees/ALVA-056-chatgpt-mimo；最新0d7ea5f；真实返回已有，main原暂存及未提交成果保留，集成未完成 | pending |
+
+## ALVA-057 Your Home Vision
+
+| 任务 | 署名 | 工作区与边界 | 状态 |
+|---|---|---|---|
+| [ALVA-057](docs/ALVA-057-home-vision.md) | yang-chatgpt | task/ALVA-057-yang-chatgpt；/home/ubuntu/Alva-worktrees/ALVA-057-yang-chatgpt；questions；api/intake、api/model.ts、web/src/intake、web/src/main.tsx、packages/contracts/alva/home-vision；测试4287 | in-progress |
+
+用户2026-09-25明确按新版MD/Word/3个ZIP实施并沿用生产发布授权；预算问答为本次附件明确范围，覆盖旧问卷无预算限制，仅问卷采集，不扩展自动报价。沿用恢复任务的独立Git索引，只提交本票，保留ALVA-056原暂存/未提交成果。重任务串行，任务级限额CPU100%、内存1200M（浏览器1600M），留采样；不修改MCP/生产资源配置。
