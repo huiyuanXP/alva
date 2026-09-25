@@ -89,3 +89,9 @@ ALVA-022 已由 lzy 完成并集成 main，集成提交 4931415。用途确认�
 ALVA-023 由 lzy 在独立 Worktree 完成。家具库添加服务端校验许可资产和明确房间，实例与库定义分离；新增与复制均分配新 UUID，复制保留 sourceId；2D 平面与真实 Three.js 3D 射线选取共享同一实例 ID；刷新保持身份和位置，坏资产/坏房间整单拒绝且不留下半个实例。
 
 验证：npm run check；ALVA-023 API 与 ALVA-021/022/业务回归共 8/8；npm run build:alva；真实 Chromium 覆盖添加、2D 选择、3D 射线选择、复制、刷新和坏资产原子拒绝，控制台错误 0。证据 evidence/20260925T094742274Z-ALVA023-browser-5e3711/。未部署生产或写入生产数据库。
+
+## 2026-09-25 ALVA-024 家具移动、旋转与吸附
+
+ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理家具 5cm 网格吸附、15°旋转归一化、旋转占地的房间边界校验、同房间碰撞拒绝和锁定对象保护；手动命令与 Chat 候选共用 applyChanges，2D/3D 拖动失败时不保留本地错误位置。
+
+验证：npm run check；ALVA-024、ALVA-023、ALVA-021、ALVA-022 与业务回归共 10/10；npm run build:alva；真实 Chromium 覆盖 2D 拖动、Three.js 3D 拖动、旋转吸附、碰撞/越界拒绝、锁定绕过拒绝和刷新保持，控制台错误 0。证据 evidence/20260925T102254871Z-ALVA024-browser-2a4841/。失败调试 run 也按独立证据保留。未部署生产或写入生产数据库。

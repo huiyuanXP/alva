@@ -26,7 +26,7 @@
 
 ## Implementation handoff
 
-- Owner: lzy; Worktree: /home/ubuntu/Alva-worktrees/ALVA-024-lzy; implementation commit: pending until Worktree commit.
+- Owner: lzy; Worktree: /home/ubuntu/Alva-worktrees/ALVA-024-lzy; implementation commit: 796c106; main integration commit: c444169.
 - Added shared server-side furniture transform rules: 5cm position snapping, 15-degree rotation normalization, rotated-footprint room-boundary checks, same-room collision rejection for updates, and locked-object enforcement. Add/copy/transfer positions also use the same grid and boundary validation. Three.js drag now rolls the local mesh back when the server rejects the command.
 - Chat proposals and manual commands both pass through applyChanges, so preview and adoption use the same transform rules. Frontend 2D and 3D controls retain the shared item identity and surface boundary/collision errors.
 - Verification: npm run check; 10/10 ALVA-024, ALVA-023, ALVA-021, ALVA-022 and business regressions; npm run build:alva; real Chromium result evidence/20260925T102254871Z-ALVA024-browser-2a4841/result.json with pass=true and console errors 0. Coverage includes 2D drag, Three.js 3D drag, rotation, collision and boundary rejection, lock bypass rejection, and refresh persistence. Browser fixture is synthetic and Chat parity is covered by the API test; no model output is claimed.
