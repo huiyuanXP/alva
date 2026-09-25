@@ -26,7 +26,7 @@
 
 ## Implementation handoff
 
-- Owner: lzy; Worktree: /home/ubuntu/Alva-worktrees/ALVA-023-lzy; implementation commit: pending until Worktree commit.
+- Owner: lzy; Worktree: /home/ubuntu/Alva-worktrees/ALVA-023-lzy; implementation commit: 07e9359; main integration commit: 46255de.
 - Added furniture inspector test IDs and 2D instance markers; retained server-side licensed asset validation, explicit room ownership, fresh UUID creation for add/copy, sourceId on copies, immutable asset definitions, and atomic command failure behavior. Three.js selection resolves the same item ID used by the 2D plan and inspector.
 - Verification: npm run check; ALVA-023 API/browser test plus ALVA-021/022/business regressions: 8/8 passed; npm run build:alva; real Chromium result evidence/20260925T094742274Z-ALVA023-browser-5e3711/result.json with pass=true and console errors 0. The browser run used a deterministic synthetic scene and does not claim model recognition.
 - Main integration is required before the ticket is released; no production deployment or database migration was performed.
