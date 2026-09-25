@@ -1,0 +1,22 @@
+{
+  "reviewedAt": "2026-09-22T14:10:43Z",
+  "reviewType": "offline evidence classification, not another model call",
+  "runId": "20260922T140306429Z-ALVA056-mimo-117cc6",
+  "originalResultUnchanged": true,
+  "authoritativeEvidence": "turn.failed protocol error",
+  "failureClass": "output-format-unsupported",
+  "modelOutputCharacters": 0,
+  "modelInferenceCompleted": false,
+  "downstreamPhases": "not run: provider rejected output schema before model output",
+  "productionMutations": false,
+  "typecheckExit": 0,
+  "probeTests": {
+    "pass": 5,
+    "fail": 0,
+    "skipped": 0
+  },
+  "limits": [
+    "The Codex mimo profile reached the MiMo Responses route, but that route rejected Codex json_schema output; this is a transport capability failure, not a model-quality result.",
+    "No model text or token usage was returned, so no candidate or screenshot conclusion is available."
+  ]
+}

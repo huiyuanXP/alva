@@ -1,0 +1,117 @@
+{
+  "ticket": "ALVA-056",
+  "runId": "20260925T081435Z-ALVA056-final-b68614",
+  "verifiedAt": "2026-09-25T08:29:28.805215+00:00",
+  "testedBaseHead": "b34cc23130770c8892d9dc6dbef5eecdce92d67e",
+  "sourceHashes": {
+    "api/import.ts": "7c49a80354dda71c6304acaa9b7f7a34c3a333faae3091f493080d3a9b30901d",
+    "api/import/response.ts": "18b4d6c9f725a01144a3f7a5c95ae06c79d3c68442a343badf18d70cad3c691c",
+    "api/codex-timeout.ts": "8708698c91f18d313b5de7e59d1d76e297b44cd7d4c2578ad2b36561f71c59f5",
+    "api/codex.ts": "f0fbcb4b51f94c6d0e8544158b33dc54331445fa4957cc4e9707604d3b6c56a5",
+    "api/model.ts": "bbb77239df02f39eaead472de5cdfa75750a2922bc972c48e149731ba1ba50f9",
+    "api/topology/validate.ts": "40a2683dfd57c11ec9b262b33ad8caf5ff0473f5c5936afc8cc3b05b0d4915a7",
+    "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e",
+    "scripts/alva-053-check.ts": "f2ee5414d1e40d42b6796b39fbda97bb70cc5a835a6f7a62930678cb97fc1243",
+    "scripts/alva-mimo-vision-check.ts": "0654d5bc81388acae7c2c385ba38dfec4c39ae91ccb58d7849c01f933976cd9d",
+    "scripts/lib/mimo-probe.ts": "9bf9a3cbee2a37ac84bdba2b2caa8f736594285c3e5e9cfddef5b9374def885d",
+    "scripts/lib/mimo-profile.ts": "ede562f2e3f07a106b49fe25ac4a8d038969b3c636dbcdef2b48b9f85cdc6562",
+    "tests/alva-mimo-probe.test.ts": "f45234ad883e0cad3c60ddb9baef15d0fd66bca54cce3e4f3dd2e1c8754c7207",
+    "tests/alva-import-response.test.ts": "92ceca029957b659ffdb5af885fdea99f1491144ef0aebcf6dd9ca8a65e7ad3d",
+    "tests/alva-import.test.ts": "92d3c578d970eabb7a8bfd1d95923f2fcbd9785cae96990a2b4e23671bf5b976",
+    "tests/alva-topology.test.ts": "ce5c49fbce231988fde23322fd657c2dcab8d8d2b1dc1581aeb2d3ed866b6148",
+    "tests/alva-topology-quality.test.ts": "477edbbc9defa23d28a4da92cc760172a0855c13fd94319f8aebd2ea57c8cce3",
+    "tests/alva-calibration.test.ts": "9040e53a895aa2097abd66c04043b3518cef313ff38df2e2c8e092531709313d"
+  },
+  "sourceUnchangedDuringValidation": true,
+  "typecheck": {
+    "passed": true,
+    "evidence": "typecheck6-execution.json"
+  },
+  "tests": {
+    "tests": 36,
+    "pass": 36,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "independentRawReplays": 5,
+  "repairProvenanceGuard": {
+    "added": true,
+    "verifiedOffline": true,
+    "newModelCallsForGuard": 0,
+    "blocks": [
+      "wrong-image",
+      "wrong-schema",
+      "wrong-raw-output",
+      "wrong-run-id",
+      "repair-chains"
+    ]
+  },
+  "latestCandidate": {
+    "runId": "20260925T075949811Z-ALVA056-mimo-1947ac",
+    "walls": 26,
+    "rooms": 5,
+    "openings": 12,
+    "structuralChecksPassed": true,
+    "diagnosticWarnings": 0,
+    "undefinedAreaM2": 0,
+    "wallComponents": 1,
+    "humanConfirmationRequired": true
+  },
+  "verificationResourcePeaksBytes": {
+    "offline-attempt4": 78307328,
+    "typecheck6": 1223593984,
+    "affected-tests7": 1427771392
+  },
+  "failedAttempts": [
+    {
+      "stage": "setup",
+      "result": "wrong proposed test filename; stopped before tests"
+    },
+    {
+      "stage": "resource-preflight",
+      "result": "refused insufficient reserve; no product tests started"
+    },
+    {
+      "stage": "offline-attempt3",
+      "result": "missing node in user-service PATH, exit127, fixed explicit verified PATH"
+    },
+    {
+      "stage": "expanded-calibration-regression",
+      "result": "task-cgroup OOM-kill at1500MiB; not counted as passing; no host restart"
+    }
+  ],
+  "additionalCalibrationRegression": "not completed in this task due to cgroup memory; no test assertions relaxed or removed",
+  "newModelCallsInIndependentReview": 0,
+  "productionMutations": false,
+  "deployed": false,
+  "boundaries": [
+    "repository original, not latest annotated screenshot original",
+    "successful candidate is explicit single correction, not new first-attempt benchmark",
+    "native profile live evidence does not establish App Server end-to-end or production long-SSE acceptance",
+    "no upstream-provider identity inference from client model labels"
+  ],
+  "profileRecheck": {
+    "model": "mimo-v2.6-pro",
+    "models": [
+      {
+        "id": "mimo-v2.6-pro",
+        "inputModalities": [
+          "text",
+          "image"
+        ]
+      },
+      {
+        "id": "mimo-v2.6-flash",
+        "inputModalities": [
+          "text",
+          "image"
+        ]
+      }
+    ],
+    "configurationFingerprintsUnchangedSinceLive": true,
+    "bareUserServiceCredentialPresent": false,
+    "normalTerminalCredentialBoundary": "live native runs used the authenticated ordinary user session; a bare systemd service lacks NEWAPI_KEY and preflight correctly refuses inference; no key was injected or copied in this review",
+    "newProviderCalls": 0
+  }
+}

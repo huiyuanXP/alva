@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "node_modules/.bin/tsx",
+    "-e",
+    "import {readMiMoProfile} from './scripts/lib/mimo-profile.ts'; console.log(JSON.stringify(readMiMoProfile('mimo')));"
+  ],
+  "cwd": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925",
+  "startedAt": "2026-09-25T08:30:34.089771+00:00",
+  "finishedAt": "2026-09-25T08:30:34.975191+00:00",
+  "elapsedSeconds": 0.885,
+  "exitCode": 0,
+  "timedOut": false,
+  "availableBeforeBytes": 2774212608,
+  "resourceLimits": {
+    "memory.max": "314572800",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva056-profile-metadata9-b68614.service"
+  },
+  "resourceLimitsVerified": true,
+  "cgroup": {
+    "memory.peak": "79626240",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 561701\nuser_usec 450648\nsystem_usec 111053\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 9\nnr_throttled 9\nthrottled_usec 503937\nnr_bursts 0\nburst_usec 0"
+  }
+}

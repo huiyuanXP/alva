@@ -1,0 +1,178 @@
+{
+  "ticket": "ALVA-056",
+  "runId": "20260925T071425418Z-ALVA056-mimo-7842c7",
+  "sourceHead": "dc77f9c1531e3c3bb305e137b4400b65c827bfe0",
+  "profile": "mimo",
+  "startedAt": "2026-09-25T07:14:25.502Z",
+  "attempts": 1,
+  "automaticRepair": false,
+  "phases": {
+    "model": {
+      "startedAt": "2026-09-25T07:14:25.753Z",
+      "finishedAt": "2026-09-25T07:15:16.373Z",
+      "elapsedMs": 50620.614173999995,
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutMs": 300000,
+      "outputLimitExceeded": false,
+      "interrupted": false
+    },
+    "json": {
+      "ok": false,
+      "elapsedMs": 0.19765700000425568,
+      "error": "SyntaxError: Unexpected non-whitespace character after JSON at position 5601 (line 1 column 5602)"
+    },
+    "productionParser": {
+      "ok": false,
+      "elapsedMs": 0.2390460000024177,
+      "stage": "json",
+      "error": "LayoutOutputError: 户型输出json校验失败：Unexpected non-whitespace character after JSON at position 5601 (line 1 column 5602)"
+    }
+  },
+  "productionMutations": false,
+  "transportCompleted": true,
+  "rawOutput": {
+    "characters": 5621,
+    "sha256": "04030c400101bce6f093e548f29d3bf072b027bdfd9aabffabdc47427178afa9"
+  },
+  "rawEvidence": ".runtime/20260925T071425418Z-ALVA056-mimo-7842c7",
+  "source": {
+    "path": "references/room-study-handoff/public/floorplan.png",
+    "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+    "bytes": 36268,
+    "kind": "repository original; NOT the latest annotated screenshot original"
+  },
+  "frozenPromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+  "effectivePromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+  "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+  "importSourceSha256": "ba2bc15ea5b5781445d878f14bfad2bdae0057807429555ba3affad07c959f8a",
+  "requestedOutputMode": "json-schema",
+  "outputMode": "json-schema",
+  "route": "configured-codex",
+  "schemaInPromptIsNotApiJsonObjectMode": true,
+  "sourceFiles": {
+    "scripts/alva-mimo-vision-check.ts": "9eecc3c4649ee2587fd39c2d954b835d9f16792e6ecb7dc7543ab4dcc39ed5a4",
+    "scripts/lib/mimo-profile.ts": "a712c8fe5ab6bd0b218607cfa7d8a0cde299955b4e402a5ae8c13f63b047d06d",
+    "scripts/lib/mimo-probe.ts": "de1cb125d302de14cec5d3ba05cd4ef910d11d0c94f66d00d35745b1030148bc",
+    "api/import/response.ts": "0acdb8b80e2566814338f8df8aa64dc058f761bc643825226737687b81cd9d73",
+    "api/model.ts": "3d1f8778ac6057d579497aa99a6d7117a9fe389bb5e9b7c8bd2c44eafd30b164",
+    "api/topology/validate.ts": "33848a19cce4ea34a1c0522ad517dc6afa7eca9883b51672a31a8b737899e12d",
+    "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e"
+  },
+  "profileMetadata": {
+    "profile": "mimo",
+    "home": "/home/ubuntu/.codex",
+    "model": "mimo-v2.6-pro",
+    "provider": "mimo",
+    "endpoint": "https://chat.huiyuanxp.com/v1",
+    "envKey": "NEWAPI_KEY",
+    "credentialPresent": true,
+    "requiresOpenAIAuth": false,
+    "catalogModels": [
+      {
+        "id": "mimo-v2.6-pro",
+        "inputModalities": [
+          "text",
+          "image"
+        ]
+      },
+      {
+        "id": "mimo-v2.6-flash",
+        "inputModalities": [
+          "text",
+          "image"
+        ]
+      }
+    ],
+    "fingerprints": {
+      "/home/ubuntu/.codex/config.toml": "5f2e2d7de9b72ae160ade401b0a95002b0b69426c3f10612a5857212acfb59c4",
+      "/home/ubuntu/.codex/mimo.config.toml": "90906f15369e303da2c0adb6cd262b3ef6650fcdd22e5ff89112743e851475c2",
+      "/home/ubuntu/.codex/model-catalogs/mimo-newapi.json": "8e756631f2e15760e6fffc62fc503b1ad67aa8ff9acfeb2616b8c60ceb24e337"
+    },
+    "hookEvents": [],
+    "mcpServers": []
+  },
+  "requestedModel": "mimo-v2.6-pro",
+  "modelSelection": "profile default, no CLI model override",
+  "codexVersion": "codex-cli 0.157.0",
+  "credentialHandling": "native configured Codex environment authentication; metadata only, no login files or key values copied",
+  "upstreamProvider": "unverified; requested profile/model and client catalog are not independent provider identity evidence",
+  "invocation": {
+    "command": "codex",
+    "args": [
+      "exec",
+      "--profile",
+      "mimo",
+      "--strict-config",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--json",
+      "--color",
+      "never",
+      "--sandbox",
+      "read-only",
+      "-C",
+      "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/.runtime/20260925T071425418Z-ALVA056-mimo-7842c7",
+      "--image",
+      "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/references/room-study-handoff/public/floorplan.png",
+      "--output-last-message",
+      "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/.runtime/20260925T071425418Z-ALVA056-mimo-7842c7/raw-response.txt",
+      "-c",
+      "project_doc_max_bytes=0",
+      "-c",
+      "features.hooks=false",
+      "-c",
+      "features.shell_tool=false",
+      "-c",
+      "features.shell_snapshot=false",
+      "-c",
+      "features.apply_patch_freeform=false",
+      "-c",
+      "features.multi_agent=false",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "mcp_servers={}",
+      "-c",
+      "hooks={}",
+      "--output-schema",
+      "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/.runtime/20260925T071425418Z-ALVA056-mimo-7842c7/output-schema.json",
+      "-"
+    ],
+    "timeoutMs": 300000,
+    "toolsDisabled": true
+  },
+  "events": {
+    "thread.started": 1,
+    "turn.started": 1,
+    "item.completed": 2,
+    "turn.completed": 1
+  },
+  "tokenUsage": [
+    {
+      "input_tokens": 9960,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2901,
+      "reasoning_output_tokens": 234
+    }
+  ],
+  "threadIds": [
+    "01a0d76a-58c6-7211-b94b-ce273d9dad98"
+  ],
+  "protocolErrors": [],
+  "failureEvidence": "startup-stderr",
+  "unexpectedTools": false,
+  "profileUnchanged": true,
+  "outputContractPassed": false,
+  "requiresReview": true,
+  "failureClass": "json-parse",
+  "validCandidate": false,
+  "humanReviewRequired": true,
+  "automaticConfirmationAllowed": false,
+  "inspectionCompleted": false,
+  "completedAt": "2026-09-25T07:15:16.433Z",
+  "elapsedMs": 51015.145827,
+  "scope": "single first-attempt inference; no automatic repair, adoption or production import; missing latest original remains unverified",
+  "runnerDifference": "Frozen current user prompt/schema with native CLI profile; not a controlled paired comparison with business App Server system context."
+}

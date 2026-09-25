@@ -1,0 +1,109 @@
+{
+  "ticket": "ALVA-056",
+  "runId": "20260922T140749550Z-ALVA056-mimo-7798b0",
+  "sourceHead": "53566b744c1bea6240994811e575f2be89aa2de3",
+  "codexVersion": "codex-cli 0.155.1",
+  "requestedModel": "mimo-v2.5",
+  "source": {
+    "path": "references/room-study-handoff/public/floorplan.png",
+    "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+    "bytes": 36268,
+    "kind": "repository original; NOT the latest annotated screenshot original"
+  },
+  "frozenPromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+  "effectivePromptSha256": "55751247d26b013dc04d9fa962cd80bb404e6e131eb40de3ce0c0e0a5f25826e",
+  "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+  "importSourceSha256": "1eceff8dd9a95f8e9a6d25eca3586e1e0b4a386c64e549353e9f236e53b65bf6",
+  "probeSourceSha256": "8b37bba0dfbfa4ef69d51e6eb2c062eca09ffc85c7546bd44680ec11023872c1",
+  "attempts": 1,
+  "automaticRepair": false,
+  "route": "configured-codex",
+  "requestedEndpoint": null,
+  "outputMode": "json-object",
+  "profile": "mimo",
+  "credentialHandling": "normal Codex authentication only; no credential files read or copied",
+  "routeInspection": "requested Codex config profile mimo; config contents not read or copied",
+  "upstreamProvider": "unverified; client model name and model self-description are not provider evidence",
+  "startedAt": "2026-09-22T14:07:49.987Z",
+  "phases": {
+    "model": {
+      "startedAt": "2026-09-22T14:07:49.987Z",
+      "finishedAt": "2026-09-22T14:08:37.938Z",
+      "elapsedMs": 47949.723392,
+      "exitCode": 0,
+      "timedOut": false
+    },
+    "json": {
+      "ok": true,
+      "elapsedMs": 0.06295400000090012
+    },
+    "schema": {
+      "ok": true,
+      "elapsedMs": 9.074660000005679
+    },
+    "geometry": {
+      "ok": true,
+      "elapsedMs": 1.7555750000028638
+    },
+    "confirmationTopology": {
+      "ok": false,
+      "elapsedMs": 2.358462000003783,
+      "error": "Error: 拓扑校验失败：墙 wall_inner_1 的 a 端点落在墙 wall_outer_top 中段，请连接或分段"
+    },
+    "diagnostics": {
+      "ok": true,
+      "elapsedMs": 32.067227999999886,
+      "status": "complete",
+      "checks": {
+        "internalVoid": "complete",
+        "orientation": "complete",
+        "connectivity": "complete"
+      },
+      "counts": {
+        "internal_void": 1,
+        "open_boundary": 1
+      },
+      "undefinedAreaM2": 10.997499999999997,
+      "wallComponents": 1,
+      "dominantAngleDegrees": 0
+    }
+  },
+  "productionMutations": false,
+  "rawEvidence": ".runtime/20260922T140749550Z-ALVA056-mimo-7798b0",
+  "events": {
+    "thread.started": 1,
+    "turn.started": 1,
+    "item.completed": 1,
+    "turn.completed": 1
+  },
+  "tokenUsage": [
+    {
+      "input_tokens": 10518,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2476,
+      "reasoning_output_tokens": 638
+    }
+  ],
+  "threadIds": [
+    "01a0c971-c1c7-7852-9c9d-fe1195ab6c5b"
+  ],
+  "protocolErrors": [],
+  "transportCompleted": true,
+  "failureEvidence": "startup-stderr",
+  "failureClass": null,
+  "rawOutput": {
+    "characters": 4602,
+    "sha256": "e6dbd95b02898a5ce0116b89066730515fb97f7ea0738c25ad205d82bc70ae98"
+  },
+  "counts": {
+    "walls": 10,
+    "rooms": 5,
+    "openings": 6
+  },
+  "completedAt": "2026-09-22T14:08:37.987Z",
+  "elapsedMs": 47998.120366999996,
+  "validCandidate": false,
+  "scope": "single first-attempt inference, no automatic fix, no production import, no quality comparison ground truth",
+  "runnerDifference": "The exact existing user prompt/schema are frozen; this uses Codex CLI authentication rather than the business App Server provider. System/transport contexts are not a controlled paired-model comparison."
+}

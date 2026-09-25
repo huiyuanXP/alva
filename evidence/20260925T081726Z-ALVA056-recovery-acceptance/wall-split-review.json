@@ -1,0 +1,11 @@
+{
+  "removedWall": "wall_int_bedroom_horizontal_right",
+  "newWalls": [
+    "wall_int_bedroom_horizontal_right_a",
+    "wall_int_bedroom_horizontal_right_b"
+  ],
+  "collinear": true,
+  "totalLengthPreserved": true,
+  "originalEndpointsPreserved": true,
+  "scope": "coordinate equality and segmentation only, not source-image correctness"
+}

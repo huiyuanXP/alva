@@ -1,0 +1,25 @@
+{
+  "cmd": [
+    "node_modules/.bin/tsx",
+    "scripts/alva-mimo-vision-check.ts"
+  ],
+  "cwd": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925",
+  "startedAt": "2026-09-25T07:47:38.855072+00:00",
+  "finishedAt": "2026-09-25T07:52:52.860367+00:00",
+  "elapsedSeconds": 314.005,
+  "exitCode": 1,
+  "timedOut": false,
+  "availableBeforeBytes": 2847338496,
+  "resourceLimits": {
+    "memory.max": "314572800",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva056-pro-prompt-20260925t074738z-5daff.service"
+  },
+  "resourceLimitsVerified": true,
+  "cgroup": {
+    "memory.peak": "127651840",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 4490355\nuser_usec 3282374\nsystem_usec 1207980\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 2353\nnr_throttled 32\nthrottled_usec 2299501\nnr_bursts 0\nburst_usec 0"
+  }
+}

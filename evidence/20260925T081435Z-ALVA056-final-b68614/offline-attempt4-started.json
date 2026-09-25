@@ -1,0 +1,11 @@
+{
+  "startedAt": "2026-09-25T08:23:56.219865+00:00",
+  "limits": {
+    "memory.max": "314572800",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva056-offline-review4-b68614.service"
+  },
+  "availableBeforeBytes": 2495963136,
+  "pid": 107548
+}

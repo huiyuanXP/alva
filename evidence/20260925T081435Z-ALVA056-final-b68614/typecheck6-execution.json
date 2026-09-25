@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "npm",
+    "run",
+    "check"
+  ],
+  "cwd": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925",
+  "startedAt": "2026-09-25T08:27:52.099481+00:00",
+  "finishedAt": "2026-09-25T08:28:27.042198+00:00",
+  "elapsedSeconds": 34.943,
+  "exitCode": 0,
+  "timedOut": false,
+  "availableBeforeBytes": 2902732800,
+  "resourceLimits": {
+    "memory.max": "1572864000",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva056-typecheck6-b68614.service"
+  },
+  "resourceLimitsVerified": true,
+  "cgroup": {
+    "memory.peak": "1223593984",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 20600870\nuser_usec 19425287\nsystem_usec 1175583\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 350\nnr_throttled 326\nthrottled_usec 14469193\nnr_bursts 0\nburst_usec 0"
+  }
+}

@@ -16,4 +16,4 @@
 - [拓扑质量检查](TOPOLOGY-QUALITY.md)：ALVA-055三类只读告警、定位、参数和实际验证边界。
 - [拓扑质量补充票](../.scratch/alva-topology-quality/README.md)：ALVA-055与MiMo复测ALVA-056，不重排原44票。
 
-- [MiMo识图复测记录](MIMO-VISION-RETRY.md)：ALVA-056两次鉴权失败、独立探针与恢复条件，不代表模型识图成功。
+- [MiMo识图复测记录](MIMO-VISION-RETRY.md)：ALVA-056原生MiMo复测、空候选/门窗语义修复与显式纠错验收；保留历史失败、生产链路和图像准确性边界。

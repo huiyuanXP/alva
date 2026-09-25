@@ -1,0 +1,34 @@
+{
+  "ticket": "ALVA-056",
+  "integrationRun": "20260925T084025Z-ALVA056-integration-3bc356",
+  "baseHead": "b34cc23130770c8892d9dc6dbef5eecdce92d67e",
+  "personalCommit": "fbfe8e88e18186f352cb538814f582f7210cc95b",
+  "sourceFingerprintsEqual": true,
+  "typecheckExitCode": 0,
+  "tests": {
+    "pass": 36,
+    "fail": 0,
+    "skipped": 0
+  },
+  "independentReplays": 5,
+  "health": {
+    "local": {
+      "exitCode": 0,
+      "response": "{\"ok\":true,\"application\":\"alva\"}"
+    },
+    "public": {
+      "exitCode": 0,
+      "response": "{\"ok\":true,\"application\":\"alva\"}"
+    }
+  },
+  "status": "done",
+  "deployed": false,
+  "productionMutations": false,
+  "unrelatedAGENTSUnchanged": true,
+  "otherClaimRowsUnchanged": true,
+  "original056StagedWorkConsumedAfterVerification": true,
+  "privateRollback": ".runtime/20260925T081435Z-ALVA056-final-b68614/pre-integration-files/",
+  "incompleteAdditionalCheck": "expanded calibration regression hit1500MiB task limit; preserved and not counted passing",
+  "verification": "evidence/20260925T081435Z-ALVA056-final-b68614/summary.json",
+  "recordedAt": "2026-09-25T08:40:26.348706+00:00"
+}

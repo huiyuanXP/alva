@@ -1,0 +1,397 @@
+{
+  "ticket": "ALVA-056",
+  "createdAt": "2026-09-25T08:17:26.769947+00:00",
+  "testedBaseHead": "caf3c75e0488c49858b8324facfce85ee87a70c4",
+  "scope": "native MiMo profile recovery, 600s per-call vision budget, output-contract fixes and phased diagnostics; not production deployment or ground-truth accuracy certification",
+  "modelDeadlineMs": 600000,
+  "ordinaryChatDeadlineMs": 120000,
+  "automaticCandidateAdoption": false,
+  "runs": [
+    {
+      "runId": "20260925T071425418Z-ALVA056-mimo-7842c7",
+      "requestedModel": "mimo-v2.6-pro",
+      "modelSelection": "profile default, no CLI model override",
+      "attemptKind": null,
+      "outputMode": "json-schema",
+      "frozenPromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+      "importPromptSha256": null,
+      "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+      "effectivePromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+      "rawOutput": {
+        "characters": 5621,
+        "sha256": "04030c400101bce6f093e548f29d3bf072b027bdfd9aabffabdc47427178afa9"
+      },
+      "counts": null,
+      "transportCompleted": true,
+      "outputContractPassed": false,
+      "validCandidate": false,
+      "failureClass": "json-parse",
+      "phases": {
+        "model": {
+          "startedAt": "2026-09-25T07:14:25.753Z",
+          "finishedAt": "2026-09-25T07:15:16.373Z",
+          "elapsedMs": 50620.614173999995,
+          "exitCode": 0,
+          "timedOut": false,
+          "timeoutMs": 300000,
+          "outputLimitExceeded": false,
+          "interrupted": false
+        },
+        "json": {
+          "ok": false,
+          "elapsedMs": 0.19765700000425568,
+          "error": "SyntaxError: Unexpected non-whitespace character after JSON at position 5601 (line 1 column 5602)"
+        },
+        "productionParser": {
+          "ok": false,
+          "elapsedMs": 0.2390460000024177,
+          "stage": "json",
+          "error": "LayoutOutputError: 户型输出json校验失败：Unexpected non-whitespace character after JSON at position 5601 (line 1 column 5602)"
+        }
+      },
+      "profileUnchanged": true
+    },
+    {
+      "runId": "20260925T072626685Z-ALVA056-mimo-13f83c",
+      "requestedModel": "mimo-v2.6-pro",
+      "modelSelection": "profile default, no CLI model override",
+      "attemptKind": null,
+      "outputMode": "json-schema",
+      "frozenPromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+      "importPromptSha256": null,
+      "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+      "effectivePromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+      "rawOutput": {
+        "characters": 140,
+        "sha256": "8e8d796159dacf1321d95f0c9c1a7a738274a3306b83848706c2ce583016854b"
+      },
+      "counts": {
+        "walls": 0,
+        "rooms": 0,
+        "openings": 0
+      },
+      "transportCompleted": true,
+      "outputContractPassed": true,
+      "validCandidate": false,
+      "failureClass": "topology-warning-review",
+      "phases": {
+        "model": {
+          "startedAt": "2026-09-25T07:26:27.310Z",
+          "finishedAt": "2026-09-25T07:26:55.322Z",
+          "elapsedMs": 28011.967323,
+          "exitCode": 0,
+          "timedOut": false,
+          "timeoutMs": 600000,
+          "outputLimitExceeded": false,
+          "interrupted": false
+        },
+        "json": {
+          "ok": true,
+          "elapsedMs": 0.02867300000070827
+        },
+        "productionParser": {
+          "ok": true,
+          "elapsedMs": 7.465040999999474
+        },
+        "schema": {
+          "ok": true,
+          "elapsedMs": 0.47532700000010664
+        },
+        "geometry": {
+          "ok": true,
+          "elapsedMs": 0.07882400000016787
+        },
+        "confirmationTopology": {
+          "ok": true,
+          "elapsedMs": 0.6411220000009052
+        },
+        "diagnostics": {
+          "ok": true,
+          "elapsedMs": 1.4793549999994866,
+          "status": "empty",
+          "checks": {
+            "internalVoid": "unavailable",
+            "orientation": "unavailable",
+            "connectivity": "unavailable"
+          },
+          "counts": {},
+          "undefinedAreaM2": 0,
+          "wallComponents": 0,
+          "dominantAngleDegrees": null
+        }
+      },
+      "profileUnchanged": true
+    },
+    {
+      "runId": "20260925T073159993Z-ALVA056-mimo-7c7aa6",
+      "requestedModel": "mimo-v2.6-pro",
+      "modelSelection": "profile default, no CLI model override",
+      "attemptKind": null,
+      "outputMode": "json-schema",
+      "frozenPromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+      "importPromptSha256": null,
+      "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+      "effectivePromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+      "rawOutput": {
+        "characters": 140,
+        "sha256": "8e8d796159dacf1321d95f0c9c1a7a738274a3306b83848706c2ce583016854b"
+      },
+      "counts": {
+        "walls": 0,
+        "rooms": 0,
+        "openings": 0
+      },
+      "transportCompleted": true,
+      "outputContractPassed": false,
+      "validCandidate": false,
+      "failureClass": "empty-candidate",
+      "phases": {
+        "model": {
+          "startedAt": "2026-09-25T07:32:00.383Z",
+          "finishedAt": "2026-09-25T07:32:09.880Z",
+          "elapsedMs": 9496.841062000001,
+          "exitCode": 0,
+          "timedOut": false,
+          "timeoutMs": 600000,
+          "outputLimitExceeded": false,
+          "interrupted": false
+        },
+        "json": {
+          "ok": true,
+          "elapsedMs": 0.01684699999896111
+        },
+        "productionParser": {
+          "ok": false,
+          "elapsedMs": 6.271726000000854,
+          "stage": "geometry",
+          "error": "LayoutOutputError: 户型输出geometry校验失败：未识别出墙体或房间，不能把空户型作为导入成功"
+        },
+        "schema": {
+          "ok": true,
+          "elapsedMs": 0.35555999999996857
+        },
+        "content": {
+          "ok": false,
+          "required": "at least one wall and one room; empty template is not floorplan recognition"
+        },
+        "geometry": {
+          "ok": true,
+          "elapsedMs": 0.5019940000001952
+        },
+        "confirmationTopology": {
+          "ok": true,
+          "elapsedMs": 0.5066720000013447
+        },
+        "diagnostics": {
+          "ok": true,
+          "elapsedMs": 1.1579019999990123,
+          "status": "empty",
+          "checks": {
+            "internalVoid": "unavailable",
+            "orientation": "unavailable",
+            "connectivity": "unavailable"
+          },
+          "counts": {},
+          "undefinedAreaM2": 0,
+          "wallComponents": 0,
+          "dominantAngleDegrees": null
+        }
+      },
+      "profileUnchanged": true
+    },
+    {
+      "runId": "20260925T074740232Z-ALVA056-mimo-0b62e3",
+      "requestedModel": "mimo-v2.6-pro",
+      "modelSelection": "profile default, no CLI model override",
+      "attemptKind": null,
+      "outputMode": "schema-in-prompt",
+      "frozenPromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+      "importPromptSha256": null,
+      "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+      "effectivePromptSha256": "55751247d26b013dc04d9fa962cd80bb404e6e131eb40de3ce0c0e0a5f25826e",
+      "rawOutput": {
+        "characters": 9339,
+        "sha256": "ca50b044599839c5204a66d07b0f2cebd074885f9faaa7c045497cd614562722"
+      },
+      "counts": {
+        "walls": 25,
+        "rooms": 5,
+        "openings": 12
+      },
+      "transportCompleted": true,
+      "outputContractPassed": false,
+      "validCandidate": false,
+      "failureClass": "geometry-validation",
+      "phases": {
+        "model": {
+          "startedAt": "2026-09-25T07:47:40.572Z",
+          "finishedAt": "2026-09-25T07:52:52.541Z",
+          "elapsedMs": 311969.35578000004,
+          "exitCode": 0,
+          "timedOut": false,
+          "timeoutMs": 600000,
+          "outputLimitExceeded": false,
+          "interrupted": false
+        },
+        "json": {
+          "ok": true,
+          "elapsedMs": 0.08935799996834248
+        },
+        "normalization": {
+          "function": "api/import.normalizeStructuredOutput",
+          "changed": false,
+          "sha256": "ca50b044599839c5204a66d07b0f2cebd074885f9faaa7c045497cd614562722",
+          "schemaInput": "production-normalized-output"
+        },
+        "productionParser": {
+          "ok": false,
+          "elapsedMs": 11.687601000012364,
+          "stage": "geometry",
+          "error": "LayoutOutputError: 户型输出geometry校验失败：门窗opening_window_top_bedroom超出墙体wall_ext_top_b范围：墙长1.980，中心比例0.08，开口宽1.65"
+        },
+        "schema": {
+          "ok": true,
+          "elapsedMs": 0.9274459999869578
+        },
+        "content": {
+          "ok": true,
+          "required": "at least one wall and one room; empty template is not floorplan recognition"
+        },
+        "geometry": {
+          "ok": false,
+          "elapsedMs": 1.3222139999852516,
+          "error": "Error: 门窗opening_window_top_bedroom超出墙体wall_ext_top_b范围：墙长1.980，中心比例0.08，开口宽1.65"
+        },
+        "confirmationTopology": {
+          "ok": false,
+          "elapsedMs": 1.50443000002997,
+          "error": "Error: 拓扑校验失败：当前候选中存在无效几何或门窗关联。\n可能原因：门窗越出墙段、房间轮廓自交，或某些实体没有有效关联。\n建议修正：先在平面图中定位对应门窗/房间并核对原图，再调整位置、尺寸或关联墙。\n技术信息：门窗opening_window_top_bedroom超出墙体wall_ext_top_b范围：墙长1.980，中心比例0.08，开口宽1.65"
+        },
+        "diagnostics": {
+          "ok": true,
+          "elapsedMs": 96.73340700002154,
+          "status": "complete",
+          "checks": {
+            "internalVoid": "complete",
+            "orientation": "complete",
+            "connectivity": "complete"
+          },
+          "counts": {
+            "invalid_opening": 12
+          },
+          "undefinedAreaM2": 0,
+          "wallComponents": 1,
+          "dominantAngleDegrees": 0
+        }
+      },
+      "profileUnchanged": true
+    },
+    {
+      "runId": "20260925T075949811Z-ALVA056-mimo-1947ac",
+      "requestedModel": "mimo-v2.6-pro",
+      "modelSelection": "profile default, no CLI model override",
+      "attemptKind": "explicit-single-repair-followup",
+      "outputMode": "schema-in-prompt",
+      "frozenPromptSha256": "3d4d0b98deda46bda27007503a6a64ea30c4be63bd8dfab100dd4f6e5f9f378f",
+      "importPromptSha256": "47ce3c95361bbf4d0c8655455353b82031926f859f43f866b296e88e2e9d00f5",
+      "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+      "effectivePromptSha256": "c784419b2ff7522eec96e0658d918da5481117555d86642bb340a06c0d080e43",
+      "rawOutput": {
+        "characters": 6298,
+        "sha256": "58856ff3fad097c9032e80af81de97df5f71f4b8570cc381d421f5ee90f21693"
+      },
+      "counts": {
+        "walls": 26,
+        "rooms": 5,
+        "openings": 12
+      },
+      "transportCompleted": true,
+      "outputContractPassed": true,
+      "validCandidate": true,
+      "failureClass": null,
+      "phases": {
+        "model": {
+          "startedAt": "2026-09-25T07:59:50.171Z",
+          "finishedAt": "2026-09-25T08:09:04.587Z",
+          "elapsedMs": 554415.747924,
+          "exitCode": 0,
+          "timedOut": false,
+          "timeoutMs": 600000,
+          "outputLimitExceeded": false,
+          "interrupted": false
+        },
+        "json": {
+          "ok": true,
+          "elapsedMs": 0.09517600003164262
+        },
+        "normalization": {
+          "function": "api/import.normalizeStructuredOutput",
+          "changed": false,
+          "sha256": "58856ff3fad097c9032e80af81de97df5f71f4b8570cc381d421f5ee90f21693",
+          "schemaInput": "production-normalized-output"
+        },
+        "productionParser": {
+          "ok": true,
+          "elapsedMs": 1.7935640000505373
+        },
+        "schema": {
+          "ok": true,
+          "elapsedMs": 0.7534209999721497
+        },
+        "content": {
+          "ok": true,
+          "required": "at least one wall and one room; empty template is not floorplan recognition"
+        },
+        "geometry": {
+          "ok": true,
+          "elapsedMs": 0.47403300006408244
+        },
+        "confirmationTopology": {
+          "ok": true,
+          "elapsedMs": 4.565340999979526
+        },
+        "diagnostics": {
+          "ok": true,
+          "elapsedMs": 58.52104900008999,
+          "status": "complete",
+          "checks": {
+            "internalVoid": "complete",
+            "orientation": "complete",
+            "connectivity": "complete"
+          },
+          "counts": {},
+          "undefinedAreaM2": 0,
+          "wallComponents": 1,
+          "dominantAngleDegrees": 0
+        }
+      },
+      "profileUnchanged": true
+    }
+  ],
+  "successfulRepairRun": "20260925T075949811Z-ALVA056-mimo-1947ac",
+  "successfulRepairIsNotFirstAttempt": true,
+  "productionMutations": false,
+  "latestBaseVerification": {
+    "passed": true,
+    "testedBaseHead": "b34cc23130770c8892d9dc6dbef5eecdce92d67e",
+    "typecheckExitCode": 0,
+    "tests": 36,
+    "pass": 36,
+    "fail": 0,
+    "skipped": 0,
+    "independentReplays": 5,
+    "supplement": "evidence/20260925T081435Z-ALVA056-final-b68614/summary.json"
+  },
+  "privateOrchestration": "/home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7",
+  "historicalScope": "all previous raw results retained; no rewriting failed runs",
+  "knownBoundaries": [
+    "repository original, not clean source of latest annotated screenshot",
+    "configured profile/client model, upstream identity not independently verified",
+    "native schema mode returned empty or malformed outputs; not proof of unsupported server format",
+    "schema-in-prompt is an explicit experiment, not API json_object mode",
+    "successful result is one explicitly requested repair; fresh first-attempt with clarified center prompt not separately measured",
+    "business App Server 600s configuration is unit-verified, native CLI is live-verified; no production import or authenticated production replay",
+    "model time budget applies independently to first inference and at most one allowed correction",
+    "Live execution predates the additional correction-provenance guard; final source is type/unit verified and the same captured real input/args/output passes the new guard offline. No additional model call is claimed."
+  ]
+}

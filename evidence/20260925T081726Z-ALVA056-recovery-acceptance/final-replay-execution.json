@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "node_modules/.bin/tsx",
+    "evidence/20260925T081726Z-ALVA056-recovery-acceptance/replay-final-response.ts",
+    "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/evidence/20260925T081726Z-ALVA056-recovery-acceptance/final-recorded-output-replay.json"
+  ],
+  "cwd": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925",
+  "startedAt": "2026-09-25T08:26:51.879570+00:00",
+  "finishedAt": "2026-09-25T08:26:53.356826+00:00",
+  "elapsedSeconds": 1.477,
+  "exitCode": 0,
+  "timedOut": false,
+  "availableBeforeBytes": 2895286272,
+  "resourceLimits": {
+    "memory.max": "314572800",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva056-record-replay.scope"
+  },
+  "resourceLimitsVerified": true,
+  "cgroup": {
+    "memory.peak": "70578176",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 958232\nuser_usec 851360\nsystem_usec 106872\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 15\nnr_throttled 15\nthrottled_usec 880672\nnr_bursts 0\nburst_usec 0"
+  }
+}

@@ -1,0 +1,12 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+TAP version 13
+# Subtest: ALVA-011 validates opening bounds, overlap, wall association and vertical clearance
+ok 1 - ALVA-011 validates opening bounds, overlap, wall association and vertical clearance
+  ---
+  duration_ms: 1.93361
+  type: 'test'
+  ...
+# Interrupted while running: tests/alva-calibration.test.ts at /home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/tests/alva-calibration.test.ts:1:1

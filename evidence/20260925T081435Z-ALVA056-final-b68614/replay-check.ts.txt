@@ -1,0 +1,57 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {normalizeStructuredOutput} from '../../api/import.js';
+import {parseLayoutOutput,LayoutOutputError} from '../../api/import/response.js';
+import {Scene,validateScene} from '../../api/model.js';
+import {validateTopology} from '../../api/topology/validate.js';
+import {analyzeTopology} from '../../api/topology/diagnostics.js';
+import {summarizeMiMoOutcome,verifyMiMoRepairSource} from '../../scripts/lib/mimo-probe.js';
+const sha=(s:string|Buffer)=>createHash('sha256').update(s).digest('hex');
+const runId=process.argv[2];assert.match(runId,/^[A-Za-z0-9_-]+$/);
+const rows=[
+ ['20260925T071425418Z-ALVA056-mimo-7842c7','json-parse'],
+ ['20260925T072626685Z-ALVA056-mimo-13f83c','empty-candidate'],
+ ['20260925T073159993Z-ALVA056-mimo-7c7aa6','empty-candidate'],
+ ['20260925T074740232Z-ALVA056-mimo-0b62e3','geometry-validation'],
+ ['20260925T075949811Z-ALVA056-mimo-1947ac',null]
+] as const;
+const reports:any[]=[],scenes:any[]=[];
+for(const [id,expected] of rows){
+ const original=JSON.parse(readFileSync(`evidence/${id}/result.json`,'utf8'));
+ const raw=readFileSync(`.runtime/${id}/raw-response.txt`,'utf8');
+ assert.equal(sha(raw),original.rawOutput.sha256);assert.equal(sha(readFileSync(original.source.path)),original.source.sha256);
+ const events=readFileSync(`.runtime/${id}/codex-events.jsonl`,'utf8').trim().split('\n').map(line=>JSON.parse(line));
+ const final=events.filter(e=>e.type==='item.completed'&&e.item?.type==='agent_message').at(-1)?.item?.text;
+ assert.equal(final?.trim(),raw.trim());assert.ok(events.some(e=>e.type==='turn.completed'));assert.equal(original.phases.model.exitCode,0);
+ assert.equal(events.some(e=>e.item?.type&&!['agent_message','reasoning'].includes(e.item.type)),false);
+ const phases:any={};const normalized=normalizeStructuredOutput(raw);
+ try{parseLayoutOutput(normalized);phases.productionParser={ok:true}}catch(e){assert.ok(e instanceof LayoutOutputError);phases.productionParser={ok:false,stage:e.stage}}
+ let scene:any;try{scene=Scene.parse(JSON.parse(normalized));phases.schema={ok:true}}catch{phases.schema={ok:false}}
+ if(scene){
+  phases.content={ok:scene.walls.length>0&&scene.rooms.length>0};
+  for(const [name,fn] of [['geometry',validateScene],['confirmationTopology',validateTopology]] as const){try{fn(scene);phases[name]={ok:true}}catch{phases[name]={ok:false}}}
+  const diagnostics=analyzeTopology(scene);phases.diagnostics={ok:true,status:diagnostics.status,counts:diagnostics.issues.reduce((a:Record<string,number>,x)=>{a[x.code]=(a[x.code]||0)+1;return a},{}),undefinedAreaM2:diagnostics.measurements.undefinedAreaM2,wallComponents:diagnostics.measurements.wallComponents};
+ }
+ const result=summarizeMiMoOutcome(true,null,phases);assert.equal(result.failureClass,expected);assert.equal(result.validCandidate,expected===null);
+ const counts=scene?{walls:scene.walls.length,rooms:scene.rooms.length,openings:scene.openings.length}:undefined;
+ reports.push({runId:id,rawSha256:sha(raw),imageSha256:original.source.sha256,originalFailureClass:original.failureClass,currentFailureClass:result.failureClass,rawAndFinalEventVerified:true,model:original.requestedModel,modelElapsedMs:original.phases.model.elapsedMs,counts,phases,...result});scenes.push(scene);
+}
+const original=JSON.parse(readFileSync(`evidence/${rows[3][0]}/result.json`,'utf8'));
+const repair=JSON.parse(readFileSync(`evidence/${rows[4][0]}/result.json`,'utf8'));
+verifyMiMoRepairSource(original,{runId:original.runId,imageSha256:repair.source.sha256,rawSha256:repair.repairSource.sha256,schemaSha256:repair.schemaSha256});
+const before=scenes[3],after=scenes[4];assert.deepEqual(after.rooms,before.rooms);
+assert.equal(after.openings.length,before.openings.length);
+const bWalls=new Map<string,any>(before.walls.map((x:any)=>[x.id,x]));const aWalls=new Map<string,any>(after.walls.map((x:any)=>[x.id,x]));
+const removed=[...bWalls.keys()].filter(k=>!aWalls.has(k)),added=[...aWalls.keys()].filter(k=>!bWalls.has(k));assert.equal(removed.length,1);assert.equal(added.length,2);
+for(const [id,wall]of bWalls)if(aWalls.has(id))assert.deepEqual(aWalls.get(id),wall);
+const old=bWalls.get(removed[0]);const parts=added.map(k=>aWalls.get(k));const eps=1e-8;
+const onOld=(p:any)=>Math.abs((p.x-old.a.x)*(old.b.y-old.a.y)-(p.y-old.a.y)*(old.b.x-old.a.x))<eps;
+for(const wall of parts){assert.ok(onOld(wall.a)&&onOld(wall.b));for(const k of Object.keys(old))if(!['id','a','b'].includes(k))assert.deepEqual(wall[k],old[k]);}
+const distance=(a:any,b:any)=>Math.hypot(a.x-b.x,a.y-b.y);assert.ok(Math.abs(parts.reduce((n,w)=>n+distance(w.a,w.b),0)-distance(old.a,old.b))<eps);
+const openingChanges=after.openings.map((o:any)=>{const b=before.openings.find((x:any)=>x.id===o.id);assert.ok(b);const changed=Object.keys(o).filter(k=>JSON.stringify(o[k])!==JSON.stringify(b[k]));assert.deepEqual(changed,['offset']);return{id:o.id,changedFields:changed}});
+assert.deepEqual(reports.at(-1).counts,{walls:26,rooms:5,openings:12});assert.deepEqual(reports.at(-1).phases.diagnostics.counts,{});
+assert.equal(reports.at(-1).phases.diagnostics.undefinedAreaM2,0);assert.equal(reports.at(-1).phases.diagnostics.wallComponents,1);
+const sourceHashes=Object.fromEntries(['api/import.ts','api/import/response.ts','api/codex-timeout.ts','api/model.ts','api/topology/validate.ts','api/topology/diagnostics.ts','scripts/alva-mimo-vision-check.ts','scripts/lib/mimo-probe.ts','scripts/lib/mimo-profile.ts','tests/alva-mimo-probe.test.ts'].map(f=>[f,sha(readFileSync(f))]));
+const summary={ticket:'ALVA-056',runId,verifiedAt:new Date().toISOString(),offline:true,newModelCalls:0,passed:true,replays:reports,repairProvenanceVerified:true,repairDelta:{allFiveRoomsUnchanged:true,allTwelveOpeningsRetained:true,openingChanges,removedWallIds:removed,addedWallIds:added,retainedWallsUnchanged:true,splitWallGeometryPreserved:true},sourceHashes,productionMutations:false,automaticConfirmationAllowed:false,accuracyBoundary:'Structural validators pass on the repository original; full source-image fidelity and the latest annotated screenshot original are not established.'};
+writeFileSync(`evidence/${runId}/independent-replay.json`,JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify({passed:true,replays:reports.map(r=>({runId:r.runId,failure:r.failureClass,counts:r.counts})),repairProvenanceVerified:true,structurallyValid:true,productionMutations:false},null,2));

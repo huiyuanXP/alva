@@ -41,6 +41,18 @@ test('ALVA-053 oversized output is rejected before JSON/schema evaluation',()=>{
  assert.throws(()=>parseLayoutOutput(' '.repeat(2_000_001)),(e:unknown)=>e instanceof LayoutOutputError&&e.stage==='json');
 });
 test('ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds',()=>{
- assert.equal(codexTimeoutMs(),120_000);assert.equal(codexTimeoutMs(VISION_TIMEOUT_MS),240_000);
- for(const value of [0,-1,NaN,Infinity,1.5,300_001])assert.throws(()=>codexTimeoutMs(value));
+ assert.equal(codexTimeoutMs(),120_000);assert.equal(codexTimeoutMs(VISION_TIMEOUT_MS),600_000);
+ for(const value of [0,-1,NaN,Infinity,1.5,600_001])assert.throws(()=>codexTimeoutMs(value));
+});
+
+test('ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate',()=>{
+ for(const empty of ['walls','rooms','both']){const scene=rectangleScene();if(empty!=='rooms'){scene.walls=[];scene.openings=[]}if(empty!=='walls')scene.rooms=[];
+  assert.throws(()=>parseLayoutOutput(JSON.stringify(scene)),(e:unknown)=>e instanceof LayoutOutputError&&e.stage==='geometry'&&e.message.includes('未识别出墙体或房间'));
+ }
+});
+
+test('ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair',()=>{
+ const scene=rectangleScene();for(const w of scene.walls){w.a.x*=.2;w.b.x*=.2}for(const room of scene.rooms)for(const p of room.polygon)p.x*=.2;scene.calibration=null;
+ scene.openings[0].width=1.6;scene.openings[0].offset=.1;assert.throws(()=>parseLayoutOutput(JSON.stringify(scene)),/超出墙体/);assert.equal(scene.openings[0].offset,.1);
+ scene.openings[0].offset=.5;assert.equal(parseLayoutOutput(JSON.stringify(scene)).openings[0].offset,.5);
 });

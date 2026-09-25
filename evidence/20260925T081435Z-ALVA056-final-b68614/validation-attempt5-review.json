@@ -1,0 +1,9 @@
+{
+  "result": "oom-kill",
+  "productFailureAssertion": false,
+  "typecheck": "passed before test runner start under set -e",
+  "interruptedTest": "tests/alva-calibration.test.ts",
+  "scope": "expanded regression, not complete",
+  "noHostRestart": true,
+  "next": "separate typecheck and task-affected import/probe test processes, unchanged 1500MiB cgroup cap"
+}

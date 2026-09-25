@@ -1,0 +1,222 @@
+{
+  "ticket": "ALVA-056",
+  "runId": "20260925T075949811Z-ALVA056-mimo-1947ac",
+  "sourceHead": "1705fc8dabbaac3fbd5fa59dc6ef0cd1e38f8f17",
+  "profile": "mimo",
+  "startedAt": "2026-09-25T07:59:49.831Z",
+  "attempts": 1,
+  "automaticRepair": false,
+  "phases": {
+    "model": {
+      "startedAt": "2026-09-25T07:59:50.171Z",
+      "finishedAt": "2026-09-25T08:09:04.587Z",
+      "elapsedMs": 554415.747924,
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutMs": 600000,
+      "outputLimitExceeded": false,
+      "interrupted": false
+    },
+    "json": {
+      "ok": true,
+      "elapsedMs": 0.09517600003164262
+    },
+    "normalization": {
+      "function": "api/import.normalizeStructuredOutput",
+      "changed": false,
+      "sha256": "58856ff3fad097c9032e80af81de97df5f71f4b8570cc381d421f5ee90f21693",
+      "schemaInput": "production-normalized-output"
+    },
+    "productionParser": {
+      "ok": true,
+      "elapsedMs": 1.7935640000505373
+    },
+    "schema": {
+      "ok": true,
+      "elapsedMs": 0.7534209999721497
+    },
+    "content": {
+      "ok": true,
+      "required": "at least one wall and one room; empty template is not floorplan recognition"
+    },
+    "geometry": {
+      "ok": true,
+      "elapsedMs": 0.47403300006408244
+    },
+    "confirmationTopology": {
+      "ok": true,
+      "elapsedMs": 4.565340999979526
+    },
+    "diagnostics": {
+      "ok": true,
+      "elapsedMs": 58.52104900008999,
+      "status": "complete",
+      "checks": {
+        "internalVoid": "complete",
+        "orientation": "complete",
+        "connectivity": "complete"
+      },
+      "counts": {},
+      "undefinedAreaM2": 0,
+      "wallComponents": 1,
+      "dominantAngleDegrees": 0
+    }
+  },
+  "productionMutations": false,
+  "transportCompleted": true,
+  "rawOutput": {
+    "characters": 6298,
+    "sha256": "58856ff3fad097c9032e80af81de97df5f71f4b8570cc381d421f5ee90f21693"
+  },
+  "rawEvidence": ".runtime/20260925T075949811Z-ALVA056-mimo-1947ac",
+  "attemptKind": "explicit-single-repair-followup",
+  "importPromptSha256": "47ce3c95361bbf4d0c8655455353b82031926f859f43f866b296e88e2e9d00f5",
+  "repairSource": {
+    "path": ".runtime/20260925T074740232Z-ALVA056-mimo-0b62e3/raw-response.txt",
+    "sha256": "ca50b044599839c5204a66d07b0f2cebd074885f9faaa7c045497cd614562722",
+    "stage": "geometry"
+  },
+  "source": {
+    "path": "references/room-study-handoff/public/floorplan.png",
+    "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+    "bytes": 36268,
+    "kind": "repository original; NOT the latest annotated screenshot original"
+  },
+  "frozenPromptSha256": "3d4d0b98deda46bda27007503a6a64ea30c4be63bd8dfab100dd4f6e5f9f378f",
+  "effectivePromptSha256": "c784419b2ff7522eec96e0658d918da5481117555d86642bb340a06c0d080e43",
+  "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+  "importSourceSha256": "7c49a80354dda71c6304acaa9b7f7a34c3a333faae3091f493080d3a9b30901d",
+  "requestedOutputMode": "schema-in-prompt",
+  "outputMode": "schema-in-prompt",
+  "route": "configured-codex",
+  "schemaInPromptIsNotApiJsonObjectMode": true,
+  "sourceFiles": {
+    "scripts/alva-mimo-vision-check.ts": "d331bcf6faf3f4535741f2f5ac8fcb3a850ee8c00432fbbce182f76c68c460c2",
+    "scripts/lib/mimo-profile.ts": "ede562f2e3f07a106b49fe25ac4a8d038969b3c636dbcdef2b48b9f85cdc6562",
+    "scripts/lib/mimo-probe.ts": "4c9edec6460f86166657c0c23d56e9a315999d083e85bb80e33dd2d8919473dd",
+    "api/import/response.ts": "18b4d6c9f725a01144a3f7a5c95ae06c79d3c68442a343badf18d70cad3c691c",
+    "api/codex-timeout.ts": "8708698c91f18d313b5de7e59d1d76e297b44cd7d4c2578ad2b36561f71c59f5",
+    "api/model.ts": "61a685375e6f9a40b28ec3d2536d4f9d12f3d6fb1f5e8212a3c823386a4f732c",
+    "api/topology/validate.ts": "40a2683dfd57c11ec9b262b33ad8caf5ff0473f5c5936afc8cc3b05b0d4915a7",
+    "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e"
+  },
+  "profileMetadata": {
+    "profile": "mimo",
+    "home": "/home/ubuntu/.codex",
+    "model": "mimo-v2.6-pro",
+    "provider": "mimo",
+    "endpoint": "https://chat.huiyuanxp.com/v1",
+    "envKey": "NEWAPI_KEY",
+    "credentialPresent": true,
+    "requiresOpenAIAuth": false,
+    "catalogModels": [
+      {
+        "id": "mimo-v2.6-pro",
+        "inputModalities": [
+          "text",
+          "image"
+        ]
+      },
+      {
+        "id": "mimo-v2.6-flash",
+        "inputModalities": [
+          "text",
+          "image"
+        ]
+      }
+    ],
+    "fingerprints": {
+      "/home/ubuntu/.codex/config.toml": "5f2e2d7de9b72ae160ade401b0a95002b0b69426c3f10612a5857212acfb59c4",
+      "/home/ubuntu/.codex/mimo.config.toml": "90906f15369e303da2c0adb6cd262b3ef6650fcdd22e5ff89112743e851475c2",
+      "/home/ubuntu/.codex/model-catalogs/mimo-newapi.json": "8e756631f2e15760e6fffc62fc503b1ad67aa8ff9acfeb2616b8c60ceb24e337"
+    },
+    "hookEvents": [],
+    "mcpServers": []
+  },
+  "requestedModel": "mimo-v2.6-pro",
+  "modelSelection": "profile default, no CLI model override",
+  "codexVersion": "codex-cli 0.157.0",
+  "credentialHandling": "native configured Codex environment authentication; metadata only, no login files or key values copied",
+  "upstreamProvider": "unverified; requested profile/model and client catalog are not independent provider identity evidence",
+  "invocation": {
+    "command": "codex",
+    "args": [
+      "exec",
+      "--profile",
+      "mimo",
+      "--strict-config",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--json",
+      "--color",
+      "never",
+      "--sandbox",
+      "read-only",
+      "-C",
+      "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/.runtime/20260925T075949811Z-ALVA056-mimo-1947ac",
+      "--image",
+      "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/references/room-study-handoff/public/floorplan.png",
+      "--output-last-message",
+      "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/.runtime/20260925T075949811Z-ALVA056-mimo-1947ac/raw-response.txt",
+      "-c",
+      "project_doc_max_bytes=0",
+      "-c",
+      "features.hooks=false",
+      "-c",
+      "features.shell_tool=false",
+      "-c",
+      "features.shell_snapshot=false",
+      "-c",
+      "features.apply_patch_freeform=false",
+      "-c",
+      "features.multi_agent=false",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "mcp_servers={}",
+      "-c",
+      "hooks={}",
+      "-"
+    ],
+    "timeoutMs": 600000,
+    "toolsDisabled": true
+  },
+  "events": {
+    "thread.started": 1,
+    "turn.started": 1,
+    "item.completed": 7,
+    "turn.completed": 1
+  },
+  "tokenUsage": [
+    {
+      "input_tokens": 69546,
+      "cached_input_tokens": 58496,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 20469,
+      "reasoning_output_tokens": 17335
+    }
+  ],
+  "threadIds": [
+    "01a0d793-eaf1-7741-a381-1a387417a478"
+  ],
+  "protocolErrors": [],
+  "failureEvidence": "startup-stderr",
+  "unexpectedTools": false,
+  "counts": {
+    "walls": 26,
+    "rooms": 5,
+    "openings": 12
+  },
+  "profileUnchanged": true,
+  "outputContractPassed": true,
+  "requiresReview": false,
+  "failureClass": null,
+  "validCandidate": true,
+  "humanReviewRequired": true,
+  "automaticConfirmationAllowed": false,
+  "inspectionCompleted": true,
+  "completedAt": "2026-09-25T08:09:04.806Z",
+  "elapsedMs": 554995.12079,
+  "scope": "one explicitly requested inference; first-attempt by default or one explicit repair follow-up; never automatic retries, adoption or production import",
+  "runnerDifference": "Frozen current user prompt/schema with native CLI profile; not a controlled paired comparison with business App Server system context."
+}

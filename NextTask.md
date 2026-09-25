@@ -1,16 +1,8 @@
 # What's next · 任务认领与并行开发
 
-## 当前执行：ALVA-056
+## 2026-09-25 ALVA-053/056已完成
 
-53已集成97c0ae7；chatgpt-recovery现正式恢复56，独立`.runtime/worktrees/ALVA-056-recovery-20260925`，只修改MiMo探针/测试/本票证据文档，采用普通用户`codex exec --profile mimo`。原v2.5暂存成果有备份并将按本票范围验收集成，不再视为不可消费的无关改动。028仍暂停，057继续yang-chatgpt，所有旧工作区保留。下方53交接及重启Pending记录按各自日期阅读，56不再pending。
-
-## 2026-09-25 ALVA-053已完成，继续ALVA-056
-
-ALVA-053按诊断维护范围完成并集成，个人实现`17a6308`，总证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。JSON/schema/几何错误统一一次修正，识图显式240秒上限，普通调用仍120秒；PDF与PGlite测试隔离而未删断言。28/28、最终类型检查与历史候选重放通过；MiMo Pro业务动态工具/流式文本通过，Gemini3.8别名文本恢复；原生mimo profile的Flash识图18.663秒通过输出合同，但确认拓扑失败且约22.59m²未定义空间，不宣称户型已正确。
-
-Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传递调用被工具拦截未执行，保留未核验边界。原生profile用普通用户、无密钥复制/提权，不能冒充被拦截的业务复试。最新标注截图未标注原图/当前生产样本关联仍缺，未更改生产配置/数据、未部署。
-
-下一步按本轮已有授权执行ALVA-056，改旧探针硬编码v2.5为当前`codex exec --profile mimo`并复测默认Pro；53不再占用共享文件。028仍暂停，057的yang-chatgpt与其共享文件保持不变。原8个56暂存文件/2份文档修改、preview五文件及全部历史Worktree保留；本次独立Git索引不吞并它们。重型任务串行、CPU60%、任务内存模型900MiB/含PGlite和类型1500MiB、Tasks128；初始限额失败留证，最终运行未OOM。回滚仅revert本票集成，不重置工作树。
+53已集成`97c0ae7`；56个人实现`fbfe8e8`经最新main基线的类型/36项相关回归和5轮输出回放通过，已在本次main集成。两票不再占用执行资源；下一步不重复模型调用或自动部署。收据`evidence/20260925T084025Z-ALVA056-integration-3bc356/`，边界见单票和CURRENT。其他署名保持不变，028继续用户暂停。以下重启Pending记录仅保留仍未开工的028。
 
 ## Pending 恢复队列（2026-09-25）
 
@@ -44,7 +36,7 @@ Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` | chatgpt-snapshots | task/ALVA-036-chatgpt-snapshots / .runtime/worktrees/ALVA-036-chatgpt-snapshots | in-progress；api/store.ts、api/api.ts保存路由、新snapshots模块；main.tsx仅header保存控件装配，不改013视图/057问卷片段与model.ts；隔离端口自动分配；重型验证共用alva-heavy-task.lock |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
-当前七项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
+当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 
 ## 认领与 Worktree 规则
@@ -122,7 +114,6 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
-| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | chatgpt-recovery | task/ALVA-056-recovery-20260925；.runtime/worktrees/ALVA-056-recovery-20260925；原生mimo profile探针、scripts/lib、定向测试；用户追加10分钟单次识图，api/codex-timeout.ts及api/import/response.ts空候选拒绝；不改057/013共享源码、不部署 | in-progress |
 
 ## ALVA-057 Your Home Vision
 

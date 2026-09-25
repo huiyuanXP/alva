@@ -1,0 +1,37 @@
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (35.194509ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (1.457464ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (3.894799ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (5.786613ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.678984ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (4.682016ms)
+✔ ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds (6.817192ms)
+✔ ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate (9.749567ms)
+✔ ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair (5.92732ms)
+✔ ALVA-056 distinguishes revoked Codex login from model or JSON failure (1.761641ms)
+✔ ALVA-056 distinguishes unavailable environment credentials from provider rejection and unsupported model (51.566502ms)
+✔ ALVA-056 timeout, spawn failure and successful transport are separate outcomes (0.337642ms)
+✔ ALVA-056 public protocol errors redact keys and endpoint query strings (1.561744ms)
+✔ ALVA-056 replays actual sanitized failures without making new provider calls (1.924931ms)
+✔ ALVA-056 defaults to the real profile model without a stale CLI model override (1.492495ms)
+✔ ALVA-056 only an explicit within-catalog model choice adds a model flag (0.516065ms)
+✔ ALVA-056 rejects text-only, non-MiMo catalog and missing environment credentials before launch (0.706245ms)
+✔ ALVA-056 native schema and schema-in-prompt remain distinct transport modes (0.457739ms)
+✔ ALVA-056 disables inherited MCP endpoints, hooks, shell, snapshots, patches and agents (0.528225ms)
+✔ ALVA-056 deadline cannot be disabled, made infinite or raised past600seconds (0.420859ms)
+✔ ALVA-056 successful transport cannot conceal parse, schema or geometry failures (0.512989ms)
+✔ ALVA-056 confirmation errors and warning-only or inconclusive diagnostics require review (0.346695ms)
+✔ ALVA-056 missing completion, changed profile and unexpected tools are never valid candidates (0.182778ms)
+✔ ALVA-056 even a clean structural result never authorizes automatic adoption (0.228448ms)
+✔ ALVA-056 configured non-prefix secret values are also redacted (0.249832ms)
+✔ ALVA-056 hook state metadata is not misinterpreted as a lifecycle event array (0.274663ms)
+✔ ALVA-056 empty schema-valid response is a recognition failure, not only a topology warning (0.252583ms)
+✔ ALVA-056 freezes both supported import call names without inventing or ambiguously selecting prompts (0.532585ms)
+✔ ALVA-056 the current model prompt unambiguously defines center-fraction offsets (0.3075ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1902.666872

@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: ALVA-053 plain JSON and one complete fence preserve all original coordinates
+ok 1 - ALVA-053 plain JSON and one complete fence preserve all original coordinates
+  ---
+  duration_ms: 17.030061
+  type: 'test'
+  ...
+# Subtest: ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures
+ok 2 - ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures
+  ---
+  duration_ms: 1.500323
+  type: 'test'
+  ...
+# Subtest: ALVA-053 array coordinates and string evidence cannot be guessed into schema validity
+ok 3 - ALVA-053 array coordinates and string evidence cannot be guessed into schema validity
+  ---
+  duration_ms: 2.861609
+  type: 'test'
+  ...
+# Subtest: ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings
+ok 4 - ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings
+  ---
+  duration_ms: 3.038321
+  type: 'test'
+  ...
+# Subtest: ALVA-053 one repair request identifies each failed contract stage without weakening it
+ok 5 - ALVA-053 one repair request identifies each failed contract stage without weakening it
+  ---
+  duration_ms: 59.028167
+  type: 'test'
+  ...
+# Subtest: ALVA-053 oversized output is rejected before JSON/schema evaluation
+ok 6 - ALVA-053 oversized output is rejected before JSON/schema evaluation
+  ---
+  duration_ms: 4.624972
+  type: 'test'
+  ...
+# Subtest: ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds
+ok 7 - ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds
+  ---
+  duration_ms: 0.633099
+  type: 'test'
+  ...
+# Subtest: ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate
+ok 8 - ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate
+  ---
+  duration_ms: 1.273214
+  type: 'test'
+  ...
+# Subtest: ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair
+ok 9 - ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair
+  ---
+  duration_ms: 1.795995
+  type: 'test'
+  ...
+# Subtest: ALVA-056 distinguishes revoked Codex login from model or JSON failure
+ok 10 - ALVA-056 distinguishes revoked Codex login from model or JSON failure
+  ---
+  duration_ms: 4.258103
+  type: 'test'
+  ...
+# Subtest: ALVA-056 distinguishes unavailable environment credentials from provider rejection and unsupported model
+ok 11 - ALVA-056 distinguishes unavailable environment credentials from provider rejection and unsupported model
+  ---
+  duration_ms: 0.906667
+  type: 'test'
+  ...
+# Subtest: ALVA-056 timeout, spawn failure and successful transport are separate outcomes
+ok 12 - ALVA-056 timeout, spawn failure and successful transport are separate outcomes
+  ---
+  duration_ms: 0.342819
+  type: 'test'
+  ...
+# Subtest: ALVA-056 public protocol errors redact keys and endpoint query strings
+ok 13 - ALVA-056 public protocol errors redact keys and endpoint query strings
+  ---
+  duration_ms: 0.49573
+  type: 'test'
+  ...
+# Subtest: ALVA-056 replays actual sanitized failures without making new provider calls
+ok 14 - ALVA-056 replays actual sanitized failures without making new provider calls
+  ---
+  duration_ms: 0.795103
+  type: 'test'
+  ...
+# Subtest: ALVA-056 defaults to the real profile model without a stale CLI model override
+ok 15 - ALVA-056 defaults to the real profile model without a stale CLI model override
+  ---
+  duration_ms: 2.255226
+  type: 'test'
+  ...
+# Subtest: ALVA-056 only an explicit within-catalog model choice adds a model flag
+ok 16 - ALVA-056 only an explicit within-catalog model choice adds a model flag
+  ---
+  duration_ms: 0.793661
+  type: 'test'
+  ...
+# Subtest: ALVA-056 rejects text-only, non-MiMo catalog and missing environment credentials before launch
+ok 17 - ALVA-056 rejects text-only, non-MiMo catalog and missing environment credentials before launch
+  ---
+  duration_ms: 4.410388
+  type: 'test'
+  ...
+# Subtest: ALVA-056 native schema and schema-in-prompt remain distinct transport modes
+ok 18 - ALVA-056 native schema and schema-in-prompt remain distinct transport modes
+  ---
+  duration_ms: 0.600756
+  type: 'test'
+  ...
+# Subtest: ALVA-056 disables inherited MCP endpoints, hooks, shell, snapshots, patches and agents
+ok 19 - ALVA-056 disables inherited MCP endpoints, hooks, shell, snapshots, patches and agents
+  ---
+  duration_ms: 0.798385
+  type: 'test'
+  ...
+# Subtest: ALVA-056 deadline cannot be disabled, made infinite or raised past600seconds
+ok 20 - ALVA-056 deadline cannot be disabled, made infinite or raised past600seconds
+  ---
+  duration_ms: 0.458695
+  type: 'test'
+  ...
+# Subtest: ALVA-056 successful transport cannot conceal parse, schema or geometry failures
+ok 21 - ALVA-056 successful transport cannot conceal parse, schema or geometry failures
+  ---
+  duration_ms: 0.54428
+  type: 'test'
+  ...
+# Subtest: ALVA-056 confirmation errors and warning-only or inconclusive diagnostics require review
+ok 22 - ALVA-056 confirmation errors and warning-only or inconclusive diagnostics require review
+  ---
+  duration_ms: 0.310553
+  type: 'test'
+  ...
+# Subtest: ALVA-056 missing completion, changed profile and unexpected tools are never valid candidates
+ok 23 - ALVA-056 missing completion, changed profile and unexpected tools are never valid candidates
+  ---
+  duration_ms: 0.217332
+  type: 'test'
+  ...
+# Subtest: ALVA-056 even a clean structural result never authorizes automatic adoption
+ok 24 - ALVA-056 even a clean structural result never authorizes automatic adoption
+  ---
+  duration_ms: 0.212131
+  type: 'test'
+  ...
+# Subtest: ALVA-056 configured non-prefix secret values are also redacted
+ok 25 - ALVA-056 configured non-prefix secret values are also redacted
+  ---
+  duration_ms: 0.239416
+  type: 'test'
+  ...
+# Subtest: ALVA-056 hook state metadata is not misinterpreted as a lifecycle event array
+ok 26 - ALVA-056 hook state metadata is not misinterpreted as a lifecycle event array
+  ---
+  duration_ms: 0.317472
+  type: 'test'
+  ...
+# Subtest: ALVA-056 empty schema-valid response is a recognition failure, not only a topology warning
+ok 27 - ALVA-056 empty schema-valid response is a recognition failure, not only a topology warning
+  ---
+  duration_ms: 0.347103
+  type: 'test'
+  ...
+# Subtest: ALVA-056 freezes both supported import call names without inventing or ambiguously selecting prompts
+ok 28 - ALVA-056 freezes both supported import call names without inventing or ambiguously selecting prompts
+  ---
+  duration_ms: 0.588977
+  type: 'test'
+  ...
+# Subtest: ALVA-056 the current model prompt unambiguously defines center-fraction offsets
+ok 29 - ALVA-056 the current model prompt unambiguously defines center-fraction offsets
+  ---
+  duration_ms: 0.297068
+  type: 'test'
+  ...
+# Subtest: ALVA-056 explicit correction binds one original image, schema and raw response
+ok 30 - ALVA-056 explicit correction binds one original image, schema and raw response
+  ---
+  duration_ms: 0.60864
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1687.836226
+{
+  "passed": true,
+  "replays": [
+    {
+      "runId": "20260925T071425418Z-ALVA056-mimo-7842c7",
+      "failure": "json-parse"
+    },
+    {
+      "runId": "20260925T072626685Z-ALVA056-mimo-13f83c",
+      "failure": "empty-candidate",
+      "counts": {
+        "walls": 0,
+        "rooms": 0,
+        "openings": 0
+      }
+    },
+    {
+      "runId": "20260925T073159993Z-ALVA056-mimo-7c7aa6",
+      "failure": "empty-candidate",
+      "counts": {
+        "walls": 0,
+        "rooms": 0,
+        "openings": 0
+      }
+    },
+    {
+      "runId": "20260925T074740232Z-ALVA056-mimo-0b62e3",
+      "failure": "geometry-validation",
+      "counts": {
+        "walls": 25,
+        "rooms": 5,
+        "openings": 12
+      }
+    },
+    {
+      "runId": "20260925T075949811Z-ALVA056-mimo-1947ac",
+      "failure": null,
+      "counts": {
+        "walls": 26,
+        "rooms": 5,
+        "openings": 12
+      }
+    }
+  ],
+  "repairProvenanceVerified": true,
+  "structurallyValid": true,
+  "productionMutations": false
+}

@@ -1,0 +1,28 @@
+{
+  "cmd": [
+    "node_modules/.bin/tsx",
+    "--test",
+    "--test-concurrency=1",
+    "tests/alva-mimo-probe.test.ts",
+    "tests/alva-import-response.test.ts"
+  ],
+  "cwd": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925",
+  "startedAt": "2026-09-25T07:25:50.604609+00:00",
+  "finishedAt": "2026-09-25T07:25:53.198788+00:00",
+  "elapsedSeconds": 2.594,
+  "exitCode": 0,
+  "timedOut": false,
+  "availableBeforeBytes": 2181955584,
+  "resourceLimits": {
+    "memory.max": "314572800",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva056-unit-10min.scope"
+  },
+  "resourceLimitsVerified": true,
+  "cgroup": {
+    "memory.peak": "85282816",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 1617758\nuser_usec 1419376\nsystem_usec 198382\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 27\nnr_throttled 26\nthrottled_usec 862498\nnr_bursts 0\nburst_usec 0"
+  }
+}

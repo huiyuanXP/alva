@@ -1,0 +1,11 @@
+{
+  "startedAt": "2026-09-25T08:27:52.099481+00:00",
+  "limits": {
+    "memory.max": "1572864000",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva056-typecheck6-b68614.service"
+  },
+  "availableBeforeBytes": 2902732800,
+  "pid": 112989
+}

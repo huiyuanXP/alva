@@ -1,0 +1,7 @@
+{
+  "stage": "setup",
+  "executedProductTests": false,
+  "exitCode": 1,
+  "reason": "The proposed diagnostics test filename did not exist; actual filename is alva-topology-quality.test.ts. Job creation failed, no product task started.",
+  "correctedBy": "validation-attempt2"
+}

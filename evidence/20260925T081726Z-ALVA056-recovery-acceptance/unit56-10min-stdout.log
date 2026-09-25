@@ -1,0 +1,32 @@
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (85.514841ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (1.44514ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (4.79883ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (8.718204ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.775519ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (6.689925ms)
+✔ ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds (3.155116ms)
+✔ ALVA-056 distinguishes revoked Codex login from model or JSON failure (3.036867ms)
+✔ ALVA-056 distinguishes unavailable environment credentials from provider rejection and unsupported model (1.757792ms)
+✔ ALVA-056 timeout, spawn failure and successful transport are separate outcomes (0.532198ms)
+✔ ALVA-056 public protocol errors redact keys and endpoint query strings (0.582514ms)
+✔ ALVA-056 replays actual sanitized failures without making new provider calls (2.537599ms)
+✔ ALVA-056 defaults to the real profile model without a stale CLI model override (4.660186ms)
+✔ ALVA-056 only an explicit within-catalog model choice adds a model flag (1.837997ms)
+✔ ALVA-056 rejects text-only, non-MiMo catalog and missing environment credentials before launch (1.24531ms)
+✔ ALVA-056 native schema and schema-in-prompt remain distinct transport modes (1.210429ms)
+✔ ALVA-056 disables inherited MCP endpoints, hooks, shell, snapshots, patches and agents (1.396796ms)
+✔ ALVA-056 deadline cannot be disabled, made infinite or raised past600seconds (0.76721ms)
+✔ ALVA-056 successful transport cannot conceal parse, schema or geometry failures (2.028627ms)
+✔ ALVA-056 confirmation errors and warning-only or inconclusive diagnostics require review (0.403593ms)
+✔ ALVA-056 missing completion, changed profile and unexpected tools are never valid candidates (0.471955ms)
+✔ ALVA-056 even a clean structural result never authorizes automatic adoption (0.277862ms)
+✔ ALVA-056 configured non-prefix secret values are also redacted (0.406354ms)
+✔ ALVA-056 hook state metadata is not misinterpreted as a lifecycle event array (1.151554ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2148.28607

@@ -1,0 +1,5 @@
+Starting alva056-integrated-base.service - /usr/bin/env PATH=/home/ubuntu/.nvm/versions/node/v24.21.0/bin:/usr/local/bin:/usr/bin:/bin /usr/bin/python3 /home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/bounded.py /home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/verify56-integrated-base.json...
+Started alva056-integrated-base.service - /usr/bin/env PATH=/home/ubuntu/.nvm/versions/node/v24.21.0/bin:/usr/local/bin:/usr/bin:/bin /usr/bin/python3 /home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/bounded.py /home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/verify56-integrated-base.json.
+Resource guard: insufficient memory for task limit plus 900 MiB reserve; no task started
+alva056-integrated-base.service: Main process exited, code=exited, status=1/FAILURE
+alva056-integrated-base.service: Failed with result 'exit-code'.

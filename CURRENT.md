@@ -1,23 +1,21 @@
 # 恢复索引
 
-## 2026-09-25 MiMo单次10分钟追加
+## 当前状态：ALVA-053、ALVA-056已完成
 
-用户已允许单次MiMo识图600000ms。ALVA-056独立工作区已更新probe与业务识图预算，普通Chat仍120000ms；尚待最终类型检查/集成，不宣称生产已切换。正常用户profile Pro两次自行完成但给出空户型，非超时；空候选拒绝与26项轻量回归通过。下一步核验兼容输出模式、等待并行重任务释放资源后完成类型检查。原生probe只读、取消/进程组清理、CPU/内存限额保留，不复制密钥或重启服务。ALVA-013由lzy、057由yang-chatgpt进行，028继续暂停。
+项目根 `/home/ubuntu/Alva`。53诊断与解析修复已集成`97c0ae7`；56原生MiMo复测与输出修复已完成本次main集成，个人实现`fbfe8e8`，源码验收基线`b34cc23`。两票均done，不再恢复为进行中，也不重复旧鉴权失败探针。
 
-## 当前状态（2026-09-25）
+MiMo使用正常用户`codex exec --profile mimo`，默认请求Pro、目录限Pro/Flash。最后一次显式纠错耗时554.416秒，26墙/5房/12开口通过JSON/schema/几何/确认拓扑与三类诊断；它不是首轮成功，也不自动确认用户设计。空候选、中心offset语义、仅一次纠错及同源指纹约束已修复；识图每次600秒、普通Chat120秒。
 
-根目录`/home/ubuntu/Alva`。ALVA-053已按诊断维护范围done并集成，个人提交`17a6308`；ALVA-056现由chatgpt-recovery恢复执行，独立`.runtime/worktrees/ALVA-056-recovery-20260925`。53的28项回归、类型检查与历史候选复核通过，证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。
+最终类型检查、36项相关回归、5轮真实输出独立回放通过。扩大校准回归曾触及1500MiB任务上限，未计通过；最终拆分检查保持原限额且无OOM。证据：[最终复核](evidence/20260925T081435Z-ALVA056-final-b68614/summary.json)、[主线集成](evidence/20260925T084025Z-ALVA056-integration-3bc356/integration.json)、[53证据](evidence/20260925T064257Z-ALVA053-recovery-acceptance/summary.json)。
 
-ALVA-056需要更新旧v2.5探针，直接使用普通用户的`codex --profile mimo`（当前默认Pro，另有Flash），复测并分阶段留证。原main暂存8文件与未提交文档已有私有完整备份；56认领同步本票历史文档补充，代码/证据验收后按本票范围集成，不吞并其他人的工作。53的native Flash候选能解析但确认拓扑失败，不自动确认设计。
+## 边界与下一个动作
 
-并行在途：[ALVA-057 Your Home Vision](docs/ALVA-057-home-vision.md)，yang-chatgpt，独立工作区`/home/ubuntu/Alva-worktrees/ALVA-057-yang-chatgpt`。其api/model.ts、api/intake、web入口等占用及新版附件范围以NextTask/单票为准，本轮不覆盖。ALVA-028继续用户暂停，Execution state=pending，不自动实施。
+未部署、未重启生产、未改生产设计/数据或Codex/MCP配置。原生CLI证据不等于业务App Server长时SSE/取消链路验收；最新标注截图的未标注原图仍缺。裸systemd任务不继承用户NEWAPI_KEY时会在预检被拒，复跑用既有正常鉴权会话，不复制凭据。需要上线时按发布流程补上述检查，不因done自动发布。
 
-边界：53的240秒MiMo Pro业务App Server复试被工具拦截未执行；普通用户CLI profile成功不等于该业务复试通过。最新截图未标注原图和当前生产样本关联仍未取得。生产服务/本地及公网healthz正常；本轮未部署、未改生产配置或数据。
+主目录[NextTask](NextTask.md)保留020、036、057等在途署名，ALVA-028继续用户暂停；其他票的状态/范围由单票与实时认领表决定，本轮未接管。旧056暂存成果已按本票验收吸收，AGENTS及其他工作不覆盖，所有Worktree和私有原始模型结果保留。私有集成保护基线`.runtime/20260925T081435Z-ALVA056-final-b68614/`。
 
-## 恢复入口
+## 权威入口
 
-[NextTask](NextTask.md)为主目录协调源；[Handoff](Handoff.md)记录本轮提交、验证、依赖与回滚。单票：[53](docs/ALVA-053-model-topology-audit.md)、[56](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md)。[44张产品票](.scratch/alva-completion/README.md)完成12张不变；[拓扑补充票](.scratch/alva-topology-quality/README.md)55保持done。
+单票：[53](docs/ALVA-053-model-topology-audit.md)、[56](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md)；[MiMo复测/命令](docs/MIMO-VISION-RETRY.md)、[Handoff](Handoff.md)、[44张产品票](.scratch/alva-completion/README.md)、[拓扑补充票](.scratch/alva-topology-quality/README.md)。053/056是额外维护任务，不计入44票产品完成数。
 
-[目录规范](docs/PROJECT-STRUCTURE.md)、[SPEC](SPEC.md)、[ACCEPTANCE](ACCEPTANCE.md)维持现役工程入口；不以旧week/step重排ALVA票号。[服务器事故](docs/INCIDENT-2026-09-25-server-recovery.md)区分历史内存/网络故障与Power key关机，不唯一归因某进程。
-
-任务恢复保护基线`.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/`；当前新增53工作区与旧22个工作区均保留。重任务只串行，含数据库/类型上限1500MiB、模型900MiB，启动预留900MiB；记录初始失败，不以放宽断言通过。
+[目录规范](docs/PROJECT-STRUCTURE.md)、[SPEC](SPEC.md)、[ACCEPTANCE](ACCEPTANCE.md)保持权威；不以旧week/step重排票号。[服务器事故](docs/INCIDENT-2026-09-25-server-recovery.md)记录历史内存/网络问题及Power key关机。所有重型任务串行且设cgroup限制，保留OS余量；不放宽断言，不删除证据。

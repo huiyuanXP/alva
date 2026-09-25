@@ -1,0 +1,67 @@
+{
+  "ticket": "ALVA-056",
+  "runId": "20260922T140306429Z-ALVA056-mimo-117cc6",
+  "sourceHead": "53566b744c1bea6240994811e575f2be89aa2de3",
+  "codexVersion": "codex-cli 0.155.1",
+  "requestedModel": "mimo-v2.5",
+  "source": {
+    "path": "references/room-study-handoff/public/floorplan.png",
+    "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+    "bytes": 36268,
+    "kind": "repository original; NOT the latest annotated screenshot original"
+  },
+  "frozenPromptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+  "schemaSha256": "b897471f10e3548a33f30428780852ea9b8a8c0d1f510cb32c8d5dc7068c5db4",
+  "importSourceSha256": "1eceff8dd9a95f8e9a6d25eca3586e1e0b4a386c64e549353e9f236e53b65bf6",
+  "probeSourceSha256": "df940ab501702e55eb274f0dc51bb7ffd465e9767010c031848c109b4b546f53",
+  "attempts": 1,
+  "automaticRepair": false,
+  "route": "configured-codex",
+  "requestedEndpoint": null,
+  "profile": "mimo",
+  "credentialHandling": "normal Codex authentication only; no credential files read or copied",
+  "routeInspection": "requested Codex config profile mimo; config contents not read or copied",
+  "upstreamProvider": "unverified; client model name and model self-description are not provider evidence",
+  "startedAt": "2026-09-22T14:03:06.580Z",
+  "phases": {
+    "model": {
+      "startedAt": "2026-09-22T14:03:06.580Z",
+      "finishedAt": "2026-09-22T14:03:08.356Z",
+      "elapsedMs": 1774.293662,
+      "exitCode": 1,
+      "timedOut": false
+    },
+    "json": {
+      "status": "not-run",
+      "reason": "No model output; the transport or authentication failure precedes JSON parsing"
+    }
+  },
+  "productionMutations": false,
+  "rawEvidence": ".runtime/20260922T140306429Z-ALVA056-mimo-117cc6",
+  "events": {
+    "thread.started": 1,
+    "turn.started": 1,
+    "error": 1,
+    "turn.failed": 1
+  },
+  "tokenUsage": [],
+  "threadIds": [
+    "01a0c96d-6e2f-7e53-a6e4-d19cbda02a41"
+  ],
+  "protocolErrors": [
+    "data:{\"error\":{\"code\":\"responses_feature_not_supported\",\"message\":\"text.format type 'json_schema' is not supported, only 'text' and 'json_object' are allowed.\",\"param\":\"\",\"type\":\"unsupported_feature\"}}\n\n",
+    "data:{\"error\":{\"code\":\"responses_feature_not_supported\",\"message\":\"text.format type 'json_schema' is not supported, only 'text' and 'json_object' are allowed.\",\"param\":\"\",\"type\":\"unsupported_feature\"}}\n\n"
+  ],
+  "transportCompleted": false,
+  "failureEvidence": "turn-protocol",
+  "failureClass": "model-route-unavailable",
+  "rawOutput": {
+    "characters": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "completedAt": "2026-09-22T14:03:08.359Z",
+  "elapsedMs": 1777.175568,
+  "validCandidate": false,
+  "scope": "single first-attempt inference, no automatic fix, no production import, no quality comparison ground truth",
+  "runnerDifference": "The exact existing user prompt/schema are frozen; this uses Codex CLI authentication rather than the business App Server provider. System/transport contexts are not a controlled paired-model comparison."
+}

@@ -1,0 +1,34 @@
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (69.744588ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (10.259996ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (11.926312ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (5.958069ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (1.668612ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (4.331384ms)
+✔ ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds (0.888102ms)
+✔ ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate (3.150666ms)
+✔ ALVA-056 distinguishes revoked Codex login from model or JSON failure (8.890701ms)
+✔ ALVA-056 distinguishes unavailable environment credentials from provider rejection and unsupported model (1.027318ms)
+✔ ALVA-056 timeout, spawn failure and successful transport are separate outcomes (2.610337ms)
+✔ ALVA-056 public protocol errors redact keys and endpoint query strings (0.640288ms)
+✔ ALVA-056 replays actual sanitized failures without making new provider calls (5.282951ms)
+✔ ALVA-056 defaults to the real profile model without a stale CLI model override (5.566421ms)
+✔ ALVA-056 only an explicit within-catalog model choice adds a model flag (2.021323ms)
+✔ ALVA-056 rejects text-only, non-MiMo catalog and missing environment credentials before launch (1.166652ms)
+✔ ALVA-056 native schema and schema-in-prompt remain distinct transport modes (4.067608ms)
+✔ ALVA-056 disables inherited MCP endpoints, hooks, shell, snapshots, patches and agents (4.813219ms)
+✔ ALVA-056 deadline cannot be disabled, made infinite or raised past600seconds (3.387578ms)
+✔ ALVA-056 successful transport cannot conceal parse, schema or geometry failures (4.971754ms)
+✔ ALVA-056 confirmation errors and warning-only or inconclusive diagnostics require review (0.445523ms)
+✔ ALVA-056 missing completion, changed profile and unexpected tools are never valid candidates (0.467331ms)
+✔ ALVA-056 even a clean structural result never authorizes automatic adoption (0.254141ms)
+✔ ALVA-056 configured non-prefix secret values are also redacted (2.604693ms)
+✔ ALVA-056 hook state metadata is not misinterpreted as a lifecycle event array (1.0939ms)
+✔ ALVA-056 empty schema-valid response is a recognition failure, not only a topology warning (0.308624ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2957.21678

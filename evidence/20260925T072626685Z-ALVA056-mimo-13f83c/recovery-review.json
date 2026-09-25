@@ -1,0 +1,8 @@
+{
+  "reviewedAt": "2026-09-25T08:17:26.773130+00:00",
+  "originalResultUnmodified": true,
+  "originalRun": "20260925T072626685Z-ALVA056-mimo-13f83c",
+  "subsequentRun": "20260925T073159993Z-ALVA056-mimo-7c7aa6",
+  "sameRawSha256": true,
+  "explanation": "Original validator allowed empty Scene shape but already denied candidate validity via empty diagnostics. The new production import guard and content classification explicitly reject that identical raw output as empty-candidate."
+}

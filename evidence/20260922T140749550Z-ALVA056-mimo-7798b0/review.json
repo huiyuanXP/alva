@@ -1,0 +1,49 @@
+{
+  "reviewedAt": "2026-09-22T14:10:43Z",
+  "reviewType": "offline evidence classification, not another model call",
+  "runId": "20260922T140749550Z-ALVA056-mimo-7798b0",
+  "originalResultUnchanged": true,
+  "authoritativeEvidence": "turn.completed plus local JSON/schema/geometry/topology/diagnostic validation",
+  "modelOutputCharacters": 4602,
+  "modelInferenceCompleted": true,
+  "transportCompleted": true,
+  "tokenUsage": {
+    "input_tokens": 10518,
+    "output_tokens": 2476,
+    "reasoning_output_tokens": 638
+  },
+  "validation": {
+    "json": true,
+    "schema": true,
+    "geometry": true,
+    "confirmationTopology": false,
+    "diagnostics": true,
+    "validCandidate": false
+  },
+  "counts": {
+    "walls": 10,
+    "rooms": 5,
+    "openings": 6
+  },
+  "diagnostics": {
+    "status": "complete",
+    "internal_void": 1,
+    "open_boundary": 1,
+    "undefinedAreaM2": 10.9975,
+    "wallComponents": 1,
+    "dominantAngleDegrees": 0
+  },
+  "productionMutations": false,
+  "typecheckExit": 0,
+  "probeTests": {
+    "pass": 5,
+    "fail": 0,
+    "skipped": 0
+  },
+  "limits": [
+    "The source is the repository floorplan.png, not the unannotated original behind the latest red-marked screenshot.",
+    "The MiMo route was requested through Codex profile mimo with model mimo-v2.5; upstream provider identity remains unverified and is not inferred from the model name or self-description.",
+    "MiMo Responses rejected json_schema output, so the frozen schema was supplied as a JSON-object structure constraint; this is not a controlled paired comparison with the production App Server transport.",
+    "The result is a reviewable first-attempt candidate only. Topology confirmation failed, and no production import, scene, or default model was changed."
+  ]
+}

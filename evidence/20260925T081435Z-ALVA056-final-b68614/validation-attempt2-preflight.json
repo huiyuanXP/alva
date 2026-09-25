@@ -1,0 +1,6 @@
+{
+  "stage": "resource-preflight",
+  "executedProductTests": false,
+  "reason": "Memory guard refused a 1500MiB task while retaining900MiB for the host; no limits were weakened.",
+  "next": "300MiB offline tests and independent replay; use final typecheck evidence only if source fingerprints match."
+}

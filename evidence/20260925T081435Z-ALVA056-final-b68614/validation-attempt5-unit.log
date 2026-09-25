@@ -1,0 +1,4 @@
+2026-09-25T08:25:12+00:00 <host> systemd[905]: Started alva056-final-validation5-b68614.service - /usr/bin/python3 /home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/bounded.py /home/ubuntu/Alva/.runtime/20260925T081435Z-ALVA056-final-b68614/validation-attempt5.json.
+2026-09-25T08:26:17+00:00 <host> systemd[905]: alva056-final-validation5-b68614.service: A process of this unit has been killed by the OOM killer.
+2026-09-25T08:26:18+00:00 <host> systemd[905]: alva056-final-validation5-b68614.service: Failed with result 'oom-kill'.
+2026-09-25T08:26:18+00:00 <host> systemd[905]: alva056-final-validation5-b68614.service: Consumed 35.442s CPU time, 1.4G memory peak, 0B memory swap peak.

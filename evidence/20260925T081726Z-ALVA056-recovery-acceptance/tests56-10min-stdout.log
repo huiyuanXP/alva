@@ -1,0 +1,16 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+tests/alva-mimo-probe.test.ts(3,46): error TS2300: Duplicate identifier 'summarizeMiMoOutcome'.
+tests/alva-mimo-probe.test.ts(5,9): error TS2300: Duplicate identifier 'summarizeMiMoOutcome'.
+tests/alva-mimo-probe.test.ts(6,9): error TS2300: Duplicate identifier 'buildMiMoArgs'.
+tests/alva-mimo-probe.test.ts(6,23): error TS2300: Duplicate identifier 'selectMiMoModel'.
+tests/alva-mimo-probe.test.ts(6,39): error TS2300: Duplicate identifier 'readMiMoProfile'.
+tests/alva-mimo-probe.test.ts(6,55): error TS2300: Duplicate identifier 'probeTimeoutMs'.
+tests/alva-mimo-probe.test.ts(6,75): error TS2300: Duplicate identifier 'MiMoProfileMetadata'.
+tests/alva-mimo-probe.test.ts(102,9): error TS2300: Duplicate identifier 'buildMiMoArgs'.
+tests/alva-mimo-probe.test.ts(102,23): error TS2300: Duplicate identifier 'selectMiMoModel'.
+tests/alva-mimo-probe.test.ts(102,39): error TS2300: Duplicate identifier 'probeTimeoutMs'.
+tests/alva-mimo-probe.test.ts(102,54): error TS2300: Duplicate identifier 'readMiMoProfile'.
+tests/alva-mimo-probe.test.ts(102,75): error TS2300: Duplicate identifier 'MiMoProfileMetadata'.

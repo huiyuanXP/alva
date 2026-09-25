@@ -1,0 +1,140 @@
+{
+  "beforeRun": "20260925T074740232Z-ALVA056-mimo-0b62e3",
+  "afterRun": "20260925T075949811Z-ALVA056-mimo-1947ac",
+  "comparison": "recorded model outputs only, no source geometry rewritten by this comparison",
+  "walls": {
+    "beforeCount": 25,
+    "afterCount": 26,
+    "removed": [
+      "wall_int_bedroom_horizontal_right"
+    ],
+    "added": [
+      "wall_int_bedroom_horizontal_right_a",
+      "wall_int_bedroom_horizontal_right_b"
+    ],
+    "changed": []
+  },
+  "rooms": {
+    "beforeCount": 5,
+    "afterCount": 5,
+    "removed": [],
+    "added": [],
+    "changed": []
+  },
+  "openings": {
+    "beforeCount": 12,
+    "afterCount": 12,
+    "removed": [],
+    "added": [],
+    "changed": [
+      {
+        "id": "opening_door_bathroom",
+        "changes": {
+          "offset": {
+            "before": 0.05,
+            "after": 0.5
+          }
+        }
+      },
+      {
+        "id": "opening_door_kitchen",
+        "changes": {
+          "offset": {
+            "before": 0.05,
+            "after": 0.5
+          }
+        }
+      },
+      {
+        "id": "opening_door_lower_left",
+        "changes": {
+          "offset": {
+            "before": 0.04,
+            "after": 0.5
+          }
+        }
+      },
+      {
+        "id": "opening_door_upper_left",
+        "changes": {
+          "offset": {
+            "before": 0.04,
+            "after": 0.5
+          }
+        }
+      },
+      {
+        "id": "opening_window_bottom_living",
+        "changes": {
+          "offset": {
+            "before": 0.18,
+            "after": 0.5
+          }
+        }
+      },
+      {
+        "id": "opening_window_left_lower",
+        "changes": {
+          "offset": {
+            "before": 0.12,
+            "after": 0.45
+          }
+        }
+      },
+      {
+        "id": "opening_window_left_upper",
+        "changes": {
+          "offset": {
+            "before": 0.12,
+            "after": 0.64
+          }
+        }
+      },
+      {
+        "id": "opening_window_right_kitchen_lower",
+        "changes": {
+          "offset": {
+            "before": 0.12,
+            "after": 0.36
+          }
+        }
+      },
+      {
+        "id": "opening_window_right_kitchen_upper",
+        "changes": {
+          "offset": {
+            "before": 0.12,
+            "after": 0.64
+          }
+        }
+      },
+      {
+        "id": "opening_window_top_bedroom",
+        "changes": {
+          "offset": {
+            "before": 0.08,
+            "after": 0.5
+          }
+        }
+      },
+      {
+        "id": "opening_window_top_kitchen",
+        "changes": {
+          "offset": {
+            "before": 0.1,
+            "after": 0.5
+          }
+        }
+      },
+      {
+        "id": "opening_window_top_living",
+        "changes": {
+          "offset": {
+            "before": 0.08,
+            "after": 0.5
+          }
+        }
+      }
+    ]
+  }
+}

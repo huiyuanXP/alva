@@ -1,0 +1,173 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (49.780335ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (1.01338ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (1.931811ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (2.838245ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.47564ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (2.860559ms)
+✔ ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds (0.315534ms)
+✔ ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate (0.834516ms)
+✔ ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair (1.983978ms)
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.400488ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (16394.201629ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.292807ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (12.020538ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (68.539612ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (1.116438ms)
+✔ ALVA-056 distinguishes revoked Codex login from model or JSON failure (2.511197ms)
+✔ ALVA-056 distinguishes unavailable environment credentials from provider rejection and unsupported model (0.875967ms)
+✔ ALVA-056 timeout, spawn failure and successful transport are separate outcomes (0.344389ms)
+✔ ALVA-056 public protocol errors redact keys and endpoint query strings (0.460934ms)
+✔ ALVA-056 replays actual sanitized failures without making new provider calls (3.426833ms)
+✔ ALVA-056 defaults to the real profile model without a stale CLI model override (63.602526ms)
+✔ ALVA-056 only an explicit within-catalog model choice adds a model flag (0.872587ms)
+✔ ALVA-056 rejects text-only, non-MiMo catalog and missing environment credentials before launch (1.095947ms)
+✔ ALVA-056 native schema and schema-in-prompt remain distinct transport modes (0.45484ms)
+✔ ALVA-056 disables inherited MCP endpoints, hooks, shell, snapshots, patches and agents (0.574737ms)
+✔ ALVA-056 deadline cannot be disabled, made infinite or raised past600seconds (1.668157ms)
+✔ ALVA-056 successful transport cannot conceal parse, schema or geometry failures (0.489831ms)
+✔ ALVA-056 confirmation errors and warning-only or inconclusive diagnostics require review (0.521372ms)
+✔ ALVA-056 missing completion, changed profile and unexpected tools are never valid candidates (0.3149ms)
+✔ ALVA-056 even a clean structural result never authorizes automatic adoption (0.25627ms)
+✔ ALVA-056 configured non-prefix secret values are also redacted (0.234773ms)
+✔ ALVA-056 hook state metadata is not misinterpreted as a lifecycle event array (0.26062ms)
+✔ ALVA-056 empty schema-valid response is a recognition failure, not only a topology warning (0.256517ms)
+✔ ALVA-056 freezes both supported import call names without inventing or ambiguously selecting prompts (0.460462ms)
+✔ ALVA-056 the current model prompt unambiguously defines center-fraction offsets (0.385999ms)
+✔ ALVA-056 explicit correction binds one original image, schema and raw response (0.788477ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22866.759244
+{
+  "ticket": "ALVA-053",
+  "runId": "20260925T082009449Z-ALVA053-800eeb",
+  "sourceHead": "caf3c75e0488c49858b8324facfce85ee87a70c4",
+  "startedAt": "2026-09-25T08:20:09.534Z",
+  "live": false,
+  "productionMutations": false,
+  "privateEvidence": ".runtime/20260925T082009449Z-ALVA053-800eeb",
+  "sourceFiles": {
+    "api/codex.ts": "f0fbcb4b51f94c6d0e8544158b33dc54331445fa4957cc4e9707604d3b6c56a5",
+    "api/import.ts": "7c49a80354dda71c6304acaa9b7f7a34c3a333faae3091f493080d3a9b30901d",
+    "api/import/response.ts": "18b4d6c9f725a01144a3f7a5c95ae06c79d3c68442a343badf18d70cad3c691c",
+    "api/codex-timeout.ts": "8708698c91f18d313b5de7e59d1d76e297b44cd7d4c2578ad2b36561f71c59f5",
+    "api/model.ts": "61a685375e6f9a40b28ec3d2536d4f9d12f3d6fb1f5e8212a3c823386a4f732c",
+    "api/topology/validate.ts": "40a2683dfd57c11ec9b262b33ad8caf5ff0473f5c5936afc8cc3b05b0d4915a7",
+    "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e",
+    "scripts/alva-053-check.ts": "f2ee5414d1e40d42b6796b39fbda97bb70cc5a835a6f7a62930678cb97fc1243"
+  },
+  "replay": [
+    {
+      "name": "T-junction forward",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：全屋下右区域竖向墙 的末端接到了 全屋上右区域横向墙 的中间，但这里还没有建立共同连接点。\n可能原因：当前数据把这里记录成“一面连续长墙 + 一面在中途结束的墙”。几何上看起来已经接触，但拓扑图里没有共享节点；这通常来自识图时把 T 型交接处的主墙识别成了一整段。\n建议修正：① 如果原图确实是 T 型连接，把 全屋上右区域横向墙 在交点处分成两段，让三段墙共用同一个连接点；② 如果这里本应是墙角，把 全屋下右区域竖向墙 的末端移动到 全屋上右区域横向墙 的真实端点；③ 如果其中一段是误识别墙，对照原图后删除误识别墙。\n技术信息（供开发排查）：vertical / horizontal"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "T-junction reverse",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：全屋下右区域竖向墙 的末端接到了 全屋上右区域横向墙 的中间，但这里还没有建立共同连接点。\n可能原因：当前数据把这里记录成“一面连续长墙 + 一面在中途结束的墙”。几何上看起来已经接触，但拓扑图里没有共享节点；这通常来自识图时把 T 型交接处的主墙识别成了一整段。\n建议修正：① 如果原图确实是 T 型连接，把 全屋上右区域横向墙 在交点处分成两段，让三段墙共用同一个连接点；② 如果这里本应是墙角，把 全屋下右区域竖向墙 的末端移动到 全屋上右区域横向墙 的真实端点；③ 如果其中一段是误识别墙，对照原图后删除误识别墙。\n技术信息（供开发排查）：vertical / horizontal"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "contained overlap forward",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：全屋下左区域横向墙 的末端接到了 全屋下右区域横向墙 的中间，但这里还没有建立共同连接点。\n可能原因：当前数据把这里记录成“一面连续长墙 + 一面在中途结束的墙”。几何上看起来已经接触，但拓扑图里没有共享节点；这通常来自识图时把 T 型交接处的主墙识别成了一整段。\n建议修正：① 如果原图确实是 T 型连接，把 全屋下右区域横向墙 在交点处分成两段，让三段墙共用同一个连接点；② 如果这里本应是墙角，把 全屋下左区域横向墙 的末端移动到 全屋下右区域横向墙 的真实端点；③ 如果其中一段是误识别墙，对照原图后删除误识别墙。\n技术信息（供开发排查）：short / long"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "contained overlap reverse",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：全屋下左区域横向墙 的末端接到了 全屋下右区域横向墙 的中间，但这里还没有建立共同连接点。\n可能原因：当前数据把这里记录成“一面连续长墙 + 一面在中途结束的墙”。几何上看起来已经接触，但拓扑图里没有共享节点；这通常来自识图时把 T 型交接处的主墙识别成了一整段。\n建议修正：① 如果原图确实是 T 型连接，把 全屋下右区域横向墙 在交点处分成两段，让三段墙共用同一个连接点；② 如果这里本应是墙角，把 全屋下左区域横向墙 的末端移动到 全屋下右区域横向墙 的真实端点；③ 如果其中一段是误识别墙，对照原图后删除误识别墙。\n技术信息（供开发排查）：short / long"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "4cm boundary gap",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": true
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "room overlap",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": true
+      },
+      "diagnosticCodes": []
+    }
+  ],
+  "orderInvariant": true,
+  "image": {
+    "path": "references/room-study-handoff/public/floorplan.png",
+    "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+    "bytes": 36268,
+    "kind": "repository original, NOT the latest annotated screenshot original"
+  },
+  "promptSha256": "47ce3c95361bbf4d0c8655455353b82031926f859f43f866b296e88e2e9d00f5",
+  "schemaSha256": "154e304e44ea07d5e7cdfdff23486a4cf6dcc76317b2a3bf5f1e3a1956d26117",
+  "completedAt": "2026-09-25T08:20:09.664Z",
+  "acceptancePassed": true,
+  "boundaries": [
+    "not a production import or deployment",
+    "no latest screenshot/source association or ground-truth accuracy claim",
+    "diagnostic findings are not silently repaired or confirmed",
+    "legacy Gemini availability is recorded, not required by the active MiMo route"
+  ]
+}

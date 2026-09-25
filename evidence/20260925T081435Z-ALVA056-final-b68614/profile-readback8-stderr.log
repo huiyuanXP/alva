@@ -1,0 +1,15 @@
+/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/scripts/lib/mimo-profile.ts:41
+ if(metadata.requiresOpenAIAuth||!metadata.envKey||!metadata.credentialPresent)throw new Error('Missing environment variable for selected MiMo provider; use its normal authenticated user session');
+                                                                               ^
+
+Error: Missing environment variable for selected MiMo provider; use its normal authenticated user session
+    at selectMiMoModel (/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/scripts/lib/mimo-profile.ts:41:86)
+    at [eval]:3:85
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:11)
+
+Node.js v24.21.0

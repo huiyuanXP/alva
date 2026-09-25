@@ -1,3 +1,4 @@
+import {freezeImportPrompt} from './lib/mimo-probe.js';
 /** ALVA-053 diagnostic replay and explicit live App Server acceptance.
  * Real provider calls are opt-in. No production database, project or credentials
  * file is read; full responses/events remain under this worktree's .runtime. */
@@ -41,8 +42,7 @@ report.replay=Object.entries(cases).map(([name,scene])=>({name,synthetic:true,im
 report.orderInvariant=report.replay[0].confirmation.accepted===report.replay[1].confirmation.accepted&&report.replay[2].confirmation.accepted===report.replay[3].confirmation.accepted;
 const sourcePath=resolve('references/room-study-handoff/public/floorplan.png'),image=await readFile(sourcePath),source=await readFile('api/import.ts','utf8');
 report.image={path:relative(process.cwd(),sourcePath),sha256:sha(image),bytes:image.length,kind:'repository original, NOT the latest annotated screenshot original'};
-const prompt=source.match(/runCodex\(\{text:`([\s\S]*?)`,images:/)?.[1];
-if(!prompt)throw new Error('Current import prompt cannot be frozen unambiguously');
+const prompt=freezeImportPrompt(source);
 const schema=z.toJSONSchema(Scene);
 function strict(node:any){if(!node||typeof node!=='object')return;if(node.properties){node.required=Object.keys(node.properties);node.additionalProperties=false}delete node.default;for(const v of Object.values(node))if(Array.isArray(v))v.forEach(strict);else strict(v)}
 strict(schema);report.promptSha256=sha(prompt);report.schemaSha256=sha(JSON.stringify(schema));
