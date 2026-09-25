@@ -61,3 +61,12 @@ MCP 为默认优先调用渠道。错误必须从工具返回可解释结构，�
 安装版协议 schema 已只读导出核验：ThreadStartParams 包含 ephemeral、dynamicTools、config；ThreadResumeParams 包含 threadId、config，未暴露 dynamicTools 覆盖字段。桥接工具目录变更的恢复兼容需实测，不能照搬官网最新字段。未启动模型调用。
 
 2026-09-25 协调更新：用户明确授权整理已有修改，清理提交 8ec0cbb；原认领障碍解除。057 最新交接 a39646a 表明业务已验但未合 main，等待本票 MCP 运行层；先实现独立运行层，不提前吸收其未集成功能。
+
+## 2026-09-25 第一阶段隔离探针
+
+已执行脚本 `scripts/alva-066-mcp-probe.py`，使用当前环境鉴权与现役 `gemini-3.1-flash-lite`，独立私有 CODEX_HOME、合成项目、本机动态端口；未连接生产数据。
+
+- 原生 HTTP MCP：run `20260925T185333Z-ALVA066-mcp-b4b7ec`。两阶段 tools/list 各仅返回所属工具，户型 thread Resume 保持同 ID；三轮均无实际 tools/call，nonce 未返回，故原生调用验收失败。此证据不定位网关内部原因，也不证明所有模型均不支持原生 MCP。
+- 受控桥接：run `20260925T185430Z-ALVA066-mcp-a42664`。dynamicTools 从所属 HTTP MCP 的 tools/list 获取目录，实际经 HTTP tools/call 执行；户型、生活设计、返回户型共三次模型实际调用并正确返回随机 nonce。重启 App Server 后 Resume 同一户型 thread，并恢复原动态工具目录。结果 pass=true。
+- 下一步按批准的后备路径实施 dynamicTools→HTTP MCP，保留两包边界、凭据与业务合同。尚需真实业务、跨阶段拒绝、摘要送达、持久化、附件、问卷建议、样式/UI回执和生产验收，整票继续 in-progress。
+- 初始 systemd 探针因未继承 PATH 找不到 codex，在模型调用前失败；第二次显式传递 PATH 与已授权环境变量后运行。真实密钥不写仓库。各探针资源限额 CPU60%、MemoryMax900M、TasksMax128。

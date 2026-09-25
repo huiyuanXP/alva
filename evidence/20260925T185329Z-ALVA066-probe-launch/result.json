@@ -1,0 +1,5 @@
+{
+  "pass": false,
+  "phase": "before-model-call",
+  "error": "systemd user process PATH did not contain codex; corrected by explicit PATH inheritance"
+}
