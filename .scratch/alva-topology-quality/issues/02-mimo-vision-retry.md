@@ -10,7 +10,7 @@
 
 **Parallel lane:** topology / import；重任务串行。
 
-用户明确恢复53、56验收修复，并追加MiMo单次10分钟。个人实现已完成，集成前最终复核：已完成（最新main基线、类型检查、36项回归及53离线重放通过；待main集成）。分支 `task/ALVA-056-recovery-20260925`；Worktree `.runtime/worktrees/ALVA-056-recovery-20260925`。本票不重排旧week/step，不将诊断结果自动采用为正式设计。
+用户明确恢复53、56验收修复，并追加MiMo单次10分钟。个人实现及main集成均已完成，最终复核：已完成（最新main基线、类型检查、36项回归及53离线重放通过；已于b6575bf集成main）。分支 `task/ALVA-056-recovery-20260925`；Worktree `.runtime/worktrees/ALVA-056-recovery-20260925`。本票不重排旧week/step，不将诊断结果自动采用为正式设计。
 
 - [x] 使用当前 `codex exec --profile mimo` 真实调用视觉模型，记录请求模型/配置指纹与返回证据；不由别名或模型自述判定最终上游。
 - [x] 同一仓库原图、冻结的现役提示/schema完成独立首轮复测，逐阶段保存原始返回、解析/schema/几何/三类诊断、时长和可获得的token；显式纠错与首轮分开。

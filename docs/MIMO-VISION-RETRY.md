@@ -1,6 +1,6 @@
 # ALVA-056：原生MiMo识图复测与10分钟预算
 
-检查日期：2026-09-25。当前为个人工作区实现，集成前最终复核：已完成（最新main基线、类型检查、36项回归及53离线重放通过；待main集成）。运行入口是普通ubuntu会话中的 `codex exec --profile mimo`；不是MCP旧CODEX_HOME，也不是业务App Server鉴权路径。用户profile、密钥和生产配置未改。
+检查日期：2026-09-25。当前已通过验收并集成main，最终复核：已完成（最新main基线、类型检查、36项回归及53离线重放通过；已于b6575bf集成main）。运行入口是普通ubuntu会话中的 `codex exec --profile mimo`；不是MCP旧CODEX_HOME，也不是业务App Server鉴权路径。用户profile、密钥和生产配置未改。
 
 ## 当前结果
 
