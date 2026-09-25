@@ -1,0 +1,8 @@
+2026-09-22T16:21:37+00:00 <host> sshd[48168]: error: beginning MaxStartups throttling
+2026-09-22T16:22:02+00:00 <host> sshd[48168]: drop connection #11 from [<ip>]:3713 on [<ip>]:22 past MaxStartups
+2026-09-22T16:30:07+00:00 <host> sshd[48168]: error: in MaxStartups throttling for 00:08:55, 4 connections dropped
+2026-09-22T16:30:07+00:00 <host> sshd[48168]: drop connection #16 from [<ip>]:35174 on [<ip>]:22 past MaxStartups
+2026-09-22T16:37:02+00:00 <host> sshd[48168]: error: in MaxStartups throttling for 00:15:42, 7 connections dropped
+2026-09-22T16:38:01+00:00 <host> sshd[48168]: drop connection #19 from [<ip>]:2775 on [<ip>]:22 past MaxStartups
+2026-09-22T16:54:48+00:00 <host> sshd[48168]: error: in MaxStartups throttling for 00:33:36, 8 connections dropped
+2026-09-22T16:54:48+00:00 <host> sshd[48168]: drop connection #23 from [<ip>]:4069 on [<ip>]:22 past MaxStartups

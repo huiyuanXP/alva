@@ -1,0 +1,47 @@
+MainPID=566
+NRestarts=0
+MemoryCurrent=549912576
+MemoryPeak=1117204480
+CPUQuotaPerSecUSec=infinity
+MemoryHigh=infinity
+MemoryMax=infinity
+Id=alva.service
+ActiveState=active
+SubState=running
+ActiveEnterTimestamp=Fri 2026-09-25 03:32:11 UTC
+
+MainPID=571
+NRestarts=0
+MemoryCurrent=295227392
+MemoryPeak=360566784
+CPUQuotaPerSecUSec=infinity
+MemoryHigh=infinity
+MemoryMax=infinity
+Id=coding-tools-mcp.service
+ActiveState=active
+SubState=running
+ActiveEnterTimestamp=Fri 2026-09-25 03:32:11 UTC
+
+MainPID=567
+NRestarts=0
+MemoryCurrent=49614848
+MemoryPeak=51703808
+CPUQuotaPerSecUSec=infinity
+MemoryHigh=infinity
+MemoryMax=infinity
+Id=alva-tunnel.service
+ActiveState=active
+SubState=running
+ActiveEnterTimestamp=Fri 2026-09-25 03:32:13 UTC
+
+MainPID=572
+NRestarts=0
+MemoryCurrent=26218496
+MemoryPeak=27996160
+CPUQuotaPerSecUSec=infinity
+MemoryHigh=infinity
+MemoryMax=infinity
+Id=cloudflared-mcp.service
+ActiveState=active
+SubState=running
+ActiveEnterTimestamp=Fri 2026-09-25 03:32:13 UTC

@@ -1,5 +1,19 @@
 # What's next · 任务认领与并行开发
 
+## Pending 恢复队列（2026-09-25）
+
+用户明确授权本轮由协调人将已中断/暂停工作退回待办，释放的是当前执行占用，不删除历史负责人、分支、工作区或证据。pending不是done，也不是自动重新开工。44票看板不接受字面Status=pending；产品待办沿用ready-for-agent并在票内写Execution state=pending，额外维护票直接使用pending。此处是恢复索引，不另建产品状态数据库。
+
+| 对象 | 当前待办原因 | 保存的位置 | 恢复后的第一步 |
+|---|---|---|---|
+| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | pending：已有真实返回，主线集成未完成；不是仍然鉴权失败 | 历史负责人chatgpt-mimo；0d7ea5f及原main暂存8文件/未提交2文档 | 比对现有差异与证据，单任务复核5项离线测试及必要类型检查，再独立完成集成；不自动重跑模型或部署 |
+| [ALVA-053](docs/ALVA-053-model-topology-audit.md) | pending：诊断成果未集成，路由/当前样本仍待核实 | 历史负责人chatgpt-audit；个人分支88506f2 | 读完整报告与脱敏证据，区分已被055修复的问题；先处理剩余路由/样本关联，再按原范围复核 |
+| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | pending：用户原先要求暂停，尚未实施 | 历史负责人yang-chatgpt；f3aedbb工作区保留 | 等新的开工指令，确认ALVA-015证据与共享文件，重新登记署名后实施三个正反例及来源/幂等验收 |
+
+额外保护：`bugfix/floorplan-structured-output-preview`有5个未提交文件，当前无对应工作区执行进程，未编号、未集成；恢复前由原负责人核对，不新建假完成票、不覆盖或清理。ALVA-054整体done保留，其线上登录后核验仍是票内单独未完成边界，不因本次重启伪造通过。
+
+取证与保护清单：[docs/INCIDENT-2026-09-25-server-recovery.md](docs/INCIDENT-2026-09-25-server-recovery.md)；`evidence/20260925T034733Z-server-recovery-2cae71/`。本轮所有复核命令串行、轻量，不执行重建/浏览器/模型。重型任务恢复前确认前一个进程已结束，先制定任务级CPU/内存限额与采样方案；本次不改变服务配置，不以多开重试解决卡顿。
+
 当前已完成并集成 ALVA-008–012、ALVA-014–019、ALVA-043；其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
 
 运行边界已于 2026-09-22 覆盖更新：`/home/ubuntu/aws-hackthon` 全目录归档且不使用；Coding Machine MCP 仍临时依赖其中 `.venv-mcp` 与 `.mcp-runtime`。现役密码来源、旧副本删除记录和迁移前提见 [远端访问](docs/REMOTE-ACCESS.md)。
@@ -17,7 +31,7 @@
 | [ALVA-013](.scratch/alva-completion/issues/06-example-building-views.md) | 建筑3D总览、剖切与房间视角 | `render` | | | 待认领；yang-chatgpt 按用户要求释放，未实施；原分支与Worktree保留，详见票内交接 |
 | [ALVA-020](.scratch/alva-completion/issues/13-scope-confirmation.md) | 作用范围澄清与确认 | `proposals` |  |  | 待认领；开工前登记 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
-| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` | yang-chatgpt | `task/ALVA-028-yang-chatgpt` / `/home/ubuntu/Alva-worktrees/ALVA-028-yang-chatgpt` | 已认领，用户要求暂不实施；预计 api/business.ts、api/model.ts、api/store.ts、api/api.ts、web/src/Panels.tsx、web/src/review/；端口未启用，开工前核验；Worktree已创建；未开工 |
+| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` |  |  | pending；用户此前要求暂不实施；2026-09-25释放当前执行占用，历史yang-chatgpt/f3aedbb与Worktree保留；详见票内恢复记录，新的开工指令前不实施 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` | | | 待认领；状态与依赖重算补回遗漏行 |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
@@ -90,7 +104,7 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
-| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) | chatgpt-audit | `task/ALVA-053-chatgpt-audit` / `/home/ubuntu/Alva-worktrees/ALVA-053-chatgpt-audit`；仅诊断脚本/证据/文档，不改产品源码或配置，不重启服务 | in-progress |
+| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) |  | 历史chatgpt-audit；task/ALVA-053-chatgpt-audit / /home/ubuntu/Alva-worktrees/ALVA-053-chatgpt-audit；88506f2保留；待诊断复核和主线收尾，不占用执行资源 | pending |
 
 
 ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028仍按用户要求暂停。
@@ -99,4 +113,4 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
-| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | chatgpt-mimo | task/ALVA-056-chatgpt-mimo / .runtime/worktrees/ALVA-056-chatgpt-mimo；53566b7；Codex登录刷新令牌撤销，官方路径缺MIMO_API_KEY；两次无模型输出，功能代码未合入 | blocked |
+| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) |  | 历史chatgpt-mimo；task/ALVA-056-chatgpt-mimo / .runtime/worktrees/ALVA-056-chatgpt-mimo；最新0d7ea5f；真实返回已有，main原暂存及未提交成果保留，集成未完成 | pending |

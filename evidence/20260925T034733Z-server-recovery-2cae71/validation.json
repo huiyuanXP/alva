@@ -1,0 +1,204 @@
+{
+  "runId": "20260925T034733Z-server-recovery-2cae71",
+  "baseHead": "5e1513ad588e3b0c2a359684f2157124bf381dd2",
+  "validatedAt": "2026-09-25T03:53:45.940178+00:00",
+  "passed": true,
+  "checks": {
+    "offlineTests": [
+      {
+        "name": "board-tests",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "node_modules/.bin/tsx",
+          "--test",
+          "tests/alva-todo.test.ts"
+        ],
+        "exitCode": 0,
+        "startedModels": false,
+        "startedBrowser": false,
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "name": "mimo-offline-tests",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "node_modules/.bin/tsx",
+          "--test",
+          "tests/alva-mimo-probe.test.ts"
+        ],
+        "exitCode": 0,
+        "startedModels": false,
+        "startedBrowser": false,
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0
+      }
+    ],
+    "baseHeadUnchanged": true,
+    "originalIndexUnchanged": true,
+    "originalStagedFilesPreserved": 8,
+    "priorUnstagedDocumentBodiesPreservedExceptAuthorizedStatus": true,
+    "worktreesPreserved": 21,
+    "previewFilesUnchanged": 5,
+    "newDocumentLinks": [
+      {
+        "source": "CURRENT.md",
+        "target": "docs/INCIDENT-2026-09-25-server-recovery.md"
+      },
+      {
+        "source": "CURRENT.md",
+        "target": ".scratch/alva-topology-quality/README.md"
+      },
+      {
+        "source": "CURRENT.md",
+        "target": "ACCEPTANCE.md"
+      },
+      {
+        "source": "CURRENT.md",
+        "target": "SPEC.md"
+      },
+      {
+        "source": "Handoff.md",
+        "target": "docs/INCIDENT-2026-09-25-server-recovery.md"
+      },
+      {
+        "source": "NextTask.md",
+        "target": "docs/INCIDENT-2026-09-25-server-recovery.md"
+      },
+      {
+        "source": "GlobalHandoff.md",
+        "target": "docs/INCIDENT-2026-09-25-server-recovery.md"
+      }
+    ],
+    "liveBoard": {
+      "local": {
+        "health": {
+          "ok": true,
+          "application": "alva"
+        },
+        "revision": "3a71dd423b47",
+        "total": 44,
+        "counts": {
+          "done": 12,
+          "ready": 7,
+          "blocked": 25
+        },
+        "inProgress": 0,
+        "alva028": {
+          "status": "ready-for-agent",
+          "owner": "",
+          "column": "ready"
+        },
+        "checks": 150
+      },
+      "public": {
+        "health": {
+          "ok": true,
+          "application": "alva"
+        },
+        "revision": "3a71dd423b47",
+        "total": 44,
+        "counts": {
+          "done": 12,
+          "ready": 7,
+          "blocked": 25
+        },
+        "inProgress": 0,
+        "alva028": {
+          "status": "ready-for-agent",
+          "owner": "",
+          "column": "ready"
+        },
+        "checks": 150
+      }
+    },
+    "maintenancePendingStates": [
+      "ALVA-053",
+      "ALVA-056"
+    ],
+    "servicesUnrestarted": [
+      {
+        "MainPID": "566",
+        "NRestarts": "0",
+        "Id": "alva.service",
+        "ActiveState": "active"
+      },
+      {
+        "MainPID": "571",
+        "NRestarts": "0",
+        "Id": "coding-tools-mcp.service",
+        "ActiveState": "active"
+      },
+      {
+        "MainPID": "567",
+        "NRestarts": "0",
+        "Id": "alva-tunnel.service",
+        "ActiveState": "active"
+      },
+      {
+        "MainPID": "572",
+        "NRestarts": "0",
+        "Id": "cloudflared-mcp.service",
+        "ActiveState": "active"
+      }
+    ],
+    "unrun": [
+      "full-build",
+      "full-test-suite",
+      "real-provider-call",
+      "Chromium",
+      "production-login",
+      "production-data-write",
+      "deployment",
+      "resource-limit-configuration",
+      "cloud-account-metrics-or-audit"
+    ],
+    "recoveryCommitDiffCheck": true,
+    "recoveryCommitPaths": [
+      ".scratch/alva-completion/README.md",
+      ".scratch/alva-completion/issues/21-initial-pain-analysis.md",
+      ".scratch/alva-topology-quality/README.md",
+      ".scratch/alva-topology-quality/issues/02-mimo-vision-retry.md",
+      "CURRENT.md",
+      "GlobalHandoff.md",
+      "Handoff.md",
+      "NextTask.md",
+      "PROGRESS.md",
+      "docs/ALVA-053-model-topology-audit.md",
+      "docs/INCIDENT-2026-09-25-server-recovery.md",
+      "docs/MIMO-VISION-RETRY.md",
+      "evidence/20260925T034733Z-server-recovery-2cae71/board-tests.log",
+      "evidence/20260925T034733Z-server-recovery-2cae71/boot-1-power-events.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/boot-2-power-events.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/boots.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/current-disk.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/current-memory.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/current-processes.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/current-units.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/health.json",
+      "evidence/20260925T034733Z-server-recovery-2cae71/manifest.json",
+      "evidence/20260925T034733Z-server-recovery-2cae71/mimo-offline-tests.log",
+      "evidence/20260925T034733Z-server-recovery-2cae71/network.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/pressure-events.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/sar22.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/sar23-averages.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/sar24-averages.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/sar25.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/shutdown-peaks.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/ssh-throttling.txt",
+      "evidence/20260925T034733Z-server-recovery-2cae71/test-results.json",
+      "evidence/20260925T034733Z-server-recovery-2cae71/validation.json",
+      "evidence/20260925T034733Z-server-recovery-2cae71/workspace-before.json",
+      "tests/alva-todo.test.ts"
+    ],
+    "priorStagedPathsExcludedFromRecoveryCommit": true
+  }
+}

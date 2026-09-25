@@ -4,6 +4,8 @@
 
 状态词：`ready-for-agent`（定义已就绪，依赖完成且获得执行范围后可启动）、`in-progress`、`blocked`、`done`。只有验收通过并完成提交/交接才标done；研究完成或票已发布不代表功能完成。
 
+2026-09-25恢复约定：本轮pending表示未在执行、待恢复。为兼容现役只读看板，产品ALVA-028使用Status=ready-for-agent、Execution state=pending，NextTask当前署名清空；用户暂停条件保留，不自动开工。额外维护ALVA-053/056的Status直接pending，仅列NextTask恢复队列，不进入44票计数。
+
 | 本地号 | 正式ID | 原草案 | 交付 | 前置 |
 |---|---|---|---|---|
 | 01 | ALVA-008 | T01 | [统一登录验证码与多设备访问](issues/01-shared-login-code.md) | 无 |

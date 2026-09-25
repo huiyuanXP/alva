@@ -1,0 +1,42 @@
+{
+  "runId": "20260925T034733Z-server-recovery-2cae71",
+  "verifiedAt": "2026-09-25T03:52:44.621895+00:00",
+  "tests": [
+    {
+      "name": "board-tests",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "node_modules/.bin/tsx",
+        "--test",
+        "tests/alva-todo.test.ts"
+      ],
+      "exitCode": 0,
+      "startedModels": false,
+      "startedBrowser": false,
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "mimo-offline-tests",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "node_modules/.bin/tsx",
+        "--test",
+        "tests/alva-mimo-probe.test.ts"
+      ],
+      "exitCode": 0,
+      "startedModels": false,
+      "startedBrowser": false,
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+2026-09-25T03:30:42+00:00 <host> systemd-logind[674]: Power key pressed short.
+2026-09-25T03:30:42+00:00 <host> systemd-logind[674]: The system will power off now!
+2026-09-25T03:30:43+00:00 <host> systemd[1]: cloud-config.service: Consumed 3.760s CPU time, 30.8M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: networkd-dispatcher.service: Consumed 19.358s CPU time, 13.2M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: cron.service: Consumed 1min 28.961s CPU time, 4.6M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: chrony.service: Consumed 32.288s CPU time, 2.5M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: ssh.service: Consumed 25min 4.070s CPU time, 53.7M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: cloudflared-mcp.service: Consumed 41min 17.963s CPU time, 28.5M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: alva-tunnel.service: Consumed 14min 29.941s CPU time, 33.4M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: session-886.scope: Consumed 7h 46min 12.674s CPU time, 2.8G memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: systemd-logind.service: Consumed 26.938s CPU time, 7.7M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: user@1000.service: Consumed 3min 4.443s CPU time, 923.5M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: user-1000.slice: Consumed 10h 28min 20.554s CPU time, 2.9G memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: alva.service: Consumed 4min 36.531s CPU time, 957.8M memory peak, 0B memory swap peak.
+2026-09-25T03:30:43+00:00 <host> systemd[1]: coding-tools-mcp.service: Consumed 55min 38.510s CPU time, 2.0G memory peak, 0B memory swap peak.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: snap.amazon-ssm-agent.amazon-ssm-agent.service: Consumed 20min 15.795s CPU time, 32.3M memory peak, 0B memory swap peak.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: user.slice: Consumed 11h 4min 37.862s CPU time, 3.2G memory peak, 0B memory swap peak.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: cloud-init.service: Consumed 4.128s CPU time, 40.4M memory peak, 0B memory swap peak.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: systemd-resolved.service: Consumed 1min 14.531s CPU time, 4.3M memory peak, 0B memory swap peak.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: cloud-init-local.service: Consumed 1.096s CPU time, 70.9M memory peak, 0B memory swap peak.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: multipathd.service: Consumed 1min 50.114s CPU time, 18.7M memory peak, 0B memory swap peak.
+2026-09-25T03:30:50+00:00 <host> systemd-journald[3983375]: Journal stopped

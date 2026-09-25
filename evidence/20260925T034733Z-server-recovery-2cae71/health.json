@@ -1,0 +1,10 @@
+{
+  "local": {
+    "exitCode": 0,
+    "response": "{\"ok\":true,\"application\":\"alva\"}"
+  },
+  "public": {
+    "exitCode": 0,
+    "response": "{\"ok\":true,\"application\":\"alva\"}"
+  }
+}

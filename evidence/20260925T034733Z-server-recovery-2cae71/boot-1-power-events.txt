@@ -1,0 +1,3 @@
+2026-09-25T03:31:53+00:00 <host> systemd-logind[603]: Power key pressed short.
+2026-09-25T03:31:53+00:00 <host> systemd-logind[603]: The system will power off now!
+2026-09-25T03:32:00+00:00 <host> systemd[1]: Reached target shutdown.target - System Shutdown.

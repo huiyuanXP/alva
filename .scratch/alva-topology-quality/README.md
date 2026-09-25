@@ -7,4 +7,4 @@
 
 状态与验收以单票为准，认领以主目录NextTask为准。
 
-2026-09-22：ALVA-055已done并集成main c25fa79；ALVA-056因当前MCP鉴权不可用保持blocked，独立代码53566b7未合入。具体复核以单票与evidence为准。
+2026-09-25恢复：ALVA-055保持done/main c25fa79；ALVA-056当前pending，个人最新0d7ea5f已有真实MiMo候选返回，但主线集成未完成。原暂存/未提交内容保留，恢复步骤与结果限制见单票和主目录NextTask；旧鉴权失败只代表早期run。

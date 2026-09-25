@@ -1,0 +1,274 @@
+{
+  "runId": "20260925T034733Z-server-recovery-2cae71",
+  "collectedAt": "2026-09-25T03:47:35.732817+00:00",
+  "baseHead": "5e1513ad588e3b0c2a359684f2157124bf381dd2",
+  "redaction": "Host and IP addresses removed using valid-IP checks; clock timestamps retained. No credential files or session contents collected.",
+  "files": [
+    {
+      "file": "boots.txt",
+      "command": [
+        "journalctl",
+        "--list-boots",
+        "--no-pager"
+      ],
+      "exitCode": 0,
+      "sha256": "a4c988ecd827360ac7bf2d0d3446a6a64e135a052e1515a6287eda275476141b"
+    },
+    {
+      "file": "sar22.txt",
+      "command": [
+        "sar",
+        "-u",
+        "-r",
+        "-q",
+        "-B",
+        "-S",
+        "-f",
+        "/var/log/sysstat/sa22",
+        "-s",
+        "13:30:00",
+        "-e",
+        "19:00:00"
+      ],
+      "exitCode": 0,
+      "sha256": "0b9f3a09dc4c95f68f9551857369e02223e6abf360c10adc6179b5a71e2c2bf3"
+    },
+    {
+      "file": "sar25.txt",
+      "command": [
+        "sar",
+        "-u",
+        "-r",
+        "-q",
+        "-S",
+        "-f",
+        "/var/log/sysstat/sa25",
+        "-s",
+        "00:00:00",
+        "-e",
+        "03:30:30"
+      ],
+      "exitCode": 0,
+      "sha256": "21fa3a488b5acd86f8f823f6826bd034851a52f1b5599f974f1f1cac5fbd34f6"
+    },
+    {
+      "file": "network.txt",
+      "command": [
+        "journalctl",
+        "-b",
+        "-3",
+        "-u",
+        "systemd-networkd.service",
+        "--since",
+        "2026-09-22 15:00 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso"
+      ],
+      "exitCode": 0,
+      "sha256": "495b5b1f0320784f93398093dee00f4dd6d3398c8cd12c830b092a49e216617e"
+    },
+    {
+      "file": "ssh-throttling.txt",
+      "command": [
+        "journalctl",
+        "-b",
+        "-3",
+        "-u",
+        "ssh.service",
+        "--since",
+        "2026-09-22 14:00 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso",
+        "--grep",
+        "MaxStartups|Cannot allocate|Resource temporarily|Too many"
+      ],
+      "exitCode": 0,
+      "sha256": "3c2534bede16fddda1c9860337848f72dbc82689ac9534741eb071e31ce2f6b2"
+    },
+    {
+      "file": "pressure-events.txt",
+      "command": [
+        "journalctl",
+        "-b",
+        "-3",
+        "--since",
+        "2026-09-22 14:00 UTC",
+        "--until",
+        "2026-09-22 18:40 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso",
+        "--grep",
+        "memory pressure|watchdog|Out of memory|oom-kill|Connection timed out|Main process exited"
+      ],
+      "exitCode": 0,
+      "sha256": "c4b90c793ae9b7a2a4ff97a8f59a4039cdda9301a71143e3a51afbe4b9348856"
+    },
+    {
+      "file": "shutdown-peaks.txt",
+      "command": [
+        "journalctl",
+        "-b",
+        "-3",
+        "--since",
+        "2026-09-25 03:28 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso",
+        "--grep",
+        "Power key|power off now|Consumed.*memory peak|Journal stopped"
+      ],
+      "exitCode": 0,
+      "sha256": "2ea58267f855d1e19f7735e54a2025a28448b0d2de237d25a2929717f87d567f"
+    },
+    {
+      "file": "current-units.txt",
+      "command": [
+        "systemctl",
+        "show",
+        "alva.service",
+        "coding-tools-mcp.service",
+        "alva-tunnel.service",
+        "cloudflared-mcp.service",
+        "-p",
+        "Id",
+        "-p",
+        "ActiveState",
+        "-p",
+        "SubState",
+        "-p",
+        "MainPID",
+        "-p",
+        "NRestarts",
+        "-p",
+        "ActiveEnterTimestamp",
+        "-p",
+        "MemoryCurrent",
+        "-p",
+        "MemoryPeak",
+        "-p",
+        "MemoryHigh",
+        "-p",
+        "MemoryMax",
+        "-p",
+        "CPUQuotaPerSecUSec"
+      ],
+      "exitCode": 0,
+      "sha256": "3cb3445464745bf0bd70f85dc5b5f2decb0311cb445d3095b931750d1eee163f"
+    },
+    {
+      "file": "current-processes.txt",
+      "command": [
+        "ps",
+        "-eo",
+        "pid,ppid,stat,pcpu,pmem,rss,etimes,comm",
+        "--sort=-rss"
+      ],
+      "exitCode": 0,
+      "sha256": "70e2d6716ebff862acafdbd2aa49f50f1219e2d828e47b1a0c1d09912dfa62f4"
+    },
+    {
+      "file": "current-memory.txt",
+      "command": [
+        "free",
+        "-h"
+      ],
+      "exitCode": 0,
+      "sha256": "ef76b8da86df4ecb7e377d1520f4b99180118a6e284c0b62f771a99da8c49ef7"
+    },
+    {
+      "file": "current-disk.txt",
+      "command": [
+        "df",
+        "-h",
+        "/"
+      ],
+      "exitCode": 0,
+      "sha256": "ca719f990bc76480558af8cd6b1ea9a2048fa795dd0171514be99df720966d0a"
+    },
+    {
+      "file": "health.json",
+      "sha256": "9d4fa88a1d4318081efd9aa37941cf56ea3f72cb4aba68eb266e31329f6ac724"
+    },
+    {
+      "file": "boot-2-power-events.txt",
+      "sha256": "c7dde44d83e1b47ff5883040be7df23284d46a4faffabc6bd382cac1e8e9b443",
+      "command": [
+        "journalctl",
+        "-b",
+        "-2",
+        "--no-pager",
+        "-o",
+        "short-iso",
+        "--grep",
+        "Power key|power off now|shutdown.target"
+      ],
+      "exitCode": 0
+    },
+    {
+      "file": "sar24-averages.txt",
+      "sha256": "ec1f2e7cb458b8814513e2253944700a1ec16ac1348c277e6cd74231340a528d",
+      "command": [
+        "sar",
+        "-u",
+        "-r",
+        "-q",
+        "-f",
+        "/var/log/sysstat/sa24"
+      ],
+      "exitCode": 0
+    },
+    {
+      "file": "workspace-before.json",
+      "sha256": "d2f14a90430c7aa67bb7b3b397848e0cd83ada07316b210e270db5768900ae2c"
+    },
+    {
+      "file": "sar23-averages.txt",
+      "sha256": "e6c0e6318148f95ad2d2f87852531ca92ea058714dd6b91bf289116a47f66879",
+      "command": [
+        "sar",
+        "-u",
+        "-r",
+        "-q",
+        "-f",
+        "/var/log/sysstat/sa23"
+      ],
+      "exitCode": 0
+    },
+    {
+      "file": "boot-1-power-events.txt",
+      "sha256": "5ae318ff23737a7acdb498e79063a3e2df3396ef60987eb5cb8d9393a9aceff6",
+      "command": [
+        "journalctl",
+        "-b",
+        "-1",
+        "--no-pager",
+        "-o",
+        "short-iso",
+        "--grep",
+        "Power key|power off now|shutdown.target"
+      ],
+      "exitCode": 0
+    },
+    {
+      "file": "board-tests.log",
+      "sha256": "3eae99585f4716a4d7d58ec1d1849752f3143d7afb746d052153cf18517aba0a"
+    },
+    {
+      "file": "mimo-offline-tests.log",
+      "sha256": "5b642baccc2aafe088d652ab9a39d8b56a8e9276e63fd0ae1aa4f3b36349c7f6"
+    },
+    {
+      "file": "test-results.json",
+      "sha256": "349f5c782a76d3df74d5af6fc9092e488f63dee5e623801f98030b3f3661de36"
+    },
+    {
+      "file": "validation.json",
+      "sha256": "ebfb9faf0ea17457edc2c765690bcb0b17ca80759445ed2e0fafbd0b9999abc4"
+    }
+  ],
+  "redactionVerifiedAt": "2026-09-25T03:52:33.116659+00:00",
+  "finalizedAt": "2026-09-25T03:54:34.524126+00:00"
+}

@@ -1,0 +1,11 @@
+✔ published tracker: all 44 IDs, 150 criteria, dependency frontier and stable revision (12.003644ms)
+✔ source changes drive unlock, claim, errors and revision without a copied database (6.83762ms)
+✔ read-only board HTTP routes, real source, no-store and unknown-path handling (185.854139ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 652.055476

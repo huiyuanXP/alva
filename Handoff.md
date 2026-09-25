@@ -1,5 +1,23 @@
 # alva Handoff
 
+## 2026-09-25 本轮交接（先读）
+
+目标：服务器重启后检查中断任务、退回pending并保留下一步，不对应旧week/step，不实施产品票。检查main HEAD `5e1513a`；本轮新增恢复提交可由 `git log --grep='重启后待办恢复'` 追溯。
+
+状态：ALVA-053 pending（个人报告88506f2待复核/集成）；ALVA-056 pending（个人0d7ea5f已有真实MiMo结果，主线集成未完成）；ALVA-028未开工且用户暂停，Execution state=pending、Status=ready-for-agent，当前执行占用释放。详细恢复条件在单票与NextTask；不解锁后继、不把旧失败写成当前唯一结果、不把已完成票倒退。
+
+保护：main原8个暂存文件、2份未提交文档；preview的5个未提交文件；21个Worktree及历史负责人/提交全部保留。本次只提交本轮状态/交接/测试预期与脱敏取证增量，不代为集成ALVA-056代码。私有基线及回滚补丁`.runtime/20260925T034733Z-server-recovery-2cae71/`。
+
+服务器：MCP、alva与两个Tunnel均active；本地/公网healthz=alva/ok。9月22日的内存回收/I/O拥塞及网络、SSH失败已有日志；9月25日Power key关机有明确记录，不能证明CPU一直满载或点名唯一肇事程序。事故报告[docs/INCIDENT-2026-09-25-server-recovery.md](docs/INCIDENT-2026-09-25-server-recovery.md)，证据`evidence/20260925T034733Z-server-recovery-2cae71/`。
+
+下一步：优先恢复ALVA-056的现有成果核对与串行轻量验收，随后独立完成集成；需要最新截图结论时先取得未标注原图。ALVA-053先消除路由/样本关联缺口，ALVA-028仍等新开工指令。重型构建/浏览器不得并行争用这台2核3.7GiB且无Swap的机器；限额和历史进程监控尚未实施。未运行真实模型/浏览器/全量构建、未更改服务或密钥、未写生产数据。
+
+本轮验证结果以证据目录`validation.json`及PROGRESS为准。服务启动方式仍`npm run start:alva`/既有alva.service；4173只本地监听，不另起实例写生产库。回滚只撤本轮恢复增量，保留原暂存/未提交补丁；不得重置主工作树。
+
+## 历史交接记录（2026-09-19至22日）
+
+以下按各次记录时点阅读；恢复状态以本页上方、CURRENT及单票2026-09-25记录为准。
+
 当前 44 张产品 Ticket 中，ALVA-008–012、ALVA-014–019、ALVA-043 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
 
 44票均有 Parallel lane；当前依赖就绪为 ALVA-013、020、023、028、031、036、041，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。

@@ -1,0 +1,13 @@
+✔ ALVA-056 distinguishes revoked Codex login from model or JSON failure (1.258105ms)
+✔ ALVA-056 distinguishes unavailable environment credentials from provider rejection and unsupported model (0.590062ms)
+✔ ALVA-056 timeout, spawn failure and successful transport are separate outcomes (0.224186ms)
+✔ ALVA-056 public protocol errors redact keys and endpoint query strings (0.286107ms)
+✔ ALVA-056 replays actual sanitized failures without making new provider calls (0.490165ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 248.304122

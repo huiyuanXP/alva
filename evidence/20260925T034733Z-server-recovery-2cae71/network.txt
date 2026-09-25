@@ -1,0 +1,18 @@
+2026-09-22T15:18:02+00:00 <host> systemd[1]: systemd-networkd.service: Watchdog timeout (limit 3min)!
+2026-09-22T15:18:02+00:00 <host> systemd[1]: systemd-networkd.service: Killing process 10805 (systemd-network) with signal SIGABRT.
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: lo: Link UP
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: lo: Gained carrier
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: ens5: Link UP
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: ens5: Gained carrier
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: ens5: Gained IPv6LL
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: Failed to deserialize the previous invocation, ignoring: No data available
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: Enumeration completed
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: ens5: Configuring with /run/systemd/network/10-netplan-ens5.network.
+2026-09-22T15:18:19+00:00 <host> systemd-networkd[3983365]: ens5: DHCPv4 address <ip>/20, gateway <ip> acquired from <ip>
+2026-09-22T15:18:20+00:00 <host> systemd-networkd[3983365]: ens5: DHCPv6 address <ipv6> (valid for 7min 29s, preferred for 2min 19s)
+2026-09-22T16:12:02+00:00 <host> systemd-networkd[3983365]: ens5: Could not set route: Connection timed out
+2026-09-22T16:12:02+00:00 <host> systemd-networkd[3983365]: ens5: Failed
+2026-09-25T03:30:50+00:00 <host> systemd[1]: Stopping systemd-networkd.service - Network Configuration...
+2026-09-25T03:30:50+00:00 <host> systemd[1]: systemd-networkd.service: Deactivated successfully.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: Stopped systemd-networkd.service - Network Configuration.
+2026-09-25T03:30:50+00:00 <host> systemd[1]: systemd-networkd.service: Consumed 11.701s CPU time.

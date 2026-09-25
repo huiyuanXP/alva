@@ -108,3 +108,16 @@ neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTas
 尚缺当前MCP的有效MiMo环境凭据及最新标注截图的未标注原图。已保留ALVA-056署名与独立Worktree，恢复用新run ID；不读取宿主机凭据、不注销用户、不修改生产模型配置或候选。文档docs/MIMO-VISION-RETRY.md说明实际命令与边界。ALVA-055的21项回归和7组Chromium验收已独立完成并合入c25fa79，不受本外部阻塞回退。代码、文档与证据已核验；生产发布未执行，生成记忆out-of-scope，所有复核工作区保留。
 
 2026-09-22 ALVA-054 发布核验：9454057实现已发布，新前端资源index-Bq_Jy-gM.js在线，公网首页/healthz/资源200，鉴权边界正常。隔离9项回归与11组浏览器交互通过；线上登录后验证因现役私有验证码文件被拒绝而blocked，未修改验证码或绕过鉴权。证据 evidence/2026-09-22T122724115Z-ALVA054-deployment/；详见docs/ALVA-054-home-intake.md。
+
+
+## 2026-09-25 重启后待办恢复与服务器失联取证
+
+用户授权检查中断状态并回归pending。本轮main基线 `5e1513ad588e3b0c2a359684f2157124bf381dd2`，仅恢复状态/交接及取证，不实施产品或部署。ALVA-053主线由in-progress回pending，保留个人诊断88506f2及未解路由/样本关联；ALVA-056由未集成done说明纠正为pending，个人0d7ea5f已有真实MiMo输出而非仍仅鉴权失败；ALVA-028此前暂停未实施，释放当前执行占用，Status=ready-for-agent / Execution state=pending以兼容现役看板，仍等新的开工指令。12张已完成产品票和ALVA-055保持done，不解锁后继。
+
+服务器历史证据显示9月22日夜至23日凌晨（新加坡时间）严重内存回收/I/O拥塞：2CPU，load1/5/15达70.17/95.06/108.41、可用108.6MiB、无Swap；网络服务watchdog、ens5路由超时Failed、SSH MaxStartups丢弃连接。25日11:30后的停机为Power key/poweroff；前数小时CPU采样约99%idle，因此不称持续满载到重启、不把9月16日OOM移作本次证据。无法由生命周期cgroup峰值唯一确定程序/PID，未查云端审计或用户会话。
+
+验证已执行：看板定向回归3/3、MiMo离线探针回归5/5，均exit0、0失败/跳过；本地与公网healthz正常，两端看板revision一致，44票/150criteria/12done/7ready/25blocked/0progress；ALVA-028无当前owner且pending标记可见。新增文档链接7项通过；原8个暂存文件与全部21个Worktree保留，preview的5个原修改SHA256未变，原2份文档正文除获准状态标记外保留。本轮采用独立Git暂存索引，仅提交本轮增量，不吞并ALVA-056原暂存成果；原补丁私有备份 `.runtime/20260925T034733Z-server-recovery-2cae71/`。
+
+证据：`evidence/20260925T034733Z-server-recovery-2cae71/validation.json`、测试日志、sar/journal/健康快照与manifest；事故报告 `docs/INCIDENT-2026-09-25-server-recovery.md`；CURRENT/Handoff/NextTask/GlobalHandoff与单票均更新。四个生产/控制服务MainPID未变、NRestarts=0。未执行全量构建、Chromium、真实模型重试、生产登录/数据写入、资源配置或再次重启。neat-freak：代码与运行态只读核验，文档/状态changed-and-verified，生成记忆及云端审计out-of-scope；资源限额、持久进程采样仍pending。
+
+下一步优先复核ALVA-056保留成果与必要类型检查、独立完成集成，不自动发起昂贵重试；ALVA-053解决剩余路由/样本关联，ALVA-028继续暂停。重型任务串行并先检查资源，不能以并发重试覆盖事故。回滚仅撤本次增量，不重置工作树或删除既有Worktree。

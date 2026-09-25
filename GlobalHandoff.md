@@ -1,5 +1,7 @@
 # GlobalHandoff
 
+2026-09-25恢复：ALVA-053/056退pending，028退待办且继续用户暂停；本轮不实施产品、重启服务或改资源配置。事故报告[docs/INCIDENT-2026-09-25-server-recovery.md](docs/INCIDENT-2026-09-25-server-recovery.md)与CURRENT/NextTask为本次入口。内存压力、网络故障及SSH限流已留证；9月25日Power key关机与9月22日资源故障分开记录，具体肇事程序仍未唯一确定。21个Worktree和所有原未提交成果保留。
+
 - 项目根 `/home/ubuntu/Alva`；现役工程 api/、web/，开发前读 docs/PROJECT-STRUCTURE.md。
 - 正式tracker：`.scratch/alva-completion/README.md`。44票 ALVA-008–051 已发布；当前 ALVA-008–012、ALVA-014–019、ALVA-043 已完成并集成 `main`。
 - 用户已要求并行认领机制；当前规则任务不自动开工。依赖满足后在主目录NextTask署名即认领，独立Worktree开发，main串行集成后释放并解锁。参考家具及整组方案最后，随后最终验收。
@@ -8,7 +10,7 @@
 - 恢复读CURRENT/Handoff/NextTask。技能to-tickets用于发票，neat-freak用于知识对齐，不扩大生产权限。本库旧基线和历史证据保留；`/home/ubuntu/aws-hackthon` 已全目录归档且不使用。
 - 2026-09-22 MCP 凭据收尾：现役授权密码只在 `/home/ubuntu/aws-hackthon/.mcp-runtime/server.env`，旧副本 `config.json`、`connection.txt`、`mcp-login-password.txt` 已删除。MCP 仍临时依赖该目录下 `.venv-mcp` 与 `.mcp-runtime`，迁移到 `alva-*` 目录前不得删除；详见 `docs/REMOTE-ACCESS.md`。
 
-- 并行入口：NextTask.md；当前依赖就绪 frontier 为 ALVA-013/020/023/028/031/036/041；ALVA-028 已认领暂停，其余未认领。旧“全串行/首批全完成才可开始其他票”被覆盖。共享文件需协调，个人分支提交不等于done；全局交接只在main集成时更新。
+- 并行入口：NextTask.md；当前依赖就绪 frontier 为 ALVA-013/020/023/028/031/036/041；ALVA-028 已退待办（Execution state=pending、未实施，历史负责人保留），其余未认领。旧“全串行/首批全完成才可开始其他票”被覆盖。共享文件需协调，个人分支提交不等于done；全局交接只在main集成时更新。
 
 - ALVA-052恢复原prod.huiyuanxp.com/todo入口，现役api/todo与web/todo直接读取44张正式票和NextTask；无需重复上传，30秒刷新。源状态和认领仍在main维护，不修改MCP。运维与验证见docs/TODO-LIST.md。
 
@@ -32,6 +34,6 @@
 
 - ALVA-055已集成main，拓扑质量接口与二维定位见docs/TOPOLOGY-QUALITY.md；21回归+7组Chromium通过，未生产发布。诊断只读，MiMo实际识图结论由后续ALVA-056验证。
 
-- ALVA-056 blocked：Codex路径登录刷新令牌撤销，MiMo官方路径缺MIMO_API_KEY，均未生成模型输出。探针在task/ALVA-056-chatgpt-mimo（53566b7）；main仅同步状态/脱敏证据，不假合入未验收功能。恢复见docs/MIMO-VISION-RETRY.md。
+- ALVA-056当前pending：个人0d7ea5f已有真实MiMo返回，确认拓扑失败；main原暂存8文件及2份文档修改未集成，恢复见docs/MIMO-VISION-RETRY.md及NextTask。旧鉴权失败只是早期run，不是最新唯一结果。
 
 2026-09-22 ALVA-054 发布核验：9454057实现已发布，新前端资源index-Bq_Jy-gM.js在线，公网首页/healthz/资源200，鉴权边界正常。隔离9项回归与11组浏览器交互通过；线上登录后验证因现役私有验证码文件被拒绝而blocked，未修改验证码或绕过鉴权。证据 evidence/2026-09-22T122724115Z-ALVA054-deployment/；详见docs/ALVA-054-home-intake.md。

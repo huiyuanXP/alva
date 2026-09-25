@@ -1,0 +1,181 @@
+{
+  "runId": "20260925T034733Z-server-recovery-2cae71",
+  "head": "5e1513ad588e3b0c2a359684f2157124bf381dd2",
+  "protected": {
+    ".scratch/alva-topology-quality/issues/02-mimo-vision-retry.md": {
+      "xy": " M",
+      "sha256": "ebeec5cee28d6bfb9fbb0843200549c36c44bf8ef0d99eab9d30f6b43f2ec230"
+    },
+    "docs/MIMO-VISION-RETRY.md": {
+      "xy": " M",
+      "sha256": "1acbe13c00678f01940d9d27ca71288c465446f6d1dc83812c1febead2636bd9"
+    },
+    "evidence/20260922T140306429Z-ALVA056-mimo-117cc6/result.json": {
+      "xy": "A ",
+      "sha256": "4253c5272f6986fdf85fa1b91e566cecb992c6f657e472d038c29917611b018a"
+    },
+    "evidence/20260922T140306429Z-ALVA056-mimo-117cc6/review.json": {
+      "xy": "A ",
+      "sha256": "e1dd4305dc1052ca493a65a010fe8a7ae87dccef2c96b64c5d0ab5e81a2c6f23"
+    },
+    "evidence/20260922T140749550Z-ALVA056-mimo-7798b0/result.json": {
+      "xy": "A ",
+      "sha256": "b39cd381efa9ab68160e4d82e35f831586ca6e4b2048886b3bcd863af3d1c550"
+    },
+    "evidence/20260922T140749550Z-ALVA056-mimo-7798b0/review.json": {
+      "xy": "A ",
+      "sha256": "d37284a8f7ef9ebc496cb173ee7a8615a9a2ecd73e879e2e0ce7b95c306d5cf6"
+    },
+    "evidence/20260922T140749550Z-ALVA056-mimo-7798b0/summary.md": {
+      "xy": "A ",
+      "sha256": "7dfe1479ffe3b47a49854045313ff4a3b912be9a1add0617379568c47ccea451"
+    },
+    "scripts/alva-mimo-vision-check.ts": {
+      "xy": "A ",
+      "sha256": "8b37bba0dfbfa4ef69d51e6eb2c062eca09ffc85c7546bd44680ec11023872c1"
+    },
+    "scripts/lib/mimo-probe.ts": {
+      "xy": "A ",
+      "sha256": "9bed4523277b64cd49423ac63612d342e1583f56d5eadc31293e5bf21196333f"
+    },
+    "tests/alva-mimo-probe.test.ts": {
+      "xy": "A ",
+      "sha256": "b9fc19c756950e660cc4a5c20a941d2e382c0b9a2e89a8ac2f67f30002dabd96"
+    }
+  },
+  "worktrees": [
+    {
+      "worktree": "/home/ubuntu/Alva",
+      "HEAD": "5e1513ad588e3b0c2a359684f2157124bf381dd2",
+      "branch": "refs/heads/main",
+      "status": " M .scratch/alva-topology-quality/issues/02-mimo-vision-retry.md\n M docs/MIMO-VISION-RETRY.md\nA  evidence/20260922T140306429Z-ALVA056-mimo-117cc6/result.json\nA  evidence/20260922T140306429Z-ALVA056-mimo-117cc6/review.json\nA  evidence/20260922T140749550Z-ALVA056-mimo-7798b0/result.json\nA  evidence/20260922T140749550Z-ALVA056-mimo-7798b0/review.json\nA  evidence/20260922T140749550Z-ALVA056-mimo-7798b0/summary.md\nA  scripts/alva-mimo-vision-check.ts\nA  scripts/lib/mimo-probe.ts\nA  tests/alva-mimo-probe.test.ts\n"
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-008-codex",
+      "HEAD": "dbb0ae8ba1f2fd2d120228f9872d08b79cba7d00",
+      "branch": "refs/heads/task/ALVA-008-codex",
+      "status": " M api/api.ts\n M api/export.ts\n M api/server.ts\n M api/store.ts\n M web/src/main.tsx\n?? ops/alva/ACCESS-CODE.md\n?? scripts/alva-rotate-access-code.ts\n"
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-009-codex",
+      "HEAD": "d8c1adeaf9388b3bc7d416fbaa6bbacf912a4e82",
+      "branch": "refs/heads/task/ALVA-009-codex",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-010-lzy",
+      "HEAD": "e558a917a7d9c41e03df2f2507f06e5fbd2d348a",
+      "branch": "refs/heads/task/ALVA-010-lzy",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-011-lzy",
+      "HEAD": "b113ba9df9e16c81047b3bf5405244023927f25e",
+      "branch": "refs/heads/task/ALVA-011-lzy",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-012-lzy",
+      "HEAD": "d7293c639983f0193c34e89522bda04062a8ff36",
+      "branch": "refs/heads/task/ALVA-012-lzy",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-013-yang-chatgpt",
+      "HEAD": "d6124b302466371e9efca3045fe2a40121f1e424",
+      "branch": "refs/heads/task/ALVA-013-yang-chatgpt",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-014-lexie",
+      "HEAD": "8b6a7d17d6193c9fa3f90d0a09b81765ed44839f",
+      "branch": "refs/heads/task/ALVA-014-lexie",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-015-lexie",
+      "HEAD": "1db54df0245788e67330c32e95ad61cf6c21a3a5",
+      "branch": "refs/heads/task/ALVA-015-lexie",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-016-lexie",
+      "HEAD": "04ca6de1a3e1f58f70c9f84bfe6e091c40d3f68a",
+      "branch": "refs/heads/task/ALVA-016-lexie",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-017-lexie",
+      "HEAD": "93732f939c3d0f5c721b3b7a9b5fa7ff3d9edf07",
+      "branch": "refs/heads/task/ALVA-017-lexie",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-018-lexie",
+      "HEAD": "42b592b263a553dbdb50b06bfa39bab9502000d4",
+      "branch": "refs/heads/task/ALVA-018-lexie",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-019-lexie",
+      "HEAD": "c925bcef0fa82bc83a6b16d1df8b8e5345ee8654",
+      "branch": "refs/heads/task/ALVA-019-lexie",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-028-yang-chatgpt",
+      "HEAD": "f3aedbba73f6248b89844485fbe0d4a5e7dcac9f",
+      "branch": "refs/heads/task/ALVA-028-yang-chatgpt",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-043-lexie",
+      "HEAD": "38e230ba1d2c48cf9f41da0c176ada09f1558135",
+      "branch": "refs/heads/task/ALVA-043-lexie",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-052-codex-todo",
+      "HEAD": "9fae8e663c000842b8109b0e7451298e56ffe5e3",
+      "branch": "refs/heads/task/ALVA-052-codex-todo",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-053-chatgpt-audit",
+      "HEAD": "88506f284b207692d6c88257e7b4b34c0f166398",
+      "branch": "refs/heads/task/ALVA-053-chatgpt-audit",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/ALVA-054-yang-chatgpt",
+      "HEAD": "a572d40a8e2fe4ca89d883ddb862bd0b6053ac53",
+      "branch": "refs/heads/task/ALVA-054-yang-chatgpt",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva-worktrees/floorplan-structured-output-preview",
+      "HEAD": "7f17343c8f52e3f2a4bb9cb541841b65b4185243",
+      "branch": "refs/heads/bugfix/floorplan-structured-output-preview",
+      "status": " M api/api.ts\n M api/model.ts\n M api/store.ts\n M web/src/main.tsx\n M web/src/style.css\n",
+      "protected": {
+        "api/api.ts": "84a023649f563343fc0bf502389904ee33dd23d6939814823d06887b93d4e83f",
+        "api/model.ts": "61a685375e6f9a40b28ec3d2536d4f9d12f3d6fb1f5e8212a3c823386a4f732c",
+        "api/store.ts": "e337b3f21cd3ce5993a68aa035267358aff4990126e62d0b2a79a891166bded7",
+        "web/src/main.tsx": "e9fdb2e2d7ae90cc7ef6cee2661a09c63dcb3dba8fe14cf3033cfee0dc64f03f",
+        "web/src/style.css": "86dbb9590b5df25a68d9f5570cfb84ac30fa016ef76deb106783144c893aa84e"
+      }
+    },
+    {
+      "worktree": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-055-chatgpt-topology",
+      "HEAD": "512948b9ba9ed2eb84c53858c2f3d535ecf35c66",
+      "branch": "refs/heads/task/ALVA-055-chatgpt-topology",
+      "status": ""
+    },
+    {
+      "worktree": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-chatgpt-mimo",
+      "HEAD": "0d7ea5f6d46b30788952540d942855c01621f0ce",
+      "branch": "refs/heads/task/ALVA-056-chatgpt-mimo",
+      "status": ""
+    }
+  ]
+}
