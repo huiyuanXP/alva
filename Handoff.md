@@ -229,3 +229,9 @@ ALVA-021 已由 lzy 在独立 Worktree 完成并合入 main，集成提交 c2594
 ALVA-022 已由 lzy 在独立 Worktree 完成并合入 main，集成提交 4931415（实现提交 788296e）。用途通过独立路由确认并保存用途依据，通用布局命令不能绕过；用途确认不改家具。用途触发的布局候选可预览、暂不采用或局部采用，布局采用单独保存 selectedIds 和 proposalId；拒绝一个候选不会使同批其他候选失效；锁定房间由服务端拒绝。
 
 验证：npm run check；ALVA-022、ALVA-021、ALVA-020 和业务联合回归 9/9；npm run build:alva；真实 Chromium 覆盖用途确认、家具不变、布局候选3D预览、拒绝、局部采用、锁定房间按钮与服务端拒绝，控制台错误 0。证据 evidence/20260925T093352998Z-ALVA022-browser/。未部署/重启生产，主目录 AGENTS.md 和历史未追踪证据未触碰。
+
+## 2026-09-25 ALVA-023 家具添加、选择与复制
+
+ALVA-023 由 lzy 在独立 Worktree 完成。家具库添加服务端校验许可资产和明确房间，实例与库定义分离；新增与复制均分配新 UUID，复制保留 sourceId；2D 平面与真实 Three.js 3D 射线选取共享同一实例 ID；刷新保持身份和位置，坏资产/坏房间整单拒绝且不留下半个实例。
+
+验证：npm run check；ALVA-023 API 与 ALVA-021/022/业务回归共 8/8；npm run build:alva；真实 Chromium 覆盖添加、2D 选择、3D 射线选择、复制、刷新和坏资产原子拒绝，控制台错误 0。证据 evidence/20260925T094742274Z-ALVA023-browser-5e3711/。未部署生产或写入生产数据库。

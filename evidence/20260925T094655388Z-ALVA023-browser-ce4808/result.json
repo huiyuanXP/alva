@@ -1,0 +1,11 @@
+{
+  "ticket": "ALVA-023",
+  "runId": "20260925T094655388Z-ALVA023-browser-ce4808",
+  "pass": false,
+  "checks": [
+    "real browser adds a licensed asset as a new UUID in the explicit room without mutating the asset pool",
+    "2D click selects the same stable instance ID exposed by the furniture inspector"
+  ],
+  "error": "Error: locator.evaluate: TypeError: Cannot read properties of undefined (reading 'find')\n    at eval (eval at evaluate (:311:30), <anonymous>:1:52)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+  "errors": []
+}

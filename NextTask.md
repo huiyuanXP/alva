@@ -38,7 +38,6 @@ ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | furniture | lzy | task/ALVA-023-lzy / /home/ubuntu/Alva-worktrees/ALVA-023-lzy | in-progress；api/business.ts、api/chat.ts、api/model.ts、web/src/Panels.tsx、web/src/SceneView.tsx、测试与票内证据；端口自动分配 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` |  |  | pending；用户此前要求暂不实施；2026-09-25释放当前执行占用，历史yang-chatgpt/f3aedbb与Worktree保留；详见票内恢复记录，新的开工指令前不实施 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` | chatgpt-snapshots | task/ALVA-036-chatgpt-snapshots / .runtime/worktrees/ALVA-036-chatgpt-snapshots | in-progress；api/store.ts、api/api.ts保存路由、新snapshots模块；main.tsx仅header保存控件装配，不改013视图/057问卷片段与model.ts；隔离端口自动分配；重型验证共用alva-heavy-task.lock |

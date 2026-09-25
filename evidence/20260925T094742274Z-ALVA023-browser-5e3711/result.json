@@ -1,0 +1,20 @@
+{
+  "ticket": "ALVA-023",
+  "runId": "20260925T094742274Z-ALVA023-browser-5e3711",
+  "pass": true,
+  "finishedAt": "2026-09-25T09:47:50.396Z",
+  "checks": [
+    "real browser adds a licensed asset as a new UUID in the explicit room without mutating the asset pool",
+    "2D click selects the same stable instance ID exposed by the furniture inspector",
+    "real Three.js raycast selection in 3D resolves back to the same instance ID",
+    "real browser copy creates a second UUID with sourceId and deterministic offset in the same room",
+    "refresh preserves both instance identities, locations and immutable library definitions",
+    "invalid asset is rejected atomically with no half-created instance"
+  ],
+  "errors": [],
+  "instanceIds": {
+    "added": "6a1fb0df-aa0a-45c8-84ee-37aed0333a86",
+    "copied": "0777d895-9cd6-4c83-83c0-6e475b5ed61f"
+  },
+  "fixture": "synthetic scene used for deterministic browser regression; no model output claimed"
+}

@@ -1,0 +1,10 @@
+{
+  "ticket": "ALVA-023",
+  "runId": "20260925T094538471Z-ALVA023-browser-77ac80",
+  "pass": false,
+  "checks": [
+    "real browser adds a licensed asset as a new UUID in the explicit room without mutating the asset pool"
+  ],
+  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByTestId('plan-item-115853a8-59f5-46b7-85a4-b304e32dc3e2')\n    - locator resolved to <rect x=\"2.95\" y=\"2.05\" width=\"2.1\" height=\"0.9\" fill=\"#9da991\" stroke=\"#8f8f7f\" stroke-width=\".04\" transform=\"rotate(0 4 2.5)\" data-testid=\"plan-item-115853a8-59f5-46b7-85a4-b304e32dc3e2\"></rect>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <rect y=\"2.28\" rx=\".08\" height=\".4\" width=\"1.44\" class=\"room-name-box\" x=\"3.2800000000000002\"></rect> from <g class=\"room-name-layer\">…</g> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <rect y=\"2.28\" rx=\".08\" height=\".4\" width=\"1.44\" class=\"room-name-box\" x=\"3.2800000000000002\"></rect> from <g class=\"room-name-layer\">…</g> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    58 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <rect y=\"2.28\" rx=\".08\" height=\".4\" width=\"1.44\" class=\"room-name-box\" x=\"3.2800000000000002\"></rect> from <g class=\"room-name-layer\">…</g> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+  "errors": []
+}
