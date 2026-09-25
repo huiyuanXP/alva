@@ -8,11 +8,15 @@
 
 本机 `~/.codex/gemini.config.toml` 复用现有 `newapi` provider 和 `NEWAPI_KEY`，独立模型目录提供 Gemini 3.6、3.7、3.8 Flash High。`codex exec --profile gemini` 默认 3.8，启动后可在模型设置中选其他两款；三个型号的 `--strict-config` 原生调用均返回 `OK`。详情见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。用户级文件不入 Git；仓库只保存脱敏交接。业务服务与生产配置未改。
 
+## 2026-09-25 ALVA-062 Gemini 3.8 识图预览
+
+个人实现 `ea3de2c` 已生成 Gemini 3.8 候选并切换原临时 Tunnel。两轮原始回复都不符合严格 Scene schema；只在隔离预览中映射字段，保留墙、房间多边形和开口几何。映射后 20 墙/6 房/9 门窗通过几何/拓扑诊断；公网二维、3D 与浏览器脚本错误 0 实测通过。运行服务 `alva-gemini-preview-app-v2.service`，MiMo/Luna 数据保留，业务原生导入仍未通过。详情见[ALVA-062](docs/ALVA-062-gemini-preview.md)，生产未改，028 继续暂停。
+
 ## 2026-09-25 ALVA-060 Luna 识图预览
 
 个人实现 `8964db6` 已按最新 main 合并验证并集成。已有 `OPENAI_VISION_MODEL` 决定识图模型；新增可选 `OPENAI_REASONING_EFFORT` 透传 Codex App Server，默认行为不变。隔离业务识图一次请求 GPT-6 Luna xhigh，用仓库原图返回 17 墙/10 房/5 门窗，JSON/schema/几何通过，确认拓扑失败；诊断 15 项问题、约 3.35㎡ 未定义空间、4 个墙连通分量。一次请求无自动纠错；未把可渲染误报为合格户型。
 
-同一临时 Tunnel 当前展示 Luna 候选，原 MiMo 数据和截图保留；公网 Chromium 验证二维/3D 可见、页面脚本错误 0。类型检查与 15 项导入测试通过，详见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。未改生产服务、数据或模型配置；NextTask 已释放本票署名，其他认领保持。待用户看完再决定是否停预览和清场。
+同一临时 Tunnel 当时展示 Luna 候选，原 MiMo 数据和截图保留；公网 Chromium 验证二维/3D 可见、页面脚本错误 0。类型检查与 15 项导入测试通过，详见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。未改生产服务、数据或模型配置；NextTask 已释放本票署名，其他认领保持。待用户看完再决定是否停预览和清场。
 
 ## 2026-09-25 ALVA-020 作用范围澄清与确认
 

@@ -4,9 +4,13 @@
 
 本票已在 main 集成验收：手动保存才生成编号与时间戳，故障回滚保留工作稿，响应丢失以同一请求重试，版本冲突须显式重读。类型检查、24/24 相关回归、构建和真实 Chromium 8 项流程通过；[单票与证据](.scratch/alva-completion/issues/29-manual-snapshot.md)。ALVA-037 已依赖就绪但尚未认领；快照列表、只读预览及完整恢复分别属于后续票。未部署或重启生产。
 
-## ALVA-060 当前预览：Codex GPT-6 Luna xhigh（2026-09-25）
+## ALVA-062 当前预览：Gemini 3.8（2026-09-25）
 
-同一临时公网入口现展示 Luna 首轮候选；已从 MiMo 切换，原 MiMo 数据与截图保留。[ALVA-060 记录](docs/ALVA-060-codex-luna-preview.md)：现役 `recognizeLayout` 使用 `OPENAI_VISION_MODEL=gpt-6-luna`，Codex App Server 通过新增可选 `OPENAI_REASONING_EFFORT=xhigh` 运行。17 墙/10 房/5 门窗通过业务 JSON/schema/几何解析，但确认拓扑失败，诊断 15 项问题、约 3.35㎡ 未定义空间和 4 个墙连通分量；页面明确标注待修正。公网二维/三维渲染与浏览器脚本错误 0 已核验，未改生产。
+同一临时公网入口现展示 Gemini 3.8 候选：20 墙/6 房/9 门窗，字段映射后通过几何与拓扑检查，公网二维/3D 验证通过。原始两轮业务输出均未满足严格 schema，故原生导入仍是失败；预览数据在独立数据库，准确性待用户对照原图核校。详情见[ALVA-062](docs/ALVA-062-gemini-preview.md)。MiMo 与 Luna 数据和截图保留，生产未改。
+
+## ALVA-060 历史预览：Codex GPT-6 Luna xhigh（2026-09-25）
+
+同一临时公网入口曾展示 Luna 首轮候选；当时已从 MiMo 切换，原 MiMo 数据与截图保留。[ALVA-060 记录](docs/ALVA-060-codex-luna-preview.md)：现役 `recognizeLayout` 使用 `OPENAI_VISION_MODEL=gpt-6-luna`，Codex App Server 通过新增可选 `OPENAI_REASONING_EFFORT=xhigh` 运行。17 墙/10 房/5 门窗通过业务 JSON/schema/几何解析，但确认拓扑失败，诊断 15 项问题、约 3.35㎡ 未定义空间和 4 个墙连通分量；页面明确标注待修正。公网二维/三维渲染与浏览器脚本错误 0 已核验，未改生产。
 
 ## ALVA-059 MiMo 候选渲染预览（2026-09-25）
 

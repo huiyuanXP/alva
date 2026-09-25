@@ -2,6 +2,10 @@
 
 2026-09-25 ALVA-036 手动全局快照完成验收与 main 集成：个人实现 `6355b3c`、验收交接 `7efee97`；main 集成态类型检查、24/24 相关回归、生产构建及真实 Chromium 8 项流程通过。创建、故障回滚、响应丢失幂等重试、冲突重读和重开数据库均通过。后续验收夹具修正 `7497456` 移除无效用途提案及 422 豁免；main 再跑快照 13/13、浏览器 8 项流程通过，证据 `evidence/2026-09-25T111249092Z-ALVA036-browser-87f7df/`，页面无提案预览 422。未部署或重启生产，037 待认领。
 
+## 2026-09-25 ALVA-062 Gemini 3.8 识图预览
+
+Gemini 3.8 Flash High 使用仓库原图返回 20 墙/6 房/9 门窗。两轮业务输出因字段结构未满足严格 schema 而失败；隔离预览仅做字段映射，原几何通过校验及拓扑诊断 0 项。原临时 Tunnel 现展示 Gemini 候选，公网 Chromium 二维/3D 可见，脚本错误 0；MiMo/Luna 数据保留，生产未改。结果与边界见 [ALVA-062](docs/ALVA-062-gemini-preview.md)。
+
 ## 2026-09-25 ALVA-060 Codex Luna xhigh 识图预览
 
 复用现役 `api/import.recognizeLayout`，`OPENAI_VISION_MODEL=gpt-6-luna`；仅给 `api/codex.runCodex` 加可选 `OPENAI_REASONING_EFFORT=xhigh`。个人实现 `8964db6` 同步最新 main 后类型检查和 15 项导入相关测试通过。一次真实 App Server 调用用仓库原图产出 17 墙/10 房/5 门窗，通过业务 JSON/schema/几何，但确认拓扑失败；诊断 15 项问题、约 3.35㎡ 未定义空间、墙连通分量 4。没有自动拓扑修正，也不宣称质量达标。隔离预览已将同一临时 Cloudflare 链接切到 Luna 候选，二维/3D Chromium 实测与公网健康通过，原 MiMo 数据和截图保留。证据与边界见 `docs/ALVA-060-codex-luna-preview.md`；未修改生产。

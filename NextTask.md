@@ -8,13 +8,17 @@
 
 本机 Codex 用户配置已有单一 `gemini` profile，复用 `newapi` provider；模型目录包含 `gemini-3.6-flash-high`、`gemini-3.7-flash-high`、`gemini-3.8-flash-high`，默认 3.8，可在 Codex 模型设置中切换。三个型号均已通过原生 CLI 的最小真实调用。此任务无后续执行占用；业务服务模型和生产配置未变。交接见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。
 
-## 2026-09-25 ALVA-060 已集成，预览待用户核对
+## 2026-09-25 ALVA-062 已完成，Gemini 预览待用户核对
 
-当前临时公网入口展示 Codex GPT-6 Luna xhigh 的首轮识图候选。使用原有 `OPENAI_VISION_MODEL` 参数和新增推理强度参数，17 墙/10 房/5 门窗可渲染，但确认拓扑失败且有 15 项诊断问题。结果、截图、原 MiMo 保留位置和停用方式见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。本票执行占用释放；预览运行态保留供用户查看，不能自动采用候选。其他署名与 ALVA-028 暂停状态不变。
+当前临时公网入口展示 Gemini 3.8 的 20 墙/6 房/9 门窗候选；原生业务导入因两轮 schema 不合格而失败，隔离字段映射后可渲染并通过结构检查。完整证据、原始结果和服务位置见[ALVA-062](docs/ALVA-062-gemini-preview.md)。本任务不占用产品票认领；028 继续暂停。
+
+## 2026-09-25 ALVA-060 已集成，历史预览已切换
+
+该临时公网入口此前展示 Codex GPT-6 Luna xhigh 的首轮识图候选。使用原有 `OPENAI_VISION_MODEL` 参数和新增推理强度参数，17 墙/10 房/5 门窗可渲染，但确认拓扑失败且有 15 项诊断问题。结果、截图、原 MiMo 保留位置和停用方式见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。本票执行占用释放；预览运行态保留供用户查看，不能自动采用候选。其他署名与 ALVA-028 暂停状态不变。
 
 ## 2026-09-25 ALVA-059 预览交接
 
-ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完成并验证，历史截图与隔离数据见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。同一链接现由 ALVA-060 展示 Luna 候选；不占用产品票认领，028 继续暂停。后续若要评价户型准确性，需对照原图由用户校核，不能以结构检查和渲染替代。
+ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完成并验证，历史截图与隔离数据见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。同一链接曾由 ALVA-060 展示 Luna 候选，现由 ALVA-062 展示 Gemini 候选；不占用产品票认领，028 继续暂停。后续若要评价户型准确性，需对照原图由用户校核，不能以结构检查和渲染替代。
 
 ## 2026-09-25 ALVA-053/056已完成
 

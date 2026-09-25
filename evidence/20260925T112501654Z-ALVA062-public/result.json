@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "origin": "https://immune-indoor-coat-pose.trycloudflare.com",
+  "runId": "20260925T112501654Z-ALVA062-public",
+  "counts": {
+    "walls": 20,
+    "rooms": 6,
+    "openings": 9
+  },
+  "canvas": true,
+  "pageErrors": 0
+}

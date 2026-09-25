@@ -1,0 +1,57 @@
+{
+  "runId": "20260925T111820350Z-ALVA062-gemini38-aa64b9",
+  "startedAt": "2026-09-25T11:18:20.377Z",
+  "imageSha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+  "model": "gemini-3.8-flash-high",
+  "reasoningEffort": "high",
+  "route": "api/import.recognizeLayout → api/codex.runCodex",
+  "attempts": [
+    {
+      "model": "gemini-3.8-flash-high",
+      "reasoningEffort": "high",
+      "timeoutMs": 600000,
+      "outputSchema": true,
+      "eventCounts": {
+        "configWarning": 1,
+        "remoteControl/status/changed": 1,
+        "thread/started": 1,
+        "warning": 1,
+        "thread/status/changed": 2,
+        "turn/started": 1,
+        "item/started": 4,
+        "item/completed": 4,
+        "item/reasoning/summaryPartAdded": 1,
+        "item/reasoning/summaryTextDelta": 61,
+        "item/agentMessage/delta": 116,
+        "thread/tokenUsage/updated": 1,
+        "account/rateLimits/updated": 1,
+        "turn/completed": 1
+      }
+    },
+    {
+      "model": "gemini-3.8-flash-high",
+      "reasoningEffort": "high",
+      "timeoutMs": 600000,
+      "outputSchema": true,
+      "eventCounts": {
+        "configWarning": 1,
+        "remoteControl/status/changed": 1,
+        "thread/started": 1,
+        "warning": 1,
+        "thread/status/changed": 2,
+        "turn/started": 1,
+        "item/started": 4,
+        "item/completed": 4,
+        "item/reasoning/summaryPartAdded": 1,
+        "item/reasoning/summaryTextDelta": 27,
+        "item/agentMessage/delta": 119,
+        "thread/tokenUsage/updated": 1,
+        "account/rateLimits/updated": 1,
+        "turn/completed": 1
+      }
+    }
+  ],
+  "validCandidate": false,
+  "error": "LayoutOutputError: 户型输出schema校验失败：[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"rooms\",\n      0,\n      \"purpose\"\n    ],\n    \"message\": \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"rooms\",\n      1,\n      \"purpose\"\n    ],\n    \"message\": \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"rooms\",\n      2,\n      \"purpose\"\n    ],\n    \"message\": \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"rooms\",\n      3,\n      \"purpose\"\n    ],\n    \"message\": \"Invalid input: expected string, received undefined\"\n ",
+  "finishedAt": "2026-09-25T11:22:20.836Z"
+}
