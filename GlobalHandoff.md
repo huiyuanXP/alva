@@ -143,3 +143,12 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 066检查点087094c在个人Worktree：用户分类的Markdown在DB提交后原子投影，错误必须保留稳定code/repairActions；模型实际能按CONTEXT_SCOPE_INVALID修正房间/家具ID混用。审查凭证保留真实reviewedRevision/adoptedAtRevision；样式参与失效指纹。真实局部联合链已通过，整票与生产仍pending，以NextTask和066票据为现役入口。原thread恢复与串行新进程验证不等于新建替代会话。
 
 ALVA-066检查点35088ef：进入阶段用thread/inject_items追加摘要/快照；thread/read有损视图不包含原始注入项，恢复去重只读取当前stage CODEX_HOME内匹配thread身份的rollout。HTTP MCP长调用不能依赖fetch默认响应头等待时限。真实识图仍pending，缺失说明只补未核实标签，不伪造地理值或几何。
+
+## ALVA-066 当前检查点：aea3cc2，继续真实识图
+
+066独立Worktree已提交 `aea3cc2`。补齐拓扑修复/补墙和功能分区MCP，与直接API共用服务；类型检查与41/41导入、拓扑、分区、阶段Chat回归通过。闭合环只去掉精确末尾重复点，内部重复仍拒绝；私有真实输出回放通过，但未注入项目。
+
+第四次真实识图仍失败于模型漏rooms.name（20260925T211018Z-ALVA066-floorplan-recognize-574753）；现已在首轮和修正提示正文附完整JSON Schema，不猜补名称，并约束主Chat不能将模型格式错误归咎附件。已启动同原附件/原thread下一轮实测，重任务仍共享锁串行CPU80%/1200M/swap0。成功后用续跑脚本完成标注、明确合成输入的校准、浏览器确认、真实建筑生成及进入阶段立即送达检查。
+
+029已接收并装配，原生活设计thread的局部真实分类→Markdown→review→浏览器保存链通过；最终同SHA联合链、原图/建筑/跨阶段失效、交付/取消/重启、main产品集成及备份发布仍pending。066和029保持in-progress，生产未改。neat-freak过程事实已对齐，生成记忆out-of-scope，复核现场保留。
+
