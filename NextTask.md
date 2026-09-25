@@ -123,7 +123,7 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
-| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | chatgpt-recovery | task/ALVA-056-recovery-20260925；.runtime/worktrees/ALVA-056-recovery-20260925；scripts/alva-mimo-vision-check.ts、scripts/lib/mimo-*、定向测试/证据；旧0d7ea5f保留，无生产写入 | in-progress |
+| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | chatgpt-recovery | task/ALVA-056-recovery-20260925；.runtime/worktrees/ALVA-056-recovery-20260925；原生mimo profile探针、scripts/lib、定向测试；用户追加10分钟单次识图，api/codex-timeout.ts及api/import/response.ts空候选拒绝；不改057/013共享源码、不部署 | in-progress |
 
 ## ALVA-057 Your Home Vision
 

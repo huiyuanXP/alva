@@ -1,5 +1,9 @@
 # 恢复索引
 
+## 2026-09-25 MiMo单次10分钟追加
+
+用户已允许单次MiMo识图600000ms。ALVA-056独立工作区已更新probe与业务识图预算，普通Chat仍120000ms；尚待最终类型检查/集成，不宣称生产已切换。正常用户profile Pro两次自行完成但给出空户型，非超时；空候选拒绝与26项轻量回归通过。下一步核验兼容输出模式、等待并行重任务释放资源后完成类型检查。原生probe只读、取消/进程组清理、CPU/内存限额保留，不复制密钥或重启服务。ALVA-013由lzy、057由yang-chatgpt进行，028继续暂停。
+
 ## 当前状态（2026-09-25）
 
 根目录`/home/ubuntu/Alva`。ALVA-053已按诊断维护范围done并集成，个人提交`17a6308`；ALVA-056现由chatgpt-recovery恢复执行，独立`.runtime/worktrees/ALVA-056-recovery-20260925`。53的28项回归、类型检查与历史候选复核通过，证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。
