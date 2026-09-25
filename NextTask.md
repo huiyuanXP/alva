@@ -1,6 +1,6 @@
-## ALVA-066 两阶段 MCP：协调障碍已解除，下一步认领
+## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
 
-[ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；用户已授权处理原未提交修改；下一步署名并创建独立 Worktree，先做原生 MCP/网关隔离探针。主 Chat 后续功能按新版 MCP 合同同票验收。
+[ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；用户已授权处理原未提交修改；codex-stage-mcp 已认领，先做原生 MCP/网关隔离探针。主 Chat 后续功能按新版 MCP 合同同票验收。
 
 # What's next · 任务认领与并行开发
 
@@ -40,6 +40,7 @@
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
+| [ALVA-066](docs/ALVA-066-stage-mcp.md) | 两阶段 MCP 与持久 Chat | `chat` | codex-stage-mcp | task/ALVA-066-codex-stage-mcp / /home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp | in-progress；先 api/codex.ts、api/mcp、独立探针；后 api/chat.ts、store、model、api.ts 与 web 入口需衔接057；端口使用127.0.0.1动态分配 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-037](.scratch/alva-completion/issues/30-snapshot-preview.md) | 快照列表与只读状态预览 | `snapshots` |  |  | 依赖 ALVA-036 已完成；待署名认领，不自动开工 |
 | [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` |  |  | 依赖已完成；待署名认领 |

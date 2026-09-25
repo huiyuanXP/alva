@@ -1,12 +1,12 @@
 # ALVA-066 主 Chat 按阶段接入两包 MCP
 
 **ID:** ALVA-066
-**Status:** ready-for-agent
-**Execution state:** 方案已获用户授权；票据与协议核验已开始，等待主目录已有协调修改归属确认后署名认领并创建独立 Worktree。
-**Owner:** 待协调认领（执行意向 codex-stage-mcp）
+**Status:** in-progress
+**Execution state:** 用户已授权处理原未提交修改，协调清理完成；2026-09-25 codex-stage-mcp 署名开工，先做隔离 MCP/网关探针。
+**Owner:** codex-stage-mcp
 **Date:** 2026-09-25
 **Dependencies:** ALVA-065；已完成业务以 main 实现为准。ALVA-057 在途共享问卷/schema/页面需协调。
-**Branch / Worktree:** 计划 task/ALVA-066-codex-stage-mcp；/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp。
+**Branch / Worktree:** task/ALVA-066-codex-stage-mcp；/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp。
 **Scope:** 本票是新增接入与房间样式任务，不改写 ALVA-008–051 的编号或完成状态。
 
 ## 用户批准的行为
@@ -59,3 +59,5 @@ MCP 为默认优先调用渠道。错误必须从工具返回可解释结构，�
 本票当前没有功能通过记录、没有生产变更。知识状态：代码/协议基线 verified-current；票据 changed-and-verified；运行接入/端到端 pending；生成记忆 out-of-scope；既有未提交文件与证据保留。
 
 安装版协议 schema 已只读导出核验：ThreadStartParams 包含 ephemeral、dynamicTools、config；ThreadResumeParams 包含 threadId、config，未暴露 dynamicTools 覆盖字段。桥接工具目录变更的恢复兼容需实测，不能照搬官网最新字段。未启动模型调用。
+
+2026-09-25 协调更新：用户明确授权整理已有修改，清理提交 8ec0cbb；原认领障碍解除。057 最新交接 a39646a 表明业务已验但未合 main，等待本票 MCP 运行层；先实现独立运行层，不提前吸收其未集成功能。
