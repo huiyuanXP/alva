@@ -67,7 +67,7 @@ ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-037](.scratch/alva-completion/issues/30-snapshot-preview.md) | 快照列表与只读状态预览 | `snapshots` |  |  | 依赖 ALVA-036 已完成；待署名认领，不自动开工 |
 | [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` |  |  | 依赖已完成；待署名认领 |
-| [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
+| [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` | chatgpt-alva041 | task/ALVA-041-chatgpt / /home/ubuntu/Alva-worktrees/ALVA-041-chatgpt | in-progress；独立 references 模块、api/store.ts、api/api.ts、api/chat.ts、api/main-chat-agent.ts、web/src/references；避免修改 ALVA-057 占用的 api/model.ts 与 web/src/main.tsx；测试端口 43141 |
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 

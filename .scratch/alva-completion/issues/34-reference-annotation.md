@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-017](10-multimodal-chat.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-25 由 chatgpt-alva041 按用户明确指令认领；独立 Worktree `task/ALVA-041-chatgpt` 开发，候选参考偏好使用独立持久化，不修改 ALVA-057 正占用的 `api/model.ts` 与 `web/src/main.tsx`。
 
 - [ ] 真实模型分析与用户手动标注明确区分。
 - [ ] 保留图片来源、原话与作用房间，删除/取消未确认候选不污染需求。
