@@ -70,3 +70,9 @@ test('cancellation interrupts an HTTP MCP call while waiting for response header
  try{const [tool]=await bridgeMcpTools(lease,abort.signal);const result=tool.run({});const rejected=assert.rejects(result,(e:unknown)=>e instanceof McpError&&e.detail.code==='CANCELLED');await began;abort.abort();await rejected}
  finally{release();lease.revoke();await server.close()}
 });
+
+import {z} from 'zod';
+test('HTTP MCP argument errors retain field paths and tell the Agent how to repair them',async()=>{
+ const server=new StageMcpServer(),lease=await server.grant({binding:{projectId:'synthetic-fields',role:'owner',stage:'living'},authorize:async()=>({revision:7}),tools:[{name:'place',description:'synthetic schema boundary',inputSchema:{type:'object'},run:async args=>z.object({values:z.object({assetId:z.string(),x:z.number(),y:z.number()}).strict()}).strict().parse(args)}]});
+ try{const tools=await bridgeMcpTools(lease);await assert.rejects(tools[0].run({values:{position:{x:1,y:2}}}),(e:any)=>e.detail?.code==='INVALID_ARGUMENTS'&&e.detail.message.includes('values.assetId')&&e.detail.repairActions[0].message.includes('不代表工具未接入'))}finally{lease.revoke();await server.close()}
+});

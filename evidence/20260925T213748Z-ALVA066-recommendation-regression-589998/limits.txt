@@ -1,0 +1,6 @@
+run=20260925T213748Z-ALVA066-recommendation-regression-589998
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2551
+aea3cc23e40e7962266c677c9e913f3a83f6743b

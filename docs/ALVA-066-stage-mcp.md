@@ -132,3 +132,31 @@ neat-freak过程对齐：协议/定向回归/渲染局部verified-current；原�
 补齐户型repair_topology/draw_wall、生活设计edit_functional_zone；直接API/按钮与MCP共用topology/service及zones-service。已确认拓扑修改必须先明确返回修改；功能分区不改实体墙，锁定房间拒绝写入。新增阶段工具还须实际Chat验收，不以接口注册计完成。续跑脚本alva-066-floorplan-continue.ts只使用真实识图项目，校准长度明确标隔离合成输入，浏览器确认后检查立即交接和原thread身份。
 
 该增量类型检查20260925T211518Z-ALVA066-adapter-typecheck-578877通过；随后修正分区API只向严格schema传业务字段，41/41导入/拓扑/分区/阶段Chat回归通过20260925T211611Z-ALVA066-adapter-regression-579235。neat-freak过程事实已核对：本次代码/回归verified-current；真实识图、完整同SHA业务验收及生产pending；规则合同不变，生成记忆out-of-scope，现场保留。此检查点不关闭066/029。
+
+## 原图真实链进展（2026-09-25 21:28 UTC）
+
+`20260925T211743739Z-ALVA066-floorplan-recognize/result.json`：原附件经主Chat→HTTP MCP→真实Gemini3.8识图成功，24墙/5房/8门窗，原floorplan thread保持；不再仅为离线回放。候选有T节点缺失，首次重命名被校验拒绝。旧thread直接调用新增repair_topology未成功；通过mcp_call_tool现役目录桥接实际修复成功（212335600Z工具审计）。该轮因未再次调用inspect_topology导致脚本断言失败，保留失败；随后完整标注、明确合成长度校准、检查和确认卡请求均成功（212404664Z）。浏览器预览和拓扑确认通过（212441343Z、212523775Z），画面仍有一项未连接端点待核对；不宣称施工精度或识图准确性已获确认。
+
+真实建筑生成首次通过（212551376Z），但脚本遗漏生产OPENAI_MODEL导致辅助调用使用代码默认gpt-5.5；不得用作现役模型门禁。脚本已显式匹配生产gemini-3.1-flash-lite，当前重跑，不更改产品默认模型。旧thread未提供的直接工具错误改为TOOL_NOT_AVAILABLE并指向mcp_list_tools/mcp_call_tool；每轮提示列出现役工具名，避免新功能被误称未接入。
+
+后续仍需现役模型建筑候选/浏览器确认和进入即交接、真实自动家具建议/采用、交付取消/重试及全链最终同SHA。新交付AbortSignal关闭截图浏览器并撤销内部会话、问卷先保存其他草稿再确认（避免自动建议抢revision）待验证。新增living-actions脚本不注入候选或mock模型。
+
+## 实际生活设计入口与问卷修复（2026-09-25）
+
+现役Gemini3.1建筑生成通过212808751Z。建筑确认脚本首次选中旧禁用卡而超时；改选当前可用按钮后，确认与进入living、真实thread/inject_items和送达ID已持久化（213158194Z），但任务收尾异常退出，未冒称整轮成功；非OOM。新进程及浏览器重读213330429Z通过，确认建筑、原floorplan thread、新living thread和摘要送达均保持，不重复确认。
+
+真实问卷草稿不触发建议，确认后服务端自动发起原living thread，已实测；原模型误用入口及泛化Change.values导致无候选。修复：所有业务工具明确经mcp_call_tool调用；suggest_furniture采用明确assetId/roomId/x/y/rotation结构；targetId必须同一房间ID；共用add服务支持初始旋转并统一吸附/碰撞检查。真实原始协议私有保存，定位到模型最初把assetID当targetId、坐标放position，以及MCP接受rotation而底层曾拒绝的两类问题。
+
+无实际候选不能自动完成建议任务；确实无家具需求须skip_furniture_suggestion记录原因，工具失败理由拒绝作为“无需求”。RECOMMENDATION_INCOMPLETE/RECOMMENDATION_UNRESOLVED_ERROR与字段修复说明保留；旧空完成任务可通过页面重试。问卷先保存其他草稿再确认，避免自动建议与后续草稿保存争抢revision。4/4相关回归通过214425Z；新增角度采用回归通过214652Z；先前错误压成通用失败的断言失败保留，定向修复通过213936Z。真实家具候选/采用仍待下轮通过，不因任务启动成功计为建议成功。
+
+阶段摘要新增最近一次拓扑重开失效记录，即使后续编辑超过最近5条也不丢失；标明历史失效与当前新数据的区别。交付取消通过AbortSignal关闭实际截图浏览器并清理会话，尚待真实ZIP/取消门禁。所有过程代码仍在066独立分支，main/生产未发布。
+
+## 原thread恢复、家具采用与样式通过（2026-09-25 21:59 UTC）
+
+真实协议显示living thread两次读取目录后空结束，最后输入243225 token，接近App Server报告的258400窗口。未删thread或替换会话；按官方 `thread/compact/start` 在原thread执行压缩，215257172Z收到contextCompaction凭证，输入估计降至20783，项目revision不变。会话配置提前到80000 token自动压缩；consultationSnapshot保留当前scene并只传历史拓扑元数据，避免重复大段几何。依据：https://developers.openai.com/codex/app-server/ 、https://developers.openai.com/codex/config-reference/ 。原始token/协议只存隔离目录，不把空结束计成功。
+
+压缩后原任务/原回答/原living thread的真实suggest_furniture成功（215333179Z）；浏览器预览、明确采用、刷新一致通过（215412421Z）。此前读目录空结束和候选结构/底层rotation不一致等失败均保留。actual自动触发已验证启动，成功建议通过原任务页面重试取得；最终固定候选仍须补确认后自动成功的正路径，不把重试结果混称首次自动成功。
+
+房间样式第一次已持久确认，但同轮有两个不同tags候选，脚本误等全部卡消失；补确认一份后将同房间其余pending标expired。215823194Z真实重新提出样式，215851609Z浏览器二维/三维预览、明确确认、刷新重读与geometry完全不变通过。后续029分类/复核/保存、ZIP/取消、拓扑失效与返回原living会话继续；尚未合main产品或发布。
+
+本检查点最终类型检查215934Z通过，16/16家具/样式/快照/HTTP MCP/阶段持久化回归220020Z通过；前端构建214000Z通过，之后仅类型扩展与服务端修复，无新增前端运行行为。neat-freak：本次代码与局部真实链verified-current，完整最终候选及生产pending；规则/结构合同保持，生成记忆out-of-scope；保留私有现场及失败证据，清理仅本次官方下载临时缓存。下一步在此固定实现上跑原图项目的029分类→Markdown→review→保存、自动建议正路径、交付/取消/跨阶段失效及最终门禁，未关闭066/029。

@@ -25,7 +25,7 @@ export function registerRoomStyles(app:FastifyInstance,store:AlvaStore,session:(
    if(b.decision==='reject'){c.status='rejected';return}
    if(!p.confirmedBuilding||c.basis!==roomStyleBasis(p,c.roomId))throw new DomainError(409,'房间或原样式已变化，请重新生成候选');
    if(p.scene?.rooms.find(r=>r.id===c.roomId)?.locked)throw new DomainError(422,'房间已锁定');
-   p.roomStyles={...p.roomStyles,[c.roomId]:c.style};c.status='confirmed';c.confirmedAt=new Date().toISOString();p.dirty=true;
+   p.roomStyles={...p.roomStyles,[c.roomId]:c.style};for(const other of p.roomStyleCandidates||[])if(other.id!==c.id&&other.roomId===c.roomId&&other.status==='pending')other.status='expired';c.status='confirmed';c.confirmedAt=new Date().toISOString();p.dirty=true;
    p.changes.push({id:randomUUID(),description:`确认房间样式：${c.style.tags.join('、')}`,evidenceIds:[],context:[c.reason],createdAt:c.confirmedAt});
   },undefined,stage);
  });

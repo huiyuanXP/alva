@@ -1,1 +1,1 @@
-export type AnswerRecommendation={id:string;questionId:string;roomId:string|null;evidenceId:string;status:'pending'|'running'|'completed'|'failed'|'invalidated';createdAt:string;proposalIds?:string[];error?:string};
+export type AnswerRecommendation={id:string;questionId:string;roomId:string|null;evidenceId:string;status:'pending'|'running'|'completed'|'failed'|'invalidated';createdAt:string;proposalIds?:string[];noFurnitureReason?:string;error?:string};

@@ -5,13 +5,14 @@ import {createInterface} from 'node:readline';
 import {mkdir,rm} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
-import {mcpFailure} from './mcp/contracts.js';
+import {mcpFailure,McpError} from './mcp/contracts.js';
 import {codexTimeoutMs} from './codex-timeout.js';
 export type BusinessTool={name:string;description:string;inputSchema:unknown;run:(args:unknown)=>Promise<unknown>};
 export type CodexSession={key:string;threadId?:string;onThread:(threadId:string)=>Promise<void>;onTurnStarted?:()=>Promise<void>;handoffs?:{id:string;text:string}[];onHandoffsDelivered?:(ids:string[])=>Promise<void>};
-export type CodexInput={injectOnly?:boolean;resumeOnly?:boolean;session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
+export type CodexInput={compactOnly?:boolean;injectOnly?:boolean;resumeOnly?:boolean;session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
 /** Auxiliary calls are ephemeral; main Chat explicitly supplies its persistent stage session. */
 export async function runCodex(input:CodexInput):Promise<string>{
+ if(input.compactOnly&&!input.session?.threadId)throw new Error('压缩历史需要已有持久会话');
  if(input.injectOnly&&!input.session)throw new Error('追加阶段上下文需要持久会话');
  if(input.resumeOnly&&!input.session?.threadId)throw new Error('恢复阶段需要已有 thread ID');
  const timeoutMs=codexTimeoutMs(input.timeoutMs);
@@ -19,13 +20,13 @@ export async function runCodex(input:CodexInput):Promise<string>{
  await mkdir(work,{recursive:true,mode:0o700});
  const home=resolve(work,'config');await mkdir(home,{recursive:true,mode:0o700});
  const reasoningEffort=input.reasoningEffort?.trim()||process.env.OPENAI_REASONING_EFFORT?.trim();
- const config:Record<string,unknown>={model_provider:'alva',...(reasoningEffort?{model_reasoning_effort:reasoningEffort}:{}),model_providers:{alva:{name:'Alva',base_url:process.env.OPENAI_BASE_URL||'https://chat.huiyuanxp.com/v1',env_key:'OPENAI_API_KEY',wire_api:'responses'}},project_doc_max_bytes:0,features:{shell_tool:false,apply_patch_freeform:false,multi_agent:false},web_search:'disabled',mcp_servers:{}};
+ const config:Record<string,unknown>={model_provider:'alva',...(input.session?{model_auto_compact_token_limit:80000}:{}),...(reasoningEffort?{model_reasoning_effort:reasoningEffort}:{}),model_providers:{alva:{name:'Alva',base_url:process.env.OPENAI_BASE_URL||'https://chat.huiyuanxp.com/v1',env_key:'OPENAI_API_KEY',wire_api:'responses'}},project_doc_max_bytes:0,features:{shell_tool:false,apply_patch_freeform:false,multi_agent:false},web_search:'disabled',mcp_servers:{}};
  const args=['app-server','--listen','stdio://'];
  const configure=(object:Record<string,unknown>,prefix='')=>{for(const [key,value]of Object.entries(object)){const path=prefix?`${prefix}.${key}`:key;if(value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length)configure(value as Record<string,unknown>,path);else args.push('-c',`${path}=${JSON.stringify(value)}`)}};configure(config);
  // CODEX_HOME is used for its documented purpose: isolate this application call's Codex configuration and state.
  const child=spawn('codex',args,{cwd:work,env:{PATH:process.env.PATH,HOME:process.env.HOME,CODEX_HOME:home,OPENAI_API_KEY:process.env.OPENAI_API_KEY},stdio:['pipe','pipe','pipe']});
  const exited=new Promise<void>(ok=>child.once('exit',()=>ok()));
- let sequence=0,threadId='',turnId='',final='',settled=false,diagnostic='';
+ let sequence=0,threadId='',turnId='',final='',settled=false,diagnostic='',compactionSeen=false;
  const pending=new Map<number,{resolve:(v:any)=>void;reject:(e:Error)=>void}>();
  let finish!:(s:string)=>void,fail!:(e:Error)=>void;
  const completion=new Promise<string>((ok,no)=>{finish=ok;fail=no});
@@ -46,12 +47,13 @@ export async function runCodex(input:CodexInput):Promise<string>{
   if(event.id!==undefined&&event.method){
    if(event.method==='item/tool/call'){
     const tool=input.tools?.find(t=>t.name===event.params.tool);
-    try{if(!tool)throw new Error('业务工具不在白名单');const result=await tool.run(event.params.arguments);send({id:event.id,result:{success:true,contentItems:[{type:'inputText',text:JSON.stringify(result)}]}})}
+    try{if(!tool)throw new McpError({code:'TOOL_NOT_AVAILABLE',message:'本次调用未提供该直接工具入口，请读取当前阶段MCP目录',retryable:true,repairActions:[{action:'mcp_list_tools',message:'先调用 mcp_list_tools；若目录含目标工具，用 mcp_call_tool({name:目标工具名,arguments:参数对象}) 调用。目录未列出的工具在本阶段不可用。'}]});const result=await tool.run(event.params.arguments);send({id:event.id,result:{success:true,contentItems:[{type:'inputText',text:JSON.stringify(result)}]}})}
     catch(e){send({id:event.id,result:{success:false,contentItems:[{type:'inputText',text:JSON.stringify(mcpFailure(e).structuredContent)}]}})}
    }else send({id:event.id,error:{code:-32601,message:'此应用不允许该请求'}});
    return;
   }
   if(event.method==='item/agentMessage/delta')input.onDelta?.(event.params.delta);
+  if(event.method==='item/completed'&&event.params.item?.type==='contextCompaction')compactionSeen=true;
   if(event.method==='item/completed'&&event.params.item?.type==='agentMessage')final=event.params.item.text;
   if(event.method==='turn/completed'){
    const turn=event.params.turn;
@@ -69,6 +71,7 @@ export async function runCodex(input:CodexInput):Promise<string>{
   if(input.session?.threadId&&threadId!==input.session.threadId)throw new Error('Codex未恢复原会话');
   await input.session?.onThread(threadId);
   if(input.resumeOnly){settled=true;return threadId}
+  if(input.compactOnly){await rpc('thread/compact/start',{threadId});await completion;if(!compactionSeen)throw new Error('Codex未返回历史压缩完成凭证');return threadId}
   let handoffs=input.session?.handoffs||[];
   if(input.session?.threadId&&handoffs.length){
    const history=JSON.stringify(await rpc('thread/read',{threadId,includeTurns:true}));

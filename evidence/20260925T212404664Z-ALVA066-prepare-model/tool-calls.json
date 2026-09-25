@@ -1,0 +1,33 @@
+[
+  {
+    "name": "edit_topology",
+    "stage": "floorplan",
+    "isError": true,
+    "errorCode": "REVISION_CONFLICT"
+  },
+  {
+    "name": "get_snapshot",
+    "stage": "floorplan",
+    "isError": false
+  },
+  {
+    "name": "edit_topology",
+    "stage": "floorplan",
+    "isError": false
+  },
+  {
+    "name": "calibrate_floorplan",
+    "stage": "floorplan",
+    "isError": false
+  },
+  {
+    "name": "inspect_topology",
+    "stage": "floorplan",
+    "isError": false
+  },
+  {
+    "name": "request_topology_confirmation",
+    "stage": "floorplan",
+    "isError": false
+  }
+]

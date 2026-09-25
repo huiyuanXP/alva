@@ -1,0 +1,19 @@
+[
+  {
+    "name": "inspect_topology",
+    "stage": "floorplan",
+    "isError": false
+  },
+  {
+    "name": "edit_topology",
+    "stage": "floorplan",
+    "isError": true,
+    "errorCode": "BUSINESS_RULE_REJECTED"
+  },
+  {
+    "name": "edit_topology",
+    "stage": "floorplan",
+    "isError": true,
+    "errorCode": "BUSINESS_RULE_REJECTED"
+  }
+]

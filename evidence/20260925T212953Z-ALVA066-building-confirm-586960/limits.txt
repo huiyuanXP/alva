@@ -1,0 +1,6 @@
+run=20260925T212953Z-ALVA066-building-confirm-586960
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2572
+aea3cc23e40e7962266c677c9e913f3a83f6743b

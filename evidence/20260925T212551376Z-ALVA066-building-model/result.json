@@ -1,0 +1,26 @@
+{
+  "pass": true,
+  "run": "20260925T212551376Z-ALVA066-building-model",
+  "step": "building-model",
+  "privateRun": "20260925T202946472Z-ALVA066-floorplan-upload",
+  "revision": 27,
+  "stage": "floorplan",
+  "threads": {
+    "living": {
+      "deliveredIds": []
+    },
+    "floorplan": {
+      "threadId": "01a0da42-f7d0-7c22-a0f6-6f6b4a8917dd",
+      "createdAt": "2026-09-25T20:30:17.147Z",
+      "deliveredIds": []
+    }
+  },
+  "topologyVersion": 1,
+  "buildingConfirmed": false,
+  "calibration": {
+    "length": 4.6,
+    "source": "隔离验收合成长度，仅测试校准流程，非现场实测",
+    "wallId": "2e2f5246-956b-463f-a28f-7becdaca0262",
+    "confirmed": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "overallPass": false,
+  "driverExit": 143,
+  "commandExit": 1,
+  "oomKill": 0,
+  "persistedAssertions": "evidence/20260925T213158194Z-ALVA066-building-confirm/result.json",
+  "limitation": "Success assertions were written before abnormal task teardown; cause unproven. Verify persisted state in a fresh process without re-confirming."
+}

@@ -1,0 +1,24 @@
+✔ only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption (9699.829507ms)
+✔ recommendation tools reject unconfirmed invocation, disallowed assets, collisions and replaced answer sources (8075.571042ms)
+✔ server starts the stage Agent after confirmation without a follow-up browser Chat request (8997.160926ms)
+✔ a silent model cannot complete a recommendation; an explicit MCP no-furniture reason can (8404.258116ms)
+✔ ALVA-015 manual answers are visible to later Chat snapshots (4.960611ms)
+✔ ALVA-015 Chat confirmation keeps exact quote, cannot duplicate, and locked values require explicit unlock (10077.638889ms)
+✔ persistent Chat snapshots retain current geometry once and keep historical topology metadata (2.893484ms)
+✔ room styles preview as candidates, require confirmation, survive reload and expire with topology (9760.989696ms)
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (306.695966ms)
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (51.720873ms)
+✔ expired grants and cancellation cannot execute tools (7.802838ms)
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (22.019872ms)
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (10.102147ms)
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (10.911262ms)
+✔ HTTP MCP argument errors retain field paths and tell the Agent how to repair them (54.48816ms)
+✔ stage threads, summaries and delivery IDs survive store restart and preserve legacy messages (7911.301297ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 78857.103038

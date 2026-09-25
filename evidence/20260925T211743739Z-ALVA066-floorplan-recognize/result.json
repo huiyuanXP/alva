@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "run": "20260925T211743739Z-ALVA066-floorplan-recognize",
+  "step": "recognize",
+  "privateRun": "20260925T202946472Z-ALVA066-floorplan-upload",
+  "projectId": "fd2e11bb-eb42-4016-a578-b120bafb904e",
+  "sourceSha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+  "trueAttachment": true,
+  "realVision": true,
+  "importState": {
+    "model": "gemini-3.8-flash-high",
+    "status": "succeeded",
+    "message": "Codex已完成识别，二维候选待你核对和校准。",
+    "filename": "floorplan.png",
+    "provider": "codex",
+    "requestId": "bb2af633-c6b3-4888-81b9-183de6831b96",
+    "startedAt": "2026-09-25T21:17:51.311Z",
+    "finishedAt": "2026-09-25T21:20:31.687Z",
+    "sourceMime": "image/png"
+  },
+  "candidateCounts": {
+    "walls": 24,
+    "rooms": 5,
+    "openings": 8
+  },
+  "threadId": "01a0da42-f7d0-7c22-a0f6-6f6b4a8917dd"
+}

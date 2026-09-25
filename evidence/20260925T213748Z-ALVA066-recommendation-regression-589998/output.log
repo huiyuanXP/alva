@@ -1,0 +1,41 @@
+✔ only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption (11256.602926ms)
+✔ recommendation tools reject unconfirmed invocation, disallowed assets, collisions and replaced answer sources (8324.228719ms)
+✔ server starts the stage Agent after confirmation without a follow-up browser Chat request (8828.128636ms)
+✖ a silent model cannot complete a recommendation; an explicit MCP no-furniture reason can (8616.025846ms)
+✔ intake drafts survive retrieval without becoming answers/snapshots; confirmation and auth are enforced (9893.27603ms)
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (10297.750853ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (9648.048513ms)
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (177.089139ms)
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (13.389574ms)
+✔ expired grants and cancellation cannot execute tools (5.081819ms)
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (10.412787ms)
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (5.963245ms)
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (51.300352ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79691.65375
+
+✖ failing tests:
+
+test at tests/alva-answer-recommendations.test.ts:1:6799
+✖ a silent model cannot complete a recommendation; an explicit MCP no-furniture reason can (8616.025846ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /不能标记为完成/. Input:
+  
+  '模型当前不可用或处理失败'
+  
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/tests/alva-answer-recommendations.test.ts:61:194)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '模型当前不可用或处理失败',
+    expected: /不能标记为完成/,
+    operator: 'match',
+    diff: 'simple'
+  }

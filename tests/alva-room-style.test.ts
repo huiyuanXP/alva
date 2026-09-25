@@ -14,9 +14,9 @@ test('room styles preview as candidates, require confirmation, survive reload an
  const seeded=await store.mutate(project.id,randomUUID(),0,'seed',{},seedLivingStage),headers={cookie:`alva_session=${(await store.issueInternalSession(project.id)).token}`};const app=await buildAlva(store,{assets:false});
  try{
   const [propose]=roomStyleTools(store,project.id,()=>{});const result=await propose.run({expectedRevision:seeded.revision,roomId:'room',style,reason:'用户要求暖色墙面和木色地面'}) as any;
-  let p=await store.get(project.id);assert.equal(p.roomStyles,undefined);assert.deepEqual(p.scene,seeded.scene);assert.equal(p.roomStyleCandidates?.[0].status,'pending');
+  let p=await store.get(project.id);assert.equal(p.roomStyles,undefined);assert.deepEqual(p.scene,seeded.scene);assert.equal(p.roomStyleCandidates?.[0].status,'pending');const alternate=await propose.run({expectedRevision:p.revision,roomId:'room',style:{...style,tags:['另一候选']},reason:'同一房间的其他样式候选'}) as any;p=await store.get(project.id);
   const response=await app.inject({method:'POST',url:'/api/room-styles/decide',headers,payload:{requestId:randomUUID(),expectedRevision:p.revision,id:result.candidate.id,decision:'confirm',confirmed:true}});assert.equal(response.statusCode,200,response.body);
-  p=await store.get(project.id);assert.deepEqual(p.roomStyles?.room,style);assert.deepEqual(p.scene,seeded.scene);assert.deepEqual(p.confirmedBuilding,seeded.confirmedBuilding);
+  p=await store.get(project.id);assert.deepEqual(p.roomStyles?.room,style);assert.deepEqual(p.scene,seeded.scene);assert.deepEqual(p.confirmedBuilding,seeded.confirmedBuilding);assert.equal(p.roomStyleCandidates?.find(c=>c.id===alternate.candidate.id)?.status,'expired');
   const sides=wallSideStyles(p.scene!,p.roomStyles!,2.5,0,0,.15);assert.deepEqual(sides[0],style.wall);assert.equal(sides[1],undefined);
   const pending=await propose.run({expectedRevision:p.revision,roomId:'room',style,reason:'第二候选'}) as any;
   p=await store.get(project.id);p=await store.mutate(p.id,randomUUID(),p.revision,'lock',{},p=>{p.scene!.rooms[0].locked=true});

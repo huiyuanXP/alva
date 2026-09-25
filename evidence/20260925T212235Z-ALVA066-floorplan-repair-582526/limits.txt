@@ -1,0 +1,6 @@
+run=20260925T212235Z-ALVA066-floorplan-repair-582526
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2556
+aea3cc23e40e7962266c677c9e913f3a83f6743b
