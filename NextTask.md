@@ -1,5 +1,13 @@
 # What's next · 任务认领与并行开发
 
+## 2026-09-25 ALVA-036 已验收集成
+
+手动全局快照、失败回滚与幂等重试已通过 main 集成态的类型检查、24/24 相关回归、构建和真实 Chromium 验收；证据见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。本票执行占用释放，后继 ALVA-037 已依赖就绪，可在署名认领后开工。未部署或重启生产服务；其他署名保持不变。
+
+## 2026-09-25 ALVA-061 Codex Gemini profile 已完成
+
+本机 Codex 用户配置已有单一 `gemini` profile，复用 `newapi` provider；模型目录包含 `gemini-3.6-flash-high`、`gemini-3.7-flash-high`、`gemini-3.8-flash-high`，默认 3.8，可在 Codex 模型设置中切换。三个型号均已通过原生 CLI 的最小真实调用。此任务无后续执行占用；业务服务模型和生产配置未变。交接见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。
+
 ## 2026-09-25 ALVA-060 已集成，预览待用户核对
 
 当前临时公网入口展示 Codex GPT-6 Luna xhigh 的首轮识图候选。使用原有 `OPENAI_VISION_MODEL` 参数和新增推理强度参数，17 墙/10 房/5 门窗可渲染，但确认拓扑失败且有 15 项诊断问题。结果、截图、原 MiMo 保留位置和停用方式见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。本票执行占用释放；预览运行态保留供用户查看，不能自动采用候选。其他署名与 ALVA-028 暂停状态不变。
@@ -39,9 +47,13 @@ ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
+| [ALVA-025](.scratch/alva-completion/issues/18-furniture-properties.md) | 家具属性与款式替换 | `furniture` |  |  | 依赖已完成；同组 ALVA-024 已署名，认领前协调文件与先后顺序 |
+| [ALVA-026](.scratch/alva-completion/issues/19-furniture-return.md) | 移回家具库并保留证据 | `furniture` |  |  | 依赖已完成；同组 ALVA-024 已署名，认领前协调文件与先后顺序 |
+| [ALVA-027](.scratch/alva-completion/issues/20-furniture-transfer.md) | 跨房间转移与来源关系 | `furniture` |  |  | 依赖已完成；同组 ALVA-024 已署名，认领前协调文件与先后顺序 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` |  |  | pending；用户此前要求暂不实施；2026-09-25释放当前执行占用，历史yang-chatgpt/f3aedbb与Worktree保留；详见票内恢复记录，新的开工指令前不实施 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
-| [ALVA-036](.scratch/alva-completion/issues/29-manual-snapshot.md) | 手动保存全局快照与失败重试 | `snapshots` | chatgpt-snapshots | task/ALVA-036-chatgpt-snapshots / .runtime/worktrees/ALVA-036-chatgpt-snapshots | in-progress；api/store.ts、api/api.ts保存路由、新snapshots模块；main.tsx仅header保存控件装配，不改013视图/057问卷片段与model.ts；隔离端口自动分配；重型验证共用alva-heavy-task.lock |
+| [ALVA-037](.scratch/alva-completion/issues/30-snapshot-preview.md) | 快照列表与只读状态预览 | `snapshots` |  |  | 依赖 ALVA-036 已完成；待署名认领，不自动开工 |
+| [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` |  |  | 依赖已完成；待署名认领 |
 | [ALVA-041](.scratch/alva-completion/issues/34-reference-annotation.md) | 参考图片偏好标注 | `references` |  |  | 待认领；开工前登记 |
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 

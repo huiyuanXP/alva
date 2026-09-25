@@ -1,5 +1,13 @@
 # alva Handoff
 
+## 2026-09-25 ALVA-036 完成验收与集成
+
+个人分支 `task/ALVA-036-chatgpt-snapshots`，已确认实现 `6355b3c`，最终验收交接 `7efee97`。main squash 后类型检查、24/24 相关测试、构建、真实 Chromium 8 项流程通过；[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)和 [main 浏览器结果](evidence/2026-09-25T100953518Z-ALVA036-browser-e93aaf/result.json)可复核。快照创建、故障回滚、幂等重试、版本冲突和跨会话重读均已验证。提案预览接口在合成验收页面返回 422，已与保存接口断言分开记录；浏览器页面脚本错误 0。只用合成数据与本地端口，未部署或重启生产。ALVA-037 解锁，其他任务署名未动。
+
+## 2026-09-25 ALVA-061 Codex Gemini profile
+
+本机 `~/.codex/gemini.config.toml` 复用现有 `newapi` provider 和 `NEWAPI_KEY`，独立模型目录提供 Gemini 3.6、3.7、3.8 Flash High。`codex exec --profile gemini` 默认 3.8，启动后可在模型设置中选其他两款；三个型号的 `--strict-config` 原生调用均返回 `OK`。详情见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。用户级文件不入 Git；仓库只保存脱敏交接。业务服务与生产配置未改。
+
 ## 2026-09-25 ALVA-060 Luna 识图预览
 
 个人实现 `8964db6` 已按最新 main 合并验证并集成。已有 `OPENAI_VISION_MODEL` 决定识图模型；新增可选 `OPENAI_REASONING_EFFORT` 透传 Codex App Server，默认行为不变。隔离业务识图一次请求 GPT-6 Luna xhigh，用仓库原图返回 17 墙/10 房/5 门窗，JSON/schema/几何通过，确认拓扑失败；诊断 15 项问题、约 3.35㎡ 未定义空间、4 个墙连通分量。一次请求无自动纠错；未把可渲染误报为合格户型。

@@ -1,4 +1,5 @@
 import {registerIntake} from './intake/routes.js';
+import {registerSnapshots} from './snapshots/routes.js';
 import Fastify from 'fastify';
 import cookie from '@fastify/cookie';
 import rateLimit from '@fastify/rate-limit';
@@ -100,7 +101,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  app.post('/api/building/confirm',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'confirm-building',p=>{if(!p.buildingCandidate)reject('请先生成并预览建筑场景');if(!p.confirmedTopology||p.buildingState.topologyFingerprint!==p.confirmedTopology!.sourceFingerprint)reject('建筑场景已过期，请针对当前拓扑重新生成');p.confirmedBuilding=structuredClone(p.buildingCandidate);p.buildingCandidate=undefined;p.buildingState={...p.buildingState,status:'confirmed',updatedAt:new Date().toISOString()};p.dirty=true;p.changes.push({id:randomUUID(),description:`确认建筑场景（拓扑 v${p.confirmedTopology!.version}）`,evidenceIds:[],context:[`建筑生成回指来源指纹 ${p.confirmedTopology!.sourceFingerprint}`],createdAt:new Date().toISOString()})})});
  registerIntake(app,store,session);
  registerConsultation(app,store,session,active,chatCodex,activeTranscriptions,transcriptionCall);registerExports(app,store,session);
- app.post('/api/save',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'save',p=>{if(!p.scene)reject('请先确认户型');validateScene(p.scene);p.findings=[...p.findings.filter(f=>f.stage!=='review'),...review(p,'review')]})});
+ registerSnapshots(app,store,session);
  app.post('/api/restore',async req=>{const b=Command.extend({version:z.number().int().positive(),confirmed:z.literal(true)}).parse(req.body);const snap=await store.snapshot(session(req).projectId,b.version);return mutate(req,b,'restore',p=>{const revision=p.revision,savedVersion=p.savedVersion;Object.assign(p,structuredClone(snap),{revision,savedVersion,dirty:true});p.changes.push({id:randomUUID(),description:`回退到保存版本${b.version}（工作稿）`,evidenceIds:[],context:[],createdAt:new Date().toISOString()})})});
  app.post('/api/import',async(req,reply)=>{
   const s=session(req);if(s.role!=='owner')reject('仅业主可导入',403);

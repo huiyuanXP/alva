@@ -1,5 +1,11 @@
 # GlobalHandoff
 
+2026-09-25 ALVA-036 已在 main 完成集成验收；只有显式保存创建全局快照，失败回滚与同请求重试已验证。快照列表/只读预览和恢复仍由 ALVA-037/038 实施；未部署生产。恢复入口见 [ALVA-036 单票](.scratch/alva-completion/issues/29-manual-snapshot.md)和 NextTask。
+
+## 2026-09-25 ALVA-061 本机 Codex Gemini 接入
+
+Codex 用户配置增加单一 `gemini` profile，复用已有 `newapi` provider、网关和 `NEWAPI_KEY` 环境变量。模型目录可选 Gemini 3.6/3.7/3.8 Flash High，默认 3.8；三款已通过原生 CLI 真实最小调用。使用和边界见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。配置仅在本机，不代表业务 App Server、生产模型或其他机器已切换。
+
 ## 2026-09-25 ALVA-060 当前预览
 
 同一临时 Cloudflare 链接已切换为 Codex GPT-6 Luna xhigh 的业务识图候选。模型由已有 `OPENAI_VISION_MODEL` 选择，推理强度现可用 `OPENAI_REASONING_EFFORT` 传给 App Server。17 墙/10 房/5 门窗能渲染，但拓扑失败且有 15 项诊断问题；原 MiMo 候选数据库和截图保留。入口、验证与停用方式见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)，生产未变。

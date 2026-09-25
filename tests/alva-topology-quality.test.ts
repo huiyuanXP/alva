@@ -4,7 +4,7 @@ import {randomUUID} from 'node:crypto';
 import {analyzeTopology} from '../api/topology/diagnostics.js';
 import {validateTopology} from '../api/topology/validate.js';
 import {buildPlanarGraph} from '../api/topology/planar-graph.js';
-import {pointInPolygon} from '../api/model.js';
+import {DomainError,pointInPolygon} from '../api/model.js';
 import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
 import {rectangleScene,annotatedFailureScene,rotatedScene,room,wall} from './fixtures/alva/topology-quality.js';
@@ -87,9 +87,15 @@ test('ALVA-055 no scene, invalid coordinates, self-crossing rooms and unsupporte
 
 test('ALVA-055 T-junction and collinear overlap rejection is symmetric without changing the analysis graph',()=>{
  const s=rectangleScene();s.walls=[wall('horizontal',0,0,6,0),wall('vertical',3,0,3,2)];s.rooms=[];s.openings=[];
- for(let i=0;i<2;i++){assert.throws(()=>validateTopology(s),/中段/);assert.equal(buildPlanarGraph(s.walls,.03).components.length,1);s.walls.reverse()}
+ const rejectsUnsplitConnection=()=>assert.throws(()=>validateTopology(s),(error:unknown)=>{
+  assert.ok(error instanceof DomainError);assert.equal(error.statusCode,422);
+  assert.match(error.message,/共同连接点/);assert.match(error.message,/建议修正/);
+  for(const w of s.walls)assert.ok(error.message.includes(w.id),`missing wall reference: ${w.id}`);
+  return true;
+ });
+ for(let i=0;i<2;i++){rejectsUnsplitConnection();assert.equal(buildPlanarGraph(s.walls,.03).components.length,1);s.walls.reverse()}
  s.walls=[wall('short',1,0,3,0),wall('long',0,0,5,0)];
- for(let i=0;i<2;i++){assert.throws(()=>validateTopology(s),/中段/);s.walls.reverse()}
+ for(let i=0;i<2;i++){rejectsUnsplitConnection();s.walls.reverse()}
 });
 
 test('ALVA-055 authenticated GET diagnoses current candidate, edits refresh, read-only access never changes design',async()=>{

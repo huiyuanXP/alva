@@ -1,0 +1,92 @@
+{
+  "ok": true,
+  "checks": [
+    "real login; initial draft; no automatic snapshot",
+    "manual save exposes committed version/time; decisions and 3D retained",
+    "real post-INSERT failure: no success, no snapshot, full draft retained; same-ID retry succeeds",
+    "committed response lost; reload keeps request ID; retry creates no duplicate or stale rollback",
+    "two real sessions conflict: no overwrite; explicit reread does not save; fresh confirmation succeeds",
+    "real browser double-click sends one request and produces one snapshot",
+    "refresh reads durable saved state and does not create snapshots",
+    "designer entry cannot save"
+  ],
+  "requests": [
+    {
+      "requestId": "4e285a6b-d7e2-43b2-884c-62ccc75908a4",
+      "expectedRevision": 1,
+      "confirmed": true
+    },
+    {
+      "requestId": "fadb7e40-2cd6-4526-a90b-4002a8e3aab1",
+      "expectedRevision": 3,
+      "confirmed": true
+    },
+    {
+      "requestId": "fadb7e40-2cd6-4526-a90b-4002a8e3aab1",
+      "expectedRevision": 3,
+      "confirmed": true
+    },
+    {
+      "requestId": "6172f6a2-184f-41eb-8667-9ddc737ce4bf",
+      "expectedRevision": 4,
+      "confirmed": true
+    },
+    {
+      "requestId": "6172f6a2-184f-41eb-8667-9ddc737ce4bf",
+      "expectedRevision": 4,
+      "confirmed": true
+    },
+    {
+      "requestId": "56abf19e-c0ca-4a34-829b-1e8a6571ae01",
+      "expectedRevision": 6,
+      "confirmed": true
+    },
+    {
+      "requestId": "a2d842d3-2efb-4de2-b733-87aac956b34b",
+      "expectedRevision": 7,
+      "confirmed": true
+    },
+    {
+      "requestId": "bbe367d3-fb10-4082-8702-669988b2142c",
+      "expectedRevision": 8,
+      "confirmed": true
+    }
+  ],
+  "snapshotCount": 5,
+  "pageErrors": [],
+  "unexpectedConsole": [],
+  "expectedConsole": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:40853/api/session"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)",
+      "url": "http://127.0.0.1:40853/api/proposals/proposal/preview"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "url": "http://127.0.0.1:40853/api/save"
+    },
+    {
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "url": "http://127.0.0.1:40853/api/save"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)",
+      "url": "http://127.0.0.1:40853/api/proposals/proposal/preview"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 409 (Conflict)",
+      "url": "http://127.0.0.1:40853/api/save"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)",
+      "url": "http://127.0.0.1:40853/api/proposals/proposal/preview"
+    }
+  ],
+  "expectedNetworkFailures": [
+    "/api/save: net::ERR_FAILED"
+  ],
+  "source": "synthetic project; real Chromium + HTTP + PGlite; no model claim"
+}

@@ -1,5 +1,7 @@
 # alva 执行进度
 
+2026-09-25 ALVA-036 手动全局快照完成验收与 main 集成：个人实现 `6355b3c`、验收交接 `7efee97`；main 集成态类型检查、24/24 相关回归、生产构建及真实 Chromium 8 项流程通过，浏览器证据 `evidence/2026-09-25T100953518Z-ALVA036-browser-e93aaf/`。创建、故障回滚、响应丢失幂等重试、冲突重读和重开数据库均通过。合成页面提案预览 422 作为独立现象保留；未部署或重启生产，037 待认领。
+
 ## 2026-09-25 ALVA-060 Codex Luna xhigh 识图预览
 
 复用现役 `api/import.recognizeLayout`，`OPENAI_VISION_MODEL=gpt-6-luna`；仅给 `api/codex.runCodex` 加可选 `OPENAI_REASONING_EFFORT=xhigh`。个人实现 `8964db6` 同步最新 main 后类型检查和 15 项导入相关测试通过。一次真实 App Server 调用用仓库原图产出 17 墙/10 房/5 门窗，通过业务 JSON/schema/几何，但确认拓扑失败；诊断 15 项问题、约 3.35㎡ 未定义空间、墙连通分量 4。没有自动拓扑修正，也不宣称质量达标。隔离预览已将同一临时 Cloudflare 链接切到 Luna 候选，二维/3D Chromium 实测与公网健康通过，原 MiMo 数据和截图保留。证据与边界见 `docs/ALVA-060-codex-luna-preview.md`；未修改生产。

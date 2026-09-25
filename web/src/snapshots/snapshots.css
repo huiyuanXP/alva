@@ -1,0 +1,7 @@
+.snapshot-controls { display: flex; align-items: center; gap: 12px; position: relative; }
+.snapshot-feedback { position: absolute; top: calc(100% + 14px); right: 0; z-index: 80; width: min(400px, 85vw); padding: 18px; background: #f8f8f2; color: #344337; border: 1px solid #cad2c1; border-radius: 12px; box-shadow: 0 10px 32px #28342520; font-size: 13px; line-height: 1.6; }
+.snapshot-feedback p { margin: 8px 0; }
+.snapshot-feedback small { display: block; color: #616b60; }
+.snapshot-feedback-error { background: #fff7ef; border-color: #ddb896; color: #713c26; }
+.snapshot-feedback-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.snapshot-feedback-actions button { white-space: normal; }

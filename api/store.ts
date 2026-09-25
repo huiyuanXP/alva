@@ -2,6 +2,9 @@ import {PGlite} from '@electric-sql/pglite';
 import {createHash,randomBytes,randomUUID,timingSafeEqual} from 'node:crypto';
 import {mkdir,readFile,writeFile,chmod} from 'node:fs/promises';
 import {emptyProject,DomainError,type ImportState,type Project} from './model.js';
+import {snapshotProject} from './snapshots/state.js';
+import type {SaveReceipt} from '../packages/contracts/alva/snapshots.js';
+type CommandReceipt={kind:'command-receipt-v1';revision:number;savedVersion?:number};
 export type Role='owner'|'designer'|'professional';
 export type Session={projectId:string;role:Role;linkId?:string;authGeneration:number};
 const hash=(text:string)=>createHash('sha256').update(text).digest('hex');
@@ -39,24 +42,35 @@ export class AlvaStore{
  async snapshot(id:string,version:number):Promise<Project>{const row=(await this.db.query<{state:Project}>('SELECT state FROM alva_versions WHERE project_id=$1 AND version=$2',[id,version])).rows[0];if(!row)throw new DomainError(404,'保存版本不存在');return row.state}
  async failure(id:string,operation:string,reason:string){await this.db.query('INSERT INTO alva_failures(id,project_id,operation,reason) VALUES($1,$2,$3,$4)',[randomUUID(),id,operation,reason.slice(0,300)])}
  async setImportState(id:string,state:ImportState){await this.db.query(`UPDATE alva_projects SET state=jsonb_set(state,'{importState}',$2::jsonb,true) WHERE id=$1`,[id,JSON.stringify(state)])}
- async replay(id:string,requestId:string,operation:string,input:unknown):Promise<Project|null>{const row=(await this.db.query<{fingerprint:string;response:Project}>('SELECT fingerprint,response FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];if(!row)return null;const fingerprint=hash(JSON.stringify({operation,input}));if(row.fingerprint!==fingerprint)throw new DomainError(409,'同一请求ID不能用于不同内容');return row.response}
+ async replay(id:string,requestId:string,operation:string,input:unknown):Promise<Project|null>{const row=(await this.db.query<{fingerprint:string}>('SELECT fingerprint FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];if(!row)return null;const fingerprint=hash(JSON.stringify({operation,input}));if(row.fingerprint!==fingerprint)throw new DomainError(409,'同一请求ID不能用于不同内容');return this.get(id)}
+ async saveReceipt(id:string,requestId:string):Promise<SaveReceipt>{
+  // Legacy receipts stored a full Project. Reading only savedVersion keeps
+  // already committed saves retryable without migrating historical records.
+  const row=(await this.db.query<{version:number;revision:number;created_at:Date|string}>(`SELECT v.version,(v.state->>'revision')::integer AS revision,v.created_at FROM alva_commands c JOIN alva_versions v ON v.project_id=c.project_id AND v.version=(c.response->>'savedVersion')::integer WHERE c.project_id=$1 AND c.request_id=$2`,[id,requestId])).rows[0];
+  if(!row)throw new DomainError(404,'该保存请求尚无已提交快照');
+  return {requestId,version:row.version,revision:row.revision,createdAt:new Date(row.created_at).toISOString()};
+ }
  async mutate(id:string,requestId:string,expectedRevision:number|null,operation:string,input:unknown,fn:(p:Project)=>void|Promise<void>):Promise<Project>{
   const fingerprint=hash(JSON.stringify({operation,input}));
   try{return await this.db.transaction(async tx=>{
-   const prior=(await tx.query<{fingerprint:string;response:Project}>('SELECT fingerprint,response FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];
-   if(prior){if(prior.fingerprint!==fingerprint)throw new DomainError(409,'同一请求ID不能用于不同内容');return prior.response}
    const row=(await tx.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1 FOR UPDATE',[id])).rows[0];if(!row)throw new DomainError(404,'项目不存在');
-   const p=this.normalizeProject(row.state);if(expectedRevision!==null&&p.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后确认');
+   const p=this.normalizeProject(row.state);
+   const prior=(await tx.query<{fingerprint:string}>('SELECT fingerprint FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];
+   if(prior){if(prior.fingerprint!==fingerprint)throw new DomainError(409,'同一请求ID不能用于不同内容');return p}
+   if(expectedRevision!==null&&p.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后确认');
+   const before=JSON.stringify(p);
    await fn(p);p.revision++;
    if(operation==='save'){
-    if(this.failNextSave){this.failNextSave=false;throw new Error('isolated_save_fault')}
     p.savedVersion++;p.dirty=false;
-    const summary=Array.from(p.changes.at(-1)?.description||'保存当前房屋需求与方案').slice(0,49).join('');
-    await tx.query('INSERT INTO alva_versions(project_id,version,summary,state) VALUES($1,$2,$3,$4)',[id,p.savedVersion,summary,JSON.stringify(p)]);
-   }
+    const snapshot=snapshotProject(p),summary=`手动全局快照 · ${snapshot.scene?.rooms.length||0} 个空间 · ${snapshot.answers.length} 条需求`;
+    await tx.query('INSERT INTO alva_versions(project_id,version,summary,state) VALUES($1,$2,$3,$4)',[id,p.savedVersion,summary,JSON.stringify(snapshot)]);
+    // Inject after an actual write, so failure tests exercise transaction rollback.
+    if(this.failNextSave){this.failNextSave=false;throw new Error('isolated_save_fault')}
+   }else if(JSON.stringify({...p,revision:p.revision-1})!==before)p.dirty=true;
    await tx.query('UPDATE alva_projects SET state=$2 WHERE id=$1',[id,JSON.stringify(p)]);
-   await tx.query('INSERT INTO alva_commands VALUES($1,$2,$3,$4)',[id,requestId,fingerprint,JSON.stringify(p)]);return p;
-  })}catch(error){await this.failure(id,operation,error instanceof DomainError?error.message:'保存或处理失败');throw error}
+   const receipt:CommandReceipt={kind:'command-receipt-v1',revision:p.revision,...(operation==='save'?{savedVersion:p.savedVersion}:{})};
+   await tx.query('INSERT INTO alva_commands VALUES($1,$2,$3,$4)',[id,requestId,fingerprint,JSON.stringify(receipt)]);return p;
+  })}catch(error){try{await this.failure(id,operation,error instanceof DomainError?error.message:'保存或处理失败')}catch{console.error('[alva failure log unavailable]',operation)}throw error}
  }
  async close(){await this.db.close()}
 }
