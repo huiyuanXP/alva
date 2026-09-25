@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "run": "20260925T2312Z-ALVA041-round2-http",
+  "homeStatus": 200,
+  "imageStatus": 200,
+  "batchStatus": "confirmed",
+  "modelOrigin": true,
+  "manualOrigin": true,
+  "confirmedAnnotations": 2,
+  "projectRevision": 2,
+  "imageEvidence": 2,
+  "referenceFindings": 2
+}

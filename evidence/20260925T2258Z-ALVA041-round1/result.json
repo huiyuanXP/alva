@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "round": 1,
+  "tests": {"passed": 3, "failed": 0},
+  "checks": ["ALVA-041 pending/model/manual/confirm/cancel boundaries", "dimension/structure/performance evidence guard", "main Chat actual propose_reference_preferences tool invocation", "tsc --noEmit", "vite production build", "git diff --check"]
+}

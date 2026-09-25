@@ -1,0 +1,6 @@
+{
+  "ok": false,
+  "counted_as_acceptance_round": false,
+  "reason": "Playwright package exists but browser executable cache is absent after server recovery; no system Chrome/Chromium is installed.",
+  "action": "Did not download a browser or modify the server environment. Replaced this non-counted attempt with real-listening-port HTTP integration acceptance."
+}

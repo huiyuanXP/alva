@@ -18,6 +18,8 @@ export class AlvaStore{
  CREATE TABLE IF NOT EXISTS alva_commands(project_id text NOT NULL,request_id text NOT NULL,fingerprint text NOT NULL,response jsonb NOT NULL,PRIMARY KEY(project_id,request_id));
  CREATE TABLE IF NOT EXISTS alva_versions(project_id text NOT NULL,version integer NOT NULL,summary text NOT NULL,state jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(project_id,version));
  CREATE TABLE IF NOT EXISTS alva_failures(id text PRIMARY KEY,project_id text,operation text NOT NULL,reason text NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
+ CREATE TABLE IF NOT EXISTS alva_reference_batches(id text PRIMARY KEY,project_id text NOT NULL,request_id text NOT NULL,room_id text,filename text NOT NULL,mime text NOT NULL,image_data text NOT NULL,source_text text NOT NULL,status text NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),UNIQUE(project_id,request_id));
+ CREATE TABLE IF NOT EXISTS alva_reference_annotations(id text PRIMARY KEY,batch_id text NOT NULL,project_id text NOT NULL,origin text NOT NULL,preference text NOT NULL,feature text NOT NULL,status text NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),confirmed_at timestamptz);
  ALTER TABLE alva_sessions ALTER COLUMN link_id DROP NOT NULL;
  ALTER TABLE alva_sessions ADD COLUMN IF NOT EXISTS project_id text;
  ALTER TABLE alva_sessions ADD COLUMN IF NOT EXISTS role text;

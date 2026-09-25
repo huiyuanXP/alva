@@ -265,3 +265,7 @@ ALVA-023 由 lzy 在独立 Worktree 完成。家具库添加服务端校验许�
 ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理家具 5cm 网格吸附、15°旋转归一化、旋转占地的房间边界校验、同房间碰撞拒绝和锁定对象保护；手动命令与 Chat 候选共用 applyChanges，2D/3D 拖动失败时不保留本地错误位置。
 
 验证：npm run check；ALVA-024、ALVA-023、ALVA-021、ALVA-022 与业务回归共 10/10；npm run build:alva；真实 Chromium 覆盖 2D 拖动、Three.js 3D 拖动、旋转吸附、碰撞/越界拒绝、锁定绕过拒绝和刷新保持，控制台错误 0。证据 evidence/20260925T102254871Z-ALVA024-browser-2a4841/。失败调试 run 也按独立证据保留。未部署生产或写入生产数据库。
+
+
+## 2026-09-25 · ALVA-041 参考图片偏好标注
+实现 `api/references.ts` 与 WorkspacePanel“参考图”页签，并把主 Chat 接到 `propose_reference_preferences` 工具。模型/手工标注均先 pending，取消不污染 Project；确认后才形成有来源 Evidence/Finding。个人实现 `a22b81a`。第一轮专项 3/3 + tsc/build/diff-check；第二轮真实监听端口 HTTP 链路通过（首页/图片 200、model/manual 来源、2 条确认 evidence + 2 条 findings），并带 ALVA-043 回归共 6/6。浏览器包存在但恢复后的服务器无 Chromium cache/system Chrome，因此浏览器尝试未计入验收。证据见 ALVA-041 单票与 `evidence/20260925T2258Z-ALVA041-round1/`、`evidence/20260925T2312Z-ALVA041-round2-http/`。
