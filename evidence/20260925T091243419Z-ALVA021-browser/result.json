@@ -1,0 +1,13 @@
+{
+  "ticket": "ALVA-021",
+  "runId": "20260925T091243419Z-ALVA021-browser",
+  "pass": true,
+  "checks": {
+    "two_distinct_candidate_cards": true,
+    "real_3d_canvas": true,
+    "reference_not_selected": true,
+    "partial_selection_visible": true,
+    "atomic_selected_only": true,
+    "console_errors": []
+  }
+}
