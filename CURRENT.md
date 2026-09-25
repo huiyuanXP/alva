@@ -1,5 +1,9 @@
 # 恢复索引
 
+## 当前在途：2026-09-25恢复ALVA-053/056
+
+用户已授权验收与修复，先ALVA-053 in-progress（chatgpt-recovery，独立`.runtime/worktrees/ALVA-053-recovery-20260925`），再ALVA-056。原pending重启整理记录以下为历史。028保持暂停；057由yang-chatgpt执行，详情以主目录NextTask为准，不覆盖其共享文件或部署工作。保护基线`.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/baseline.json`。本轮先验证正常ubuntu环境的`codex --profile mimo`，不把MCP旧配置作为新profile的可用性判断。
+
 ## 2026-09-25 重启后状态
 
 本轮是服务器取证与待办恢复，不是产品实施。根目录 `/home/ubuntu/Alva`，main检查基线 `5e1513a`。已完成的12张产品票与ALVA-055保持done；ALVA-053/056退回pending，ALVA-028从进行中退回待办，未自动开工。

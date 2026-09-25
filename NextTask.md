@@ -1,5 +1,9 @@
 # What's next · 任务认领与并行开发
 
+## 当前恢复执行：ALVA-053 → ALVA-056
+
+2026-09-25用户明确授权恢复验收/修复。chatgpt-recovery先执行53、集成后再执行56；正常ubuntu登录环境可见新版MiMo profile，MCP旧CODEX_HOME不等同用户profile。028继续用户暂停，057的署名和共享文件占用保持。53的api/codex.ts、api/import.ts及新增api/import/由本轮登记使用，不修改057占用的api/model.ts、api/intake或web。重型命令串行，统一协调锁`.git/alva-heavy-task.lock`；本轮CPU60%/MemoryMax900M/TasksMax128，开始前检查可用内存，不并发启动浏览器/构建。56仍pending但已获本轮后续执行授权，不受下方旧“不重跑模型”记录限制；新的run不得覆盖旧证据。
+
 ## Pending 恢复队列（2026-09-25）
 
 用户明确授权本轮由协调人将已中断/暂停工作退回待办，释放的是当前执行占用，不删除历史负责人、分支、工作区或证据。pending不是done，也不是自动重新开工。44票看板不接受字面Status=pending；产品待办沿用ready-for-agent并在票内写Execution state=pending，额外维护票直接使用pending。此处是恢复索引，不另建产品状态数据库。
@@ -104,7 +108,7 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
-| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) |  | 历史chatgpt-audit；task/ALVA-053-chatgpt-audit / /home/ubuntu/Alva-worktrees/ALVA-053-chatgpt-audit；88506f2保留；待诊断复核和主线收尾，不占用执行资源 | pending |
+| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) | chatgpt-recovery | task/ALVA-053-recovery-20260925；.runtime/worktrees/ALVA-053-recovery-20260925；api/codex.ts、api/import.ts、api/import/、定向脚本/测试；旧分支保留；无端口、无生产改动 | in-progress |
 
 
 ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028仍按用户要求暂停。

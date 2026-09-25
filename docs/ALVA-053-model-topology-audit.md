@@ -1,5 +1,17 @@
 # ALVA-053：模型路由与平面拓扑诊断
 
+## 2026-09-25 授权恢复执行（当前）
+
+**Owner:** chatgpt-recovery
+
+用户本轮明确恢复53、56并验收修复，MiMo使用`codex --profile mimo`。先串行执行53，56排在其后；028继续暂停，057的api/model.ts、api/intake、web入口均不修改。新分支`task/ALVA-053-recovery-20260925`，独立Worktree`.runtime/worktrees/ALVA-053-recovery-20260925`，基线`815c85a5a6e5a65177fd6047867c7bad0aed5431`。历史88506f2及所有旧Worktree保留。
+
+本轮范围：复核路由/历史候选/当前拓扑诊断，修复本票识别出的输出合同错误处理及当前Codex适配缺陷（仅实测确认后动手），补相关测试与真实MiMo证据。当前共享文件登记`api/codex.ts`、`api/import.ts`，新增模块位于`api/import/`、诊断脚本及定向测试；不修改057占用的api/model.ts等文件，不改生产配置/数据/前端部署。当前截图未标注原图或生产样本关联不足时保持证据边界，不代造真值。
+
+验证计划：原失败重放、解析/schema/几何错误的有界处理回归、当前真实Codex MiMo图像/工具调用、必要类型检查及相关已有回归。重型任务串行，使用`.git/alva-heavy-task.lock`与任务级CPU60%、MemoryMax900M、TasksMax128；不修改MCP/生产单元限额。私有保护清单`.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/baseline.json`，main原8暂存/2文档保留；56仅在其获准集成时消费对应成果。
+
+此前恢复记录以下均为历史时点。
+
 ## 2026-09-25 重启后恢复状态（当前权威）
 
 执行状态：**pending / 待恢复诊断收尾**。用户授权协调退回待办，清空当前执行占用；保留历史负责人 chatgpt-audit、分支 `task/ALVA-053-chatgpt-audit` 和工作区 `/home/ubuntu/Alva-worktrees/ALVA-053-chatgpt-audit`。
@@ -12,7 +24,7 @@
 
 ## 初始范围与验收计划（历史）
 
-**Status:** pending
+**Status:** in-progress
 
 任务类型：用户直接授权维护检查，独立于44张产品票；不重排旧 week/step。
 
