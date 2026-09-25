@@ -18,7 +18,7 @@ Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传
 - 恢复读CURRENT/Handoff/NextTask。技能to-tickets用于发票，neat-freak用于知识对齐，不扩大生产权限。本库旧基线和历史证据保留；`/home/ubuntu/aws-hackthon` 已全目录归档且不使用。
 - 2026-09-22 MCP 凭据收尾：现役授权密码只在 `/home/ubuntu/aws-hackthon/.mcp-runtime/server.env`，旧副本 `config.json`、`connection.txt`、`mcp-login-password.txt` 已删除。MCP 仍临时依赖该目录下 `.venv-mcp` 与 `.mcp-runtime`，迁移到 `alva-*` 目录前不得删除；详见 `docs/REMOTE-ACCESS.md`。
 
-- 并行入口：NextTask.md；当前依赖就绪 frontier 为 ALVA-013/020/023/028/031/036/041；ALVA-028 已退待办（Execution state=pending、未实施，历史负责人保留），其余未认领。旧“全串行/首批全完成才可开始其他票”被覆盖。共享文件需协调，个人分支提交不等于done；全局交接只在main集成时更新。
+- 并行入口：NextTask.md；当前依赖就绪 frontier 为 ALVA-020/023/028/031/036/041；ALVA-028 已退待办（Execution state=pending、未实施，历史负责人保留），其余未认领。旧“全串行/首批全完成才可开始其他票”被覆盖。共享文件需协调，个人分支提交不等于done；全局交接只在main集成时更新。
 
 - ALVA-052恢复原prod.huiyuanxp.com/todo入口，现役api/todo与web/todo直接读取44张正式票和NextTask；无需重复上传，30秒刷新。源状态和认领仍在main维护，不修改MCP。运维与验证见docs/TODO-LIST.md。
 

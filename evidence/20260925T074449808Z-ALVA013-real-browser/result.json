@@ -1,0 +1,23 @@
+{
+  "ticket": "ALVA-013",
+  "runId": "20260925T074449808Z-ALVA013-real-browser",
+  "pass": true,
+  "checks": {
+    "login": true,
+    "auto_overview": true,
+    "cutaway": true,
+    "room_view_safe": true,
+    "rotate_zoom": true,
+    "reset": true,
+    "entity_trace": true,
+    "reload": true,
+    "second_layout_autoframe": true,
+    "console_errors": true
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "source": {
+    "fixture": "真实 floorplan.png 的结构化确认拓扑"
+  }
+}

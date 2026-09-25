@@ -132,3 +132,5 @@ Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传
 下一步按本轮已有授权执行ALVA-056，改旧探针硬编码v2.5为当前`codex exec --profile mimo`并复测默认Pro；53不再占用共享文件。028仍暂停，057的yang-chatgpt与其共享文件保持不变。原8个56暂存文件/2份文档修改、preview五文件及全部历史Worktree保留；本次独立Git索引不吞并它们。重型任务串行、CPU60%、任务内存模型900MiB/含PGlite和类型1500MiB、Tasks128；初始限额失败留证，最终运行未OOM。回滚仅revert本票集成，不重置工作树。
 
 知识同步：已读neat-freak并按本次代码/证据更新ticket、CURRENT、Handoff、NextTask、GlobalHandoff；生成记忆out-of-scope。未清理其他任务Worktree，原始JSONL/响应只留私有目录。
+
+2026-09-25 ALVA-013 建筑3D总览、剖切与房间视角：lzy 完成并通过集成前验收。渲染按实际建筑构件边界自动取景，支持旋转缩放/平移、复位、完整墙体与水平剖切、按真实房间计算安全视点、构件点选回指拓扑实体；地面/墙/门窗/玻璃材质、阴影和日照参数保留。3个纯逻辑测试、类型检查、前端构建通过；真实 Chromium 覆盖登录、剖切、房间视角、旋转缩放、复位、关联提示、刷新和第二种非矩形布局，证据 `evidence/20260925T074449808Z-ALVA013-real-browser/`。实现提交 `3725f16`，待本次 main squash 集成提交。

@@ -26,9 +26,9 @@ Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传
 
 以下按各次记录时点阅读；恢复状态以本页上方、CURRENT及单票2026-09-25记录为准。
 
-当前 44 张产品 Ticket 中，ALVA-008–012、ALVA-014–019、ALVA-043 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
+当前 44 张产品 Ticket 中，ALVA-008–013、ALVA-014–019、ALVA-043 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
 
-44票均有 Parallel lane；当前依赖就绪为 ALVA-013、020、023、028、031、036、041，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
+44票均有 Parallel lane；当前依赖就绪为 ALVA-020、023、028、031、036、041，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
 
 认领在主目录署名即生效，协调锁内提交；每票独立Worktree/分支及运行资源。同组或共享文件冲突先协调。个人完成提交后不移除署名；main集成验证通过后，同一实现提交更新done、移除任务行和署名、补充所有新解锁任务，保留票内署名及原实现SHA供追溯。
 
