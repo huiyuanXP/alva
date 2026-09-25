@@ -8,9 +8,9 @@
 
 **Blocked by:** 05：调用Codex生成建筑3D场景
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已释放，待重新认领；未实施。
+**Execution:** 已由 lzy 重新认领，分支 task/ALVA-013-lzy，Worktree /home/ubuntu/Alva-worktrees/ALVA-013-lzy；独立开发，验证通过后自动合入 main。
 
 - [ ] 默认总览根据实际建筑边界取景，建筑完整落入视野；支持旋转、缩放及一键复位，不把6个固定房间或固定相机坐标套给任意户型。
 - [ ] 提供墙体剖切/完整墙体切换，让室内轮廓可见；剖切只影响显示，不删除建筑实体或改变已确认拓扑。
