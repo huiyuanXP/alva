@@ -34,7 +34,6 @@ ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-022](.scratch/alva-completion/issues/15-room-purpose.md) | 房间用途与布局分开确认 | proposals | lzy | task/ALVA-022-lzy / /home/ubuntu/Alva-worktrees/ALVA-022-lzy | in-progress；api/chat.ts、api/business.ts、api/model.ts、web/src/Panels.tsx、测试与票内证据；端口自动分配 |
 | [ALVA-023](.scratch/alva-completion/issues/16-furniture-add-copy.md) | 家具添加、选择与复制 | `furniture` |  |  | 待认领；开工前登记 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` |  |  | pending；用户此前要求暂不实施；2026-09-25释放当前执行占用，历史yang-chatgpt/f3aedbb与Worktree保留；详见票内恢复记录，新的开工指令前不实施 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |

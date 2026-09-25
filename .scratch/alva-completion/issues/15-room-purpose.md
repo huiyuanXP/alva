@@ -12,7 +12,7 @@
 
 **Status:** done
 
-**Execution:** 已由 lzy 在独立 Worktree 完成完整验证并合入 main，集成提交待收尾记录；后续依赖可按 NextTask 规则继续。
+**Execution:** 已由 lzy 在独立 Worktree 完成完整验证并合入 main，集成提交 4931415；后续依赖可按 NextTask 规则继续。
 
 - [x] 只确认用途不会自动移动、替换或删除家具。
 - [x] 用途引发的布局建议可预览、拒绝或局部采用。
@@ -30,4 +30,4 @@
 - branch/worktree: task/ALVA-022-lzy / /home/ubuntu/Alva-worktrees/ALVA-022-lzy
 - implementation: 新增独立用途确认路由和用途确认记录；通用布局命令不能绕过用途确认；用途确认不移动家具；布局候选支持预览、暂不采用、局部采用并单独记录；拒绝一个候选不会使同批其他候选失效；锁定房间由服务端拒绝。
 - verification: npm run check；ALVA-022、ALVA-021、ALVA-020 与业务联合回归 9/9；npm run build:alva；真实 Chromium 脚本 scripts/alva-022-browser.ts 通过，证据 evidence/20260925T093352998Z-ALVA022-browser/，控制台错误 0。
-- state: implementation complete in worktree; ready for main integration.
+- state: implemented, verified, and integrated into main.

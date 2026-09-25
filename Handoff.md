@@ -217,3 +217,9 @@ Round 1 `evidence/20260922T180000Z-ALVA043-round1/` 使用真实 `gemini-3.1-fla
 ALVA-021 已由 lzy 在独立 Worktree 完成并合入 main，集成提交 c2594e8（实现提交 22a1db1）。候选协议支持 referenceIds；模糊请求至少返回两个不同变更候选，精确请求可返回一个。候选卡使用真实 Three.js 3D预览，参考物禁用且不写入采用范围；选中范围沿用服务端版本门禁、幂等命令和事务回滚。
 
 验证：npm run check；ALVA-021 专项回归 2/2；受影响 ALVA-012/020 联合回归 9/9；npm run build:alva；真实 Chromium 通过，覆盖两个候选、3D画布、参考物默认不选和部分采用，控制台错误 0。证据 evidence/20260925T091243419Z-ALVA021-browser/。根目录现有 AGENTS.md 用户修改及未追踪历史证据未触碰；未部署/重启生产。
+
+## 2026-09-25 ALVA-022 房间用途与布局分开确认
+
+ALVA-022 已由 lzy 在独立 Worktree 完成并合入 main，集成提交 4931415（实现提交 788296e）。用途通过独立路由确认并保存用途依据，通用布局命令不能绕过；用途确认不改家具。用途触发的布局候选可预览、暂不采用或局部采用，布局采用单独保存 selectedIds 和 proposalId；拒绝一个候选不会使同批其他候选失效；锁定房间由服务端拒绝。
+
+验证：npm run check；ALVA-022、ALVA-021、ALVA-020 和业务联合回归 9/9；npm run build:alva；真实 Chromium 覆盖用途确认、家具不变、布局候选3D预览、拒绝、局部采用、锁定房间按钮与服务端拒绝，控制台错误 0。证据 evidence/20260925T093352998Z-ALVA022-browser/。未部署/重启生产，主目录 AGENTS.md 和历史未追踪证据未触碰。
