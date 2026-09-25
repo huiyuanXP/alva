@@ -17,14 +17,14 @@ export const catalogue=intakeCatalogue.map(q=>{
 
 export function unansweredForScope(p:Project,roomId:string|null){return catalogue.filter(q=>q.enabled&&((q.scope==='project'&&roomId===null)||(q.scope==='room'&&roomId!==null))&&!p.answers.some(a=>a.questionId===q.id&&a.roomId===(q.scope==='project'?null:roomId)))}
 export const ChangeSchema=z.object({action:z.enum(['add','update','remove','copy','transfer','purpose','wall']),targetId:z.string(),values:z.record(z.string(),z.unknown())}).strict();
-export function applyChanges(scene:SceneData,changes:Change[],professional=false):SceneData{
+export function applyChanges(scene:SceneData,changes:Change[],professional=false,allowPurpose=false):SceneData{
  const s=structuredClone(scene);
  for(const change of changes){const room=s.rooms.find(r=>r.id===change.targetId),wall=s.walls.find(w=>w.id===change.targetId),item=s.items.find(i=>i.id===change.targetId);
   if(change.action==='wall'){
    if(!wall||wall.structural!=='nonloadbearing'||!wall.evidence.length||!professional)reject('墙体拆改须已授权专业角色及非承重证据；比例校准不构成许可',403);
    if(s.openings.some(o=>o.wallId===wall!.id))reject('须先明确门窗迁移方案');Object.assign(wall!,change.values);continue;
   }
-  if(change.action==='purpose'){if(!room)reject('房间不存在');if(room!.locked)reject('房间已锁定');const v=z.object({purpose:z.string().min(1).max(120)}).strict().parse(change.values);room!.purpose=v.purpose;continue}
+  if(change.action==='purpose'){if(!allowPurpose)reject('房间用途必须通过独立确认流程');if(!room)reject('房间不存在');if(room!.locked)reject('房间已锁定');const v=z.object({purpose:z.string().min(1).max(120)}).strict().parse(change.values);room!.purpose=v.purpose;continue}
   if(change.action==='add'){
    const v=z.object({assetId:z.string(),roomId:z.string(),x:z.number(),y:z.number(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const added=itemFromAsset(v.assetId,v.roomId,v.x,v.y);if(v.newId)added.id=v.newId;s.items.push(added);continue;
   }

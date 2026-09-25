@@ -1,0 +1,14 @@
+{
+  "ticket": "ALVA-022",
+  "runId": "20260925T093352998Z-ALVA022-browser",
+  "pass": true,
+  "checks": {
+    "purpose_only_no_furniture_move": true,
+    "layout_candidates_previewable": true,
+    "layout_rejected_without_change": true,
+    "layout_separately_adopted": true,
+    "locked_room_button_disabled": true,
+    "locked_room_rejected": true,
+    "console_errors": []
+  }
+}
