@@ -31,6 +31,6 @@ run_step(){
  fi
 }
 run_step typecheck npm run check
-run_step tests node_modules/.bin/tsx --test --test-concurrency=1 tests/alva-chat-attachments.test.ts tests/alva-import.test.ts tests/alva-stage-sessions.test.ts tests/alva-stage-mcp.test.ts tests/alva-building.test.ts tests/alva-calibration.test.ts tests/alva-topology.test.ts
+run_step tests node_modules/.bin/tsx --test --test-concurrency=1 tests/alva-stage-chat.test.ts tests/alva-room-style.test.ts tests/alva-ui-actions.test.ts tests/alva-answer-recommendations.test.ts tests/alva-business-guidance.test.ts tests/alva-furniture-properties.test.ts tests/alva-furniture-transform.test.ts tests/alva-local-proposals.test.ts tests/alva-reference-annotation.test.ts tests/alva-room-purpose.test.ts tests/alva-chat-attachments.test.ts tests/alva-import.test.ts tests/alva-stage-sessions.test.ts tests/alva-stage-mcp.test.ts tests/alva-building.test.ts tests/alva-calibration.test.ts tests/alva-topology.test.ts
 printf '{"pass":true,"steps":["typecheck","tests"],"scope":"stage MCP, sessions, attachments and affected direct import/topology/building regression; not full ALVA-066 acceptance"}\n' > "$result_dir/result.json"
 cat "$result_dir/tests.log"

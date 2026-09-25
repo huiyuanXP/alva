@@ -8,9 +8,10 @@ import {mcpFailure} from './mcp/contracts.js';
 import {codexTimeoutMs} from './codex-timeout.js';
 export type BusinessTool={name:string;description:string;inputSchema:unknown;run:(args:unknown)=>Promise<unknown>};
 export type CodexSession={key:string;threadId?:string;onThread:(threadId:string)=>Promise<void>;onTurnStarted?:()=>Promise<void>;handoffs?:{id:string;text:string}[];onHandoffsDelivered?:(ids:string[])=>Promise<void>};
-export type CodexInput={session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
+export type CodexInput={resumeOnly?:boolean;session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
 /** Auxiliary calls are ephemeral; main Chat explicitly supplies its persistent stage session. */
 export async function runCodex(input:CodexInput):Promise<string>{
+ if(input.resumeOnly&&!input.session?.threadId)throw new Error('恢复阶段需要已有 thread ID');
  const timeoutMs=codexTimeoutMs(input.timeoutMs);
  const work=resolve(process.env.ALVA_AGENT_DIR||'.runtime/alva-agent',input.session?'stage-'+createHash('sha256').update(input.session.key).digest('hex'):randomUUID());
  await mkdir(work,{recursive:true,mode:0o700});
@@ -65,6 +66,7 @@ export async function runCodex(input:CodexInput):Promise<string>{
   threadId=started.thread.id;
   if(input.session?.threadId&&threadId!==input.session.threadId)throw new Error('Codex未恢复原会话');
   await input.session?.onThread(threadId);
+  if(input.resumeOnly){settled=true;return threadId}
   let handoffs=input.session?.handoffs||[];
   if(input.session?.threadId&&handoffs.length){
    const history=JSON.stringify(await rpc('thread/read',{threadId,includeTurns:true}));

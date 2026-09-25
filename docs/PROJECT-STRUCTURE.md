@@ -122,3 +122,5 @@ ALVA-052现役看板位于`api/todo/`与`web/todo/`，通过已有alva服务提�
 ## ALVA-066 阶段 MCP 与会话
 
 `api/mcp/` 承载户型/生活设计 MCP 的本机 HTTP 传输、凭据绑定、可解释错误与阶段会话编排；`api/codex.ts` 仍为唯一 Codex 进程协议入口。会话元数据由 `api/store.ts` 的 `alva_chat_stages` 持久化，独立于设计快照，恢复设计不会替换会话 ID。主 Chat 显式传入持久 session，辅助模型默认临时且不继承 MCP。目录和过程实现不代表 ALVA-066 已验收，实际集成状态见票据。
+
+ALVA-066 业务增量：`api/room-style` 与 `packages/contracts/alva/room-style.ts` 管样式候选/确认；`web/src/room-style` 管卡片、表面颜色和材质预览。`api/furniture/recommendations.ts` 与 answer-recommendation 合同管已确认回答的候选工具，草稿不排任务。`api/mcp/ui-actions.ts` 与 `web/src/chat/use-ui-actions.ts` 管受约束页面操作及真实回执；阶段确认元数据由 store 的 alva_chat_actions 管理。上述代码未完成整票验收，不构成上线声明。

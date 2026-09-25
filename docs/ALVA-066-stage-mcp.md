@@ -84,3 +84,13 @@ MCP 为默认优先调用渠道。错误必须从工具返回可解释结构，�
 029协调：已按用户消息回复主目录 `.runtime/alva-coordination/ALVA-066-029-reply.md`。029负责 `api/user-context`、`api/review` 和纯合同，066负责Project可选userContextEntries、确认后投影hook和共享入口；私有投影在 ALVA_DATA_DIR/user-context/<projectId>/，habits/preferences/requirements/unresolved/index 分代原子写入。接受 createUserContextTools/createLayoutReviewTools 返回 BusinessTool[] 拼入生活设计包。真实客户内容不进协调文件。联合接入仍待029模块交付，066当前已完成业务接入范围继续按main，不提前取其未验分支。
 
 neat-freak：本次代码/定向测试与目录说明 changed-and-verified；完整运行态、业务验收、生产发布 pending；生成记忆 out-of-scope。所有Worktree与私有会话保留，未清场，整票 in-progress。
+
+## 2026-09-25 主 Chat 与新功能实施中
+
+主 Chat 已装配阶段 HTTP MCP，页面增加阶段记录、附件与明确确认卡；确认与拒绝在项目锁事务中串行，保存重放不会重复生成版本。阶段切换先实际 Resume 原 thread，再切状态；Resume 失败不会冒充切换成功。真实探针 `evidence/20260925T193412944Z-ALVA066-harness-8564c7/result.json` 通过原 thread 即时恢复、更新工具目录后的新工具实际调用与摘要去重。采用固定 `mcp_list_tools`/`mcp_call_tool` 桥接入口支持旧 thread 调用未来新工具，仍通过本阶段 HTTP MCP 权限校验。
+
+`evidence/20260925T193202Z-ALVA066-validation-540418/` 36项回归通过，含真实 Chat 路由到 HTTP MCP（模型注入替身）、确认/拒绝竞态、跨项目确认、阶段工具隔离。此轮 typecheck 先通过，随后新增目录桥接代码进入后续测试，因此不作为最终同SHA完整验收；首轮新增测试的 TypeScript helper 类型错误已修复。
+
+继续实现了房间样式候选/确认与2D/3D渲染、页面视角日照操作回执、已确认答案的持久家具建议任务与主 Chat 自动触发。上述增量尚待类型/业务/浏览器验证。旧生活设计测试补建筑确认前置，未降低阶段门禁。029获得下一重任务窗口，066暂不启动新重任务；等待正式独立接口和证据后联合装配。未集成main、未发布、整票in-progress。
+
+过程检查点（非完票）：上述新增样式、UI回执、回答建议及旧测试前置改动尚未跑最终检查，029验证窗口继续保留；后续须先运行更新后的验证脚本修复失败，再做真实模型/浏览器业务链。neat-freak本次只对齐过程事实：已验协议证据 verified-current；新增代码 pending；main产品/生产未变；规则与目录说明已同步；生成记忆 out-of-scope；保留测试与Worktree现场，无清场。

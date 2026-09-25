@@ -1,3 +1,4 @@
+import {seedLivingStage} from './fixtures/alva/living-stage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
@@ -28,7 +29,7 @@ test('ALVA-043 attachment-like commands cannot become authority, owner assignmen
 
 test('ALVA-043 chat exposes read-only guidance tool and prompt requires facts/inference/source separation',async()=>{
  const prior=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE='alva043-test-code-123456';let captured:CodexInput|undefined,toolResult:any;
- const store=new AlvaStore();await store.init();const created=await store.create('ALVA-043');await store.ensureAccessCode(created.project.id);
+ const store=new AlvaStore();await store.init();const created=await store.create('ALVA-043');await store.ensureAccessCode(created.project.id);await store.mutate(created.project.id,randomUUID(),0,'seed-living',{},seedLivingStage);
  const chatCodex=async(input:CodexInput)=>{captured=input;const tool=input.tools?.find(t=>t.name==='get_business_guidance');assert.ok(tool);toolResult=await tool!.run({topic:'在家工作和视频会议'});input.onDelta?.('根据资料，工作位应先考虑收线。');return '资料事实：工作位讨论收线与视频背景。[BG01 · references/02_intake_form.html#Q10]\n推断：结合你每周在家办公两天，可以优先比较固定工作位。'};
  const app=await buildAlva(store,{assets:false,origin:'http://localhost',chatCodex});
  try{

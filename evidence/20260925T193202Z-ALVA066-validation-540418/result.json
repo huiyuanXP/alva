@@ -1,0 +1,1 @@
+{"pass":true,"steps":["typecheck","tests"],"scope":"stage MCP, sessions, attachments and affected direct import/topology/building regression; not full ALVA-066 acceptance"}

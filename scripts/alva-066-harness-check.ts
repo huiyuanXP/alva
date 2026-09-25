@@ -15,14 +15,15 @@ const handoffId=randomUUID();const deliveryCallbacks:string[][]=[];
 const server=new StageMcpServer(),calls:{stage:ChatStage;name:string;error:boolean}[]=[],turns:unknown[]=[];let current:ChatStage='floorplan',revision=1;
 try{
  for(const stage of ['floorplan','living','floorplan'] as const){
-  current=stage;revision++;const name=stage==='floorplan'?'read_floorplan':'read_living';const nonce=randomUUID();
+  current=stage;revision++;const name=stage==='floorplan'?(revision===4?'read_floorplan_new':'read_floorplan'):'read_living';const nonce=randomUUID();
   const lease=await server.grant({binding:{projectId:'isolated-project',role:'owner',stage},authorize:async()=>{if(current!==stage)throw new DomainError(403,'阶段已切换');return {revision}},tools:[{name,description:'Read the current isolated project and return its fresh nonce. Call every turn; old nonce is invalid.',inputSchema:{type:'object',properties:{},additionalProperties:false},run:async()=>({stage,revision,nonce})},{name:'check_revision',description:'Check an intentionally stale revision to receive repair guidance.',inputSchema:{type:'object',properties:{},additionalProperties:false},run:async()=>{throw new DomainError(409,'项目已变化，请重读后再提交')}}],onCall:e=>calls.push({stage,name:e.name,error:!!e.result.isError})});
   const file=resolve(privateDir,stage+'.json');let previous:string|undefined;try{previous=JSON.parse(await readFile(file,'utf8')).threadId}catch{}
   let threadId='';const before=calls.length;const methods=new Set<string>();
   try{
-   const text=await runCodex({model:'gemini-3.1-flash-lite',text:`实际调用 ${name} 取得本轮 nonce，再调用 check_revision 一次。不要重试失败工具。用中文报告 nonce 和失败的具体修复方法。`,tools:await bridgeMcpTools(lease),session:{key:`isolated-project:${stage}`,threadId:previous,onThread:async id=>{threadId=id;await writeFile(file,JSON.stringify({threadId:id}))},handoffs:stage==='floorplan'?[{id:handoffId,text:'测试交接摘要；只可注入一次。'}]:[],onHandoffsDelivered:async ids=>{deliveryCallbacks.push(ids)}},onEvent:(e:any)=>methods.add(e.method)});
+   if(previous){const resumed=await runCodex({resumeOnly:true,text:'',model:'gemini-3.1-flash-lite',session:{key:`isolated-project:${stage}`,threadId:previous,onThread:async id=>{assert.equal(id,previous)}}});assert.equal(resumed,previous)}
+   const text=await runCodex({model:'gemini-3.1-flash-lite',text:`先调用 mcp_list_tools。${previous?'目录已经更新，请必须使用 mcp_call_tool 调用本轮新工具。':''}实际调用 ${name} 取得本轮 nonce，再调用 check_revision 一次。不要重试失败工具。用中文报告 nonce 和失败的具体修复方法。`,tools:await bridgeMcpTools(lease,undefined,{catalogBridge:true}),session:{key:`isolated-project:${stage}`,threadId:previous,onThread:async id=>{threadId=id;await writeFile(file,JSON.stringify({threadId:id}))},handoffs:stage==='floorplan'?[{id:handoffId,text:'测试交接摘要；只可注入一次。'}]:[],onHandoffsDelivered:async ids=>{deliveryCallbacks.push(ids)}},onEvent:(e:any)=>methods.add(e.method)});
    assert.ok(text.includes(nonce),'Must return nonce actually read this turn');assert.ok(calls.slice(before).some(c=>c.name===name&&!c.error));assert.ok(calls.slice(before).some(c=>c.name==='check_revision'&&c.error));assert.match(text,/重新|重读|更新|读取/);if(previous)assert.equal(threadId,previous);
-   turns.push({stage,threadId,resumed:!!previous,revision,nonceReturned:true,repairExplained:true,methods:[...methods]});
+   turns.push({stage,threadId,resumed:!!previous,resumeOnlyVerified:!!previous,catalogEvolutionVerified:previous?name==='read_floorplan_new':false,revision,nonceReturned:true,repairExplained:true,methods:[...methods]});
   }finally{lease.revoke()}
  }
  const files=await readdir(resolve(privateDir,'agents'),{recursive:true});let handoffInjections=0;

@@ -40,3 +40,18 @@ test('expired grants and cancellation cannot execute tools',async()=>{
   await assert.rejects(bridgeMcpTools(expired));abort.abort();await assert.rejects(bridgeMcpTools(cancelled));assert.equal(calls,0);
  }finally{expired.revoke();cancelled.revoke();await server.close()}
 });
+
+test('stable catalog bridge discovers new stage tools and rejects removed or other-stage tools',async()=>{
+ const server=new StageMcpServer();let invoked=0;
+ const lease=await server.grant({binding:{projectId:'a',role:'owner',stage:'living'},authorize:async()=>({revision:7}),tools:[{name:'new_living_feature',description:'new',inputSchema:{type:'object',properties:{}},run:async()=>({invoked:++invoked})}]});
+ try{
+  const bridge=await bridgeMcpTools(lease,undefined,{catalogBridge:true});
+  const catalog=await bridge.find(t=>t.name==='mcp_list_tools')!.run({}) as any;
+  assert.deepEqual(catalog.tools.map((t:any)=>t.name),['new_living_feature']);
+  const dispatch=bridge.find(t=>t.name==='mcp_call_tool')!;
+  assert.deepEqual(await dispatch.run({name:'new_living_feature',arguments:{}}),{invoked:1});
+  for(const name of ['recognize_floorplan','removed_tool'])await assert.rejects(dispatch.run({name,arguments:{}}),(e:unknown)=>e instanceof McpError&&e.detail.code==='TOOL_NOT_IN_STAGE');
+  await assert.rejects(dispatch.run({name:'new_living_feature',arguments:{projectId:'b'}}),(e:unknown)=>e instanceof McpError&&e.detail.code==='PROJECT_MISMATCH');
+  assert.equal(invoked,1);
+ }finally{lease.revoke();await server.close()}
+});

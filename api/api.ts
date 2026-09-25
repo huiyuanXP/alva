@@ -1,3 +1,5 @@
+import {registerRoomStyles} from './room-style/index.js';
+import {registerChatActions} from './mcp/actions.js';
 import {generateBuildingCandidate,confirmBuilding} from './building/service.js';
 import {switchChatStage} from './mcp/sessions.js';
 import {applyCandidateTopology,calibrateCandidate,confirmCandidate,reopenTopology} from './topology/service.js';
@@ -56,7 +58,9 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   }
  });
  registerFloorplanAttachments(app,session);
- registerStageRoutes(app,store,session,active);
+ registerStageRoutes(app,store,session,active,chatCodex);
+ registerChatActions(app,store,session,active);
+ registerRoomStyles(app,store,session);
  registerTodo(app);
  registerTopologyDiagnostics(app,store,session);
  app.get('/healthz',async()=>({ok:true,application:'alva'}));

@@ -58,7 +58,7 @@ export class StageMcpServer{
 
 export type McpLease=Awaited<ReturnType<StageMcpServer['grant']>>;
 /** All fallback calls still cross the authenticated HTTP MCP endpoint. */
-export async function bridgeMcpTools(lease:McpLease,signal?:AbortSignal):Promise<BusinessTool[]>{
+export async function bridgeMcpTools(lease:McpLease,signal?:AbortSignal,options:{catalogBridge?:boolean}={}):Promise<BusinessTool[]>{
  let sequence=0;
  const rpc=async(method:string,params:unknown)=>{
   const response=await fetch(lease.url,{method:'POST',headers:{Authorization:`Bearer ${lease.token}`,'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:++sequence,method,params}),signal:AbortSignal.any([AbortSignal.timeout(660_000),...(signal?[signal]:[])])});
@@ -68,9 +68,21 @@ export async function bridgeMcpTools(lease:McpLease,signal?:AbortSignal):Promise
  await rpc('initialize',{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'alva-harness',version:'1'}});
  const catalog=await rpc('tools/list',{});
  if(catalog.isError)throw new McpError(catalog.structuredContent.error);
- return catalog.tools.map((tool:Omit<BusinessTool,'run'>)=>({...tool,run:async(args:unknown)=>{
-  const result=await rpc('tools/call',{name:tool.name,arguments:args});
+ const call=async(name:string,args:unknown)=>{
+  const result=await rpc('tools/call',{name,arguments:args});
   if(result.isError)throw new McpError(result.structuredContent.error);
   return result.structuredContent;
- }}));
+ };
+ const tools:BusinessTool[]=catalog.tools.map((tool:Omit<BusinessTool,'run'>)=>({...tool,run:(args:unknown)=>call(tool.name,args)}));
+ // App Server restores the original dynamicTools catalog on Resume. These stable
+ // adapters let existing threads discover and call newly deployed stage tools.
+ if(options.catalogBridge)tools.push(
+  {name:'mcp_list_tools',description:'读取当前阶段最新 MCP 工具目录。恢复旧会话后先调用；新功能也出现在这里。',inputSchema:{type:'object',properties:{},additionalProperties:false},run:async()=>{const result=await rpc('tools/list',{});if(result.isError)throw new McpError(result.structuredContent.error);return result}},
+  {name:'mcp_call_tool',description:'按 mcp_list_tools 返回的工具名称和输入结构调用当前阶段 MCP。用于旧会话尚未列出的新工具；权限、确认和版本校验仍由服务端执行。',inputSchema:{type:'object',properties:{name:{type:'string'},arguments:{type:'object'}},required:['name','arguments'],additionalProperties:false},run:async args=>{
+   const input=args as {name?:unknown;arguments?:unknown};
+   if(!input||typeof input.name!=='string'||!input.arguments||typeof input.arguments!=='object'||Array.isArray(input.arguments))throw new McpError({code:'INVALID_ARGUMENTS',message:'请传入目录中的工具名称与参数对象',retryable:false,repairActions:[{action:'mcp_list_tools',message:'读取当前阶段工具目录及输入结构'}]});
+   return call(input.name,input.arguments);
+  }}
+ );
+ return tools;
 }

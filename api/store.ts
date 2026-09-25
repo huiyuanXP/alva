@@ -1,3 +1,4 @@
+import type {ChatAction} from '../packages/contracts/alva/chat-actions.js';
 import {initialChatState,type StageChatState} from './mcp/sessions.js';
 import {PGlite} from '@electric-sql/pglite';
 import {createHash,randomBytes,randomUUID,timingSafeEqual} from 'node:crypto';
@@ -16,6 +17,7 @@ export class AlvaStore{
  CREATE TABLE IF NOT EXISTS alva_links(id text PRIMARY KEY,project_id text NOT NULL,token_hash text UNIQUE NOT NULL,role text NOT NULL,revoked boolean NOT NULL DEFAULT false);
  CREATE TABLE IF NOT EXISTS alva_sessions(token_hash text PRIMARY KEY,link_id text,project_id text,role text,auth_generation integer,expires_at timestamptz NOT NULL);
  CREATE TABLE IF NOT EXISTS alva_access_config(id integer PRIMARY KEY CHECK(id=1),project_id text,code_hash text NOT NULL,generation integer NOT NULL DEFAULT 1,updated_at timestamptz NOT NULL DEFAULT now());
+ CREATE TABLE IF NOT EXISTS alva_chat_actions(id text PRIMARY KEY,project_id text NOT NULL,state jsonb NOT NULL);
  CREATE TABLE IF NOT EXISTS alva_chat_stages(project_id text PRIMARY KEY,state jsonb NOT NULL);
  CREATE TABLE IF NOT EXISTS alva_commands(project_id text NOT NULL,request_id text NOT NULL,fingerprint text NOT NULL,response jsonb NOT NULL,PRIMARY KEY(project_id,request_id));
  CREATE TABLE IF NOT EXISTS alva_versions(project_id text NOT NULL,version integer NOT NULL,summary text NOT NULL,state jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(project_id,version));
@@ -54,16 +56,28 @@ export class AlvaStore{
   if(!row)throw new DomainError(404,'该保存请求尚无已提交快照');
   return {requestId,version:row.version,revision:row.revision,createdAt:new Date(row.created_at).toISOString()};
  }
- async mutate(id:string,requestId:string,expectedRevision:number|null,operation:string,input:unknown,fn:(p:Project)=>void|Promise<void>):Promise<Project>{
+ async mutate(id:string,requestId:string,expectedRevision:number|null,operation:string,input:unknown,fn:(p:Project)=>void|Promise<void>,chatActionId?:string,expectedStage?:Pick<StageChatState,'active'|'generation'>):Promise<Project>{
   const fingerprint=hash(JSON.stringify({operation,input}));
   try{return await this.db.transaction(async tx=>{
    const row=(await tx.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1 FOR UPDATE',[id])).rows[0];if(!row)throw new DomainError(404,'项目不存在');
    const p=this.normalizeProject(row.state);
    const prior=(await tx.query<{fingerprint:string}>('SELECT fingerprint FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];
    if(prior){if(prior.fingerprint!==fingerprint)throw new DomainError(409,'同一请求ID不能用于不同内容');return p}
+   if(expectedStage){
+    const stage=(await tx.query<{state:StageChatState}>('SELECT state FROM alva_chat_stages WHERE project_id=$1',[id])).rows[0]?.state||initialChatState(p);
+    if(stage.active!==expectedStage.active||stage.generation!==expectedStage.generation)throw new DomainError(409,'阶段已变化，请重新发起请求');
+   }
+   if(chatActionId){
+    const action=(await tx.query<{state:ChatAction}>('SELECT state FROM alva_chat_actions WHERE project_id=$1 AND id=$2',[id,chatActionId])).rows[0]?.state;
+    if(!action||action.status!=='pending')throw new DomainError(409,'确认请求已处理或不存在');
+    const stage=(await tx.query<{state:StageChatState}>('SELECT state FROM alva_chat_stages WHERE project_id=$1',[id])).rows[0]?.state||initialChatState(p);
+    if(stage.active!==action.stage)throw new DomainError(409,'请切回此确认请求所属的阶段');
+    if(action.stage==='living'&&!p.confirmedBuilding)throw new DomainError(422,'请先确认建筑');
+   }
    if(expectedRevision!==null&&p.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后确认');
    const before=JSON.stringify(p);
    await fn(p);p.revision++;
+   if(chatActionId)await tx.query("UPDATE alva_chat_actions SET state=state || $3::jsonb WHERE project_id=$1 AND id=$2",[id,chatActionId,JSON.stringify({status:'confirmed',finishedAt:new Date().toISOString()})]);
    if(operation==='save'){
     p.savedVersion++;p.dirty=false;
     const snapshot=snapshotProject(p),summary=`手动全局快照 · ${snapshot.scene?.rooms.length||0} 个空间 · ${snapshot.answers.length} 条需求`;
@@ -76,6 +90,17 @@ export class AlvaStore{
    await tx.query('INSERT INTO alva_commands VALUES($1,$2,$3,$4)',[id,requestId,fingerprint,JSON.stringify(receipt)]);return p;
   })}catch(error){try{await this.failure(id,operation,error instanceof DomainError?error.message:'保存或处理失败')}catch{console.error('[alva failure log unavailable]',operation)}throw error}
  }
+ async chatActions(projectId:string):Promise<ChatAction[]>{return (await this.db.query<{state:ChatAction}>('SELECT state FROM alva_chat_actions WHERE project_id=$1 ORDER BY id',[projectId])).rows.map(r=>r.state)}
+ async putChatAction(action:ChatAction){await this.db.query('INSERT INTO alva_chat_actions(id,project_id,state) VALUES($1,$2,$3)',[action.id,action.projectId,JSON.stringify(action)])}
+ async rejectChatAction(projectId:string,id:string){
+  await this.db.transaction(async tx=>{
+   await tx.query('SELECT id FROM alva_projects WHERE id=$1 FOR UPDATE',[projectId]);
+   const action=(await tx.query<{state:ChatAction}>('SELECT state FROM alva_chat_actions WHERE project_id=$1 AND id=$2',[projectId,id])).rows[0]?.state;
+   if(!action||action.status!=='pending')throw new DomainError(409,'请求已处理或不存在');
+   await tx.query("UPDATE alva_chat_actions SET state=state || $3::jsonb WHERE project_id=$1 AND id=$2",[projectId,id,JSON.stringify({status:'rejected',finishedAt:new Date().toISOString()})]);
+  });
+ }
+
  async chatState(id:string):Promise<StageChatState>{
   const project=await this.get(id);
   const row=(await this.db.query<{state:StageChatState}>('SELECT state FROM alva_chat_stages WHERE project_id=$1',[id])).rows[0];
