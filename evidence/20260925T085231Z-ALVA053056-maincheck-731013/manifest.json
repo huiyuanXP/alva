@@ -1,0 +1,64 @@
+{
+  "runId": "20260925T085231Z-ALVA053056-maincheck-731013",
+  "testedMainHead": "f03982713182c5911caa46dc3e181f6665391187",
+  "newModelCalls": 0,
+  "rawResponsesPublished": false,
+  "files": [
+    {
+      "path": "acceptance-report.md",
+      "sha256": "822706a5ae94bd5cedc85a6bc7cff882591fe3e3eff6706bf9eec5b3a2a07e08"
+    },
+    {
+      "path": "accepted-revision-verification.json",
+      "sha256": "a2fc0b9bd94652ef999e720011239f844d1121bf2cfd28185d40e787fe69b41f"
+    },
+    {
+      "path": "bounded-check.py.txt",
+      "sha256": "dfe747c8dd3cc4e93a975ef0b6173beb41023ddcd1ed2ab994f4bd3be2639f1a"
+    },
+    {
+      "path": "busy-lock-attempt.json",
+      "sha256": "8dbce5cae88b5ae480828601dc9502b275b4085df07fc95f78c18027ec225760"
+    },
+    {
+      "path": "current-validator-replay.json",
+      "sha256": "2102295cee9646fa8b5ddd51ededfd9fb177283f4c8cfe85f8b97af52a7dcf07"
+    },
+    {
+      "path": "earlier-receipt-failure.json",
+      "sha256": "b2125d49107c36fccdae2fabb6788944d2a2b97dd472cccefcf8b8d133a0a197"
+    },
+    {
+      "path": "handoff-addendum.json",
+      "sha256": "805c75b726ca3e02202b228161c917b4266a1581547c4deed29681abc85b4261"
+    },
+    {
+      "path": "health.json",
+      "sha256": "8d7d42a0600e3574ccb85196e5633f15a0d1069718d97577da32afbecea4e1c8"
+    },
+    {
+      "path": "replay-check.ts.txt",
+      "sha256": "1fdf0e8e1bc791bd0f040169435f58da0c8f379d4ed7443df4fd5f4219ee6b2f"
+    },
+    {
+      "path": "replay.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "replay.stdout.log",
+      "sha256": "3a12410c14d345ec7297691cc3a55b90c4fb9079b9a47bb5b8a673964fac28b4"
+    },
+    {
+      "path": "tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests.stdout.log",
+      "sha256": "ccc16176cadb80f3c08c73448955d0a1141f411946ff396864f410572de252d3"
+    },
+    {
+      "path": "verification.json",
+      "sha256": "6202cb9d1c0de330aa754cf9346c61884bbd4bc8e15dc576a232fe905b5d4509"
+    }
+  ]
+}

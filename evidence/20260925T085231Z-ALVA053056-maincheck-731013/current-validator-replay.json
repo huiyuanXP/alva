@@ -1,0 +1,229 @@
+{
+  "passed": true,
+  "newProviderCalls": 0,
+  "productionMutations": false,
+  "automaticConfirmationAllowed": false,
+  "sourceHashes": {
+    "scripts/alva-mimo-vision-check.ts": "0654d5bc81388acae7c2c385ba38dfec4c39ae91ccb58d7849c01f933976cd9d",
+    "scripts/lib/mimo-profile.ts": "ede562f2e3f07a106b49fe25ac4a8d038969b3c636dbcdef2b48b9f85cdc6562",
+    "scripts/lib/mimo-probe.ts": "9bf9a3cbee2a37ac84bdba2b2caa8f736594285c3e5e9cfddef5b9374def885d",
+    "api/import/response.ts": "18b4d6c9f725a01144a3f7a5c95ae06c79d3c68442a343badf18d70cad3c691c",
+    "api/codex-timeout.ts": "8708698c91f18d313b5de7e59d1d76e297b44cd7d4c2578ad2b36561f71c59f5",
+    "api/model.ts": "10079770b4d5ecaf8d4277f9eba00d57a5d47c9df1fb48bd5108b37fec17bf42",
+    "api/topology/validate.ts": "40a2683dfd57c11ec9b262b33ad8caf5ff0473f5c5936afc8cc3b05b0d4915a7",
+    "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e"
+  },
+  "replays": [
+    {
+      "runId": "20260925T071425418Z-ALVA056-mimo-7842c7",
+      "expectedFailureClass": "json-parse",
+      "outputContractPassed": false,
+      "requiresReview": true,
+      "failureClass": "json-parse",
+      "validCandidate": false,
+      "humanReviewRequired": true,
+      "automaticConfirmationAllowed": false,
+      "phases": {
+        "productionParser": {
+          "ok": false,
+          "stage": "json"
+        },
+        "schema": {
+          "ok": false
+        }
+      },
+      "rawSha256": "04030c400101bce6f093e548f29d3bf072b027bdfd9aabffabdc47427178afa9",
+      "counts": null
+    },
+    {
+      "runId": "20260925T072626685Z-ALVA056-mimo-13f83c",
+      "expectedFailureClass": "empty-candidate",
+      "outputContractPassed": false,
+      "requiresReview": true,
+      "failureClass": "empty-candidate",
+      "validCandidate": false,
+      "humanReviewRequired": true,
+      "automaticConfirmationAllowed": false,
+      "phases": {
+        "productionParser": {
+          "ok": false,
+          "stage": "geometry"
+        },
+        "schema": {
+          "ok": true
+        },
+        "content": {
+          "ok": false
+        },
+        "geometry": {
+          "ok": true
+        },
+        "confirmationTopology": {
+          "ok": true
+        },
+        "diagnostics": {
+          "ok": true,
+          "status": "empty",
+          "checks": {
+            "internalVoid": "unavailable",
+            "orientation": "unavailable",
+            "connectivity": "unavailable"
+          },
+          "counts": {},
+          "undefinedAreaM2": 0,
+          "wallComponents": 0
+        }
+      },
+      "rawSha256": "8e8d796159dacf1321d95f0c9c1a7a738274a3306b83848706c2ce583016854b",
+      "counts": {
+        "walls": 0,
+        "rooms": 0,
+        "openings": 0
+      }
+    },
+    {
+      "runId": "20260925T073159993Z-ALVA056-mimo-7c7aa6",
+      "expectedFailureClass": "empty-candidate",
+      "outputContractPassed": false,
+      "requiresReview": true,
+      "failureClass": "empty-candidate",
+      "validCandidate": false,
+      "humanReviewRequired": true,
+      "automaticConfirmationAllowed": false,
+      "phases": {
+        "productionParser": {
+          "ok": false,
+          "stage": "geometry"
+        },
+        "schema": {
+          "ok": true
+        },
+        "content": {
+          "ok": false
+        },
+        "geometry": {
+          "ok": true
+        },
+        "confirmationTopology": {
+          "ok": true
+        },
+        "diagnostics": {
+          "ok": true,
+          "status": "empty",
+          "checks": {
+            "internalVoid": "unavailable",
+            "orientation": "unavailable",
+            "connectivity": "unavailable"
+          },
+          "counts": {},
+          "undefinedAreaM2": 0,
+          "wallComponents": 0
+        }
+      },
+      "rawSha256": "8e8d796159dacf1321d95f0c9c1a7a738274a3306b83848706c2ce583016854b",
+      "counts": {
+        "walls": 0,
+        "rooms": 0,
+        "openings": 0
+      }
+    },
+    {
+      "runId": "20260925T074740232Z-ALVA056-mimo-0b62e3",
+      "expectedFailureClass": "geometry-validation",
+      "outputContractPassed": false,
+      "requiresReview": true,
+      "failureClass": "geometry-validation",
+      "validCandidate": false,
+      "humanReviewRequired": true,
+      "automaticConfirmationAllowed": false,
+      "phases": {
+        "productionParser": {
+          "ok": false,
+          "stage": "geometry"
+        },
+        "schema": {
+          "ok": true
+        },
+        "content": {
+          "ok": true
+        },
+        "geometry": {
+          "ok": false
+        },
+        "confirmationTopology": {
+          "ok": false
+        },
+        "diagnostics": {
+          "ok": true,
+          "status": "complete",
+          "checks": {
+            "internalVoid": "complete",
+            "orientation": "complete",
+            "connectivity": "complete"
+          },
+          "counts": {
+            "invalid_opening": 12
+          },
+          "undefinedAreaM2": 0,
+          "wallComponents": 1
+        }
+      },
+      "rawSha256": "ca50b044599839c5204a66d07b0f2cebd074885f9faaa7c045497cd614562722",
+      "counts": {
+        "walls": 25,
+        "rooms": 5,
+        "openings": 12
+      }
+    },
+    {
+      "runId": "20260925T075949811Z-ALVA056-mimo-1947ac",
+      "expectedFailureClass": null,
+      "outputContractPassed": true,
+      "requiresReview": false,
+      "failureClass": null,
+      "validCandidate": true,
+      "humanReviewRequired": true,
+      "automaticConfirmationAllowed": false,
+      "phases": {
+        "productionParser": {
+          "ok": true
+        },
+        "schema": {
+          "ok": true
+        },
+        "content": {
+          "ok": true
+        },
+        "geometry": {
+          "ok": true
+        },
+        "confirmationTopology": {
+          "ok": true
+        },
+        "diagnostics": {
+          "ok": true,
+          "status": "complete",
+          "checks": {
+            "internalVoid": "complete",
+            "orientation": "complete",
+            "connectivity": "complete"
+          },
+          "counts": {},
+          "undefinedAreaM2": 0,
+          "wallComponents": 1
+        }
+      },
+      "rawSha256": "58856ff3fad097c9032e80af81de97df5f71f4b8570cc381d421f5ee90f21693",
+      "counts": {
+        "walls": 26,
+        "rooms": 5,
+        "openings": 12
+      }
+    }
+  ],
+  "repairSourceBinding": true,
+  "effectivePromptIdentical": true,
+  "cliArgumentsIdentical": true,
+  "currentSchemaIdentical": true,
+  "verifiedAt": "2026-09-25T08:52:36.181Z"
+}

@@ -1,0 +1,37 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import os,sys,subprocess,json,hashlib,fcntl,time,re
+R=Path('/home/ubuntu/Alva');O=Path(sys.argv[1]);P=Path((O/'previous-success.txt').read_text().strip())
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def git(*args):return subprocess.check_output(['git',*args],cwd=R,text=True).strip()
+cg=Path('/sys/fs/cgroup')/next(x.split(':',2)[2].lstrip('/') for x in Path('/proc/self/cgroup').read_text().splitlines() if x.startswith('0::'))
+assert (cg/'memory.max').read_text().strip()==str(600*1024**2)
+a,b=(cg/'cpu.max').read_text().split();assert a!='max' and int(a)/int(b)<=.5
+with (R/'.git/alva-heavy-task.lock').open('a') as heavy,(R/'.git/alva-coordination.lock').open('a') as coord:
+ deadline=time.monotonic()+90
+ while True:
+  try:
+   fcntl.flock(heavy,fcntl.LOCK_EX|fcntl.LOCK_NB)
+   try:fcntl.flock(coord,fcntl.LOCK_EX|fcntl.LOCK_NB)
+   except BlockingIOError:fcntl.flock(heavy,fcntl.LOCK_UN);raise
+   break
+  except BlockingIOError:
+   if time.monotonic()>deadline:raise SystemExit('bounded coordination wait expired; no tests started')
+   time.sleep(.5)
+ assert not git('diff','--name-only','--diff-filter=U'),'Other integration in progress; do not test partial source'
+ available=int(next(x.split()[1] for x in Path('/proc/meminfo').read_text().splitlines() if x.startswith('MemAvailable:')))*1024
+ assert available>(600+900)*1024**2,'memory reserve guard'
+ head=git('rev-parse','HEAD');base_status=git('status','--porcelain');index=git('ls-files','--stage');agent=sha(R/'AGENTS.md')
+ sources=list(json.loads((P/'baseline.json').read_text())['sourceHashes']);hashes={f:sha(R/f) for f in sources}
+ for f,h in hashes.items():assert hashlib.sha256(subprocess.check_output(['git','show',head+':'+f],cwd=R)).hexdigest()==h,f
+ env=os.environ.copy();env['NODE_OPTIONS']='--max-old-space-size=256'
+ command=['node_modules/.bin/tsx','--test','--test-concurrency=1','tests/alva-mimo-probe.test.ts','tests/alva-import-response.test.ts'];t=time.monotonic()
+ p=subprocess.run(command,cwd=R,env=env,text=True,capture_output=True,timeout=65);(O/'tests.stdout.log').write_text(p.stdout);(O/'tests.stderr.log').write_text(p.stderr)
+ counts={k:int(re.search(r'^(?:#|ℹ) '+k+r' (\d+)\s*$',p.stdout,re.M)[1]) for k in ['tests','pass','fail','cancelled','skipped']};assert p.returncode==0 and counts=={'tests':30,'pass':30,'fail':0,'cancelled':0,'skipped':0},counts
+ q=subprocess.run(['node_modules/.bin/tsx',str(O/'replay-current.ts'),str(O/'current-validator-replay.json')],cwd=R,env=env,text=True,capture_output=True,timeout=35);(O/'replay.stdout.log').write_text(q.stdout);(O/'replay.stderr.log').write_text(q.stderr);assert q.returncode==0,q.stderr[-1800:]
+ replay=json.loads((O/'current-validator-replay.json').read_text());assert replay['passed'] and len(replay['replays'])==5 and replay['newProviderCalls']==0
+ assert git('rev-parse','HEAD')==head and git('status','--porcelain')==base_status and git('ls-files','--stage')==index and sha(R/'AGENTS.md')==agent
+ for f,h in hashes.items():assert sha(R/f)==h,f
+ assert dict(l.split() for l in (cg/'memory.events').read_text().splitlines()).get('oom_kill')=='0'
+ v={'runId':O.name,'checkedAt':datetime.now(timezone.utc).isoformat(),'passed':True,'testedMainHead':head,'sourceHashes':hashes,'sourceUnchangedDuringCheck':True,'coordinationAndHeavyLockHeld':True,'counts':counts,'testsExitCode':p.returncode,'replayExitCode':q.returncode,'replayedActualOutputs':5,'replay':replay,'newModelCalls':0,'productCodeChanged':False,'productionMutations':False,'workingTreeAndIndexUnchanged':True,'preservedUserAgentsSha256':agent,'limits':{'cpuFraction':.5,'memoryMaxBytes':600*1024**2,'tasksMax':64,'availableBeforeBytes':available},'memoryPeakBytes':int((cg/'memory.peak').read_text()),'elapsedAfterLockSeconds':round(time.monotonic()-t,3),'previousEvidenceIntegrityProof':str(P.relative_to(R)/'verification.json'),'manifestsPreviouslyVerified':86}
+ (O/'verification.json').write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v[k] for k in ['runId','passed','testedMainHead','counts','replayedActualOutputs','memoryPeakBytes','elapsedAfterLockSeconds','workingTreeAndIndexUnchanged']},ensure_ascii=False))

@@ -1,0 +1,12 @@
+{
+  "stage": "comparison-to-earlier-replay-receipt",
+  "productTests": {
+    "pass": 30,
+    "fail": 0,
+    "skipped": 0
+  },
+  "failure": "api/model.ts fingerprint differs from earlier final-recorded-output-replay.json",
+  "cause": "Subsequent zones integration changed Project/emptyProject definitions. The later 081435 comprehensive summary records the new hash; re-execute current validators rather than treating older file hashes as current.",
+  "oldEvidencePreserved": true,
+  "nextRunId": "20260925T084708Z-ALVA053056-replay-c18906"
+}

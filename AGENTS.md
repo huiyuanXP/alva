@@ -1,5 +1,5 @@
 # 项目 Agent 约束
-所有项目按 Ticket 或任务类型为节点，每做完一个 Ticket 或一个任务，进行一次提交、一次 GlobalHandoff.md 更新(若有心的需要全局了解的知识,约束等), neat freak skill 调用和 NextTask 覆盖。
+所有项目按 Ticket 或任务类型为节点，每做完一个 Ticket 或一个任务，进行一次提交、一次 GlobalHandoff.md 更新(若有新的需要全局了解的知识,约束等), neat freak skill 调用和 NextTask 覆盖。
 
 先把项目搭起来，给我一个能跑的和可验收的成果，再考虑细节性的安全问题和工程细节问题
 

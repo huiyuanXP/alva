@@ -1,0 +1,377 @@
+{
+  "runId": "20260925T084809Z-ALVA053056-replay-4a347c",
+  "mainHead": "b6575bf27792086c7ab99097d8459d84949ad3cb",
+  "implementationHead": "fbfe8e88e18186f352cb538814f582f7210cc95b",
+  "newModelCalls": 0,
+  "productionWrites": false,
+  "startedAt": "2026-09-25T08:48:09.246474+00:00",
+  "resourceLimits": {
+    "memoryBytes": 629145600,
+    "cpuFraction": 0.5,
+    "tasks": 64
+  },
+  "checks": {
+    "regression": {
+      "command": [
+        "/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925/node_modules/.bin/tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/alva-mimo-probe.test.ts",
+        "tests/alva-import-response.test.ts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 2.095,
+      "counts": {
+        "tests": 30,
+        "pass": 30,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    "manifests": [
+      {
+        "directory": ".runtime/worktrees/ALVA-056-recovery-20260925/evidence/20260925T064257Z-ALVA053-recovery-acceptance",
+        "filesVerified": 19
+      },
+      {
+        "directory": ".runtime/worktrees/ALVA-056-recovery-20260925/evidence/20260925T081435Z-ALVA056-final-b68614",
+        "filesVerified": 32
+      },
+      {
+        "directory": ".runtime/worktrees/ALVA-056-recovery-20260925/evidence/20260925T081726Z-ALVA056-recovery-acceptance",
+        "filesVerified": 35
+      }
+    ],
+    "earlierReceiptFingerprintDrift": {
+      "api/model.ts": {
+        "earlier": "61a685375e6f9a40b28ec3d2536d4f9d12f3d6fb1f5e8212a3c823386a4f732c",
+        "current": "bbb77239df02f39eaead472de5cdfa75750a2922bc972c48e149731ba1ba50f9"
+      }
+    },
+    "latestComprehensiveReceiptSourceHashesMatch": true,
+    "realRunFingerprints": {
+      "20260925T074740232Z-ALVA056-mimo-0b62e3": {
+        "rawSha256Verified": true,
+        "transportCompleted": true,
+        "failureClass": "geometry-validation",
+        "validCandidate": false,
+        "model": "mimo-v2.6-pro",
+        "elapsedMs": 311969.35578000004,
+        "counts": {
+          "walls": 25,
+          "rooms": 5,
+          "openings": 12
+        }
+      },
+      "20260925T075949811Z-ALVA056-mimo-1947ac": {
+        "rawSha256Verified": true,
+        "transportCompleted": true,
+        "failureClass": null,
+        "validCandidate": true,
+        "model": "mimo-v2.6-pro",
+        "elapsedMs": 554415.747924,
+        "counts": {
+          "walls": 26,
+          "rooms": 5,
+          "openings": 12
+        }
+      }
+    },
+    "earlierProvenanceReceipt": {
+      "kind": "offline replay of preserved real output through final provenance guard, identical prompt/schema/CLI args, and unchanged business validators; NOT a new model call",
+      "parentId": "20260925T074740232Z-ALVA056-mimo-0b62e3",
+      "childId": "20260925T075949811Z-ALVA056-mimo-1947ac",
+      "passed": true,
+      "rawSha256": "58856ff3fad097c9032e80af81de97df5f71f4b8570cc381d421f5ee90f21693",
+      "sourceHashes": {
+        "scripts/alva-mimo-vision-check.ts": {
+          "live": "d331bcf6faf3f4535741f2f5ac8fcb3a850ee8c00432fbbce182f76c68c460c2",
+          "current": "0654d5bc81388acae7c2c385ba38dfec4c39ae91ccb58d7849c01f933976cd9d",
+          "same": false
+        },
+        "scripts/lib/mimo-profile.ts": {
+          "live": "ede562f2e3f07a106b49fe25ac4a8d038969b3c636dbcdef2b48b9f85cdc6562",
+          "current": "ede562f2e3f07a106b49fe25ac4a8d038969b3c636dbcdef2b48b9f85cdc6562",
+          "same": true
+        },
+        "scripts/lib/mimo-probe.ts": {
+          "live": "4c9edec6460f86166657c0c23d56e9a315999d083e85bb80e33dd2d8919473dd",
+          "current": "9bf9a3cbee2a37ac84bdba2b2caa8f736594285c3e5e9cfddef5b9374def885d",
+          "same": false
+        },
+        "api/import/response.ts": {
+          "live": "18b4d6c9f725a01144a3f7a5c95ae06c79d3c68442a343badf18d70cad3c691c",
+          "current": "18b4d6c9f725a01144a3f7a5c95ae06c79d3c68442a343badf18d70cad3c691c",
+          "same": true
+        },
+        "api/codex-timeout.ts": {
+          "live": "8708698c91f18d313b5de7e59d1d76e297b44cd7d4c2578ad2b36561f71c59f5",
+          "current": "8708698c91f18d313b5de7e59d1d76e297b44cd7d4c2578ad2b36561f71c59f5",
+          "same": true
+        },
+        "api/model.ts": {
+          "live": "61a685375e6f9a40b28ec3d2536d4f9d12f3d6fb1f5e8212a3c823386a4f732c",
+          "current": "61a685375e6f9a40b28ec3d2536d4f9d12f3d6fb1f5e8212a3c823386a4f732c",
+          "same": true
+        },
+        "api/topology/validate.ts": {
+          "live": "40a2683dfd57c11ec9b262b33ad8caf5ff0473f5c5936afc8cc3b05b0d4915a7",
+          "current": "40a2683dfd57c11ec9b262b33ad8caf5ff0473f5c5936afc8cc3b05b0d4915a7",
+          "same": true
+        },
+        "api/topology/diagnostics.ts": {
+          "live": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e",
+          "current": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e",
+          "same": true
+        }
+      },
+      "inputProvenanceVerified": true,
+      "effectivePromptIdentical": true,
+      "cliArgumentsIdentical": true,
+      "allBusinessValidatorHashesIdentical": true,
+      "validCandidate": true,
+      "diagnosticIssues": 0,
+      "productionMutations": false,
+      "newProviderCalls": 0,
+      "verifiedAt": "2026-09-25T08:26:53.332Z"
+    },
+    "currentValidatorReplay": {
+      "passed": true,
+      "newProviderCalls": 0,
+      "productionMutations": false,
+      "automaticConfirmationAllowed": false,
+      "sourceHashes": {
+        "scripts/alva-mimo-vision-check.ts": "0654d5bc81388acae7c2c385ba38dfec4c39ae91ccb58d7849c01f933976cd9d",
+        "scripts/lib/mimo-profile.ts": "ede562f2e3f07a106b49fe25ac4a8d038969b3c636dbcdef2b48b9f85cdc6562",
+        "scripts/lib/mimo-probe.ts": "9bf9a3cbee2a37ac84bdba2b2caa8f736594285c3e5e9cfddef5b9374def885d",
+        "api/import/response.ts": "18b4d6c9f725a01144a3f7a5c95ae06c79d3c68442a343badf18d70cad3c691c",
+        "api/codex-timeout.ts": "8708698c91f18d313b5de7e59d1d76e297b44cd7d4c2578ad2b36561f71c59f5",
+        "api/model.ts": "bbb77239df02f39eaead472de5cdfa75750a2922bc972c48e149731ba1ba50f9",
+        "api/topology/validate.ts": "40a2683dfd57c11ec9b262b33ad8caf5ff0473f5c5936afc8cc3b05b0d4915a7",
+        "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e"
+      },
+      "replays": [
+        {
+          "runId": "20260925T071425418Z-ALVA056-mimo-7842c7",
+          "expectedFailureClass": "json-parse",
+          "outputContractPassed": false,
+          "requiresReview": true,
+          "failureClass": "json-parse",
+          "validCandidate": false,
+          "humanReviewRequired": true,
+          "automaticConfirmationAllowed": false,
+          "phases": {
+            "productionParser": {
+              "ok": false,
+              "stage": "json"
+            },
+            "schema": {
+              "ok": false
+            }
+          },
+          "rawSha256": "04030c400101bce6f093e548f29d3bf072b027bdfd9aabffabdc47427178afa9",
+          "counts": null
+        },
+        {
+          "runId": "20260925T072626685Z-ALVA056-mimo-13f83c",
+          "expectedFailureClass": "empty-candidate",
+          "outputContractPassed": false,
+          "requiresReview": true,
+          "failureClass": "empty-candidate",
+          "validCandidate": false,
+          "humanReviewRequired": true,
+          "automaticConfirmationAllowed": false,
+          "phases": {
+            "productionParser": {
+              "ok": false,
+              "stage": "geometry"
+            },
+            "schema": {
+              "ok": true
+            },
+            "content": {
+              "ok": false
+            },
+            "geometry": {
+              "ok": true
+            },
+            "confirmationTopology": {
+              "ok": true
+            },
+            "diagnostics": {
+              "ok": true,
+              "status": "empty",
+              "checks": {
+                "internalVoid": "unavailable",
+                "orientation": "unavailable",
+                "connectivity": "unavailable"
+              },
+              "counts": {},
+              "undefinedAreaM2": 0,
+              "wallComponents": 0
+            }
+          },
+          "rawSha256": "8e8d796159dacf1321d95f0c9c1a7a738274a3306b83848706c2ce583016854b",
+          "counts": {
+            "walls": 0,
+            "rooms": 0,
+            "openings": 0
+          }
+        },
+        {
+          "runId": "20260925T073159993Z-ALVA056-mimo-7c7aa6",
+          "expectedFailureClass": "empty-candidate",
+          "outputContractPassed": false,
+          "requiresReview": true,
+          "failureClass": "empty-candidate",
+          "validCandidate": false,
+          "humanReviewRequired": true,
+          "automaticConfirmationAllowed": false,
+          "phases": {
+            "productionParser": {
+              "ok": false,
+              "stage": "geometry"
+            },
+            "schema": {
+              "ok": true
+            },
+            "content": {
+              "ok": false
+            },
+            "geometry": {
+              "ok": true
+            },
+            "confirmationTopology": {
+              "ok": true
+            },
+            "diagnostics": {
+              "ok": true,
+              "status": "empty",
+              "checks": {
+                "internalVoid": "unavailable",
+                "orientation": "unavailable",
+                "connectivity": "unavailable"
+              },
+              "counts": {},
+              "undefinedAreaM2": 0,
+              "wallComponents": 0
+            }
+          },
+          "rawSha256": "8e8d796159dacf1321d95f0c9c1a7a738274a3306b83848706c2ce583016854b",
+          "counts": {
+            "walls": 0,
+            "rooms": 0,
+            "openings": 0
+          }
+        },
+        {
+          "runId": "20260925T074740232Z-ALVA056-mimo-0b62e3",
+          "expectedFailureClass": "geometry-validation",
+          "outputContractPassed": false,
+          "requiresReview": true,
+          "failureClass": "geometry-validation",
+          "validCandidate": false,
+          "humanReviewRequired": true,
+          "automaticConfirmationAllowed": false,
+          "phases": {
+            "productionParser": {
+              "ok": false,
+              "stage": "geometry"
+            },
+            "schema": {
+              "ok": true
+            },
+            "content": {
+              "ok": true
+            },
+            "geometry": {
+              "ok": false
+            },
+            "confirmationTopology": {
+              "ok": false
+            },
+            "diagnostics": {
+              "ok": true,
+              "status": "complete",
+              "checks": {
+                "internalVoid": "complete",
+                "orientation": "complete",
+                "connectivity": "complete"
+              },
+              "counts": {
+                "invalid_opening": 12
+              },
+              "undefinedAreaM2": 0,
+              "wallComponents": 1
+            }
+          },
+          "rawSha256": "ca50b044599839c5204a66d07b0f2cebd074885f9faaa7c045497cd614562722",
+          "counts": {
+            "walls": 25,
+            "rooms": 5,
+            "openings": 12
+          }
+        },
+        {
+          "runId": "20260925T075949811Z-ALVA056-mimo-1947ac",
+          "expectedFailureClass": null,
+          "outputContractPassed": true,
+          "requiresReview": false,
+          "failureClass": null,
+          "validCandidate": true,
+          "humanReviewRequired": true,
+          "automaticConfirmationAllowed": false,
+          "phases": {
+            "productionParser": {
+              "ok": true
+            },
+            "schema": {
+              "ok": true
+            },
+            "content": {
+              "ok": true
+            },
+            "geometry": {
+              "ok": true
+            },
+            "confirmationTopology": {
+              "ok": true
+            },
+            "diagnostics": {
+              "ok": true,
+              "status": "complete",
+              "checks": {
+                "internalVoid": "complete",
+                "orientation": "complete",
+                "connectivity": "complete"
+              },
+              "counts": {},
+              "undefinedAreaM2": 0,
+              "wallComponents": 1
+            }
+          },
+          "rawSha256": "58856ff3fad097c9032e80af81de97df5f71f4b8570cc381d421f5ee90f21693",
+          "counts": {
+            "walls": 26,
+            "rooms": 5,
+            "openings": 12
+          }
+        }
+      ],
+      "repairSourceBinding": true,
+      "effectivePromptIdentical": true,
+      "cliArgumentsIdentical": true,
+      "currentSchemaIdentical": true,
+      "verifiedAt": "2026-09-25T08:49:18.005Z"
+    }
+  },
+  "availableBeforeBytes": 2875682816,
+  "cgroup": {
+    "memory.peak": "89915392",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 2248558\nuser_usec 1931612\nsystem_usec 316946\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 67\nnr_throttled 43\nthrottled_usec 3674273\nnr_bursts 0\nburst_usec 0"
+  },
+  "passed": true,
+  "completedAt": "2026-09-25T08:49:18.100540+00:00"
+}

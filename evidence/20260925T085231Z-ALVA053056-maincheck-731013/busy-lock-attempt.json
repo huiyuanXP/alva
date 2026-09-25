@@ -1,0 +1,7 @@
+{
+  "stage": "shared-heavy-task-lock",
+  "productTestsStarted": false,
+  "cause": "Another ticket held the shared heavy-task lock; not a product test failure.",
+  "action": "New unique run waits boundedly for the same lock, retains the same memory/CPU/reserve limits.",
+  "nextRunId": "20260925T084809Z-ALVA053056-replay-4a347c"
+}

@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {resolve} from 'node:path';
+import {z} from 'zod';
+import {Scene,validateScene} from '/home/ubuntu/Alva/api/model.ts';
+import {normalizeStructuredOutput} from '/home/ubuntu/Alva/api/import.ts';
+import {parseLayoutOutput,LayoutOutputError,layoutRepairPrompt} from '/home/ubuntu/Alva/api/import/response.ts';
+import {validateTopology} from '/home/ubuntu/Alva/api/topology/validate.ts';
+import {analyzeTopology} from '/home/ubuntu/Alva/api/topology/diagnostics.ts';
+import {summarizeMiMoOutcome,verifyMiMoRepairSource} from '/home/ubuntu/Alva/scripts/lib/mimo-probe.ts';
+import {buildMiMoArgs} from '/home/ubuntu/Alva/scripts/lib/mimo-profile.ts';
+const W='/home/ubuntu/Alva/.runtime/worktrees/ALVA-056-recovery-20260925';const sha=(b:string|Buffer)=>createHash('sha256').update(b).digest('hex');
+const cases=[['20260925T071425418Z-ALVA056-mimo-7842c7','json-parse'],['20260925T072626685Z-ALVA056-mimo-13f83c','empty-candidate'],['20260925T073159993Z-ALVA056-mimo-7c7aa6','empty-candidate'],['20260925T074740232Z-ALVA056-mimo-0b62e3','geometry-validation'],['20260925T075949811Z-ALVA056-mimo-1947ac',null]] as const;
+const json=(p:string)=>JSON.parse(readFileSync(p,'utf8'));const schema=z.toJSONSchema(Scene);
+function strict(x:any){if(!x||typeof x!=='object')return;if(x.properties){x.required=Object.keys(x.properties);x.additionalProperties=false}delete x.default;for(const v of Object.values(x))if(Array.isArray(v))v.forEach(strict);else strict(v)}
+strict(schema);const schemaText=JSON.stringify(schema,null,2);const replays:any[]=[];
+for(const [runId,expected] of cases){
+ const d=resolve(W,'.runtime',runId),r=json(resolve(W,'evidence',runId,'result.json')),raw=readFileSync(resolve(d,'raw-response.txt'),'utf8');
+ assert.equal(sha(raw),r.rawOutput.sha256);assert.equal(sha(readFileSync(resolve(W,r.source.path))),r.source.sha256);
+ assert.equal(sha(readFileSync(resolve(d,'output-schema.json'))),r.schemaSha256);assert.equal(sha(schemaText),r.schemaSha256);
+ const normalized=normalizeStructuredOutput(raw),phases:any={};let parsed:any;
+ try{parseLayoutOutput(normalized);phases.productionParser={ok:true}}catch(e){assert.ok(e instanceof LayoutOutputError);phases.productionParser={ok:false,stage:e.stage}}
+ try{parsed=Scene.parse(JSON.parse(normalized));phases.schema={ok:true}}catch{phases.schema={ok:false}}
+ if(parsed){
+  phases.content={ok:parsed.walls.length>0&&parsed.rooms.length>0};
+  for(const [name,fn] of [['geometry',validateScene],['confirmationTopology',validateTopology]] as const){try{fn(parsed);phases[name]={ok:true}}catch{phases[name]={ok:false}}}
+  const d=analyzeTopology(parsed);phases.diagnostics={ok:true,status:d.status,checks:d.checks,counts:d.issues.reduce((o:any,i:any)=>(o[i.code]=(o[i.code]||0)+1,o),{}),undefinedAreaM2:d.measurements.undefinedAreaM2,wallComponents:d.measurements.wallComponents};
+ }
+ const outcome=summarizeMiMoOutcome(r.transportCompleted,null,phases,r.unexpectedTools);
+ assert.equal(outcome.failureClass,expected,runId);assert.equal(outcome.validCandidate,expected===null);assert.equal(outcome.automaticConfirmationAllowed,false);
+ if(expected===null){assert.deepEqual(phases.diagnostics.counts,{});assert.equal(phases.diagnostics.undefinedAreaM2,0);assert.equal(phases.diagnostics.wallComponents,1);assert.equal(phases.confirmationTopology.ok,true)}
+ replays.push({runId,expectedFailureClass:expected,...outcome,phases,rawSha256:sha(raw),counts:parsed?{walls:parsed.walls.length,rooms:parsed.rooms.length,openings:parsed.openings.length}:null});
+}
+const parentId=cases[3][0],childId=cases[4][0],p=json(resolve(W,'evidence',parentId,'result.json')),c=json(resolve(W,'evidence',childId,'result.json'));
+const pd=resolve(W,'.runtime',parentId),cd=resolve(W,'.runtime',childId),prior=readFileSync(resolve(pd,'raw-response.txt'),'utf8');
+verifyMiMoRepairSource(p,{runId:parentId,imageSha256:sha(readFileSync(resolve(W,c.source.path))),schemaSha256:sha(schemaText),rawSha256:sha(prior)});
+let failure:LayoutOutputError|undefined;try{parseLayoutOutput(normalizeStructuredOutput(prior))}catch(e){assert.ok(e instanceof LayoutOutputError);failure=e}assert.ok(failure);
+const prompt=layoutRepairPrompt(prior,failure);assert.equal(prompt,readFileSync(resolve(cd,'prompt.txt'),'utf8'));
+assert.equal(`${prompt}\n\n输出schema（只作JSON对象结构约束；返回纯JSON对象，不要Markdown围栏）：\n${schemaText}`,readFileSync(resolve(cd,'effective-prompt.txt'),'utf8'));
+const args=buildMiMoArgs({metadata:c.profileMetadata,privateDir:cd,imagePath:resolve(W,c.source.path),lastMessage:resolve(cd,'raw-response.txt'),schemaPath:resolve(cd,'output-schema.json'),outputMode:c.outputMode});assert.deepEqual(args,c.invocation.args);
+const sourceHashes=Object.fromEntries(Object.keys(c.sourceFiles).map(f=>[f,sha(readFileSync(resolve('/home/ubuntu/Alva',f)))]));
+const output={passed:true,newProviderCalls:0,productionMutations:false,automaticConfirmationAllowed:false,sourceHashes,replays,repairSourceBinding:true,effectivePromptIdentical:true,cliArgumentsIdentical:true,currentSchemaIdentical:true,verifiedAt:new Date().toISOString()};
+writeFileSync(process.argv[2],JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify({passed:true,replays:replays.length,currentSchemaIdentical:true,latestCandidate:replays.at(-1)?.counts}));

@@ -1,6 +1,6 @@
-## ALVA-066 两阶段 MCP：已建票，等待协调认领
+## ALVA-066 两阶段 MCP：协调障碍已解除，下一步认领
 
-[ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；下一步确认本轮开始前未提交协调修改的归属，再署名并创建独立 Worktree，先做原生 MCP/网关隔离探针。既有认领与单票存在冲突，不从旧记录自动接管。主 Chat 后续功能按新版 MCP 合同同票验收。
+[ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；用户已授权处理原未提交修改；下一步署名并创建独立 Worktree，先做原生 MCP/网关隔离探针。主 Chat 后续功能按新版 MCP 合同同票验收。
 
 # What's next · 任务认领与并行开发
 
@@ -10,52 +10,25 @@
 
 ## 2026-09-25 ALVA-064 已发布并验收
 
-图片户型识别默认 Gemini 3.8 Flash High/high 已在生产 `alva.service` 生效；公网登录后只读验收通过，项目 revision 不变、页面错误 0。实现提交 `4870b0d`，备份、回滚和证据见[发布记录](docs/ALVA-064-gemini-default-release.md)。同会话截图自查仍是隔离流程；户型准确性待用户对照原图。ALVA-028 继续暂停，其他认领不变。
+图片户型识别默认 Gemini 3.8 Flash High/high 已在生产 `alva.service` 生效；公网登录后只读验收通过，项目 revision 不变、页面错误 0。实现提交 `4870b0d`，备份、回滚和证据见[发布记录](docs/ALVA-064-gemini-default-release.md)。同会话截图自查仍是隔离流程；户型准确性待用户对照原图。ALVA-028 后续已集成，当前状态以单票为准。
 
 ## 2026-09-25 ALVA-036 正式完结
 
 手动全局快照已验收并集成，后随 ALVA-064 的 main 构建发布到生产；公网资源与本机构建哈希一致。生产保存写入未单独验收，隔离保存验收和发布边界见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。ALVA-037 仍可认领，ALVA-038 仍依赖 037；旧“历史”入口不代表两票完成。
 
-## 2026-09-25 ALVA-061 Codex Gemini profile 已完成
 
-本机 Codex 用户配置已有单一 `gemini` profile，复用 `newapi` provider；模型目录包含 `gemini-3.6-flash-high`、`gemini-3.7-flash-high`、`gemini-3.8-flash-high`，默认 3.8，可在 Codex 模型设置中切换。三个型号均已通过原生 CLI 的最小真实调用。此任务无后续执行占用；业务服务模型和生产配置未变。交接见 [ALVA-061](docs/ALVA-061-codex-gemini-profile.md)。
+## 2026-09-25 协调清理与根目录锁观察
 
-## 2026-09-25 ALVA-063 已完成，同会话自查待用户核对
+用户已授权提交错别字修正、整理旧协调记录及保留旧验收证据。ALVA-024/025/028 已按单票及 main 提交完成，移除过期执行占用；ALVA-040 尚未完成，恢复待认领。ALVA-057 保留原署名与未集成状态。
 
-原测试 tunnel 现展示新生成并在同一个 Codex thread 自查的 Gemini 候选：19 墙/5 房/7 门窗。模型自评 `mismatch`，疑点和仅平面截图见[ALVA-063](docs/ALVA-063-floorplan-self-review.md)；原生业务 schema 仍失败，隔离字段映射仅供预览。项目 Skill 只通过 prompt 显式调用，不在标准目录。本票不占用产品票认领；028 继续暂停。
+- 记录时间：**2026-09-25 18:49:54 UTC**。
+- 观察对象：`/home/ubuntu/Alva/alva-coordination.lock`（根目录空文件）；当前未检测到实际持锁者。正式协调锁仍为 `.git/alva-coordination.lock`，不受此规则影响。
+- 12 小时检查时间：**2026-09-26 06:49:54 UTC**。用户已授权：届时仍遗留且无人认领，自动释放该根目录残留文件。
+- 定时器：用户级 `alva-root-lock-expiry.timer` 已安排；检查脚本 `.runtime/alva-lock-expiry/release.py`，结果 `.runtime/alva-lock-expiry/result.json`。只有文件身份未变、无人认领且能够非阻塞取得锁才删除；实际持锁、文件变化或认领后保留，不终止进程、不删除正式协调锁。
+- 若认领此残留锁，必须把下一行标记中的 `unclaimed` 改为实际署名，定时器将保留文件。
+<!-- alva-root-lock-owner: unclaimed -->
 
-## 2026-09-25 ALVA-062 已完成，历史预览已切换
-
-该临时公网入口此前展示 Gemini 3.8 的 20 墙/6 房/9 门窗候选；原生业务导入因两轮 schema 不合格而失败，隔离字段映射后可渲染并通过结构检查。完整证据、原始结果和服务位置见[ALVA-062](docs/ALVA-062-gemini-preview.md)。本任务不占用产品票认领；028 继续暂停。
-
-## 2026-09-25 ALVA-060 已集成，历史预览已切换
-
-该临时公网入口此前展示 Codex GPT-6 Luna xhigh 的首轮识图候选。使用原有 `OPENAI_VISION_MODEL` 参数和新增推理强度参数，17 墙/10 房/5 门窗可渲染，但确认拓扑失败且有 15 项诊断问题。结果、截图、原 MiMo 保留位置和停用方式见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。本票执行占用释放；预览运行态保留供用户查看，不能自动采用候选。其他署名与 ALVA-028 暂停状态不变。
-
-## 2026-09-25 ALVA-059 预览交接
-
-ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完成并验证，历史截图与隔离数据见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。同一链接曾由 ALVA-060 展示 Luna 候选，后来由 ALVA-062 展示 Gemini 候选，现由 ALVA-063 展示同会话自查候选；不占用产品票认领，028 继续暂停。后续若要评价户型准确性，需对照原图由用户校核，不能以结构检查和渲染替代。
-
-## 2026-09-25 ALVA-053/056已完成
-
-53已集成`97c0ae7`；56个人实现`fbfe8e8`经最新main基线的类型/36项相关回归和5轮输出回放通过，已在本次main集成。两票不再占用执行资源；下一步不重复模型调用或自动部署。收据`evidence/20260925T084025Z-ALVA056-integration-3bc356/`，边界见单票和CURRENT。其他署名保持不变，028继续用户暂停。以下重启Pending记录仅保留仍未开工的028。
-
-## Pending 恢复队列（2026-09-25）
-
-用户明确授权本轮由协调人将已中断/暂停工作退回待办，释放的是当前执行占用，不删除历史负责人、分支、工作区或证据。pending不是done，也不是自动重新开工。44票看板不接受字面Status=pending；产品待办沿用ready-for-agent并在票内写Execution state=pending，额外维护票直接使用pending。此处是恢复索引，不另建产品状态数据库。
-
-| 对象 | 当前待办原因 | 保存的位置 | 恢复后的第一步 |
-|---|---|---|---|
-| [ALVA-025](.scratch/alva-completion/issues/18-furniture-properties.md) | 家具属性与款式替换 | `furniture` | lzy | task/ALVA-025-lzy / /home/ubuntu/Alva-worktrees/ALVA-025-lzy | in-progress；api/business.ts、api/chat.ts、web/src/Panels.tsx、web/src/SceneView.tsx、测试与票内证据；端口自动分配 |
-| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | pending：用户原先要求暂停，尚未实施 | 历史负责人yang-chatgpt；f3aedbb工作区保留 | 等新的开工指令，确认ALVA-015证据与共享文件，重新登记署名后实施三个正反例及来源/幂等验收 |
-
-额外保护：`bugfix/floorplan-structured-output-preview`有5个未提交文件，当前无对应工作区执行进程，未编号、未集成；恢复前由原负责人核对，不新建假完成票、不覆盖或清理。ALVA-054整体done保留，其线上登录后核验仍是票内单独未完成边界，不因本次重启伪造通过。
-
-取证与保护清单：[docs/INCIDENT-2026-09-25-server-recovery.md](docs/INCIDENT-2026-09-25-server-recovery.md)；`evidence/20260925T034733Z-server-recovery-2cae71/`。本轮所有复核命令串行、轻量，不执行重建/浏览器/模型。重型任务恢复前确认前一个进程已结束，先制定任务级CPU/内存限额与采样方案；本次不改变服务配置，不以多开重试解决卡顿。
-
-当前已完成并集成 ALVA-008–013、ALVA-014–019、ALVA-043；其余正式票仍按依赖和验收状态管理。本次ALVA-052只接入只读任务看板。最新用户决定允许满足条件的任务在独立 Worktree 并行，覆盖此前“所有任务串行/其余票必须等首批全部完成”的安排；登录/导入/3D仍优先，但只有正式依赖构成阻塞。U16最后功能约束保留。
-
-运行边界已于 2026-09-22 覆盖更新：`/home/ubuntu/aws-hackthon` 全目录归档且不使用；Coding Machine MCP 仍临时依赖其中 `.venv-mcp` 与 `.mcp-runtime`。现役密码来源、旧副本删除记录和迁移前提见 [远端访问](docs/REMOTE-ACCESS.md)。
+旧 053/056 复核证据目录已归档提交；历史分支和其他 Worktree 保留。未完成预览分支不在本次清理范围。重型任务仍使用任务资源限额与共享锁串行运行。
 
 ## 当前集成偏好
 
@@ -67,7 +40,6 @@ ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | 首次需求分析与生活痛点 | `review` |  |  | pending；用户此前要求暂不实施；2026-09-25释放当前执行占用，历史yang-chatgpt/f3aedbb与Worktree保留；详见票内恢复记录，新的开工指令前不实施 |
 | [ALVA-031](.scratch/alva-completion/issues/24-designer-readonly.md) | 设计师只读访问与撤销 | `access` |  |  | 待认领；开工前登记 |
 | [ALVA-037](.scratch/alva-completion/issues/30-snapshot-preview.md) | 快照列表与只读状态预览 | `snapshots` |  |  | 依赖 ALVA-036 已完成；待署名认领，不自动开工 |
 | [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` |  |  | 依赖已完成；待署名认领 |
@@ -134,17 +106,11 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 无预算；只考虑理想WebGL机器。只有手动保存创建全局快照，点击快照预览、明确恢复后整体替换；无逐操作历史、撤销或自动存档。ALVA-046/047在其他功能完成后，ALVA-048–051负责最终验收与发布复核。协作规则本身不授予生产变更或第三方通讯权限。
 
 
-只读展示入口：https://prod.huiyuanxp.com/todo 。Ticket与本表在main更新后自动反映到看板；认领仍在本表进行。ALVA-052维护任务已完成本地验收，集成收尾见Handoff。
+只读展示入口：https://prod.huiyuanxp.com/todo 。Ticket与本表在main更新后自动反映到看板；认领仍在本表进行。
 
 
-## 独立维护任务（不计入44张产品票）
 
-| 任务 | 署名 | 工作区与边界 | 状态 |
-|---|---|---|---|
-| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) |  | chatgpt-recovery已完成；task/ALVA-053-recovery-20260925 / .runtime/worktrees/ALVA-053-recovery-20260925；17a6308；诊断与解析修复已集成，不是生产户型正确性验收 | done |
-
-
-ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028仍按用户要求暂停。
+ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028 后续已集成。
 
 ## 拓扑质量补充任务
 
