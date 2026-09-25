@@ -1,0 +1,73 @@
+✔ ALVA-029 actual PGlite snapshot keeps adopted review and tradeoffs; save rollback/retry creates no partial version (6273.816271ms)
+✔ ALVA-029 coffee/pet/plant positive cases retain exact source and object references (213.746233ms)
+✔ ALVA-029 negative statements and pending/inferred/rejected habits do not trigger positive findings (166.799395ms)
+✔ ALVA-029 supported pain checks clear after actual layout fixes (84.621795ms)
+✔ ALVA-029 changed current answers do not reuse positive historical questionnaire evidence (79.919542ms)
+✔ ALVA-029 confirmed correction supersedes the original habit without deleting provenance (75.975186ms)
+✔ ALVA-029 scoped habits do not leak to another room or unrelated object (72.70426ms)
+✔ ALVA-029 model summary cannot invent an unsupported habit absent from its actual quote (41.189225ms)
+✔ ALVA-029 coffee color and panda videos do not imply coffee-making or household pets (40.587024ms)
+✔ ALVA-029 geometry catches rotated footprint outside despite an inside center (50.146778ms)
+✔ ALVA-029 geometry catches furniture bridging a concave room notch and rotated overlap (38.844081ms)
+✔ ALVA-029 actual door-to-door grid comparison finds a barrier but permits a detour (80.612811ms)
+✔ ALVA-029 incomplete doors report a navigation limitation rather than universal passage success (40.002862ms)
+✔ ALVA-029 explicit material preference and functional requirement conflicts are independently sourced (39.700676ms)
+✔ ALVA-029 review freshness follows scene and context inputs, retaining reviewed revision after administrative writes (75.913152ms)
+✔ ALVA-029 save adoption preserves explicit choices while professional unknowns stay open (49.495228ms)
+✔ ALVA-029 missing or invalid layouts fail explicitly and stale context cannot be reviewed (37.464726ms)
+✔ ALVA-029 review tool always reloads inputs and reports persistence truthfully (94.12784ms)
+✔ ALVA-029 layout modification during review persistence invalidates tool success (71.750368ms)
+✔ ALVA-028 confirmed answer creates sourced life-pain findings idempotently (7488.297458ms)
+✔ ALVA-028 negative wording produces no invented pain finding (6162.820964ms)
+▶ ALVA-036 manual global snapshots: real HTTP/database, atomicity and durable retries
+  ✔ requires owner, explicit confirmation and session-scoped project (38.725321ms)
+  ✔ questionnaire-only drafts can be saved; missing-scene export is explicit 422 (60.692501ms)
+  ✔ edits, analysis/generation persistence and confirmations never create archive points (192.421108ms)
+  ✔ snapshot keeps every global field and preserves acknowledged/unresolved findings exactly (123.932273ms)
+[alva request error] /api/save Error: isolated_save_fault
+    at <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/api/store.ts:70:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/node_modules/@electric-sql/pglite/src/base.ts:514:24)
+  ✔ actual snapshot INSERT followed by failure rolls back snapshot, draft and receipt; retry works (205.106298ms)
+[alva request error] /api/save error: ALVA036 isolated receipt write fault
+    at pe.Ue (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/node_modules/@electric-sql/pg-protocol/src/parser.ts:442:11)
+    at pe.tt (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/node_modules/@electric-sql/pg-protocol/src/parser.ts:220:16)
+    at pe.parse (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/node_modules/@electric-sql/pg-protocol/src/parser.ts:104:21)
+    at N.qe (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/node_modules/@electric-sql/pglite/dist/index.js:5:1762)
+    at <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/node_modules/@electric-sql/pglite/dist/index.js:5:1155)
+    at wasm://wasm/0267bb86:wasm-function[10930]:0x5a5ccf
+    at wasm://wasm/0267bb86:wasm-function[3585]:0x27eaeb
+    at wasm://wasm/0267bb86:wasm-function[3627]:0x2869d1
+    at wasm://wasm/0267bb86:wasm-function[3637]:0x286c2d
+    at wasm://wasm/0267bb86:wasm-function[9914]:0x54fd4d
+  ✔ real database failure after project update and receipt insertion is fully atomic (259.281412ms)
+  ✔ simultaneous duplicate saves commit one version; distinct stale requests return conflict (50.880286ms)
+  ✔ retry after later edits returns current work plus original save receipt, never rolls back (90.051263ms)
+  ✔ conflicts can be explicitly reread and saved with a fresh request (84.480874ms)
+  ✔ new snapshots exclude legacy budgets but never rewrite working or older states (75.56706ms)
+  ✔ legacy full-response command receipts remain retryable without new per-operation state (32.924582ms)
+  ✔ close/reopen preserves snapshots, timestamps, sessions and exactly-once retries (999.638737ms)
+✔ ALVA-036 manual global snapshots: real HTTP/database, atomicity and durable retries (9873.063103ms)
+✔ ALVA-029 classified Markdown round-trips real sources and is idempotent/private (146.120274ms)
+✔ ALVA-029 user quotes containing code fences remain data and cannot break the Markdown payload (54.315963ms)
+✔ ALVA-029 invented quotes, assistant sources, missing evidence and project traversal are rejected (2.660485ms)
+✔ ALVA-029 unclassified answers stay unresolved and historical evidence is not confirmed (1.057515ms)
+✔ ALVA-029 confirmed corrections supersede old facts; pending corrections cannot erase them (1.616077ms)
+✔ ALVA-029 explicit classifications tied to replaced answers are retired (0.930638ms)
+✔ ALVA-029 intake inferences never become confirmed facts and review outputs do not feed back (1.043977ms)
+✔ ALVA-029 confirmed reference preferences require the actual confirmation record (1.520101ms)
+✔ ALVA-029 missing, stale revision and changed input never return an empty successful read (80.295671ms)
+✔ ALVA-029 altered and missing category files fail closed; explicit rebuild repairs them (117.678523ms)
+✔ ALVA-029 symlinks and forged generation paths cannot read outside the project (39.161491ms)
+✔ ALVA-029 concurrent writers never publish mixed generations or regress revision (185.788362ms)
+✔ ALVA-029 an invalid source write leaves the previous pointer and all published files intact (48.076212ms)
+✔ ALVA-029 read_user_context uses a fresh project callback and repairs once without accepting path arguments (77.524668ms)
+✔ ALVA-029 concurrent authoritative changes during projection read return a stale error (37.6108ms)
+ℹ tests 49
+ℹ suites 0
+ℹ pass 49
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42530.940781
