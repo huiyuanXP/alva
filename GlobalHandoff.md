@@ -1,7 +1,5 @@
 # GlobalHandoff
 
-2026-09-25 Codex CLI 已从 0.155.1 升为稳定版 0.157.0；新增 Sol/Luna 的原生目录、网关列表及实际请求已验证。普通 Ubuntu 用户的 New API 默认路由及独立 MiMo 两模型 profile 字节未变，默认仍为 Astra；凭据仅引用 NEWAPI_KEY。新 profile 是 `mimo.config.toml`，不是旧 `[profiles.mimo]`。使用及独立 CODEX_HOME 边界以 [docs/CODEX-PROVIDERS.md](docs/CODEX-PROVIDERS.md) 为准。此配置验收不替代 ALVA-056 业务识图验收。
-
 2026-09-25恢复：ALVA-053/056退pending，028退待办且继续用户暂停；本轮不实施产品、重启服务或改资源配置。事故报告[docs/INCIDENT-2026-09-25-server-recovery.md](docs/INCIDENT-2026-09-25-server-recovery.md)与CURRENT/NextTask为本次入口。内存压力、网络故障及SSH限流已留证；9月25日Power key关机与9月22日资源故障分开记录，具体肇事程序仍未唯一确定。21个Worktree和所有原未提交成果保留。
 
 - 项目根 `/home/ubuntu/Alva`；现役工程 api/、web/，开发前读 docs/PROJECT-STRUCTURE.md。

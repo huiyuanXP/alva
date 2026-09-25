@@ -1,9 +1,5 @@
 # 恢复索引
 
-## 2026-09-25 Codex 升级完成
-
-CLI 运维任务（不对应旧 week/step，不认领产品票）：0.155.1 → 0.157.0；Sol/Luna 原生目录、网关列表与真实调用均通过。默认 New API/Astra、MiMo 双模型 profile 保持，三份配置字节不变；证据及回滚见 [Codex provider 配置](docs/CODEX-PROVIDERS.md)。本轮基线 HEAD `a11cd11`，原 8 暂存文件与 2 未提交文档保留。MiMo Flash 首次标记不匹配及新 run 重试通过均留证。未重启服务、变更业务数据或推进下列 pending 队列。
-
 ## 2026-09-25 重启后状态
 
 本轮是服务器取证与待办恢复，不是产品实施。根目录 `/home/ubuntu/Alva`，main检查基线 `5e1513a`。已完成的12张产品票与ALVA-055保持done；ALVA-053/056退回pending，ALVA-028从进行中退回待办，未自动开工。

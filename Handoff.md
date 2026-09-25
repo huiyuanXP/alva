@@ -1,9 +1,5 @@
 # alva Handoff
 
-## 2026-09-25 Codex CLI 路由及版本更新（已验证）
-
-用户终端 `/home/ubuntu/.codex` 已改为 New API 默认 provider，`codex --profile mimo` 只列 MiMo v2.6 Pro/Flash，两路均从 NEWAPI_KEY 读取凭据并请求同一网关。现已按后续指令从 0.155.1 升至稳定版 0.157.0，三份用户配置哈希不变。Sol/Luna 原生目录、网关列表和真实请求通过，默认 Astra/Pro 回归通过；Flash 首次固定标记失败在独立新 run 复试通过，原结果保留。版本升级证据 `evidence/20260925T040631Z-codex-upgrade/verification.json`。使用、环境边界和回滚见 [Codex provider 配置](docs/CODEX-PROVIDERS.md)。本次不改 MCP 独立 CODEX_HOME、产品路由、认证存储或 Ticket 状态；下列恢复队列和他人暂存成果保留。
-
 ## 2026-09-25 本轮交接（先读）
 
 目标：服务器重启后检查中断任务、退回pending并保留下一步，不对应旧week/step，不实施产品票。检查main HEAD `5e1513a`；本轮新增恢复提交可由 `git log --grep='重启后待办恢复'` 追溯。
