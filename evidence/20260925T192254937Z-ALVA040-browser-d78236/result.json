@@ -1,0 +1,183 @@
+{
+  "ticket": "ALVA-040",
+  "runId": "20260925T192254937Z-ALVA040-browser-d78236",
+  "pass": false,
+  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: '全屋', exact: true })\n",
+  "checks": [
+    "scene: existing sliders update the real light without rebuilding renderer or resetting camera",
+    "scene: morning/afternoon sun and rendered shadow pixels move, verified against shadow-disabled control frames",
+    "scene: returning to the same parameters reproduces the exact rendered frame",
+    "scene: winter date changes actual elevation and shadows; numerical date/latitude/orientation assumptions visible",
+    "scene: night disables direct sun/shadows and daylight is restored, half-hour shown correctly",
+    "scene: scene, revision, confirmed data and saved snapshots remain unchanged"
+  ],
+  "errors": [
+    "building: Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "observations": {
+    "scene-summer-morning": {
+      "pixelsChangedByShadows": 17350,
+      "shadowCentroid": [
+        589.8292219020173,
+        422.95798270893374
+      ],
+      "frameSha256": "1d1c9813f3c2f63cdf5b103ed1f2c4ea9cb3f9e2c2640f16ad4d94ee8fe3c8b5",
+      "state": {
+        "sun": {
+          "settings": {
+            "time": 9,
+            "day": 172,
+            "latitude": 31,
+            "north": 0
+          },
+          "direction": {
+            "x": 0.6486951561928027,
+            "y": 0.7610158461829106,
+            "z": -0.007033931368994828
+          },
+          "altitudeDegrees": 49.55383466823493,
+          "azimuthDegrees": 89.37875474591806,
+          "declinationDegrees": 23.452046074516133,
+          "daylight": true,
+          "directIntensity": 2.663555461640187,
+          "skyBlend": 1
+        },
+        "intensity": 2.663555461640187,
+        "castShadow": true,
+        "relativeY": 17.07742884648244,
+        "camera": [
+          10.394067829697946,
+          8.274676014903225,
+          10.146311103780056
+        ],
+        "quaternion": [
+          -0.32554897168293384,
+          0.3345276944452396,
+          0.12438072554299885,
+          0.8755789649133502
+        ]
+      }
+    },
+    "scene-summer-afternoon": {
+      "pixelsChangedByShadows": 20985,
+      "shadowCentroid": [
+        338.53619251846555,
+        284.81524898737194
+      ],
+      "frameSha256": "f3fea7718ba237ba0a0d4ed89b59b37fe487855b3658ae44264a53c9b20bf8ff",
+      "state": {
+        "sun": {
+          "settings": {
+            "time": 15,
+            "day": 172,
+            "latitude": 31,
+            "north": 0
+          },
+          "direction": {
+            "x": -0.6486951561928027,
+            "y": 0.7610158461829106,
+            "z": -0.007033931368994828
+          },
+          "altitudeDegrees": 49.55383466823493,
+          "azimuthDegrees": 270.62124525408194,
+          "declinationDegrees": 23.452046074516133,
+          "daylight": true,
+          "directIntensity": 2.663555461640187,
+          "skyBlend": 1
+        },
+        "intensity": 2.663555461640187,
+        "castShadow": true,
+        "relativeY": 17.07742884648244,
+        "camera": [
+          10.394067829697946,
+          8.274676014903225,
+          10.146311103780056
+        ],
+        "quaternion": [
+          -0.32554897168293384,
+          0.3345276944452396,
+          0.12438072554299885,
+          0.8755789649133502
+        ]
+      }
+    },
+    "scene-winter-noon": {
+      "pixelsChangedByShadows": 39518,
+      "shadowCentroid": [
+        423.36140492939927,
+        383.34148995394503
+      ],
+      "frameSha256": "c29d03d5a28aef7999a9aafa69247ea71e9afe1589228725182b6d496743c982",
+      "state": {
+        "sun": {
+          "settings": {
+            "time": 12,
+            "day": 355,
+            "latitude": 31,
+            "north": 0
+          },
+          "direction": {
+            "x": 0,
+            "y": 0.5818406646525045,
+            "z": 0.8133027978291554
+          },
+          "altitudeDegrees": 35.580109593702296,
+          "azimuthDegrees": 180,
+          "declinationDegrees": -23.419890406297714,
+          "daylight": true,
+          "directIntensity": 2.036442326283766,
+          "skyBlend": 1
+        },
+        "intensity": 2.036442326283766,
+        "castShadow": true,
+        "relativeY": 13.05668285415044,
+        "camera": [
+          10.394067829697946,
+          8.274676014903225,
+          10.146311103780056
+        ],
+        "quaternion": [
+          -0.32554897168293384,
+          0.3345276944452396,
+          0.12438072554299885,
+          0.8755789649133502
+        ]
+      }
+    },
+    "scene-night": {
+      "sun": {
+        "settings": {
+          "time": 0,
+          "day": 355,
+          "latitude": 31,
+          "north": 0
+        },
+        "direction": {
+          "x": 1.1237563536073683e-16,
+          "y": -0.991261393735476,
+          "z": -0.13191227876737588
+        },
+        "altitudeDegrees": -82.41989040629775,
+        "azimuthDegrees": 5.684341886080802e-14,
+        "declinationDegrees": -23.419890406297714,
+        "daylight": false,
+        "directIntensity": 0,
+        "skyBlend": 0
+      },
+      "intensity": 0,
+      "castShadow": false,
+      "relativeY": -22.244209505873947,
+      "camera": [
+        10.394067829697946,
+        8.274676014903225,
+        10.146311103780056
+      ],
+      "quaternion": [
+        -0.32554897168293384,
+        0.3345276944452396,
+        0.12438072554299885,
+        0.8755789649133502
+      ]
+    }
+  }
+}

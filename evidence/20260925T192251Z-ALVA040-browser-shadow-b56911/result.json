@@ -1,0 +1,19 @@
+{
+  "runId": "20260925T192251Z-ALVA040-browser-shadow-b56911",
+  "command": [
+    "/usr/bin/env",
+    "NODE_OPTIONS=--max-old-space-size=500",
+    "node",
+    "node_modules/tsx/dist/cli.mjs",
+    "scripts/alva-040-browser.ts"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1600M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 74.55,
+  "evidence": "evidence/20260925T192251Z-ALVA040-browser-shadow-b56911"
+}

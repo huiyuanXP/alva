@@ -1,0 +1,21 @@
+{
+  "runId": "20260925T191936Z-ALVA040-typecheck-18ff1a",
+  "command": [
+    "/usr/bin/env",
+    "GOMEMLIMIT=650MiB",
+    "GOGC=50",
+    "GOMAXPROCS=1",
+    "node",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 36.24,
+  "evidence": "evidence/20260925T191936Z-ALVA040-typecheck-18ff1a"
+}

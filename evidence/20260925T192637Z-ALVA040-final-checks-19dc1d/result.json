@@ -1,0 +1,22 @@
+{
+  "runId": "20260925T192637Z-ALVA040-final-checks-19dc1d",
+  "command": [
+    "/usr/bin/env",
+    "GOMEMLIMIT=650MiB",
+    "GOGC=50",
+    "GOMAXPROCS=1",
+    "NODE_OPTIONS=--max-old-space-size=700",
+    "/bin/bash",
+    "-c",
+    "set -e; node node_modules/tsx/dist/cli.mjs --test tests/alva-sunlight.test.ts tests/alva-building-views.test.ts; node node_modules/typescript/bin/tsc --noEmit; echo ALVA040_FINAL_TYPECHECK_PASSED; git diff --check"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 34.21,
+  "evidence": "evidence/20260925T192637Z-ALVA040-final-checks-19dc1d"
+}

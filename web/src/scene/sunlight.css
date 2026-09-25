@@ -1,0 +1,22 @@
+.sunlight-readout {
+  position: absolute;
+  z-index: 2;
+  left: 12px;
+  bottom: 12px;
+  max-width: min(460px, calc(100% - 24px));
+  box-sizing: border-box;
+  display: grid;
+  gap: 4px;
+  padding: 10px 13px;
+  border: 1px solid rgba(89, 85, 71, .18);
+  border-radius: 10px;
+  background: rgba(250, 249, 243, .94);
+  color: #34382e;
+  font-size: 12px;
+  line-height: 1.45;
+  pointer-events: none;
+}
+.sunlight-readout strong { font-size: 13px; }
+.sunlight-readout small { font-size: 11px; color: #5f6358; }
+.scene-host { position: relative; }
+.building-view { position: relative; }

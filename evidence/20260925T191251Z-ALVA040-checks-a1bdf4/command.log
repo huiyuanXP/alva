@@ -1,0 +1,32 @@
+Running as unit: alva040-bff5554b8f3e.service; invocation ID: 8f78d0363395446b9320751cb8667bb0
+✔ ALVA-013 uses all rendered components for automatic overview bounds (2.418892ms)
+✔ ALVA-013 room view chooses an interior point away from wall centerlines (1.144209ms)
+✔ ALVA-013 room selection is data-driven and missing rooms do not invent a camera (0.743833ms)
+✔ ALVA-040 noon solstice elevations agree with independent 90-latitude+declination benchmarks (17.711955ms)
+✔ ALVA-040 morning is east and afternoon west when plan top is north (0.486035ms)
+✔ ALVA-040 changing north rotates the light without changing elevation or geographic azimuth (0.308376ms)
+✔ ALVA-040 hemisphere changes are real geometry, not fixed northern-hemisphere presets (0.524812ms)
+✔ ALVA-040 night is below the horizon with zero direct sunlight (0.606275ms)
+✔ ALVA-040 24:00/00:00 and north 360/0 are equivalent, without mutating the input (1.687206ms)
+✔ ALVA-040 all supported latitude/date/hour/orientation samples yield finite unit directions (101.207477ms)
+✔ ALVA-040 malformed or out-of-contract parameters return stable errors, never silent coercion (1.515867ms)
+✔ ALVA-040 ground-shadow rays reverse east/west and grow in winter (0.546651ms)
+✔ ALVA-040 both renderers use a real Three.js directional light aimed relative to scene center (3.792943ms)
+✔ ALVA-040 shadow camera encloses all scene corners for small/large and translated layouts (10.320959ms)
+✔ ALVA-040 rendering night disables sun shadows and subsequent daylight restores them (0.840516ms)
+✔ ALVA-040 visible date/time labels are non-leap and half hours are minutes, not 14.5:00 (0.635655ms)
+✔ ALVA-040 empty/non-finite render bounds are rejected before creating lights (3.627246ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1891.742718
+Finished with result: success
+Main processes terminated with: code=killed/status=TERM
+Service runtime: 4min 38.193s
+CPU time consumed: 1min 4.052s
+Memory peak: 1.1G
+Memory swap peak: 0B

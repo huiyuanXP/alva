@@ -1,0 +1,25 @@
+Running as unit: alva040-87a540d3313e.service
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: '全屋', exact: true })
+
+    at <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight/scripts/alva-040-browser.ts:85:61) {
+  log: [
+    "  - waiting for getByRole('button', { name: '全屋', exact: true })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.21.0
+
+ALVA040_JOB_EXIT=1
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 1min 14.317s
+CPU time consumed: 39.705s
+Memory peak: 1.2G
+Memory swap peak: 0B

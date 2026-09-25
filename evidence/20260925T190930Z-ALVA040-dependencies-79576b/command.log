@@ -1,0 +1,10 @@
+Running as unit: alva040-99def2c1ffa3.service
+Version 7.0.2
+tsx v4.23.13
+node v24.21.0
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 21.828s
+CPU time consumed: 3.536s
+Memory peak: 860.2M
+Memory swap peak: 0B
