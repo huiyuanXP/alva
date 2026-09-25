@@ -1,5 +1,9 @@
 # GlobalHandoff
 
+## 2026-09-25 ALVA-059 MiMo 预览
+
+ALVA-056 已集成 main。用户请求的实际渲染预览在隔离 Worktree、数据库和临时 Cloudflare Tunnel 中运行；二维/全屋 Chromium 实测通过，未改生产。入口、截图、验证码位置和停用方式见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。这是待人工核对的识图候选，非已确认户型或建筑生成模型验收。
+
 ## 2026-09-25 ALVA-020 完成
 
 ALVA-020 已由 lzy 完成并集成 main。范围确认、取消、锁定目标排除、越界服务端拒绝和候选 scopeId 关联均已通过真实 Chromium 验收；证据 evidence/20260925T-ALVA020-real-browser/，实现提交 a20b15b。
