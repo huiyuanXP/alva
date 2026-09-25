@@ -1,6 +1,6 @@
 ## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
 
-[ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；用户已授权处理原未提交修改；codex-stage-mcp 已认领，先做原生 MCP/网关隔离探针。主 Chat 后续功能按新版 MCP 合同同票验收。
+[ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；用户已授权处理原未提交修改；codex-stage-mcp 已认领；隔离探针已完成：原生 MCP 列目录/Resume 通过但无实际调用，dynamicTools→HTTP MCP 三次实际调用与原 thread Resume 通过。个人过程提交 `2bcfa6b`，尚未集成产品；下一步实现持久阶段 Harness 与业务接入。主 Chat 后续功能按新版 MCP 合同同票验收。
 
 # What's next · 任务认领与并行开发
 
