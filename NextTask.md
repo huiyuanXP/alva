@@ -110,6 +110,7 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
 | [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) |  | chatgpt-recovery已完成；task/ALVA-053-recovery-20260925 / .runtime/worktrees/ALVA-053-recovery-20260925；17a6308；诊断与解析修复已集成，不是生产户型正确性验收 | done |
+| ALVA-060 Codex Luna xhigh 识图预览 | codex | task/ALVA-060-codex-luna / .runtime/worktrees/ALVA-060-codex-luna；沿用 `api/import.ts` 的 `OPENAI_VISION_MODEL` 切换模型，在 `api/codex.ts` 透传 xhigh；独立数据、4181 预览端口，复用既有临时 Tunnel；不改生产 | in-progress |
 
 
 ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028仍按用户要求暂停。
