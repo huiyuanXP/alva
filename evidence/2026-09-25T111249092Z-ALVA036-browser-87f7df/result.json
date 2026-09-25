@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "checks": [
+    "real login; initial draft; no automatic snapshot",
+    "manual save exposes committed version/time; decisions and 3D retained",
+    "real post-INSERT failure: no success, no snapshot, full draft retained; same-ID retry succeeds",
+    "committed response lost; reload keeps request ID; retry creates no duplicate or stale rollback",
+    "two real sessions conflict: no overwrite; explicit reread does not save; fresh confirmation succeeds",
+    "real browser double-click sends one request and produces one snapshot",
+    "refresh reads durable saved state and does not create snapshots",
+    "designer entry cannot save"
+  ],
+  "requests": [
+    {
+      "requestId": "19659d23-8b58-4c86-bd9c-6930d938b5c1",
+      "expectedRevision": 1,
+      "confirmed": true
+    },
+    {
+      "requestId": "9b0866d2-3d85-48e0-9563-1d481355283c",
+      "expectedRevision": 3,
+      "confirmed": true
+    },
+    {
+      "requestId": "9b0866d2-3d85-48e0-9563-1d481355283c",
+      "expectedRevision": 3,
+      "confirmed": true
+    },
+    {
+      "requestId": "672427eb-ea0b-4e7f-a1c5-f33993f4cfba",
+      "expectedRevision": 4,
+      "confirmed": true
+    },
+    {
+      "requestId": "672427eb-ea0b-4e7f-a1c5-f33993f4cfba",
+      "expectedRevision": 4,
+      "confirmed": true
+    },
+    {
+      "requestId": "84322a32-0c12-4121-9e74-ce3750b59e24",
+      "expectedRevision": 6,
+      "confirmed": true
+    },
+    {
+      "requestId": "3d4df062-3eae-4a78-aa26-d9ce3c4dd28c",
+      "expectedRevision": 7,
+      "confirmed": true
+    },
+    {
+      "requestId": "10194a56-301d-4fc1-9722-d8c7b0e44756",
+      "expectedRevision": 8,
+      "confirmed": true
+    }
+  ],
+  "snapshotCount": 5,
+  "pageErrors": [],
+  "unexpectedConsole": [],
+  "expectedConsole": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:33531/api/session"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "url": "http://127.0.0.1:33531/api/save"
+    },
+    {
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "url": "http://127.0.0.1:33531/api/save"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 409 (Conflict)",
+      "url": "http://127.0.0.1:33531/api/save"
+    }
+  ],
+  "expectedNetworkFailures": [
+    "/api/save: net::ERR_FAILED"
+  ],
+  "source": "synthetic project; real Chromium + HTTP + PGlite; no model claim"
+}

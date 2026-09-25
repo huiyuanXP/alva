@@ -155,8 +155,7 @@ try {
 
   assert.deepEqual(pageErrors, []);
   const expectedConsole = consoleErrors.filter(e => /Failed to load resource/.test(e.text) &&
-    (e.url === origin + '/api/save' || (e.url === origin + '/api/session' && /401/.test(e.text)) ||
-      (e.url === origin + '/api/proposals/proposal/preview' && /422/.test(e.text))));
+    (e.url === origin + '/api/save' || (e.url === origin + '/api/session' && /401/.test(e.text))));
   const unexpectedConsole = consoleErrors.filter(e => !expectedConsole.includes(e));
   assert.deepEqual(unexpectedConsole, []);
   assert.ok(expectedNetworkFailures.every(e => e.startsWith('/api/save:') && /ERR_FAILED/.test(e)));

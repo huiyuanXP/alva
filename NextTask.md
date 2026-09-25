@@ -2,7 +2,7 @@
 
 ## 2026-09-25 ALVA-036 已验收集成
 
-手动全局快照、失败回滚与幂等重试已通过 main 集成态的类型检查、24/24 相关回归、构建和真实 Chromium 验收；证据见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。本票执行占用释放，后继 ALVA-037 已依赖就绪，可在署名认领后开工。未部署或重启生产服务；其他署名保持不变。
+手动全局快照、失败回滚与幂等重试已通过 main 集成态的类型检查、24/24 相关回归、构建和真实 Chromium 验收。后续移除无效用途提案夹具与 422 豁免，main 再跑快照 13/13 和 Chromium 8 项流程通过；证据见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。本票执行占用释放，后继 ALVA-037 已依赖就绪，可在署名认领后开工。未部署或重启生产服务；其他署名保持不变。
 
 ## 2026-09-25 ALVA-061 Codex Gemini profile 已完成
 

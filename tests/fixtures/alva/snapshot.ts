@@ -46,8 +46,7 @@ export function seedSnapshotProject(p: Project): void {
     objectIds: ['table'], roomIds: ['room'], evidenceIds: ['quote'], confidence: 'high', status: 'acknowledged', stage: 'review'},
     {id: 'professional', kind: 'professional', title: '材料资料待核实', reason: '未提供专业资料', suggestion: '交给设计师核实',
       objectIds: [], roomIds: ['room'], evidenceIds: [], confidence: 'low', status: 'pending', stage: 'review'}];
-  p.proposals = [{id: 'proposal', title: '保留阅读角', rationale: '按业主原话', evidenceIds: ['quote'], baseRevision: p.revision + 1,
-    changes: [{action: 'purpose', targetId: 'room', values: {purpose: '阅读室'}}], status: 'proposed'}];
+  p.proposals = [];
   p.changes = [{id: 'decision', description: '保留阅读角的取舍依据', evidenceIds: ['quote'], context: ['业主确认'], createdAt: time}];
   p.intakeProgress = {drafts: [{questionId: 'Q02', roomId: null, text: '尚未确认的问卷草稿', state: 'answered'}],
     cursor: {questionId: 'Q02', roomId: null}, updatedAt: time};

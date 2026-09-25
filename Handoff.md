@@ -2,7 +2,7 @@
 
 ## 2026-09-25 ALVA-036 完成验收与集成
 
-个人分支 `task/ALVA-036-chatgpt-snapshots`，已确认实现 `6355b3c`，最终验收交接 `7efee97`。main squash 后类型检查、24/24 相关测试、构建、真实 Chromium 8 项流程通过；[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)和 [main 浏览器结果](evidence/2026-09-25T100953518Z-ALVA036-browser-e93aaf/result.json)可复核。快照创建、故障回滚、幂等重试、版本冲突和跨会话重读均已验证。提案预览接口在合成验收页面返回 422，已与保存接口断言分开记录；浏览器页面脚本错误 0。只用合成数据与本地端口，未部署或重启生产。ALVA-037 解锁，其他任务署名未动。
+个人分支 `task/ALVA-036-chatgpt-snapshots`，已确认实现 `6355b3c`，最终验收交接 `7efee97`。main squash 后类型检查、24/24 相关测试、构建、真实 Chromium 8 项流程通过；[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)可复核。快照创建、故障回滚、幂等重试、版本冲突和跨会话重读均已验证。后续验收夹具修正 `7497456` 移除无效用途提案和 422 豁免；main 集成态再跑快照 13/13 与 Chromium 8 项流程，[浏览器结果](evidence/2026-09-25T111249092Z-ALVA036-browser-87f7df/result.json)无提案预览 422、页面脚本及非预期控制台错误。只用合成数据与本地端口，未部署或重启生产。ALVA-037 解锁，其他任务署名未动。
 
 ## 2026-09-25 ALVA-061 Codex Gemini profile
 
