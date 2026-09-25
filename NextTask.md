@@ -45,6 +45,7 @@
 | [ALVA-037](.scratch/alva-completion/issues/30-snapshot-preview.md) | 快照列表与只读状态预览 | `snapshots` |  |  | 依赖 ALVA-036 已完成；待署名认领，不自动开工 |
 | [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` | chatgpt-sunlight | task/ALVA-040-chatgpt-sunlight / /home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight | in-progress；先 web/src/SceneView.tsx、BuildingView.tsx、scene/sunlight、独立合同/测试/脚本；127.0.0.1动态测试端口；不改057/066占用的main.tsx、api/chat.ts、model/store/api入口；生活设计MCP/UI action接入等待066共享接口 |
 | [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` |  |  | ALVA-041、ALVA-015 已完成；待认领 |
+| [ALVA-029](.scratch/alva-completion/issues/22-layout-review.md) | 布局调整与保存前冲突复核 | `review` | xuanpu-chat-6pro | task/ALVA-029-xuanpu-chat-6pro / /home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro | in-progress；先 api/review、api/user-context、packages/contracts/alva、独立测试与文档；与066协商Markdown用户信息及生活设计MCP；api/chat.ts、model.ts、store.ts、api.ts、web/src/main.tsx共享接入等待066协调；测试127.0.0.1动态端口 |
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 
