@@ -1,0 +1,44 @@
+✔ ALVA-011 validates opening bounds, overlap, wall association and vertical clearance (1.886719ms)
+
+Interrupted while running:
+
+⚠ tests/alva-calibration.test.ts (tests/alva-calibration.test.ts:1:1)
+✖ tests/alva-calibration.test.ts (11975.189627ms)
+
+Interrupted while running:
+
+⚠ tests/alva-import-response.test.ts (tests/alva-import-response.test.ts:1:1)
+✖ tests/alva-import-response.test.ts (4.686466ms)
+✖ tests/alva-import.test.ts
+✖ tests/alva-topology-quality.test.ts
+✖ tests/alva-topology.test.ts
+ℹ tests 6
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 4
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11993.165036
+
+✖ failing tests:
+
+test at tests/alva-calibration.test.ts:1:1
+✖ tests/alva-calibration.test.ts (11975.189627ms)
+  'test failed'
+
+test at tests/alva-import-response.test.ts:1:1
+✖ tests/alva-import-response.test.ts (4.686466ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-import.test.ts:1:1
+✖ tests/alva-import.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-topology-quality.test.ts:1:1
+✖ tests/alva-topology-quality.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-topology.test.ts:1:1
+✖ tests/alva-topology.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'

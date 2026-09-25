@@ -1,0 +1,8 @@
+{
+  "attemptedAt": "2026-09-25T06:32:32.101642+00:00",
+  "operation": "privileged App Server acceptance with environment-key mapping",
+  "execution": "blocked by tool safety check before execution",
+  "scopeLoadState": "not-found",
+  "retriedEquivalentPrivilegedRequest": false,
+  "next": "ordinary-user native Codex profile, no privilege elevation or key-variable mapping; do not treat it as the blocked App Server retest"
+}

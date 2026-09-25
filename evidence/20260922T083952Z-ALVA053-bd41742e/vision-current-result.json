@@ -1,0 +1,52 @@
+{
+  "kind": "single live first-attempt vision audit; not production import",
+  "startedAt": "2026-09-22T08:49:25.825Z",
+  "requestedModel": "gemini-3.1-flash-lite",
+  "inputSha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+  "promptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+  "modelFinishedAt": "2026-09-22T08:49:31.428Z",
+  "modelElapsedMs": 5603,
+  "jsonParse": {
+    "ok": false,
+    "ms": 0.08668699999998353,
+    "error": "SyntaxError: Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
+  },
+  "finishedAt": "2026-09-22T08:49:31.432Z",
+  "elapsedMs": 5607,
+  "events": {
+    "configWarning": 1,
+    "remoteControl/status/changed": 1,
+    "thread/started": 1,
+    "warning": 1,
+    "thread/status/changed": 2,
+    "turn/started": 1,
+    "item/started": 3,
+    "item/completed": 3,
+    "item/agentMessage/delta": 46,
+    "thread/tokenUsage/updated": 1,
+    "account/rateLimits/updated": 1,
+    "turn/completed": 1
+  },
+  "tokenUsage": [
+    {
+      "total": {
+        "totalTokens": 3899,
+        "inputTokens": 2823,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1076,
+        "reasoningOutputTokens": 0
+      },
+      "last": {
+        "totalTokens": 3899,
+        "inputTokens": 2823,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1076,
+        "reasoningOutputTokens": 0
+      },
+      "modelContextWindow": 258400
+    }
+  ],
+  "note": "requestedModel is a client request label, not an independently verified upstream model identity. Includes process/protocol overhead."
+}

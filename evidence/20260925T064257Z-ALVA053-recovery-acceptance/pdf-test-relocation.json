@@ -1,0 +1,9 @@
+{
+  "source": "tests/alva-import.test.ts",
+  "destination": "tests/alva-import-pdf.test.ts",
+  "assertionBodySha256Before": "f63d72b2ac0db2dbf05f9f7f294b4d49b2fa6c9e373b97822cf9f0c0dd5ae0a3",
+  "assertionBodySha256After": "f63d72b2ac0db2dbf05f9f7f294b4d49b2fa6c9e373b97822cf9f0c0dd5ae0a3",
+  "testsDeleted": 0,
+  "testsSkipped": 0,
+  "reason": "PDF canvas plus later PGlite in same test process exceeded 1500MiB task cgroup; separate process releases native allocations."
+}

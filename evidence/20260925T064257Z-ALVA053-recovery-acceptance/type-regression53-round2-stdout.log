@@ -1,0 +1,43 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+✔ ALVA-011 validates opening bounds, overlap, wall association and vertical clearance (1.864403ms)
+✔ ALVA-011 edits openings, calibrates, confirms immutable topology and survives reload (14552.576213ms)
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (13.817803ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (1.504315ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (2.311167ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (54.30814ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.543382ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (2.900518ms)
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.395162ms)
+✔ ALVA-009 preserves PDF origin and discloses the rendered page (7643.102075ms)
+
+Interrupted while running:
+
+⚠ tests/alva-import.test.ts (tests/alva-import.test.ts:1:1)
+✖ tests/alva-import.test.ts (23383.85245ms)
+✖ tests/alva-topology-quality.test.ts
+✖ tests/alva-topology.test.ts
+ℹ tests 13
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 3
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43290.255004
+
+✖ failing tests:
+
+test at tests/alva-import.test.ts:1:1
+✖ tests/alva-import.test.ts (23383.85245ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-topology-quality.test.ts:1:1
+✖ tests/alva-topology-quality.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-topology.test.ts:1:1
+✖ tests/alva-topology.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'

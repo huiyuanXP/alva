@@ -1,0 +1,17 @@
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (68.118262ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (1.079076ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (2.12187ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (2.389832ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.459071ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (3.062728ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1218.970537
+
+> alva@0.1.0 check
+> tsc --noEmit

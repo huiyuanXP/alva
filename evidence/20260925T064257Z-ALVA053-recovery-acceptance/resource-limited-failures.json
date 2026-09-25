@@ -1,0 +1,26 @@
+[
+  {
+    "run": "tests53-round1",
+    "scope": "alva053-tests-round1.scope",
+    "result": "oom-kill",
+    "hostOutOfMemory": false,
+    "assertionsNotWeakened": true,
+    "countedAsPass": false
+  },
+  {
+    "run": "pure-type-offline53",
+    "scope": "alva053-pure-type-offline.scope",
+    "result": "oom-kill",
+    "hostOutOfMemory": false,
+    "assertionsNotWeakened": true,
+    "countedAsPass": false
+  },
+  {
+    "run": "type-regression53-round2",
+    "scope": "alva053-regression-round2.scope",
+    "result": "oom-kill",
+    "hostOutOfMemory": false,
+    "assertionsNotWeakened": true,
+    "countedAsPass": false
+  }
+]

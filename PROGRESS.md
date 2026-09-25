@@ -121,3 +121,14 @@ neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTas
 证据：`evidence/20260925T034733Z-server-recovery-2cae71/validation.json`、测试日志、sar/journal/健康快照与manifest；事故报告 `docs/INCIDENT-2026-09-25-server-recovery.md`；CURRENT/Handoff/NextTask/GlobalHandoff与单票均更新。四个生产/控制服务MainPID未变、NRestarts=0。未执行全量构建、Chromium、真实模型重试、生产登录/数据写入、资源配置或再次重启。neat-freak：代码与运行态只读核验，文档/状态changed-and-verified，生成记忆及云端审计out-of-scope；资源限额、持久进程采样仍pending。
 
 下一步优先复核ALVA-056保留成果与必要类型检查、独立完成集成，不自动发起昂贵重试；ALVA-053解决剩余路由/样本关联，ALVA-028继续暂停。重型任务串行并先检查资源，不能以并发重试覆盖事故。回滚仅撤本次增量，不重置工作树或删除既有Worktree。
+
+
+## 2026-09-25 ALVA-053已完成，继续ALVA-056
+
+ALVA-053按诊断维护范围完成并集成，个人实现`17a6308`，总证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。JSON/schema/几何错误统一一次修正，识图显式240秒上限，普通调用仍120秒；PDF与PGlite测试隔离而未删断言。28/28、最终类型检查与历史候选重放通过；MiMo Pro业务动态工具/流式文本通过，Gemini3.8别名文本恢复；原生mimo profile的Flash识图18.663秒通过输出合同，但确认拓扑失败且约22.59m²未定义空间，不宣称户型已正确。
+
+Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传递调用被工具拦截未执行，保留未核验边界。原生profile用普通用户、无密钥复制/提权，不能冒充被拦截的业务复试。最新标注截图未标注原图/当前生产样本关联仍缺，未更改生产配置/数据、未部署。
+
+下一步按本轮已有授权执行ALVA-056，改旧探针硬编码v2.5为当前`codex exec --profile mimo`并复测默认Pro；53不再占用共享文件。028仍暂停，057的yang-chatgpt与其共享文件保持不变。原8个56暂存文件/2份文档修改、preview五文件及全部历史Worktree保留；本次独立Git索引不吞并它们。重型任务串行、CPU60%、任务内存模型900MiB/含PGlite和类型1500MiB、Tasks128；初始限额失败留证，最终运行未OOM。回滚仅revert本票集成，不重置工作树。
+
+知识同步：已读neat-freak并按本次代码/证据更新ticket、CURRENT、Handoff、NextTask、GlobalHandoff；生成记忆out-of-scope。未清理其他任务Worktree，原始JSONL/响应只留私有目录。

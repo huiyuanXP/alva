@@ -1,0 +1,27 @@
+{
+  "cmd": [
+    "node_modules/.bin/tsx",
+    "scripts/alva-053-check.ts",
+    "--recorded-native-dir",
+    "/home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/native-profile-flash53"
+  ],
+  "cwd": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-053-recovery-20260925",
+  "startedAt": "2026-09-25T06:36:14.677875+00:00",
+  "finishedAt": "2026-09-25T06:36:16.268859+00:00",
+  "elapsedSeconds": 1.591,
+  "exitCode": 0,
+  "timedOut": false,
+  "availableBeforeBytes": 2890121216,
+  "resourceLimits": {
+    "memory.max": "943718400",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva053-native-review.scope"
+  },
+  "resourceLimitsVerified": true,
+  "cgroup": {
+    "memory.peak": "82386944",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 1000542\nuser_usec 879224\nsystem_usec 121317\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 16\nnr_throttled 16\nthrottled_usec 1201267\nnr_bursts 0\nburst_usec 0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "bash",
+    "-c",
+    "set -e; npm run check; node_modules/.bin/tsx --test --test-concurrency=1 tests/alva-import-response.test.ts tests/alva-import.test.ts tests/alva-import-pdf.test.ts tests/alva-topology.test.ts tests/alva-calibration.test.ts tests/alva-topology-quality.test.ts; node_modules/.bin/tsx scripts/alva-053-check.ts"
+  ],
+  "cwd": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-053-recovery-20260925",
+  "startedAt": "2026-09-25T06:25:54.139508+00:00",
+  "finishedAt": "2026-09-25T06:28:06.801389+00:00",
+  "elapsedSeconds": 132.662,
+  "exitCode": 0,
+  "timedOut": false,
+  "availableBeforeBytes": 2897321984,
+  "resourceLimits": {
+    "memory.max": "1572864000",
+    "cpu.max": "60000 100000",
+    "tasks.max": "128",
+    "path": "/sys/fs/cgroup/system.slice/alva053-tests-isolated.scope"
+  },
+  "resourceLimitsVerified": true,
+  "cgroup": {
+    "memory.peak": "1482731520",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "cpu.stat": "usage_usec 79584617\nuser_usec 71460977\nsystem_usec 8123639\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 1327\nnr_throttled 1323\nthrottled_usec 153009699\nnr_bursts 0\nburst_usec 0"
+  }
+}

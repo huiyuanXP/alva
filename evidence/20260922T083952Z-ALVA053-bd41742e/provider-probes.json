@@ -1,0 +1,50 @@
+{
+  "runId": "20260922T083952Z-ALVA053-bd41742e",
+  "observedAt": "2026-09-22T08:39:52.437513+00:00",
+  "safeConfig": {
+    "OPENAI_BASE_URL": "https://chat.huiyuanxp.com/v1",
+    "OPENAI_MODEL": "gemini-3.1-flash-lite"
+  },
+  "keyConfigured": true,
+  "probes": [
+    {
+      "endpoint": "/models",
+      "requestedModel": null,
+      "status": 200,
+      "elapsedSeconds": 0.231,
+      "modelIds": [
+        "claude-opus-4-6-thinking",
+        "claude-sonnet-4-6",
+        "codex-auto-review",
+        "gemini-3-flash",
+        "gemini-3.1-flash-image",
+        "gemini-3.1-flash-lite",
+        "gemini-3.1-pro-low",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash-high",
+        "gemini-3.7-flash-high",
+        "gemini-3.8-flash-high",
+        "gemini-pro-agent",
+        "gpt-5.5",
+        "gpt-5.6-luna",
+        "gpt-5.6-sol",
+        "gpt-5.6-terra",
+        "gpt-6-astra",
+        "gpt-image-1.5",
+        "gpt-image-2",
+        "gpt-oss-120b-medium"
+      ]
+    },
+    {
+      "endpoint": "/responses",
+      "requestedModel": "gemini-3.8-flash",
+      "status": 503,
+      "elapsedSeconds": 0.145,
+      "responseModel": null,
+      "usage": null,
+      "outputTypes": [],
+      "text": "",
+      "error": "{'code': 'model_not_found', 'message': 'No available channel for model gemini-3.8-flash under group default (distributor) (request id: 202609220839527769301228268d9d6KUHBQnTB)', 'type': 'new_api_error'}"
+    }
+  ]
+}

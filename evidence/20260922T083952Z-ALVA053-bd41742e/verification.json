@@ -1,0 +1,44 @@
+{
+  "scope": "diagnostic evidence, not product release acceptance",
+  "sourceBaseHead": "2f9588b7b69879b79aed3c93b495fec18a9cf099",
+  "claimHead": "453da15",
+  "sourceSha256": {
+    "api/import.ts": "1eceff8dd9a95f8e9a6d25eca3586e1e0b4a386c64e549353e9f236e53b65bf6",
+    "api/codex.ts": "9b8240e93579fd6f61e8cc4445931bb8e5f08b4d7d2e0d3b743527feb4b5c34f",
+    "api/topology/validate.ts": "8efdbb1083111dc5a512221102b5fb34650299081c510413b87e7b227ca23590",
+    "api/topology/commands.ts": "51c71fc8595e465ac6bbb5056b1a0b9ec835ad93c8e7113557a31b45f8d62262",
+    "api/model.ts": "4ba9d612a169f4e822de087d2e34d46b3ae5111966a2dae94adbf96849c03147",
+    "web/src/main.tsx": "d4c0c40023889fc4b8bd04743e3e277f86b2f61ed9baabed54f4739f5c16f6df"
+  },
+  "typecheck": {
+    "command": "npm run check",
+    "observed": "tsc --noEmit produced no errors; shell continued to focused tests"
+  },
+  "focusedTests": {
+    "command": "node_modules/.bin/tsx --test tests/alva-import.test.ts tests/alva-topology.test.ts tests/alva-calibration.test.ts",
+    "exitCode": 0,
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 29163.601736
+  },
+  "liveVision": {
+    "elapsedMs": 5607,
+    "jsonSchemaPassed": false
+  },
+  "healthAt": "2026-09-22T08:52:17Z",
+  "health": {
+    "localhost": "alva/ok",
+    "public": "alva/ok"
+  },
+  "productionModified": false,
+  "configModified": false,
+  "serviceRestarted": false,
+  "toolDenied": [
+    "production authenticated read attempt",
+    "additional host routing metadata attempt"
+  ],
+  "productionSampleConfirmed": false,
+  "concurrentWorktree": "ALVA-043 main integration staged at 08:52:17Z; no changes touched"
+}

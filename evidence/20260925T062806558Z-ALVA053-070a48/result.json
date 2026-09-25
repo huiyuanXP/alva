@@ -1,0 +1,125 @@
+{
+  "ticket": "ALVA-053",
+  "runId": "20260925T062806558Z-ALVA053-070a48",
+  "sourceHead": "618a2727dd23986cf1ec407b4a8d1953234aeaec",
+  "startedAt": "2026-09-25T06:28:06.649Z",
+  "live": false,
+  "productionMutations": false,
+  "privateEvidence": ".runtime/20260925T062806558Z-ALVA053-070a48",
+  "sourceFiles": {
+    "api/codex.ts": "f0fbcb4b51f94c6d0e8544158b33dc54331445fa4957cc4e9707604d3b6c56a5",
+    "api/import.ts": "ba2bc15ea5b5781445d878f14bfad2bdae0057807429555ba3affad07c959f8a",
+    "api/import/response.ts": "0acdb8b80e2566814338f8df8aa64dc058f761bc643825226737687b81cd9d73",
+    "api/codex-timeout.ts": "b9175fd0b7142b6cf0551c3cb78fdecef8080f3d4ed27a82b832ec55612fde03",
+    "api/model.ts": "3d1f8778ac6057d579497aa99a6d7117a9fe389bb5e9b7c8bd2c44eafd30b164",
+    "api/topology/validate.ts": "33848a19cce4ea34a1c0522ad517dc6afa7eca9883b51672a31a8b737899e12d",
+    "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e",
+    "scripts/alva-053-check.ts": "3e41067b80d1a5c0d6c22eb4b13c9d6faaac6f4396b28194b172662e016280f2"
+  },
+  "replay": [
+    {
+      "name": "T-junction forward",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 vertical 的 a 端点落在墙 horizontal 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "T-junction reverse",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 vertical 的 a 端点落在墙 horizontal 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "contained overlap forward",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 short 的 a 端点落在墙 long 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "contained overlap reverse",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 short 的 a 端点落在墙 long 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "4cm boundary gap",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": true
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "room overlap",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": true
+      },
+      "diagnosticCodes": []
+    }
+  ],
+  "orderInvariant": true,
+  "image": {
+    "path": "references/room-study-handoff/public/floorplan.png",
+    "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+    "bytes": 36268,
+    "kind": "repository original, NOT the latest annotated screenshot original"
+  },
+  "promptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+  "schemaSha256": "154e304e44ea07d5e7cdfdff23486a4cf6dcc76317b2a3bf5f1e3a1956d26117",
+  "completedAt": "2026-09-25T06:28:06.760Z",
+  "acceptancePassed": true,
+  "boundaries": [
+    "not a production import or deployment",
+    "no latest screenshot/source association or ground-truth accuracy claim",
+    "diagnostic findings are not silently repaired or confirmed",
+    "legacy Gemini availability is recorded, not required by the active MiMo route"
+  ]
+}

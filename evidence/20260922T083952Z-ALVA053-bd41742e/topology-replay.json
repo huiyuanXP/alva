@@ -1,0 +1,131 @@
+{
+  "observedAt": "2026-09-22T08:47:23.340Z",
+  "type": "offline defect reproduction, not live provider or product acceptance",
+  "sourceHead": "2f9588b7b69879b79aed3c93b495fec18a9cf099",
+  "synthetic": [
+    {
+      "name": "T-junction horizontal first",
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": false,
+        "error": "Error: 拓扑校验失败：墙 vertical 的 a 端点落在墙 horizontal 中段，请连接或分段"
+      }
+    },
+    {
+      "name": "same T-junction reverse order",
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": true
+      }
+    },
+    {
+      "name": "crossing walls",
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": false,
+        "error": "Error: 拓扑校验失败：墙 horizontal 与墙 crossing 自交，请调整端点或分段"
+      }
+    },
+    {
+      "name": "contained collinear walls short first",
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": true
+      }
+    },
+    {
+      "name": "same containment long first",
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": false,
+        "error": "Error: 拓扑校验失败：墙 short 的 a 端点落在墙 horizontal 中段，请连接或分段"
+      }
+    },
+    {
+      "name": "disconnected gap 4cm",
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": true
+      }
+    },
+    {
+      "name": "overlapping room polygons",
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": true
+      }
+    }
+  ],
+  "archived": [
+    {
+      "path": "evidence/20260919T105414691Z-fe593ea8/candidate.json",
+      "walls": 16,
+      "rooms": 6,
+      "roomNames": [
+        "卧室候选1",
+        "卧室候选2",
+        "多功能房候选",
+        "餐厅客厅候选",
+        "厨房候选",
+        "卫生间候选"
+      ],
+      "openings": 14,
+      "span": {
+        "x": 10,
+        "y": 5.38,
+        "aspectRatio": 1.858736059479554
+      },
+      "importValidator": {
+        "accepted": false,
+        "error": "Error: 门窗d3a0b3e7-8aed-4459-92d1-38632c281e82与6407ed00-7eca-4bc4-a56a-6cabd58f57b3在墙37941732-bfd2-4c44-b527-3c44256cbd52上重叠，请调整位置或宽度"
+      },
+      "confirmationValidator": {
+        "accepted": false,
+        "error": "Error: 拓扑校验失败：门窗d3a0b3e7-8aed-4459-92d1-38632c281e82与6407ed00-7eca-4bc4-a56a-6cabd58f57b3在墙37941732-bfd2-4c44-b527-3c44256cbd52上重叠，请调整位置或宽度"
+      },
+      "jsonParsePreservesGeometry": true
+    },
+    {
+      "path": "evidence/20260919T111613210Z-a51bbaee/candidate.json",
+      "walls": 7,
+      "rooms": 2,
+      "roomNames": [
+        "客厅",
+        "卧室"
+      ],
+      "openings": 4,
+      "span": {
+        "x": 10,
+        "y": 6.67,
+        "aspectRatio": 1.4992503748125938
+      },
+      "importValidator": {
+        "accepted": true
+      },
+      "confirmationValidator": {
+        "accepted": false,
+        "error": "Error: 拓扑校验失败：墙 1e73b657-6ad7-4229-aa41-046cea4451ac 的 b 端点落在墙 acee947a-300f-45b9-b500-670c6627453c 中段，请连接或分段"
+      },
+      "jsonParsePreservesGeometry": true
+    }
+  ],
+  "referenceImage": {
+    "width": 572,
+    "height": 349,
+    "aspectRatio": 1.6389684813753582
+  }
+}

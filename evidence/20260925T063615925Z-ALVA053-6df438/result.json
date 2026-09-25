@@ -1,0 +1,228 @@
+{
+  "ticket": "ALVA-053",
+  "runId": "20260925T063615925Z-ALVA053-6df438",
+  "sourceHead": "618a2727dd23986cf1ec407b4a8d1953234aeaec",
+  "startedAt": "2026-09-25T06:36:16.023Z",
+  "live": false,
+  "productionMutations": false,
+  "privateEvidence": ".runtime/20260925T063615925Z-ALVA053-6df438",
+  "sourceFiles": {
+    "api/codex.ts": "f0fbcb4b51f94c6d0e8544158b33dc54331445fa4957cc4e9707604d3b6c56a5",
+    "api/import.ts": "ba2bc15ea5b5781445d878f14bfad2bdae0057807429555ba3affad07c959f8a",
+    "api/import/response.ts": "0acdb8b80e2566814338f8df8aa64dc058f761bc643825226737687b81cd9d73",
+    "api/codex-timeout.ts": "b9175fd0b7142b6cf0551c3cb78fdecef8080f3d4ed27a82b832ec55612fde03",
+    "api/model.ts": "3d1f8778ac6057d579497aa99a6d7117a9fe389bb5e9b7c8bd2c44eafd30b164",
+    "api/topology/validate.ts": "33848a19cce4ea34a1c0522ad517dc6afa7eca9883b51672a31a8b737899e12d",
+    "api/topology/diagnostics.ts": "92a283180f3854348b922837d37e5f5d704ab02955fea5a3dfba977c26cf421e",
+    "scripts/alva-053-check.ts": "8f9f73e8a7543c707b3ef6eba1833527ffdf979865c6cf1ae56b4813d0175fec"
+  },
+  "replay": [
+    {
+      "name": "T-junction forward",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 vertical 的 a 端点落在墙 horizontal 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "T-junction reverse",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 vertical 的 a 端点落在墙 horizontal 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "contained overlap forward",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 short 的 a 端点落在墙 long 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "contained overlap reverse",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": false,
+        "error": "拓扑校验失败：墙 short 的 a 端点落在墙 long 中段，请连接或分段"
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "4cm boundary gap",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": true
+      },
+      "diagnosticCodes": [
+        "open_boundary",
+        "open_boundary"
+      ]
+    },
+    {
+      "name": "room overlap",
+      "synthetic": true,
+      "import": {
+        "accepted": true
+      },
+      "confirmation": {
+        "accepted": true
+      },
+      "diagnosticCodes": []
+    }
+  ],
+  "orderInvariant": true,
+  "image": {
+    "path": "references/room-study-handoff/public/floorplan.png",
+    "sha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+    "bytes": 36268,
+    "kind": "repository original, NOT the latest annotated screenshot original"
+  },
+  "promptSha256": "5d249f10905294151d5edc3df256f60cecb17b59dd6eb59a15e6fc67b11b75ed",
+  "schemaSha256": "154e304e44ea07d5e7cdfdff23486a4cf6dcc76317b2a3bf5f1e3a1956d26117",
+  "recordedNative": {
+    "sourceDirectory": "/home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/native-profile-flash53",
+    "execution": {
+      "cmd": [
+        "codex",
+        "exec",
+        "--profile",
+        "mimo",
+        "--strict-config",
+        "--model",
+        "mimo-v2.6-flash",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "-C",
+        "/home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/native-profile-flash53",
+        "--image",
+        "/home/ubuntu/Alva/.runtime/worktrees/ALVA-053-recovery-20260925/references/room-study-handoff/public/floorplan.png",
+        "--output-schema",
+        "/home/ubuntu/Alva/.runtime/worktrees/ALVA-053-recovery-20260925/.runtime/20260925T062109616Z-ALVA053-8583bd/schema.json",
+        "--output-last-message",
+        "/home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/native-profile-flash53/raw-response.txt",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "features.shell_tool=false",
+        "-c",
+        "features.apply_patch_freeform=false",
+        "-c",
+        "features.multi_agent=false",
+        "-c",
+        "web_search=\"disabled\"",
+        "-c",
+        "mcp_servers={}",
+        "-c",
+        "hooks={}",
+        "-"
+      ],
+      "cwd": "/home/ubuntu/Alva/.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/native-profile-flash53",
+      "startedAt": "2026-09-25T06:32:32.349853+00:00",
+      "finishedAt": "2026-09-25T06:32:51.012454+00:00",
+      "elapsedSeconds": 18.663,
+      "exitCode": 0,
+      "timedOut": false,
+      "availableBeforeBytes": 2890997760,
+      "resourceLimits": {
+        "memory.max": "943718400",
+        "cpu.max": "60000 100000",
+        "tasks.max": "128",
+        "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/alva053-native-profile.scope"
+      },
+      "resourceLimitsVerified": true,
+      "cgroup": {
+        "memory.peak": "52486144",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "cpu.stat": "usage_usec 719855\nuser_usec 494490\nsystem_usec 225364\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 120\nnr_throttled 7\nthrottled_usec 537144\nnr_bursts 0\nburst_usec 0"
+      }
+    },
+    "profile": "mimo",
+    "requestedModel": "mimo-v2.6-flash",
+    "rawOutput": {
+      "characters": 3899,
+      "sha256": "2a8de9a4c8317469bb4da0a0f56890d5a0e3fc867c7d3723bedcfd5441ed0dc7"
+    },
+    "tokenUsage": [
+      {
+        "input_tokens": 10152,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1903,
+        "reasoning_output_tokens": 76
+      }
+    ],
+    "transportCompleted": true,
+    "evaluation": "offline replay of preserved live native CLI output, NOT the blocked App Server retest",
+    "contractPassed": true,
+    "counts": {
+      "walls": 17,
+      "rooms": 5,
+      "openings": 9
+    },
+    "confirmation": {
+      "accepted": false,
+      "error": "拓扑校验失败：墙 w10 的 a 端点落在墙 w1 中段，请连接或分段"
+    },
+    "diagnostics": {
+      "status": "complete",
+      "codes": [
+        "internal_void",
+        "internal_void",
+        "internal_void",
+        "internal_void",
+        "internal_void",
+        "open_boundary",
+        "open_boundary"
+      ],
+      "undefinedAreaM2": 22.589375000000025
+    }
+  },
+  "completedAt": "2026-09-25T06:36:16.219Z",
+  "acceptancePassed": true,
+  "boundaries": [
+    "not a production import or deployment",
+    "no latest screenshot/source association or ground-truth accuracy claim",
+    "diagnostic findings are not silently repaired or confirmed",
+    "legacy Gemini availability is recorded, not required by the active MiMo route"
+  ]
+}

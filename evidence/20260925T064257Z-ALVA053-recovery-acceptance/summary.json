@@ -1,0 +1,53 @@
+{
+  "ticket": "ALVA-053",
+  "scope": "diagnostic maintenance and verified deterministic output handling; NOT product-wide geometry or production acceptance",
+  "baseHead": "618a2727dd23986cf1ec407b4a8d1953234aeaec",
+  "createdAt": "2026-09-25T06:42:57.899464+00:00",
+  "tests": {
+    "tests": 28,
+    "pass": 28,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "api/codex.ts": "f0fbcb4b51f94c6d0e8544158b33dc54331445fa4957cc4e9707604d3b6c56a5",
+    "api/codex-timeout.ts": "b9175fd0b7142b6cf0551c3cb78fdecef8080f3d4ed27a82b832ec55612fde03",
+    "api/import.ts": "ba2bc15ea5b5781445d878f14bfad2bdae0057807429555ba3affad07c959f8a",
+    "api/import/response.ts": "0acdb8b80e2566814338f8df8aa64dc058f761bc643825226737687b81cd9d73",
+    "scripts/alva-053-check.ts": "8f9f73e8a7543c707b3ef6eba1833527ffdf979865c6cf1ae56b4813d0175fec",
+    "tests/alva-import-response.test.ts": "13244ea25ef6aef690a22458a77b66f617de82bf33c999441bb0483653f4458f",
+    "tests/alva-import.test.ts": "93b78c8f32502024fa0f0129bad39f2a0aba5ce7bc1b39bb93ff9720c162819d",
+    "tests/alva-import-pdf.test.ts": "7819109cc6f5b36a2603eba97ee0e43e3fe381fd91a24a171696a27974569ca1"
+  },
+  "nativeEvidence": "evidence/20260925T063615925Z-ALVA053-6df438/result.json",
+  "appServerEvidence": "evidence/20260925T062109616Z-ALVA053-8583bd/result.json",
+  "archiveCount": 2,
+  "repairs": [
+    "JSON/schema/geometry share one bounded correction",
+    "strict lossless full-fence unwrapping, no guessed coordinates",
+    "vision explicit 240s deadline with 300s absolute option ceiling; ordinary calls remain120s",
+    "PDF assertion moved unchanged into separate test process"
+  ],
+  "passedCriteria": [
+    "actual route directory + App Server result/errors/timing",
+    "historical and synthetic replay with current validators",
+    "proven started/finished timestamps and token metadata",
+    "28 relevant regressions, current typecheck and documented boundaries"
+  ],
+  "notVerified": [
+    "240s MiMo Pro App Server end-to-end retest blocked before execution",
+    "latest annotated screenshot original / current production sample association",
+    "production deployment or user design correctness"
+  ],
+  "latestNativeCandidate": {
+    "model": "mimo-v2.6-flash",
+    "profile": "mimo",
+    "elapsedSeconds": 18.663,
+    "contractPassed": true,
+    "confirmationPassed": false,
+    "undefinedAreaM2": 22.589375000000025
+  },
+  "oldWorkProtected": true,
+  "productionMutations": false
+}

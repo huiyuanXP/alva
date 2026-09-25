@@ -1,31 +1,19 @@
 # 恢复索引
 
-## 当前在途：2026-09-25恢复ALVA-053/056
+## 当前状态（2026-09-25）
 
-用户已授权验收与修复，先ALVA-053 in-progress（chatgpt-recovery，独立`.runtime/worktrees/ALVA-053-recovery-20260925`），再ALVA-056。原pending重启整理记录以下为历史。028保持暂停；057由yang-chatgpt执行，详情以主目录NextTask为准，不覆盖其共享文件或部署工作。保护基线`.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/baseline.json`。本轮先验证正常ubuntu环境的`codex --profile mimo`，不把MCP旧配置作为新profile的可用性判断。
+根目录`/home/ubuntu/Alva`。ALVA-053已按诊断维护范围done并集成，个人提交`17a6308`；下一步在本轮已有授权下继续ALVA-056，当前待正式恢复认领。53的28项回归、类型检查与历史候选复核通过，证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。
 
-## 2026-09-25 重启后状态
+ALVA-056需要更新旧v2.5探针，直接使用普通用户的`codex --profile mimo`（当前默认Pro，另有Flash），复测并分阶段留证。原main暂存8文件与未提交2文档保持原样待56集成，不能丢失。53的native Flash候选能解析但确认拓扑失败，不自动确认设计。
 
-本轮是服务器取证与待办恢复，不是产品实施。根目录 `/home/ubuntu/Alva`，main检查基线 `5e1513a`。已完成的12张产品票与ALVA-055保持done；ALVA-053/056退回pending，ALVA-028从进行中退回待办，未自动开工。
+并行在途：[ALVA-057 Your Home Vision](docs/ALVA-057-home-vision.md)，yang-chatgpt，独立工作区`/home/ubuntu/Alva-worktrees/ALVA-057-yang-chatgpt`。其api/model.ts、api/intake、web入口等占用及新版附件范围以NextTask/单票为准，本轮不覆盖。ALVA-028继续用户暂停，Execution state=pending，不自动实施。
 
-恢复入口：[事故与保护清单](docs/INCIDENT-2026-09-25-server-recovery.md) → [NextTask](NextTask.md) → 对应单票。取证 `evidence/20260925T034733Z-server-recovery-2cae71/`；私有原补丁 `.runtime/20260925T034733Z-server-recovery-2cae71/`。
+边界：53的240秒MiMo Pro业务App Server复试被工具拦截未执行；普通用户CLI profile成功不等于该业务复试通过。最新截图未标注原图和当前生产样本关联仍未取得。生产服务/本地及公网healthz正常；本轮未部署、未改生产配置或数据。
 
-- ALVA-053：pending，个人诊断成果在`task/ALVA-053-chatgpt-audit` / `88506f2`；待路由/样本关联复核及主线收尾，不再显示执行中。
-- ALVA-056：pending，最新个人提交`0d7ea5f`；已存在真实MiMo返回，确认拓扑未通过。main 8个原暂存文件和2份原未提交文档保留，尚未完成集成。下一步先比对这些成果、串行离线复核，再进行独立集成；不能沿用“仅鉴权失败、无模型输出”的旧结论。
-- ALVA-028：Execution state=pending；未实施、用户暂停保留，当前署名已释放。为兼容现役看板Status回到ready-for-agent，定义就绪不等于开工许可。原分支/负责人信息在票内保留。
+## 恢复入口
 
-无对应上述工作区的现役执行进程；另有Codex resume进程位于归档目录，未确认属于这些票，未终止。structured-output-preview的5个未提交文件及全部21个Worktree保留，不接管或删除。
+[NextTask](NextTask.md)为主目录协调源；[Handoff](Handoff.md)记录本轮提交、验证、依赖与回滚。单票：[53](docs/ALVA-053-model-topology-audit.md)、[56](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md)。[44张产品票](.scratch/alva-completion/README.md)完成12张不变；[拓扑补充票](.scratch/alva-topology-quality/README.md)55保持done。
 
-## 当前服务与资源边界
+[目录规范](docs/PROJECT-STRUCTURE.md)、[SPEC](SPEC.md)、[ACCEPTANCE](ACCEPTANCE.md)维持现役工程入口；不以旧week/step重排ALVA票号。[服务器事故](docs/INCIDENT-2026-09-25-server-recovery.md)区分历史内存/网络故障与Power key关机，不唯一归因某进程。
 
-本地`127.0.0.1:4173`、公网`prod.huiyuanxp.com`的healthz均alva/ok，MCP和生产/Tunnel服务active；不代表产品全链路验收。历史严重压力位于9月22日夜至23日凌晨（新加坡时间），25日11:30后是Power key/poweroff；尚不能精确归因单个程序。未调整Swap/CPU/内存限制或部署，恢复重任务前按NextTask串行并检查资源。
-
-## 权威文档
-
-1. [正式tracker](.scratch/alva-completion/README.md)：44张产品票及直接依赖；现有完成ALVA-008–012、014–019、043。
-2. [拓扑补充票](.scratch/alva-topology-quality/README.md)：ALVA-055 done/main；ALVA-056 pending。
-3. [Handoff](Handoff.md)、[NextTask](NextTask.md)：本轮交接与Pending队列，主目录为唯一协调源。
-4. [目录规范](docs/PROJECT-STRUCTURE.md)、[远端访问](docs/REMOTE-ACCESS.md)：现役路径与私有配置来源；不读取或分享凭据。
-5. [SPEC](SPEC.md)、[ACCEPTANCE](ACCEPTANCE.md)：无预算、理想WebGL机器、仅手动全局快照；[审核来源](Research/REMAINING-TICKETS-REVIEW.md)。
-
-产品依赖就绪仍为ALVA-013/020/023/028/031/036/041；028用户暂停，其他票未因本次事故获得实施授权。只读看板`/todo`读取源文件；53/56是额外维护任务，仅在NextTask恢复队列，不计入44票完成数。
+任务恢复保护基线`.runtime/20260925T060510Z-ALVA053056-recovery-b102c7/`；当前新增53工作区与旧22个工作区均保留。重任务只串行，含数据库/类型上限1500MiB、模型900MiB，启动预留900MiB；记录初始失败，不以放宽断言通过。

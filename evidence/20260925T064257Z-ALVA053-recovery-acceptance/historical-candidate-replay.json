@@ -1,0 +1,96 @@
+{
+  "sourceHead": "618a2727dd23986cf1ec407b4a8d1953234aeaec",
+  "evaluatedAt": "2026-09-25T06:39:41.852Z",
+  "productionMutations": false,
+  "syntheticOrHistoricalOnly": true,
+  "rows": [
+    {
+      "source": "evidence/20260919T105414691Z-fe593ea8/candidate.json",
+      "sha256": "edbeb2592b9805d2354c2fb6fb81daf8dc629c536d241b55b7a1c56e0ef5645a",
+      "historical": {
+        "path": "evidence/20260919T105414691Z-fe593ea8/candidate.json",
+        "walls": 16,
+        "rooms": 6,
+        "roomNames": [
+          "卧室候选1",
+          "卧室候选2",
+          "多功能房候选",
+          "餐厅客厅候选",
+          "厨房候选",
+          "卫生间候选"
+        ],
+        "openings": 14,
+        "span": {
+          "x": 10,
+          "y": 5.38,
+          "aspectRatio": 1.858736059479554
+        },
+        "importValidator": {
+          "accepted": false,
+          "error": "Error: 门窗d3a0b3e7-8aed-4459-92d1-38632c281e82与6407ed00-7eca-4bc4-a56a-6cabd58f57b3在墙37941732-bfd2-4c44-b527-3c44256cbd52上重叠，请调整位置或宽度"
+        },
+        "confirmationValidator": {
+          "accepted": false,
+          "error": "Error: 拓扑校验失败：门窗d3a0b3e7-8aed-4459-92d1-38632c281e82与6407ed00-7eca-4bc4-a56a-6cabd58f57b3在墙37941732-bfd2-4c44-b527-3c44256cbd52上重叠，请调整位置或宽度"
+        },
+        "jsonParsePreservesGeometry": true
+      },
+      "now": {
+        "import": {
+          "accepted": false,
+          "error": "Error: 门窗d3a0b3e7-8aed-4459-92d1-38632c281e82与6407ed00-7eca-4bc4-a56a-6cabd58f57b3在墙37941732-bfd2-4c44-b527-3c44256cbd52上重叠，请调整位置或宽度"
+        },
+        "confirmation": {
+          "accepted": false,
+          "error": "Error: 拓扑校验失败：门窗d3a0b3e7-8aed-4459-92d1-38632c281e82与6407ed00-7eca-4bc4-a56a-6cabd58f57b3在墙37941732-bfd2-4c44-b527-3c44256cbd52上重叠，请调整位置或宽度"
+        },
+        "diagnosticCodes": [
+          "internal_void"
+        ],
+        "undefinedAreaM2": 1.4616999999999987
+      },
+      "inputUnchanged": true
+    },
+    {
+      "source": "evidence/20260919T111613210Z-a51bbaee/candidate.json",
+      "sha256": "44a601f1bc19015c7742446a8976d19494d5208096d1a2b79f3489c422c71185",
+      "historical": {
+        "path": "evidence/20260919T111613210Z-a51bbaee/candidate.json",
+        "walls": 7,
+        "rooms": 2,
+        "roomNames": [
+          "客厅",
+          "卧室"
+        ],
+        "openings": 4,
+        "span": {
+          "x": 10,
+          "y": 6.67,
+          "aspectRatio": 1.4992503748125938
+        },
+        "importValidator": {
+          "accepted": true
+        },
+        "confirmationValidator": {
+          "accepted": false,
+          "error": "Error: 拓扑校验失败：墙 1e73b657-6ad7-4229-aa41-046cea4451ac 的 b 端点落在墙 acee947a-300f-45b9-b500-670c6627453c 中段，请连接或分段"
+        },
+        "jsonParsePreservesGeometry": true
+      },
+      "now": {
+        "import": {
+          "accepted": true
+        },
+        "confirmation": {
+          "accepted": false,
+          "error": "Error: 拓扑校验失败：墙 1e73b657-6ad7-4229-aa41-046cea4451ac 的 b 端点落在墙 acee947a-300f-45b9-b500-670c6627453c 中段，请连接或分段"
+        },
+        "diagnosticCodes": [
+          "open_boundary"
+        ],
+        "undefinedAreaM2": 0
+      },
+      "inputUnchanged": true
+    }
+  ]
+}

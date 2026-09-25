@@ -3,10 +3,12 @@ import {createInterface} from 'node:readline';
 import {mkdir,rm} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {randomUUID} from 'node:crypto';
+import {codexTimeoutMs} from './codex-timeout.js';
 export type BusinessTool={name:string;description:string;inputSchema:unknown;run:(args:unknown)=>Promise<unknown>};
-export type CodexInput={text:string;images?:string[];model?:string;tools?:BusinessTool[];outputSchema?:unknown;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
-/** Codex 0.155.1 App Server, verified against generated JSON schemas. One ephemeral process/thread per call. */
+export type CodexInput={text:string;images?:string[];model?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
+/** Codex App Server. One ephemeral process/thread per call; explicit bounded deadlines. */
 export async function runCodex(input:CodexInput):Promise<string>{
+ const timeoutMs=codexTimeoutMs(input.timeoutMs);
  const work=resolve(process.env.ALVA_AGENT_DIR||'.runtime/alva-agent',randomUUID());
  await mkdir(work,{recursive:true,mode:0o700});
  const home=resolve(work,'config');await mkdir(home,{mode:0o700});
@@ -24,7 +26,7 @@ export async function runCodex(input:CodexInput):Promise<string>{
  const failAll=(error:Error)=>{if(settled)return;settled=true;fail(error);for(const p of pending.values())p.reject(error);pending.clear()};
  const send=(packet:unknown)=>{if(!child.stdin.destroyed)child.stdin.write(JSON.stringify(packet)+'\n')};
  const rpc=(method:string,params:unknown)=>new Promise<any>((resolve,reject)=>{const id=++sequence;pending.set(id,{resolve,reject});send({id,method,params})});
- const timer=setTimeout(()=>failAll(new Error('Codex调用超时，请重试')),120_000);
+ const timer=setTimeout(()=>failAll(new Error(`Codex调用超时（${timeoutMs/1000}秒），请重试`)),timeoutMs);
  const abort=()=>{if(threadId&&turnId)send({id:++sequence,method:'turn/interrupt',params:{threadId,turnId}});failAll(new Error('已取消'));child.kill('SIGTERM')};
  input.signal?.addEventListener('abort',abort,{once:true});
  const lines=createInterface({input:child.stdout});

@@ -1,8 +1,12 @@
 # What's next · 任务认领与并行开发
 
-## 当前恢复执行：ALVA-053 → ALVA-056
+## 2026-09-25 ALVA-053已完成，继续ALVA-056
 
-2026-09-25用户明确授权恢复验收/修复。chatgpt-recovery先执行53、集成后再执行56；正常ubuntu登录环境可见新版MiMo profile，MCP旧CODEX_HOME不等同用户profile。028继续用户暂停，057的署名和共享文件占用保持。53的api/codex.ts、api/import.ts及新增api/import/由本轮登记使用，不修改057占用的api/model.ts、api/intake或web。重型命令串行，统一协调锁`.git/alva-heavy-task.lock`；本轮CPU60%/MemoryMax900M/TasksMax128，开始前检查可用内存，不并发启动浏览器/构建。56仍pending但已获本轮后续执行授权，不受下方旧“不重跑模型”记录限制；新的run不得覆盖旧证据。
+ALVA-053按诊断维护范围完成并集成，个人实现`17a6308`，总证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。JSON/schema/几何错误统一一次修正，识图显式240秒上限，普通调用仍120秒；PDF与PGlite测试隔离而未删断言。28/28、最终类型检查与历史候选重放通过；MiMo Pro业务动态工具/流式文本通过，Gemini3.8别名文本恢复；原生mimo profile的Flash识图18.663秒通过输出合同，但确认拓扑失败且约22.59m²未定义空间，不宣称户型已正确。
+
+Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传递调用被工具拦截未执行，保留未核验边界。原生profile用普通用户、无密钥复制/提权，不能冒充被拦截的业务复试。最新标注截图未标注原图/当前生产样本关联仍缺，未更改生产配置/数据、未部署。
+
+下一步按本轮已有授权执行ALVA-056，改旧探针硬编码v2.5为当前`codex exec --profile mimo`并复测默认Pro；53不再占用共享文件。028仍暂停，057的yang-chatgpt与其共享文件保持不变。原8个56暂存文件/2份文档修改、preview五文件及全部历史Worktree保留；本次独立Git索引不吞并它们。重型任务串行、CPU60%、任务内存模型900MiB/含PGlite和类型1500MiB、Tasks128；初始限额失败留证，最终运行未OOM。回滚仅revert本票集成，不重置工作树。
 
 ## Pending 恢复队列（2026-09-25）
 
@@ -11,7 +15,6 @@
 | 对象 | 当前待办原因 | 保存的位置 | 恢复后的第一步 |
 |---|---|---|---|
 | [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | pending：已有真实返回，主线集成未完成；不是仍然鉴权失败 | 历史负责人chatgpt-mimo；0d7ea5f及原main暂存8文件/未提交2文档 | 比对现有差异与证据，单任务复核5项离线测试及必要类型检查，再独立完成集成；不自动重跑模型或部署 |
-| [ALVA-053](docs/ALVA-053-model-topology-audit.md) | pending：诊断成果未集成，路由/当前样本仍待核实 | 历史负责人chatgpt-audit；个人分支88506f2 | 读完整报告与脱敏证据，区分已被055修复的问题；先处理剩余路由/样本关联，再按原范围复核 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | pending：用户原先要求暂停，尚未实施 | 历史负责人yang-chatgpt；f3aedbb工作区保留 | 等新的开工指令，确认ALVA-015证据与共享文件，重新登记署名后实施三个正反例及来源/幂等验收 |
 
 额外保护：`bugfix/floorplan-structured-output-preview`有5个未提交文件，当前无对应工作区执行进程，未编号、未集成；恢复前由原负责人核对，不新建假完成票、不覆盖或清理。ALVA-054整体done保留，其线上登录后核验仍是票内单独未完成边界，不因本次重启伪造通过。
@@ -108,7 +111,7 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
-| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) | chatgpt-recovery | task/ALVA-053-recovery-20260925；.runtime/worktrees/ALVA-053-recovery-20260925；api/codex.ts、api/import.ts、api/import/、定向脚本/测试；旧分支保留；无端口、无生产改动 | in-progress |
+| [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) |  | chatgpt-recovery已完成；task/ALVA-053-recovery-20260925 / .runtime/worktrees/ALVA-053-recovery-20260925；17a6308；诊断与解析修复已集成，不是生产户型正确性验收 | done |
 
 
 ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028仍按用户要求暂停。

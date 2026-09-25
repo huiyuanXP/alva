@@ -1,0 +1,24 @@
+{
+  "files": {
+    "tests53-round1-stdout.log": "74ca153ce4c6ce79b93f434609df3edf4123139ab810ac4173c417572f4f0f94",
+    "tests.log": "273f37c9530263aa6c74097b53f5cdf02c2c35343b718e41d6c27a3872027e43",
+    "type-regression53-round2-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pure-type-offline53-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-candidate-replay.json": "22b6bc4cc5c61daecf7bc65b0919a2bdc4514793ebab720b5e31e6da6676e59a",
+    "blocked-appserver-retest.json": "7e40ff8a00627771c650ae1f583591d3407f9b24540b48c59875a9a745bc22b3",
+    "tests53-round1-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archived-review53-execution.json": "ea0d80966066961b8c567245ba345b377a160e4b249716f4acfe0ea466a33ed8",
+    "resource-limited-failures.json": "cdc39fcae566c15836317f39ce333ecf5a8b86f1c1e104a95a757e3ad4ab2fe6",
+    "native-review53-execution.json": "ee56e3d884bee6abb78c1ba868e4f82dc6164a4fa9f0f3926cbfc923b55eecad",
+    "type-regression53-isolated-execution.json": "3a8385167f6d3cd01ebd4e242eb5742fa9519128c8be75fd991aeab0b57e71e8",
+    "summary.json": "9bcf3741aa163710e0254586bc341f276ec5fc70654a4ac6a014fcbd0524ea23",
+    "type-regression53-round2-stdout.log": "f5deadd165bd80f02cad9e4610209543ac0384f4669c9c9dac9e23da04bfd528",
+    "typecheck.log": "7d021983323d3fa17cf41fee1f7728665d077002c24223541bda1e8a5cdb8acf",
+    "type53-final-execution.json": "ca85b5f7ef3329cff7084dad8c19cd1458ffbcade2fbaa7fbc678999687e85bd",
+    "pdf-test-relocation.json": "8cd2aca3793ba2c2fd4776090e72cee0c70640c1e1407f25945478b73de57023",
+    "historical-candidate-replay.ts": "55947b42cb54baee2b73187570ed16648214aa38a1da2207f38bb3b8d619e585",
+    "native-profile-flash53-execution.json": "427695f6c3c5f28ae86add38c98a7b95748e9bbaeead6a01f69b4f6a6a1af16c",
+    "pure-type-offline53-stdout.log": "63f2fc2b8ff9a9f24c79ba0176cfe20167b65c318159991167bc581a20ef69fb"
+  },
+  "logNormalization": "Only terminal blank lines omitted in two public log copies; exact original logs retained in private orchestration directory."
+}
