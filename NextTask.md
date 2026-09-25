@@ -1,10 +1,12 @@
-## ALVA-066 当前检查点：087094c，继续完整隔离验收
+## ALVA-066 当前检查点：35088ef，继续原图实测
 
-066个人Worktree提交 `087094c` 已装配029固定实现、分类/确认/投影、复核取舍与共享保存门禁、服务端自动家具建议。最新类型检查及4/4定向回归通过；此前55/55、51/51、8/8和构建是各自过程证据。同一合成项目/原生活设计thread的真实模型→Markdown→复核→请求保存→浏览器确认v1及刷新通过，汇总在个人Worktree `evidence/20260925T2026Z-ALVA066-living-joint-checkpoint/result.json`。原thread曾收到CONTEXT_SCOPE_INVALID并自行修正调用；错误与修复均实录。
+066个人Worktree最新 `35088ef`：长调用HTTP MCP改用显式限时node:http，修复约300秒桥接中断；识图错误保留VISION_OUTPUT_JSON/SCHEMA/GEOMETRY及修复说明。真实Chat附件选择/上传及原字节SHA验证通过，但两轮真实识图尚未成功：第一轮传输中断，第二轮明确缺少geography.assumption，已补仅描述未核实状态的有限兼容，数值/几何不补造。下一步同附件原thread复测；辅助模型原始输出保留在隔离run私有目录。
 
-建筑前置为合成夹具，不能替代真实原图识别/建筑生成。完整跨阶段/拓扑失效、剩余取消重启/交付、同最终SHA联合门禁及发布仍待继续。原图与跨阶段验收为下一步；029/040/057保持各票边界。main产品未集成/部署，066与029保持in-progress。此前029独立重任务窗口已结束并释放；066继续串行使用共享heavy锁，当前检查已结束，无遗留活跃任务。
+进入阶段立即用thread/inject_items送达快照/摘要已装配，真实新进程Resume读到注入nonce且摘要只1次；thread/read不含原始注入项，恢复去重验证本stage私有rollout身份后读取。注入失败在页面明确提示及重试，不冒充已送达。19/19相关回归与构建通过；浏览器连续输入12次保持同一个3D renderer，修复新样式对象导致的重建，并释放旧WebGL上下文。
 
-资源经验：TypeScript7使用Go内存参数；真实模型和Chromium持续同进程两次触发1200M，保留失败，改同项目/原thread串行新进程后通过，不提高限额。neat-freak过程事实已同步：已验局部链路verified-current，整票/生产pending，生成记忆out-of-scope；Worktree与私有验收现场保留。
+此前同一合成建筑项目/原living thread的真实Chat→Markdown→review→请求保存→页面确认v1与刷新通过，汇总在个人Worktreeevidence/20260925T2026Z-ALVA066-living-joint-checkpoint/result.json；不能替代原图/建筑/跨阶段失效的最终同SHA链路。仍需完整业务异常/重启与交付、最终门禁、main产品集成和备份发布。066、029及其他未完票保持in-progress，生产未变。重任务继续共享锁串行CPU80%/1200M/swap0，当前检查均已结束；后续原图复测将继续占用独立窗口。
+
+neat-freak过程事实已同步，局部证据verified-current；整票/生产pending，生成记忆out-of-scope；所有未完成Worktree、失败与私有原始输出保留。
 
 # What's next · 任务认领与并行开发
 

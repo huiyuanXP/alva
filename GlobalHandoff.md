@@ -141,3 +141,5 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 ## ALVA-066/029联合运行契约（未上线）
 
 066检查点087094c在个人Worktree：用户分类的Markdown在DB提交后原子投影，错误必须保留稳定code/repairActions；模型实际能按CONTEXT_SCOPE_INVALID修正房间/家具ID混用。审查凭证保留真实reviewedRevision/adoptedAtRevision；样式参与失效指纹。真实局部联合链已通过，整票与生产仍pending，以NextTask和066票据为现役入口。原thread恢复与串行新进程验证不等于新建替代会话。
+
+ALVA-066检查点35088ef：进入阶段用thread/inject_items追加摘要/快照；thread/read有损视图不包含原始注入项，恢复去重只读取当前stage CODEX_HOME内匹配thread身份的rollout。HTTP MCP长调用不能依赖fetch默认响应头等待时限。真实识图仍pending，缺失说明只补未核实标签，不伪造地理值或几何。
