@@ -1,0 +1,116 @@
+{
+  "date": "2026-09-25",
+  "applied": {
+    "state": "applied",
+    "codex_version": "0.155.1",
+    "default_provider": "newapi",
+    "default_catalog": "native bundled models",
+    "default_model": "native default (not pinned)",
+    "profile": "mimo",
+    "profile_models": [
+      "mimo-v2.6-pro",
+      "mimo-v2.6-flash"
+    ],
+    "base_url": "https://chat.huiyuanxp.com/v1",
+    "env_key": "NEWAPI_KEY",
+    "schema_checks": {
+      "installed-config.schema.json:config": {
+        "valid": true,
+        "error_paths": []
+      },
+      "installed-config.schema.json:mimo": {
+        "valid": true,
+        "error_paths": []
+      },
+      "official-current-config.schema.json:config": {
+        "valid": true,
+        "error_paths": []
+      },
+      "official-current-config.schema.json:mimo": {
+        "valid": true,
+        "error_paths": []
+      }
+    },
+    "unrelated_settings_preserved": true,
+    "backup": "/home/ubuntu/.codex/backups/newapi-mimo-20260925T035918Z",
+    "changed_files": [
+      "/home/ubuntu/.codex/config.toml",
+      "/home/ubuntu/.codex/mimo.config.toml",
+      "/home/ubuntu/.codex/model-catalogs/mimo-newapi.json"
+    ],
+    "sha256": {
+      "/home/ubuntu/.codex/config.toml": "5f2e2d7de9b72ae160ade401b0a95002b0b69426c3f10612a5857212acfb59c4",
+      "/home/ubuntu/.codex/mimo.config.toml": "90906f15369e303da2c0adb6cd262b3ef6650fcdd22e5ff89112743e851475c2",
+      "/home/ubuntu/.codex/model-catalogs/mimo-newapi.json": "8e756631f2e15760e6fffc62fc503b1ad67aa8ff9acfeb2616b8c60ceb24e337"
+    }
+  },
+  "post_apply": {
+    "state": "verified-applied",
+    "codex_home": "/home/ubuntu/.codex",
+    "matches_tested_staging": true,
+    "default_provider": "newapi",
+    "default_catalog": "native",
+    "native_models": [
+      {
+        "id": "gpt-6-astra",
+        "default": true
+      },
+      {
+        "id": "gpt-5.6-sol",
+        "default": false
+      },
+      {
+        "id": "gpt-5.6-terra",
+        "default": false
+      },
+      {
+        "id": "gpt-5.6-luna",
+        "default": false
+      },
+      {
+        "id": "gpt-5.5",
+        "default": false
+      }
+    ],
+    "mimo_profile_models": [
+      "mimo-v2.6-pro",
+      "mimo-v2.6-flash"
+    ],
+    "providers_use_same_gateway_and_env_key": true,
+    "api_key_value_recorded": false
+  },
+  "real_requests": [
+    {
+      "environment": "isolated staged user config",
+      "route": "default/newapi",
+      "reply": "CODEX_PROVIDER_OK",
+      "exit_code": 0
+    },
+    {
+      "environment": "isolated staged user config",
+      "route": "profile=mimo, default Pro",
+      "reply": "MIMO_PRO_OK",
+      "exit_code": 0
+    },
+    {
+      "environment": "isolated staged user config",
+      "route": "profile=mimo, model=mimo-v2.6-flash",
+      "reply": "MIMO_FLASH_OK",
+      "exit_code": 0
+    },
+    {
+      "environment": "actual /home/ubuntu/.codex after apply",
+      "route": "profile=mimo, default Pro",
+      "reply": "CODEX_LIVE_OK",
+      "exit_code": 0
+    }
+  ],
+  "scope": "CLI auth, provider, model catalog, tiny Responses requests only",
+  "exploratory_check_not_counted_as_pass": "Top-level --profile with app-server did not initialize within the probe deadline; actual profile execution validated with codex exec --profile instead.",
+  "preserved": "Existing authentication stores, unrelated Codex settings, MCP configuration, app services, product work and ticket states",
+  "catalog_is_server_authorization_acl": false,
+  "schema_sha256": {
+    "installed-config.schema.json": "895287b978baf5cb6dec9c2e91b71d067ed0ec8b67fd88e6be96ac2ffd3f027e",
+    "official-current-config.schema.json": "9c1a8890062b0b15aec7d368c6be17d49bb3152bf3d89eb751341929a45defa5"
+  }
+}

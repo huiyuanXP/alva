@@ -1,5 +1,9 @@
 # What's next · 任务认领与并行开发
 
+## Codex CLI 运维已完成（2026-09-25）
+
+默认 `codex` 使用 New API 与原生模型目录；MiMo 使用 `codex --profile mimo`，目录仅 Pro/Flash。操作和独立 CODEX_HOME 的环境说明见 [Codex provider 配置](docs/CODEX-PROVIDERS.md)。本次不新增或认领产品任务，不改下列 pending 队列及恢复条件。
+
 ## Pending 恢复队列（2026-09-25）
 
 用户明确授权本轮由协调人将已中断/暂停工作退回待办，释放的是当前执行占用，不删除历史负责人、分支、工作区或证据。pending不是done，也不是自动重新开工。44票看板不接受字面Status=pending；产品待办沿用ready-for-agent并在票内写Execution state=pending，额外维护票直接使用pending。此处是恢复索引，不另建产品状态数据库。
