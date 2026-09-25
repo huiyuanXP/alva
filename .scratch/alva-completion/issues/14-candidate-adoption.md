@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-020](13-scope-confirmation.md), [ALVA-013](06-example-building-views.md)
 
-**Status:** ready-for-agent
+**Status:** done
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 已由 lzy 在独立 Worktree 完成完整验证并合入 main，集成提交 c2594e8；后续依赖可按 NextTask 规则继续。
 
 - [x] 模糊请求至少两个实际不同、可旋转缩放的3D候选；精确请求可一个。
 - [x] 未采用不写正式设计；周边参考物不默认勾选；仅所选范围原子提交。
@@ -30,4 +30,4 @@
 - branch/worktree: task/ALVA-021-lzy / /home/ubuntu/Alva-worktrees/ALVA-021-lzy
 - implementation: 候选协议增加 referenceIds；模糊请求服务端强制至少两个不同变更候选；候选卡使用真实 Three.js 3D预览，参考对象禁用且不进入采用目标；保留现有 revision、幂等和事务回滚约束。
 - verification: npm run check；npx tsx --test tests/alva-local-proposals.test.ts（2/2）；受影响 ALVA-012/020 回归（9/9）；npm run build:alva；真实 Chromium 脚本 scripts/alva-021-browser.ts 通过，证据 evidence/20260925T091243419Z-ALVA021-browser/，控制台错误 0。
-- state: implementation complete in worktree; ready for main integration.
+- state: implemented, verified, and integrated into main.
