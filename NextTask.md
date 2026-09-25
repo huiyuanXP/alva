@@ -143,6 +143,8 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
-| [ALVA-057](docs/ALVA-057-home-vision.md) | yang-chatgpt | task/ALVA-057-yang-chatgpt；/home/ubuntu/Alva-worktrees/ALVA-057-yang-chatgpt；questions；api/intake、api/model.ts、web/src/intake、web/src/main.tsx、packages/contracts/alva/home-vision；测试4287 | in-progress |
+| [ALVA-057](docs/ALVA-057-home-vision.md) | xuanpu-chat-6pro | task/ALVA-057-xuanpu-chat-6pro；/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-xuanpu-chat-6pro；questions；api/intake、api/model.ts、web/src/intake、web/src/main.tsx、packages/contracts/alva/home-vision；测试4287；原yang-chatgpt分支/Worktree保留 | in-progress |
 
-用户2026-09-25明确按新版MD/Word/3个ZIP实施并沿用生产发布授权；预算问答为本次附件明确范围，覆盖旧问卷无预算限制，仅问卷采集，不扩展自动报价。沿用恢复任务的独立Git索引，只提交本票，保留ALVA-056原暂存/未提交成果。重任务串行，任务级限额CPU100%、内存1200M（浏览器1600M），留采样；不修改MCP/生产资源配置。
+用户2026-09-25明确按新版MD/Word/3个ZIP实施并沿用生产发布授权；预算问答为本次附件明确范围，覆盖旧问卷无预算限制，仅问卷采集，不扩展自动报价。沿用恢复任务的独立Git索引，只提交本票，保留ALVA-056原暂存/未提交成果。重任务串行，任务级限额CPU80%、内存1200M（浏览器1600M），留采样；不修改MCP/生产资源配置。
+
+2026-09-25用户明确交接给 `xuanpu-chat-6pro`。从原分支已提交成果 `f0c9c66` 接续；原外部Worktree不移动、不清理，其未提交状态尚未读取。因MCP工作目录参数限制，新执行Worktree位于主目录 `.runtime/worktrees/ALVA-057-xuanpu-chat-6pro`。预算仅采集，保持独立Git索引、重任务共享锁、CPU80%/1200M（浏览器1600M）；验证后才集成及按既有授权发布。
