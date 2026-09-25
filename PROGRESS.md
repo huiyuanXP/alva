@@ -124,3 +124,5 @@ neat-freak完成受影响文档/规则/工作区盘点，覆盖Handoff与NextTas
 
 
 2026-09-25 Codex CLI provider/profile 运维：0.155.1 的用户配置切换为 New API 默认路由与独立 MiMo Pro/Flash profile，统一 NEWAPI_KEY 和网关。保留原生模型目录及原有无关配置；双版本 schema、三路暂存真实 Responses 请求、落盘等价性及落盘后 MiMo 实际请求通过。旧配置私有备份保留，未注销用户或改 MCP/应用服务。脱敏结果 evidence/20260925T035918Z-codex-newapi-mimo/result.json；使用与回滚 docs/CODEX-PROVIDERS.md。原有产品未提交文件及暂存项保留，不推进业务 Ticket。
+
+2026-09-25 Codex CLI 升级运维：官方 GitHub API/npm registry 确认稳定版 0.157.0，由现有 NVM 全局安装从 0.155.1 升级，退出0。New API/MiMo配置及目录三文件哈希不变，新版schema通过；原生目录7模型，新增Sol/Luna网关目录及真实Codex请求均通过。默认Astra/Pro首轮通过；Flash首轮退出0但回复OK，固定标记断言失败，新run 20260925T041105Z-codex-mimo-flash-retry相同测试通过，初次失败保留。证据evidence/20260925T040631Z-codex-upgrade/verification.json，旧包私有备份及回滚见docs/CODEX-PROVIDERS.md。四服务active，本机healthz正常；未重启服务或改业务/凭据/产品票。原10个未提交/暂存文件保护，neat-freak同步现役文档及恢复入口；不清理他人工作树或生成记忆。

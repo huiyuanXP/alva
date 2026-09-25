@@ -2,7 +2,7 @@
 
 ## Codex CLI 运维已完成（2026-09-25）
 
-默认 `codex` 使用 New API 与原生模型目录；MiMo 使用 `codex --profile mimo`，目录仅 Pro/Flash。操作和独立 CODEX_HOME 的环境说明见 [Codex provider 配置](docs/CODEX-PROVIDERS.md)。本次不新增或认领产品任务，不改下列 pending 队列及恢复条件。
+CLI 已升级稳定版 0.157.0，Sol/Luna 原生列表和真实调用已验证。默认 `codex` 使用 New API 与原生目录，默认仍为 Astra；MiMo 使用 `codex --profile mimo`，目录仅 Pro/Flash。操作和独立 CODEX_HOME 的环境说明见 [Codex provider 配置](docs/CODEX-PROVIDERS.md)。本次不新增或认领产品任务，不改下列 pending 队列及恢复条件。
 
 ## Pending 恢复队列（2026-09-25）
 
