@@ -1,3 +1,7 @@
+## 2026-09-25 主 Chat 接入规则
+
+现役主 Chat 入口固定为登录后左侧咨询栏 → `POST /api/chat`；Agent 身份在 `api/main-chat-agent.ts`，Codex App Server Harness 在 `api/codex.ts`，工具白名单在 `api/chat.ts`。后续用户功能在同票完成 Chat 工具适配与端到端验收，直接 API/按钮不算已接入；执行模板见 [ALVA-065](docs/ALVA-065-main-chat-agent.md) 和 [Prompt](docs/MAIN-CHAT-FEATURE-PROMPT.md)。本次未新增识图/建筑 Chat 工具。
+
 ## 2026-09-25 ALVA-064 现役图片识图模型
 
 生产 `alva.service` 已发布 main `4870b0d`：图片户型识别默认 Gemini 3.8 Flash High、high 推理强度，聊天模型独立保持 Gemini 3.1 Flash Lite。公网登录后只读验收通过，项目 revision 不变、页面错误 0；[发布与回滚记录](docs/ALVA-064-gemini-default-release.md)。同会话截图自查仍是隔离 Skill，户型准确性待用户对照原图；ALVA-028 暂停。

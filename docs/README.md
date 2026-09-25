@@ -2,6 +2,7 @@
 
 开发文件归属以[项目结构规范](PROJECT-STRUCTURE.md)为准，包含完整目录图、工程职责、依赖边界和首批 Ticket 落点。
 
+- [主 Chat Agent 与 Harness 合同](ALVA-065-main-chat-agent.md) / [后续功能接入 Prompt](MAIN-CHAT-FEATURE-PROMPT.md)：主入口、工具边界及同票适配验收。
 - [登录与 Codex 建筑生成研究](../Research/LOGIN-IMPORT-3D.md)：示例原理、现有基础与生成合同。
 - [本地 Ticket tracker](../.scratch/alva-completion/README.md)：已经发布的44张票及依赖。
 - [当前交接](../Handoff.md) / [下一任务](../NextTask.md)：最新状态和执行边界。

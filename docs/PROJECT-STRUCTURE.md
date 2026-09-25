@@ -72,6 +72,8 @@
 
 后续首次需要共享运行时 schema 时，将相关无副作用定义提取到 `packages/contracts/alva/scene.ts`，同步修改使用方；原 `model.ts` 可兼容转出，服务器对象创建/随机 ID 等仍留服务端。不得复制出两个分别维护的 Scene。新建筑结果 schema 放 `packages/contracts/alva/building.ts`，引用同一场景 ID 与版本合同。仅在相关票实施时做必要提取，不为目录规范一次性重构全部旧代码。
 
+主 Chat 的身份、现役模型、路由与基础指令集中在 `api/main-chat-agent.ts`；服务端 Chat 装配仍在 `api/chat.ts`，网页主入口在 `web/src/main.tsx`。后续用户功能的 Agent 接入和验收以 [主 Chat 合同](ALVA-065-main-chat-agent.md) 为准，同票实施，不因现有按钮/API 可用而视为 Chat 已接入。
+
 Codex 进程协议统一经过 `api/codex.ts`。`import.ts` 管识图提示与二维初稿；`building/generate.ts` 管第二阶段建筑生成提示与结果编排，`building/validate.ts` 管构件、引用和确认拓扑的一致性。建筑生成必须真实调用 Codex；输出结构化场景描述，前端 `scene/building-meshes.ts` 等模块解释为网格，不执行模型返回的任意代码。具体合同见[研究结论](../Research/LOGIN-IMPORT-3D.md)。
 
 ## 首批 Ticket 文件落点

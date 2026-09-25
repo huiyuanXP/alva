@@ -54,4 +54,6 @@
 
 附件权威来源 references/ 与 SOURCES.md。旧实现只作经验证的复用候选；其样例、旧票 done 与旧部署状态都不构成本项目验收。
 
+所有后续用户功能在完成时须按 [主 Chat Agent 与 Harness 合同](docs/ALVA-065-main-chat-agent.md) 同票适配主 Chat，并以实际工具调用的端到端结果验收；执行 Prompt 模板见 [接入模板](docs/MAIN-CHAT-FEATURE-PROMPT.md)。现有按钮或 API 不等于 Agent 已接入。
+
 开发或新增文件前必须读 [项目结构规范](docs/PROJECT-STRUCTURE.md)。现役代码只进入 api、web 及规范指定的共享层；按功能目录放置，禁止向旧工程/参考附件写新功能。规划目录按 Ticket 实施时创建，不把目录规范当功能开工授权。新增顶层工程、共享合同迁移或依赖边界改变时，同步该规范与实际构建/测试入口。

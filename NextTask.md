@@ -1,5 +1,9 @@
 # What's next · 任务认领与并行开发
 
+## 2026-09-25 ALVA-065 已完成；下一项为主 Chat 识图接入
+
+主 Chat 的入口、Agent 身份、Harness 与后续功能接入 Prompt 已固定，见[ALVA-065](docs/ALVA-065-main-chat-agent.md)。下一项应从“Chat 上传户型图 → Agent 实际调用识图工具 → 返回待校正候选”开始，随后接建筑生成；须另票按认领规则实施。已有直接上传和生成按钮仍可用，但不计作 Chat 接入。
+
 ## 2026-09-25 ALVA-064 已发布并验收
 
 图片户型识别默认 Gemini 3.8 Flash High/high 已在生产 `alva.service` 生效；公网登录后只读验收通过，项目 revision 不变、页面错误 0。实现提交 `4870b0d`，备份、回滚和证据见[发布记录](docs/ALVA-064-gemini-default-release.md)。同会话截图自查仍是隔离流程；户型准确性待用户对照原图。ALVA-028 继续暂停，其他认领不变。

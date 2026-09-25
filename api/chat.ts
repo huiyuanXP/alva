@@ -1,10 +1,11 @@
+import {mainChatAgent} from './main-chat-agent.js';
 import type {FastifyInstance} from 'fastify';import {z} from 'zod';import {randomUUID} from 'node:crypto';
 import {runCodex,type BusinessTool,type CodexInput} from './codex.js';import {AlvaStore,type Session} from './store.js';import {catalogue,unansweredForScope,applyAnswer,applyAnswerWithEvidence,applyChanges,ChangeSchema,review} from './business.js';import {reject,DomainError,type Project,type Proposal,type Change} from './model.js';
 import {businessGuidanceFor,businessGuidanceForChat,businessGuidancePrompt,formatBusinessGuidanceAnswer} from './business-guidance.js';
 import {activeScope,assertProposalScope,cancelScope,collectChangeTargets,confirmScope,createScopeRequest,scopeCandidates} from './scope.js';
 import type {ScopeRequest} from './scope.js';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
-export const chatModels=['gemini-3.1-flash-lite'] as const;
+export const chatModels=[mainChatAgent.model] as const;
 const ChatModel=z.enum(chatModels);
 export function chatFailureReason(error:unknown,cancelled=false){return cancelled?'已取消':error instanceof Error&&/timeout|timed out|deadline/i.test(error.message)?'模型响应超时':'模型当前不可用或处理失败'}
 function applyProjectFurnitureChanges(project:Project,changes:Change[],reason:string){
@@ -60,8 +61,8 @@ export function registerConsultation(app:FastifyInstance,store:AlvaStore,session
   finally{if(activeTranscriptions.get(id)===controller)activeTranscriptions.delete(id)}
  });
  app.post('/api/transcribe/cancel',async req=>{const id=session(req).projectId,controller=activeTranscriptions.get(id);if(controller)controller.abort();return {cancelled:!!controller}});
- app.post('/api/chat/cancel',async req=>{const id=session(req).projectId,controller=active.get(id);if(controller)controller.abort();return {cancelled:!!controller}});
- app.post('/api/chat',async(req,reply)=>{
+ app.post(mainChatAgent.cancelRoute,async req=>{const id=session(req).projectId,controller=active.get(id);if(controller)controller.abort();return {cancelled:!!controller}});
+ app.post(mainChatAgent.route,async(req,reply)=>{
   const id=owner(req);const b=Command.extend({text:z.string().min(1).max(6000),roomId:z.string().nullable(),model:ChatModel,image:z.object({mime:z.enum(['image/png','image/jpeg']),data:z.string().max(12_000_000)}).optional()}).parse(req.body);
   if(b.image)b.image=validateChatImage(b.image);if(active.has(id))reject('已有进行中的请求',409);const current=await store.get(id);if(b.roomId&&!current.scene?.rooms.some(r=>r.id===b.roomId))reject('房间不存在');
   const assistantId=randomUUID(),evidenceId=randomUUID();const started=await store.mutate(id,b.requestId,b.expectedRevision,'chat-start',b,p=>{if(p.messages.some(m=>m.id===b.requestId))reject('请使用重试按钮发起新请求',409);p.messages.push({id:b.requestId,role:'user',text:b.text,status:'completed',createdAt:new Date().toISOString()},{id:assistantId,role:'assistant',text:'',status:'running',createdAt:new Date().toISOString()});p.evidence.push({id:evidenceId,quote:b.text,source:'chat',...(b.roomId?{roomId:b.roomId}:{}),createdAt:new Date().toISOString()});p.dirty=true});

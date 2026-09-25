@@ -1,3 +1,7 @@
+## 2026-09-25 ALVA-065 主 Chat Agent/Harness 固定
+
+主 Chat 名称、路由、现役模型和基础指令集中到 `api/main-chat-agent.ts`；`api/chat.ts` 仍装配服务端工具，`api/codex.ts` 仍运行每请求临时 Codex App Server thread。后续功能接入合同和任务 Prompt 见 [ALVA-065](docs/ALVA-065-main-chat-agent.md)。本票仅固定现有运行路径及交接规则，未把识图、建筑生成或其余直接按钮接成 Chat 工具。类型检查和 5 项相关接口/指导测试通过。
+
 ## 2026-09-25 ALVA-064 生产发布交接
 
 main `4870b0d` 已将 Gemini 3.8 Flash High 设为图片户型识别默认模型，并在生产私有环境显式固定 `OPENAI_VISION_MODEL` 与 high 推理强度；普通聊天仍为 Gemini 3.1 Flash Lite。`alva.service` 已重启，健康、首页和登录后只读项目验收通过，revision 不变、页面错误 0。备份、回滚 Worktree、真实模型回放与边界见[发布记录](docs/ALVA-064-gemini-default-release.md)。本机旧验证码文件不匹配，不应再用于验收；用户提供的有效码只在验收进程内使用，未轮换、未写入仓库。候选准确性待用户对照原图，028 暂停。

@@ -1,3 +1,7 @@
+## 2026-09-25 ALVA-065 主 Chat 接入基线完成
+
+集中主 Chat 身份、入口、模型和基础指令，明确 Codex App Server Harness 与后续功能的同票适配 Prompt。类型检查和 5 项相关接口/指导测试通过；识图与建筑生成仍待另票接入主 Chat。详见 [ALVA-065](docs/ALVA-065-main-chat-agent.md)。
+
 ## 2026-09-25 ALVA-064 已发布
 
 main 实现 `4870b0d`；生产 `alva.service` 已重启并使用 Gemini 3.8 Flash High/high 识图默认配置。7 项相关测试、类型检查、构建和三份真实输出回放通过；公网健康、首页及登录后只读浏览器验收通过，项目 revision 不变、页面错误 0。备份和回滚位置、失败 run 与验收边界见[ALVA-064](docs/ALVA-064-gemini-default-release.md)。未做用户原图准确性核校；028 暂停。
