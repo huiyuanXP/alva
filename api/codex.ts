@@ -1,3 +1,4 @@
+import {persistedHandoffs} from './mcp/handoff-history.js';
 import {mainChatAgent} from './main-chat-agent.js';
 import {spawn} from 'node:child_process';
 import {createInterface} from 'node:readline';
@@ -8,9 +9,10 @@ import {mcpFailure} from './mcp/contracts.js';
 import {codexTimeoutMs} from './codex-timeout.js';
 export type BusinessTool={name:string;description:string;inputSchema:unknown;run:(args:unknown)=>Promise<unknown>};
 export type CodexSession={key:string;threadId?:string;onThread:(threadId:string)=>Promise<void>;onTurnStarted?:()=>Promise<void>;handoffs?:{id:string;text:string}[];onHandoffsDelivered?:(ids:string[])=>Promise<void>};
-export type CodexInput={resumeOnly?:boolean;session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
+export type CodexInput={injectOnly?:boolean;resumeOnly?:boolean;session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
 /** Auxiliary calls are ephemeral; main Chat explicitly supplies its persistent stage session. */
 export async function runCodex(input:CodexInput):Promise<string>{
+ if(input.injectOnly&&!input.session)throw new Error('追加阶段上下文需要持久会话');
  if(input.resumeOnly&&!input.session?.threadId)throw new Error('恢复阶段需要已有 thread ID');
  const timeoutMs=codexTimeoutMs(input.timeoutMs);
  const work=resolve(process.env.ALVA_AGENT_DIR||'.runtime/alva-agent',input.session?'stage-'+createHash('sha256').update(input.session.key).digest('hex'):randomUUID());
@@ -70,11 +72,13 @@ export async function runCodex(input:CodexInput):Promise<string>{
   let handoffs=input.session?.handoffs||[];
   if(input.session?.threadId&&handoffs.length){
    const history=JSON.stringify(await rpc('thread/read',{threadId,includeTurns:true}));
-   const delivered=handoffs.filter(h=>history.includes(`[ALVA_HANDOFF:${h.id}]`));
+   const persisted=started.thread.path?await persistedHandoffs(started.thread.path,home,threadId,handoffs.map(h=>h.id)):new Set<string>();
+   const delivered=handoffs.filter(h=>persisted.has(h.id)||history.includes(`[ALVA_HANDOFF:${h.id}]`));
    if(delivered.length)await input.session.onHandoffsDelivered?.(delivered.map(h=>h.id));
    handoffs=handoffs.filter(h=>!delivered.includes(h));
   }
   const turnText=[...handoffs.map(h=>`[ALVA_HANDOFF:${h.id}]\n${h.text}`),input.text].join('\n\n');
+  if(input.injectOnly){if(turnText.trim())await rpc('thread/inject_items',{threadId,items:[{type:'message',role:'user',content:[{type:'input_text',text:turnText}]}]});if(handoffs.length)await input.session?.onHandoffsDelivered?.(handoffs.map(h=>h.id));settled=true;return threadId}
   const turn=await rpc('turn/start',{threadId,input:[{type:'text',text:turnText},...(input.images||[]).map(url=>({type:'image',url}))],...(input.outputSchema?{outputSchema:input.outputSchema}:{})});
   turnId=turn.turn.id;
   await input.session?.onTurnStarted?.();

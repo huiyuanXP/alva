@@ -25,10 +25,12 @@ pathlib.Path(sys.argv[1]).write_text(json.dumps(files,sort_keys=True,indent=2)+'
 PYMANIFEST
 model_env=()
 if [[ -n ${NEWAPI_KEY:-} ]]; then model_env+=(--setenv=NEWAPI_KEY); fi
+task_seconds=${ALVA066_TASK_SECONDS:-540}
+[[ $task_seconds =~ ^[0-9]+$ ]] && (( task_seconds >= 1 && task_seconds <= 1800 )) || exit 2
 set +e
 systemd-run --user --quiet --wait --pipe --collect --unit="alva066-${label}-$$" \
  --property=CPUQuota=80% --property=MemoryMax=1200M --property=MemorySwapMax=0 \
- --property=TasksMax=192 --property=RuntimeMaxSec=540 --property=KillMode=control-group \
+ --property=TasksMax=192 --property=RuntimeMaxSec="$task_seconds" --property=KillMode=control-group \
  --working-directory="$root" --setenv="PATH=$PATH" "${model_env[@]}" \
  bash scripts/alva-066-task.sh "$out" "$@" 2>&1 | tee "$out/output.log"
 status=${PIPESTATUS[0]}

@@ -1,4 +1,4 @@
-import {createServer,type Server} from 'node:http';
+import {createServer,request,type Server} from 'node:http';
 import {randomBytes} from 'node:crypto';
 import type {AddressInfo} from 'node:net';
 import type {BusinessTool} from '../codex.js';
@@ -61,9 +61,15 @@ export type McpLease=Awaited<ReturnType<StageMcpServer['grant']>>;
 export async function bridgeMcpTools(lease:McpLease,signal?:AbortSignal,options:{catalogBridge?:boolean}={}):Promise<BusinessTool[]>{
  let sequence=0;
  const rpc=async(method:string,params:unknown)=>{
-  const response=await fetch(lease.url,{method:'POST',headers:{Authorization:`Bearer ${lease.token}`,'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:++sequence,method,params}),signal:AbortSignal.any([AbortSignal.timeout(660_000),...(signal?[signal]:[])])});
-  if(!response.ok)throw new McpError({code:response.status===401?'AUTH_EXPIRED':'MCP_UNAVAILABLE',message:response.status===401?'本次工具凭据已过期，请重新发起请求':'MCP 连接失败',retryable:response.status>=500,repairActions:[{action:'retry_chat',message:'请重新发起本轮 Chat；先核对项目状态，避免重复操作'}]});
-  const packet=await response.json() as any;if(packet.error)throw new Error('MCP protocol error');return packet.result;
+  // node:http avoids fetch's independent 300s response-header timeout on vision calls.
+  const bounded=AbortSignal.any([AbortSignal.timeout(660_000),...(signal?[signal]:[])]);
+  const response=await new Promise<{status:number;body:string}>((resolve,reject)=>{
+   const req=request(lease.url,{method:'POST',headers:{Authorization:`Bearer ${lease.token}`,'Content-Type':'application/json'},signal:bounded},res=>{
+    const chunks:Buffer[]=[];let size=0;res.on('data',(chunk:Buffer)=>{size+=chunk.length;if(size>32_000_000){req.destroy(new Error('MCP response too large'));return}chunks.push(chunk)});res.on('error',()=>reject(new McpError({code:'MCP_UNAVAILABLE',message:'MCP响应中断，尚未确认处理结果',retryable:true,repairActions:[{action:'reload_project',message:'请先重读项目处理状态再决定是否重试'}]})));res.on('end',()=>resolve({status:res.statusCode||500,body:Buffer.concat(chunks).toString('utf8')}));
+   });req.on('error',()=>reject(new McpError({code:signal?.aborted?'CANCELLED':bounded.aborted?'MCP_TIMEOUT':'MCP_UNAVAILABLE',message:signal?.aborted?'工具调用已取消':bounded.aborted?'工具等待超时，尚未确认处理结果':'MCP连接中断，尚未确认处理结果',retryable:true,repairActions:[{action:'reload_project',message:'先重读项目和处理状态，再决定是否重试；不要把连接中断解释成附件内容错误'}]})));req.end(JSON.stringify({jsonrpc:'2.0',id:++sequence,method,params}));
+  });
+  if(response.status<200||response.status>=300)throw new McpError({code:response.status===401?'AUTH_EXPIRED':'MCP_UNAVAILABLE',message:response.status===401?'本次工具凭据已过期，请重新发起请求':'MCP 连接失败',retryable:response.status>=500,repairActions:[{action:'retry_chat',message:'请重新发起本轮 Chat；先核对项目状态，避免重复操作'}]});
+  const packet=JSON.parse(response.body);if(packet.error)throw new McpError({code:'MCP_PROTOCOL_ERROR',message:'MCP响应协议无效',retryable:true,repairActions:[{action:'retry_chat',message:'重读项目后重新发起本轮调用'}]});return packet.result;
  };
  await rpc('initialize',{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'alva-harness',version:'1'}});
  const catalog=await rpc('tools/list',{});

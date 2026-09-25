@@ -1,3 +1,4 @@
+import {LayoutOutputError} from '../api/import/response.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {StageMcpServer,bridgeMcpTools} from '../api/mcp/server.js';
@@ -54,4 +55,18 @@ test('stable catalog bridge discovers new stage tools and rejects removed or oth
   await assert.rejects(dispatch.run({name:'new_living_feature',arguments:{projectId:'b'}}),(e:unknown)=>e instanceof McpError&&e.detail.code==='PROJECT_MISMATCH');
   assert.equal(invoked,1);
  }finally{lease.revoke();await server.close()}
+});
+
+
+test('vision contract failures preserve their stage and repair instructions through HTTP MCP',async()=>{
+ const server=new StageMcpServer();const lease=await server.grant({binding:{projectId:'a',role:'owner',stage:'floorplan'},authorize:async()=>({revision:3}),tools:[{name:'recognize_floorplan',description:'synthetic invalid model output',inputSchema:{type:'object'},run:async()=>{throw new LayoutOutputError('geometry','门窗超过墙线')}}]});
+ try{const [tool]=await bridgeMcpTools(lease);await assert.rejects(tool.run({}),(e:unknown)=>e instanceof McpError&&e.detail.code==='VISION_OUTPUT_GEOMETRY'&&e.detail.message.includes('门窗超过墙线')&&e.detail.repairActions[0].action==='retry_recognition')}
+ finally{lease.revoke();await server.close()}
+});
+
+test('cancellation interrupts an HTTP MCP call while waiting for response headers',async()=>{
+ const server=new StageMcpServer(),abort=new AbortController();let entered!:()=>void,release!:()=>void;const began=new Promise<void>(r=>entered=r),wait=new Promise<void>(r=>release=r);
+ const lease=await server.grant({binding:{projectId:'a',role:'owner',stage:'floorplan'},authorize:async()=>({revision:3}),tools:[{name:'slow',description:'wait',inputSchema:{type:'object'},run:async()=>{entered();await wait;return {ok:true}}}]});
+ try{const [tool]=await bridgeMcpTools(lease,abort.signal);const result=tool.run({});const rejected=assert.rejects(result,(e:unknown)=>e instanceof McpError&&e.detail.code==='CANCELLED');await began;abort.abort();await rejected}
+ finally{release();lease.revoke();await server.close()}
 });

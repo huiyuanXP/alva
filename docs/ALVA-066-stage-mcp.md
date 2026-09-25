@@ -109,3 +109,16 @@ TypeScript7的native编译器需GOMEMLIMIT=700MiB/GOGC=50/GOMAXPROCS=1；仅Node
 真实生活设计联合过程链已通过：`evidence/20260925T2026Z-ALVA066-living-joint-checkpoint/result.json`汇总同一合成项目/原生活设计thread的分类、页面确认、Markdown实际读取、复核、MCP保存请求、页面确认v1与刷新。途中模型把房间ID填入家具ID，新增CONTEXT_SCOPE_INVALID后，原thread实际收到错误并自行修正成功，失败和修复工具调用均留痕。前置样式/真实UI回执已在浏览器通过；两次持续进程OOM改为同一项目的串行新进程执行，不提高1200M限额。属于过程链验收，存在中途修复，不能当同最终SHA全票通过。
 
 最新类型检查 `20260925T202529Z-ALVA066-joint-typecheck-556150` 通过；错误修复与自动建议定向回归 `20260925T202619Z-ALVA066-context-regression-556509` 4/4通过，含错误ID不落库和MCP修复说明。neat-freak过程复核：代码/定向证据 changed-and-verified；完整业务/生产运行态 pending；MCP优先合同 verified-current；目录增量已同步；生成记忆 out-of-scope；所有未完成Worktree、私有项目和失败证据保留。
+
+
+## 2026-09-25 长调用、进入即交接与渲染修复检查点
+
+真实Chat附件选择/上传通过（20260925T202946472Z-ALVA066-floorplan-upload），私有存储原字节/SHA256与授权references原图相同。首次实际识图约300秒后只得到通用工具失败；桥接原用fetch，存在独立响应头等待上限，未取得工具完成审计，原因按传输超时排查而非附件无效。改用有660秒绝对取消信号的node:http请求，保留外层模型时限；Chat结束会取消仍在运行的辅助调用。第二轮越过旧中断点，实际返回VISION_OUTPUT_SCHEMA：geography.assumption缺失（20260925T204126Z-ALVA066-floorplan-recognize-563328）；未获得成功候选，不计识图通过。新增有限兼容：缺失说明时明确标“地理参数未核实”，不生成纬度/北向数值或修改几何；数字缺失仍拒绝。下一次实测保留辅助模型原始输出到该隔离run私有目录，并断言不继承主Chat tools/session。
+
+安装版thread/inject_items已真实验证：在无模型回复的进入步骤持久追加摘要/最新快照，新进程Resume后的真实模型可读；重复摘要最终仅1次（20260925T204104886Z-ALVA066-inject）。首轮重复2次的失败保留，原因是thread/read的有损turn视图不含原始注入项；恢复去重补查App Server返回的当前thread私有rollout，限定本stage CODEX_HOME且核对session_meta身份，流式读取，禁止取其他项目历史。阶段切换和建筑确认路径已装配该入口，失败保留未送达摘要并在页面提示及提供重试；原持久thread预检Resume仍先执行，首次迁移明确新建，不冒充恢复旧临时thread。
+
+连续Chat输入导致父组件生成新样式对象，原本会每次重建Three.js渲染器。现缓存展示样式，卸载时释放WebGL上下文；真实浏览器12次输入保持同一个renderer（20260925T205357058Z-ALVA066-render-stability）。不是完整多轮模型与浏览器同时运行的最终资源验收。
+
+类型检查20260925T205016Z-ALVA066-entry-typecheck-567997通过，随后迁移说明文字改动进入19/19相关回归20260925T205141Z-ALVA066-entry-regression-568406；前端构建20260925T205321Z-ALVA066-renderer-build-568994通过。所有重任务仍串行CPU80%/1200M/swap0。MCP传输、取消、识图错误详情、阶段入口送达、元数据重启与兼容几何边界均覆盖；最终同SHA业务门禁、真实识图/建筑/失效链、main产品集成与发布仍pending。
+
+neat-freak过程对齐：协议/定向回归/渲染局部verified-current；原图识图失败与后续兼容复测pending；生产未变，生成记忆out-of-scope，私有现场及失败证据保留。

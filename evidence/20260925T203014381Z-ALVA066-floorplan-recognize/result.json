@@ -1,0 +1,7 @@
+{
+  "pass": false,
+  "run": "20260925T203014381Z-ALVA066-floorplan-recognize",
+  "step": "recognize",
+  "privateRun": "20260925T202946472Z-ALVA066-floorplan-upload",
+  "error": "AssertionError [ERR_ASSERTION]: 您好，我是您的 alva 户型导入顾问。\n\n我已尝试调用 `recognize_floorplan` 识别您上传的户型图（附件 ID：`d1b98385-5f4c-4e09-b0dd-e770a647f823`），但工具在处理时返回了失败信息。\n\n**错误提示**：工具处理失败。\n**修复建议**：建议您稍后再次尝试，或者您可以检查上传的图片/文件格式是否清晰且符合要求（通常支持 PNG/JPEG/PDF）。\n\n如果您方便，请确认一下附件的状态，我将为您再次执行识图操作。"
+}

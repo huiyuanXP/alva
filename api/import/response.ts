@@ -4,6 +4,8 @@ export type LayoutOutputStage = 'json' | 'schema' | 'geometry';
 
 /** A failed output contract is repairable once; transport/auth failures are not. */
 export class LayoutOutputError extends Error {
+  readonly statusCode=422;
+  get detail(){return {code:'VISION_OUTPUT_'+this.stage.toUpperCase(),message:this.message.slice(0,1500),retryable:true,repairActions:[{action:'retry_recognition',message:'识图模型返回内容未通过'+this.stage+'校验，尚未采用候选。可重试识图；若持续失败，请保留原附件并报告错误，不能把输出格式错误归因于附件未上传。'}]}}
   constructor(public readonly stage: LayoutOutputStage, cause: unknown) {
     super(`户型输出${stage}校验失败：${cause instanceof Error ? cause.message : String(cause)}`);
     this.name = 'LayoutOutputError';
@@ -57,8 +59,11 @@ export function parseGeminiLayoutOutput(raw: string): SceneData {
     ...(value.doors as unknown[]).map(door => ({...asOpening(door, 'door'), kind: 'door'})),
     ...(value.windows as unknown[]).map(window => ({...asOpening(window, 'window'), kind: 'window'})),
   ];
+  const geography=(nestedGeography?value.geography:{latitude:value.latitude,north:value.north,assumption:value.assumption}) as Record<string,unknown>;
+  // This label describes uncertainty; it supplies no location, orientation or geometry.
+  const labelledGeography=geography&&typeof geography==='object'&&!Array.isArray(geography)&&geography.assumption===undefined?{...geography,assumption:'模型未提供地理说明；纬度及北向仅为未核实假设，待用户确认'}:geography;
   return parseLayoutOutput(JSON.stringify({walls:value.walls, rooms, openings, items:value.items,
-    calibration:value.calibration, geography:nestedGeography?value.geography:{latitude:value.latitude,north:value.north,assumption:value.assumption}}));
+    calibration:value.calibration, geography:labelledGeography}));
 }
 
 function asOpening(value: unknown, kind: 'door' | 'window'): Record<string, unknown> {

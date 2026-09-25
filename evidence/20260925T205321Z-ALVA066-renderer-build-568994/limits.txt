@@ -1,0 +1,6 @@
+run=20260925T205321Z-ALVA066-renderer-build-568994
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2569
+087094cb48d3549cea054cb0fd6fae6dc7425b30

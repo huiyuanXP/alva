@@ -1,0 +1,6 @@
+run=20260925T205141Z-ALVA066-entry-regression-568406
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2568
+087094cb48d3549cea054cb0fd6fae6dc7425b30

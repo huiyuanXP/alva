@@ -1,0 +1,13 @@
+[
+  {
+    "name": "get_snapshot",
+    "stage": "floorplan",
+    "isError": false
+  },
+  {
+    "name": "recognize_floorplan",
+    "stage": "floorplan",
+    "isError": true,
+    "errorCode": "VISION_OUTPUT_SCHEMA"
+  }
+]

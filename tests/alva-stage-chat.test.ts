@@ -17,6 +17,7 @@ test('actual Chat routes bridge only active MCP pack, retain threads, resume on 
   runs.push({stage,names:input.tools?.map(t=>t.name)||[],resume:!!input.resumeOnly});
   await input.session.onThread(input.session.threadId||`original-${stage}`);
   if(input.resumeOnly)return input.session.threadId!;
+  if(input.injectOnly){await input.session.onHandoffsDelivered?.((input.session.handoffs||[]).map(h=>h.id));return input.session.threadId||`original-${stage}`}
   const snapshot=await input.tools!.find(t=>t.name==='get_snapshot')!.run({}) as any;
   const p=stage==='floorplan'?snapshot.snapshot.project:snapshot.project;
   assert.equal(p.id,project.id);assert.ok(p.revision>0);
@@ -39,13 +40,13 @@ test('actual Chat routes bridge only active MCP pack, retain threads, resume on 
  try{
   const first=await chat();assert.equal(first.messages.length,2);assert.equal(first.messages[0].stage,'floorplan');
   const seeded=await store.mutate(project.id,randomUUID(),first.revision,'synthetic-building',{},p=>{const history=p.messages;seedSnapshotProject(p);p.messages=history});
-  const switchLiving=await post('/api/chat/stages/switch',{stage:'living',expectedRevision:seeded.revision});assert.equal(switchLiving.statusCode,200,switchLiving.body);
+  const switchLiving=await post('/api/chat/stages/switch',{stage:'living',expectedRevision:seeded.revision});assert.equal(switchLiving.statusCode,200,switchLiving.body);assert.equal(switchLiving.json().threads.living.deliveredIds.length,1,'Handoff delivered on entry, before the next chat');
   const living=await chat();assert.equal(living.savedVersion,0);assert.equal(living.messages.at(-1)?.stage,'living');
   const save=(await store.chatActions(project.id)).find(a=>a.kind==='save_design')!;assert.equal(save.status,'pending');
   const confirmed=await post('/api/chat/actions/confirm',{id:save.id,confirmed:true,expectedRevision:living.revision});assert.equal(confirmed.statusCode,200,confirmed.body);assert.equal(confirmed.json().savedVersion,1);
   const replay=await post('/api/chat/actions/confirm',{id:save.id,confirmed:true,expectedRevision:living.revision});assert.equal(replay.statusCode,200,replay.body);assert.equal(replay.json().savedVersion,1);
   const cancelledAfter=await post('/api/chat/actions/reject',{id:save.id});assert.equal(cancelledAfter.statusCode,409);
-  const beforeSwitch=await store.get(project.id);const switched=await post('/api/chat/stages/switch',{stage:'floorplan',expectedRevision:beforeSwitch.revision});assert.equal(switched.statusCode,200,switched.body);assert.deepEqual(runs.at(-1),{stage:'floorplan',names:[],resume:true});
+  const beforeSwitch=await store.get(project.id);const switched=await post('/api/chat/stages/switch',{stage:'floorplan',expectedRevision:beforeSwitch.revision});assert.equal(switched.statusCode,200,switched.body);assert.ok(runs.some(r=>r.stage==='floorplan'&&r.resume));assert.deepEqual(runs.at(-1)?.names,['mcp_list_tools','mcp_call_tool']);
   assert.deepEqual((await store.get(project.id)).scene,beforeSwitch.scene);
   requestReopen=true;const floor=await chat();const reopen=(await store.chatActions(project.id)).find(a=>a.kind==='reopen_topology')!;assert.ok(floor.confirmedBuilding);assert.equal(reopen.status,'pending');
   const reopened=await post('/api/chat/actions/confirm',{id:reopen.id,expectedRevision:floor.revision,confirmed:true});assert.equal(reopened.statusCode,200,reopened.body);assert.equal(reopened.json().scene,null);assert.equal(reopened.json().confirmedBuilding,undefined);assert.equal(reopened.json().messages.length,6);

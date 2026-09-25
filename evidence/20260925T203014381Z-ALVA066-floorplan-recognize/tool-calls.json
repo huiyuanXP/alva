@@ -1,0 +1,7 @@
+[
+  {
+    "name": "get_snapshot",
+    "stage": "floorplan",
+    "isError": false
+  }
+]

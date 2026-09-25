@@ -126,3 +126,5 @@ ALVA-052现役看板位于`api/todo/`与`web/todo/`，通过已有alva服务提�
 ALVA-066 业务增量：`api/room-style` 与 `packages/contracts/alva/room-style.ts` 管样式候选/确认；`web/src/room-style` 管卡片、表面颜色和材质预览。`api/furniture/recommendations.ts` 与 answer-recommendation 合同管已确认回答的候选工具，草稿不排任务。`api/mcp/ui-actions.ts` 与 `web/src/chat/use-ui-actions.ts` 管受约束页面操作及真实回执；阶段确认元数据由 store 的 alva_chat_actions 管理。上述代码未完成整票验收，不构成上线声明。
 
 ALVA-029/066联合模块：`api/user-context/`维护私有Markdown投影、来源校验与分类候选/确认；`api/review/`维护有限规则复核、取舍与采用凭证；对应前端在`web/src/user-context/`和`web/src/review/`。`api/snapshots/service.ts`为直接API/MCP共用保存门禁；`api/room-purpose/service.ts`为直接确认与Chat确认卡共用用途业务。`api/mcp/recommendation-queue.ts`调度已确认回答的持久建议任务；模型与HTTP工具仍经既有Harness。所有资料以Project为权威，Markdown只在私有ALVA_DATA_DIR内生成，不能写入产品源码或文档。
+
+`api/mcp/handoff-history.ts`仅为摘要恢复去重读取App Server返回的当前stage私有rollout，验证路径所属CODEX_HOME及thread身份；不代替Project数据、不跨项目搜历史。进入阶段由sessions/routes协调thread/inject_items，普通模型调用仍唯一走api/codex.ts。
