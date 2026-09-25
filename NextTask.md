@@ -30,6 +30,7 @@ ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完
 
 | 对象 | 当前待办原因 | 保存的位置 | 恢复后的第一步 |
 |---|---|---|---|
+| [ALVA-025](.scratch/alva-completion/issues/18-furniture-properties.md) | 家具属性与款式替换 | `furniture` | lzy | task/ALVA-025-lzy / /home/ubuntu/Alva-worktrees/ALVA-025-lzy | in-progress；api/business.ts、api/chat.ts、web/src/Panels.tsx、web/src/SceneView.tsx、测试与票内证据；端口自动分配 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | pending：用户原先要求暂停，尚未实施 | 历史负责人yang-chatgpt；f3aedbb工作区保留 | 等新的开工指令，确认ALVA-015证据与共享文件，重新登记署名后实施三个正反例及来源/幂等验收 |
 
 额外保护：`bugfix/floorplan-structured-output-preview`有5个未提交文件，当前无对应工作区执行进程，未编号、未集成；恢复前由原负责人核对，不新建假完成票、不覆盖或清理。ALVA-054整体done保留，其线上登录后核验仍是票内单独未完成边界，不因本次重启伪造通过。
