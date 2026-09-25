@@ -2,9 +2,9 @@
 
 ## 当前状态（2026-09-25）
 
-根目录`/home/ubuntu/Alva`。ALVA-053已按诊断维护范围done并集成，个人提交`17a6308`；下一步在本轮已有授权下继续ALVA-056，当前待正式恢复认领。53的28项回归、类型检查与历史候选复核通过，证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。
+根目录`/home/ubuntu/Alva`。ALVA-053已按诊断维护范围done并集成，个人提交`17a6308`；ALVA-056现由chatgpt-recovery恢复执行，独立`.runtime/worktrees/ALVA-056-recovery-20260925`。53的28项回归、类型检查与历史候选复核通过，证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。
 
-ALVA-056需要更新旧v2.5探针，直接使用普通用户的`codex --profile mimo`（当前默认Pro，另有Flash），复测并分阶段留证。原main暂存8文件与未提交2文档保持原样待56集成，不能丢失。53的native Flash候选能解析但确认拓扑失败，不自动确认设计。
+ALVA-056需要更新旧v2.5探针，直接使用普通用户的`codex --profile mimo`（当前默认Pro，另有Flash），复测并分阶段留证。原main暂存8文件与未提交文档已有私有完整备份；56认领同步本票历史文档补充，代码/证据验收后按本票范围集成，不吞并其他人的工作。53的native Flash候选能解析但确认拓扑失败，不自动确认设计。
 
 并行在途：[ALVA-057 Your Home Vision](docs/ALVA-057-home-vision.md)，yang-chatgpt，独立工作区`/home/ubuntu/Alva-worktrees/ALVA-057-yang-chatgpt`。其api/model.ts、api/intake、web入口等占用及新版附件范围以NextTask/单票为准，本轮不覆盖。ALVA-028继续用户暂停，Execution state=pending，不自动实施。
 

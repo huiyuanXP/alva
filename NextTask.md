@@ -1,5 +1,9 @@
 # What's next · 任务认领与并行开发
 
+## 当前执行：ALVA-056
+
+53已集成97c0ae7；chatgpt-recovery现正式恢复56，独立`.runtime/worktrees/ALVA-056-recovery-20260925`，只修改MiMo探针/测试/本票证据文档，采用普通用户`codex exec --profile mimo`。原v2.5暂存成果有备份并将按本票范围验收集成，不再视为不可消费的无关改动。028仍暂停，057继续yang-chatgpt，所有旧工作区保留。下方53交接及重启Pending记录按各自日期阅读，56不再pending。
+
 ## 2026-09-25 ALVA-053已完成，继续ALVA-056
 
 ALVA-053按诊断维护范围完成并集成，个人实现`17a6308`，总证据`evidence/20260925T064257Z-ALVA053-recovery-acceptance/`。JSON/schema/几何错误统一一次修正，识图显式240秒上限，普通调用仍120秒；PDF与PGlite测试隔离而未删断言。28/28、最终类型检查与历史候选重放通过；MiMo Pro业务动态工具/流式文本通过，Gemini3.8别名文本恢复；原生mimo profile的Flash识图18.663秒通过输出合同，但确认拓扑失败且约22.59m²未定义空间，不宣称户型已正确。
@@ -14,7 +18,6 @@ Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传
 
 | 对象 | 当前待办原因 | 保存的位置 | 恢复后的第一步 |
 |---|---|---|---|
-| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | pending：已有真实返回，主线集成未完成；不是仍然鉴权失败 | 历史负责人chatgpt-mimo；0d7ea5f及原main暂存8文件/未提交2文档 | 比对现有差异与证据，单任务复核5项离线测试及必要类型检查，再独立完成集成；不自动重跑模型或部署 |
 | [ALVA-028](.scratch/alva-completion/issues/21-initial-pain-analysis.md) | pending：用户原先要求暂停，尚未实施 | 历史负责人yang-chatgpt；f3aedbb工作区保留 | 等新的开工指令，确认ALVA-015证据与共享文件，重新登记署名后实施三个正反例及来源/幂等验收 |
 
 额外保护：`bugfix/floorplan-structured-output-preview`有5个未提交文件，当前无对应工作区执行进程，未编号、未集成；恢复前由原负责人核对，不新建假完成票、不覆盖或清理。ALVA-054整体done保留，其线上登录后核验仍是票内单独未完成边界，不因本次重启伪造通过。
@@ -120,7 +123,7 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | Ticket | 署名 | 工作区与范围 | 状态 |
 |---|---|---|---|
-| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) |  | 历史chatgpt-mimo；task/ALVA-056-chatgpt-mimo / .runtime/worktrees/ALVA-056-chatgpt-mimo；最新0d7ea5f；真实返回已有，main原暂存及未提交成果保留，集成未完成 | pending |
+| [ALVA-056](.scratch/alva-topology-quality/issues/02-mimo-vision-retry.md) | chatgpt-recovery | task/ALVA-056-recovery-20260925；.runtime/worktrees/ALVA-056-recovery-20260925；scripts/alva-mimo-vision-check.ts、scripts/lib/mimo-*、定向测试/证据；旧0d7ea5f保留，无生产写入 | in-progress |
 
 ## ALVA-057 Your Home Vision
 
