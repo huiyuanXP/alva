@@ -9,7 +9,7 @@ import {checkRoomRoutes, navigationAssumptions} from './navigation.js';
 const kinds: LayoutReviewKind[] = ['geometry', 'navigation', 'behavior', 'requirement', 'furniture'];
 const unique = (values: string[]) => [...new Set(values)].sort();
 export const layoutSceneFingerprint = (project: Project) => fingerprint({scene: project.scene,
-  // Room style fields supplied by later schema versions also participate through scene.
+  roomStyles:project.roomStyles,
   assets: project.assets.map(asset => ({id: asset.id, license: asset.license}))});
 const inScope = (entry: UserContextEntry, item: ItemData) =>
   (!entry.roomIds.length || entry.roomIds.includes(item.roomId)) && (!entry.objectIds.length || entry.objectIds.includes(item.id));
@@ -77,6 +77,11 @@ export function runLayoutReview(project: Project, context: UserContextReadResult
     if (item.material === 'stone' || item.material === 'glass') add('material-support-unknown', 'professional', '材料支撑待专业核实',
       '缺少重量、连接、安装与支撑资料，无法判断承载是否成立，也不能断言失效。',
       '由设计师或相关专业人员补齐材料和支撑依据；生活偏好取舍不能关闭此项。', [item.id], [room.id], [], 'low');
+  }
+  const avoidedSurface:Record<string,RegExp>={wood:/(?:不要|不喜欢|避免|不用).{0,8}(?:木质|木材|实木)/,stone:/(?:不要|不喜欢|避免|不用).{0,8}(?:石材|大理石)/,tile:/(?:不要|不喜欢|避免|不用).{0,8}(?:瓷砖|地砖)/,concrete:/(?:不要|不喜欢|避免|不用).{0,8}(?:水泥|混凝土)/};
+  for(const [roomId,style] of Object.entries(project.roomStyles||{}))for(const surface of ['wall','floor'] as const){
+   const sources=entries.filter(e=>e.category==='preferences'&&(!e.roomIds.length||e.roomIds.includes(roomId))&&avoidedSurface[style[surface].material]?.test(e.quote));
+   if(sources.length)add('room-'+surface+'-material-preference','behavior','房间表面材质与已确认偏好不同',`${surface==='wall'?'墙面':'地面'}视觉材质标记为${style[surface].material}，与本房间的避用偏好不同。`,'比较其他表面候选或明确记录保留理由；不推断实际材料性能。',[],[roomId],sources);
   }
   // Only literal, confirmed functional requests with supported asset names are tested.
   const requiredAssets = [{pattern: /(?:需要|必须有|保留).{0,8}(?:书桌|工作台)/, asset: 'alva-table', label: '书桌/操作台'},

@@ -11,7 +11,7 @@ import type {Proposal} from '../api/model.js';
 test('only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption',async()=>{
  const store=new AlvaStore();await store.init();const {project}=await store.create('synthetic answer suggestions');await store.ensureAccessCode(project.id);
  let p=await store.mutate(project.id,randomUUID(),0,'seed',{},seedLivingStage);const original=structuredClone(p.scene),headers={cookie:`alva_session=${(await store.issueInternalSession(project.id)).token}`};let calls=0;
- const app=await buildAlva(store,{assets:false,chatCodex:async input=>{
+ const app=await buildAlva(store,{assets:false,automaticRecommendations:false,chatCodex:async input=>{
   calls++;const data=await input.tools!.find(t=>t.name==='get_snapshot')!.run({}) as any;
   await input.tools!.find(t=>t.name==='suggest_furniture')!.run({expectedRevision:data.project.revision,roomIds:['room'],variants:[{title:'阅读椅候选',rationale:'根据已确认阅读习惯，在房间空闲处建议阅读椅',changes:[{action:'add',targetId:'room',values:{roomId:'room',assetId:'alva-chair',x:1,y:1}}]}]});return '已生成待确认的阅读椅候选';
  }});
@@ -38,4 +38,16 @@ test('recommendation tools reject unconfirmed invocation, disallowed assets, col
   p=await store.mutate(p.id,randomUUID(),p.revision,'replace',{},p=>applyAnswer(p,{questionId:'Q01',roomId:null,text:'不需要阅读空间',state:'answered',locked:false,confirmed:true}));
   await assert.rejects(tool.run(input('alva-chair')),/失效/);assert.equal(p.answerRecommendations![0].status,'invalidated');
  }finally{await store.close()}
+});
+
+test('server starts the stage Agent after confirmation without a follow-up browser Chat request',async()=>{
+ const store=new AlvaStore();await store.init();const {project}=await store.create('synthetic automatic trigger');await store.ensureAccessCode(project.id);
+ let p=await store.mutate(project.id,randomUUID(),0,'seed',{},seedLivingStage);let calls=0;
+ const headers={cookie:`alva_session=${(await store.issueInternalSession(project.id)).token}`};
+ const app=await buildAlva(store,{assets:false,chatCodex:async input=>{calls++;const snapshot=await input.tools!.find(t=>t.name==='get_snapshot')!.run({}) as any;await input.tools!.find(t=>t.name==='suggest_furniture')!.run({expectedRevision:snapshot.project.revision,roomIds:['room'],variants:[{title:'椅子建议',rationale:'已确认的阅读需求',changes:[{action:'add',targetId:'room',values:{roomId:'room',assetId:'alva-chair',x:1,y:1}}]}]});return '有一份家具候选等待你确认'}});
+ try{
+  const r=await app.inject({method:'POST',url:'/api/intake/confirm',headers,payload:{requestId:randomUUID(),expectedRevision:p.revision,answer:{questionId:'Q01',roomId:null,text:'需要阅读空间',state:'answered'},confirmed:true}});assert.equal(r.statusCode,200,r.body);
+  const deadline=Date.now()+10_000;do{await new Promise(resolve=>setTimeout(resolve,50));p=await store.get(p.id)}while(p.answerRecommendations?.[0]?.status!=='completed'&&Date.now()<deadline);
+  assert.equal(p.answerRecommendations![0].status,'completed');assert.equal(calls,1);assert.equal(p.proposals.length,1);assert.ok(p.messages.at(-1)?.toolCalls?.some(t=>t.name==='suggest_furniture'&&!t.isError));
+ }finally{await app.close();await store.close()}
 });

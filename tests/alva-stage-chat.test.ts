@@ -1,3 +1,4 @@
+import {ensureCurrentReview} from '../api/review/service.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -26,6 +27,7 @@ test('actual Chat routes bridge only active MCP pack, retain threads, resume on 
    if(requestReopen)await input.tools!.find(t=>t.name==='request_topology_reopen')!.run({expectedRevision:p.revision});
   }else{
    assert.ok(!input.tools!.some(t=>t.name==='recognize_floorplan'));
+   await input.tools!.find(t=>t.name==='run_layout_review')!.run({});
    await input.tools!.find(t=>t.name==='request_save')!.run({});
   }
   await input.session.onHandoffsDelivered?.((input.session.handoffs||[]).map(h=>h.id));
@@ -54,15 +56,15 @@ test('actual Chat routes bridge only active MCP pack, retain threads, resume on 
 
 test('confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm',async()=>{
  const store=new AlvaStore();await store.init();const {project}=await store.create('ALVA-066 action isolation');await store.ensureAccessCode(project.id);
- const seeded=await store.mutate(project.id,randomUUID(),0,'seed',{},seedSnapshotProject);
+ let seeded=await store.mutate(project.id,randomUUID(),0,'seed',{},seedSnapshotProject);seeded=await ensureCurrentReview(store,project.id,seeded.revision);
  const headers={cookie:`alva_session=${(await store.issueInternalSession(project.id)).token}`};const app=await buildAlva(store,{assets:false});
  const confirm=(id:string,revision:number)=>app.inject({method:'POST',url:'/api/chat/actions/confirm',headers,payload:{id,expectedRevision:revision,confirmed:true}});
  try{
   const other=(await store.create('other')).project;const otherAction=await requestChatAction(store,other,'save_design');assert.equal((await confirm(otherAction.action.id,seeded.revision)).statusCode,404);
   const reopen=await requestChatAction(store,seeded,'reopen_topology');assert.equal((await confirm(reopen.action.id,seeded.revision)).statusCode,409);
-  const save=await requestChatAction(store,seeded,'save_design');const changed=await store.mutate(project.id,randomUUID(),seeded.revision,'change-answer',{},p=>{p.answers[0].text='changed'});
+  const save=await requestChatAction(store,seeded,'save_design');let changed=await store.mutate(project.id,randomUUID(),seeded.revision,'change-answer',{},p=>{p.answers[0].text='changed'});
   assert.equal((await confirm(save.action.id,changed.revision)).statusCode,409);
-  const current=await requestChatAction(store,changed,'save_design');
+  changed=await ensureCurrentReview(store,project.id,changed.revision);const current=await requestChatAction(store,changed,'save_design');
   const results=await Promise.all([confirm(current.action.id,changed.revision),app.inject({method:'POST',url:'/api/chat/actions/reject',headers,payload:{id:current.action.id}})]);
   assert.deepEqual(results.map(r=>r.statusCode).sort(),[200,409]);const action=(await store.chatActions(project.id)).find(a=>a.id===current.action.id)!;
   assert.equal((await store.get(project.id)).savedVersion,action.status==='confirmed'?1:0);

@@ -56,9 +56,11 @@ export class AlvaStore{
   if(!row)throw new DomainError(404,'该保存请求尚无已提交快照');
   return {requestId,version:row.version,revision:row.revision,createdAt:new Date(row.created_at).toISOString()};
  }
+ private commitListeners=new Set<(project:Project)=>Promise<void>>();
+ onProjectCommitted(listener:(project:Project)=>Promise<void>){this.commitListeners.add(listener);return()=>{this.commitListeners.delete(listener)}}
  async mutate(id:string,requestId:string,expectedRevision:number|null,operation:string,input:unknown,fn:(p:Project)=>void|Promise<void>,chatActionId?:string,expectedStage?:Pick<StageChatState,'active'|'generation'>):Promise<Project>{
   const fingerprint=hash(JSON.stringify({operation,input}));
-  try{return await this.db.transaction(async tx=>{
+  try{const committed=await this.db.transaction(async tx=>{
    const row=(await tx.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1 FOR UPDATE',[id])).rows[0];if(!row)throw new DomainError(404,'项目不存在');
    const p=this.normalizeProject(row.state);
    const prior=(await tx.query<{fingerprint:string}>('SELECT fingerprint FROM alva_commands WHERE project_id=$1 AND request_id=$2',[id,requestId])).rows[0];
@@ -88,7 +90,7 @@ export class AlvaStore{
    await tx.query('UPDATE alva_projects SET state=$2 WHERE id=$1',[id,JSON.stringify(p)]);
    const receipt:CommandReceipt={kind:'command-receipt-v1',revision:p.revision,...(operation==='save'?{savedVersion:p.savedVersion}:{})};
    await tx.query('INSERT INTO alva_commands VALUES($1,$2,$3,$4)',[id,requestId,fingerprint,JSON.stringify(receipt)]);return p;
-  })}catch(error){try{await this.failure(id,operation,error instanceof DomainError?error.message:'保存或处理失败')}catch{console.error('[alva failure log unavailable]',operation)}throw error}
+  });for(const listener of this.commitListeners)await listener(committed);return committed}catch(error){try{await this.failure(id,operation,error instanceof DomainError?error.message:'保存或处理失败')}catch{console.error('[alva failure log unavailable]',operation)}throw error}
  }
  async chatActions(projectId:string):Promise<ChatAction[]>{return (await this.db.query<{state:ChatAction}>('SELECT state FROM alva_chat_actions WHERE project_id=$1 ORDER BY id',[projectId])).rows.map(r=>r.state)}
  async putChatAction(action:ChatAction){await this.db.query('INSERT INTO alva_chat_actions(id,project_id,state) VALUES($1,$2,$3)',[action.id,action.projectId,JSON.stringify(action)])}

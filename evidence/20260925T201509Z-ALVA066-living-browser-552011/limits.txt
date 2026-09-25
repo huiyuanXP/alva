@@ -1,0 +1,6 @@
+run=20260925T201509Z-ALVA066-living-browser-552011
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2588
+21e2fa9db7b24d668b74a311a54f5da2514d6c16

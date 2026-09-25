@@ -1,6 +1,6 @@
 export type ContextErrorCode = 'CONTEXT_MISSING' | 'CONTEXT_STALE' | 'CONTEXT_CORRUPT' |
   'CONTEXT_SOURCE_INVALID' | 'CONTEXT_IO_FAILED' | 'CONTEXT_BUSY' |
-  'REVIEW_SCENE_REQUIRED' | 'REVIEW_SCENE_INVALID' | 'REVIEW_STALE' | 'REVIEW_DECISION_INVALID';
+  'REVIEW_REQUIRED' | 'REVIEW_SCENE_REQUIRED' | 'REVIEW_SCENE_INVALID' | 'REVIEW_STALE' | 'REVIEW_DECISION_INVALID';
 
 /** ALVA-066 can pass detail to its MCP error envelope without exposing filesystem paths. */
 export class ContextProjectionError extends Error {

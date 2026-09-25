@@ -1,0 +1,7 @@
+{
+  "exitCode": 0,
+  "compilerExitCode": 0,
+  "oomKill": 0,
+  "runnerExitCode": 2,
+  "note": "Compiler completed successfully. Outer shell failed after the running runner file was edited; command-exit and cgroup evidence retained. Later runs capture source manifests."
+}

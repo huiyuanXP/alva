@@ -1,0 +1,21 @@
+{
+  "pass": true,
+  "run": "20260925T202351312Z-ALVA066-context-model",
+  "step": "context-model",
+  "projectId": "d1036d48-b3f8-4d08-95d4-5ac3616ad09a",
+  "threadId": "01a0da3a-3a35-7b03-a866-6b24d9be6c15",
+  "toolCalls": [
+    {
+      "name": "propose_user_context",
+      "stage": "living",
+      "isError": true,
+      "errorCode": "CONTEXT_SCOPE_INVALID"
+    },
+    {
+      "name": "propose_user_context",
+      "stage": "living",
+      "isError": false
+    }
+  ],
+  "continuedFrom": "20260925T202031435Z-ALVA066-living-browser-3a2b84"
+}

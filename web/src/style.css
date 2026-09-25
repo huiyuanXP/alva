@@ -20,3 +20,5 @@
 .chat-stages{padding:10px 16px;border-bottom:1px solid #deded8}.chat-stages>small{display:block;margin:8px 0;color:#656760}.chat-confirmation{padding:12px;margin:10px 0;background:#f3f2ec;border:1px solid #d5d8ce;border-radius:10px}.chat-confirmation p{font-size:13px;line-height:1.5}.chat-confirmation button{margin:4px 8px 0 0}
 
 .style-preview-label{position:absolute;top:10px;left:10px;z-index:3;background:#fff6d9;padding:6px 10px;border-radius:6px;font-size:12px}
+
+.save-review-dialog{position:fixed;z-index:50;inset:5vh auto auto 10vw;width:80vw;max-height:85vh;overflow:auto;padding:24px;border:1px solid #aaa;border-radius:12px;box-shadow:0 0 0 100vmax #0005}.layout-review-panel article{padding:12px 0;border-bottom:1px solid #ddd}.layout-review-panel label{display:block}.layout-review-panel small{display:inline-block;margin-right:8px}

@@ -94,3 +94,18 @@ neat-freak：本次代码/定向测试与目录说明 changed-and-verified；完
 继续实现了房间样式候选/确认与2D/3D渲染、页面视角日照操作回执、已确认答案的持久家具建议任务与主 Chat 自动触发。上述增量尚待类型/业务/浏览器验证。旧生活设计测试补建筑确认前置，未降低阶段门禁。029获得下一重任务窗口，066暂不启动新重任务；等待正式独立接口和证据后联合装配。未集成main、未发布、整票in-progress。
 
 过程检查点（非完票）：上述新增样式、UI回执、回答建议及旧测试前置改动尚未跑最终检查，029验证窗口继续保留；后续须先运行更新后的验证脚本修复失败，再做真实模型/浏览器业务链。neat-freak本次只对齐过程事实：已验协议证据 verified-current；新增代码 pending；main产品/生产未变；规则与目录说明已同步；生成记忆 out-of-scope；保留测试与Worktree现场，无清场。
+
+
+## 2026-09-25 029联合装配与自动建议检查点（整票仍进行中）
+
+029固定实现dd6f948已进入066分支（cherry-pick 21e2fa9），保留原作者；Project扩展、确认后的Markdown投影、分类候选/确认/更正、生活设计read_user_context/run_layout_review、复核取舍UI和直接/MCP共享保存门禁已装配。投影先DB提交后发布；失败不冒称确认回滚；错误保留detail中的稳定码与修复步骤。保存凭证保留真实reviewedRevision/adoptedAtRevision，roomStyles加入布局指纹。main产品未集成或部署，029仍in-progress。
+
+2d6b6cd固定源码的55/55检查通过，证据20260925T194716Z-ALVA066-validation-544764；后续联合回归51/51通过，证据20260925T200304Z-ALVA066-joint-regression-547910。自动家具建议已移到服务端持久任务队列，确认回答后无需额外浏览器Chat请求；重启后授权项目读取可恢复任务，候选仍需用户确认。随后定向8/8通过（20260925T201232Z-ALVA066-queue-regression-550947），构建通过（20260925T201448Z-ALVA066-living-build-551870）。这些是过程证据，不拼成同SHA最终业务验收。
+
+TypeScript7的native编译器需GOMEMLIMIT=700MiB/GOGC=50/GOMAXPROCS=1；仅Node堆限制不足，早期OOM run保留。受限类型检查20260925T201134Z-ALVA066-queue-typecheck-549530编译退出0、oom_kill=0；运行中修改外层runner导致收尾退出2，独立记录，不冒称整轮runner成功。后续runner增加实际源文件SHA256清单，继续CPU80%/1200M/swap0与共享锁串行。
+
+真实模型/Chromium生活设计业务验收正在进行，合成建筑仅为前置，不替代真实识图和建筑生成。两次脚本端口/origin配置错误导致未调用模型，失败证据保留；已修正端口探测、来源配置和HTTP状态断言。完整原图→识图→建筑→跨阶段→失效、服务重启与生产验收仍pending。
+
+真实生活设计联合过程链已通过：`evidence/20260925T2026Z-ALVA066-living-joint-checkpoint/result.json`汇总同一合成项目/原生活设计thread的分类、页面确认、Markdown实际读取、复核、MCP保存请求、页面确认v1与刷新。途中模型把房间ID填入家具ID，新增CONTEXT_SCOPE_INVALID后，原thread实际收到错误并自行修正成功，失败和修复工具调用均留痕。前置样式/真实UI回执已在浏览器通过；两次持续进程OOM改为同一项目的串行新进程执行，不提高1200M限额。属于过程链验收，存在中途修复，不能当同最终SHA全票通过。
+
+最新类型检查 `20260925T202529Z-ALVA066-joint-typecheck-556150` 通过；错误修复与自动建议定向回归 `20260925T202619Z-ALVA066-context-regression-556509` 4/4通过，含错误ID不落库和MCP修复说明。neat-freak过程复核：代码/定向证据 changed-and-verified；完整业务/生产运行态 pending；MCP优先合同 verified-current；目录增量已同步；生成记忆 out-of-scope；所有未完成Worktree、私有项目和失败证据保留。

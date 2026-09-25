@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "scope": "Real context classification, browser owner confirmation, Markdown read, review, save request and browser save/reread on the same isolated project and original living thread",
+  "syntheticBuildingPrerequisite": true,
+  "fullTicketAcceptance": false,
+  "sameFinalShaAcceptance": false,
+  "threadId": "01a0da3a-3a35-7b03-a866-6b24d9be6c15",
+  "runs": [
+    "20260925T202351312Z-ALVA066-context-model",
+    "20260925T202412821Z-ALVA066-context-confirm",
+    "20260925T202445603Z-ALVA066-review-model",
+    "20260925T202514938Z-ALVA066-save-confirm"
+  ],
+  "priorStyleCheckpoint": "20260925T202031435Z-ALVA066-living-browser-3a2b84/checkpoint.json",
+  "intermediateFix": "CONTEXT_SCOPE_INVALID explains room IDs vs furniture IDs; actual model repaired its invocation",
+  "pending": [
+    "real floorplan import and building generation",
+    "full stage invalidation flow",
+    "remaining failure/restart coverage",
+    "same final SHA acceptance",
+    "main integration and production release"
+  ]
+}

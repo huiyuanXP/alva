@@ -141,7 +141,13 @@ export async function readUserContextProjection(project: UserContextProject, opt
 }
 
 /** Atomic generation + atomic pointer. The exclusive lock never changes the database. */
-export async function writeUserContextProjection(project: UserContextProject, options: UserContextOptions = {}): Promise<UserContextReadResult> {
+const writeQueues=new Map<string,Promise<unknown>>();
+export async function writeUserContextProjection(project:UserContextProject,options:UserContextOptions={}):Promise<UserContextReadResult>{
+ const key=resolve(options.dataRoot||process.env.ALVA_DATA_DIR||'.runtime/alva-data',project.id),previous=writeQueues.get(key)||Promise.resolve();
+ const run=previous.catch(()=>{}).then(()=>writeProjectionGeneration(project,options));writeQueues.set(key,run);
+ try{return await run}finally{if(writeQueues.get(key)===run)writeQueues.delete(key)}
+}
+async function writeProjectionGeneration(project: UserContextProject, options: UserContextOptions = {}): Promise<UserContextReadResult> {
   const projection = buildUserContextProjection(project);
   let lock: Awaited<ReturnType<typeof open>> | undefined;
   let path = '', temporary = '', pointerTemporary = '', quarantine = '';
