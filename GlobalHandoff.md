@@ -1,8 +1,12 @@
 # GlobalHandoff
 
+## 2026-09-25 ALVA-060 当前预览
+
+同一临时 Cloudflare 链接已切换为 Codex GPT-6 Luna xhigh 的业务识图候选。模型由已有 `OPENAI_VISION_MODEL` 选择，推理强度现可用 `OPENAI_REASONING_EFFORT` 传给 App Server。17 墙/10 房/5 门窗能渲染，但拓扑失败且有 15 项诊断问题；原 MiMo 候选数据库和截图保留。入口、验证与停用方式见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)，生产未变。
+
 ## 2026-09-25 ALVA-059 MiMo 预览
 
-ALVA-056 已集成 main。用户请求的实际渲染预览在隔离 Worktree、数据库和临时 Cloudflare Tunnel 中运行；二维/全屋 Chromium 实测通过，未改生产。入口、截图、验证码位置和停用方式见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。这是待人工核对的识图候选，非已确认户型或建筑生成模型验收。
+ALVA-056 已集成 main。MiMo 候选当时在隔离 Worktree、数据库和临时 Cloudflare Tunnel 中完成二维/全屋 Chromium 实测，未改生产；同一链接随后切换为 ALVA-060 的 Luna 候选。原截图、验证码位置与历史运行边界见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。MiMo 结果仍是待人工核对的识图候选，非已确认户型或建筑生成模型验收。
 
 ## 2026-09-25 ALVA-020 完成
 

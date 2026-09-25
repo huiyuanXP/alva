@@ -1,8 +1,12 @@
 # What's next · 任务认领与并行开发
 
+## 2026-09-25 ALVA-060 已集成，预览待用户核对
+
+当前临时公网入口展示 Codex GPT-6 Luna xhigh 的首轮识图候选。使用原有 `OPENAI_VISION_MODEL` 参数和新增推理强度参数，17 墙/10 房/5 门窗可渲染，但确认拓扑失败且有 15 项诊断问题。结果、截图、原 MiMo 保留位置和停用方式见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。本票执行占用释放；预览运行态保留供用户查看，不能自动采用候选。其他署名与 ALVA-028 暂停状态不变。
+
 ## 2026-09-25 ALVA-059 预览交接
 
-ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完成并验证，公网入口、隔离数据、截图、停用方式见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。预览服务与临时 Tunnel 当前运行，待用户看完后由协调人停用；不占用产品票认领，不改 021/036/057 等署名，028 继续暂停。后续若要评价户型准确性，需对照原图由用户校核，不能以本次结构检查和渲染替代。
+ALVA-056 已合入 main；按用户要求建立的 MiMo 候选独立预览已完成并验证，历史截图与隔离数据见 [ALVA-059](docs/ALVA-059-mimo-render-preview.md)。同一链接现由 ALVA-060 展示 Luna 候选；不占用产品票认领，028 继续暂停。后续若要评价户型准确性，需对照原图由用户校核，不能以结构检查和渲染替代。
 
 ## 2026-09-25 ALVA-053/056已完成
 
@@ -109,7 +113,6 @@ git -C /home/ubuntu/Alva worktree add -b task/ALVA-xxx-<owner> /home/ubuntu/Alva
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
 | [ALVA-053 模型与拓扑诊断](docs/ALVA-053-model-topology-audit.md) |  | chatgpt-recovery已完成；task/ALVA-053-recovery-20260925 / .runtime/worktrees/ALVA-053-recovery-20260925；17a6308；诊断与解析修复已集成，不是生产户型正确性验收 | done |
-| ALVA-060 Codex Luna xhigh 识图预览 | codex | task/ALVA-060-codex-luna / .runtime/worktrees/ALVA-060-codex-luna；沿用 `api/import.ts` 的 `OPENAI_VISION_MODEL` 切换模型，在 `api/codex.ts` 透传 xhigh；独立数据、4181 预览端口，复用既有临时 Tunnel；不改生产 | in-progress |
 
 
 ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发布状态见 docs/ALVA-054-home-intake.md。ALVA-028仍按用户要求暂停。

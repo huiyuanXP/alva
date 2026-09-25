@@ -12,7 +12,8 @@ export async function runCodex(input:CodexInput):Promise<string>{
  const work=resolve(process.env.ALVA_AGENT_DIR||'.runtime/alva-agent',randomUUID());
  await mkdir(work,{recursive:true,mode:0o700});
  const home=resolve(work,'config');await mkdir(home,{mode:0o700});
- const config:Record<string,unknown>={model_provider:'alva',model_providers:{alva:{name:'Alva',base_url:process.env.OPENAI_BASE_URL||'https://chat.huiyuanxp.com/v1',env_key:'OPENAI_API_KEY',wire_api:'responses'}},project_doc_max_bytes:0,features:{shell_tool:false,apply_patch_freeform:false,multi_agent:false},web_search:'disabled',mcp_servers:{}};
+ const reasoningEffort=process.env.OPENAI_REASONING_EFFORT?.trim();
+ const config:Record<string,unknown>={model_provider:'alva',...(reasoningEffort?{model_reasoning_effort:reasoningEffort}:{}),model_providers:{alva:{name:'Alva',base_url:process.env.OPENAI_BASE_URL||'https://chat.huiyuanxp.com/v1',env_key:'OPENAI_API_KEY',wire_api:'responses'}},project_doc_max_bytes:0,features:{shell_tool:false,apply_patch_freeform:false,multi_agent:false},web_search:'disabled',mcp_servers:{}};
  const args=['app-server','--listen','stdio://'];
  const configure=(object:Record<string,unknown>,prefix='')=>{for(const [key,value]of Object.entries(object)){const path=prefix?`${prefix}.${key}`:key;if(value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length)configure(value as Record<string,unknown>,path);else args.push('-c',`${path}=${JSON.stringify(value)}`)}};configure(config);
  // CODEX_HOME is used for its documented purpose: isolate this application call's Codex configuration and state.

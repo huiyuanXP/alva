@@ -1,5 +1,11 @@
 # alva Handoff
 
+## 2026-09-25 ALVA-060 Luna 识图预览
+
+个人实现 `8964db6` 已按最新 main 合并验证并集成。已有 `OPENAI_VISION_MODEL` 决定识图模型；新增可选 `OPENAI_REASONING_EFFORT` 透传 Codex App Server，默认行为不变。隔离业务识图一次请求 GPT-6 Luna xhigh，用仓库原图返回 17 墙/10 房/5 门窗，JSON/schema/几何通过，确认拓扑失败；诊断 15 项问题、约 3.35㎡ 未定义空间、4 个墙连通分量。一次请求无自动纠错；未把可渲染误报为合格户型。
+
+同一临时 Tunnel 当前展示 Luna 候选，原 MiMo 数据和截图保留；公网 Chromium 验证二维/3D 可见、页面脚本错误 0。类型检查与 15 项导入测试通过，详见 [ALVA-060](docs/ALVA-060-codex-luna-preview.md)。未改生产服务、数据或模型配置；NextTask 已释放本票署名，其他认领保持。待用户看完再决定是否停预览和清场。
+
 ## 2026-09-25 ALVA-020 作用范围澄清与确认
 
 ALVA-020 已由 lzy 在独立 Worktree 完成并合入 main。服务端新增范围确认合同、propose_scope、确认/取消路由和候选预览/采用时的边界复核；前端新增范围确认卡片。真实 Chromium 证据为 evidence/20260925T-ALVA020-real-browser/；类型检查、生产构建和 2 项范围单元测试通过。实现提交 a20b15b，集成提交见当前 main 日志。

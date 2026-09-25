@@ -1,8 +1,12 @@
 # 恢复索引
 
+## ALVA-060 当前预览：Codex GPT-6 Luna xhigh（2026-09-25）
+
+同一临时公网入口现展示 Luna 首轮候选；已从 MiMo 切换，原 MiMo 数据与截图保留。[ALVA-060 记录](docs/ALVA-060-codex-luna-preview.md)：现役 `recognizeLayout` 使用 `OPENAI_VISION_MODEL=gpt-6-luna`，Codex App Server 通过新增可选 `OPENAI_REASONING_EFFORT=xhigh` 运行。17 墙/10 房/5 门窗通过业务 JSON/schema/几何解析，但确认拓扑失败，诊断 15 项问题、约 3.35㎡ 未定义空间和 4 个墙连通分量；页面明确标注待修正。公网二维/三维渲染与浏览器脚本错误 0 已核验，未改生产。
+
 ## ALVA-059 MiMo 候选渲染预览（2026-09-25）
 
-ALVA-056 已在 main；独立预览已载入其显式纠错成功候选，公网地址和停用方式见 [预览记录](docs/ALVA-059-mimo-render-preview.md)。Chromium 实测二维 26 墙/5 房及全屋 3D 画布可见，页面脚本错误 0。预览仍是未校准候选，不代表生产部署或新一次模型成功。
+ALVA-056 已在 main；此前独立预览载入其显式纠错成功候选，原截图和运行边界见 [预览记录](docs/ALVA-059-mimo-render-preview.md)。当时 Chromium 实测二维 26 墙/5 房及全屋 3D 画布可见，页面脚本错误 0。该候选仍未校准，不代表生产部署或新一次模型成功。
 
 ## 当前状态：ALVA-053、ALVA-056已完成
 

@@ -1,0 +1,21 @@
+{
+  "task": "ALVA-060",
+  "runId": "20260925T092752423Z-ALVA060-luna-98cecd",
+  "route": "api/import.recognizeLayout -> api/codex.runCodex",
+  "model": "gpt-6-luna",
+  "reasoningEffort": "xhigh",
+  "imageSha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+  "modelAttempts": 1,
+  "businessJsonSchemaGeometryPassed": true,
+  "counts": {"walls": 17, "rooms": 10, "openings": 5},
+  "confirmationTopologyPassed": false,
+  "topologyFailure": "T-junction lacks a shared wall node",
+  "diagnosticIssueCount": 15,
+  "undefinedAreaM2": 3.35035,
+  "wallComponents": 4,
+  "renderedPreview": "https://immune-indoor-coat-pose.trycloudflare.com",
+  "browser": {"2dWalls": 17, "2dRooms": 10, "3dCanvas": 1, "pageErrors": 0},
+  "productionMutations": false,
+  "rawOutput": "private worktree .runtime only",
+  "humanReviewRequired": true
+}

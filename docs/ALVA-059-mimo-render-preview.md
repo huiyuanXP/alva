@@ -6,6 +6,6 @@ MiMo Pro 的成功输出来自一次显式纠错 run `20260925T075949811Z-ALVA05
 
 从 main 建立隔离的 `.runtime/worktrees/ALVA-056-render-preview`，独立数据库在该 Worktree 的 `.runtime/preview-data`，使用构建后的现役 web 和 api，不连接生产数据库。候选数据直接取成功 run 的 `parsed-object.json`，经 `validateScene` 再载入；图像按原附件载入。浏览器可切换平面、全屋和漫游；全屋视图是产品对识图场景的确定性 3D 渲染，不是另一次建筑生成模型调用。
 
-运行态：用户级 `alva-mimo-preview-app.service` 监听 `127.0.0.1:4181`，`alva-mimo-preview-tunnel.service` 提供临时公网地址 `https://immune-indoor-coat-pose.trycloudflare.com`。预览验证码仅在私有 `.runtime/preview-data/access-code`，不入 Git。Quick Tunnel 地址和可用性是临时的，失效时应从该服务日志取新地址并同步应用 `ALVA_ORIGIN`。预览结束后由协调人停这两个预览单元，再审查保留的证据与 Worktree；不触碰现有 `alva.service`、`alva-tunnel.service` 或 MCP。
+运行态（本票验收时）：用户级 `alva-mimo-preview-app.service` 监听 `127.0.0.1:4181`，`alva-mimo-preview-tunnel.service` 提供临时公网地址 `https://immune-indoor-coat-pose.trycloudflare.com`。预览验证码仅在私有 `.runtime/preview-data/access-code`，不入 Git。随后 ALVA-060 将同一链接切换为 Luna 候选，当前入口和停用方式见 [ALVA-060](ALVA-060-codex-luna-preview.md)。
 
 验证：隔离前端构建成功，公网 `/healthz` 为 200；Chromium 经公网验证码进入候选页，二维 SVG 含 26 段墙、5 个房间，3D canvas 已渲染，页面脚本错误 0。截图见 [二维](../evidence/20260925T090500Z-ALVA059-mimo-preview/2d.png) 与 [三维](../evidence/20260925T090500Z-ALVA059-mimo-preview/3d.png)。这次验证只覆盖渲染与访问，没有重新调用模型、没有执行完整业务导入 SSE、没有自动确认设计。

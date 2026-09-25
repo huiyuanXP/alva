@@ -1,5 +1,9 @@
 # alva 执行进度
 
+## 2026-09-25 ALVA-060 Codex Luna xhigh 识图预览
+
+复用现役 `api/import.recognizeLayout`，`OPENAI_VISION_MODEL=gpt-6-luna`；仅给 `api/codex.runCodex` 加可选 `OPENAI_REASONING_EFFORT=xhigh`。个人实现 `8964db6` 同步最新 main 后类型检查和 15 项导入相关测试通过。一次真实 App Server 调用用仓库原图产出 17 墙/10 房/5 门窗，通过业务 JSON/schema/几何，但确认拓扑失败；诊断 15 项问题、约 3.35㎡ 未定义空间、墙连通分量 4。没有自动拓扑修正，也不宣称质量达标。隔离预览已将同一临时 Cloudflare 链接切到 Luna 候选，二维/3D Chromium 实测与公网健康通过，原 MiMo 数据和截图保留。证据与边界见 `docs/ALVA-060-codex-luna-preview.md`；未修改生产。
+
 2026-09-19 ALVA-000：新仓库与旧源码隔离；已归档完整任务和附件，36场景矩阵、任务依赖、验收断言与当前入口。
 
 - 根 npm ci --ignore-scripts、npm run check、npm run build:web：退出0。
