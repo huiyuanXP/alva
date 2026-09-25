@@ -1,0 +1,6 @@
+run=20260925T210556Z-ALVA066-ring-regression-573995
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2565
+35088eff0e6ff1b8fd20d0f78680a0868db1e4d9

@@ -22,9 +22,14 @@ export function parseLayoutOutput(raw: string): SceneData {
     value = JSON.parse(fence ? fence[1] : text);
   } catch (error) { throw new LayoutOutputError('json', error); }
   let scene: SceneData;
-  try { scene = Scene.parse(value); }
+  try { scene = Scene.parse(value);
+    // Providers may use an explicitly closed ring; our polygon contract closes it implicitly.
+    // Remove only one exact terminal copy, never internal duplicates or approximate coordinates.
+    for(const room of scene.rooms){const first=room.polygon[0],last=room.polygon.at(-1)!;if(room.polygon.length>3&&first.x===last.x&&first.y===last.y)room.polygon.pop()}
+  }
   catch (error) { throw new LayoutOutputError('schema', error); }
   try {
+    for(const room of scene.rooms)if(new Set(room.polygon.map(p=>`${p.x},${p.y}`)).size!==room.polygon.length)throw new Error('房间轮廓内部有重复顶点');
     if (!scene.walls.length || !scene.rooms.length) throw new Error('未识别出墙体或房间，不能把空户型作为导入成功');
     return validateScene(scene);
   }

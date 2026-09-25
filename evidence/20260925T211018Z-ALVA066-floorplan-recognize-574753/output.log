@@ -1,0 +1,25 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 非常抱歉，再次识别时，模型输出又出现了 Schema 校验错误（`VISION_OUTPUT_SCHEMA`）。这次的错误详情显示模型未能识别并标注房间的名称（`rooms[x].name` 字段缺失）。
+
+**现状总结**：
+连续多次识图失败，表明当前户型图的版式或内容可能超出了模型的自动识别逻辑。
+
+**修复建议**：
+既然自动识别一直未能通过结构校验，我们暂时停止继续进行完全自动的识图尝试。为了推进项目，请您：
+1. **核实附件**：该附件是否是一张带有明确房间名称标注、布局清晰的平面图？如果没有房间名称，系统可能无法补全必要元数据。
+2. **人工辅助标注**：如果方便，您是否能提供一张带简单房间用途标注的图？或者告知我房屋的户型结构（例如：几室几厅），我可以手动在系统中备注，看是否能绕过自动识图的格式依赖。
+
+您可以告知我是否需要尝试上述方案，或者您是否有其他可提供的资料。我随时准备为您处理。
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/scripts/alva-066-floorplan-check.ts:23:908) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

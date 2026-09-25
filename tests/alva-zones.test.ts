@@ -55,3 +55,13 @@ test('zone API persists semantic partitions and reopening topology clears them a
   assert.equal(reopen.statusCode,200,reopen.body);assert.deepEqual(reopen.json().zones,[]);assert.ok(reopen.json().candidate);
  }finally{await app.close();await store.close();if(previous===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=previous}
 });
+
+import {emptyProject} from '../api/model.js';
+import {applyZoneOperation} from '../api/zones-service.js';
+test('shared zone service protects locked rooms and preserves physical geometry through rename/remove',()=>{
+ const p=emptyProject('synthetic zones');p.scene=rectangle();p.confirmedTopology=createTopologyVersion(p,p.scene);const geometry=structuredClone(p.scene);
+ applyZoneOperation(p,{kind:'divide',a:{x:4,y:0},b:{x:4,y:6}});const id=p.zones![0].id;
+ applyZoneOperation(p,{kind:'rename',zoneId:id,name:'阅读区'});assert.equal(p.zones![0].name,'阅读区');assert.deepEqual(p.scene,geometry);
+ p.scene.rooms[0].locked=true;assert.throws(()=>applyZoneOperation(p,{kind:'remove',zoneId:id}),/锁定/);assert.equal(p.zones!.length,2);
+ p.scene.rooms[0].locked=false;applyZoneOperation(p,{kind:'remove',zoneId:id});assert.equal(p.zones!.length,1);assert.deepEqual(p.scene,geometry);
+});

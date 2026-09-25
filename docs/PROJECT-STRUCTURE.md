@@ -128,3 +128,5 @@ ALVA-066 业务增量：`api/room-style` 与 `packages/contracts/alva/room-style
 ALVA-029/066联合模块：`api/user-context/`维护私有Markdown投影、来源校验与分类候选/确认；`api/review/`维护有限规则复核、取舍与采用凭证；对应前端在`web/src/user-context/`和`web/src/review/`。`api/snapshots/service.ts`为直接API/MCP共用保存门禁；`api/room-purpose/service.ts`为直接确认与Chat确认卡共用用途业务。`api/mcp/recommendation-queue.ts`调度已确认回答的持久建议任务；模型与HTTP工具仍经既有Harness。所有资料以Project为权威，Markdown只在私有ALVA_DATA_DIR内生成，不能写入产品源码或文档。
 
 `api/mcp/handoff-history.ts`仅为摘要恢复去重读取App Server返回的当前stage私有rollout，验证路径所属CODEX_HOME及thread身份；不代替Project数据、不跨项目搜历史。进入阶段由sessions/routes协调thread/inject_items，普通模型调用仍唯一走api/codex.ts。
+
+ALVA-066控件共用服务补充：`api/topology/service.ts`统一拓扑编辑、修复、补墙、校准和确认；`api/zones-service.ts`统一功能分区修改，`api/mcp/zones.ts`为生活设计适配器。直接API与阶段MCP均调用这些服务，不复制几何规则。

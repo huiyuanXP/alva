@@ -1,0 +1,6 @@
+run=20260925T210345Z-ALVA066-vision-replay-573465
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2561
+35088eff0e6ff1b8fd20d0f78680a0868db1e4d9

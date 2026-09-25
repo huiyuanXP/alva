@@ -5,7 +5,7 @@ import type {AlvaStore} from '../store.js';
 import {DomainError,type Project} from '../model.js';
 import {readFloorplanAttachment} from '../import/attachments.js';
 import {importFloorplan} from '../import/service.js';
-import {applyCandidateTopology,calibrateCandidate} from '../topology/service.js';
+import {applyCandidateTopology,calibrateCandidate,repairCandidateTopology,drawCandidateWall} from '../topology/service.js';
 import {TopologyCommand} from '../topology/commands.js';
 import {firstTopologyRepairIssue} from '../topology/repair.js';
 import {generateBuildingCandidate} from '../building/service.js';
@@ -30,6 +30,12 @@ export function floorplanTools(context:FloorplanToolsContext):BusinessTool[]{
   tool('edit_topology','调整待校正户型的墙线、房间标注或门窗；已确认户型必须先由用户明确确认返回修改。修改会使校准失效。',Revision.extend({operation:TopologyCommand}).strict(),async b=>{
    const p=await current(b.expectedRevision);if(p.confirmedTopology)throw new DomainError(422,'请先请求返回修改户型，由用户确认放弃后续设计');
    return output(await store.mutate(projectId,randomUUID(),b.expectedRevision,'candidate-topology',b,state=>applyCandidateTopology(state,b)));
+  }),
+  tool('repair_topology','按 inspect_topology 返回的最新 issueId 和用户选择的 optionId 修复候选。不得猜测用户选择；修复后校准失效。',Revision.extend({issueId:z.string().min(1),optionId:z.string().min(1)}).strict(),async b=>{
+   await current(b.expectedRevision);return output(await store.mutate(projectId,randomUUID(),b.expectedRevision,'candidate-topology-repair',b,p=>repairCandidateTopology(p,b)));
+  }),
+  tool('draw_wall','按用户明确给出的起点和终点补画候选墙；共用二维按钮的吸附、分段与几何检查。修改使校准失效，不修改已确认拓扑。',Revision.extend({a:z.object({x:z.number().finite(),y:z.number().finite()}).strict(),b:z.object({x:z.number().finite(),y:z.number().finite()}).strict()}).strict(),async b=>{
+   await current(b.expectedRevision);return output(await store.mutate(projectId,randomUUID(),b.expectedRevision,'candidate-draw-wall',b,p=>drawCandidateWall(p,b)));
   }),
   tool('calibrate_floorplan','按用户明确提供的墙长与来源校准候选。不得编造长度或把校准当成建筑确认。',Revision.extend({wallId:z.string().min(1),length:z.number().positive(),source:z.string().min(1)}).strict(),async b=>{
    const p=await current(b.expectedRevision);if(p.confirmedTopology)throw new DomainError(422,'请先明确确认返回修改户型');

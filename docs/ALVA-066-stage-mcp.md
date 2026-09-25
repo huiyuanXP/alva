@@ -122,3 +122,13 @@ TypeScript7的native编译器需GOMEMLIMIT=700MiB/GOGC=50/GOMAXPROCS=1；仅Node
 类型检查20260925T205016Z-ALVA066-entry-typecheck-567997通过，随后迁移说明文字改动进入19/19相关回归20260925T205141Z-ALVA066-entry-regression-568406；前端构建20260925T205321Z-ALVA066-renderer-build-568994通过。所有重任务仍串行CPU80%/1200M/swap0。MCP传输、取消、识图错误详情、阶段入口送达、元数据重启与兼容几何边界均覆盖；最终同SHA业务门禁、真实识图/建筑/失效链、main产品集成与发布仍pending。
 
 neat-freak过程对齐：协议/定向回归/渲染局部verified-current；原图识图失败与后续兼容复测pending；生产未变，生成记忆out-of-scope，私有现场及失败证据保留。
+
+## 2026-09-25 原图复测与现有控件覆盖增量
+
+实际辅助模型的闭合环输出仅移除与起点完全相同的一个末尾点；内部重复顶点、错误evidence类型及无效几何仍拒绝。原始修正输出回放通过22墙/5房/9开口且无拓扑修复项（20260925T210346430Z-ALVA066-vision-replay）；20/20导入回归通过（20260925T210556Z-ALVA066-ring-regression-573995）。回放未写入验收项目，不能替代新一次真实识图。
+
+同附件/原thread的新识图20260925T211018Z-ALVA066-floorplan-recognize-574753仍失败：模型修正JSON漏rooms.name，并将地理字段置顶。主Chat错误推测图片缺少标注，已强化错误提示约束：VISION_OUTPUT_*是模型输出校验问题，不据此责怪附件或要求重传。首轮和修正提示现在显式附完整JSON Schema，并强调name/purpose及嵌套geography；不把缺失name自动猜补为成功。下一轮真实复测待执行。
+
+补齐户型repair_topology/draw_wall、生活设计edit_functional_zone；直接API/按钮与MCP共用topology/service及zones-service。已确认拓扑修改必须先明确返回修改；功能分区不改实体墙，锁定房间拒绝写入。新增阶段工具还须实际Chat验收，不以接口注册计完成。续跑脚本alva-066-floorplan-continue.ts只使用真实识图项目，校准长度明确标隔离合成输入，浏览器确认后检查立即交接和原thread身份。
+
+该增量类型检查20260925T211518Z-ALVA066-adapter-typecheck-578877通过；随后修正分区API只向严格schema传业务字段，41/41导入/拓扑/分区/阶段Chat回归通过20260925T211611Z-ALVA066-adapter-regression-579235。neat-freak过程事实已核对：本次代码/回归verified-current；真实识图、完整同SHA业务验收及生产pending；规则合同不变，生成记忆out-of-scope，现场保留。此检查点不关闭066/029。

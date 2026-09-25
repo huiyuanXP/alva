@@ -1,0 +1,28 @@
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (13.628078ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (0.955789ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (1.846098ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (6.074482ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.831571ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (4.199863ms)
+✔ ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds (0.685335ms)
+✔ ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate (1.266079ms)
+✔ ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair (31.218877ms)
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.770067ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (9177.841456ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.574242ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (12.391561ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (3.720012ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (0.978524ms)
+✔ Gemini 3.8 default recognizes its observed split-opening response after one repair (4.43718ms)
+✔ Gemini field mapping still rejects an opening outside its wall (2.877242ms)
+✔ Gemini recognizes unified openings with top-level geography after one repair (3.588144ms)
+✔ missing Gemini geography explanation gains an uncertainty label without changing geometry or accepting missing coordinates (42.475576ms)
+✔ an exact terminal closing vertex is equivalent, while internal repeated points remain invalid (1.549059ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15331.409989

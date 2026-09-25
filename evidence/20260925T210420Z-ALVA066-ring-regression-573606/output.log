@@ -1,0 +1,40 @@
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.55918ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (10042.602391ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.901903ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (13.747106ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (3.86202ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (0.933193ms)
+✔ Gemini 3.8 default recognizes its observed split-opening response after one repair (6.222746ms)
+✔ Gemini field mapping still rejects an opening outside its wall (5.729237ms)
+✔ Gemini recognizes unified openings with top-level geography after one repair (2.79051ms)
+✔ missing Gemini geography explanation gains an uncertainty label without changing geometry or accepting missing coordinates (1.750974ms)
+✖ an exact terminal closing vertex is equivalent, while internal repeated points remain invalid (5.774848ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14157.660038
+
+✖ failing tests:
+
+test at tests/alva-import.test.ts:1:11314
+✖ an exact terminal closing vertex is equivalent, while internal repeated points remain invalid (5.774848ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/tests/alva-import.test.ts:103:120)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /重复顶点/,
+    operator: 'throws',
+    diff: 'simple'
+  }
