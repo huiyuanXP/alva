@@ -103,12 +103,12 @@ export function applyChanges(scene:SceneData,changes:Change[],professional=false
   }
   if(change.action==='purpose'){if(!allowPurpose)reject('房间用途必须通过独立确认流程');if(!room)reject('房间不存在');if(room!.locked)reject('房间已锁定');const v=z.object({purpose:z.string().min(1).max(120)}).strict().parse(change.values);room!.purpose=v.purpose;continue}
   if(change.action==='add'){
-   const v=z.object({assetId:z.string(),roomId:z.string(),x:z.number().finite(),y:z.number().finite(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const added=itemFromAsset(v.assetId,v.roomId,snapFurniture(v.x),snapFurniture(v.y));if(v.newId)added.id=v.newId;validateFurniturePlacement(s,added,false);s.items.push(added);continue;
+   const v=z.object({assetId:z.string(),roomId:z.string(),x:z.number().finite(),y:z.number().finite(),newId:z.string().uuid().optional(),sourceId:z.string().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const added=itemFromAsset(v.assetId,v.roomId,snapFurniture(v.x),snapFurniture(v.y));if(v.newId)added.id=v.newId;if(v.sourceId)added.sourceId=v.sourceId;validateFurniturePlacement(s,added,false);s.items.push(added);continue;
   }
   if(!item)reject('家具实例不存在');if(item!.locked||s.rooms.find(r=>r.id===item!.roomId)?.locked)reject('家具或房间已锁定，请单独解除');
   if(change.action==='remove'){s.items=s.items.filter(i=>i.id!==item!.id);continue}
   if(change.action==='copy'||change.action==='transfer'){
-   const v=z.object({roomId:z.string(),x:z.number().finite(),y:z.number().finite(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const cloned={...item!,id:v.newId||randomUUID(),sourceId:item!.id,roomId:v.roomId,x:snapFurniture(v.x),y:snapFurniture(v.y)};validateFurniturePlacement(s,cloned,false);if(change.action==='transfer')s.items=s.items.filter(i=>i.id!==item!.id);s.items.push(cloned);continue;
+   const v=z.object({roomId:z.string(),x:z.number().finite(),y:z.number().finite(),newId:z.string().uuid().optional(),sourceId:z.string().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const cloned={...item!,id:v.newId||randomUUID(),sourceId:item!.id,roomId:v.roomId,x:snapFurniture(v.x),y:snapFurniture(v.y)};validateFurniturePlacement(s,cloned,false);if(change.action==='transfer')s.items=s.items.filter(i=>i.id!==item!.id);s.items.push(cloned);continue;
   }
   if(change.action==='update'){
    const patch=normalizedFurniturePatch(change.values);Object.assign(item!,patch);if(['assetId','x','y','rotation','width','depth','height'].some(key=>key in patch))validateFurniturePlacement(s,item!,true);
