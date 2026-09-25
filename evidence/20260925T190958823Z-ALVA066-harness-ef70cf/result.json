@@ -1,0 +1,118 @@
+{
+  "pass": true,
+  "run": "20260925T190958823Z-ALVA066-harness-ef70cf",
+  "handoffInjections": 1,
+  "deliveryCallbacks": [
+    [
+      "709f73ec-149d-411b-b132-fbad7c39b5ad"
+    ],
+    [
+      "709f73ec-149d-411b-b132-fbad7c39b5ad"
+    ]
+  ],
+  "transport": "dynamicTools-to-HTTP-MCP",
+  "turns": [
+    {
+      "stage": "floorplan",
+      "threadId": "01a0d9f9-755b-7fe2-97d8-38984f7b8b55",
+      "resumed": false,
+      "revision": 2,
+      "nonceReturned": true,
+      "repairExplained": true,
+      "methods": [
+        "configWarning",
+        "remoteControl/status/changed",
+        "thread/started",
+        "warning",
+        "thread/status/changed",
+        "turn/started",
+        "item/started",
+        "item/completed",
+        "item/tool/call",
+        "thread/tokenUsage/updated",
+        "account/rateLimits/updated",
+        "item/agentMessage/delta",
+        "turn/completed"
+      ]
+    },
+    {
+      "stage": "living",
+      "threadId": "01a0d9f9-8ac0-7800-9548-e03b820ba101",
+      "resumed": false,
+      "revision": 3,
+      "nonceReturned": true,
+      "repairExplained": true,
+      "methods": [
+        "configWarning",
+        "remoteControl/status/changed",
+        "thread/started",
+        "warning",
+        "thread/status/changed",
+        "turn/started",
+        "item/started",
+        "item/completed",
+        "item/tool/call",
+        "thread/tokenUsage/updated",
+        "account/rateLimits/updated",
+        "item/agentMessage/delta",
+        "turn/completed"
+      ]
+    },
+    {
+      "stage": "floorplan",
+      "threadId": "01a0d9f9-755b-7fe2-97d8-38984f7b8b55",
+      "resumed": true,
+      "revision": 4,
+      "nonceReturned": true,
+      "repairExplained": true,
+      "methods": [
+        "configWarning",
+        "remoteControl/status/changed",
+        "deprecationNotice",
+        "thread/status/changed",
+        "thread/tokenUsage/updated",
+        "thread/goal/cleared",
+        "warning",
+        "turn/started",
+        "item/started",
+        "item/completed",
+        "item/tool/call",
+        "account/rateLimits/updated",
+        "item/agentMessage/delta",
+        "turn/completed"
+      ]
+    }
+  ],
+  "calls": [
+    {
+      "stage": "floorplan",
+      "name": "read_floorplan",
+      "error": false
+    },
+    {
+      "stage": "floorplan",
+      "name": "check_revision",
+      "error": true
+    },
+    {
+      "stage": "living",
+      "name": "read_living",
+      "error": false
+    },
+    {
+      "stage": "living",
+      "name": "check_revision",
+      "error": true
+    },
+    {
+      "stage": "floorplan",
+      "name": "read_floorplan",
+      "error": false
+    },
+    {
+      "stage": "floorplan",
+      "name": "check_revision",
+      "error": true
+    }
+  ]
+}

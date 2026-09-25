@@ -70,3 +70,17 @@ MCP 为默认优先调用渠道。错误必须从工具返回可解释结构，�
 - 受控桥接：run `20260925T185430Z-ALVA066-mcp-a42664`。dynamicTools 从所属 HTTP MCP 的 tools/list 获取目录，实际经 HTTP tools/call 执行；户型、生活设计、返回户型共三次模型实际调用并正确返回随机 nonce。重启 App Server 后 Resume 同一户型 thread，并恢复原动态工具目录。结果 pass=true。
 - 下一步按批准的后备路径实施 dynamicTools→HTTP MCP，保留两包边界、凭据与业务合同。尚需真实业务、跨阶段拒绝、摘要送达、持久化、附件、问卷建议、样式/UI回执和生产验收，整票继续 in-progress。
 - 初始 systemd 探针因未继承 PATH 找不到 codex，在模型调用前失败；第二次显式传递 PATH 与已授权环境变量后运行。真实密钥不写仓库。各探针资源限额 CPU60%、MemoryMax900M、TasksMax128。
+
+## 2026-09-25 运行层与共用服务实施（仍未完成整票）
+
+已在本 Worktree 实现：`api/mcp` 两个本机路径、短期项目/角色/阶段凭据、真实 HTTP 桥接与可解释错误；`api/codex.ts` 显式持久 session/原 thread Resume、交接 marker 去重及辅助调用默认临时；`api/store.ts` 独立于设计快照的阶段/thread/摘要/送达元数据。增加阶段读取/切换 API 和真实私有附件上传 API。图片/PDF处理、识图导入、拓扑操作和建筑生成/确认抽到共用服务，原直接 API 使用同一实现。户型工具工厂已建立，尚未装配到主 Chat。
+
+真实修改后 Harness 验证：`evidence/20260925T190756786Z-ALVA066-harness-026e3b/result.json` 三轮真实模型/MCP调用及错误修复解释通过；增加摘要恢复检查后的 `evidence/20260925T190958823Z-ALVA066-harness-ef70cf/result.json` 再次通过，持久 rollout 中交接只注入一次。两轮都使用合成项目，无生产数据；不是完整业务/浏览器验收。
+
+共用服务回归：`evidence/20260925T191625Z-ALVA066-validation-536401/`，类型检查和33项定向测试通过，0失败/跳过，覆盖私有附件错误/跨项目、阶段凭据与错误、数据库重启会话与摘要、直接导入/拓扑/校准/建筑回归。早期锁忙记录保留为 not-started，不计测试失败或通过。`scripts/alva-066-validate.sh` 持共享重任务锁、等待最多600秒、每10秒写heartbeat、按步骤保留日志；验证进程由有资源限额的systemd运行，等待须追踪同一session/unit而非重复启动。
+
+尚待：确认操作卡及服务端确认闭环；主 Chat实际装配/分阶段消息与页面切换；生活设计工具、回答确认后的家具建议、房间样式2D/3D、UI回执；完整模型/浏览器业务链及异常验收；main集成、备份发布和生产验收。当前没有主 Chat MCP 上线声明，不将其他票标done。
+
+029协调：已按用户消息回复主目录 `.runtime/alva-coordination/ALVA-066-029-reply.md`。029负责 `api/user-context`、`api/review` 和纯合同，066负责Project可选userContextEntries、确认后投影hook和共享入口；私有投影在 ALVA_DATA_DIR/user-context/<projectId>/，habits/preferences/requirements/unresolved/index 分代原子写入。接受 createUserContextTools/createLayoutReviewTools 返回 BusinessTool[] 拼入生活设计包。真实客户内容不进协调文件。联合接入仍待029模块交付，066当前已完成业务接入范围继续按main，不提前取其未验分支。
+
+neat-freak：本次代码/定向测试与目录说明 changed-and-verified；完整运行态、业务验收、生产发布 pending；生成记忆 out-of-scope。所有Worktree与私有会话保留，未清场，整票 in-progress。

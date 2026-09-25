@@ -1,0 +1,41 @@
+✔ ALVA-012 generates two topology-bound layouts and confirms each saved preview (12617.311561ms)
+✔ ALVA-012 rejects a forged output and retains no unverified building (5598.943564ms)
+✔ building generation uses dedicated OPENAI_BUILDING_MODEL without changing general OPENAI_MODEL (1.007255ms)
+✔ building generation normalizes provider items alias and fixed units before strict validation (2.907125ms)
+✔ reopen confirmed topology returns to 2D candidate and discards downstream room design while preserving source context (5314.026771ms)
+✔ ALVA-011 validates opening bounds, overlap, wall association and vertical clearance (1.893608ms)
+✔ ALVA-011 edits openings, calibrates, confirms immutable topology and survives reload (10882.663236ms)
+✔ real private attachment bytes are scoped by project and corruption is explainable (37.030443ms)
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (2.344178ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (10797.474411ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.885515ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (13.253382ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (3.663725ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (0.947435ms)
+✔ Gemini 3.8 default recognizes its observed split-opening response after one repair (4.433607ms)
+✔ Gemini field mapping still rejects an opening outside its wall (2.893303ms)
+✔ Gemini recognizes unified openings with top-level geography after one repair (2.837358ms)
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (139.911654ms)
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (75.704109ms)
+✔ expired grants and cancellation cannot execute tools (9.320654ms)
+✔ stage threads, summaries and delivery IDs survive store restart and preserve legacy messages (11292.751289ms)
+✔ ALVA-010 keeps shared vertices and stable IDs while correcting a non-rectangular multi-room candidate (28.292271ms)
+✔ ALVA-010 rejects zero, duplicate and crossing topology with a located 422 error (59.652837ms)
+✔ ALVA-010 persists topology changes, clears calibration, survives reload and replays idempotently (11118.41917ms)
+✔ topology errors identify walls by room and direction, explain T-junction cause and give repair options (2.595251ms)
+✔ owner can choose a T-junction repair and backend performs exact split, snap or removal (5.062801ms)
+✔ automatic T-junction split migrates openings to the correct new wall segment and rejects an opening spanning the split (1.671083ms)
+✔ canvas wall drawing snaps to wall bodies, splits hosts and creates connected wall without user coordinates (2.977225ms)
+✔ canvas wall drawing prefers nearby endpoints and rejects accidental tiny walls (0.435511ms)
+✔ wall graph derives non-rectangular room faces and keeps semantic names when walls define an L-shaped area (0.680392ms)
+✔ near-horizontal or near-vertical dragged wall endpoint snaps exactly orthogonal within ten degrees (0.312297ms)
+✔ moving a nearly horizontal wall endpoint snaps to 90 degrees and derived room boundary follows the wall (0.740261ms)
+✔ room rename is semantic metadata and persists while wall-derived polygon remains authoritative (1.682912ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 84919.362124

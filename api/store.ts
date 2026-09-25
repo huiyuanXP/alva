@@ -1,3 +1,4 @@
+import {initialChatState,type StageChatState} from './mcp/sessions.js';
 import {PGlite} from '@electric-sql/pglite';
 import {createHash,randomBytes,randomUUID,timingSafeEqual} from 'node:crypto';
 import {mkdir,readFile,writeFile,chmod} from 'node:fs/promises';
@@ -15,6 +16,7 @@ export class AlvaStore{
  CREATE TABLE IF NOT EXISTS alva_links(id text PRIMARY KEY,project_id text NOT NULL,token_hash text UNIQUE NOT NULL,role text NOT NULL,revoked boolean NOT NULL DEFAULT false);
  CREATE TABLE IF NOT EXISTS alva_sessions(token_hash text PRIMARY KEY,link_id text,project_id text,role text,auth_generation integer,expires_at timestamptz NOT NULL);
  CREATE TABLE IF NOT EXISTS alva_access_config(id integer PRIMARY KEY CHECK(id=1),project_id text,code_hash text NOT NULL,generation integer NOT NULL DEFAULT 1,updated_at timestamptz NOT NULL DEFAULT now());
+ CREATE TABLE IF NOT EXISTS alva_chat_stages(project_id text PRIMARY KEY,state jsonb NOT NULL);
  CREATE TABLE IF NOT EXISTS alva_commands(project_id text NOT NULL,request_id text NOT NULL,fingerprint text NOT NULL,response jsonb NOT NULL,PRIMARY KEY(project_id,request_id));
  CREATE TABLE IF NOT EXISTS alva_versions(project_id text NOT NULL,version integer NOT NULL,summary text NOT NULL,state jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(project_id,version));
  CREATE TABLE IF NOT EXISTS alva_failures(id text PRIMARY KEY,project_id text,operation text NOT NULL,reason text NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
@@ -73,6 +75,21 @@ export class AlvaStore{
    const receipt:CommandReceipt={kind:'command-receipt-v1',revision:p.revision,...(operation==='save'?{savedVersion:p.savedVersion}:{})};
    await tx.query('INSERT INTO alva_commands VALUES($1,$2,$3,$4)',[id,requestId,fingerprint,JSON.stringify(receipt)]);return p;
   })}catch(error){try{await this.failure(id,operation,error instanceof DomainError?error.message:'保存或处理失败')}catch{console.error('[alva failure log unavailable]',operation)}throw error}
+ }
+ async chatState(id:string):Promise<StageChatState>{
+  const project=await this.get(id);
+  const row=(await this.db.query<{state:StageChatState}>('SELECT state FROM alva_chat_stages WHERE project_id=$1',[id])).rows[0];
+  return row?.state||initialChatState(project);
+ }
+ async updateChatState(id:string,update:(state:StageChatState,project:Project)=>void):Promise<StageChatState>{
+  return this.db.transaction(async tx=>{
+   const project=(await tx.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1 FOR UPDATE',[id])).rows[0]?.state;
+   if(!project)throw new DomainError(404,'项目不存在');
+   const state=(await tx.query<{state:StageChatState}>('SELECT state FROM alva_chat_stages WHERE project_id=$1',[id])).rows[0]?.state||initialChatState(project);
+   update(state,this.normalizeProject(project));
+   await tx.query('INSERT INTO alva_chat_stages(project_id,state) VALUES($1,$2) ON CONFLICT(project_id) DO UPDATE SET state=EXCLUDED.state',[id,JSON.stringify(state)]);
+   return state;
+  });
  }
  async close(){await this.db.close()}
 }

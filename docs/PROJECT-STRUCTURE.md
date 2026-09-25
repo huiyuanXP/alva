@@ -118,3 +118,7 @@ ALVA-052现役看板位于`api/todo/`与`web/todo/`，通过已有alva服务提�
 ## ALVA-055 拓扑诊断增量
 
 `api/topology/{planar-graph,diagnostics,routes}.ts`负责只读图分析、布尔运算和鉴权路由装配；`polygon-clipping@0.15.7`仅后端使用。`packages/contracts/alva/topology-diagnostics.ts`是无运行时依赖的返回类型，不复制/迁移Scene schema。`web/src/topology/`展示检查、定位和SVG覆盖层，main.tsx仅装配。测试夹具在tests/fixtures/alva，明确为合成复现；命令与证据见[拓扑质量](TOPOLOGY-QUALITY.md)。本票因编辑工具仅允许项目内路径，独立Git Worktree放.runtime/worktrees/ALVA-055-chatgpt-topology；分支/依赖/测试数据仍隔离，不把该目录当主工作树。
+
+## ALVA-066 阶段 MCP 与会话
+
+`api/mcp/` 承载户型/生活设计 MCP 的本机 HTTP 传输、凭据绑定、可解释错误与阶段会话编排；`api/codex.ts` 仍为唯一 Codex 进程协议入口。会话元数据由 `api/store.ts` 的 `alva_chat_stages` 持久化，独立于设计快照，恢复设计不会替换会话 ID。主 Chat 显式传入持久 session，辅助模型默认临时且不继承 MCP。目录和过程实现不代表 ALVA-066 已验收，实际集成状态见票据。
