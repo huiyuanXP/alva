@@ -3,34 +3,20 @@ import {z} from 'zod';
 import {runCodex,type CodexInput} from '../codex.js';
 import type {Project,SceneData} from '../model.js';
 import {BuildingScene,validateBuildingScene,type BuildingSceneData} from './types.js';
+import {normalizeStructuredOutput} from '../import.js';
 
 export type BuildingCodexCall=(input:CodexInput)=>Promise<string>;
-const normalizeGeneratedOutput=(raw:unknown,topology:SceneData):unknown=>{
- if(!raw||typeof raw!=='object'||!Array.isArray((raw as any).components))return raw;
- const aliases:Record<string,string>={wall:'plaster',wall_finish:'plaster',flooring:'floor',floor_finish:'floor',tile:'floor',metal_frame:'metal',window_frame:'metal',glass_panel:'glass'};
- return {...raw,components:(raw as any).components.map((component:any,index:number)=>{
-  const next={...component};
-  if(typeof next.id!=='string'&&typeof next.kind==='string'&&typeof next.topologyId==='string')next.id=`${next.kind}-${next.topologyId}-${index}`;
-  if(typeof next.material==='string')next.material=aliases[next.material]||next.material;
-  if(typeof next.color==='string'&&/^#?[a-f0-9]{6}$/i.test(next.color))next.color=next.color.startsWith('#')?next.color:`#${next.color}`;
-  if(next.kind==='floor'&&typeof next.rotation!=='number')next.rotation=0;
-  const room=topology.rooms.find(item=>item.id===next.topologyId);
-  if(room&&next.kind==='floor'){
-   const xs=room.polygon.map(point=>point.x),ys=room.polygon.map(point=>point.y),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
-   next.position={x:(minX+maxX)/2,y:0,z:(minY+maxY)/2};next.size={x:Math.max(maxX-minX,.01),y:.08,z:Math.max(maxY-minY,.01)};next.rotation=0;
-  }
-  const wall=topology.walls.find(item=>item.id===next.topologyId);
-  if(wall&&next.kind==='wall'){
-   const dx=wall.b.x-wall.a.x,dy=wall.b.y-wall.a.y,len=Math.hypot(dx,dy),rotation=Math.atan2(dy,dx);
-   next.position={x:(wall.a.x+wall.b.x)/2,y:wall.height/2,z:(wall.a.y+wall.b.y)/2};next.size={x:Math.max(len,.01),y:Math.max(wall.height,.01),z:Math.max(wall.thickness,.01)};next.rotation=rotation;
-  }
-  const opening=topology.openings.find(item=>item.id===next.topologyId),openingWall=opening&&topology.walls.find(item=>item.id===opening.wallId);
-  if(opening&&openingWall&&['door-frame','window-frame','glass'].includes(next.kind)){
-   const dx=openingWall.b.x-openingWall.a.x,dy=openingWall.b.y-openingWall.a.y,len=Math.hypot(dx,dy),rotation=Math.atan2(dy,dx),x=openingWall.a.x+opening.offset*dx,z=openingWall.a.y+opening.offset*dy;
-   const depth=next.kind==='glass'?.03:.12;next.position={x,y:opening.sill+opening.height/2,z};next.size={x:Math.max(opening.width,.01),y:Math.max(opening.height,.01),z:depth};next.rotation=rotation;
-  }
-  return next;
- })};
+export function buildingGenerationModel(){return process.env.OPENAI_BUILDING_MODEL?.trim()||process.env.OPENAI_MODEL?.trim()||'gpt-5.5'}
+const normalizeGeneratedOutput=(raw:unknown,topology:SceneData,version:number,fingerprint:string):unknown=>{
+ if(!raw||typeof raw!=='object')return raw;const source=raw as any;if(source.topologyVersion!==undefined&&source.topologyVersion!==version)throw new Error('建筑输出回指的拓扑版本不匹配');if(source.topologyFingerprint!==undefined&&source.topologyFingerprint!==fingerprint)throw new Error('建筑输出回指的拓扑指纹不匹配');const provided=Array.isArray(source.components)?source.components:Array.isArray(source.items)?source.items:[];
+ const materialAliases:Record<string,string>={wall:'plaster',wall_finish:'plaster',flooring:'floor',floor_finish:'floor',tile:'floor',metal_frame:'metal',window_frame:'metal',glass_panel:'glass'};
+ const style=(topologyId:string,kind:string,material:string,color:string)=>{const match=provided.find((c:any)=>c?.topologyId===topologyId&&c?.kind===kind)||provided.find((c:any)=>c?.topologyId===topologyId);const m=typeof match?.material==='string'?(materialAliases[match.material]||match.material):material,c=typeof match?.color==='string'&&/^#?[a-f0-9]{6}$/i.test(match.color)?(match.color.startsWith('#')?match.color:`#${match.color}`):color;return {material:['concrete','plaster','wood','metal','glass','floor'].includes(m)?m:material,color:c}};
+ const components:any[]=[];
+ for(const room of topology.rooms){const xs=room.polygon.map(point=>point.x),ys=room.polygon.map(point=>point.y),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);components.push({id:`floor-${room.id}`,kind:'floor',topologyId:room.id,position:{x:(minX+maxX)/2,y:0,z:(minY+maxY)/2},size:{x:Math.max(maxX-minX,.01),y:.08,z:Math.max(maxY-minY,.01)},rotation:0,...style(room.id,'floor','floor','#D9D1C3')})}
+ for(const wall of topology.walls){const dx=wall.b.x-wall.a.x,dy=wall.b.y-wall.a.y,len=Math.hypot(dx,dy);components.push({id:`wall-${wall.id}`,kind:'wall',topologyId:wall.id,position:{x:(wall.a.x+wall.b.x)/2,y:wall.height/2,z:(wall.a.y+wall.b.y)/2},size:{x:Math.max(len,.01),y:Math.max(wall.height,.01),z:Math.max(wall.thickness,.01)},rotation:Math.atan2(dy,dx),...style(wall.id,'wall','plaster','#FFFFFF')})}
+ for(const opening of topology.openings){const wall=topology.walls.find(item=>item.id===opening.wallId);if(!wall)continue;const dx=wall.b.x-wall.a.x,dy=wall.b.y-wall.a.y,len=Math.hypot(dx,dy),rotation=Math.atan2(dy,dx),position={x:wall.a.x+opening.offset*dx,y:opening.sill+opening.height/2,z:wall.a.y+opening.offset*dy};if(opening.kind==='door')components.push({id:`door-${opening.id}`,kind:'door-frame',topologyId:opening.id,position,size:{x:Math.max(opening.width,.01),y:Math.max(opening.height,.01),z:.12},rotation,...style(opening.id,'door-frame','wood','#8B6B4A')});else{components.push({id:`window-${opening.id}`,kind:'window-frame',topologyId:opening.id,position,size:{x:Math.max(opening.width,.01),y:Math.max(opening.height,.01),z:.12},rotation,...style(opening.id,'window-frame','metal','#6D7478')});components.push({id:`glass-${opening.id}`,kind:'glass',topologyId:opening.id,position,size:{x:Math.max(opening.width,.01),y:Math.max(opening.height,.01),z:.03},rotation,...style(opening.id,'glass','glass','#9FC4CF')})}}
+ const pts=topology.walls.flatMap(w=>[w.a,w.b]),xs=pts.map(p=>p.x),ys=pts.map(p=>p.y),cx=xs.length?(Math.min(...xs)+Math.max(...xs))/2:0,cz=ys.length?(Math.min(...ys)+Math.max(...ys))/2:0,span=Math.max(xs.length?Math.max(...xs)-Math.min(...xs):6,ys.length?Math.max(...ys)-Math.min(...ys):6,6),camera=source.camera&&source.camera.position&&source.camera.target?source.camera:{position:{x:cx+span*.9,y:Math.max(6,span*.75),z:cz+span*.9},target:{x:cx,y:1,z:cz}};
+ return {units:'meters',topologyVersion:version,topologyFingerprint:fingerprint,components,camera};
 };
 const strictSchema=()=>{const schema=z.toJSONSchema(BuildingScene);const strict=(node:any)=>{if(!node||typeof node!=='object')return;if(node.properties){node.required=Object.keys(node.properties);node.additionalProperties=false}delete node.default;for(const value of Object.values(node))if(Array.isArray(value))value.forEach(strict);else if(value&&typeof value==='object')strict(value)};strict(schema);return schema};
 export function buildingPrompt(project:Project,topology:SceneData,version:number,fingerprint:string){
@@ -44,14 +30,14 @@ export function buildingPrompt(project:Project,topology:SceneData,version:number
 
 export async function generateBuilding(project:Project,topology:SceneData,version:number,fingerprint:string,signal?:AbortSignal,codex:BuildingCodexCall=runCodex):Promise<BuildingSceneData>{
  const image=project.sourceImage?`data:${project.sourceImage.mime};base64,${project.sourceImage.data}`:undefined;
- const base=buildingPrompt(project,topology,version,fingerprint),input={images:image?[image]:[],model:process.env.OPENAI_MODEL||'gpt-5.5',outputSchema:strictSchema(),signal};
+ const base=buildingPrompt(project,topology,version,fingerprint),input={images:image?[image]:[],model:buildingGenerationModel(),outputSchema:strictSchema(),signal};
  const raw=await codex({text:base,...input});
- try{return validateBuildingScene(normalizeGeneratedOutput(JSON.parse(raw),topology),topology,version,fingerprint)}catch(error){
+ try{return validateBuildingScene(normalizeGeneratedOutput(JSON.parse(normalizeStructuredOutput(raw)),topology,version,fingerprint),topology,version,fingerprint)}catch(error){
   if(signal?.aborted)throw error;
   const repaired=await codex({text:`${base}\n上一轮输出未通过服务端校验：${error instanceof Error?error.message:'结构无效'}。请只修正这些问题并返回完整JSON；不要改变任何拓扑实体、坐标、开口、房间关系或版本指纹。特别检查：position.y 是竖向高度、position.z 才是拓扑平面 y；material 只能是 concrete/plaster/wood/metal/glass/floor；每个 color 必须补齐为 # 加六位十六进制（如 #FFFFFF）。上一轮输出：${raw.slice(0,120000)}`,...input});
-  return validateBuildingScene(normalizeGeneratedOutput(JSON.parse(repaired),topology),topology,version,fingerprint);
+  return validateBuildingScene(normalizeGeneratedOutput(JSON.parse(normalizeStructuredOutput(repaired)),topology,version,fingerprint),topology,version,fingerprint);
  }
 }
 
-export function buildingFailureMessage(error:unknown){return error instanceof Error?error.message:'建筑生成失败，请重试';}
+export function buildingFailureMessage(error:unknown){const message=error instanceof Error?error.message:String(error||'');if(/429|too many requests|retry limit/i.test(message))return '建筑生成模型当前请求受限（429），与户型拓扑本身无关。请稍后重试，或为 OPENAI_BUILDING_MODEL 切换可用模型。';return message||'建筑生成失败，请重试';}
 export const buildingRequestId=()=>randomUUID();
