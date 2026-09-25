@@ -1,0 +1,17 @@
+{
+  "ticket": "ALVA-020",
+  "runId": "20260925T-ALVA020-real-browser",
+  "pass": true,
+  "checks": {
+    "ambiguous_scope_prompts": true,
+    "no_candidate_before_confirmation": true,
+    "cancel_preserves_design": true,
+    "scope_confirmed_explicitly": true,
+    "candidate_bound_to_scope": true,
+    "accept_within_scope": true,
+    "server_rejects_out_of_scope": true,
+    "locked_targets_excluded": true,
+    "scope_requests_seen": 2,
+    "console_errors": []
+  }
+}

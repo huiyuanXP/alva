@@ -1,5 +1,9 @@
 # alva Handoff
 
+## 2026-09-25 ALVA-020 作用范围澄清与确认
+
+ALVA-020 已由 lzy 在独立 Worktree 完成并合入 main。服务端新增范围确认合同、propose_scope、确认/取消路由和候选预览/采用时的边界复核；前端新增范围确认卡片。真实 Chromium 证据为 evidence/20260925T-ALVA020-real-browser/；类型检查、生产构建和 2 项范围单元测试通过。实现提交 a20b15b，集成提交见当前 main 日志。
+
 ## 2026-09-25 ALVA-053/056已完成（当前恢复入口）
 
 ALVA-053诊断修复已集成`97c0ae7`；ALVA-056个人实现`fbfe8e8`在本次main单票集成，Status=done，NextTask当前执行占用已释放。源基线`b34cc23`。本票范围为原生MiMo复测和导入输出合同修复，不是生产全链路或户型测绘准确性验收。
@@ -40,7 +44,7 @@ Pro在旧120秒业务时限下超时；240秒App Server复试的提权/环境传
 
 当前 44 张产品 Ticket 中，ALVA-008–013、ALVA-014–019、ALVA-043 已完成并集成 `main`。To Do List 仍由 https://prod.huiyuanxp.com/todo 只读展示。
 
-44票均有 Parallel lane；当前依赖就绪为 ALVA-020、023、028、031、036、041，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
+44票均有 Parallel lane；当前依赖就绪为 ALVA-023、028、031、036、041，其中 ALVA-028 已由 yang-chatgpt 认领并按用户要求暂不实施，其余未认领。协作权威入口仍为 NextTask，网页只读展示，不开放网页认领或修改状态。
 
 认领在主目录署名即生效，协调锁内提交；每票独立Worktree/分支及运行资源。同组或共享文件冲突先协调。个人完成提交后不移除署名；main集成验证通过后，同一实现提交更新done、移除任务行和署名、补充所有新解锁任务，保留票内署名及原实现SHA供追溯。
 
