@@ -1,0 +1,31 @@
+{
+  "runId": "20260925T121030404Z-ALVA064-replay-b206bd",
+  "model": "gemini-3.8-flash-high",
+  "cases": [
+    {
+      "source": ".runtime/20260925T120518698Z-ALVA064-gemini-prodkey-d7528e/raw-response-2.txt",
+      "rawSha256": "426b79936efe97495ff63670dc778253b6a4abc3a60221f61e45f26f7f9e8b53",
+      "attempts": [
+        {
+          "model": "gemini-3.8-flash-high",
+          "reasoningEffort": "high"
+        },
+        {
+          "model": "gemini-3.8-flash-high",
+          "reasoningEffort": "high"
+        }
+      ],
+      "counts": {
+        "walls": 18,
+        "rooms": 5,
+        "openings": 9
+      },
+      "topologyError": "",
+      "issues": 0,
+      "undefinedAreaM2": 0,
+      "wallComponents": 1,
+      "ok": true
+    }
+  ],
+  "ok": true
+}

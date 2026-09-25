@@ -47,3 +47,44 @@ test('floor-plan contract normalization accepts equivalent provider field shapes
  const normalized=normalizeSceneContract(provider) as any;
  assert.deepEqual(normalized.walls[0].a,{x:0,y:0});assert.deepEqual(normalized.walls[0].evidence,[]);assert.equal(normalized.rooms[0].purpose,'书房');assert.equal(normalized.rooms[0].locked,false);assert.equal(normalized.openings[0].kind,'door');assert.equal(normalized.openings[0].sill,0);assert.deepEqual(normalized.items,[]);assert.equal(normalized.calibration,null);assert.equal(normalized.geography.latitude,31);
 });
+
+test('Gemini 3.8 default recognizes its observed split-opening response after one repair',async()=>{
+ const priorVision=process.env.OPENAI_VISION_MODEL,priorModel=process.env.OPENAI_MODEL,priorEffort=process.env.OPENAI_VISION_REASONING_EFFORT;
+ delete process.env.OPENAI_VISION_MODEL;delete process.env.OPENAI_VISION_REASONING_EFFORT;process.env.OPENAI_MODEL='chat-model-must-not-be-used';
+ const source=scene();const {geography,openings,...rest}=source;
+ const split={...rest,rooms:source.rooms.map(({purpose,...room})=>room),doors:openings.map(({kind,...opening})=>opening),windows:[],...geography};
+ const calls:any[]=[];
+ try{
+  const result=await recognizeLayout('data:image/png;base64,'+png,undefined,undefined,async input=>{calls.push(input);return calls.length===1?'not JSON':JSON.stringify(split)});
+  assert.equal(layoutRecognitionModel(),'gemini-3.8-flash-high');
+  assert.equal(calls.length,2);assert.ok(calls.every(input=>input.model==='gemini-3.8-flash-high'&&input.reasoningEffort==='high'));
+  assert.equal(result.openings.length,1);assert.equal(result.openings[0].kind,'door');
+  assert.deepEqual(result.walls[0].a,source.walls[0].a);assert.equal(result.rooms[0].purpose,source.rooms[0].name);
+ }finally{
+  if(priorVision===undefined)delete process.env.OPENAI_VISION_MODEL;else process.env.OPENAI_VISION_MODEL=priorVision;
+  if(priorModel===undefined)delete process.env.OPENAI_MODEL;else process.env.OPENAI_MODEL=priorModel;
+  if(priorEffort===undefined)delete process.env.OPENAI_VISION_REASONING_EFFORT;else process.env.OPENAI_VISION_REASONING_EFFORT=priorEffort;
+ }
+});
+
+test('Gemini field mapping still rejects an opening outside its wall',async()=>{
+ const priorVision=process.env.OPENAI_VISION_MODEL;process.env.OPENAI_VISION_MODEL='gemini-3.8-flash-high';
+ const source=scene();const {geography,openings,...rest}=source;
+ const split={...rest,doors:openings.map(({kind,...opening})=>({...opening,offset:0.01})),windows:[],...geography};
+ let calls=0;
+ try{
+  await assert.rejects(recognizeLayout('data:image/png;base64,'+png,undefined,undefined,async()=>++calls===1?'not JSON':JSON.stringify(split)),/超出墙体/);
+  assert.equal(calls,2);
+ }finally{if(priorVision===undefined)delete process.env.OPENAI_VISION_MODEL;else process.env.OPENAI_VISION_MODEL=priorVision}
+});
+
+test('Gemini recognizes unified openings with top-level geography after one repair',async()=>{
+ const priorVision=process.env.OPENAI_VISION_MODEL;process.env.OPENAI_VISION_MODEL='gemini-3.8-flash-high';
+ const source=scene();const {geography,...rest}=source;const provider={...rest,...geography};
+ let calls=0;
+ try{
+  const result=await recognizeLayout('data:image/png;base64,'+png,undefined,undefined,async()=>++calls===1?'not JSON':JSON.stringify(provider));
+  assert.equal(calls,2);assert.equal(result.walls.length,4);assert.equal(result.openings.length,1);
+  assert.deepEqual(result.geography,geography);
+ }finally{if(priorVision===undefined)delete process.env.OPENAI_VISION_MODEL;else process.env.OPENAI_VISION_MODEL=priorVision}
+});

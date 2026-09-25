@@ -23,3 +23,7 @@
 当前发布为已验核心成果，不意味着完整八组产品范围验收完成；最新证据及未完功能见Handoff。
 
 公共入口：生产私有环境中ALVA_PUBLIC_ACCESS_TOKEN绑定现有公共项目链接。浏览器POST /api/public-access：已有有效会话保持角色/项目，否则交换配置的公共链接为本设备会话。令牌不返回前端；公开域名即可重复进入。取消公共入口可删除该变量并重启alva.service，恢复仅项目链接进入。当前用户明确要求公共访问，不主动关闭此配置。
+
+## 户型识别默认模型
+
+ALVA-064 起，图片户型识别使用 `OPENAI_VISION_MODEL=gemini-3.8-flash-high` 和 `OPENAI_VISION_REASONING_EFFORT=high`；普通聊天继续由 `OPENAI_MODEL` 独立选择。现役值在私有 `.runtime/alva-prod.env`，仓库仅保存 `.env.example`。变更生产模型须先在隔离数据中跑真实图片、严格解析与几何检查，再重启 `alva.service` 和验证公网导入；仅改聊天模型不应隐式改变识图默认值。

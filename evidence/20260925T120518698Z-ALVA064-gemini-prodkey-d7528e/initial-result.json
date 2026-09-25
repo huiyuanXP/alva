@@ -1,0 +1,57 @@
+{
+  "runId": "20260925T120518698Z-ALVA064-gemini-prodkey-d7528e",
+  "startedAt": "2026-09-25T12:05:18.722Z",
+  "imageSha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+  "model": "gemini-3.8-flash-high",
+  "reasoningEffort": "high",
+  "route": "api/import.recognizeLayout → api/codex.runCodex",
+  "attempts": [
+    {
+      "model": "gemini-3.8-flash-high",
+      "reasoningEffort": "high",
+      "timeoutMs": 600000,
+      "outputSchema": true,
+      "eventCounts": {
+        "configWarning": 1,
+        "remoteControl/status/changed": 1,
+        "thread/started": 1,
+        "warning": 1,
+        "thread/status/changed": 2,
+        "turn/started": 1,
+        "item/started": 4,
+        "item/completed": 4,
+        "item/reasoning/summaryPartAdded": 1,
+        "item/reasoning/summaryTextDelta": 55,
+        "item/agentMessage/delta": 127,
+        "thread/tokenUsage/updated": 1,
+        "account/rateLimits/updated": 1,
+        "turn/completed": 1
+      }
+    },
+    {
+      "model": "gemini-3.8-flash-high",
+      "reasoningEffort": "high",
+      "timeoutMs": 600000,
+      "outputSchema": true,
+      "eventCounts": {
+        "configWarning": 1,
+        "remoteControl/status/changed": 1,
+        "thread/started": 1,
+        "warning": 1,
+        "thread/status/changed": 2,
+        "turn/started": 1,
+        "item/started": 4,
+        "item/completed": 4,
+        "item/reasoning/summaryPartAdded": 1,
+        "item/reasoning/summaryTextDelta": 54,
+        "item/agentMessage/delta": 118,
+        "thread/tokenUsage/updated": 1,
+        "account/rateLimits/updated": 1,
+        "turn/completed": 1
+      }
+    }
+  ],
+  "validCandidate": false,
+  "error": "LayoutOutputError: 户型输出schema校验失败：Gemini 户型字段形状不在已验证的兼容范围内",
+  "finishedAt": "2026-09-25T12:09:37.912Z"
+}

@@ -5,14 +5,14 @@ import {resolve} from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {codexTimeoutMs} from './codex-timeout.js';
 export type BusinessTool={name:string;description:string;inputSchema:unknown;run:(args:unknown)=>Promise<unknown>};
-export type CodexInput={text:string;images?:string[];model?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
+export type CodexInput={text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
 /** Codex App Server. One ephemeral process/thread per call; explicit bounded deadlines. */
 export async function runCodex(input:CodexInput):Promise<string>{
  const timeoutMs=codexTimeoutMs(input.timeoutMs);
  const work=resolve(process.env.ALVA_AGENT_DIR||'.runtime/alva-agent',randomUUID());
  await mkdir(work,{recursive:true,mode:0o700});
  const home=resolve(work,'config');await mkdir(home,{mode:0o700});
- const reasoningEffort=process.env.OPENAI_REASONING_EFFORT?.trim();
+ const reasoningEffort=input.reasoningEffort?.trim()||process.env.OPENAI_REASONING_EFFORT?.trim();
  const config:Record<string,unknown>={model_provider:'alva',...(reasoningEffort?{model_reasoning_effort:reasoningEffort}:{}),model_providers:{alva:{name:'Alva',base_url:process.env.OPENAI_BASE_URL||'https://chat.huiyuanxp.com/v1',env_key:'OPENAI_API_KEY',wire_api:'responses'}},project_doc_max_bytes:0,features:{shell_tool:false,apply_patch_freeform:false,multi_agent:false},web_search:'disabled',mcp_servers:{}};
  const args=['app-server','--listen','stdio://'];
  const configure=(object:Record<string,unknown>,prefix='')=>{for(const [key,value]of Object.entries(object)){const path=prefix?`${prefix}.${key}`:key;if(value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length)configure(value as Record<string,unknown>,path);else args.push('-c',`${path}=${JSON.stringify(value)}`)}};configure(config);

@@ -1,0 +1,55 @@
+{
+  "runId": "20260925T120458387Z-ALVA064-replay-fc5c99",
+  "model": "gemini-3.8-flash-high",
+  "cases": [
+    {
+      "source": "/home/ubuntu/Alva-worktrees/ALVA-062-codex-gemini/.runtime/20260925T111820350Z-ALVA062-gemini38-aa64b9/raw-response-2.txt",
+      "rawSha256": "c8ab3bf94b5766b7ed9aff0b1f4233480077f86b829293ef6bfc8afd98f515bc",
+      "attempts": [
+        {
+          "model": "gemini-3.8-flash-high",
+          "reasoningEffort": "high"
+        },
+        {
+          "model": "gemini-3.8-flash-high",
+          "reasoningEffort": "high"
+        }
+      ],
+      "counts": {
+        "walls": 20,
+        "rooms": 6,
+        "openings": 9
+      },
+      "topologyError": "",
+      "issues": 0,
+      "undefinedAreaM2": 0,
+      "wallComponents": 1,
+      "ok": true
+    },
+    {
+      "source": "/home/ubuntu/Alva-worktrees/ALVA-063-codex-selfreview/.runtime/20260925T114342944Z-ALVA063-selfreview-d5bf96/raw-generation-2.txt",
+      "rawSha256": "36291abfa15184ca8883de3934ddbe42f4d4909bac342834c573a05ed17e3d88",
+      "attempts": [
+        {
+          "model": "gemini-3.8-flash-high",
+          "reasoningEffort": "high"
+        },
+        {
+          "model": "gemini-3.8-flash-high",
+          "reasoningEffort": "high"
+        }
+      ],
+      "counts": {
+        "walls": 19,
+        "rooms": 5,
+        "openings": 7
+      },
+      "topologyError": "",
+      "issues": 0,
+      "undefinedAreaM2": 0,
+      "wallComponents": 1,
+      "ok": true
+    }
+  ],
+  "ok": true
+}

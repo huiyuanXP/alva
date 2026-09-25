@@ -29,6 +29,45 @@ export function parseLayoutOutput(raw: string): SceneData {
   catch (error) { throw new LayoutOutputError('geometry', error); }
 }
 
+/** Accept the observed Gemini split-opening shape after its normal repair attempt.
+ * Field names change; coordinates, opening measurements and wall references do not.
+ */
+export function parseGeminiLayoutOutput(raw: string): SceneData {
+  if (raw.length > 2_000_000) throw new LayoutOutputError('json', '户型输出超过2MB限制');
+  let value: Record<string, unknown>;
+  try { value = JSON.parse(raw); }
+  catch (error) { throw new LayoutOutputError('json', error); }
+  const allowed = new Set(['walls', 'rooms', 'openings', 'doors', 'windows', 'items', 'calibration', 'geography', 'latitude', 'north', 'assumption']);
+  const unified = Array.isArray(value?.openings);
+  const split = Array.isArray(value?.doors) && Array.isArray(value?.windows);
+  const nestedGeography = value?.geography !== undefined;
+  if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).some(key => !allowed.has(key)) ||
+      !Array.isArray(value.walls) || !Array.isArray(value.rooms) || unified === split ||
+      !Array.isArray(value.items) || value.items.length || value.calibration !== null ||
+      (unified && (value.doors !== undefined || value.windows !== undefined)) ||
+      (split && value.openings !== undefined) ||
+      (nestedGeography && (value.latitude !== undefined || value.north !== undefined || value.assumption !== undefined)))
+    throw new LayoutOutputError('schema', 'Gemini 户型字段形状不在已验证的兼容范围内');
+  const rooms = value.rooms.map(room => {
+    if (!room || typeof room !== 'object' || Array.isArray(room)) throw new LayoutOutputError('schema', '房间字段无效');
+    const record = room as Record<string, unknown>;
+    return {...record, purpose: record.purpose ?? record.name};
+  });
+  const openings = unified ? value.openings : [
+    ...(value.doors as unknown[]).map(door => ({...asOpening(door, 'door'), kind: 'door'})),
+    ...(value.windows as unknown[]).map(window => ({...asOpening(window, 'window'), kind: 'window'})),
+  ];
+  return parseLayoutOutput(JSON.stringify({walls:value.walls, rooms, openings, items:value.items,
+    calibration:value.calibration, geography:nestedGeography?value.geography:{latitude:value.latitude,north:value.north,assumption:value.assumption}}));
+}
+
+function asOpening(value: unknown, kind: 'door' | 'window'): Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new LayoutOutputError('schema', '门窗字段无效');
+  const opening = value as Record<string, unknown>;
+  if (opening.kind !== undefined && opening.kind !== kind) throw new LayoutOutputError('schema', '门窗类型冲突');
+  return opening;
+}
+
 export function layoutRepairPrompt(raw: string, error: LayoutOutputError): string {
   return `上一轮户型候选的${error.stage}阶段校验失败：${error.message.slice(0, 2500)}。
 请对照同一原图修正JSON，只允许这一次修正。返回满足原schema的完整纯JSON对象，不要Markdown或说明。
