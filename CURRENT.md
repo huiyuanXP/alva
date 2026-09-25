@@ -1,3 +1,7 @@
+## 2026-09-26 ALVA-040 日照独立实现，阶段接入待066
+
+ALVA-040：`chatgpt-sunlight`，独立提交 `7c5129e`；日照与真实阴影里程碑通过17项测试、完整类型/构建及13项浏览器检查。仍在进行，等待ALVA-066的生活设计MCP与受控UI回执，未集成/部署，不占用其他任务的共享入口。当前认领以 [NextTask](NextTask.md) 为准，详见 [单票](.scratch/alva-completion/issues/33-sunlight-seasons.md)。
+
 ## ALVA-065 主 Chat 入口与 Harness 已固定（2026-09-25）
 
 主 Chat 的代码身份在 `api/main-chat-agent.ts`，入口为登录后左侧咨询栏和 `POST /api/chat`，运行器为 Codex App Server 的 `api/codex.ts`。后续功能同票完成受控工具适配，验收标准与 Prompt 见[主 Chat 合同](docs/ALVA-065-main-chat-agent.md)及[接入模板](docs/MAIN-CHAT-FEATURE-PROMPT.md)。当前识图、建筑生成等仍是直接入口，未冒充 Chat 已接入。

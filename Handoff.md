@@ -1,3 +1,9 @@
+## 2026-09-26 ALVA-040 日照独立实现，阶段接入待066
+
+ALVA-040 由 chatgpt-sunlight 认领并在独立分支 `task/ALVA-040-chatgpt-sunlight` 提交 `7c5129e`。统一两种3D视图的日照与投影，修正早晚方向和建筑夜间直射，时间/日期变化不重建视图；显示真太阳时、日期、纬度、北向和估算限制。17/17回归（含7350组参数）、完整类型检查、前端构建、真实浏览器13/13检查通过，控制台错误0；相同参数画面哈希一致，项目/revision/快照不变。
+
+仍为 **in-progress**：生活设计MCP、主Chat实际调用与UI action回执等待ALVA-066。产品代码和证据只在 `/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight`，未合入main或部署。工作区内 `docs/ALVA-040-sunlight.md`、单票Implementation handoff与 `evidence/20260925T192458558Z-ALVA040-browser-110e48/` 是本里程碑入口；失败run、编译中止与资源采样保留。未改057/066/029共享入口、生产服务或配置；复核现场保留，不清场。
+
 ## 2026-09-25 ALVA-066 运行层过程交接（未整票完成）
 
 个人提交 `e731910`，独立Worktree中实现两阶段HTTP MCP、真实桥接、持久thread/摘要去重、私有附件和共用导入/拓扑/建筑服务。真实修改后Harness两轮独立验收通过，含原thread恢复、错误修复说明和摘要仅注入一次；类型检查及33项定向回归通过，证据见个人票据。main产品未集成/发布，主Chat装配、生活设计/样式/确认UI和完整业务验收继续。029分工/私有Markdown合同已在指定协调目录回复；原057、029、040署名保持。重任务等待脚本已有heartbeat，当前验证已终止成功，不重复启动。

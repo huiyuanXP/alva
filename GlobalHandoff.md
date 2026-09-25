@@ -1,3 +1,9 @@
+## 2026-09-26 ALVA-040 日照独立实现，阶段接入待066
+
+ALVA-040 由 chatgpt-sunlight 认领并在独立分支 `task/ALVA-040-chatgpt-sunlight` 提交 `7c5129e`。统一两种3D视图的日照与投影，修正早晚方向和建筑夜间直射，时间/日期变化不重建视图；显示真太阳时、日期、纬度、北向和估算限制。17/17回归（含7350组参数）、完整类型检查、前端构建、真实浏览器13/13检查通过，控制台错误0；相同参数画面哈希一致，项目/revision/快照不变。
+
+仍为 **in-progress**：生活设计MCP、主Chat实际调用与UI action回执等待ALVA-066。产品代码和证据只在 `/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight`，未合入main或部署。工作区内 `docs/ALVA-040-sunlight.md`、单票Implementation handoff与 `evidence/20260925T192458558Z-ALVA040-browser-110e48/` 是本里程碑入口；失败run、编译中止与资源采样保留。未改057/066/029共享入口、生产服务或配置；复核现场保留，不清场。
+
 ## 2026-09-25 用户信息投影协作合同
 
 029负责独立用户上下文/布局审查模块，066负责MCP和共享入口装配。确认的私有位置为运行数据根 user-context/<projectId>/，分类 habits/preferences/requirements/unresolved/index，Project持久数据为权威，Markdown为分代原子生成且带revision/来源指纹/hash的可重建投影，不进Git；正式模块合同随029提交。当前协作答复在 `.runtime/alva-coordination/ALVA-066-029-reply.md`，不含客户内容。066运行层过程代码仍只在独立Worktree，不能据此宣称生产已切MCP。

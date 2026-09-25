@@ -31,3 +31,9 @@
 - 首批范围：`web/src/SceneView.tsx`、`web/src/BuildingView.tsx`、`web/src/scene/` 日照模块、无副作用共享合同及本票测试/脚本/文档。
 - 协调等待：不修改057/066占用的 `web/src/main.tsx`、`api/chat.ts`、`api/model.ts`、`api/store.ts`、`api/api.ts` 或 `api/mcp/`。生活设计 MCP 和带回执的 UI action 按066合同接入后，才可关闭整票。
 - 重型任务持有 `.git/alva-heavy-task.lock` 串行执行，CPU80%、内存1200M（浏览器1600M）、Tasks128，并留资源采样；不修改生产或MCP配置。
+
+## Independent worktree checkpoint — 2026-09-26（新加坡时间）
+
+独立实现提交 `7c5129e`（`task/ALVA-040-chatgpt-sunlight`）。17项数学/Three.js与既有视角回归、完整类型检查、前端构建、真实浏览器13项检查通过，页面/控制台错误0。两个视图的日照、阴影、相机保持、参数重现和项目/快照不变已验；保留失败与资源证据。
+
+产品代码尚未合入main；本票继续in-progress。生活设计MCP和主Chat受控UI action回执按ALVA-066接口衔接，不修改057/066/029占用的共享入口。完整实施说明和截图在个人工作区 `/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight` 的 `docs/ALVA-040-sunlight.md` 与 `evidence/20260925T192458558Z-ALVA040-browser-110e48/`，不能将个人分支证据当作主线/生产已验收。
