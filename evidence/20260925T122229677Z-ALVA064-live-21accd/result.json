@@ -1,0 +1,15 @@
+{
+  "runId": "20260925T122229677Z-ALVA064-live-21accd",
+  "origin": "https://prod.huiyuanxp.com",
+  "startedAt": "2026-09-25T12:22:29.903Z",
+  "ok": true,
+  "homepageStatus": 200,
+  "projectReadable": true,
+  "revisionUnchanged": true,
+  "pageErrors": 0,
+  "consoleErrors": 0,
+  "unauthorizedPaths": [
+    "/api/session"
+  ],
+  "finishedAt": "2026-09-25T12:22:31.932Z"
+}

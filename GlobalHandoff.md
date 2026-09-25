@@ -1,3 +1,7 @@
+## 2026-09-25 ALVA-064 现役图片识图模型
+
+生产 `alva.service` 已发布 main `4870b0d`：图片户型识别默认 Gemini 3.8 Flash High、high 推理强度，聊天模型独立保持 Gemini 3.1 Flash Lite。公网登录后只读验收通过，项目 revision 不变、页面错误 0；[发布与回滚记录](docs/ALVA-064-gemini-default-release.md)。同会话截图自查仍是隔离 Skill，户型准确性待用户对照原图；ALVA-028 暂停。
+
 # GlobalHandoff
 
 2026-09-25 ALVA-036 已在 main 完成集成验收；只有显式保存创建全局快照，失败回滚与同请求重试已验证。快照列表/只读预览和恢复仍由 ALVA-037/038 实施；未部署生产。恢复入口见 [ALVA-036 单票](.scratch/alva-completion/issues/29-manual-snapshot.md)和 NextTask。

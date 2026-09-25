@@ -1,3 +1,7 @@
+## 2026-09-25 ALVA-064 生产发布交接
+
+main `4870b0d` 已将 Gemini 3.8 Flash High 设为图片户型识别默认模型，并在生产私有环境显式固定 `OPENAI_VISION_MODEL` 与 high 推理强度；普通聊天仍为 Gemini 3.1 Flash Lite。`alva.service` 已重启，健康、首页和登录后只读项目验收通过，revision 不变、页面错误 0。备份、回滚 Worktree、真实模型回放与边界见[发布记录](docs/ALVA-064-gemini-default-release.md)。本机旧验证码文件不匹配，不应再用于验收；用户提供的有效码只在验收进程内使用，未轮换、未写入仓库。候选准确性待用户对照原图，028 暂停。
+
 # alva Handoff
 
 ## 2026-09-25 ALVA-036 完成验收与集成
