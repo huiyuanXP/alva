@@ -1,3 +1,7 @@
+## 2026-09-25 MCP 默认接入约束
+
+所有后续用户功能必须同票接入所属阶段 MCP，主 Chat 优先实际调用工具；错误通过 MCP 提供可解释原因和用户修复步骤。权威合同见 [主 Chat 合同](docs/ALVA-065-main-chat-agent.md)，迁移票为 [ALVA-066](docs/ALVA-066-stage-mcp.md)。规则已更新，运行实现尚待完成，不能把接入计划当作上线状态。
+
 ## 2026-09-25 主 Chat 接入规则
 
 现役主 Chat 入口固定为登录后左侧咨询栏 → `POST /api/chat`；Agent 身份在 `api/main-chat-agent.ts`，Codex App Server Harness 在 `api/codex.ts`，工具白名单在 `api/chat.ts`。后续用户功能在同票完成 Chat 工具适配与端到端验收，直接 API/按钮不算已接入；执行模板见 [ALVA-065](docs/ALVA-065-main-chat-agent.md) 和 [Prompt](docs/MAIN-CHAT-FEATURE-PROMPT.md)。本次未新增识图/建筑 Chat 工具。

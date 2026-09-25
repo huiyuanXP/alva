@@ -1,3 +1,7 @@
+## 2026-09-25 ALVA-066 建票与 MCP 规则更新
+
+新增[两阶段 MCP 票据](docs/ALVA-066-stage-mcp.md)，保留完整用户范围与验收项。AGENTS、主 Chat 合同及任务模板明确 MCP 优先、工具阶段归属、真实附件、服务端确认/失效、可解释错误和 UI 回执。Codex 0.157.0 安装版 schema 与官方文档已核对；真实网关调用和产品实现尚未执行。认领等待开始前已有 AGENTS/NextTask 修改归属确认；原改动与证据保留，未吞并提交。
+
 ## 2026-09-25 ALVA-065 主 Chat Agent/Harness 固定
 
 主 Chat 名称、路由、现役模型和基础指令集中到 `api/main-chat-agent.ts`；`api/chat.ts` 仍装配服务端工具，`api/codex.ts` 仍运行每请求临时 Codex App Server thread。后续功能接入合同和任务 Prompt 见 [ALVA-065](docs/ALVA-065-main-chat-agent.md)。本票仅固定现有运行路径及交接规则，未把识图、建筑生成或其余直接按钮接成 Chat 工具。类型检查和 5 项相关接口/指导测试通过。

@@ -1,3 +1,7 @@
+## 2026-09-25 ALVA-066 建票与协议核验
+
+已建立完整范围/验收票，更新 MCP 优先规则、合同与 Prompt。实读 OpenAI Docs，核对 codex-cli 0.157.0 和安装版 thread/start、thread/resume schema；现有 Harness 仍为临时 thread 且无 MCP。neat-freak 已机械盘点与核对本次文档；文档链接及 diff 检查通过。产品/网关验收 pending，生成记忆 out-of-scope；既有未提交协调改动待归属确认，不合并他人修改、不启动未认领产品开发。
+
 ## 2026-09-25 ALVA-065 主 Chat 接入基线完成
 
 集中主 Chat 身份、入口、模型和基础指令，明确 Codex App Server Harness 与后续功能的同票适配 Prompt。类型检查和 5 项相关接口/指导测试通过；识图与建筑生成仍待另票接入主 Chat。详见 [ALVA-065](docs/ALVA-065-main-chat-agent.md)。
