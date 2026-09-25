@@ -1,7 +1,7 @@
 import {randomUUID} from 'node:crypto';
 import {z} from 'zod';
 import {intakeCatalogue} from '../packages/contracts/intake.js';
-import {validateScene,itemFromAsset,pointInPolygon,reject,Item,type Project,type Change,type Finding,type SceneData} from './model.js';
+import {assets,validateScene,itemFromAsset,pointInPolygon,reject,Item,type Project,type Change,type Finding,type SceneData} from './model.js';
 const disabledQuestions=new Set(['Q19','Q20','Q21','Q22','Q58','Q60']);
 const questionOverrides:Record<string,{question?:string;group?:string;choices?:[string,string,string,string]}>= {
  Q01:{choices:['先形成可转交设计师的需求任务书','先看整体空间方向','先解决一个重点房间','先梳理优先级与取舍']},
@@ -56,11 +56,41 @@ function validateFurniturePlacement(scene:SceneData,item:PlacementItem,checkColl
     if(other)reject('家具与“'+other.name+'”占地重叠，请调整位置或方向');
   }
 }
+const FurnitureUpdateSchema=z.object({
+  assetId:z.string().min(1).optional(),
+  x:z.number().finite().min(-1000).max(1000).optional(),
+  y:z.number().finite().min(-1000).max(1000).optional(),
+  width:z.number().finite().min(.05).max(10).optional(),
+  depth:z.number().finite().min(.05).max(10).optional(),
+  height:z.number().finite().min(.02).max(5).optional(),
+  rotation:z.number().finite().optional(),
+  color:z.string().regex(/^#[a-fA-F0-9]{6}$/).optional(),
+  material:z.enum(['wood','fabric','stone','metal','glass']).optional(),
+  clearance:z.number().finite().min(0).max(1).optional()
+}).strict();
+
 function normalizedFurniturePatch(raw:Record<string,unknown>){
-  const patch=Item.omit({id:true,roomId:true,locked:true,sourceId:true}).partial().strict().parse(raw);
-  if(patch.x!==undefined)patch.x=snapFurniture(patch.x);
-  if(patch.y!==undefined)patch.y=snapFurniture(patch.y);
-  if(patch.rotation!==undefined)patch.rotation=normalizedRotation(patch.rotation);
+  let values:z.infer<typeof FurnitureUpdateSchema>;
+  try{values=FurnitureUpdateSchema.parse(raw)}catch(error){
+    if(error instanceof z.ZodError){
+      const field=String(error.issues[0]?.path[0]||'属性');
+      const label:Record<string,string>={width:'宽度',depth:'深度',height:'高度',clearance:'底部空隙',color:'颜色',material:'材质',rotation:'旋转角度',x:'横向位置',y:'纵向位置',assetId:'许可款式'};
+      const range:Record<string,string>={width:'0.05–10米',depth:'0.05–10米',height:'0.02–5米',clearance:'0–1米'};
+      reject(range[field]?'家具'+(label[field]||field)+'需在'+range[field]+'之间':'家具'+(label[field]||field)+'格式不正确');
+    }
+    throw error;
+  }
+  const patch:Record<string,unknown>={};
+  if(values.assetId!==undefined){
+    const asset=assets.find(value=>value.id===values.assetId);
+    if(!asset)reject('资产不在许可目录');
+    Object.assign(patch,{assetId:asset!.id,name:asset!.name,width:asset!.width,depth:asset!.depth,height:asset!.height,color:asset!.color,material:asset!.material});
+  }
+  const {assetId: _assetId,...overrides}=values;
+  Object.assign(patch,overrides);
+  if(typeof patch.x==='number')patch.x=snapFurniture(patch.x);
+  if(typeof patch.y==='number')patch.y=snapFurniture(patch.y);
+  if(typeof patch.rotation==='number')patch.rotation=normalizedRotation(patch.rotation);
   return patch;
 }
 
@@ -81,7 +111,7 @@ export function applyChanges(scene:SceneData,changes:Change[],professional=false
    const v=z.object({roomId:z.string(),x:z.number().finite(),y:z.number().finite(),newId:z.string().uuid().optional()}).strict().parse(change.values);const r=s.rooms.find(r=>r.id===v.roomId);if(!r||r.locked)reject('目标房间无效或已锁定');const cloned={...item!,id:v.newId||randomUUID(),sourceId:item!.id,roomId:v.roomId,x:snapFurniture(v.x),y:snapFurniture(v.y)};validateFurniturePlacement(s,cloned,false);if(change.action==='transfer')s.items=s.items.filter(i=>i.id!==item!.id);s.items.push(cloned);continue;
   }
   if(change.action==='update'){
-   const patch=normalizedFurniturePatch(change.values);Object.assign(item!,patch);if(['x','y','rotation','width','depth','height'].some(key=>key in patch))validateFurniturePlacement(s,item!,true);
+   const patch=normalizedFurniturePatch(change.values);Object.assign(item!,patch);if(['assetId','x','y','rotation','width','depth','height'].some(key=>key in patch))validateFurniturePlacement(s,item!,true);
   }
  }
  return validateScene(s);

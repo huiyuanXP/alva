@@ -1,0 +1,17 @@
+{
+  "ticket": "ALVA-025",
+  "runId": "20260925T114528711Z-ALVA025-browser-94ac4a",
+  "pass": true,
+  "finishedAt": "2026-09-25T11:45:36.474Z",
+  "checks": [
+    "家具面板展示许可款式与可查询的资产来源",
+    "真实网页确认许可款式、尺寸、颜色、材质并在2D立即反映",
+    "真实Three.js场景材质颜色与金属参数跟随更新",
+    "刷新后实例身份、款式、尺寸和许可来源保持一致",
+    "非法尺寸被服务端拒绝且原尺寸保持不变",
+    "锁定实例禁用属性提交并保留服务端防绕过",
+    "直接请求不能绕过锁定限制"
+  ],
+  "errors": [],
+  "fixture": "synthetic two-item room; API test covers Chat parity, atomicity and stale revision"
+}

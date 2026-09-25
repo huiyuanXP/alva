@@ -1,0 +1,15 @@
+{
+  "ticket": "ALVA-025",
+  "runId": "20260925T114239755Z-ALVA025-browser-59dc83",
+  "pass": false,
+  "checks": [
+    "家具面板展示许可款式与可查询的资产来源",
+    "真实网页确认许可款式、尺寸、颜色、材质并在2D立即反映",
+    "真实Three.js场景材质颜色与金属参数跟随更新",
+    "刷新后实例身份、款式、尺寸和许可来源保持一致"
+  ],
+  "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert')\nTimeout: 5000ms\n- Expected substring  -  1\n+ Received string     + 12\n\n- 大于或等于 0.05\n+ [\n+   {\n+     \"origin\": \"number\",\n+     \"code\": \"too_big\",\n+     \"maximum\": 10,\n+     \"inclusive\": true,\n+     \"path\": [\n+       \"width\"\n+     ],\n+     \"message\": \"Too big: expected number to be <=10\"\n+   }\n+ ]关闭\n\nCall log:\n  - Expect \"toContainText\" getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('alert')\n    14 × locator resolved to <div role=\"alert\" class=\"error banner\">…</div>\n       - unexpected value \"[\n  {\n    \"origin\": \"number\",\n    \"code\": \"too_big\",\n    \"maximum\": 10,\n    \"inclusive\": true,\n    \"path\": [\n      \"width\"\n    ],\n    \"message\": \"Too big: expected number to be <=10\"\n  }\n]关闭\"\n",
+  "errors": [
+    "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+  ]
+}
