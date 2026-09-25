@@ -1,6 +1,10 @@
-## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
+## ALVA-066 当前检查点：087094c，继续完整隔离验收
 
-[ALVA-066](docs/ALVA-066-stage-mcp.md) 由 codex-stage-mcp 持续执行完整业务接入、隔离验收、集成与发布。个人 Worktree `/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp` 最新过程提交 `2d6b6cd`：主 Chat 已装配阶段 HTTP MCP、附件与确认卡；36项定向回归通过，真实网关验证原 thread 即时 Resume、目录更新后的新工具调用与摘要只注入一次。随后新增房间样式2D/3D、UI回执、确认回答后的家具建议及回归前置改动，尚待检查；不可把旧36项结果当成最新全部源码已验。main产品未集成/发布，整票in-progress。下一步先待029重任务窗口结束，运行更新后的验证脚本修复失败，继续完整模型/浏览器业务链、029/057模块接入及发布验收。029合同及窗口状态见 `.runtime/alva-coordination/ALVA-066-029-reply.md`；066当前无在跑重任务，已给029独立验证窗口。
+066个人Worktree提交 `087094c` 已装配029固定实现、分类/确认/投影、复核取舍与共享保存门禁、服务端自动家具建议。最新类型检查及4/4定向回归通过；此前55/55、51/51、8/8和构建是各自过程证据。同一合成项目/原生活设计thread的真实模型→Markdown→复核→请求保存→浏览器确认v1及刷新通过，汇总在个人Worktree `evidence/20260925T2026Z-ALVA066-living-joint-checkpoint/result.json`。原thread曾收到CONTEXT_SCOPE_INVALID并自行修正调用；错误与修复均实录。
+
+建筑前置为合成夹具，不能替代真实原图识别/建筑生成。完整跨阶段/拓扑失效、剩余取消重启/交付、同最终SHA联合门禁及发布仍待继续。原图与跨阶段验收为下一步；029/040/057保持各票边界。main产品未集成/部署，066与029保持in-progress。此前029独立重任务窗口已结束并释放；066继续串行使用共享heavy锁，当前检查已结束，无遗留活跃任务。
+
+资源经验：TypeScript7使用Go内存参数；真实模型和Chromium持续同进程两次触发1200M，保留失败，改同项目/原thread串行新进程后通过，不提高限额。neat-freak过程事实已同步：已验局部链路verified-current，整票/生产pending，生成记忆out-of-scope；Worktree与私有验收现场保留。
 
 # What's next · 任务认领与并行开发
 

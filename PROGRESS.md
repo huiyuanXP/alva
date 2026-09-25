@@ -214,3 +214,12 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 ALVA-040 由 chatgpt-sunlight 认领并在独立分支 `task/ALVA-040-chatgpt-sunlight` 提交 `7c5129e`。统一两种3D视图的日照与投影，修正早晚方向和建筑夜间直射，时间/日期变化不重建视图；显示真太阳时、日期、纬度、北向和估算限制。17/17回归（含7350组参数）、完整类型检查、前端构建、真实浏览器13/13检查通过，控制台错误0；相同参数画面哈希一致，项目/revision/快照不变。
 
 仍为 **in-progress**：生活设计MCP、主Chat实际调用与UI action回执等待ALVA-066。产品代码和证据只在 `/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight`，未合入main或部署。工作区内 `docs/ALVA-040-sunlight.md`、单票Implementation handoff与 `evidence/20260925T192458558Z-ALVA040-browser-110e48/` 是本里程碑入口；失败run、编译中止与资源采样保留。未改057/066/029共享入口、生产服务或配置；复核现场保留，不清场。
+
+## ALVA-066 当前检查点：087094c，继续完整隔离验收
+
+066个人Worktree提交 `087094c` 已装配029固定实现、分类/确认/投影、复核取舍与共享保存门禁、服务端自动家具建议。最新类型检查及4/4定向回归通过；此前55/55、51/51、8/8和构建是各自过程证据。同一合成项目/原生活设计thread的真实模型→Markdown→复核→请求保存→浏览器确认v1及刷新通过，汇总在个人Worktree `evidence/20260925T2026Z-ALVA066-living-joint-checkpoint/result.json`。原thread曾收到CONTEXT_SCOPE_INVALID并自行修正调用；错误与修复均实录。
+
+建筑前置为合成夹具，不能替代真实原图识别/建筑生成。完整跨阶段/拓扑失效、剩余取消重启/交付、同最终SHA联合门禁及发布仍待继续。原图与跨阶段验收为下一步；029/040/057保持各票边界。main产品未集成/部署，066与029保持in-progress。此前029独立重任务窗口已结束并释放；066继续串行使用共享heavy锁，当前检查已结束，无遗留活跃任务。
+
+资源经验：TypeScript7使用Go内存参数；真实模型和Chromium持续同进程两次触发1200M，保留失败，改同项目/原thread串行新进程后通过，不提高限额。neat-freak过程事实已同步：已验局部链路verified-current，整票/生产pending，生成记忆out-of-scope；Worktree与私有验收现场保留。
+

@@ -137,3 +137,7 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 
 ## 2026-09-25 · ALVA-041 参考图偏好数据边界
 参考图片偏好采用独立 `alva_reference_batches` / `alva_reference_annotations` 持久化：model/manual 候选在确认前不进入 Project 需求；业主确认后才转成 `Evidence(source=image)` + intake `Finding(kind=requirement)`，并用 `objectIds: [reference:<batchId>]` 回指原图批次。参考图只能作为视觉偏好来源，不能作为尺寸、结构、真实材料身份或材料性能证据。后续 ALVA-042 只能读取 confirmed 标注，不得把 pending/cancelled 批次当作已确认偏好。
+
+## ALVA-066/029联合运行契约（未上线）
+
+066检查点087094c在个人Worktree：用户分类的Markdown在DB提交后原子投影，错误必须保留稳定code/repairActions；模型实际能按CONTEXT_SCOPE_INVALID修正房间/家具ID混用。审查凭证保留真实reviewedRevision/adoptedAtRevision；样式参与失效指纹。真实局部联合链已通过，整票与生产仍pending，以NextTask和066票据为现役入口。原thread恢复与串行新进程验证不等于新建替代会话。
