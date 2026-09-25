@@ -1,3 +1,7 @@
+## 2026-09-25 ALVA-066 协作增量
+
+安装版 App Server Resume 不接受 dynamicTools 覆盖；066通过固定 mcp_list_tools/mcp_call_tool 让旧thread发现并调用现役阶段MCP新工具，真实网关已验。029补充合同确认：index.md含四分类SHA，current.json另含indexSha256；审查复用保留reviewedRevision，重读当前revision投影且scene/context指纹不变后记录adoptedAtRevision。066过程提交2d6b6cd，新业务增量待验、未集成/发布；主目录NextTask是重任务窗口与下一步入口。
+
 ## 2026-09-26 ALVA-040 日照独立实现，阶段接入待066
 
 ALVA-040 由 chatgpt-sunlight 认领并在独立分支 `task/ALVA-040-chatgpt-sunlight` 提交 `7c5129e`。统一两种3D视图的日照与投影，修正早晚方向和建筑夜间直射，时间/日期变化不重建视图；显示真太阳时、日期、纬度、北向和估算限制。17/17回归（含7350组参数）、完整类型检查、前端构建、真实浏览器13/13检查通过，控制台错误0；相同参数画面哈希一致，项目/revision/快照不变。

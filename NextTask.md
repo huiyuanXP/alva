@@ -1,6 +1,6 @@
 ## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
 
-[ALVA-066](docs/ALVA-066-stage-mcp.md) 由 codex-stage-mcp 持续执行，目标保持完整业务接入、隔离验收、集成与发布。个人 Worktree `/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp` 最新过程提交 `e731910`：阶段 MCP 运行层、持久 thread/摘要去重、附件与共用户型服务已实现；修改后 Harness 真实调用/错误解释/Resume 通过，33项定向回归与类型检查通过。尚未装配主 Chat、未整票集成或发布。下一步确认卡与阶段 Chat 页面、生活设计工具和后续完整验收。029 协作合同已回复 `.runtime/alva-coordination/ALVA-066-029-reply.md`；029独立模块，066装配共享入口。验证脚本有共享重任务锁、heartbeat与持久日志，等待必须核验原session/unit。
+[ALVA-066](docs/ALVA-066-stage-mcp.md) 由 codex-stage-mcp 持续执行完整业务接入、隔离验收、集成与发布。个人 Worktree `/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp` 最新过程提交 `2d6b6cd`：主 Chat 已装配阶段 HTTP MCP、附件与确认卡；36项定向回归通过，真实网关验证原 thread 即时 Resume、目录更新后的新工具调用与摘要只注入一次。随后新增房间样式2D/3D、UI回执、确认回答后的家具建议及回归前置改动，尚待检查；不可把旧36项结果当成最新全部源码已验。main产品未集成/发布，整票in-progress。下一步先待029重任务窗口结束，运行更新后的验证脚本修复失败，继续完整模型/浏览器业务链、029/057模块接入及发布验收。029合同及窗口状态见 `.runtime/alva-coordination/ALVA-066-029-reply.md`；066当前无在跑重任务，已给029独立验证窗口。
 
 # What's next · 任务认领与并行开发
 
