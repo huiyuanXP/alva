@@ -1,0 +1,6 @@
+run=20260926T040219Z-ALVA067-regression-735674
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2219
+ec34b64ad1a1fde2e938e3d1c417d5334df344b4

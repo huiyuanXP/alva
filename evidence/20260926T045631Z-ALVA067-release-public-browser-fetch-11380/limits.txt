@@ -1,0 +1,6 @@
+run=20260926T045631Z-ALVA067-release-public-browser-fetch-11380
+CPUQuota=80%
+MemoryMax=1600M
+MemorySwapMax=0
+headroomMiB=2625
+cafb8b8dc8fb2ea7be5e51fa72c6e26168113fef

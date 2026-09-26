@@ -1,8 +1,8 @@
-## 2026-09-26 ALVA-066 预览反馈修复已验证
+## 2026-09-26 ALVA-066 合并候选已验证
 
-确认卡改用持久化数字版本，不再计算哈希；过期卡可刷新后单独确认。阶段入口显示阻塞原因，当前阶段可刷新。两阶段 MCP 提供与页面同源的完整拓扑诊断和修复指导。分组类型、回归、构建、真实浏览器/Agent 调用及新公网入口验证通过，详情与证据见 [临时预览](docs/ALVA-066-temporary-preview.md)。本次进程共用 20% 总内存 slice，零 swap。主机重启后已重建 Tunnel，用户项目 revision 176 保留。
+用户已授权合 main。个人分支已同步主线 `9fdf91c` 的 Gemini 3.8、进度展示和快照恢复，保留阶段 MCP、无哈希确认卡、完整诊断及保存复核门禁。分组类型、16 项回归、构建及 Gemini 3.8 实际 MCP/浏览器验证通过；证据见 [临时预览](docs/ALVA-066-temporary-preview.md)。
 
-下一步：用户继续临时预览验收；已知模型保存状态复述与 066/029 完整联合验收仍 pending。本候选不合 main、不发布生产。neat-freak：本次代码/运行/合同 changed-and-verified，生成记忆和生产 out-of-scope；私有复核现场与历史失败证据保留。此前 1200M 限额是历史记录，本任务现行合计限额为 20%。
+下一步在主目录串行提交集成；本轮不发布生产。066/029 仍 in-progress，029 的页面定位、非空用户取舍等整票联合验收及已知模型保存状态复述继续 pending。所有本任务进程共用物理内存 20%、零 swap，预览现场与既有失败证据保留。neat-freak：合并代码/预览/合同 changed-and-verified，生产和生成记忆 out-of-scope，整票验收 pending。以下为历史与其他任务记录。
 
 ## 2026-09-26 ALVA-066 上下文修复检查点（个人分支）
 
@@ -13,6 +13,17 @@
 neat-freak：本次代码/合同 changed-and-verified；完整验收、main 集成及生产 pending；生成记忆 out-of-scope；私有现场和历史失败证据保留。共享重任务已结束，锁按 runner 释放。
 
 ## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
+## ALVA-067 发布完成；下一步066同步main
+
+已发布主Chat Gemini 3.8及等待圆点上方的最新浅色进度。类型/构建、本次5组桌面手机浏览器和公网登录只读核验通过；模型接口3.8、JS/CSS哈希一致、页面错误0、项目revision不变。备份与回滚在.runtime/ALVA067-release-20260926T045448Z/；详情见[发布收据](docs/ALVA-067-chat-model-progress.md)。066验收环境未改，仍需同步main并重验阶段MCP。
+
+## 2026-09-26 ALVA-029 验收未通过
+
+主线保存路由缺少当前审查门禁及采用凭证，隔离HTTP路由探针已复现；029历史50/50模块通过、066真实复核/保存过程通过不等于最终同SHA验收。详见[验收复核](docs/ALVA-029-acceptance-audit.md)。保留xuanpu-chat-6pro署名与in-progress，不解锁030。下一步由029/066固定联合候选，补页面定位、布局变更失效、非空用户取舍与保存/刷新/恢复，再集成；本轮未改产品或生产。
+
+## ALVA-067 已集成；ALVA-066 下一步同步新模型与进度展示
+
+主Chat已切为 Gemini 3.8 Flash High；保留等待圆点，最新工具进度改为其上方浅色文字，不再进入顶部横幅。类型/构建、17/17回归、桌面/手机与真实Chat工具调用通过；[ALVA-067](docs/ALVA-067-chat-model-progress.md)记录证据及失败run。2026-09-26已部署并完成公网登录只读核验；066验收工作区未改，须同步main后重跑受影响阶段MCP门禁。
 
 ## 2026-09-26 ALVA-057 问卷视觉修订发布
 
@@ -74,7 +85,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 |---|---|---|---|---|---|
 | [ALVA-066](docs/ALVA-066-stage-mcp.md) | 两阶段 MCP 与持久 Chat | `chat` | codex-stage-mcp | task/ALVA-066-codex-stage-mcp / /home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp | in-progress；先 api/codex.ts、api/mcp、独立探针；后 api/chat.ts、store、model、api.ts 与 web 入口需衔接057；端口使用127.0.0.1动态分配 |
 | [ALVA-032](.scratch/alva-completion/issues/25-wall-evidence.md) | 墙体分类、证据与专业授权 | `topology` | Lexie | task/ALVA-032-Lexie / /home/ubuntu/Alva-worktrees/ALVA-032-Lexie | in-progress；业务实现 4fcdd02；第一轮4/4，第二轮真实HTTP+服务器管理员grant/revoke+重启通过，相关回归24/24，类型/构建/diff-check通过；已导出get_wall_professional_evidence；等待ALVA-066 floorplan stage MCP合入并挂载后做同SHA真实MCP联合验收，未完成前不标done |
-| [ALVA-038](.scratch/alva-completion/issues/31-snapshot-restore.md) | 从快照恢复全局状态 | `snapshots` |  |  | ALVA-037 已完成；待认领 |
+| [ALVA-039](.scratch/alva-completion/issues/32-desktop-walkthrough.md) | 桌面漫游与输入暂停 | `render` | Lexie | task/ALVA-039-Lexie / /home/ubuntu/Alva-worktrees/ALVA-039-Lexie | in-progress；与 ALVA-040 同 lane 但明确文件隔离：仅新增 web/src/scene/walkthrough/*、测试/证据，并最小修改 web/src/main.tsx 装配；不修改 BuildingView.tsx、SceneView.tsx、scene/sunlight*；测试端口43139 |
 | [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` | chatgpt-sunlight | task/ALVA-040-chatgpt-sunlight / /home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight | in-progress；独立日照实现 7c5129e：17/17测试、类型/构建、13/13浏览器检查通过；主Chat/MCP及UI action回执待066；不改057/066/029共享入口；未集成/未部署 |
 | [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；第二轮产品门禁未过：main尚无阶段MCP，066分支living pack也未挂get_confirmed_reference_preferences；须等066合main后做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-029](.scratch/alva-completion/issues/22-layout-review.md) | 布局调整与保存前冲突复核 | `review` | xuanpu-chat-6pro | task/ALVA-029-xuanpu-chat-6pro / /home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro | in-progress；与066确认分类Markdown合同；独立实现dd6f948、证据交接8aa0f1a，类型/50项测试/构建通过；不改066共享入口；实际主Chat/MCP、保存前UI与同SHA联合验收待066；未集成/未部署 |

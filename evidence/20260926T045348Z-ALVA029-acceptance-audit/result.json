@@ -1,0 +1,11 @@
+{
+  "ticket": "ALVA-029",
+  "candidate": "cafb8b8dc8fb2ea7be5e51fa72c6e26168113fef",
+  "probe": "real Fastify save route with synthetic confirmed layout and test-double store",
+  "httpStatus": 200,
+  "enteredSave": true,
+  "hasReview": false,
+  "hasAdoption": false,
+  "acceptancePassed": false,
+  "limitation": "No real database write, browser or production call; this isolates the missing route gate."
+}

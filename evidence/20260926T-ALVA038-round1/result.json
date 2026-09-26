@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "round": 1,
+  "tests": {"passed": 19, "failed": 0},
+  "checks": [
+    "explicit restore replaces the entire saved global state",
+    "missing snapshot returns 404 without mutating draft",
+    "stale revision returns 409 without mutating draft",
+    "database failure rolls back project/receipt/version atomically",
+    "restore creates no automatic snapshot",
+    "legacy stale building output is expired rather than reused"
+  ],
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "diffCheck": "passed"
+}

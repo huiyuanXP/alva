@@ -1,0 +1,6 @@
+run=20260926T040414Z-ALVA067-regression-limited-738636
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2214
+e049f6adb36044b3ad2c13ee478a6f403e3837a0

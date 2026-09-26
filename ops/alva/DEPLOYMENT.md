@@ -26,4 +26,4 @@
 
 ## 户型识别默认模型
 
-ALVA-064 起，图片户型识别使用 `OPENAI_VISION_MODEL=gemini-3.8-flash-high` 和 `OPENAI_VISION_REASONING_EFFORT=high`；普通聊天继续由 `OPENAI_MODEL` 独立选择。现役值在私有 `.runtime/alva-prod.env`，仓库仅保存 `.env.example`。变更生产模型须先在隔离数据中跑真实图片、严格解析与几何检查，再重启 `alva.service` 和验证公网导入；仅改聊天模型不应隐式改变识图默认值。
+ALVA-064 起，图片户型识别使用 `OPENAI_VISION_MODEL=gemini-3.8-flash-high` 和 `OPENAI_VISION_REASONING_EFFORT=high`；普通聊天由 `api/main-chat-agent.ts` 的 `mainChatAgent.model` 独立选择（ALVA-067 起为 Gemini 3.8 Flash High），并通过 `GET /api/models` 提供给前端，不由 `OPENAI_MODEL` 覆盖。现役值在私有 `.runtime/alva-prod.env`，仓库仅保存 `.env.example`。变更生产模型须先在隔离数据中跑真实图片、严格解析与几何检查，再重启 `alva.service` 和验证公网导入；仅改聊天模型不应隐式改变识图默认值。

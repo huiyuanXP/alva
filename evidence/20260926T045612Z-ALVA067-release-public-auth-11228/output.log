@@ -1,0 +1,9 @@
+{"dir":"evidence/2026-09-26T045613882Z-ALVA067-public","origin":"https://prod.huiyuanxp.com","ok":false,"authenticated":false,"error":"Error: Asset unavailable: /assets/index-CJYIuDYm.js status 403"}
+/home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback/scripts/alva-067-public-check.ts:11
+ for(const asset of assets){if(!/^\/assets\/[\w.-]+\.(js|css)$/.test(asset))throw new Error('Unexpected asset path');const remote=await page.request.get(origin+asset,{headers:{'User-Agent':await page.evaluate(()=>navigator.userAgent)}});if(!remote.ok())throw new Error('Asset unavailable: '+asset+' status '+remote.status());const local=await readFile('web/dist'+asset),body=await remote.body(),hash=(b:Buffer)=>createHash('sha256').update(b).digest('hex');if(hash(local)!==hash(body))throw new Error('Asset hash mismatch');hashes[asset]=hash(body);if(asset.endsWith('.js')&&!body.includes(Buffer.from('chat-progress')))throw new Error('Progress component absent');}
+                                                                                                                                                                                                                                                                   ^
+
+Error: Asset unavailable: /assets/index-CJYIuDYm.js status 403
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback/scripts/alva-067-public-check.ts:11:260)
+
+Node.js v24.21.0

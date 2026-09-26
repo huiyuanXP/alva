@@ -37,7 +37,7 @@ test('actual Chat routes bridge only active MCP pack, retain threads, resume on 
  };
  const app=await buildAlva(store,{assets:false,chatCodex:model});
  const post=async(url:string,payload:Record<string,unknown>)=>app.inject({method:'POST',url,headers,payload});
- const chat=async()=>{const p=await store.get(project.id);const response=await post('/api/chat',{requestId:randomUUID(),expectedRevision:p.revision,text:'读取当前状态',roomId:null,model:'gemini-3.1-flash-lite'});assert.equal(response.statusCode,200,response.body);assert.match(response.body,/event: done/);assert.match(response.body,/event: tool/);return store.get(project.id)};
+ const chat=async()=>{const p=await store.get(project.id);const response=await post('/api/chat',{requestId:randomUUID(),expectedRevision:p.revision,text:'读取当前状态',roomId:null,model:'gemini-3.8-flash-high'});assert.equal(response.statusCode,200,response.body);assert.match(response.body,/event: done/);assert.match(response.body,/event: tool/);return store.get(project.id)};
  try{
   const first=await chat();assert.equal(first.messages.length,2);assert.equal(first.messages[0].stage,'floorplan');
   const seeded=await store.mutate(project.id,randomUUID(),first.revision,'synthetic-building',{},p=>{const history=p.messages;seedSnapshotProject(p);p.messages=history});

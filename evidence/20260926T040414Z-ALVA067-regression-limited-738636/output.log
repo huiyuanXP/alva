@@ -1,0 +1,25 @@
+✔ ALVA-043 curated guidance has traceable provided sources, explicit gaps and no budget guidance (5.198246ms)
+✔ ALVA-043 attachment-like commands cannot become authority, owner assignment or budget guidance (0.778779ms)
+✔ ALVA-043 chat exposes read-only guidance tool and prompt requires facts/inference/source separation (8081.911896ms)
+✔ ALVA-017 chat model catalogue is explicit and reference images require matching PNG/JPEG bytes (3.397095ms)
+✔ ALVA-017 routes keep model/chat private, reject raw Codex surface and invalid image before mutation (8105.825172ms)
+✔ ALVA-025 licensed style replacement preserves instance identity and asset definitions (16.33647ms)
+✔ ALVA-025 API persists 2D/3D attributes atomically and rejects stale revisions (7888.108332ms)
+✔ ALVA-025 Chat style proposal uses the same licensed replacement contract (6243.249356ms)
+✔ ALVA-024 normalizes transforms and rejects boundary, collision and locked bypass atomically (13.043535ms)
+✔ ALVA-024 Chat proposal uses the same server transform rules before preview and adoption (9091.298671ms)
+✔ ALVA-021 preview exposes real candidate scene and adoption is selected-only, idempotent, stale-safe and atomic (8041.330714ms)
+✔ ALVA-021 requires two different candidates for ambiguous requests but allows one precise candidate (6482.322448ms)
+✔ ALVA-041 model/manual candidates stay pending until explicit confirmation; cancel does not pollute requirements (8219.645897ms)
+✔ ALVA-041 rejects reference candidates that pretend to prove dimensions, structure or performance (3.322854ms)
+✔ ALVA-041 main Chat actually invokes the pending reference-preference tool for an attached reference image (6310.070341ms)
+✔ ALVA-022 purpose confirmation is independent from layout and rejects locked rooms (9405.332712ms)
+✔ ALVA-022 purpose can produce previewable layout proposals and only a separately selected layout is adopted (9137.924111ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114496.984954

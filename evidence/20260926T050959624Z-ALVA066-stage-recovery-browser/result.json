@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "run": "20260926T050959624Z-ALVA066-stage-recovery-browser",
+  "model": "gemini-3.8-flash-high",
+  "progressShownAndCleared": true,
+  "staleRefreshRequiresSeparateConfirmation": true,
+  "stageSwitches": true,
+  "actualTools": [
+    {
+      "name": "get_snapshot",
+      "stage": "floorplan",
+      "isError": false
+    },
+    {
+      "name": "inspect_topology",
+      "stage": "floorplan",
+      "isError": false
+    }
+  ],
+  "diagnosticReply": "已通过 `inspect_topology` 读取当前页面的户型诊断数据（当前版本为 revision 4，拓扑处于已确认状态）。具体诊断与说明如下：\n\n---\n\n### 一、户型诊断告警信息\n\n诊断检测到 2 处未闭合开放边界告警（`open_boundary`）：\n\n* **告警 1**\n  * **错误码（code）**：`open_boundary`\n  * **关联墙体（wallIds）**：`[\"wall-2\"]`\n  * **坐标位置（location）**：`{\"x\": 0, \"y\": 4}`\n  * **问题说明**：墙端点未连接，可能是缺墙或未定义的开口，该处不能视作闭合边界。\n\n* **告警 2**\n  * **错误码（code）**：`open_boundary`\n  * **关联墙体（wallIds）**：`[\"wall-0\"]`\n  * **坐标位置（location）**：`{\"x\": 0, \"y\": 0}`\n  * **问题说明**：墙端点未连接，可能是缺墙或未定义的开口，该处不能视作闭合边界。\n\n> **检查限制说明**：由于 `(0, 4)` 到 `(0, 0)` 之间未形成完整闭合边界，内部空洞检查（`internalVoid`）当前处于 `unavailable`（不可用）状态。\n\n---\n\n### 二、具体修复建议\n\n1. **核对断口性质**：核对端点 `(0, 4)` 与 `(0, 0)` 之间是实际户型中的实体外墙/内墙，还是通往其他空间的开放通道。\n2. **墙线补全**：若此处为实体墙，应在核实实际尺寸后，在 `(0, 4)` 与 `(0, 0)` 之间补画连接墙体（使用 `draw_wall` 或 `edit_topology`），使四面墙闭合。\n\n---\n\n### 三、已确认户型所需的确认与变更步骤\n\n当前户型拓扑及建筑场景已处于确认状态（`requiresReopenConfirmation: true`，`editable: false`）。若后续需要对其进行几何修复，必须遵循以下步骤：\n\n1. **出示重开确认卡（request_topology_reopen）**：\n   * 必须先由顾问调用 `request_topology_reopen` 唤起确认卡片；\n   * 由业主在界面上主动点击确认，明确知晓并接受清除依赖旧拓扑的后续衍生设计（包括已确认的 3D 建筑及生活设计）。\n2. **修改拓扑与重新校准**：\n   * 拓扑重开为草稿后，再通过工具（如 `draw_wall` 或 `edit_topology`）补齐墙体或调整端点；\n   * 拓扑修改会导致原有校准失效，必须基于真实测量数据调用 `calibrate_floorplan` 重新校准；\n   * 再次调用 `inspect_topology` 复检，确认告警消除且闭合检查通过。\n3. **重新确认拓扑与建筑**：\n   * 调用 `request_topology_confirmation` 出示拓扑确认卡，由用户在页面点击确认拓扑；\n   * 拓扑确认后，调用 `generate_building` 重新生成建筑候选，并通过 `request_building_confirmation` 出示建筑确认卡，经用户最终确认后再进入生活设计阶段。\n\n*(注：本轮对话严格遵循只读要求，未执行任何拓扑修改，亦未调用重开确认卡。)*",
+  "errors": []
+}

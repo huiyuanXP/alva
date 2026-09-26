@@ -19,7 +19,7 @@ test('Chat produces sourced classification, owner confirms, MCP reads Markdown a
   await call('request_save');return '复核已经完成，请查看取舍并确认保存';
  }});
  const post=(url:string,payload:Record<string,unknown>)=>app.inject({method:'POST',url,headers,payload});
- const chat=async(text:string)=>{p=await store.get(p.id);const r=await post('/api/chat',{requestId:randomUUID(),expectedRevision:p.revision,text,roomId:'room',model:'gemini-3.1-flash-lite'});assert.match(r.body,/event: done/,r.body);p=await store.get(p.id)};
+ const chat=async(text:string)=>{p=await store.get(p.id);const r=await post('/api/chat',{requestId:randomUUID(),expectedRevision:p.revision,text,roomId:'room',model:'gemini-3.8-flash-high'});assert.match(r.body,/event: done/,r.body);p=await store.get(p.id)};
  try{
   await chat('我不喜欢木质墙面，请记录为这个房间的偏好。');const entry=p.userContextEntries![0];assert.equal(entry.status,'pending');assert.equal((await readUserContextProjection(p)).entries.find(e=>e.id===entry.id)?.status,'pending');
   const confirmed=await post('/api/user-context/decide',{requestId:randomUUID(),expectedRevision:p.revision,id:entry.id,decision:'confirm',confirmed:true});assert.equal(confirmed.statusCode,200,confirmed.body);p=confirmed.json();

@@ -40,7 +40,7 @@ test('Chat reads complete UI diagnostics in both packs even when confirmed topol
   for(const stage of ['floorplan','living']){
    if(stage==='living'){const switched=await app.inject({method:'POST',url:'/api/chat/stages/switch',headers,payload:{stage,expectedRevision:p.revision}});assert.equal(switched.statusCode,200,switched.body)}
    const ui=(await app.inject({url:'/api/topology/diagnostics',headers})).json();assert.ok(ui.analysis.issues.some((i:any)=>i.code==='open_boundary'));
-   const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:p.revision,text:'请解释户型中报错的具体内容和修复方法',roomId:null,model:'gemini-3.1-flash-lite'}});assert.equal(response.statusCode,200,response.body);assert.match(response.body,/event: done/);
+   const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:p.revision,text:'请解释户型中报错的具体内容和修复方法',roomId:null,model:'gemini-3.8-flash-high'}});assert.equal(response.statusCode,200,response.body);assert.match(response.body,/event: done/);
    assert.equal(captured.source,'scene');assert.equal(captured.sceneFingerprint,ui.sceneFingerprint);assert.deepEqual(captured.analysis,ui.analysis);assert.equal(captured.issue,null,'automatic repair list is distinct from warning list');assert.equal(captured.repair.requiresReopenConfirmation,true);assert.ok(captured.repair.guidance.length>0);assert.ok(captured.analysis.issues.every((i:any)=>i.message&&i.wallIds.length&&i.location));
    p=await store.get(project.id);assert.equal(p.candidate,null);assert.equal(p.scene!.walls.length,3);
   }

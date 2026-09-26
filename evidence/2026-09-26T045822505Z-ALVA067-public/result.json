@@ -1,0 +1,18 @@
+{
+  "origin": "https://prod.huiyuanxp.com",
+  "ok": true,
+  "authenticated": true,
+  "assets": {
+    "/assets/index-CJYIuDYm.js": "a3205124d336aa8d6aa0d9bba153eb19987fe2a228c2ccfde987a730c1e69cd9",
+    "/assets/index-COlzMmhx.css": "1232733273c080526cb992d0f75992063d88b979b339097c42b576951267689f"
+  },
+  "health": 200,
+  "pageErrors": [],
+  "unauthenticatedModels": 401,
+  "models": {
+    "models": [
+      "gemini-3.8-flash-high"
+    ]
+  },
+  "noBusinessWrites": true
+}

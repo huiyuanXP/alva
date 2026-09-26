@@ -1,0 +1,9 @@
+{"dir":"evidence/2026-09-26T045704879Z-ALVA067-public","origin":"https://prod.huiyuanxp.com","ok":false,"authenticated":false,"assets":{"/assets/index-CJYIuDYm.js":"a3205124d336aa8d6aa0d9bba153eb19987fe2a228c2ccfde987a730c1e69cd9","/assets/index-COlzMmhx.css":"1232733273c080526cb992d0f75992063d88b979b339097c42b576951267689f"},"health":200,"pageErrors":[],"unauthenticatedModels":401,"error":"Error: Access code rejected"}
+/home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback/scripts/alva-067-public-check.ts:13
+ if(process.env.ALVA_RELEASE_ACCESS_CODE){const response=page.waitForResponse(r=>r.url().endsWith('/api/access')&&r.request().method()==='POST');await page.getByPlaceholder('输入项目发起人提供的验证码').fill(process.env.ALVA_RELEASE_ACCESS_CODE);await page.getByRole('button',{name:'验证并进入 →'}).click();if(!(await response).ok())throw new Error('Access code rejected');await expect(page.getByLabel('咨询模型')).toHaveValue('gemini-3.8-flash-high');const before=await page.evaluate(async()=>{const p=await(await fetch('/api/project')).json();return p.revision});result.models=await page.evaluate(async()=>await(await fetch('/api/models')).json());const after=await page.evaluate(async()=>{const p=await(await fetch('/api/project')).json();return p.revision});if(before!==after)throw new Error('Unexpected revision change');result.authenticated=true;result.noBusinessWrites=true;}
+                                                                                                                                                                                                                                                                                                                                                   ^
+
+Error: Access code rejected
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback/scripts/alva-067-public-check.ts:13:322)
+
+Node.js v24.21.0
