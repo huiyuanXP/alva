@@ -1,3 +1,7 @@
+## ALVA-071 家具细节建模与视觉critic
+
+署名 codex-furniture；in-progress；task/ALVA-071-codex-furniture；/home/ubuntu/Alva-worktrees/ALVA-071-codex-furniture。用户授权真实详细模型、MCP生成与多视角自检重试。占用 api/model.ts、api/business.ts、api/chat.ts、api/api.ts、api/furniture/、web/src/SceneView.tsx、BuildingView.tsx、main.tsx、web/src/scene/、packages/contracts/alva/。测试使用隔离数据与动态空闲端口，生产不变。
+
 ## ALVA-070 已集成；下一步为发布验收
 
 070已done并释放渲染入口占用。main含SceneView交互修复，生产固定release尚未切换；发布时准备回滚，并在真实户型/浏览器核验门窗、旋转、选择和阴影观感。独立Worktree与证据保留。其他任务署名、依赖和范围不变。
