@@ -10,9 +10,13 @@
 
 **Blocked by:** [ALVA-033](26-wall-renovation.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+
+**Owner:** Lexie
+
+**Branch / Worktree:** `task/ALVA-034-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-034-Lexie`
 
 - [ ] 预览合并后的边界、房间ID与来源关系，冲突或目标不明先询问。
 - [ ] 家具、门窗、锁定项及原话均有明确去向；任一步失败整体回滚。
