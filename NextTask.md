@@ -1,3 +1,7 @@
+## 2026-09-26 ALVA-057 文案精简发布
+
+main `23a79da` 已上线问卷单问句与选项标签精简，收据见 `docs/ALVA-057-questionnaire-release.md`；057 阶段 MCP 仍待 066 联验，状态 in-progress。
+
 ## 2026-09-26 ALVA-057 界面反馈发布
 
 main `39bc74f` 已上线五项问卷界面修订，详情见 `docs/ALVA-057-questionnaire-release.md`；057 仍待 066 阶段 MCP 联合验收，状态 in-progress。

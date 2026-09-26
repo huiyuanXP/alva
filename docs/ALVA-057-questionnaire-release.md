@@ -26,4 +26,8 @@ main 集成 `39bc74f`，生产静态资源 `/assets/index-OlKM2r75.js` 公网返
 
 每个用户可见问题最多一个问号：Q21a 的远程工作问题和 Q50d 的既往设计合作问题合并为单问句。99 个带 `or`、`&`、`/` 的选项标签改为简短词组；需要保留并列含义时以逗号表达，尤其 Look & feel 阶段的氛围、色板和风格题。只改展示文案，选项 ID、类型和条件规则不变；测试阶段不以旧保存答案兼容作为验收门禁。浏览器验收脚本随 `Apartment` 标签同步。
 
-隔离工作区类型检查、41/41 回归、生产构建以及 7 组恢复/Chat、6 组桌面/手机和反馈浏览器均通过。证据 `evidence/20260926T030124Z-ALVA057-release-regression-693337/`、`evidence/20260926T030251Z-ALVA057-release-build-694079/`、`evidence/20260926T030253Z-ALVA057-release-recovery-browser-694146/`、`evidence/20260926T030315Z-ALVA057-release-layout-browser-694354/`、`evidence/20260926T030337Z-ALVA057-release-feedback-browser-694588/`。生产收据待部署后补记。
+隔离工作区类型检查、41/41 回归、生产构建以及 7 组恢复/Chat、6 组桌面/手机和反馈浏览器均通过。证据 `evidence/20260926T030124Z-ALVA057-release-regression-693337/`、`evidence/20260926T030251Z-ALVA057-release-build-694079/`、`evidence/20260926T030253Z-ALVA057-release-recovery-browser-694146/`、`evidence/20260926T030315Z-ALVA057-release-layout-browser-694354/`、`evidence/20260926T030337Z-ALVA057-release-feedback-browser-694588/`。生产收据如下。
+
+### 文案精简生产发布收据
+
+main `23a79da` 已发布；生产资源 `/assets/index-1gXRCXyU.js` 返回 200，包含 `Warm, cozy`、`Warm whites, light wood` 和新的单问句文案。发布前备份原静态资源、源码及停止服务后的 132MiB 数据库于 `.runtime/alva057-copy-20260926T030543Z/`，重启系统级 `alva.service` 后服务 active。公网登录只读浏览器验收通过：新资源、问卷弹窗可用，脚本错误 0；证据 `evidence/2026-09-26T030838473Z-ALVA057-copy-public/result.json`。ALVA-066 阶段 MCP 仍待联验，057 保持 in-progress。
