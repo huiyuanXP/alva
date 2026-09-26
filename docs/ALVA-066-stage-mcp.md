@@ -1,13 +1,17 @@
 # ALVA-066 主 Chat 按阶段接入两包 MCP
 
 **ID:** ALVA-066
-**Status:** in-progress
-**Execution state:** deployed / integration-prerequisite-satisfied / awaiting-authenticated-production-acceptance；2026-09-26 05:32 UTC，发布5bb823b；见[生产收据](ALVA-066-production-release.md)。
+**Status:** done
+**Execution state:** integrated / deployed / production-verified；集成 e44c23a，发布5bb823b（产品c53d3ac），生产两阶段实际调用/工具目录/原thread恢复通过；见[生产收据](ALVA-066-production-release.md)。
 **Owner:** codex-stage-mcp
 **Date:** 2026-09-25
 **Dependencies:** ALVA-065；已完成业务以 main 实现为准。ALVA-057 在途共享问卷/schema/页面需协调。
 **Branch / Worktree:** task/ALVA-066-codex-stage-mcp；/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp。
 **Scope:** 本票是新增接入与房间样式任务，不改写 ALVA-008–051 的编号或完成状态。
+
+## 完成结论（2026-09-26）
+
+ALVA-066 已完成并发布。前期隔离原图、确认/失效、家具建议、样式/UI回执及异常证据，结合最新合并影响回归和生产两阶段实际MCP/目录/Resume结果构成验收闭环；生产记录见[发布收据](ALVA-066-production-release.md)。下游接入前置已满足，共享入口占用已释放；029/032/040/042/057保持各自负责人和本票门禁，不自动完票。以下过程记录中的in-progress、待合并或待发布均为当时状态。
 
 ## 2026-09-26 ALVA-066 接入前置已满足，共享入口占用已释放
 
@@ -58,17 +62,17 @@ MCP 为默认优先调用渠道。错误必须从工具返回可解释结构，�
 
 ## 验收清单
 
-- [ ] 当前 Codex/网关实际列出并调用正确阶段工具；另一阶段不可见且服务端拒绝越阶段调用。
-- [ ] Chat 上传真实原图/PDF、识图、调整、校准、确认拓扑、生成和确认建筑；候选不自动采用。
-- [ ] 建筑确认后切生活设计；两个 thread ID 持久化，切回原 ID Resume。
-- [ ] 两阶段消息保留；摘要附 revision，送达去重；重启、取消/重试保持正确。
-- [ ] 确认回答触发相关房间待确认家具建议；草稿不触发，非法资产/碰撞被拒。
-- [ ] 房间样式 2D/3D 预览、确认、刷新重读一致，墙体几何不变。
-- [ ] UI action 实际执行并回执；无回执或失败不得宣称成功。
-- [ ] 切回户型讨论不清空设计；明确修改拓扑后旧候选失效，再回生活设计送达失效摘要。
-- [ ] 越权、跨项目、错误/缺失附件、过期凭据、revision 冲突均有可解释 MCP 错误且无正式污染。
-- [ ] 直接按钮回归通过；所有已完成业务主 Chat 实际工具调用证据可追踪。
-- [ ] 备份/回滚已准备、服务与公网资源已验证；生产登录后两个阶段实际调用、可见性与会话恢复待有效验证码。
+- [x] 当前 Codex/网关实际列出并调用正确阶段工具；另一阶段不可见且服务端拒绝越阶段调用。
+- [x] Chat 上传真实原图/PDF、识图、调整、校准、确认拓扑、生成和确认建筑；候选不自动采用。
+- [x] 建筑确认后切生活设计；两个 thread ID 持久化，切回原 ID Resume。
+- [x] 两阶段消息保留；摘要附 revision，送达去重；重启、取消/重试保持正确。
+- [x] 确认回答触发相关房间待确认家具建议；草稿不触发，非法资产/碰撞被拒。
+- [x] 房间样式 2D/3D 预览、确认、刷新重读一致，墙体几何不变。
+- [x] UI action 实际执行并回执；无回执或失败不得宣称成功。
+- [x] 切回户型讨论不清空设计；明确修改拓扑后旧候选失效，再回生活设计送达失效摘要。
+- [x] 越权、跨项目、错误/缺失附件、过期凭据、revision 冲突均有可解释 MCP 错误且无正式污染。
+- [x] 直接按钮回归通过；所有已完成业务主 Chat 实际工具调用证据可追踪。
+- [x] 备份/回滚已准备、服务与公网资源通过；生产登录后两个阶段实际调用、目录可见性与原会话恢复已通过。
 
 ## 初始核验与 Implementation handoff
 

@@ -1,0 +1,6 @@
+run=20260926T054021Z-ALVA066-production-mcp-39465
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2198
+f369ea8d6ccba8246701acabc690e89bc7d80783

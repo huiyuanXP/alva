@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "source": "actual production Codex mcp_list_tools function_call_output; names only",
+  "catalogs": {
+    "floorplan": [
+      "set_view",
+      "get_snapshot",
+      "recognize_floorplan",
+      "edit_topology",
+      "repair_topology",
+      "draw_wall",
+      "calibrate_floorplan",
+      "inspect_topology",
+      "request_topology_confirmation",
+      "request_topology_reopen",
+      "generate_building",
+      "request_building_confirmation"
+    ],
+    "living": [
+      "get_topology_diagnostics",
+      "edit_functional_zone",
+      "read_user_context",
+      "run_layout_review",
+      "propose_user_context",
+      "suggest_furniture",
+      "skip_furniture_suggestion",
+      "set_view",
+      "propose_room_style",
+      "propose_scope",
+      "get_snapshot",
+      "propose_reference_preferences",
+      "get_business_guidance",
+      "ask_question",
+      "propose_answer",
+      "propose_changes",
+      "propose_room_purpose",
+      "prepare_delivery",
+      "request_save"
+    ]
+  }
+}
