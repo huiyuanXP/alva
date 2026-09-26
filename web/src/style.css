@@ -65,7 +65,7 @@
 .proposal-group{display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#f7f6ef}.proposal-group-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}.proposal-group-grid .proposal{margin:0}
 
 .chat-stages{padding-bottom:10px}
-.chat-stages>small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:7px 2px 0}
 .stage-chat-content:empty{display:none}
 .stage-chat-content>p[role=status]{margin:8px 2px;font-size:12px;line-height:1.5}
 .stage-chat-content .stage-entry-warning{margin:6px 0 12px}
+.chat-stages .segmented button.active{color:#4f5e4a}
