@@ -82,3 +82,10 @@
 .chat-stages .segmented{display:inline-flex;width:max-content;max-width:100%;gap:2px;padding:3px;border:1px solid #dfe2d9;border-radius:12px;background:#e9ebe5;box-shadow:inset 0 1px 2px #2834250c}
 .chat-stages .segmented button{flex:0 0 auto;padding:7px 13px;border-radius:9px;color:#60685e;font-weight:500;line-height:1.2;white-space:nowrap}
 .chat-stages .segmented button.active{background:#fff;color:#363d34;box-shadow:0 1px 3px #2b342a24}
+
+/* Give the conversation more room around the compact stage switcher. */
+.chat{padding-right:12px}
+.onboarding .chat{padding-right:24px}
+.chat .panel-heading{padding:8px 0 6px}
+.chat-stages .segmented{padding:2px;border-radius:10px}
+.chat-stages .segmented button{font-size:12px;padding:5px 10px;border-radius:8px}
