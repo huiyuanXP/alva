@@ -1,3 +1,9 @@
+## 2026-09-26 ALVA-044 已验收并集成
+
+同一手动保存版本现在确定性生成设计师 D01–D10 与业主 U01–U05；designer.docx 为可编辑 Word 正文，owner.pdf、sidecar 与文档均绑定同一 snapshot/version。原话、需求、偏好、痛点、取舍、未决、家具/材料与实现计划分层；专业未知保持未决，只有实际使用过的 BG citation 进入业务指导来源；交付不宣称施工图、BIM 或工程批准，旧金额类范围内容不进入人类文档及对应 sidecar 投影。
+
+第一轮相关回归 14/14；第二轮 typecheck、生产构建与扩大回归 40/40；真实 ZIP 生成复验含 DOCX、PDF（6页）、高清平面图、全屋/房间截图、scene、sidecar、manifest，version=1 一致且金额类文本扫描 0 命中。仅保留既有 Vite >500 kB chunk warning。未发布生产。
+
 ## 2026-09-26 ALVA-034 已验收并集成
 
 空间合并现在先提供新边界、新房间ID、来源关系和门窗连续性预览；问卷或房间样式冲突必须明确选择来源，锁定房间/回答不会被静默解除。确认后在同一事务中迁移家具、问卷、原话、findings、user context、分区、用途、scope、Home Vision、样式、参考图及Chat action等房间引用，建立新拓扑版本并作废引用旧房间ID的建筑3D；交付D03/D06与sidecar保留合并来源。
