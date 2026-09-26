@@ -114,7 +114,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-045](.scratch/alva-completion/issues/38-delivery-bundle.md) | 完整交付包 | `delivery` | lzy | `task/ALVA-045-lzy` / `/home/ubuntu/Alva-worktrees/ALVA-045-lzy` | 交付包 API/UI、场景渲染、DOCX/PDF/JSON/sidecar/manifest；依赖044/034/035/013已验收集成，in-progress |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 

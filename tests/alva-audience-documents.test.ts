@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {unzipSync,strFromU8} from 'fflate';
 import {emptyProject,type Project} from '../api/model.js';
-import {sections,docx,ownerHtml} from '../api/export.js';
+import {sections,docx,ownerHtml,deliveryManifest} from '../api/export.js';
+import {createHash} from 'node:crypto';
 import {financialContentExcluded} from '../api/delivery-content.js';
 
 function project():Project{
@@ -41,4 +42,12 @@ test('ALVA-044 designer DOCX contains editable body text and owner HTML carries 
 
 test('ALVA-044 financial exclusion guard rejects records before sidecar projection',()=>{
  assert.equal(financialContentExcluded({title:'普通方案',reason:'采光'}),true);assert.equal(financialContentExcluded({title:'预算优先方案',reason:'五万'}),false);assert.equal(financialContentExcluded('报价 5000'),false);
+});
+
+test('ALVA-045 manifest binds every payload to the selected saved version and preserves topology relations',()=>{
+ const p=project();p.roomMergeHistory=[{id:'merge-1',mergedRoomId:'living',sourceRoomIds:['old-a','old-b'],sourceRoomNames:['旧客厅','旧餐区'],name:'客餐厅',purpose:'会客',createdAt:'2026-09-26T00:02:00Z'}];p.roomSplitHistory=[{id:'split-1',sourceRoomId:'living',sourceRoomName:'客厅',childRoomIds:['living-a','living-b'],childRoomNames:['阅读区','会客区'],splitLine:{a:{x:2,y:0},b:{x:2,y:3}},itemAssignments:[{itemId:'desk',childRoomId:'living-a'}],openingAssignments:[],requirementAssignments:[{kind:'answer',id:'Q18',childRoomId:'living-a'}],createdAt:'2026-09-26T00:03:00Z'}];p.archivedFurniture=[{id:'retired-1',item:p.scene!.items[0],removedAt:'2026-09-26T00:04:00Z',reason:'移回家具库'}];
+ const files={'scene.json':new TextEncoder().encode(JSON.stringify({version:3,snapshotFingerprint:'fp'})),'sidecar.json':new TextEncoder().encode(JSON.stringify({version:3})),'references.json':new TextEncoder().encode(JSON.stringify({version:3})),'floorplan.png':new Uint8Array([1,2,3]),'designer.docx':new Uint8Array([4]),'owner.pdf':new Uint8Array([5])};
+ const manifest=deliveryManifest(p,3,'fp',files) as any;
+ assert.equal(manifest.version,3);assert.equal(manifest.sourceSnapshot.version,3);assert.equal(manifest.sourceSnapshot.snapshotFingerprint,'fp');assert.equal(manifest.relations.roomMergeHistory[0].id,'merge-1');assert.equal(manifest.relations.roomSplitHistory[0].childRoomIds[1],'living-b');assert.equal(manifest.relations.retiredFurniture[0].id,'retired-1');assert.equal(manifest.manifestSelfChecksum.startsWith('excluded:'),true);
+ for(const [name,data] of Object.entries(files)){assert.equal(manifest.files[name].bytes,data.length);assert.equal(manifest.files[name].sha256,createHash('sha256').update(data).digest('hex'));}
 });
