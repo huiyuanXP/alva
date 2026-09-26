@@ -1,0 +1,8 @@
+{
+  "origin": "https://prod.huiyuanxp.com",
+  "authenticated": false,
+  "checks": [],
+  "ok": false,
+  "error": "Error: locator.getAttribute: Error: strict mode violation: locator('script[type=\"module\"]') resolved to 2 elements:\n    1) <script type=\"module\" crossorigin=\"\" src=\"/assets/index-MGEQ5jJb.js\"></script> aka locator('head script')\n    2) <script type=\"module\" crossorigin=\"anonymous\" data-cf-beacon=\"{\"version\":\"2024.11.0\",\"token\":\"3aff831286d342fe8740fc610e46e058\",\"r\":1,\"spa\":2}\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495\" integrity=\"sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==\"></script> aka locator('body script')\n\nCall log:\n  - waiting for locator('script[type=\"module\"]')\n",
+  "pageErrors": []
+}

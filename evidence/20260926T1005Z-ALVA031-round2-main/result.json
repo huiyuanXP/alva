@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "run": "20260926T1005Z-ALVA031-round2-main",
+  "homeStatus": 200,
+  "uiLabelsPresent": true,
+  "sharedCodeRequired": true,
+  "designerRole": true,
+  "designerViewStatus": 200,
+  "designerWriteStatus": 403,
+  "crossProjectStatus": 403,
+  "inviteManagementStatus": 403,
+  "sessionSurvivesRestart": true,
+  "revokeStatus": 200,
+  "revokedSessionStatus": 401,
+  "revokedInviteLoginStatus": 401,
+  "ownerUnaffected": true
+}

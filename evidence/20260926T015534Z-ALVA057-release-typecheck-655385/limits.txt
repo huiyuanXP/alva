@@ -1,0 +1,6 @@
+run=20260926T015534Z-ALVA057-release-typecheck-655385
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2585
+272c5f93c9ab9403dde3cfcb06b6854ae107842d

@@ -1,0 +1,18 @@
+{
+  "sha256": {
+    "选项卡生成要求.docx": "70d008a824f2bb65a3b0d43803ca974280a3bd75df5ca00ce34a08cf9ba6a41a",
+    "home_design_questionnaire_EN_v4.md": "cb393d68de50bdd11e29689ea0ae134ac0a1b327404a245c9fd37c83ad0ab0fa",
+    "Q05 · Which spaces-html.zip": "3a9d20eb5303820dcbdf057f03e31de1c2731c1580a8d3356b948025e5dca206",
+    "Q07 · Palette-html.zip": "868746f1eb328e54189a40e9f960ef9f7b246247485c839bc671bd1e1bd25da3",
+    "Q01 · What brings you here-html.zip": "6e29f257a95ee4167d02e40952acb203e5d3080919c3878a51b0e28cd9ca77af"
+  },
+  "priority": "Q01/Q05/Q07 HTML masters > questionnaire.md; limited copy changes per Word",
+  "copy_changes": {
+    "Q01 helper": "Choose the option that best describes your plans.",
+    "Q01 exploring helper": "No plans yet, still exploring",
+    "Q05 helper": "Select all that apply.",
+    "Just me": "Only me",
+    "I just know what I like when I see it": "I know what I like when I see it",
+    "Just updates at key moments": "Updates at key moments"
+  }
+}

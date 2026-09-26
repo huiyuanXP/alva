@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "checks": [
+    "compact sage entry",
+    "Q02 removed and progress updated",
+    "home type icons without square fallback",
+    "inline Skip removed, footer advances",
+    "clear custom input and save/close",
+    "zero page errors"
+  ]
+}

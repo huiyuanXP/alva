@@ -2,6 +2,42 @@
 
 基础约束用 thread 配置，普通轮次不重复附完整项目与历史；阶段进入送去重摘要和快照，详细状态按需 MCP 读取。compact 成功与工具目录可见不代表业务调用完成，验收须核对实际结果。代码仍在 066 个人分支，未部署；详见主 Chat 合同和 066 检查点。
 
+## 2026-09-26 ALVA-057 英文问卷文案精简已上线
+
+main `23a79da` 已发布：两道双问句合并，99 个选项标签改写为短语或逗号分隔；隔离 41/41 回归、构建与浏览器检查通过，公网新资源和只读弹窗通过。收据见 `docs/ALVA-057-questionnaire-release.md`。阶段 MCP 待 066 联验，057 继续 in-progress。
+
+## 2026-09-26 ALVA-057 界面反馈已上线
+
+main `39bc74f` 已发布：入口缩小并移至左侧栏右上角、流程跳过 Q02、住宅类型语义图标、移除无效单字 Skip、明确自填提示。41项回归、构建、隔离浏览器和公网只读浏览器验收通过；发布收据在 `docs/ALVA-057-questionnaire-release.md`。057 阶段 MCP 联合验收仍待 066，票维持 in-progress。
+
+## ALVA-066 当前检查点：43f4466，继续最终联合门禁
+
+## 2026-09-26 ALVA-057 英文问卷已先行发布
+
+用户明确要求暂时跳过 ALVA-066 门禁，先上线问卷业务。main `817c253` 已集成新版 Your Home Vision 入口、英文题库/Q1 Q5 Q7 母版、条件流程、按人保存及现役 Chat 只读摘要。隔离验收：类型、构建、40/40 回归、7组保存与Chat、6组桌面/手机通过。生产已备份并重启 `alva.service`，公网首页/健康/新版资源200；用户提供的验证码登录后看见新入口和Q01，问卷接口为 `home-vision-v4`，只读开关不改变 revision，页面错误0。证据 `evidence/2026-09-26T020331622Z-ALVA057-questionnaire-public/result.json`；备份 `.runtime/alva057-questionnaire-20260926T020017Z/`。ALVA-066 阶段MCP、持久会话和联合验收仍在原票，ALVA-057 继续 in-progress，由 xuanpu-chat-6pro 保留署名。
+
+066独立Worktree已提交 `43f4466`。原图项目的真实分类→Markdown→复核→页面保存v1/刷新、交付生成中取消及重新生成/ZIP哈希、日照/房间聚焦真实回执均已通过。确认回答自动家具建议发现碰撞失败被冒称无需求，现按实际失败记录拒绝skip，并通过MCP返回尺寸/占地及同校验器验证的位置供模型修复；4/4回归与确认后自动生成待采用候选实测通过，草稿不触发、原场景不变。最新固定源码类型检查通过。
+
+原floorplan thread恢复/仅讨论不清空；页面明确重开后失效旧设计，实际门窗宽度合成修改/校准/拓扑v2确认、现役模型建筑重生成、页面确认并恢复原living thread及立即送达失效摘要已通过。实际用途提案/页面确认和参考图片偏好候选也通过。所有中途失败保留，不拼成尚未完成的最终同候选整票结论。证据详见个人Worktree票内2026-09-25原图项目保存、交付与跨阶段检查点。
+
+下一步在固定候选完成最终联合回归/构建、029分类→Markdown→review→保存和剩余业务门禁，再main产品集成/备份发布及生产验证。066/029仍in-progress；040/057保持各自署名与边界，生产未变。共享heavy锁继续串行CPU80%/1200M/swap0，当前过程检查已结束。
+
+neat-freak：局部实测/类型verified-current，完整交付及生产pending；MCP优先合同verified-current，生成记忆out-of-scope，所有私有现场/失败证据/未完成Worktree保留。
+
+## 2026-09-25 ALVA-066 协作增量
+
+安装版 App Server Resume 不接受 dynamicTools 覆盖；066通过固定 mcp_list_tools/mcp_call_tool 让旧thread发现并调用现役阶段MCP新工具，真实网关已验。029补充合同确认：index.md含四分类SHA，current.json另含indexSha256；审查复用保留reviewedRevision，重读当前revision投影且scene/context指纹不变后记录adoptedAtRevision。066过程提交2d6b6cd，新业务增量待验、未集成/发布；主目录NextTask是重任务窗口与下一步入口。
+
+## 2026-09-26 ALVA-040 日照独立实现，阶段接入待066
+
+ALVA-040 由 chatgpt-sunlight 认领并在独立分支 `task/ALVA-040-chatgpt-sunlight` 提交 `7c5129e`。统一两种3D视图的日照与投影，修正早晚方向和建筑夜间直射，时间/日期变化不重建视图；显示真太阳时、日期、纬度、北向和估算限制。17/17回归（含7350组参数）、完整类型检查、前端构建、真实浏览器13/13检查通过，控制台错误0；相同参数画面哈希一致，项目/revision/快照不变。
+
+仍为 **in-progress**：生活设计MCP、主Chat实际调用与UI action回执等待ALVA-066。产品代码和证据只在 `/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight`，未合入main或部署。工作区内 `docs/ALVA-040-sunlight.md`、单票Implementation handoff与 `evidence/20260925T192458558Z-ALVA040-browser-110e48/` 是本里程碑入口；失败run、编译中止与资源采样保留。未改057/066/029共享入口、生产服务或配置；复核现场保留，不清场。
+
+## 2026-09-25 用户信息投影协作合同
+
+029负责独立用户上下文/布局审查模块，066负责MCP和共享入口装配。确认的私有位置为运行数据根 user-context/<projectId>/，分类 habits/preferences/requirements/unresolved/index，Project持久数据为权威，Markdown为分代原子生成且带revision/来源指纹/hash的可重建投影，不进Git；正式模块合同随029提交。当前协作答复在 `.runtime/alva-coordination/ALVA-066-029-reply.md`，不含客户内容。066运行层过程代码仍只在独立Worktree，不能据此宣称生产已切MCP。
+
 ## 2026-09-25 协调清理与锁到期检查
 
 用户授权提交原错别字和协调整理；024/025/028 过期占用已移除，040 恢复待认领，057 保留。根目录空锁暂留，记录时间 18:49:54 UTC；用户级定时器将于 2026-09-26 06:49:54 UTC 检查无人认领且未被持有的原文件再释放，正式 .git 协调锁不变。053/056 既有验收证据保留提交；neat-freak 复核仅覆盖本次状态与文档，无产品代码或生产变更。
@@ -127,3 +163,37 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 
 ## 2026-09-25 · ALVA-041 参考图偏好数据边界
 参考图片偏好采用独立 `alva_reference_batches` / `alva_reference_annotations` 持久化：model/manual 候选在确认前不进入 Project 需求；业主确认后才转成 `Evidence(source=image)` + intake `Finding(kind=requirement)`，并用 `objectIds: [reference:<batchId>]` 回指原图批次。参考图只能作为视觉偏好来源，不能作为尺寸、结构、真实材料身份或材料性能证据。后续 ALVA-042 只能读取 confirmed 标注，不得把 pending/cancelled 批次当作已确认偏好。
+
+## ALVA-066/029联合运行契约（未上线）
+
+066检查点087094c在个人Worktree：用户分类的Markdown在DB提交后原子投影，错误必须保留稳定code/repairActions；模型实际能按CONTEXT_SCOPE_INVALID修正房间/家具ID混用。审查凭证保留真实reviewedRevision/adoptedAtRevision；样式参与失效指纹。真实局部联合链已通过，整票与生产仍pending，以NextTask和066票据为现役入口。原thread恢复与串行新进程验证不等于新建替代会话。
+
+ALVA-066检查点35088ef：进入阶段用thread/inject_items追加摘要/快照；thread/read有损视图不包含原始注入项，恢复去重只读取当前stage CODEX_HOME内匹配thread身份的rollout。HTTP MCP长调用不能依赖fetch默认响应头等待时限。真实识图仍pending，缺失说明只补未核实标签，不伪造地理值或几何。
+
+## ALVA-066 当前检查点：aea3cc2，继续真实识图
+
+066独立Worktree已提交 `aea3cc2`。补齐拓扑修复/补墙和功能分区MCP，与直接API共用服务；类型检查与41/41导入、拓扑、分区、阶段Chat回归通过。闭合环只去掉精确末尾重复点，内部重复仍拒绝；私有真实输出回放通过，但未注入项目。
+
+第四次真实识图仍失败于模型漏rooms.name（20260925T211018Z-ALVA066-floorplan-recognize-574753）；现已在首轮和修正提示正文附完整JSON Schema，不猜补名称，并约束主Chat不能将模型格式错误归咎附件。已启动同原附件/原thread下一轮实测，重任务仍共享锁串行CPU80%/1200M/swap0。成功后用续跑脚本完成标注、明确合成输入的校准、浏览器确认、真实建筑生成及进入阶段立即送达检查。
+
+029已接收并装配，原生活设计thread的局部真实分类→Markdown→review→浏览器保存链通过；最终同SHA联合链、原图/建筑/跨阶段失效、交付/取消/重启、main产品集成及备份发布仍pending。066和029保持in-progress，生产未改。neat-freak过程事实已对齐，生成记忆out-of-scope，复核现场保留。
+
+
+## ALVA-066 当前检查点：ba1c9e6，继续联合保存与交付验收
+
+066独立Worktree已提交 `ba1c9e6`。真实原附件→主Chat HTTP MCP识图成功（24墙/5房/8门窗），实际修复T节点、标注与明确合成输入的校准，浏览器确认拓扑；按生产现役模型生成建筑并进入living。建筑确认收尾有一轮异常退出，保留失败，新进程/浏览器重读确认建筑、原floorplan thread、新living thread及摘要送达均保持。候选仍有一项未连接端点待核对，不宣称施工精度。
+
+原living thread曾增长至243225 token并空结束；官方thread/compact/start在同一thread压缩成功，估计降至20783，项目revision不变。已提前自动压缩并移除快照重复拓扑几何。压缩后原回答任务实际生成家具候选，页面明确采用/刷新通过；真实样式候选的2D/3D预览、确认/重读与几何不变通过。修复明确家具参数/初始旋转、结果完整性、错误原因保留、同房间旧样式候选过期。类型检查与16/16最新回归通过；过程失败与边界见个人票据。
+
+下一步在固定实现上完成原图项目029分类→Markdown→review→保存、确认后自动建议成功正路径、ZIP交付/取消重试、返回原阶段及拓扑失效、最终同候选门禁，再main产品集成/备份发布。066/029保持in-progress，生产未变；029无需重跑其独立模块。共享heavy锁仍串行CPU80%/1200M/swap0，当前检查已结束，066继续下一独立窗口。
+
+neat-freak过程事实已同步：局部代码/实测verified-current，整票/生产pending，生成记忆out-of-scope，私有现场与其他Agent署名保留。
+
+
+
+## 2026-09-26 · ALVA-031 设计师只读访问合同
+设计师访问必须同时经过统一验证码和项目 invite token；服务端 session 固定 `role=designer` 与项目/邀请 link。设计师默认仅允许 GET/HEAD 当前项目内容，任何项目写入在全局 onRequest 层 403，仅 `/api/logout` 例外用于结束本人 session。业主可列出、生成、撤销当前项目只读邀请；撤销后已有 designer session 与旧 invite token 立即失效。跨项目 `/api/projects/:id` 请求在 session 项目校验处拒绝。该层属于登录/授权边界，不属于户型或生活设计阶段 MCP。
+
+
+## 2026-09-26 · ALVA-037 快照只读预览合同
+全局历史只展示 `/api/save` 创建的手动快照；版本列表时间由 `AlvaStore.versions()` 统一转 ISO。读取 `/api/versions/:version` 仅返回保存副本，不修改当前工作稿、revision 或版本列表。前端 `SnapshotHistory` 使用独立覆盖层渲染快照 2D/3D、需求与依据，不把快照赋值给当前 App project；关闭预览即回到原工作稿。只有明确 restore 才允许替换工作状态。

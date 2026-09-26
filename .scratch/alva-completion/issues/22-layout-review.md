@@ -10,9 +10,13 @@
 
 **Blocked by:** [ALVA-028](21-initial-pain-analysis.md), [ALVA-024](17-furniture-transform.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Owner:** xuanpu-chat-6pro
+
+**Branch / Worktree:** task/ALVA-029-xuanpu-chat-6pro / /home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro
+
+**Execution:** 2026-09-26（新加坡时间）用户指定 xuanpu-chat-6pro 认领，ALVA-028/024 已集成 main。已通过 Herdr 第一终端第一页与 ALVA-066 实际讨论并确认分类 Markdown 位置/来源/分工；独立实现提交 dd6f948，固定代码类型检查、50/50 回归和构建通过，证据交接提交8aa0f1a。详细合同与证据在个人工作区 docs/ALVA-029-user-context-layout-review.md，协调交接在主目录 .runtime/alva-coordination/ALVA-029-066-implementation.md。未修改066占用入口；主Chat生产链、实际生活设计MCP、保存前UI与同SHA联合验收仍待066，故保持in-progress，未集成/未部署。
 
 - [ ] 对当前版本分别检查几何、通行路径、风格/行为、原需求冲突和家具合理性。
 - [ ] 每项显示原因/建议并定位对象或路径；上述三类生活痛点复跑正反例。

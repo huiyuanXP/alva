@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "round": 1,
+  "tests": {"passed": 15, "failed": 0},
+  "checks": [
+    "manual saves only create global snapshot points",
+    "snapshot list returns version plus valid ISO save time",
+    "snapshot GET returns full saved state",
+    "snapshot preview GET never mutates current draft or version list",
+    "missing snapshot returns 404 and leaves draft untouched",
+    "designer may preview but cannot restore"
+  ],
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "diffCheck": "passed"
+}

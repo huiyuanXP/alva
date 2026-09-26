@@ -1,3 +1,21 @@
+## ALVA-066 当前检查点：43f4466，继续最终联合门禁
+
+## 2026-09-26 ALVA-057 英文问卷已先行发布
+
+用户明确要求暂时跳过 ALVA-066 门禁，先上线问卷业务。main `817c253` 已集成新版 Your Home Vision 入口、英文题库/Q1 Q5 Q7 母版、条件流程、按人保存及现役 Chat 只读摘要。隔离验收：类型、构建、40/40 回归、7组保存与Chat、6组桌面/手机通过。生产已备份并重启 `alva.service`，公网首页/健康/新版资源200；用户提供的验证码登录后看见新入口和Q01，问卷接口为 `home-vision-v4`，只读开关不改变 revision，页面错误0。证据 `evidence/2026-09-26T020331622Z-ALVA057-questionnaire-public/result.json`；备份 `.runtime/alva057-questionnaire-20260926T020017Z/`。ALVA-066 阶段MCP、持久会话和联合验收仍在原票，ALVA-057 继续 in-progress，由 xuanpu-chat-6pro 保留署名。
+
+066独立Worktree已提交 `43f4466`。原图项目的真实分类→Markdown→复核→页面保存v1/刷新、交付生成中取消及重新生成/ZIP哈希、日照/房间聚焦真实回执均已通过。确认回答自动家具建议发现碰撞失败被冒称无需求，现按实际失败记录拒绝skip，并通过MCP返回尺寸/占地及同校验器验证的位置供模型修复；4/4回归与确认后自动生成待采用候选实测通过，草稿不触发、原场景不变。最新固定源码类型检查通过。
+
+原floorplan thread恢复/仅讨论不清空；页面明确重开后失效旧设计，实际门窗宽度合成修改/校准/拓扑v2确认、现役模型建筑重生成、页面确认并恢复原living thread及立即送达失效摘要已通过。实际用途提案/页面确认和参考图片偏好候选也通过。所有中途失败保留，不拼成尚未完成的最终同候选整票结论。证据详见个人Worktree票内2026-09-25原图项目保存、交付与跨阶段检查点。
+
+下一步在固定候选完成最终联合回归/构建、029分类→Markdown→review→保存和剩余业务门禁，再main产品集成/备份发布及生产验证。066/029仍in-progress；040/057保持各自署名与边界，生产未变。共享heavy锁继续串行CPU80%/1200M/swap0，当前过程检查已结束。
+
+neat-freak：局部实测/类型verified-current，完整交付及生产pending；MCP优先合同verified-current，生成记忆out-of-scope，所有私有现场/失败证据/未完成Worktree保留。
+
+## 2026-09-26 ALVA-040 日照独立实现，阶段接入待066
+
+ALVA-040：`chatgpt-sunlight`，独立提交 `7c5129e`；日照与真实阴影里程碑通过17项测试、完整类型/构建及13项浏览器检查。仍在进行，等待ALVA-066的生活设计MCP与受控UI回执，未集成/部署，不占用其他任务的共享入口。当前认领以 [NextTask](NextTask.md) 为准，详见 [单票](.scratch/alva-completion/issues/33-sunlight-seasons.md)。
+
 ## ALVA-065 主 Chat 入口与 Harness 已固定（2026-09-25）
 
 主 Chat 的代码身份在 `api/main-chat-agent.ts`，入口为登录后左侧咨询栏和 `POST /api/chat`，运行器为 Codex App Server 的 `api/codex.ts`。后续功能同票完成受控工具适配，验收标准与 Prompt 见[主 Chat 合同](docs/ALVA-065-main-chat-agent.md)及[接入模板](docs/MAIN-CHAT-FEATURE-PROMPT.md)。当前识图、建筑生成等仍是直接入口，未冒充 Chat 已接入。

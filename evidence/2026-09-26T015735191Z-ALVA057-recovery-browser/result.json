@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "checks": [
+    "explicit area unit: partial draft saves, but does not enter the brief or enable Continue",
+    "a genuinely committed response can be lost and retried with the same request ID, without duplicate writes",
+    "real concurrent update preserves local edits; cancel keeps them, explicit reload resolves the conflict",
+    "respondent link opens the named response after reload, without merging another person’s answers",
+    "budget amounts require an explicitly selected currency, and save without creating a global snapshot",
+    "initial read failure has a functioning reload action",
+    "isolated-model main Chat: real get_snapshot tool, separate respondents, SSE reply, questionnaire resume without writes"
+  ],
+  "errors": [],
+  "requestIds": [
+    "6d19b647-95c4-4344-b653-5b99de0605ea",
+    "6d19b647-95c4-4344-b653-5b99de0605ea"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ok": false,
+  "ticket": "ALVA-042",
+  "round": 2,
+  "gate": "living-stage MCP actual tool invocation on current product main",
+  "mainHasStageMcpRuntime": false,
+  "mainHasConfirmedReferenceTool": false,
+  "alva066BranchHasLivingMcpRuntime": true,
+  "alva066BranchHasConfirmedReferenceToolMounted": false,
+  "reason": "ALVA-066 is not integrated into main, and its current living tool pack does not yet mount get_confirmed_reference_preferences. Current dynamicTools/get_snapshot behavior cannot substitute for the stage-MCP completion gate."
+}

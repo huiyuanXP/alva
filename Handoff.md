@@ -6,6 +6,46 @@
 
 neat-freak：本次代码/合同 changed-and-verified；完整验收、main 集成及生产 pending；生成记忆 out-of-scope；私有现场和历史失败证据保留。共享重任务已结束，锁按 runner 释放。
 
+## 2026-09-26 ALVA-057 英文问卷文案精简已上线
+
+main `23a79da` 已发布：两道双问句合并，99 个选项标签改写为短语或逗号分隔；隔离 41/41 回归、构建与浏览器检查通过，公网新资源和只读弹窗通过。收据见 `docs/ALVA-057-questionnaire-release.md`。阶段 MCP 待 066 联验，057 继续 in-progress。
+
+## 2026-09-26 ALVA-057 界面反馈已上线
+
+main `39bc74f` 已发布：入口缩小并移至左侧栏右上角、流程跳过 Q02、住宅类型语义图标、移除无效单字 Skip、明确自填提示。41项回归、构建、隔离浏览器和公网只读浏览器验收通过；发布收据在 `docs/ALVA-057-questionnaire-release.md`。057 阶段 MCP 联合验收仍待 066，票维持 in-progress。
+
+## ALVA-066 当前检查点：43f4466，继续最终联合门禁
+
+## 2026-09-26 ALVA-057 英文问卷已先行发布
+
+用户明确要求暂时跳过 ALVA-066 门禁，先上线问卷业务。main `817c253` 已集成新版 Your Home Vision 入口、英文题库/Q1 Q5 Q7 母版、条件流程、按人保存及现役 Chat 只读摘要。隔离验收：类型、构建、40/40 回归、7组保存与Chat、6组桌面/手机通过。生产已备份并重启 `alva.service`，公网首页/健康/新版资源200；用户提供的验证码登录后看见新入口和Q01，问卷接口为 `home-vision-v4`，只读开关不改变 revision，页面错误0。证据 `evidence/2026-09-26T020331622Z-ALVA057-questionnaire-public/result.json`；备份 `.runtime/alva057-questionnaire-20260926T020017Z/`。ALVA-066 阶段MCP、持久会话和联合验收仍在原票，ALVA-057 继续 in-progress，由 xuanpu-chat-6pro 保留署名。
+
+066独立Worktree已提交 `43f4466`。原图项目的真实分类→Markdown→复核→页面保存v1/刷新、交付生成中取消及重新生成/ZIP哈希、日照/房间聚焦真实回执均已通过。确认回答自动家具建议发现碰撞失败被冒称无需求，现按实际失败记录拒绝skip，并通过MCP返回尺寸/占地及同校验器验证的位置供模型修复；4/4回归与确认后自动生成待采用候选实测通过，草稿不触发、原场景不变。最新固定源码类型检查通过。
+
+原floorplan thread恢复/仅讨论不清空；页面明确重开后失效旧设计，实际门窗宽度合成修改/校准/拓扑v2确认、现役模型建筑重生成、页面确认并恢复原living thread及立即送达失效摘要已通过。实际用途提案/页面确认和参考图片偏好候选也通过。所有中途失败保留，不拼成尚未完成的最终同候选整票结论。证据详见个人Worktree票内2026-09-25原图项目保存、交付与跨阶段检查点。
+
+下一步在固定候选完成最终联合回归/构建、029分类→Markdown→review→保存和剩余业务门禁，再main产品集成/备份发布及生产验证。066/029仍in-progress；040/057保持各自署名与边界，生产未变。共享heavy锁继续串行CPU80%/1200M/swap0，当前过程检查已结束。
+
+neat-freak：局部实测/类型verified-current，完整交付及生产pending；MCP优先合同verified-current，生成记忆out-of-scope，所有私有现场/失败证据/未完成Worktree保留。
+
+## 2026-09-25 ALVA-066 主 Chat 过程检查点（未完票）
+
+个人提交 `2d6b6cd`，主 Chat阶段MCP、附件/确认卡已接入；36项回归和真实网关旧thread目录更新探针通过，证据位于个人Worktree `evidence/20260925T193202Z-ALVA066-validation-540418/`、`evidence/20260925T193412944Z-ALVA066-harness-8564c7/`。随后样式、UI回执、问卷建议及测试夹具改动尚未检查；后续需先检查修复，不把过程提交当完成。main产品及生产未变。当前066无活跃重任务，029窗口保留，收到其接口/证据后再协作接入。neat-freak仅完成过程事实对齐，整票验收/运行态pending，所有现场保留。
+
+## 2026-09-26 ALVA-040 日照独立实现，阶段接入待066
+
+ALVA-040 由 chatgpt-sunlight 认领并在独立分支 `task/ALVA-040-chatgpt-sunlight` 提交 `7c5129e`。统一两种3D视图的日照与投影，修正早晚方向和建筑夜间直射，时间/日期变化不重建视图；显示真太阳时、日期、纬度、北向和估算限制。17/17回归（含7350组参数）、完整类型检查、前端构建、真实浏览器13/13检查通过，控制台错误0；相同参数画面哈希一致，项目/revision/快照不变。
+
+仍为 **in-progress**：生活设计MCP、主Chat实际调用与UI action回执等待ALVA-066。产品代码和证据只在 `/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight`，未合入main或部署。工作区内 `docs/ALVA-040-sunlight.md`、单票Implementation handoff与 `evidence/20260925T192458558Z-ALVA040-browser-110e48/` 是本里程碑入口；失败run、编译中止与资源采样保留。未改057/066/029共享入口、生产服务或配置；复核现场保留，不清场。
+
+## 2026-09-25 ALVA-066 运行层过程交接（未整票完成）
+
+个人提交 `e731910`，独立Worktree中实现两阶段HTTP MCP、真实桥接、持久thread/摘要去重、私有附件和共用导入/拓扑/建筑服务。真实修改后Harness两轮独立验收通过，含原thread恢复、错误修复说明和摘要仅注入一次；类型检查及33项定向回归通过，证据见个人票据。main产品未集成/发布，主Chat装配、生活设计/样式/确认UI和完整业务验收继续。029分工/私有Markdown合同已在指定协调目录回复；原057、029、040署名保持。重任务等待脚本已有heartbeat，当前验证已终止成功，不重复启动。
+
+## 2026-09-25 ALVA-066 已认领并完成协议探针
+
+个人工作区 `/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp`，过程提交 `2bcfa6b`。原生 MCP 目录隔离与 Resume 可用，但真实模型三轮未调用工具，未通过；批准的 dynamicTools→HTTP MCP 桥接三轮实际调用通过，返回户型仍为原 thread。证据和边界见个人分支 ALVA-066 票据；main 产品未改、未发布，整票仍 in-progress。下一步持久阶段 Harness、摘要送达和业务工具接入；057 的未集成业务保持独立。
+
 ## 2026-09-25 协调清理与锁到期检查
 
 用户授权提交原错别字和协调整理；024/025/028 过期占用已移除，040 恢复待认领，057 保留。根目录空锁暂留，记录时间 18:49:54 UTC；用户级定时器将于 2026-09-26 06:49:54 UTC 检查无人认领且未被持有的原文件再释放，正式 .git 协调锁不变。053/056 既有验收证据保留提交；neat-freak 复核仅覆盖本次状态与文档，无产品代码或生产变更。
@@ -285,3 +325,11 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 
 ## 2026-09-25 · ALVA-041 参考图片偏好标注
 实现 `api/references.ts` 与 WorkspacePanel“参考图”页签，并把主 Chat 接到 `propose_reference_preferences` 工具。模型/手工标注均先 pending，取消不污染 Project；确认后才形成有来源 Evidence/Finding。个人实现 `a22b81a`。第一轮专项 3/3 + tsc/build/diff-check；第二轮真实监听端口 HTTP 链路通过（首页/图片 200、model/manual 来源、2 条确认 evidence + 2 条 findings），并带 ALVA-043 回归共 6/6。浏览器包存在但恢复后的服务器无 Chromium cache/system Chrome，因此浏览器尝试未计入验收。证据见 ALVA-041 单票与 `evidence/20260925T2258Z-ALVA041-round1/`、`evidence/20260925T2312Z-ALVA041-round2-http/`。
+
+
+## 2026-09-26 · ALVA-031 设计师只读访问与撤销
+Lexie 完成并验收设计师只读授权：统一验证码+invite token 登录、当前项目查看、服务端硬只读、跨项目拒绝、授权列表/生成/撤销、撤销立即使活跃 session 与旧链接失效；设计师可正常 logout。前端 WorkspacePanel 新增“访问”页签，业主可管理邀请，设计师看到只读说明。个人实现 `95f9675`。第一轮专项 3/3 + 类型/构建/diff-check；第二轮真实 HTTP/生产 assets/服务重启验收通过，并复跑 access/public-entry/foundation/snapshot/topology 33/33。证据见单票与 `evidence/20260926T0955Z-ALVA031-round1/`、`evidence/20260926T1005Z-ALVA031-round2/`。ALVA-032 已解锁。
+
+
+## 2026-09-26 · ALVA-037 快照列表与只读状态预览
+Lexie 完成独立快照历史/预览层：列表仅显示手动保存版本，展示当前工作稿未保存状态、版本号和 ISO 时间；空列表有明确空态。点击版本进入独立只读覆盖层，可查看二维、三维、需求/依据；不调用模型、不替换当前工作稿，失败可重试。显式恢复按钮仍调用既有 `/api/restore`。同时修复 PGlite timestamp 在 `/api/versions` 被序列化为 `{}` 的问题。个人实现 `3ab060d`；第一轮 15/15，第二轮真实 HTTP + 相关回归 20/20，通过 TypeScript/production build/diff-check。ALVA-038 已解锁。

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Q05 Which spaces</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;background:#f5f5f7;color:#1d1d1f;-webkit-font-smoothing:antialiased}
+a{color:#0066cc}a:hover{color:#004f9e}
+.cta{appearance:none;border:0;border-radius:980px;padding:0 28px;height:48px;min-width:140px;font:inherit;font-size:17px;font-weight:500;letter-spacing:-.01em;background:#0071e3;color:#ffffff;cursor:pointer;transition:background-color .18s ease}
+.cta:hover{background:#0077ed}
+.cta:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(0,113,227,.3)}
+.cta.off{background:#d2d2d7;color:#6e6e73;cursor:default}
+.ghost{appearance:none;border:0;background:transparent;font:inherit;font-size:15px;color:#0066cc;cursor:pointer;height:44px;padding:0 4px;border-radius:8px}
+.ghost:hover{text-decoration:underline}
+.back{appearance:none;border:0;background:#ededf0;color:#424245;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.back:hover{background:#e1e1e6}
+.close{appearance:none;border:0;width:36px;height:36px;border-radius:50%;background:#ededf0;color:#424245;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .18s ease}
+.close:hover{background:#e1e1e6}
+.tile{appearance:none;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;height:104px;box-sizing:border-box;padding:16px;border-radius:16px;border:1.5px solid #e3e3e8;background:#ffffff;cursor:pointer;text-align:left;font:inherit;font-size:15px;font-weight:600;letter-spacing:-.01em;color:#1d1d1f;transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease}
+.tile:hover{border-color:#c7c7cc;background:#fbfbfd}
+.tile:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(0,113,227,.28)}
+.tile.on{border-color:#0071e3;background:#f2f8ff;box-shadow:0 0 0 1px #0071e3 inset}
+.tile.on .tic{color:#0071e3}
+.tic{color:#1d1d1f;display:flex}
+.chk{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;box-sizing:border-box;border:1.5px solid #c7c7cc;display:flex;align-items:center;justify-content:center;background:#ffffff}
+.tile.on .chk,.whole.on .chk{border-color:#0071e3;background:#0071e3}
+.whole{appearance:none;position:relative;width:100%;display:flex;align-items:center;gap:16px;padding:14px 18px;box-sizing:border-box;border-radius:16px;border:1.5px solid #e3e3e8;background:#ffffff;cursor:pointer;text-align:left;font:inherit;color:#1d1d1f;transition:border-color .18s ease,background-color .18s ease}
+.whole:hover{border-color:#c7c7cc;background:#fbfbfd}
+.whole.on{border-color:#0071e3;background:#f2f8ff;box-shadow:0 0 0 1px #0071e3 inset}
+.whole .chk{position:static;margin-left:auto}
+.wic{width:44px;height:44px;border-radius:12px;background:#f2f2f5;display:flex;align-items:center;justify-content:center;flex:none}
+.whole.on .wic{background:#0071e3;color:#ffffff}
+.chip{appearance:none;height:36px;padding:0 16px;border-radius:980px;border:1.5px solid #d2d2d7;background:#ffffff;font:inherit;font-size:14px;font-weight:500;color:#1d1d1f;cursor:pointer;transition:all .18s ease}
+.chip:hover{border-color:#86868b}
+.chip.on{background:#1d1d1f;border-color:#1d1d1f;color:#ffffff}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1000px; position: relative; overflow: hidden; background: #f5f5f7;">
+  <div aria-hidden="true" style="position: absolute; inset: -40px; filter: blur(18px); transform: scale(1.02); display: flex; flex-direction: column;">
+    <div style="height: 92px; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: space-between; padding: 0 160px; border-bottom: 1px solid #e5e5ea;">
+      <div style="width: 140px; height: 18px; border-radius: 9px; background: #1d1d1f;"></div>
+      <div style="display: flex; gap: 36px;">
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 64px; padding: 130px 200px 0; align-items: center;">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 22px;">
+        <div style="width: 520px; height: 56px; border-radius: 14px; background: #1d1d1f;"></div>
+        <div style="width: 420px; height: 56px; border-radius: 14px; background: #1d1d1f;"></div>
+        <div style="width: 380px; height: 16px; border-radius: 8px; background: #86868b; margin-top: 12px;"></div>
+        <div style="width: 180px; height: 48px; border-radius: 24px; background: #0071e3; margin-top: 18px;"></div>
+      </div>
+      <div style="width: 560px; height: 520px; border-radius: 32px; background: linear-gradient(160deg, #d9cbb8 0%, #b8a58c 55%, #8d7a63 100%);"></div>
+    </div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(29,29,31,0.32); left: 7px"></div>
+
+  <div role="dialog" aria-modal="true" aria-labelledby="qtitle" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 760px; box-sizing: border-box; background: #ffffff; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.22), 0 4px 14px rgba(0,0,0,0.08); padding: 28px 36px 32px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <button class="back" type="button" aria-label="Back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2 4 7l5 5"></path></svg>
+      </button>
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: #6e6e73; text-transform: uppercase;">Getting started · 5 of 5</div>
+        <div style="height: 4px; border-radius: 2px; background: #ececf0; overflow: hidden;">
+          <div style="width: 100%; height: 4px; border-radius: 2px; background: #0071e3;"></div>
+        </div>
+      </div>
+      <button class="close" type="button" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"></path></svg>
+      </button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <h2 id="qtitle" style="margin: 0; font-size: 34px; line-height: 1.12; font-weight: 700; letter-spacing: -0.022em; color: #1d1d1f;">Which spaces do you plan to design?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.47; color: #6e6e73;">Pick as many as you like.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <button class="whole {{c_whole}}" type="button" role="checkbox" aria-checked="{{a_whole}}" onClick="{{p_whole}}">
+        <span class="wic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span>
+        <span style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em;">The whole home</span>
+          <span style="font-size: 14px; color: #6e6e73;">Every room, planned together</span>
+        </span>
+        <span class="chk"><sc-if value="{{s_whole}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+      </button>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;">
+        <button class="tile {{c_entry}}" type="button" role="checkbox" aria-checked="{{a_entry}}" onClick="{{p_entry}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21"></path><path d="M3.5 21h17"></path><circle cx="14.5" cy="12.5" r="0.9"></circle></svg></span>
+          <span>Entryway</span>
+          <span class="chk"><sc-if value="{{s_entry}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_living}}" type="button" role="checkbox" aria-checked="{{a_living}}" onClick="{{p_living}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"></path><path d="M3 18v-4.5A1.5 1.5 0 0 1 4.5 12h0A1.5 1.5 0 0 1 6 13.5V15h12v-1.5a1.5 1.5 0 0 1 1.5-1.5h0a1.5 1.5 0 0 1 1.5 1.5V18z"></path><path d="M5 18v2M19 18v2"></path></svg></span>
+          <span>Living room</span>
+          <span class="chk"><sc-if value="{{s_living}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_kitchen}}" type="button" role="checkbox" aria-checked="{{a_kitchen}}" onClick="{{p_kitchen}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z"></path><path d="M2 10h2M20 10h2"></path><path d="M9 6c0-1 1-1.5 1-2.5M13 6c0-1 1-1.5 1-2.5"></path></svg></span>
+          <span>Kitchen</span>
+          <span class="chk"><sc-if value="{{s_kitchen}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_dining}}" type="button" role="checkbox" aria-checked="{{a_dining}}" onClick="{{p_dining}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18"></path><path d="M6 10v10M18 10v10"></path><path d="M9 6V3M12 6V3M15 6V3"></path><path d="M8.5 6h7"></path></svg></span>
+          <span>Dining area</span>
+          <span class="chk"><sc-if value="{{s_dining}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_bedroom}}" type="button" role="checkbox" aria-checked="{{a_bedroom}}" onClick="{{p_bedroom}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V6"></path><path d="M3 14h18v5"></path><path d="M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5"></path><circle cx="7" cy="11" r="1.8"></circle></svg></span>
+          <span>Bedrooms</span>
+          <span class="chk"><sc-if value="{{s_bedroom}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_bathroom}}" type="button" role="checkbox" aria-checked="{{a_bathroom}}" onClick="{{p_bathroom}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"></path><path d="M6 12V5.5A2.5 2.5 0 0 1 8.5 3h0A2.5 2.5 0 0 1 11 5.5"></path><path d="M7 19l-1 2M17 19l1 2"></path></svg></span>
+          <span>Bathrooms</span>
+          <span class="chk"><sc-if value="{{s_bathroom}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_office}}" type="button" role="checkbox" aria-checked="{{a_office}}" onClick="{{p_office}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M9 20h6M12 16v4"></path></svg></span>
+          <span>Home office</span>
+          <span class="chk"><sc-if value="{{s_office}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_laundry}}" type="button" role="checkbox" aria-checked="{{a_laundry}}" onClick="{{p_laundry}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"></rect><circle cx="12" cy="13" r="4.5"></circle><path d="M7.5 6.5h2"></path></svg></span>
+          <span>Laundry / utility</span>
+          <span class="chk"><sc-if value="{{s_laundry}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_guest}}" type="button" role="checkbox" aria-checked="{{a_guest}}" onClick="{{p_guest}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="13" rx="2"></rect><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path><path d="M5 12h14"></path></svg></span>
+          <span>Guest room</span>
+          <span class="chk"><sc-if value="{{s_guest}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <button class="tile {{c_outdoor}}" type="button" role="checkbox" aria-checked="{{a_outdoor}}" onClick="{{p_outdoor}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-7"></path><path d="M12 14c-4 0-6-3-6-6a6 6 0 0 1 12 0c0 3-2 6-6 6z"></path><path d="M8 21h8"></path></svg></span>
+          <span>Balcony / yard</span>
+          <span class="chk"><sc-if value="{{s_outdoor}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        <sc-if value="{{show_kids}}" hint-placeholder-val="{{false}}">
+        <button class="tile {{c_kids}}" type="button" role="checkbox" aria-checked="{{a_kids}}" onClick="{{p_kids}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="7" height="7" rx="1"></rect><rect x="13" y="12" width="7" height="7" rx="1"></rect><path d="M8.5 4 12 10H5z"></path></svg></span>
+          <span>Kids' room</span>
+          <span class="chk"><sc-if value="{{s_kids}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        </sc-if>
+        <sc-if value="{{show_nursery}}" hint-placeholder-val="{{false}}">
+        <button class="tile {{c_nursery}}" type="button" role="checkbox" aria-checked="{{a_nursery}}" onClick="{{p_nursery}}">
+          <span class="tic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v11M20 9v11"></path><path d="M4 18h16M4 11h16"></path><path d="M8 11v7M12 11v7M16 11v7"></path></svg></span>
+          <span>Nursery</span>
+          <span class="chk"><sc-if value="{{s_nursery}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+        </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{showPriority}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 16px; background: #f5f5f7;">
+        <div style="font-size: 15px; font-weight: 600; color: #1d1d1f;">Which one matters most right now?</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <sc-for list="{{chips}}" as="chip" hint-placeholder-count="3">
+            <button class="chip {{chip.cls}}" type="button" onClick="{{chip.pick}}">{{chip.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <button class="ghost" type="button" onClick="{{clear}}" style="align-self: flex-start;">Skip for now</button>
+        <span style="font-size: 13px; color: #6e6e73;">{{countText}}</span>
+      </div>
+      <button class="cta {{ctaClass}}" type="button" disabled="{{noSel}}" aria-disabled="{{noSel}}">Continue</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"hasChildren": {"editor": "boolean", "default": true, "section": "Demo household (from Q04)"}, "babyOrToddler": {"editor": "boolean", "default": false, "section": "Demo household (from Q04)"}, "$preview": {"width": 1440, "height": 1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const kidsOn = this.props.hasChildren ?? true;
+    const babyOn = this.props.babyOrToddler ?? false;
+    const labels = {"entry": "Entryway", "living": "Living room", "kitchen": "Kitchen", "dining": "Dining area", "bedroom": "Bedrooms", "bathroom": "Bathrooms", "office": "Home office", "laundry": "Laundry / utility", "guest": "Guest room", "outdoor": "Balcony / yard", "kids": "Kids' room", "nursery": "Nursery"};
+    const keys = Object.keys(labels).filter(k => (k !== 'kids' || kidsOn) && (k !== 'nursery' || babyOn));
+    const sel = st.sel || {};
+    const whole = !!st.whole;
+    const v = {};
+    keys.forEach(k => {
+      const on = !whole && !!sel[k];
+      v['c_' + k] = on ? 'on' : '';
+      v['a_' + k] = on ? 'true' : 'false';
+      v['s_' + k] = on;
+      v['p_' + k] = () => {
+        const next = Object.assign({}, sel);
+        next[k] = !next[k];
+        const pr = next[st.priority] ? st.priority : null;
+        this.setState({ sel: next, whole: false, priority: pr });
+      };
+    });
+    v.show_kids = kidsOn;
+    v.show_nursery = babyOn;
+    v.c_whole = whole ? 'on' : '';
+    v.a_whole = whole ? 'true' : 'false';
+    v.s_whole = whole;
+    v.p_whole = () => this.setState({ whole: !whole, sel: {}, priority: null });
+    const chosen = whole ? keys : keys.filter(k => sel[k]);
+    v.showPriority = whole || chosen.length >= 2;
+    v.chips = chosen.map(k => ({ label: labels[k], cls: st.priority === k ? 'on' : '', pick: () => this.setState({ priority: k }) }));
+    v.noSel = !whole && chosen.length === 0;
+    v.ctaClass = v.noSel ? 'off' : '';
+    v.countText = whole ? 'Whole home selected' : (chosen.length === 0 ? 'You can change this anytime.' : chosen.length + (chosen.length === 1 ? ' space selected' : ' spaces selected'));
+    v.clear = () => this.setState({ sel: {}, whole: false, priority: null });
+    return v;
+  }
+}
+</script>
+</body>
+</html>

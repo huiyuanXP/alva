@@ -1,3 +1,4 @@
+import {registerVision} from './vision.js';
 import type {FastifyInstance} from 'fastify';
 import {z} from 'zod';
 import {catalogue,applyAnswer} from '../business.js';
@@ -19,6 +20,7 @@ function checkScope(p:Project,d:{questionId:string;roomId:string|null}){
  return q!;
 }
 export function registerIntake(app:FastifyInstance,store:AlvaStore,session:(req:object)=>Session){
+ registerVision(app,store,session);
  app.get('/api/intake',async req=>{
   const p=await store.get(session(req).projectId);
   return {questions:catalogue.filter(q=>q.enabled).map(q=>({...q,question:q.id==='Q18'?q.question:attachmentQuestions[q.id]?.question||q.question,why:attachmentQuestions[q.id]?.why||''})),progress:p.intakeProgress||{drafts:[],cursor:null,updatedAt:''}};
