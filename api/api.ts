@@ -31,6 +31,7 @@ import {registerTopologyDiagnostics} from './topology/routes.js';
 import {registerProfessionalWalls} from './topology/professional-access.js';
 import {registerWallRemodel} from './topology/remodel.js';
 import {registerRoomMerge} from './topology/room-merge.js';
+import {registerRoomSplit} from './topology/room-split.js';
 import {firstTopologyRepairIssue} from './topology/repair.js';
 import {applyZoneOperation} from './zones-service.js';
 import {createTopologyVersion} from './topology/calibration.js';
@@ -80,6 +81,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  registerProfessionalWalls(app,store,session);
  registerWallRemodel(app,store,session);
  registerRoomMerge(app,store,session);
+ registerRoomSplit(app,store,session);
  app.get('/healthz',async()=>({ok:true,application:'alva'}));
  app.post('/api/access',async(req,reply)=>{
   const b=z.object({code:z.string().trim().min(16).max(200),inviteToken:z.string().min(32).max(200).optional()}).parse(req.body),key=req.ip,now=Date.now(),prior=failedAccess.get(key);

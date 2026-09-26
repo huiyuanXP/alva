@@ -11,6 +11,7 @@ import {inspectProjectTopology} from '../topology/inspection.js';
 import {professionalWallReadTools} from '../topology/professional-access.js';
 import {wallRemodelTools} from '../topology/remodel.js';
 import {roomMergeTools} from '../topology/room-merge.js';
+import {roomSplitTools} from '../topology/room-split.js';
 import {generateBuildingCandidate} from '../building/service.js';
 import type {BuildingCodexCall} from '../building/generate.js';
 import type {LayoutCodexCall} from '../import.js';
@@ -48,6 +49,7 @@ export function floorplanTools(context:FloorplanToolsContext):BusinessTool[]{
   ...professionalWallReadTools(store,projectId),
   ...wallRemodelTools(store,projectId),
   ...roomMergeTools(store,projectId),
+  ...roomSplitTools(store,projectId),
   tool('request_topology_confirmation','向用户出示拓扑确认操作，用户点击后才确认。工具调用自身不会代替用户确认。',Revision.strict(),async b=>context.requestConfirmation('confirm_topology',await current(b.expectedRevision))),
   tool('request_topology_reopen','请求用户明确确认放弃依赖旧拓扑的后续设计，再返回修改。仅切换到户型聊天不需要此操作。',Revision.strict(),async b=>context.requestConfirmation('reopen_topology',await current(b.expectedRevision))),
   tool('generate_building','基于已确认拓扑实际调用辅助模型生成建筑 3D 待确认候选。辅助模型不继承本阶段 MCP。',Revision.strict(),async b=>{await current(b.expectedRevision);return output(await generateBuildingCandidate(store,projectId,{...b,requestId:randomUUID()},signal,context.buildingModel))}),
