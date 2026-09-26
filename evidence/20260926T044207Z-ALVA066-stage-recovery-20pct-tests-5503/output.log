@@ -1,0 +1,53 @@
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (11014.904665ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (9125.625067ms)
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (8710.551752ms)
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (230.851139ms)
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (65.38148ms)
+✔ expired grants and cancellation cannot execute tools (46.894133ms)
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (80.041862ms)
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (27.036929ms)
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (93.496004ms)
+✔ HTTP MCP argument errors retain field paths and tell the Agent how to repair them (79.76555ms)
+✖ building card survives unrelated answers, refreshes changed candidate without adopting, then explicitly confirms (9747.614015ms)
+
+Interrupted while running:
+
+⚠ tests/alva-stage-recovery.test.ts (tests/alva-stage-recovery.test.ts:1:1)
+✖ tests/alva-stage-recovery.test.ts (21318.922372ms)
+✖ tests/alva-topology-quality.test.ts
+ℹ tests 13
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 2
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55928.817642
+
+✖ failing tests:
+
+test at tests/alva-stage-recovery.test.ts:1:636
+✖ building card survives unrelated answers, refreshes changed candidate without adopting, then explicitly confirms (9747.614015ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/tests/alva-stage-recovery.test.ts:19:80)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/alva-stage-recovery.test.ts:1:1
+✖ tests/alva-stage-recovery.test.ts (21318.922372ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-topology-quality.test.ts:1:1
+✖ tests/alva-topology-quality.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'

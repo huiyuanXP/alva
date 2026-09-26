@@ -1,0 +1,1 @@
+Machine restarted before a completion record was written. Treat this run as interrupted, not passed. Restarted validation uses the user-requested 20% total-memory slice.

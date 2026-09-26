@@ -1,3 +1,4 @@
+import {isDeepStrictEqual} from 'node:util';
 import type {ChatAction} from '../packages/contracts/alva/chat-actions.js';
 import {initialChatState,type StageChatState} from './mcp/sessions.js';
 import {PGlite} from '@electric-sql/pglite';
@@ -10,6 +11,12 @@ type CommandReceipt={kind:'command-receipt-v1';revision:number;savedVersion?:num
 export type Role='owner'|'designer'|'professional';
 export type Session={projectId:string;role:Role;linkId?:string;authGeneration:number};
 const hash=(text:string)=>createHash('sha256').update(text).digest('hex');
+// Explicit confirmation versions; ordinary Chat messages do not change these inputs.
+function confirmationInputs(p:Project){return {
+ topology:p.candidate,
+ building:{candidate:p.buildingCandidate,topologyId:p.confirmedTopology?.id,topologyVersion:p.confirmedTopology?.version,requestId:p.buildingState.requestId,generatedAt:p.buildingState.updatedAt},
+ design:{candidate:p.candidate,scene:p.scene,topology:p.confirmedTopology,building:p.buildingCandidate,confirmedBuilding:p.confirmedBuilding,answers:p.answers,roomStyles:p.roomStyles,userContextEntries:p.userContextEntries,homeVision:p.homeVision},
+}}
 export class AlvaStore{
  db:PGlite;failNextSave=false;
  constructor(path?:string){this.db=new PGlite(path)}
@@ -43,7 +50,7 @@ export class AlvaStore{
  async rotateAccessCode(next?:string){const code=(next||'').trim()||randomBytes(24).toString('base64url');if(code.length<16)throw new Error('验证码至少需要16个字符');const config=await this.config();await this.db.query('UPDATE alva_access_config SET code_hash=$1,generation=generation+1,updated_at=now() WHERE id=1',[hash(code)]);await this.db.query('DELETE FROM alva_sessions');const path=this.accessCodePath();await mkdir(path.slice(0,path.lastIndexOf('/'))||'.runtime',{recursive:true,mode:0o700});await writeFile(path,`${code}\n`,{mode:0o600});await chmod(path,0o600);return code}
  async listInvites(projectId:string){return (await this.db.query<{id:string;role:Role;revoked:boolean;active_sessions:number}>(`SELECT l.id,l.role,l.revoked,COUNT(s.token_hash)::integer AS active_sessions FROM alva_links l LEFT JOIN alva_sessions s ON s.link_id=l.id AND s.expires_at>now() WHERE l.project_id=$1 AND l.role='designer' GROUP BY l.id,l.role,l.revoked ORDER BY l.id`,[projectId])).rows}
  async revoke(projectId:string,linkId:string){const result=await this.db.query('UPDATE alva_links SET revoked=true WHERE id=$1 AND project_id=$2 AND revoked=false RETURNING id',[linkId,projectId]);return result.rows.length>0}
- private normalizeProject(project:Project):Project{if(!project.buildingState)project.buildingState={status:'idle',attempts:0,updatedAt:new Date().toISOString()};if(!project.roomLabelPositions)project.roomLabelPositions={};if(!project.zones)project.zones=[];if(!project.scopeRequests)project.scopeRequests=[];if(!project.archivedFurniture)project.archivedFurniture=[];return project}
+ private normalizeProject(project:Project):Project{if(!project.confirmationVersions)project.confirmationVersions={topology:0,building:0,design:0};if(!project.buildingState)project.buildingState={status:'idle',attempts:0,updatedAt:new Date().toISOString()};if(!project.roomLabelPositions)project.roomLabelPositions={};if(!project.zones)project.zones=[];if(!project.scopeRequests)project.scopeRequests=[];if(!project.archivedFurniture)project.archivedFurniture=[];return project}
  async get(id:string):Promise<Project>{const row=(await this.db.query<{state:Project}>('SELECT state FROM alva_projects WHERE id=$1',[id])).rows[0];if(!row)throw new DomainError(404,'项目不存在');return this.normalizeProject(row.state)}
  async versions(id:string){const rows=(await this.db.query<{version:number;summary:string;created_at:Date|string}>('SELECT version,summary,created_at FROM alva_versions WHERE project_id=$1 ORDER BY version DESC',[id])).rows;return rows.map(row=>({version:row.version,summary:row.summary,created_at:new Date(row.created_at).toISOString()}))}
  async snapshot(id:string,version:number):Promise<Project>{const row=(await this.db.query<{state:Project}>('SELECT state FROM alva_versions WHERE project_id=$1 AND version=$2',[id,version])).rows[0];if(!row)throw new DomainError(404,'保存版本不存在');return row.state}
@@ -78,8 +85,10 @@ export class AlvaStore{
     if(action.stage==='living'&&!p.confirmedBuilding)throw new DomainError(422,'请先确认建筑');
    }
    if(expectedRevision!==null&&p.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后确认');
-   const before=JSON.stringify(p);
+   const before=JSON.stringify(p),confirmationBefore=structuredClone(confirmationInputs(p)),versions={...p.confirmationVersions!};
    await fn(p);p.revision++;
+   const confirmationAfter=confirmationInputs(p);p.confirmationVersions=versions;
+   for(const key of ['topology','building','design'] as const)if(!isDeepStrictEqual(confirmationBefore[key],confirmationAfter[key]))p.confirmationVersions[key]=p.revision;
    if(chatActionId)await tx.query("UPDATE alva_chat_actions SET state=state || $3::jsonb WHERE project_id=$1 AND id=$2",[id,chatActionId,JSON.stringify({status:'confirmed',finishedAt:new Date().toISOString()})]);
    if(operation==='save'){
     p.savedVersion++;p.dirty=false;

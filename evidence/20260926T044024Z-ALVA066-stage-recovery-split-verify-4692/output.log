@@ -1,0 +1,32 @@
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (11142.718504ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (9617.669793ms)
+
+Interrupted while running:
+
+⚠ tests/alva-stage-chat.test.ts (tests/alva-stage-chat.test.ts:1:1)
+✖ tests/alva-stage-chat.test.ts (32713.492102ms)
+✖ tests/alva-stage-mcp.test.ts
+✖ tests/alva-stage-recovery.test.ts
+Terminated
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 3
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32721.321193
+
+✖ failing tests:
+
+test at tests/alva-stage-chat.test.ts:1:1
+✖ tests/alva-stage-chat.test.ts (32713.492102ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-stage-mcp.test.ts:1:1
+✖ tests/alva-stage-mcp.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-stage-recovery.test.ts:1:1
+✖ tests/alva-stage-recovery.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'

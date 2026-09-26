@@ -130,3 +130,7 @@ ALVA-029/066联合模块：`api/user-context/`维护私有Markdown投影、来�
 `api/mcp/handoff-history.ts`仅为摘要恢复去重读取App Server返回的当前stage私有rollout，验证路径所属CODEX_HOME及thread身份；不代替Project数据、不跨项目搜历史。进入阶段由sessions/routes协调thread/inject_items，普通模型调用仍唯一走api/codex.ts。
 
 ALVA-066控件共用服务补充：`api/topology/service.ts`统一拓扑编辑、修复、补墙、校准和确认；`api/zones-service.ts`统一功能分区修改，`api/mcp/zones.ts`为生活设计适配器。直接API与阶段MCP均调用这些服务，不复制几何规则。
+
+ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API 与阶段 MCP 共用的只读诊断来源，覆盖候选和当前工作稿；返回告警实体、坐标、检查限制及修复指导。`api/mcp/actions.ts` 维护按确认类型计算的依据及过期卡刷新，刷新不采用设计，仍需用户再次确认。
+
+`api/store.ts` 在项目提交事务内维护 `confirmationVersions` 数字版本，`api/mcp/actions.ts` 只比较卡片版本与当前版本，不使用确认依据哈希；旧卡刷新后才可确认。ALVA-066 验证与预览共用 `ops/alva/alva066.slice` 的整机 20% 内存、0 swap、CPU80% 预算，`scripts/alva-066-verify.sh` 提供分组类型检查、逐用例隔离回归和构建。

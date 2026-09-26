@@ -205,3 +205,7 @@ neat-freak过程事实已同步：局部代码/实测verified-current，整票/�
 
 ## 2026-09-26 · ALVA-037 快照只读预览合同
 全局历史只展示 `/api/save` 创建的手动快照；版本列表时间由 `AlvaStore.versions()` 统一转 ISO。读取 `/api/versions/:version` 仅返回保存副本，不修改当前工作稿、revision 或版本列表。前端 `SnapshotHistory` 使用独立覆盖层渲染快照 2D/3D、需求与依据，不把快照赋值给当前 App project；关闭预览即回到原工作稿。只有明确 restore 才允许替换工作状态。
+
+## 2026-09-26 ALVA-066 确认与诊断合同
+
+确认卡使用相关业务域的持久化数字版本，不使用内容哈希；旧卡刷新不等于用户确认。MCP 户型/生活阶段都可读取页面同源诊断详情，自动修复 issue 为空不能解释成无告警。当前仅个人 Worktree 临时预览验证，未发布。资源采用共享 alva066.slice 合计物理内存 20%、零 swap；入口和证据以 docs/ALVA-066-temporary-preview.md 为准。
