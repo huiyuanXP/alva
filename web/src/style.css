@@ -61,3 +61,5 @@
 .chat .composer{margin-top:8px;border-radius:18px;box-shadow:0 3px 14px #333c2d0c;background:#fff}
 .chat .conversation-cards{min-width:0}
 .split-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}.split-assignment{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(75,80,62,.16)}.split-assignment span{font-size:.88rem;line-height:1.35}.split-panel fieldset{margin:10px 0}
+
+.proposal-group{display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#f7f6ef}.proposal-group-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}.proposal-group-grid .proposal{margin:0}
