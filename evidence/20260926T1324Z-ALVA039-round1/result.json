@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "round": 1,
+  "tests": {"passed": 7, "failed": 0},
+  "checks": [
+    "wall and rotated-furniture collision",
+    "real door passage remains walkable while window does not become a door",
+    "WASD/arrow forward-strafe vector and yaw handling",
+    "room navigation yields an in-room walkable start",
+    "ALVA-013 building overview/room-view regression"
+  ],
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "diffCheck": "passed"
+}

@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "run": "20260926T1324Z-ALVA039-round2-post040",
+  "pointerLock": true,
+  "wasdDistance": 0.7000000000000008,
+  "mouseYawChanged": true,
+  "collision": {
+    "wall": false,
+    "door": true,
+    "furniture": false,
+    "free": true
+  },
+  "inputFocusClearsKeys": true,
+  "windowBlurClearsKeys": true,
+  "escapePausesWithoutDrift": true,
+  "roomNavigation": true,
+  "wholeHomeReturn": true,
+  "consoleErrors": []
+}

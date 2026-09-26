@@ -361,3 +361,7 @@ Lexie 完成独立快照历史/预览层：列表仅显示手动保存版本，�
 
 ## 2026-09-26 · ALVA-038 从快照恢复全局状态
 Lexie 完成快照显式全局恢复强化。恢复 scene/topology/building/answers/evidence/messages/findings/proposals/changes/zones 等完整状态；失败/冲突保持原子，恢复不自动建快照。增加建筑生成并发 409 保护及旧快照建筑指纹校验，避免恢复后旧生成任务或过期3D误用。UI确认文案明确未保存修改会被替换、恢复前不会自动备份。个人实现 `a812678`；第一轮 19/19，第二轮真实 HTTP + 相关回归 24/24，通过 TypeScript/production build/diff-check。
+
+
+## 2026-09-26 · ALVA-039 桌面漫游与输入暂停
+Lexie 完成桌面漫游。个人实现 `51f95f0`，随后持续同步 ALVA-066/067、ALVA-040、ALVA-029 最新 main 并复验；入口冲突始终以最新 main 为基线最小装配。第一轮 7/7；最终最新 main 真实 Chromium：Pointer Lock=true、WASD 位移 0.340m、鼠标视角有效、wall=false / door=true / furniture=false / free=true，输入聚焦/失焦/Esc 无漂移，房间/全屋返回成功，console errors=[]。截图与控制台证据见 `evidence/20260926T1324Z-ALVA039-round2-post029/`。

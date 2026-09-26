@@ -240,3 +240,7 @@ neat-freak过程事实已同步：局部代码/实测verified-current，整票/�
 066已在05:32 UTC发布（5bb823b，产品c53d3ac）；生产资源与健康通过，登录后两阶段MCP业务验收待验证码。先前“仅临时预览运行”已是历史状态。回滚需同时指向备份旧后端与静态资源，不能只恢复首页；详见docs/ALVA-066-production-release.md。
 
 2026-09-26 066最终结论：生产两阶段实际工具调用、真实目录隔离与原thread恢复已通过，066标done。已恢复原living阶段，设计数据不变；有效验证码临时文件删除。后续接入与验收按各票独立推进。
+
+
+## 2026-09-26 · ALVA-039 桌面漫游输入与碰撞合同
+确认建筑的 walk 模式由独立 `WalkthroughController` 接管：Pointer Lock + WASD/方向键 + 鼠标 yaw/pitch；相机方向通过 OrbitControls target 驱动，与 BuildingView、ALVA-040 日照/季节 render loop 共存。碰撞从权威 SceneData 解析：墙体与旋转家具阻挡；仅 floor-level 且宽高足够的真实 door opening 放行，window 不作为通道。输入框聚焦、Esc、window blur 均清空按键并退出锁定，重新进入不得沿用旧输入。BuildingView host/alvaView 重建时控制器重新绑定最新实例。
