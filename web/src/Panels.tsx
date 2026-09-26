@@ -1,5 +1,6 @@
 import {ProfessionalWallPanel} from './topology/ProfessionalWallPanel.js';
 import {RemodelPanel} from './topology/RemodelPanel.js';
+import {RoomMergePanel} from './topology/RoomMergePanel.js';
 import {ReviewPanel,type LocateReview} from './review/ReviewPanel.js';
 import React,{useEffect,useState} from 'react';import {DesignerAccessPanel} from './access/DesignerAccessPanel.js';import {ReferencePreferences} from './references/ReferencePreferences.js';import type {Project,SceneData,Proposal,ScopeRequest} from '../../api/model.js';import {SceneView} from './SceneView.js';
 type Props={onLocateReview?:LocateReview;onProject:(p:Project)=>void;project:Project;roomId:string;selected:string;onSelect:(id:string)=>void;onAskInChat:(question:any,roomId:string|null)=>void;mutate:(path:string,body:Record<string,unknown>)=>Promise<any>;readOnly:boolean};
