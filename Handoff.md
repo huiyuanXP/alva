@@ -321,3 +321,7 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 
 ## 2026-09-26 · ALVA-031 设计师只读访问与撤销
 Lexie 完成并验收设计师只读授权：统一验证码+invite token 登录、当前项目查看、服务端硬只读、跨项目拒绝、授权列表/生成/撤销、撤销立即使活跃 session 与旧链接失效；设计师可正常 logout。前端 WorkspacePanel 新增“访问”页签，业主可管理邀请，设计师看到只读说明。个人实现 `95f9675`。第一轮专项 3/3 + 类型/构建/diff-check；第二轮真实 HTTP/生产 assets/服务重启验收通过，并复跑 access/public-entry/foundation/snapshot/topology 33/33。证据见单票与 `evidence/20260926T0955Z-ALVA031-round1/`、`evidence/20260926T1005Z-ALVA031-round2/`。ALVA-032 已解锁。
+
+
+## 2026-09-26 · ALVA-037 快照列表与只读状态预览
+Lexie 完成独立快照历史/预览层：列表仅显示手动保存版本，展示当前工作稿未保存状态、版本号和 ISO 时间；空列表有明确空态。点击版本进入独立只读覆盖层，可查看二维、三维、需求/依据；不调用模型、不替换当前工作稿，失败可重试。显式恢复按钮仍调用既有 `/api/restore`。同时修复 PGlite timestamp 在 `/api/versions` 被序列化为 `{}` 的问题。个人实现 `3ab060d`；第一轮 15/15，第二轮真实 HTTP + 相关回归 20/20，通过 TypeScript/production build/diff-check。ALVA-038 已解锁。
