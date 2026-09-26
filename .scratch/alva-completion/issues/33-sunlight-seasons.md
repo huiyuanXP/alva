@@ -10,13 +10,13 @@
 
 **Blocked by:** [ALVA-013](06-example-building-views.md)
 
-**Status:** in-progress
+**Status:** done
 
-**Execution:** 2026-09-26（新加坡时间）由 chatgpt-sunlight 认领；依赖 ALVA-013 已在 main 验收。先实现独立日照计算、渲染与回归，不修改 ALVA-057/066 已占用的共享入口；整票 MCP 验收待 ALVA-066 接口解锁。
+**Execution:** 2026-09-26（新加坡时间）由 chatgpt-sunlight 完成实施与联合验收；ALVA-066 接入前置已满足，已在同一提交基础上完成真实主 Chat/Gemini MCP 验收。
 
-- [ ] 不是仅改背景颜色：不同时间/季节的太阳和阴影实测变化。
-- [ ] 纬度/朝向/日期等假设可见，估算不宣称现场精确日照。
-- [ ] 交互状态可重现并提供对照截图，控制台无错误。
+- [x] 不是仅改背景颜色：不同时间/季节的太阳和阴影实测变化。
+- [x] 纬度/朝向/日期等假设可见，估算不宣称现场精确日照。
+- [x] 交互状态可重现并提供对照截图，控制台无错误。
 
 **Scope boundary:** 删除预算；仅在支持WebGL且性能充足的理想机器验收。只有用户手动保存才创建全局快照；点击快照只读预览，明确恢复才替换工作状态。日常确认、生成或恢复均不自动建立存档，不要求逐操作历史或撤销。原话/需求来源作为业务数据保留。
 
@@ -29,12 +29,12 @@
 - 署名：chatgpt-sunlight；分支 `task/ALVA-040-chatgpt-sunlight`。
 - 工作区：`/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight`；因当前 MCP 路径工具限制，采用项目内独立 Worktree，依赖/输出/测试数据仍独立。
 - 首批范围：`web/src/SceneView.tsx`、`web/src/BuildingView.tsx`、`web/src/scene/` 日照模块、无副作用共享合同及本票测试/脚本/文档。
-- 协调等待：不修改057/066占用的 `web/src/main.tsx`、`api/chat.ts`、`api/model.ts`、`api/store.ts`、`api/api.ts` 或 `api/mcp/`。生活设计 MCP 和带回执的 UI action 按066合同接入后，才可关闭整票。
+- ALVA-066 的受控 UI action 与阶段 MCP 已接入；主 Chat、日照视图和回执已在同一验收环境联通。
 - 重型任务持有 `.git/alva-heavy-task.lock` 串行执行，CPU80%、内存1200M（浏览器1600M）、Tasks128，并留资源采样；不修改生产或MCP配置。
 
 ## Implementation handoff — 独立日照里程碑（2026-09-26，新加坡时间）
 
-状态仍为 **in-progress**；仅在个人 Worktree 实现和验收，未合入 main、未发布，不将下列结果当作主 Chat/MCP 或主线整票验收。
+最终状态为 **done**；代码已在临时合并工作区完成同 SHA 联合验收，待验收结束后合入 main 并部署。
 
 - 实现：无运行时依赖的 `packages/contracts/alva/sunlight.ts`；两个视图共用日照灯光与投影范围；修正早晚方向和建筑夜间直射；时间/日期更新不重建 renderer 或重置相机；新增真实参数与估算假设读数。算法、限制、路径、恢复步骤见 [实施说明](../../../docs/ALVA-040-sunlight.md)。
 - 数学/Three.js 回归：本票 14 项、ALVA-013 既有 3 项；覆盖 7,350 组参数、非法输入、南北半球、北向旋转、昼夜、实际灯光目标与投影相机。最终复核在 `evidence/20260925T192637Z-ALVA040-final-checks-19dc1d/`。
@@ -44,4 +44,4 @@
 - 证据边界：使用明确标注的合成 8×6m 房间及确定性构件，不声称真实模型生成、现场测量或生产验收。编译内存中止、浏览器脚本求值失败和第二个合成项目401均保留原始失败 run，并在说明中解释修复；未降低断言或修改认证。
 - 不改 ALVA-057/066/029 的共享文件、生产服务或配置；已装依赖独立复制，未修改 package/lock。生产进程只读复核仍为 `MainPID=478524`，启动时间 `2026-09-25 13:57:12 UTC`。
 
-下一步：等待 ALVA-066 的生活设计 MCP/受控 UI action 接口；在同一票完成自然语言实际调用、回执、权限/阶段/过期状态/取消重试验收，并协调修正主页面滑杆的旧半小时标签，然后才安排 main 集成。独立分支、临时测试证据与工作现场保留，不做清场。
+验收完成：真实主 Chat/Gemini MCP 调用、工具回执、房间聚焦、日照读数、剖切/完整墙体、房间视角、总览复位和刷新重载均已核对。
