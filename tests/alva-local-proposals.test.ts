@@ -84,12 +84,12 @@ test('ALVA-021 requires two different candidates for ambiguous requests but allo
     const created=await store.create('ALVA-021 候选数量回归');await store.ensureAccessCode(created.project.id);
     const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene()});
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token};
-    const first=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,text:'帮我调整一下沙发',roomId:null,model:'gemini-3.1-flash-lite'}});
+    const first=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,text:'帮我调整一下沙发',roomId:null,model:'gemini-3.8-flash-high'}});
     assert.equal(first.statusCode,200,first.body);
     let current=await store.get(created.project.id);
     assert.equal(current.proposals.length,0);
     assert.equal(current.messages.at(-1)!.status,'failed');
-    const precise=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:current.revision,text:'精确把沙发移动 0.2 米',roomId:null,model:'gemini-3.1-flash-lite'}});
+    const precise=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:current.revision,text:'精确把沙发移动 0.2 米',roomId:null,model:'gemini-3.8-flash-high'}});
     assert.equal(precise.statusCode,200,precise.body);
     current=await store.get(created.project.id);
     assert.equal(current.proposals.length,1);

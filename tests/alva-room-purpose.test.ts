@@ -73,7 +73,7 @@ test('ALVA-022 purpose can produce previewable layout proposals and only a separ
     const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene()});
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token};
     const purpose=await app.inject({method:'POST',url:'/api/purpose/confirm',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,roomId:'living',purpose:'亲子阅读',sourceText:'客厅改为亲子阅读空间',confirmed:true}});
-    const chat=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:purpose.json().revision,text:'用途确认后请按0.2米调整阅读布局',roomId:'living',model:'gemini-3.1-flash-lite'}});
+    const chat=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:purpose.json().revision,text:'用途确认后请按0.2米调整阅读布局',roomId:'living',model:'gemini-3.8-flash-high'}});
     assert.equal(chat.statusCode,200,chat.body);
     let current=await store.get(created.project.id);
     assert.equal(current.proposals.length,2);

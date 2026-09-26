@@ -33,7 +33,7 @@ test('ALVA-043 chat exposes read-only guidance tool and prompt requires facts/in
  const app=await buildAlva(store,{assets:false,origin:'http://localhost',chatCodex});
  try{
   const login=await app.inject({method:'POST',url:'/api/access',headers:{origin:'http://localhost'},payload:{code:'alva043-test-code-123456'}});assert.equal(login.statusCode,200);const headers={cookie:'alva_session='+login.cookies[0].value,origin:'http://localhost'};
-  const before=await store.get(created.project.id);const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:before.revision,text:'我每周在家办公两天，还会开视频会，工作位怎么考虑？',roomId:null,model:'gemini-3.1-flash-lite'}});
+  const before=await store.get(created.project.id);const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:before.revision,text:'我每周在家办公两天，还会开视频会，工作位怎么考虑？',roomId:null,model:'gemini-3.8-flash-high'}});
   assert.equal(response.statusCode,200);assert.ok(captured);assert.match(captured!.text,/必须先调用 get_business_guidance/);assert.match(captured!.text,/事实.*推断\/建议/);assert.deepEqual(toolResult.guidance.map((g:any)=>g.id),['BG01']);assert.ok(toolResult.safety.length>=3);
   const after=await store.get(created.project.id);assert.match(after.messages.at(-1)?.text||'',/BG01/);assert.equal(after.proposals.length,0);
  }finally{await app.close();await store.close();if(prior===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=prior}

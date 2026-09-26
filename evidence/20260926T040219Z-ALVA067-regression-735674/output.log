@@ -1,0 +1,55 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+✔ ALVA-043 curated guidance has traceable provided sources, explicit gaps and no budget guidance (2.688586ms)
+✔ ALVA-043 attachment-like commands cannot become authority, owner assignment or budget guidance (0.479953ms)
+
+Interrupted while running:
+
+⚠ tests/alva-business-guidance.test.ts (tests/alva-business-guidance.test.ts:1:1)
+✖ tests/alva-business-guidance.test.ts (11481.852458ms)
+✖ tests/alva-chat.test.ts
+✖ tests/alva-furniture-properties.test.ts
+✖ tests/alva-furniture-transform.test.ts
+✖ tests/alva-local-proposals.test.ts
+✖ tests/alva-reference-annotation.test.ts
+✖ tests/alva-room-purpose.test.ts
+ℹ tests 9
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 7
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11494.340981
+
+✖ failing tests:
+
+test at tests/alva-business-guidance.test.ts:1:1
+✖ tests/alva-business-guidance.test.ts (11481.852458ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-chat.test.ts:1:1
+✖ tests/alva-chat.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-furniture-properties.test.ts:1:1
+✖ tests/alva-furniture-properties.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-furniture-transform.test.ts:1:1
+✖ tests/alva-furniture-transform.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-local-proposals.test.ts:1:1
+✖ tests/alva-local-proposals.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-reference-annotation.test.ts:1:1
+✖ tests/alva-reference-annotation.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at tests/alva-room-purpose.test.ts:1:1
+✖ tests/alva-room-purpose.test.ts
+  'Promise resolution is still pending but the event loop has already resolved'

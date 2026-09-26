@@ -1,6 +1,6 @@
 # ALVA-065 主 Chat Agent 与 Harness 合同
 
-2026-09-25 起，本文件是后续功能接入主 Chat 的现役入口说明。主 Chat 的代码身份是 `api/main-chat-agent.ts` 中的 `mainChatAgent`；服务端装配在 `api/chat.ts`，运行器在 `api/codex.ts`。网页唯一主入口是登录后首页左侧“咨询”栏，`web/src/main.tsx` 的发送动作请求 `POST /api/chat`；`POST /api/chat/cancel` 取消当前请求。`GET /api/models` 当前只列出 `gemini-3.1-flash-lite`。Gemini 3.8 Flash High 是**图片户型识别**模型，由 `api/import.ts` 选择，不能误写成主 Chat 模型。
+2026-09-25 起，本文件是后续功能接入主 Chat 的现役入口说明。主 Chat 的代码身份是 `api/main-chat-agent.ts` 中的 `mainChatAgent`；服务端装配在 `api/chat.ts`，运行器在 `api/codex.ts`。网页唯一主入口是登录后首页左侧“咨询”栏，`web/src/main.tsx` 的发送动作请求 `POST /api/chat`；`POST /api/chat/cancel` 取消当前请求。`GET /api/models` 当前只列出 `gemini-3.8-flash-high`（ALVA-067 更新）。图片户型识别也使用 Gemini 3.8 Flash High，但由 `api/import.ts` 独立选择。
 
 ## ALVA-066 开工时的执行基线（尚未迁移）
 

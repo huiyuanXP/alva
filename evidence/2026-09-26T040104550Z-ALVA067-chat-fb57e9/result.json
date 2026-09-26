@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "checks": [
+    "new model selected; one muted status above existing loading content; no top banner; previous status replaced",
+    "streaming keeps progress; completion clears it",
+    "failure clears progress and retains draft",
+    "cancel clears progress",
+    "mobile progress fits chat"
+  ],
+  "errors": []
+}

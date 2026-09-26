@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "model": "gemini-3.8-flash-high",
+  "tools": [
+    "get_snapshot",
+    "ask_question"
+  ],
+  "status": "completed",
+  "elapsedMs": 19083,
+  "reply": "已读取当前项目快照。目前项目中**尚未录入或建立户型**（未建模）。\n\n建议您上传现有的户型图纸、现场照片或房间门窗草图；您也可以在下方的卡片中选择目前最方便提供的资料方式。",
+  "scope": "real POST /api/chat on isolated synthetic project; main baseline tools, not ALVA-066 stage MCP acceptance"
+}

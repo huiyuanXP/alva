@@ -74,7 +74,7 @@ test('ALVA-025 Chat style proposal uses the same licensed replacement contract',
     const created=await store.create('ALVA-025 Chat款式回归');await store.ensureAccessCode(created.project.id)
     const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();p.scene.items=[{...itemFromAsset('alva-chair','room-1',1,1),id:'chair-1'}]})
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token}
-    const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,text:'把椅子换成沙发款式，颜色 #223344，并保留房间关联',roomId:'room-1',model:'gemini-3.1-flash-lite'}})
+    const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,text:'把椅子换成沙发款式，颜色 #223344，并保留房间关联',roomId:'room-1',model:'gemini-3.8-flash-high'}})
     assert.equal(response.statusCode,200,response.body)
     const current=await store.get(created.project.id);assert.equal(current.proposals.length,1)
     const preview=await app.inject({method:'GET',url:'/api/proposals/'+current.proposals[0].id+'/preview',headers})
