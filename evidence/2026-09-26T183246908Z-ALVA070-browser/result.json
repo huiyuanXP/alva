@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "confirmed building uses SceneView",
+    "click selects furniture without renderer or camera reset",
+    "drag selected furniture rotates without moving or rebuilding",
+    "door/window openings, sill/header and cached shadows verified",
+    "sunlight updates preserve camera"
+  ],
+  "errors": [],
+  "geometry": {
+    "door": false,
+    "window": false,
+    "sill": true,
+    "header": true,
+    "glassShadow": false,
+    "shadowAuto": false
+  }
+}

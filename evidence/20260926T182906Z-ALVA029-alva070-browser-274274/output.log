@@ -1,0 +1,18 @@
+{
+  point: { x: 735, y: 532.3191952080267 },
+  before: [ 4, 12, 7.000000000000002 ],
+  picks: [ 'chair' ]
+}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.evaluate: ReferenceError: __name is not defined
+    at eval (eval at evaluate (:311:30), <anonymous>:1:106)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-070-codex-scene/scripts/alva-070-browser.ts:60:28) {
+  log: []
+}
+
+Node.js v24.21.0

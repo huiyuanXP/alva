@@ -1,0 +1,7 @@
+low 0
+high 0
+max 75433
+oom 5
+oom_kill 7
+oom_group_kill 0
+sock_throttled 7

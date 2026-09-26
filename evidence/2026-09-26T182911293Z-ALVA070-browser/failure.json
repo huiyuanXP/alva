@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "confirmed building uses SceneView",
+    "click selects furniture without renderer or camera reset",
+    "drag selected furniture rotates without moving or rebuilding"
+  ],
+  "errors": [],
+  "error": "Error: locator.evaluate: ReferenceError: __name is not defined\n    at eval (eval at evaluate (:311:30), <anonymous>:1:106)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+}

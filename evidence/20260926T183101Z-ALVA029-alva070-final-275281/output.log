@@ -1,0 +1,71 @@
+✔ ALVA-040 noon solstice elevations agree with independent 90-latitude+declination benchmarks (21.819822ms)
+✔ ALVA-040 morning is east and afternoon west when plan top is north (0.504421ms)
+✔ ALVA-040 changing north rotates the light without changing elevation or geographic azimuth (0.447061ms)
+✔ ALVA-040 hemisphere changes are real geometry, not fixed northern-hemisphere presets (0.500816ms)
+✔ ALVA-040 night is below the horizon with zero direct sunlight (0.59099ms)
+✔ ALVA-040 24:00/00:00 and north 360/0 are equivalent, without mutating the input (1.576544ms)
+✔ ALVA-040 all supported latitude/date/hour/orientation samples yield finite unit directions (52.585168ms)
+✔ ALVA-040 malformed or out-of-contract parameters return stable errors, never silent coercion (2.756191ms)
+✔ ALVA-040 ground-shadow rays reverse east/west and grow in winter (2.687428ms)
+✔ ALVA-040 both renderers use a real Three.js directional light aimed relative to scene center (5.040398ms)
+✔ ALVA-040 shadow camera encloses all scene corners for small/large and translated layouts (30.089931ms)
+✔ ALVA-040 rendering night disables sun shadows and subsequent daylight restores them (0.935078ms)
+✔ ALVA-040 visible date/time labels are non-leap and half hours are minutes, not 14.5:00 (1.834632ms)
+✔ ALVA-040 empty/non-finite render bounds are rejected before creating lights (0.435452ms)
+✔ UI action waits for exact authenticated page receipt and cancellation is explainable (334.57048ms)
+✔ ALVA-039 walls and furniture block while the real door passage remains walkable (2.200093ms)
+✔ ALVA-039 window opening never becomes a floor-level passage (0.302778ms)
+✔ ALVA-039 WASD/arrow movement follows yaw and supports strafing (0.412604ms)
+✔ ALVA-039 room navigation yields a stable in-room walkthrough start and falls back to first room (3.499414ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3665.953005
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2604 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.31 kB
+web/dist/assets/index-BYmWQf1E.css     38.40 kB │ gzip:   8.86 kB
+web/dist/assets/index-Rdn-N5Kj.js   1,264.16 kB │ gzip: 362.11 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.34s
+{
+  point: { x: 735, y: 532.3191952080267 },
+  before: [ 4, 12, 7.000000000000002 ],
+  picks: [ 'chair' ]
+}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
++   2.6592597112210052,
+-   2.659259711221005,
+    12.48750440338555,
+    4.504875162088645
+  ]
+
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-070-codex-scene/scripts/alva-070-browser.ts:61:137) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [ 2.6592597112210052, 12.48750440338555, 4.504875162088645 ],
+  expected: [ 2.659259711221005, 12.48750440338555, 4.504875162088645 ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

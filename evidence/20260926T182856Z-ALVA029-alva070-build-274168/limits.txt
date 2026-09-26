@@ -1,0 +1,6 @@
+run=20260926T182856Z-ALVA029-alva070-build-274168
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2320
+152d4d5e86441b7f0d7543d2e1b2cd4c88f0e6f8

@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "confirmed building uses SceneView",
+    "click selects furniture without renderer or camera reset",
+    "drag selected furniture rotates without moving or rebuilding",
+    "door/window openings, sill/header and cached shadows verified"
+  ],
+  "errors": [],
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   2.6592597112210052,\n-   2.659259711221005,\n    12.48750440338555,\n    4.504875162088645\n  ]\n"
+}

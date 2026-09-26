@@ -1,6 +1,6 @@
-## ALVA-070 三维视图与相机交互修复
+## ALVA-070 已集成；下一步为发布验收
 
-署名 codex-scene；in-progress；分支 task/ALVA-070-codex-scene；Worktree /home/ubuntu/Alva-worktrees/ALVA-070-codex-scene。占用 web/src/main.tsx、web/src/SceneView.tsx、web/src/scene/；测试使用空闲本地端口。用户授权改用 SceneView、点击切换物品并保留视角。
+070已done并释放渲染入口占用。main含SceneView交互修复，生产固定release尚未切换；发布时准备回滚，并在真实户型/浏览器核验门窗、旋转、选择和阴影观感。独立Worktree与证据保留。其他任务署名、依赖和范围不变。
 
 ## 2026-09-26 ALVA-069 已集成，未发布
 
