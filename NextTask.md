@@ -48,7 +48,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 | [ALVA-032](.scratch/alva-completion/issues/25-wall-evidence.md) | 墙体分类、证据与专业授权 | `topology` |  |  | ALVA-011、ALVA-031 已完成；待认领 |
 | [ALVA-037](.scratch/alva-completion/issues/30-snapshot-preview.md) | 快照列表与只读状态预览 | `snapshots` |  |  | 依赖 ALVA-036 已完成；待署名认领，不自动开工 |
 | [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` | chatgpt-sunlight | task/ALVA-040-chatgpt-sunlight / /home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight | in-progress；独立日照实现 7c5129e：17/17测试、类型/构建、13/13浏览器检查通过；主Chat/MCP及UI action回执待066；不改057/066/029共享入口；未集成/未部署 |
-| [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；业务实现 de7bb04，两轮验收通过：第一轮4/4，第二轮真实HTTP+保存/重启恢复通过，041+042回归7/7；已导出 confirmed-reference 工具工厂；等待 ALVA-066 阶段 MCP 运行层合入 main 后做实际 MCP 联合门禁，未完成前不标 done |
+| [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；第二轮产品门禁未过：main尚无阶段MCP，066分支living pack也未挂get_confirmed_reference_preferences；须等066合main后做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-029](.scratch/alva-completion/issues/22-layout-review.md) | 布局调整与保存前冲突复核 | `review` | xuanpu-chat-6pro | task/ALVA-029-xuanpu-chat-6pro / /home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro | in-progress；与066确认分类Markdown合同；独立实现dd6f948、证据交接8aa0f1a，类型/50项测试/构建通过；不改066共享入口；实际主Chat/MCP、保存前UI与同SHA联合验收待066；未集成/未部署 |
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
