@@ -1,0 +1,6 @@
+run=20260926T080258Z-ALVA068-preview-build-113686
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2109
+23806587ba529e47236a9c18bd963e828d52f86f

@@ -47,4 +47,16 @@ MCP错误包含稳定code、message、retryable、repairActions。典型错误�
 
 最终证据：`evidence/20260926T064443Z-ALVA068-final-integration-88757/`（类型、26项回归、构建、标准柜确认），`evidence/20260926T064758123Z-ALVA068-browser-confirm/`（原生复选框与扩展答案重读），`evidence/20260926T064943Z-ALVA068-todo-final-91628/`（看板搜索与桌面/手机）。
 
-运行收尾：为本票验收暂时停用的066预览已恢复，127.0.0.1:4186/healthz通过，服务active/running，MemoryMax=803680256、swap=0。该预览仍为066版本，不冒充068部署。公网/todo已读取068 done且owner为空。
+## 2026-09-26 临时公网验收
+
+已将main `cbbdaba`合并到本票Worktree，预览候选`2380658`。两处068完成文档冲突采用main现行记录；产品目录与main一致。新类型检查和构建通过，公网真实Chromium登录、Chat入口与healthz通过，页面错误0。
+
+地址：https://chamber-supposed-boring-opponents.trycloudflare.com 。这是临时Quick Tunnel，服务停止后不可用；不影响生产域名。登录码只保留在私有`.runtime/alva068-joint/access-code`并交付用户，不进Git。
+
+使用ALVA-068合成项目及Alex/Sam填写者，选择Alex后可询问“我回家经常乱放钥匙和包，先猜我的需求，再让我比较几个标准柜方案”，确认回答后打开Your Home Vision查看原题与扩展问答。未采用的示例不改变家具或墙体；不要将合成建筑当真实识图结果。
+
+运行：Worktree `/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions`；应用127.0.0.1:4188；用户服务`alva068-preview-app`与`alva068-preview-tunnel`；私有启动入口`.runtime/alva068-preview/server.mts`和`preview.env`。使用独立合成数据库，不访问生产项目。禁止同时对该测试库运行探针。
+
+应用、Tunnel及验证共用`alva066.slice`：CPU80%、总内存20%（803680256 bytes）、swap0。旧066预览应用暂时停止，为新预览腾出同一预算；原数据库与Tunnel保留，不再将旧链接列为当前预览。
+
+证据：`evidence/20260926T080258Z-ALVA068-preview-build-113686/`、`evidence/20260926T080427Z-ALVA068-preview-public-114235/`、`evidence/20260926T080429727Z-ALVA068-public-preview/`。neat-freak：代码/文档/临时运行态changed-and-verified；生产发布与生成记忆out-of-scope；原复核现场保留，既有bundle警告未改。
