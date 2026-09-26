@@ -1,3 +1,4 @@
+import {Headset} from 'lucide-react';
 import {DiagnosticOverlay,TopologyWarnings,useTopologyDiagnostics} from './topology/Diagnostics.js';
 import type {TopologyWarning} from '../../packages/contracts/alva/topology-diagnostics.js';
 import {IntakeDialog} from './intake/IntakeDialog.js';
@@ -97,7 +98,7 @@ function App(){
  {project.importState&&<div className="status banner" role="status">导入状态：{importStatusLabel(project.importState)}{project.sourceImage&&project.importState.status==='succeeded'&&<> · 来源：{importSourceLabel(project.sourceImage)}</>}</div>}
  {status&&<div className="status banner" role="status">{status}</div>}
  {intakeOpen&&<IntakeDialog project={project} readOnly={readOnly} onUpdate={p=>setProject(current=>current&&current.id===p.id&&current.revision>p.revision?current:p)} onClose={()=>setIntakeOpen(false)}/>}
- <main className={scene?'workspace':'workspace onboarding'}><aside className="chat"><div className="panel-heading"><span className="eyebrow">咨询</span><button className="home-intake-button" aria-label="Your Home Vision" onClick={()=>setIntakeOpen(true)}><span aria-hidden="true">⌂</span><strong>Your Home Vision</strong></button></div><Conversation messages={project.messages}>
+ <main className={scene?'workspace':'workspace onboarding'}><aside className="chat"><div className="panel-heading"><span className="eyebrow">咨询</span><button className="home-intake-button" aria-label="Your Home Vision" onClick={()=>setIntakeOpen(true)}><span className="home-intake-icon" aria-hidden="true"><Headset size={16} strokeWidth={1.8}/></span><strong>Your Home Vision</strong></button></div><Conversation messages={project.messages}>
  <div className="conversation-cards">{(project as any).questionCards?.map((card:any)=>{const def=questions.find(q=>q.id===card.questionId);return def?<details key={`${card.questionId}-${card.roomId||'project'}`} open><summary>{card.reason}</summary><QuestionCard definition={def} project={project} roomId={card.roomId||room||project.scene?.rooms[0]?.id||''} mutate={mutate} readOnly={readOnly||busy}/></details>:null})}
  {(project as any).pendingAnswers?.map((a:any)=><article key={a.id}><small>待你确认 · {a.questionId}</small><p>原话：{a.quote}</p><p>拟记录：{a.text}</p><button disabled={busy||readOnly} onClick={()=>void mutate('/pending-answers/confirm',{id:a.id,confirmed:true}).catch(()=>{})}>确认写入问卷</button></article>)}
  {(project.scopeRequests||[]).filter(scope=>scope.status==='pending').map(scope=><ScopeCard key={scope.id} project={project} scope={scope} onConfirm={(roomIds,itemIds)=>void mutate('/scope/confirm',{scopeId:scope.id,roomIds,itemIds,confirmed:true}).catch(()=>{})} onCancel={()=>void mutate('/scope/cancel',{scopeId:scope.id,confirmed:true}).catch(()=>{})}/>)}

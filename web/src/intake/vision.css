@@ -19,3 +19,10 @@ html.hv-modal-open #root{max-width:100%;overflow:clip}
 .chat>.panel-heading .home-intake-button:hover{background:#dce5d2!important;box-shadow:none!important}
 .chat>.panel-heading .home-intake-button strong{display:inline;font-size:12px;line-height:1.2;font-weight:600}
 .chat>.panel-heading .home-intake-button>span{font-size:15px;line-height:1}
+
+/* The question stays short; supporting context sits below it in quieter type. */
+.hv-dialog .hv-heading .hv-subtitle{font-size:14px;line-height:1.5;color:#707477;max-width:64ch}
+.chat>.panel-heading .home-intake-button .home-intake-icon{display:grid;place-items:center;width:18px;height:18px;flex:none}
+.chat>.panel-heading .home-intake-button .home-intake-icon svg{display:block}
+.hv-dialog[data-card="Q06"] .hv-grid .hv-icon,.hv-dialog[data-card="Q10"] .hv-grid .hv-icon,.hv-dialog[data-card="Q26"] .hv-grid .hv-icon,.hv-dialog[data-card="Q32"] .hv-grid .hv-icon{width:36px;height:36px;border-radius:10px;background:#edf1e8!important;color:#566a50!important}
+.hv-dialog[data-card="Q06"] .hv-opt.on .hv-icon,.hv-dialog[data-card="Q10"] .hv-opt.on .hv-icon,.hv-dialog[data-card="Q26"] .hv-opt.on .hv-icon,.hv-dialog[data-card="Q32"] .hv-opt.on .hv-icon{background:#dbe8d0!important;color:#344c35!important}
