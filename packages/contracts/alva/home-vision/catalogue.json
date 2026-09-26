@@ -107,7 +107,7 @@
             },
             {
               "id": "Q03a.townhouse",
-              "label": "Townhouse / terraced house",
+              "label": "Townhouse, terraced house",
               "show_if": "!MARKET_SG"
             },
             {
@@ -117,7 +117,7 @@
             },
             {
               "id": "Q03a.apartment",
-              "label": "Apartment / flat",
+              "label": "Apartment",
               "show_if": "always"
             },
             {
@@ -142,7 +142,7 @@
             },
             {
               "id": "Q03a.period",
-              "label": "Period / historic property",
+              "label": "Historic property",
               "show_if": "MARKET_UK || MARKET_US"
             }
           ]
@@ -212,7 +212,7 @@
             },
             {
               "id": "Q04a.partner",
-              "label": "Partner / spouse",
+              "label": "Partner, spouse",
               "sets": [
                 "PARTNER",
                 "MULTI_ADULT"
@@ -234,7 +234,7 @@
             },
             {
               "id": "Q04a.older_relatives",
-              "label": "Parents or older relatives (living with us or visiting often)",
+              "label": "Parents, older relatives living with us, frequent visitors",
               "sets": [
                 "OLDER_RELATIVE",
                 "MULTI_ADULT"
@@ -249,7 +249,7 @@
             },
             {
               "id": "Q04a.helper",
-              "label": "Live-in helper / nanny",
+              "label": "Live-in caregiver",
               "sets": [
                 "HELPER"
               ]
@@ -413,7 +413,7 @@
             },
             {
               "id": "Q05a.laundry",
-              "label": "Laundry / utility",
+              "label": "Laundry, utility room",
               "sets": [
                 "ROOM_LAUNDRY"
               ]
@@ -427,7 +427,7 @@
             },
             {
               "id": "Q05a.outdoor",
-              "label": "Balcony / yard",
+              "label": "Balcony, yard",
               "sets": [
                 "ROOM_OUTDOOR"
               ]
@@ -463,39 +463,39 @@
           "options": [
             {
               "id": "Q06a.cozy",
-              "label": "Warm & cozy"
+              "label": "Warm, cozy"
             },
             {
               "id": "Q06a.calm",
-              "label": "Calm & serene"
+              "label": "Calm, serene"
             },
             {
               "id": "Q06a.uncluttered",
-              "label": "Clean & uncluttered"
+              "label": "Clean, uncluttered"
             },
             {
               "id": "Q06a.bright",
-              "label": "Bright & airy"
+              "label": "Bright, airy"
             },
             {
               "id": "Q06a.lived_in",
-              "label": "Relaxed & lived-in"
+              "label": "Relaxed, lived-in"
             },
             {
               "id": "Q06a.playful",
-              "label": "Playful & colorful"
+              "label": "Playful, colorful"
             },
             {
               "id": "Q06a.elegant",
-              "label": "Elegant & refined"
+              "label": "Elegant, refined"
             },
             {
               "id": "Q06a.bold",
-              "label": "Bold & dramatic"
+              "label": "Bold, dramatic"
             },
             {
               "id": "Q06a.natural",
-              "label": "Natural & organic"
+              "label": "Natural, organic"
             },
             {
               "id": "Q06a.welcoming",
@@ -521,15 +521,15 @@
           "options": [
             {
               "id": "Q07a.warm_light_wood",
-              "label": "Warm whites & light wood"
+              "label": "Warm whites, light wood"
             },
             {
               "id": "Q07a.warm_deep_wood",
-              "label": "Warm neutrals & deeper wood"
+              "label": "Warm neutrals, deeper wood"
             },
             {
               "id": "Q07a.cool_gray",
-              "label": "Cool whites & grays"
+              "label": "Cool whites, grays"
             },
             {
               "id": "Q07a.white_pops",
@@ -580,7 +580,7 @@
             },
             {
               "id": "Q08a.modern",
-              "label": "Modern / contemporary"
+              "label": "Modern, contemporary"
             },
             {
               "id": "Q08a.minimalist",
@@ -600,7 +600,7 @@
             },
             {
               "id": "Q08a.traditional",
-              "label": "Traditional / classic"
+              "label": "Traditional, classic"
             },
             {
               "id": "Q08a.transitional",
@@ -608,7 +608,7 @@
             },
             {
               "id": "Q08a.farmhouse",
-              "label": "Farmhouse / cottage"
+              "label": "Farmhouse, cottage"
             },
             {
               "id": "Q08a.industrial",
@@ -616,11 +616,11 @@
             },
             {
               "id": "Q08a.coastal",
-              "label": "Coastal / resort"
+              "label": "Coastal, resort style"
             },
             {
               "id": "Q08a.boho",
-              "label": "Bohemian / eclectic"
+              "label": "Bohemian, eclectic"
             },
             {
               "id": "Q08a.art_deco",
@@ -684,7 +684,7 @@
             },
             {
               "id": "Q10a.shiny_gold",
-              "label": "Shiny gold or brass"
+              "label": "Shiny gold, brass"
             },
             {
               "id": "Q10a.mirrored",
@@ -795,7 +795,7 @@
             },
             {
               "id": "Q12a.bench",
-              "label": "A bench or seat"
+              "label": "A place to sit"
             },
             {
               "id": "Q12a.first_impression",
@@ -874,7 +874,7 @@
             },
             {
               "id": "Q13a.reading",
-              "label": "Reading, music or hobbies"
+              "label": "Reading, music, hobbies"
             },
             {
               "id": "Q13a.working",
@@ -883,7 +883,7 @@
             },
             {
               "id": "Q13a.exercise",
-              "label": "Exercise / yoga"
+              "label": "Yoga, exercise"
             }
           ]
         },
@@ -929,7 +929,7 @@
           "options": [
             {
               "id": "Q13d.seating",
-              "label": "More or better seating"
+              "label": "Improved seating"
             },
             {
               "id": "Q13d.comfort",
@@ -1037,7 +1037,7 @@
           "options": [
             {
               "id": "Q15a.takeout",
-              "label": "Rarely, mostly takeout or reheating",
+              "label": "Rarely; mainly takeout and reheating",
               "sets": [
                 "NO_COOK"
               ]
@@ -1085,7 +1085,7 @@
             },
             {
               "id": "Q15b.storage",
-              "label": "More or better-organized storage",
+              "label": "More organized storage",
               "tags": [
                 "storage_pain"
               ]
@@ -1096,7 +1096,7 @@
             },
             {
               "id": "Q15b.layout",
-              "label": "A better layout / workflow"
+              "label": "An easier kitchen workflow"
             },
             {
               "id": "Q15b.two_cooks",
@@ -1105,7 +1105,7 @@
             },
             {
               "id": "Q15b.island",
-              "label": "An island or breakfast bar"
+              "label": "An island with breakfast seating"
             },
             {
               "id": "Q15b.pantry",
@@ -1113,7 +1113,7 @@
             },
             {
               "id": "Q15b.appliances",
-              "label": "New or upgraded appliances"
+              "label": "Updated appliances"
             },
             {
               "id": "Q15b.look",
@@ -1148,7 +1148,7 @@
           "options": [
             {
               "id": "Q16a.open_plan",
-              "label": "Open, connected to the living / dining area"
+              "label": "Open to the living and dining areas"
             },
             {
               "id": "Q16a.closed",
@@ -1156,7 +1156,7 @@
             },
             {
               "id": "Q16a.flexible",
-              "label": "Flexible, e.g. sliding doors or a glass partition"
+              "label": "Flexible with sliding doors, glass partitions"
             },
             {
               "id": "Q16a.wet_dry",
@@ -1203,7 +1203,7 @@
             },
             {
               "id": "Q17b.island",
-              "label": "An island or breakfast bar is enough"
+              "label": "Breakfast seating at an island"
             },
             {
               "id": "Q17b.formal",
@@ -1238,7 +1238,7 @@
             },
             {
               "id": "Q17c.hobbies",
-              "label": "Hobbies, puzzles or games"
+              "label": "Hobbies, puzzles, games"
             }
           ],
           "max": 3
@@ -1264,7 +1264,7 @@
           "options": [
             {
               "id": "Q18a.blackout",
-              "label": "Blackout / better window coverings"
+              "label": "Better blackout window coverings"
             },
             {
               "id": "Q18a.quiet",
@@ -1288,7 +1288,7 @@
             },
             {
               "id": "Q18a.reading_nook",
-              "label": "A reading chair or nook"
+              "label": "A reading nook with a chair"
             },
             {
               "id": "Q18a.tv",
@@ -1296,7 +1296,7 @@
             },
             {
               "id": "Q18a.crib_space",
-              "label": "Room for a crib or bassinet",
+              "label": "Space for a baby to sleep",
               "show_if": "BABY_DUE || CHILD_UNDER3"
             },
             {
@@ -1363,7 +1363,7 @@
             },
             {
               "id": "Q18b.futon",
-              "label": "Futon / floor bed",
+              "label": "Futon, floor bed",
               "show_if": "MARKET_JP || MARKET_OTHER"
             }
           ],
@@ -1409,7 +1409,7 @@
             },
             {
               "id": "Q19a.dressing",
-              "label": "A dressing table or vanity"
+              "label": "A dressing table"
             },
             {
               "id": "Q19a.mirror",
@@ -1462,7 +1462,7 @@
             },
             {
               "id": "Q20a.steam_mold",
-              "label": "Better ventilation / less mold"
+              "label": "Better ventilation to prevent mold"
             },
             {
               "id": "Q20a.lighting",
@@ -1529,7 +1529,7 @@
           "options": [
             {
               "id": "Q20c.bidet",
-              "label": "Bidet / smart toilet"
+              "label": "A bidet-equipped toilet"
             },
             {
               "id": "Q20c.heated_floor",
@@ -1563,7 +1563,7 @@
           "id": "Q21a",
           "field": "workspace_needs.current",
           "type": "single",
-          "prompt": "Does anyone work or study from home? What kind of workspace do you need?",
+          "prompt": "What kind of workspace does your household need?",
           "options": [
             {
               "id": "Q21a.nobody",
@@ -1626,7 +1626,7 @@
             },
             {
               "id": "Q21c.quiet",
-              "label": "Quiet / a door"
+              "label": "A quiet workspace behind a door"
             },
             {
               "id": "Q21c.monitors",
@@ -1772,7 +1772,7 @@
             },
             {
               "id": "Q23b.outside",
-              "label": "Outside / on the balcony"
+              "label": "Drying space on the balcony"
             },
             {
               "id": "Q23b.mix",
@@ -1797,7 +1797,7 @@
           "options": [
             {
               "id": "Q24a.rarely",
-              "label": "Rarely or never",
+              "label": "Rarely",
               "sets": [
                 "NO_GUESTS"
               ]
@@ -1808,7 +1808,7 @@
             },
             {
               "id": "Q24a.dual_use",
-              "label": "A room that works as a guest room and an office / hobby room"
+              "label": "A guest room with office and hobby space"
             },
             {
               "id": "Q24a.want_guest_room",
@@ -1849,7 +1849,7 @@
             },
             {
               "id": "Q25a.bbq",
-              "label": "Grilling / barbecue"
+              "label": "An outdoor grilling area"
             },
             {
               "id": "Q25a.kids_play",
@@ -1922,7 +1922,7 @@
             },
             {
               "id": "Q26b.task",
-              "label": "Not enough light to read or cook"
+              "label": "Better light for reading and cooking"
             },
             {
               "id": "Q26b.glare",
@@ -1999,15 +1999,15 @@
           "options": [
             {
               "id": "Q27a.too_hot",
-              "label": "Too hot / too much sun"
+              "label": "Too hot from direct sunlight"
             },
             {
               "id": "Q27a.drafty",
-              "label": "Too cold / drafty"
+              "label": "Too cold from drafts"
             },
             {
               "id": "Q27a.damp_mold",
-              "label": "Damp, humidity or mold"
+              "label": "Dampness, humidity, mold"
             },
             {
               "id": "Q27a.stuffy",
@@ -2015,7 +2015,7 @@
             },
             {
               "id": "Q27a.noise",
-              "label": "Noise from outside or the neighbors"
+              "label": "Noise from outside, neighbors"
             },
             {
               "id": "Q27a.uneven",
@@ -2039,7 +2039,7 @@
           "options": [
             {
               "id": "Q27b.central_heat",
-              "label": "Central heating / radiators"
+              "label": "Central heating with radiators"
             },
             {
               "id": "Q27b.central_ac",
@@ -2059,7 +2059,7 @@
             },
             {
               "id": "Q27b.fireplace",
-              "label": "Fireplace / wood stove"
+              "label": "A wood-burning fireplace"
             }
           ],
           "max": 3
@@ -2087,7 +2087,7 @@
             },
             {
               "id": "Q27c.balcony_pool",
-              "label": "Balcony, stairs or pool safety"
+              "label": "Safety around balconies, stairs, pools"
             },
             {
               "id": "Q27c.none",
@@ -2159,19 +2159,19 @@
             },
             {
               "id": "Q29a.altar",
-              "label": "A family altar or shrine"
+              "label": "A family altar, shrine"
             },
             {
               "id": "Q29a.prayer",
-              "label": "A prayer or meditation space"
+              "label": "A space for prayer, meditation"
             },
             {
               "id": "Q29a.dietary",
-              "label": "Kosher, halal or other kitchen needs"
+              "label": "A kitchen for kosher, halal, specific dietary needs"
             },
             {
               "id": "Q29a.seasonal",
-              "label": "Space for holiday or seasonal decorations"
+              "label": "Space for holiday, seasonal decorations"
             },
             {
               "id": "Q29a.nothing",
@@ -2218,7 +2218,7 @@
             },
             {
               "id": "Q30a.relatives_in",
-              "label": "Parents or relatives moving in"
+              "label": "Older relatives moving in"
             },
             {
               "id": "Q30a.start_wfh",
@@ -2227,7 +2227,7 @@
             },
             {
               "id": "Q30a.more_less_wfh",
-              "label": "More (or less) working from home",
+              "label": "A change in working from home",
               "show_if": "!NO_WFH"
             },
             {
@@ -2239,7 +2239,7 @@
             },
             {
               "id": "Q30a.move_sell",
-              "label": "Likely to move or sell"
+              "label": "A future move, sale"
             },
             {
               "id": "Q30a.no_change",
@@ -2354,15 +2354,15 @@
             },
             {
               "id": "Q32a.sustainable",
-              "label": "Sustainable or low-VOC"
+              "label": "Sustainable, low-VOC materials"
             },
             {
               "id": "Q32a.local_craft",
-              "label": "Locally made or handcrafted"
+              "label": "Locally handcrafted pieces"
             },
             {
               "id": "Q32a.vintage",
-              "label": "Vintage, antique or secondhand"
+              "label": "Vintage, antique, secondhand pieces"
             },
             {
               "id": "Q32a.performance",
@@ -2491,7 +2491,7 @@
             },
             {
               "id": "Q34b.y10p",
-              "label": "10+ years / our forever home"
+              "label": "10+ years in our forever home"
             }
           ]
         },
@@ -2549,7 +2549,7 @@
             },
             {
               "id": "Q35a.renovation",
-              "label": "A renovation: new kitchen or bathroom, built-ins, flooring",
+              "label": "Renovating kitchens, bathrooms, built-ins, flooring",
               "sets": [
                 "BUILD_WORK"
               ],
@@ -2611,7 +2611,7 @@
             },
             {
               "id": "Q36a.e_design",
-              "label": "A consultation or online design (e-design) I can carry out myself"
+              "label": "Online design guidance for a self-managed project"
             },
             {
               "id": "Q36a.furnishing",
@@ -2665,7 +2665,7 @@
           "options": [
             {
               "id": "Q37a.floor_plan",
-              "label": "A floor plan (from the agent, developer or listing)"
+              "label": "A floor plan from an agent, developer, listing"
             },
             {
               "id": "Q37a.measured",
@@ -2749,7 +2749,7 @@
             },
             {
               "id": "Q39a.building_rules",
-              "label": "Building rules on noise, working hours or deliveries",
+              "label": "Building rules for noise, working hours, deliveries",
               "show_if": "!RENTING"
             },
             {
@@ -2764,7 +2764,7 @@
             },
             {
               "id": "Q39a.coop_board",
-              "label": "Co-op or condo board approval",
+              "label": "Building board approval",
               "show_if": "!RENTING && MARKET_US"
             },
             {
@@ -2799,7 +2799,7 @@
             },
             {
               "id": "Q39a.hdb_permit",
-              "label": "HDB renovation permit / guidelines",
+              "label": "HDB renovation permit, guidelines",
               "show_if": "!RENTING && MARKET_SG && selected(Q03a.hdb)"
             },
             {
@@ -2824,7 +2824,7 @@
             },
             {
               "id": "Q39a.permit_generic",
-              "label": "A permit or approval is likely",
+              "label": "A required permit, approval",
               "show_if": "!RENTING && MARKET_OTHER"
             },
             {
@@ -2857,7 +2857,7 @@
           "milestones": [
             {
               "id": "Q40a.keys",
-              "label": "Getting the keys / closing",
+              "label": "Getting the keys, closing",
               "show_if": "NEW_HOME"
             },
             {
@@ -2873,7 +2873,7 @@
             },
             {
               "id": "Q40a.event",
-              "label": "Hosting a big event or holiday"
+              "label": "Hosting a big event, holiday"
             },
             {
               "id": "Q40a.visit",
@@ -3039,7 +3039,7 @@
           "options": [
             {
               "id": "Q44a.construction",
-              "label": "Construction / building work",
+              "label": "Building work",
               "show_if": "BUILD_WORK || SCOPE_UNSURE"
             },
             {
@@ -3082,7 +3082,7 @@
             },
             {
               "id": "Q44a.tax",
-              "label": "Sales tax / VAT / GST"
+              "label": "Sales tax, VAT, GST"
             },
             {
               "id": "Q44a.delivery",
@@ -3157,7 +3157,7 @@
             },
             {
               "id": "Q46a.bed",
-              "label": "Bed / mattress"
+              "label": "Bed, mattress"
             },
             {
               "id": "Q46a.kitchen",
@@ -3224,7 +3224,7 @@
             },
             {
               "id": "Q46b.bed",
-              "label": "Bed / mattress"
+              "label": "Bed, mattress"
             },
             {
               "id": "Q46b.kitchen",
@@ -3370,7 +3370,7 @@
             },
             {
               "id": "Q48a.together",
-              "label": "Two (or more) of us together",
+              "label": "Several of us deciding together",
               "sets": [
                 "MULTI_DECIDER"
               ]
@@ -3384,7 +3384,7 @@
             },
             {
               "id": "Q48a.split",
-              "label": "We'll split it by room or topic",
+              "label": "We decide by room and topic",
               "sets": [
                 "MULTI_DECIDER"
               ]
@@ -3422,7 +3422,7 @@
             },
             {
               "id": "Q49a.compare",
-              "label": "Comparing two or three options"
+              "label": "Comparing a few options"
             },
             {
               "id": "Q49a.samples",
@@ -3501,7 +3501,7 @@
             },
             {
               "id": "Q50b.text",
-              "label": "Text / iMessage"
+              "label": "Text messages, iMessage"
             },
             {
               "id": "Q50b.whatsapp",
@@ -3533,7 +3533,7 @@
           "id": "Q50d",
           "field": "past_experience",
           "type": "text",
-          "prompt": "Worked with a designer or contractor before? Anything you'd like to go differently this time? (optional)"
+          "prompt": "What would you like to be different from any past experience with a designer or contractor? (optional)"
         }
       ],
       "priority": "P3"
@@ -3655,7 +3655,7 @@
             },
             {
               "id": "C1a.crib_chosen",
-              "label": "We already have a crib or furniture in mind",
+              "label": "We already have nursery furniture in mind",
               "show_if": "BABY_DUE || CHILD_UNDER3"
             },
             {
@@ -3717,11 +3717,11 @@
           "options": [
             {
               "id": "C2a.shower_bath",
-              "label": "Getting in and out of the shower or tub"
+              "label": "Easier access to bathing"
             },
             {
               "id": "C2a.bed_sofa",
-              "label": "Getting up from the bed or sofa"
+              "label": "Easier to rise from seating and beds"
             },
             {
               "id": "C2a.steps",
@@ -3729,11 +3729,11 @@
             },
             {
               "id": "C2a.reach",
-              "label": "Reaching high or low storage"
+              "label": "Easier access to storage at different heights"
             },
             {
               "id": "C2a.wheels",
-              "label": "Room for a wheelchair or walker"
+              "label": "Space for mobility aids"
             },
             {
               "id": "C2a.night_light",
@@ -3815,7 +3815,7 @@
           "options": [
             {
               "id": "C3b.bed_crate",
-              "label": "A spot for a bed or crate"
+              "label": "A dedicated pet sleeping space"
             },
             {
               "id": "C3b.feeding",
@@ -3838,12 +3838,12 @@
             },
             {
               "id": "C3b.tank_cage",
-              "label": "Room for a tank or cage",
+              "label": "Space for a pet enclosure",
               "show_if": "C3a.type includes fish || C3a.type includes bird || C3a.type includes small_animal"
             },
             {
               "id": "C3b.off_limits",
-              "label": "Some rooms or furniture are off-limits"
+              "label": "Keep pets away from selected rooms and furniture"
             }
           ]
         }
@@ -3870,7 +3870,7 @@
             },
             {
               "id": "C4a.dust_pollen",
-              "label": "Dust or pollen"
+              "label": "Airborne allergens"
             },
             {
               "id": "C4a.pet_allergy",
@@ -3879,15 +3879,15 @@
             },
             {
               "id": "C4a.textures",
-              "label": "Particular materials or textures"
+              "label": "Sensitive to some materials and textures"
             },
             {
               "id": "C4a.busy_visual",
-              "label": "Busy patterns or lots of visual clutter"
+              "label": "Visual clutter from busy patterns"
             },
             {
               "id": "C4a.harsh_light",
-              "label": "Bright or harsh light"
+              "label": "Light that feels too intense"
             },
             {
               "id": "C4a.pro_advice",

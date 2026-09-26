@@ -21,3 +21,9 @@ main集成 `817c253`。发布前备份原代码、dist与停止服务后的127Mi
 ## 界面反馈生产发布收据
 
 main 集成 `39bc74f`，生产静态资源 `/assets/index-OlKM2r75.js` 公网返回 200。切换前备份代码和静态资源、停服后的数据库于 `.runtime/alva057-feedback-20260926T023523Z/`，仅重启系统级 `alva.service`，当前 active；未鉴权问卷接口返回 401。使用用户提供的现役访问码经公网 Chromium 只读核验：入口宽 143px、高 34px、浅绿背景，打开现有答卷直接显示 `What kind of home is it?`，无页面脚本错误；未新填答案。结果 `evidence/2026-09-26T024129886Z-ALVA057-feedback-public/result.json`。ALVA-066 阶段 MCP 联合验收继续单列，057 仍 in-progress。
+
+## 2026-09-26 问题与选项文案精简
+
+每个用户可见问题最多一个问号：Q21a 的远程工作问题和 Q50d 的既往设计合作问题合并为单问句。99 个带 `or`、`&`、`/` 的选项标签改为简短词组；需要保留并列含义时以逗号表达，尤其 Look & feel 阶段的氛围、色板和风格题。只改展示文案，选项 ID、类型和条件规则不变；测试阶段不以旧保存答案兼容作为验收门禁。浏览器验收脚本随 `Apartment` 标签同步。
+
+隔离工作区类型检查、41/41 回归、生产构建以及 7 组恢复/Chat、6 组桌面/手机和反馈浏览器均通过。证据 `evidence/20260926T030124Z-ALVA057-release-regression-693337/`、`evidence/20260926T030251Z-ALVA057-release-build-694079/`、`evidence/20260926T030253Z-ALVA057-release-recovery-browser-694146/`、`evidence/20260926T030315Z-ALVA057-release-layout-browser-694354/`、`evidence/20260926T030337Z-ALVA057-release-feedback-browser-694588/`。生产收据待部署后补记。
