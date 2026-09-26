@@ -194,7 +194,7 @@ try {
         await page.getByTestId('building-reset').click();
         await expect(page.getByLabel('建筑房间视角')).toHaveValue('');
         checks.push('building: cutaway and reset retain the chosen sunlight parameters');
-        await page.getByLabel('建筑房间视角').selectOption('room-1');
+        await page.getByLabel('建筑房间视角').selectOption('room-living');
         const roomInitial=await state();
         const roomDistance=Math.hypot(roomInitial.camera[0]-4,roomInitial.camera[1]-1.2,roomInitial.camera[2]-3);
         assert.ok(roomDistance>8,'room view starts too close to see the room');
