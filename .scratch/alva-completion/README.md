@@ -69,3 +69,7 @@
 每票已补充 Parallel lane；同组默认串行，跨组需协调共享文件。当前可认领列表及署名只维护在主目录NextTask，票据依赖不等同于无文件冲突。个人提交不解锁后继，完成集成提交后才移除认领行并补充新就绪票。
 
 只读网页：[To Do List](https://prod.huiyuanxp.com/todo)。网页直接读取本目录与主目录NextTask，每30秒同步；不另建状态副本。
+
+## 新增用户任务
+
+- [ALVA-068 主 Chat 结果式问答与具体示例](issues/45-outcome-questions.md)：in-progress，codex-outcome-questions；不重排原44票。
