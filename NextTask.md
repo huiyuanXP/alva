@@ -1,3 +1,11 @@
+## 2026-09-26 ALVA-068 结果式问答：独立模块完成，主入口待协调
+
+用户已授权创建并实施，To Do List已显示in-progress；署名codex-outcome-questions，独立提交`3fa54b1`，工作区`/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions`。已实现生活设计出题工具工厂、具体结果/示例/取舍卡、选择后独立确认；9/9回归及受影响类型检查、3组真实模型HTTP MCP、桌面/手机6组组件检查通过。均使用20%总内存/0swap与共享heavy锁。
+
+尚未接入主Chat、合入产品或发布。057仍登记chat.ts/main.tsx共享占用；已写协调请求，并向用户提出仅出题/题卡接线授权询问，尚未收到答复。收到合同回复或授权后完成最小接线、基础指令、主Chat实际端到端与最新main联合验收，再集成；独立工具探针不能替代主入口验收。详细接口和证据在个人工作区`docs/ALVA-068-outcome-questions.md`及单票。新旧问卷题号不能互相映射。
+
+neat-freak：独立代码/文档/组件verified-current，主入口与整票验收pending，生成记忆out-of-scope；测试已结束，工作区与证据保留。生产运行不因本次认领/过程提交改变，其他票保留各自状态。
+
 ## 2026-09-26 ALVA-029 验收完成并集成
 
 布局复核的对象/门窗/受阻路径定位、保存卡明细与非空用户取舍、布局变化后的旧审查拒绝均已完成。最终71c041e的12步真实Chat/MCP/浏览器联合链通过；40/40相关回归、类型/构建通过。同步040日照主线后的e149155再次通过类型/构建、真实MCP与二维/三维页面检查，错误0。证据与失败记录见[验收报告](docs/ALVA-029-acceptance-audit.md)。029已done，030可认领，不自动开工。066已生产完票；本轮029新增界面未发布。原工作区/私有数据保留，neat-freak已完成知识同步。
@@ -86,7 +94,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-068](.scratch/alva-completion/issues/45-outcome-questions.md) | 主 Chat 结果式问题、选项与示例 | `chat` | codex-outcome-questions | task/ALVA-068-codex-outcome-questions / /home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions | in-progress；独立 api/consultation、packages/contracts/alva/consultation-question、web/src/chat/OutcomeQuestionCard；Panels.tsx及主Chat基础指令；chat.ts/main.tsx/intake等待057最小接线协调；20%总内存/0swap，共享heavy锁 |
+| [ALVA-068](.scratch/alva-completion/issues/45-outcome-questions.md) | 主 Chat 结果式问题、选项与示例 | `chat` | codex-outcome-questions | task/ALVA-068-codex-outcome-questions / /home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions | in-progress；独立模块3fa54b1，9/9回归/类型/3组真实模型MCP/6组组件检查通过；chat.ts/main.tsx最小接线等待057协调或用户授权，尚未接入/集成/发布；20%总内存/0swap，共享heavy锁 |
 | [ALVA-032](.scratch/alva-completion/issues/25-wall-evidence.md) | 墙体分类、证据与专业授权 | `topology` | Lexie | task/ALVA-032-Lexie / /home/ubuntu/Alva-worktrees/ALVA-032-Lexie | in-progress；业务实现 4fcdd02；第一轮4/4，第二轮真实HTTP+服务器管理员grant/revoke+重启通过，相关回归24/24，类型/构建/diff-check通过；已导出get_wall_professional_evidence；066已集成，接入前置已满足；原负责人可挂载工具并做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；历史第二轮产品门禁未过；066现已合main，接入前置已满足，原负责人可挂载get_confirmed_reference_preferences并做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-030](.scratch/alva-completion/issues/23-professional-unknowns.md) | 专业未知与用户取舍分离 | `review` |  |  | 依赖029已验收集成，待署名认领；不自动开工 |
