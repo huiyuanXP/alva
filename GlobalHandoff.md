@@ -177,3 +177,7 @@ ALVA-066检查点35088ef：进入阶段用thread/inject_items追加摘要/快照
 
 neat-freak过程事实已同步：局部代码/实测verified-current，整票/生产pending，生成记忆out-of-scope，私有现场与其他Agent署名保留。
 
+
+
+## 2026-09-26 · ALVA-031 设计师只读访问合同
+设计师访问必须同时经过统一验证码和项目 invite token；服务端 session 固定 `role=designer` 与项目/邀请 link。设计师默认仅允许 GET/HEAD 当前项目内容，任何项目写入在全局 onRequest 层 403，仅 `/api/logout` 例外用于结束本人 session。业主可列出、生成、撤销当前项目只读邀请；撤销后已有 designer session 与旧 invite token 立即失效。跨项目 `/api/projects/:id` 请求在 session 项目校验处拒绝。该层属于登录/授权边界，不属于户型或生活设计阶段 MCP。

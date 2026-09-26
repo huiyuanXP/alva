@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "round": 1,
+  "tests": {"passed": 3, "failed": 0},
+  "checks": [
+    "designer requires shared code plus invite token",
+    "current project GET allowed but save/restore/edit/adopt/questionnaire/invite writes all return 403",
+    "cross-project GET returns 403",
+    "revocation invalidates active designer session and old invite",
+    "designer logout allowed",
+    "invite management GET remains owner-only"
+  ],
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "diffCheck": "passed"
+}

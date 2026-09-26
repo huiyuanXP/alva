@@ -309,3 +309,7 @@ ALVA-024 由 lzy 在独立 Worktree 完成并合入 main。服务端统一处理
 
 ## 2026-09-25 · ALVA-041 参考图片偏好标注
 实现 `api/references.ts` 与 WorkspacePanel“参考图”页签，并把主 Chat 接到 `propose_reference_preferences` 工具。模型/手工标注均先 pending，取消不污染 Project；确认后才形成有来源 Evidence/Finding。个人实现 `a22b81a`。第一轮专项 3/3 + tsc/build/diff-check；第二轮真实监听端口 HTTP 链路通过（首页/图片 200、model/manual 来源、2 条确认 evidence + 2 条 findings），并带 ALVA-043 回归共 6/6。浏览器包存在但恢复后的服务器无 Chromium cache/system Chrome，因此浏览器尝试未计入验收。证据见 ALVA-041 单票与 `evidence/20260925T2258Z-ALVA041-round1/`、`evidence/20260925T2312Z-ALVA041-round2-http/`。
+
+
+## 2026-09-26 · ALVA-031 设计师只读访问与撤销
+Lexie 完成并验收设计师只读授权：统一验证码+invite token 登录、当前项目查看、服务端硬只读、跨项目拒绝、授权列表/生成/撤销、撤销立即使活跃 session 与旧链接失效；设计师可正常 logout。前端 WorkspacePanel 新增“访问”页签，业主可管理邀请，设计师看到只读说明。个人实现 `95f9675`。第一轮专项 3/3 + 类型/构建/diff-check；第二轮真实 HTTP/生产 assets/服务重启验收通过，并复跑 access/public-entry/foundation/snapshot/topology 33/33。证据见单票与 `evidence/20260926T0955Z-ALVA031-round1/`、`evidence/20260926T1005Z-ALVA031-round2/`。ALVA-032 已解锁。

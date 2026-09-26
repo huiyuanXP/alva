@@ -1,4 +1,5 @@
 import {registerIntake} from './intake/routes.js';
+import {registerDesignerAccess} from './access/designer-access.js';
 import {registerSnapshots} from './snapshots/routes.js';
 import Fastify from 'fastify';
 import cookie from '@fastify/cookie';
@@ -59,7 +60,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   if(req.url.startsWith('/api/')&&!['/api/access','/api/public-access'].includes(req.url.split('?')[0])){
    const s=await store.session(req.cookies.alva_session||'');sessions.set(req,s);
    const id=req.url.match(/^\/api\/projects\/([^/?]+)/)?.[1];if(id&&id!==s.projectId)throw new DomainError(403,'无权访问其他项目');
-   if(s.role==='designer'&&!['GET','HEAD'].includes(req.method))throw new DomainError(403,'设计师入口为只读');
+   if(s.role==='designer'&&!['GET','HEAD'].includes(req.method)&&req.url.split('?')[0]!=='/api/logout')throw new DomainError(403,'设计师入口为只读');
   }
  });
  registerTodo(app);
@@ -79,8 +80,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  app.get('/api/versions/:version',async req=>store.snapshot(session(req).projectId,z.coerce.number().int().positive().parse((req.params as {version:string}).version)));
  app.get('/api/topology/versions',async req=>(await store.get(session(req).projectId)).topologyVersions||[]);
  app.get('/api/topology/confirmed',async req=>(await store.get(session(req).projectId)).confirmedTopology||null);
- app.post('/api/invites',async req=>{const s=session(req);if(s.role!=='owner')reject('仅业主可生成只读链接',403);return store.invite(s.projectId,'designer')});
- app.post('/api/invites/:id/revoke',async req=>{const s=session(req);if(s.role!=='owner')reject('仅业主可撤销链接',403);await store.revoke(s.projectId,(req.params as {id:string}).id);return {revoked:true}});
+ registerDesignerAccess(app,store,session);
  app.post('/api/projects',async req=>{if(session(req).role!=='owner')reject('仅业主可新建',403);const {name}=z.object({name:z.string().min(1).max(100)}).parse(req.body);return store.create(name)});
  const mutate=async(req:object,body:unknown,operation:string,fn:(p:Project)=>void|Promise<void>)=>{const s=session(req);if(s.role!=='owner')reject('仅业主可修改设计',403);const b=Command.parse(body);return store.mutate(s.projectId,b.requestId,b.expectedRevision,operation,body,fn)};
  app.post('/api/candidate/correct',async req=>{const b=Command.extend({scene:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-correct',p=>{const candidate=validateTopology(b.scene);candidate.calibration=null;for(const w of candidate.walls){w.structural='unknown';w.evidence=[]}p.candidate=candidate})});

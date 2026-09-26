@@ -268,3 +268,5 @@ neat-freak过程事实已同步，局部证据verified-current；整票/生产pe
 
 neat-freak过程事实已同步：局部代码/实测verified-current，整票/生产pending，生成记忆out-of-scope，私有现场与其他Agent署名保留。
 
+
+2026-09-26 ALVA-031 完成：设计师必须统一验证码+invite token 登录并保持 designer 只读角色；服务端硬拒绝所有项目写入、跨项目访问，业主可列出/生成/撤销邀请，撤销后当前 session 和旧链接即时失效。两轮验收通过，ALVA-032 解锁。
