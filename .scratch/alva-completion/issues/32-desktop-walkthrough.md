@@ -60,3 +60,8 @@ ALVA-040 昼夜/季节与最新 BuildingView 已完成并合入 main 后，再�
 ### Main integration-state acceptance · 2026-09-26
 
 ALVA-039 squash 进入最新 main 暂存区后再次执行最终验收：第一轮 7/7，`npm run check`、production build、`git diff --cached --check` 通过；真实 Chromium 第二轮 `Pointer Lock=true`、WASD 实际位移 0.2539m、mouse yaw changed=true、`wall=false / door=true / furniture=false / free=true`，输入聚焦/失焦/Esc 无漂移，房间/全屋返回成功，console errors=[]。主线集成态证据：`evidence/20260926T1324Z-ALVA039-round2-main/`。
+
+
+### Re-acceptance · 2026-09-26 14:39 SGT
+
+按用户要求在当前 `main` 再次验收 ALVA-039。第一轮：`tests/alva-walkthrough.test.ts` + `tests/alva-building-views.test.ts` 共 7/7 通过；`npm run check`、production build、`git diff --check` 通过。第二轮：使用临时 `PLAYWRIGHT_BROWSERS_PATH=/tmp/alva039-pw` 安装的 Chromium（未修改仓库依赖或生产服务），在真实监听 `127.0.0.1:43139` + 隔离 PGlite + production assets 上执行桌面浏览器验收。结果：Pointer Lock=true；WASD 实际移动 0.2312m；mouse yaw changed=true；碰撞 `wall=false / door=true / furniture=false / free=true`；输入框聚焦、window blur、Esc 均清空移动状态且无漂移；房间导航与全屋返回成功；console errors=[]。证据：`evidence/20260926T1439Z-ALVA039-reaccept-main/`（`result.json`、`console.json`、`walkthrough-desktop.png`）。
