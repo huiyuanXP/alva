@@ -1,0 +1,23 @@
+{
+  "runId": "20260925T192051Z-ALVA040-verified-build-cbbf5e",
+  "command": [
+    "/usr/bin/env",
+    "GOMEMLIMIT=650MiB",
+    "GOGC=50",
+    "GOMAXPROCS=1",
+    "NODE_OPTIONS=--max-old-space-size=700",
+    "RAYON_NUM_THREADS=1",
+    "/bin/bash",
+    "-c",
+    "set -e; node node_modules/typescript/bin/tsc --noEmit; echo ALVA040_TYPECHECK_PASSED; node node_modules/vite/bin/vite.js build --config web/vite.config.ts; echo ALVA040_BUILD_PASSED"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 36.22,
+  "evidence": "evidence/20260925T192051Z-ALVA040-verified-build-cbbf5e"
+}

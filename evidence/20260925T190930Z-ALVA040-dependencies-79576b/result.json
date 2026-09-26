@@ -1,0 +1,17 @@
+{
+  "runId": "20260925T190930Z-ALVA040-dependencies-79576b",
+  "command": [
+    "/bin/bash",
+    "-c",
+    "set -e; cmp package-lock.json /home/ubuntu/Alva/package-lock.json; cp -a --reflink=auto /home/ubuntu/Alva/node_modules ./node_modules; test ! -L node_modules; node node_modules/typescript/bin/tsc --version; node node_modules/tsx/dist/cli.mjs --version"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 22.11,
+  "evidence": "evidence/20260925T190930Z-ALVA040-dependencies-79576b"
+}

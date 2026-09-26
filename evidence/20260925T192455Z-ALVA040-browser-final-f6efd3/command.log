@@ -1,0 +1,31 @@
+Running as unit: alva040-570909cdc605.service
+{
+  "ticket": "ALVA-040",
+  "runId": "20260925T192458558Z-ALVA040-browser-110e48",
+  "pass": true,
+  "checks": [
+    "scene: existing sliders update the real light without rebuilding renderer or resetting camera",
+    "scene: morning/afternoon sun and rendered shadow pixels move, verified against shadow-disabled control frames",
+    "scene: returning to the same parameters reproduces the exact rendered frame",
+    "scene: winter date changes actual elevation and shadows; numerical date/latitude/orientation assumptions visible",
+    "scene: night disables direct sun/shadows and daylight is restored, half-hour shown correctly",
+    "scene: scene, revision, confirmed data and saved snapshots remain unchanged",
+    "building: existing sliders update the real light without rebuilding renderer or resetting camera",
+    "building: morning/afternoon sun and rendered shadow pixels move, verified against shadow-disabled control frames",
+    "building: returning to the same parameters reproduces the exact rendered frame",
+    "building: winter date changes actual elevation and shadows; numerical date/latitude/orientation assumptions visible",
+    "building: night disables direct sun/shadows and daylight is restored, half-hour shown correctly",
+    "building: cutaway and reset retain the chosen sunlight parameters",
+    "building: scene, revision, confirmed data and saved snapshots remain unchanged"
+  ],
+  "errors": [],
+  "evidence": "/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight/evidence/20260925T192458558Z-ALVA040-browser-110e48"
+}
+
+ALVA040_JOB_EXIT=0
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 1min 9.823s
+CPU time consumed: 54.969s
+Memory peak: 1.2G
+Memory swap peak: 0B

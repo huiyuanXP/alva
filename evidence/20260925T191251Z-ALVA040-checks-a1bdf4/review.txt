@@ -1,0 +1,1 @@
+Stopped only the ALVA-040 checker after sustained 1200M cgroup memory-pressure. No test failed; build not reached. Next attempt uses GOMEMLIMIT and one compiler worker without changing the task cap.

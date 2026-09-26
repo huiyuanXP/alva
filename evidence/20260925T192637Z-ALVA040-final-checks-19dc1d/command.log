@@ -1,0 +1,35 @@
+Running as unit: alva040-78fd4b48e73b.service
+✔ ALVA-013 uses all rendered components for automatic overview bounds (4.340279ms)
+✔ ALVA-013 room view chooses an interior point away from wall centerlines (5.564275ms)
+✔ ALVA-013 room selection is data-driven and missing rooms do not invent a camera (2.567631ms)
+✔ ALVA-040 noon solstice elevations agree with independent 90-latitude+declination benchmarks (1.852521ms)
+✔ ALVA-040 morning is east and afternoon west when plan top is north (0.392211ms)
+✔ ALVA-040 changing north rotates the light without changing elevation or geographic azimuth (0.234405ms)
+✔ ALVA-040 hemisphere changes are real geometry, not fixed northern-hemisphere presets (0.351461ms)
+✔ ALVA-040 night is below the horizon with zero direct sunlight (0.483539ms)
+✔ ALVA-040 24:00/00:00 and north 360/0 are equivalent, without mutating the input (1.000894ms)
+✔ ALVA-040 all supported latitude/date/hour/orientation samples yield finite unit directions (99.664924ms)
+✔ ALVA-040 malformed or out-of-contract parameters return stable errors, never silent coercion (1.498623ms)
+✔ ALVA-040 ground-shadow rays reverse east/west and grow in winter (0.5263ms)
+✔ ALVA-040 both renderers use a real Three.js directional light aimed relative to scene center (4.014342ms)
+✔ ALVA-040 shadow camera encloses all scene corners for small/large and translated layouts (4.253959ms)
+✔ ALVA-040 rendering night disables sun shadows and subsequent daylight restores them (2.365858ms)
+✔ ALVA-040 visible date/time labels are non-leap and half hours are minutes, not 14.5:00 (0.682545ms)
+✔ ALVA-040 empty/non-finite render bounds are rejected before creating lights (0.35538ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1295.790962
+ALVA040_FINAL_TYPECHECK_PASSED
+
+ALVA040_JOB_EXIT=0
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 32.904s
+CPU time consumed: 26.368s
+Memory peak: 1.0G
+Memory swap peak: 0B

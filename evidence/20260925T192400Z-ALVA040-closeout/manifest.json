@@ -1,0 +1,76 @@
+{
+  "ticket": "ALVA-040",
+  "status": "in-progress",
+  "stage": "isolated-rendering-checkpoint",
+  "claimCommit": "bc7deca",
+  "generatedAt": "2026-09-25T19:28:16.992385+00:00",
+  "branch": "task/ALVA-040-chatgpt-sunlight",
+  "sourceSha256": {
+    "packages/contracts/alva/sunlight.ts": "eadafa2c1c3b6ca96f09626bebf047f06e5d17bdfd5281879e70cf357b606f70",
+    "web/src/scene/sunlight.ts": "696965ceaefd8ae3e7268f3c428ba0eb05230382a683b922b5835712006db74d",
+    "web/src/scene/SunlightReadout.tsx": "219796d6b3ce680c540202a55087be6d94de087b82000eb5f33468ebe65ee0a7",
+    "web/src/scene/sunlight.css": "83bc218faf31003ecaac99a17209776008b2069027e51d3dfe7954242ec373b7",
+    "web/src/SceneView.tsx": "0d52b08f389a27584cd4ed5138f3ff17433691a51d27ec1048e747297f3f3603",
+    "web/src/BuildingView.tsx": "7346d7a95af37d2a7eb0ad4ace20d5a95edde3c959bc40ec2d57258c9d3d2e68",
+    "tests/alva-sunlight.test.ts": "17784968f865d2122ec415b5456f6b9eef009a13602d4daf7257571d5c40418b",
+    "scripts/alva-040-browser.ts": "705f24090545a4e74102e277e9764f9495d82e96fd4ae5f5100346ce9ebbf085",
+    "docs/ALVA-040-sunlight.md": "8e1fa80a872612584b34a6741253a7f6a4925392b7dfc6750fca97775379e8e0",
+    ".scratch/alva-completion/issues/33-sunlight-seasons.md": "f55df15aae4146eb39472be03e7a9b4f02d50e17d893819c7c878f78cf6fcfc5"
+  },
+  "verifiedRuns": {
+    "unitAndTypes": "evidence/20260925T192637Z-ALVA040-final-checks-19dc1d",
+    "build": "evidence/20260925T192051Z-ALVA040-verified-build-cbbf5e",
+    "browserProcess": "evidence/20260925T192455Z-ALVA040-browser-final-f6efd3",
+    "browser": "evidence/20260925T192458558Z-ALVA040-browser-110e48"
+  },
+  "protectedPathsUnchanged": [
+    "web/src/main.tsx",
+    "api/chat.ts",
+    "api/model.ts",
+    "api/store.ts",
+    "api/api.ts",
+    "api/mcp",
+    "api/codex.ts",
+    "api/intake",
+    "web/src/intake",
+    "package.json",
+    "package-lock.json",
+    "AGENTS.md",
+    "NextTask.md",
+    "Handoff.md",
+    "GlobalHandoff.md",
+    "PROGRESS.md"
+  ],
+  "unitTests": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "solarSamples": 7350
+  },
+  "browser": {
+    "checks": 13,
+    "errors": 0,
+    "fixture": "synthetic 8x6m room",
+    "sameParametersSameFrameHash": true,
+    "projectAndSnapshotsUnchanged": true
+  },
+  "knowledge": {
+    "code": "changed-and-verified",
+    "docs": "changed-and-verified",
+    "rules": "verified-current",
+    "production": "out-of-scope; service read-only checked; unchanged MainPID 478524",
+    "memory": "out-of-scope",
+    "workspace": "preserved; no cleanup"
+  },
+  "remaining": [
+    "ALVA-066 life-design MCP and acknowledged UI actions",
+    "natural language main Chat, authorization/stage/expiry/cancel/retry acceptance",
+    "main integration; no production deployment performed"
+  ],
+  "warnings": [
+    "Vite output chunk exceeds 500kB warning retained",
+    "initial compilation aborted under memory pressure; later bounded type checks passed",
+    "earlier browser harness errors retained; final assertions unchanged",
+    "shared main.tsx half-hour label pending coordination"
+  ]
+}

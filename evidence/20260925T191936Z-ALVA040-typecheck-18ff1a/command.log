@@ -1,0 +1,16 @@
+Running as unit: alva040-0544be8f82d1.service
+scripts/alva-040-browser.ts(71,11): error TS7022: 'context' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+scripts/alva-040-browser.ts(75,13): error TS7022: 'page' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+scripts/alva-040-browser.ts(81,13): error TS7022: 'host' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+scripts/alva-040-browser.ts(120,13): error TS7023: 'capture' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+scripts/alva-040-browser.ts(122,15): error TS7022: 'result' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+scripts/alva-040-browser.ts(143,15): error TS7022: 'summary' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+scripts/alva-040-browser.ts(147,13): error TS7022: 'morningFrame' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+ALVA040_JOB_EXIT=1
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 34.436s
+CPU time consumed: 26.678s
+Memory peak: 1.1G
+Memory swap peak: 0B

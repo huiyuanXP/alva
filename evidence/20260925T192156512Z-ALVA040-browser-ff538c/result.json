@@ -1,0 +1,11 @@
+{
+  "ticket": "ALVA-040",
+  "runId": "20260925T192156512Z-ALVA040-browser-ff538c",
+  "pass": false,
+  "error": "Error: locator.evaluate: ReferenceError: __name is not defined\n    at eval (eval at evaluate (:311:30), <anonymous>:1:429)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+  "checks": [
+    "scene: existing sliders update the real light without rebuilding renderer or resetting camera"
+  ],
+  "errors": [],
+  "observations": {}
+}

@@ -1,0 +1,23 @@
+Running as unit: alva040-9a2b26c0070d.service
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.evaluate: ReferenceError: __name is not defined
+    at eval (eval at evaluate (:311:30), <anonymous>:1:429)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at capture (/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight/scripts/alva-040-browser.ts:135:47)
+    at async <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight/scripts/alva-040-browser.ts:160:26) {
+  log: []
+}
+
+Node.js v24.21.0
+
+ALVA040_JOB_EXIT=1
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 27.310s
+CPU time consumed: 20.426s
+Memory peak: 1.3G
+Memory swap peak: 0B

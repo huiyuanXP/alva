@@ -1,0 +1,6 @@
+{
+  "rawArchive": "command.raw.log.gz",
+  "originalSha256": "5af15384b4f65ba0bb5fd06497f46435e2aed65654f0356b6c6ddd17b7e858f7",
+  "displayLog": "command.log",
+  "normalization": "Trailing whitespace from Vite reporter stripped in the display copy only; exact raw bytes preserved in gzip archive."
+}

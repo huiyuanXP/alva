@@ -1,0 +1,9 @@
+{
+  "completed": false,
+  "unitTests": {"pass": 17, "fail": 0, "skip": 0},
+  "typeCheck": "aborted-memory-pressure",
+  "build": "not-started",
+  "termination": "operator TERM then KILL on this task only",
+  "runnerExitCodeIsNotCompletion": true,
+  "note": "systemd-run returned 0 for intentional TERM; subsequent jobs require an explicit normal-completion marker. Raw result retained."
+}
