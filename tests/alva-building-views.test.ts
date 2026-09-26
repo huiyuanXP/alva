@@ -22,12 +22,16 @@ test('ALVA-013 uses all rendered components for automatic overview bounds',()=>{
  const pose=overviewPose(building,1.6);assert.ok(pose.position.x>pose.target.x);assert.ok(pose.position.y>pose.target.y);assert.ok(pose.position.z>pose.target.z);
 });
 
-test('ALVA-013 room view chooses an interior point away from wall centerlines',()=>{
- const pose=roomPose(scene,'room-1');assert.ok(pose);assert.ok(Number.isFinite(pose!.position.x));assert.ok(pose!.position.y>1);
- assert.ok(pose!.position.x>.2&&pose!.position.x<3.8);assert.ok(pose!.position.z>.2&&pose!.position.z<3.8);
+test('ALVA-040 room view frames the whole selected room from above',()=>{
+ const pose=roomPose(scene,'room-1',1);assert.ok(pose);
+ assert.equal(pose.target.x,2);assert.equal(pose.target.z,2);
+ assert.ok(pose.position.y>pose.target.y+4);
+ assert.ok(Math.hypot(pose.position.x-pose.target.x,pose.position.y-pose.target.y,pose.position.z-pose.target.z)>8);
+ const narrow=roomPose(scene,'room-1',.5);assert.ok(narrow);
+ assert.ok(Math.hypot(narrow.position.x-narrow.target.x,narrow.position.y-narrow.target.y,narrow.position.z-narrow.target.z)>Math.hypot(pose.position.x-pose.target.x,pose.position.y-pose.target.y,pose.position.z-pose.target.z));
 });
 
 test('ALVA-013 room selection is data-driven and missing rooms do not invent a camera',()=>{
  assert.equal(roomPose(scene,'missing'),undefined);const shifted={...scene,rooms:[{...scene.rooms[0],id:'room-shifted',polygon:scene.rooms[0].polygon.map(point=>({x:point.x+10,y:point.y+4}))}]};
- const pose=roomPose(shifted,'room-shifted');assert.ok(pose);assert.ok(pose!.position.x>9&&pose!.position.z>3);
+ const pose=roomPose(shifted,'room-shifted');assert.ok(pose);assert.ok(pose!.target.x>9&&pose!.target.z>3);
 });

@@ -194,6 +194,23 @@ try {
         await page.getByTestId('building-reset').click();
         await expect(page.getByLabel('建筑房间视角')).toHaveValue('');
         checks.push('building: cutaway and reset retain the chosen sunlight parameters');
+        await page.getByLabel('建筑房间视角').selectOption('room-1');
+        const roomInitial=await state();
+        const roomDistance=Math.hypot(roomInitial.camera[0]-4,roomInitial.camera[1]-1.2,roomInitial.camera[2]-3);
+        assert.ok(roomDistance>8,'room view starts too close to see the room');
+        await page.screenshot({path:resolve(evidence,'building-room-initial.png'),fullPage:true});
+        await host.locator('canvas').hover();
+        await page.mouse.wheel(0,-200);
+        await expect.poll(async()=>difference((await state()).camera,roomInitial.camera)>0.1).toBe(true);
+        const roomZoomed=await state();
+        await slider('太阳时',9);
+        await slider('季节日期',355);
+        const roomAfter=await state();
+        assert.ok(difference(roomZoomed.camera,roomAfter.camera)<1e-5,'sunlight slider reset selected-room camera');
+        assert.ok(difference(roomZoomed.quaternion,roomAfter.quaternion)<1e-5,'sunlight slider reset selected-room orientation');
+        assert.equal(await host.evaluate((element:any)=>element.alvaView.renderer.domElement===element.querySelector('canvas')),true);
+        await page.screenshot({path:resolve(evidence,'building-room-winter-after-sliders.png'),fullPage:true});
+        checks.push('building: selected room starts fully framed and preserves custom zoom across sunlight sliders');
       }
       assert.deepEqual(await (await page.request.get(origin+'/api/project')).json(),projectBefore,'view changes mutated the project');
       assert.deepEqual(await (await page.request.get(origin+'/api/versions')).json(),versionsBefore,'view changes created snapshots');

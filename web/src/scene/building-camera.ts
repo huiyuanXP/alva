@@ -57,9 +57,13 @@ function safeRoomPoint(room:SceneData['rooms'][number],walls:SceneData['walls'])
 }
 
 export function roomPose(scene:SceneData,roomId:string,aspect=1):CameraPose|undefined{
- const room=scene.rooms.find(item=>item.id===roomId);if(!room)return undefined;
- const point=safeRoomPoint(room,scene.walls),center=polygonCenter(room.polygon),width=Math.max(...room.polygon.map(p=>p.x))-Math.min(...room.polygon.map(p=>p.x)),depth=Math.max(...room.polygon.map(p=>p.y))-Math.min(...room.polygon.map(p=>p.y)),offset=Math.max(.45,Math.min(1.4,Math.min(width,depth)*.22)),direction={x:center.x-point.x,y:center.y-point.y},length=Math.hypot(direction.x,direction.y)||1;
- const position={x:point.x-direction.x/length*offset,y:1.55,z:point.y-direction.y/length*offset},target={x:center.x,y:1.35,z:center.y};
- void aspect;
- return {position,target};
+ const room=scene.rooms.find(item=>item.id===roomId);if(!room||!room.polygon.length)return undefined;
+ const xs=room.polygon.map(point=>point.x),zs=room.polygon.map(point=>point.y);
+ const width=Math.max(...xs)-Math.min(...xs),depth=Math.max(...zs)-Math.min(...zs);
+ const target={x:(Math.min(...xs)+Math.max(...xs))/2,y:1.2,z:(Math.min(...zs)+Math.max(...zs))/2};
+ // Frame the whole selected room from above, including its walls. The old eye-height
+ // interior pose placed the camera against a wall and made the daylight unreadable.
+ const halfFov=Math.PI/8,required=Math.max(width/Math.max(aspect,.2),depth,3*.8)/(2*Math.tan(halfFov));
+ const direction={x:.68,y:.8,z:.68},distance=Math.max(5,required*1.75);
+ return {target,position:add(target,scale(direction,distance/Math.hypot(direction.x,direction.y,direction.z)))};
 }
