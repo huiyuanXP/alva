@@ -12,7 +12,7 @@
 
 **Status:** in-progress
 
-**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领；独立 Worktree `task/ALVA-042-Lexie` 开发。优先复用 ALVA-041 的 confirmed reference 数据边界，并通过生活设计阶段 MCP 接入真实咨询，避开 ALVA-057 当前占用的共享 Chat/Project 入口。
+**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领。业务实现 `de7bb04` 已完成两轮验收：第一轮 4/4，第二轮真实 HTTP + 保存/重启恢复通过，ALVA-041+042 回归 7/7；当前仍为 `in-progress`，因为 ALVA-066 阶段 MCP 运行层尚未合入 main。已导出 confirmed-reference 工具工厂，等待 066 合入后做实际生活设计阶段 MCP 联合门禁；在此之前不冒充 done。
 
 - [ ] 点击确认才进入需求，不能覆盖锁定答案或错误房间。
 - [ ] 真实咨询能读取已确认偏好并解释来源，未确认分析不冒充已确认。
