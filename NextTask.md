@@ -1,3 +1,7 @@
+## ALVA-070 三维视图与相机交互修复
+
+署名 codex-scene；in-progress；分支 task/ALVA-070-codex-scene；Worktree /home/ubuntu/Alva-worktrees/ALVA-070-codex-scene。占用 web/src/main.tsx、web/src/SceneView.tsx、web/src/scene/；测试使用空闲本地端口。用户授权改用 SceneView、点击切换物品并保留视角。
+
 ## 2026-09-26 ALVA-069 已集成，未发布
 
 ALVA-069 左侧对话体验：用户/助手窄气泡、常见Markdown安全渲染、阶段交接专用重试与独立提示已合入main。合并候选分组类型、构建、阶段回归2/2、桌面/窄屏浏览器通过；页面错误0。生产固定release未切换，未发布。详情见 docs/ALVA-069-chat-ui.md。
