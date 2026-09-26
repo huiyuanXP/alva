@@ -1,0 +1,6 @@
+run=20260926T054849Z-ALVA029-release-negative-review-model-50553
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1867
+71c041e9fbc6d4a597cefc62e1aad75da10229ef

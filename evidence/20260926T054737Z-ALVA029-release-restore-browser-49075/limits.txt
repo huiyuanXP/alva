@@ -1,0 +1,6 @@
+run=20260926T054737Z-ALVA029-release-restore-browser-49075
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1720
+71c041e9fbc6d4a597cefc62e1aad75da10229ef

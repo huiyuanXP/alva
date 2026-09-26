@@ -1,0 +1,5 @@
+.chat-stages{max-height:52vh;overflow:auto;flex:0 1 auto;min-height:100px;overscroll-behavior:contain}
+.chat>.chat-stages .layout-review-panel,.chat>details{max-height:36vh;overflow:auto;overscroll-behavior:contain}
+.layout-review-panel article strong{display:block;line-height:1.5}
+.layout-review-panel input{width:100%}
+.layout-review-panel [data-review-current="false"]{color:#92522e}

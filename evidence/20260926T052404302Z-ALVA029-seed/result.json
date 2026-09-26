@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "run": "20260926T052404302Z-ALVA029-seed",
+  "step": "seed",
+  "candidate": "2e47e5998b5037fe25be15082e708ce023f38ca6",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "noReviewSaveRejected": {
+      "code": "REVIEW_REQUIRED",
+      "message": "保存前请先复核当前布局，并查看提示与取舍。",
+      "retryable": true,
+      "repairActions": [
+        {
+          "action": "read_user_context",
+          "message": "审查缺失或过期不代表工具不可用。实际调用 mcp_call_tool({name:\"read_user_context\",arguments:{}}) 重读当前项目 Markdown。"
+        },
+        {
+          "action": "run_layout_review",
+          "message": "随后实际调用 mcp_call_tool({name:\"run_layout_review\",arguments:{}}) 重新复核；不可沿用旧会话结论。"
+        },
+        {
+          "action": "request_save",
+          "message": "复核成功后，如用户已要求保存卡，调用 mcp_call_tool({name:\"request_save\",arguments:{}}) 出示卡片；只出示卡片，不替用户确认或跳过待处理取舍。"
+        }
+      ],
+      "error": "保存前请先复核当前布局，并查看提示与取舍。"
+    }
+  },
+  "errors": [],
+  "revision": 1,
+  "savedVersion": 0
+}

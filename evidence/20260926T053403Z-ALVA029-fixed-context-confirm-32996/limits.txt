@@ -1,0 +1,6 @@
+run=20260926T053403Z-ALVA029-fixed-context-confirm-32996
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2223
+5b9e19347d802d25703d2e2f9e84e10dc86b5aa5

@@ -1,0 +1,6 @@
+run=20260926T052055Z-ALVA029-joint-types-22096
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2368
+2e47e5998b5037fe25be15082e708ce023f38ca6

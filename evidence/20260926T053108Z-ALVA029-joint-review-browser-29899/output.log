@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 20000ms exceeded.
+Call log:
+  - waiting for getByTestId('review-path') to be visible
+    44 × locator resolved to hidden <polyline data-testid="review-path" stroke-dasharray=".12 .09" points="0.525,3.0749999999999997 5.475,3.0749999999999997"></polyline>
+
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/scripts/alva-029-joint-check.ts:79:74) {
+  log: [
+    "  - waiting for getByTestId('review-path') to be visible",
+    '    44 × locator resolved to hidden <polyline data-testid="review-path" stroke-dasharray=".12 .09" points="0.525,3.0749999999999997 5.475,3.0749999999999997"></polyline>'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.21.0

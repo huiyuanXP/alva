@@ -1,0 +1,74 @@
+{
+  "pass": true,
+  "run": "20260926T054620677Z-ALVA029-review-browser",
+  "step": "review-browser",
+  "candidate": "71c041e9fbc6d4a597cefc62e1aad75da10229ef",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "adoption": {
+      "reviewId": "layout-review-bbd3eaf39141ce534b0e2b4f",
+      "decisions": [
+        {
+          "note": "先保留现有咖啡台，实际设备到场后再补操作面。",
+          "decision": "accept_tradeoff",
+          "confirmed": true,
+          "findingId": "review-4a15f1451748e526efefbd9f"
+        }
+      ],
+      "reviewedRevision": 6,
+      "sceneFingerprint": "a0bc49f39ad479f50a19950e279028e8f11dd7c2a75aa904908c7b620f51210b",
+      "adoptedAtRevision": 9,
+      "pendingFindingIds": [
+        "review-0fd4c54276a49b3ef37ad8c1",
+        "review-8604a97eb1f765a69515dad8",
+        "review-b81b2c2d9458cccc67327442"
+      ],
+      "contextFingerprint": "3d34b3062a78d2545bda43ffa4adf666e30d2580c572825ab90ba5247c762b21",
+      "professionalUnknownIds": []
+    },
+    "staleSave": {
+      "code": "REVIEW_STALE",
+      "message": "保存前的审查已过期，请先对当前布局重新复核。",
+      "retryable": true,
+      "repairActions": [
+        {
+          "action": "read_user_context",
+          "message": "审查缺失或过期不代表工具不可用。实际调用 mcp_call_tool({name:\"read_user_context\",arguments:{}}) 重读当前项目 Markdown。"
+        },
+        {
+          "action": "run_layout_review",
+          "message": "随后实际调用 mcp_call_tool({name:\"run_layout_review\",arguments:{}}) 重新复核；不可沿用旧会话结论。"
+        },
+        {
+          "action": "request_save",
+          "message": "复核成功后，如用户已要求保存卡，调用 mcp_call_tool({name:\"request_save\",arguments:{}}) 出示卡片；只出示卡片，不替用户确认或跳过待处理取舍。"
+        }
+      ],
+      "error": "保存前的审查已过期，请先对当前布局重新复核。"
+    },
+    "staleDecision": {
+      "code": "REVIEW_STALE",
+      "message": "布局或需求已变化，请重新审查后再确认取舍。",
+      "retryable": true,
+      "repairActions": [
+        {
+          "action": "read_user_context",
+          "message": "审查缺失或过期不代表工具不可用。实际调用 mcp_call_tool({name:\"read_user_context\",arguments:{}}) 重读当前项目 Markdown。"
+        },
+        {
+          "action": "run_layout_review",
+          "message": "随后实际调用 mcp_call_tool({name:\"run_layout_review\",arguments:{}}) 重新复核；不可沿用旧会话结论。"
+        },
+        {
+          "action": "request_save",
+          "message": "复核成功后，如用户已要求保存卡，调用 mcp_call_tool({name:\"request_save\",arguments:{}}) 出示卡片；只出示卡片，不替用户确认或跳过待处理取舍。"
+        }
+      ],
+      "error": "布局或需求已变化，请重新审查后再确认取舍。"
+    }
+  },
+  "errors": [],
+  "revision": 11,
+  "savedVersion": 1,
+  "threadId": "01a0dc3e-998f-79d2-9107-04d7cdf13b37"
+}

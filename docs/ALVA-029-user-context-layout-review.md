@@ -2,8 +2,17 @@
 
 Owner: **xuanpu-chat-6pro**。2026-09-26（Asia/Singapore）。
 
-状态：独立模块实施与验证；**未合入 main、未部署、未完成主 Chat 联合验收，不标 done**。
-认领提交 `e9ee173`。分支 `task/ALVA-029-xuanpu-chat-6pro`；工作区 `/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro`。
+状态：独立模块已随066进入main；本轮补齐定位与保存复核展示，固定候选 `71c041e` 的12步真实Chat/MCP/浏览器联合链通过。验收已通过并合入main，详见[本轮报告](ALVA-029-acceptance-audit.md)为准，生产未由本票发布。
+
+原实现提交 `dd6f948`、交接 `8aa0f1a` 与原工作区均保留。下述接口/规则仍为现役合同；历史验证数字不能代替本轮结果。
+
+## 2026-09-26 联合验收续接
+
+用户授权 codex-acceptance 从已集成066的main继续。原实现/证据保留；新工作区为 `/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance`。原“main无保存门禁”结论仅适用于审计时cafb8b8，066集成后已经解除。
+
+本轮补齐：保存卡和原审查标签页复用同一 ReviewPanel；路径定位绘制引擎返回的受阻基线路径、门洞及所有关联对象，不将它称为推荐路线。版本变化立即撤销页面“当前有效”标记和旧定位；取舍/保存仍由服务端复验。保存对话框定位时关闭对话框以露出平面，用户重新点击保存后再确认。
+
+运行 `bash scripts/alva-029-validate.sh` 验证分组类型、受影响回归、构建。所有029验证共用 `alva029.slice` 的20%内存、0 swap、CPU80%预算，重任务仍经全局锁串行。真实联合验收脚本为 `scripts/alva-029-joint-check.ts`，每步单独进程、独立evidence run、同一私有合成数据库/持久living thread，读取既有授权模型环境；不访问生产数据库。建筑与布局为明确合成前置，不声称识图验收。12步真实联合结果见本轮报告。
 
 ## 与 ALVA-066 的实际协调
 
@@ -99,7 +108,7 @@ createLayoutReviewTools({getProject, dataRoot?, onReview?}): BusinessTool[]
 
 验证结果与实现提交在本票 `Implementation handoff` 更新。首轮模块测试 33/34，发现待确认显式分类重复生成原始证据投影，已修复；失败记录保留，不能把第一次运行写成全部通过。
 
-联合门仍待066：真实 Chat 提取→用户确认/更正→分类 Markdown→实际 living MCP 读取/复核→页面定位及保存前展示→手动保存凭证→刷新/恢复。必须同一候选 SHA 联合验收后才能关闭 ALVA-029；29 的旧 `/api/review` 与生产主 Chat 尚未由本独立增量替换。
+历史交接时联合门待066（现已装配，本轮结果见验收报告）：真实 Chat 提取→用户确认/更正→分类 Markdown→实际 living MCP 读取/复核→页面定位及保存前展示→手动保存凭证→刷新/恢复。必须同一候选 SHA 联合验收后才能关闭 ALVA-029；29 的旧 `/api/review` 与生产主 Chat 尚未由本独立增量替换。
 
 ## 知识收尾事实面
 

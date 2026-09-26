@@ -1,0 +1,128 @@
+{
+  "ticket": "ALVA-029",
+  "candidate": "71c041e9fbc6d4a597cefc62e1aad75da10229ef",
+  "pass": true,
+  "jointSteps": 12,
+  "singleLivingThread": "01a0dc3e-998f-79d2-9107-04d7cdf13b37",
+  "sourceManifestsIdentical": true,
+  "syntheticGeometryAndBuildingPrerequisite": true,
+  "realModel": "gemini-3.8-flash-high",
+  "steps": [
+    {
+      "step": "seed",
+      "evidence": "evidence/20260926T054428982Z-ALVA029-seed/result.json",
+      "revision": 1,
+      "savedVersion": 0
+    },
+    {
+      "step": "context-model",
+      "evidence": "evidence/20260926T054442468Z-ALVA029-context-model/result.json",
+      "revision": 4,
+      "savedVersion": 0
+    },
+    {
+      "step": "context-confirm",
+      "evidence": "evidence/20260926T054523553Z-ALVA029-context-confirm/result.json",
+      "revision": 5,
+      "savedVersion": 0
+    },
+    {
+      "step": "review-model",
+      "evidence": "evidence/20260926T054534580Z-ALVA029-review-model/result.json",
+      "revision": 8,
+      "savedVersion": 0
+    },
+    {
+      "step": "review-browser",
+      "evidence": "evidence/20260926T054620677Z-ALVA029-review-browser/result.json",
+      "revision": 11,
+      "savedVersion": 1
+    },
+    {
+      "step": "repair-model",
+      "evidence": "evidence/20260926T054652647Z-ALVA029-repair-model/result.json",
+      "revision": 14,
+      "savedVersion": 1
+    },
+    {
+      "step": "restore-browser",
+      "evidence": "evidence/20260926T054742865Z-ALVA029-restore-browser/result.json",
+      "revision": 16,
+      "savedVersion": 2
+    },
+    {
+      "step": "correction-model",
+      "evidence": "evidence/20260926T054811490Z-ALVA029-correction-model/result.json",
+      "revision": 19,
+      "savedVersion": 2
+    },
+    {
+      "step": "context-confirm",
+      "evidence": "evidence/20260926T054842199Z-ALVA029-context-confirm/result.json",
+      "revision": 20,
+      "savedVersion": 2
+    },
+    {
+      "step": "negative-review-model",
+      "evidence": "evidence/20260926T054852835Z-ALVA029-negative-review-model/result.json",
+      "revision": 23,
+      "savedVersion": 2
+    },
+    {
+      "step": "negative-browser",
+      "evidence": "evidence/20260926T055004257Z-ALVA029-negative-browser/result.json",
+      "revision": 23,
+      "savedVersion": 2
+    },
+    {
+      "step": "saved-state-model",
+      "evidence": "evidence/20260926T055015311Z-ALVA029-saved-state-model/result.json",
+      "revision": 25,
+      "savedVersion": 2
+    }
+  ],
+  "gates": {
+    "types": "evidence/20260926T054337Z-ALVA029-release-types-44413/result.json",
+    "build": "evidence/20260926T054359Z-ALVA029-release-build-44741/result.json",
+    "regression": {
+      "evidence": "evidence/20260926T054101Z-ALVA029-fixed-final-regression-41499/result.json",
+      "passed": 40,
+      "scopeHashesMatchFinalCandidate": 180
+    }
+  },
+  "pageErrors": 0,
+  "oomKills": 0,
+  "productionChangedByThisTask": false,
+  "integration": {
+    "status": "integrated",
+    "candidate": "e149155d50a301783ee5632118f61612b6deafcb",
+    "mergedMain": "e2713d1",
+    "changedDependency": "ALVA-040 sunlight renderer; ALVA-029 API/review/chat/save code unchanged",
+    "checks": [
+      "20260926T055358Z-ALVA029-integration-types-54139",
+      "20260926T055423Z-ALVA029-integration-build-54402",
+      "20260926T055426Z-ALVA029-integration-real-mcp-54482",
+      "20260926T055500Z-ALVA029-integration-render-54030"
+    ],
+    "realMcp": "evidence/20260926T055430280Z-ALVA029-negative-review-model/result.json",
+    "browser": "evidence/20260926T055506044Z-ALVA029-integration-render/result.json",
+    "sourceHashesMatch": true,
+    "mainBaseline": "e35cf47c35a5d20f6b4bcca9696f326d91037275",
+    "personalHandoff": "f1ac9da44a2f879d7f3e7e73360051045e721a4e",
+    "sourceHashesMatchMain": true
+  },
+  "warnings": [
+    "Existing frontend bundle exceeds 500KB"
+  ],
+  "priorFailureEvidence": [
+    "evidence/20260926T052325Z-ALVA029-preflight-seed-22745",
+    "evidence/20260926T053112928Z-ALVA029-review-browser"
+  ],
+  "readyProductTickets": [
+    "ALVA-030",
+    "ALVA-032",
+    "ALVA-039",
+    "ALVA-042",
+    "ALVA-068"
+  ]
+}

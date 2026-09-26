@@ -1,0 +1,6 @@
+run=20260926T055426Z-ALVA029-integration-real-mcp-54482
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2374
+e149155d50a301783ee5632118f61612b6deafcb

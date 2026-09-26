@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "run": "20260926T053023588Z-ALVA029-review-model",
+  "step": "review-model",
+  "candidate": "2a9887b62d273c2b6b3d7fdbc5b2b0e0f94b0582",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "get_snapshot",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "read_user_context",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "run_layout_review",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "request_save",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已按顺序完成信息读取、布局复核及保存确认卡的调用。具体结果如下：\n\n---\n\n### 一、已确认用户信息（`read_user_context`）\n\n* **生活习惯（`habits`，已确认）**：\n  * 条目内容：“每天做咖啡，家里养狗，喜欢绿植与明亮采光。”\n  * 范围：合成客厅（`room-1`）\n  * 来源证据 ID：`9182b730-17bd-449c-a1e9-cd95ef25ea0c`\n* **主观偏好 / 明确需求**：暂无已确认条目。\n\n---\n\n### 二、布局复核结果（`run_layout_review`）\n\n#### 1. 检查通过项\n* **几何检查（`geometry`）· 通过**：旋转占地、房间边界及分离轴无重叠穿插碰撞（注：仅基于二维占地，未模拟垂直层叠关系）。\n\n#### 2. 筛查出的问题与提示\n* **动线通行（`navigation`）· 门间通路受阻**：在 0.6 米通行宽度假设下，收纳柜（`barrier`）阻挡了左门（`door-left`）与右门（`door-right`）之间的连通路径。\n* **需求匹配（`requirement`）· 采光与绿植位置**：高绿植（`plant`）贴近窗洞（`window`），可能与用户“明亮采光”的偏好形成遮挡。\n* **家具尺度（`furniture`）· 咖啡操作台面待补充**：当前操作台（`table`）面宽为 0.60 米，若放置咖啡机，侧方磨粉、压粉及清洁台面空间较为局促（筛查参考阈值为 0.8 米）。\n* **生活行为（`behavior`）· 宠物用品与底部空隙**：沙发（`sofa`）底部离地间隙约 0.10 米，较小宠物玩具有滚入底部的可能。\n\n#### 3. 资料不足与检查限制说明（不等于合规或通过）\n* **现场与机电尺寸**：未取得咖啡设备具体型号、插座及上下水机电位置、台面承重等真实参数，0.6 米通行网格与 0.8 米操作台面仅为演示筛查假设。\n* **物理采光**：未计算植物叶面积、窗向及全天真实光照反射，遮光程度仍需结合现场或日照预览核对。\n* **宠物具体信息**：未采集犬种体型及玩具实际直径，不判定必然受影响。\n* **工程合规**：本筛查不代表施工、结构、防火或无障碍合规结论。\n\n---\n\n### 三、保存确认卡出示情况（`request_save`）\n\n保存确认卡已正式出示，等待您在页面中审核取舍并决定是否保存：\n* **确认卡动作 ID**：`a052db7d-d2ed-45e1-92f6-d00692ec6f68`\n* **状态**：待业主确认（`pending`）\n* **说明**：助手未修改任何设计，亦未替您执行确认。只有您在界面点击确认卡后，才会生成对应的快照版本。",
+    "findings": [
+      {
+        "ruleId": "door-route-blocked",
+        "objects": [
+          "barrier",
+          "door-left",
+          "door-right"
+        ],
+        "path": {
+          "points": [
+            {
+              "x": 0.525,
+              "y": 3.0749999999999997
+            },
+            {
+              "x": 5.475,
+              "y": 3.0749999999999997
+            }
+          ],
+          "openingIds": [
+            "door-left",
+            "door-right"
+          ],
+          "clearanceMetres": 0.6
+        }
+      },
+      {
+        "ruleId": "plant-daylight",
+        "objects": [
+          "plant",
+          "window"
+        ]
+      },
+      {
+        "ruleId": "coffee-worktop",
+        "objects": [
+          "table"
+        ]
+      },
+      {
+        "ruleId": "pet-toy-clearance",
+        "objects": [
+          "sofa"
+        ]
+      }
+    ]
+  },
+  "errors": [],
+  "revision": 8,
+  "savedVersion": 0,
+  "threadId": "01a0dc30-7f69-7c20-9dda-b7e808440af0"
+}

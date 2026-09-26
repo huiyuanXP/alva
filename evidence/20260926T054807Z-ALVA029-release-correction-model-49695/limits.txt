@@ -1,0 +1,6 @@
+run=20260926T054807Z-ALVA029-release-correction-model-49695
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2000
+71c041e9fbc6d4a597cefc62e1aad75da10229ef

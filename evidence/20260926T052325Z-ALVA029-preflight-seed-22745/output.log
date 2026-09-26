@@ -1,0 +1,13 @@
+/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/api/store.ts:43
+ private async config(){const row=(await this.db.query<{project_id:string;code_hash:string;generation:number}>('SELECT project_id,code_hash,generation FROM alva_access_config WHERE id=1')).rows[0];if(!row?.project_id)throw new DomainError(503,'授权项目尚未配置');return row}
+                                                                                                                                                                                                                               ^
+
+DomainError: 授权项目尚未配置
+    at AlvaStore.config (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/api/store.ts:43:224)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AlvaStore.createSession (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/api/store.ts:45:86)
+    at async <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/scripts/alva-029-joint-check.ts:33:15) {
+  statusCode: 503
+}
+
+Node.js v24.21.0

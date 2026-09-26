@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "run": "20260926T053825513Z-ALVA029-saved-state-model",
+  "step": "saved-state-model",
+  "candidate": "5b9e19347d802d25703d2e2f9e84e10dc86b5aa5",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "get_snapshot",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已通过 `mcp_call_tool` 实际读取了当前项目快照（`get_snapshot`），查询结果如下：\n\n### 1. 当前 `savedVersion` 的数字\n- 在 `get_snapshot` 返回的 `project` 数据结构中，**不存在 `savedVersion` 字段**（即当前没有对应的 `savedVersion` 数值属性 / 为 `undefined`）。\n\n### 2. 是否有手动保存记录\n- **历史手动保存情况**：在变更记录 `changes` 中存在一条记录：\n  - **描述**：`恢复到保存版本1（当前工作稿）`（ID: `5efe94b3-a531-48b7-b700-64fb0335ce17`，时间：`2026-09-26T05:36:01.473Z`）。\n  - 这表明此前项目历史中曾存在过手动保存的“**保存版本1**”。\n- **当前状态记录**：\n  - 恢复操作记录明确提示：“*恢复本身不会创建新的快照；如需保留恢复后的状态，请再次手动保存*”。\n  - 当前项目的 `dirty` 状态为 `true`（处于包含未保存修改的工作稿状态）。\n  - 因此，恢复后**尚未生成新的手动保存记录**，当前工作状态亦未正式固化为新版本快照。\n\n本轮严格保持只读，未执行任何保存、确认或布局修改操作。",
+    "savedStateAccurate": true
+  },
+  "errors": [],
+  "revision": 25,
+  "savedVersion": 2,
+  "threadId": "01a0dc34-80da-79a1-b48b-e44df45ce235"
+}

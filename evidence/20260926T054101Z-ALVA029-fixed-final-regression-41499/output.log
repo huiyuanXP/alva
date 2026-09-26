@@ -1,0 +1,372 @@
+✔ ALVA-029 classified Markdown round-trips real sources and is idempotent/private (146.205153ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1483.157972
+✔ ALVA-029 user quotes containing code fences remain data and cannot break the Markdown payload (136.383591ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 987.585902
+✔ ALVA-029 invented quotes, assistant sources, missing evidence and project traversal are rejected (10.925818ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 748.732309
+✔ ALVA-029 unclassified answers stay unresolved and historical evidence is not confirmed (20.868942ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 960.985604
+✔ ALVA-029 confirmed corrections supersede old facts; pending corrections cannot erase them (26.121991ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 795.105378
+✔ ALVA-029 explicit classifications tied to replaced answers are retired (92.344334ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1003.702396
+✔ ALVA-029 intake inferences never become confirmed facts and review outputs do not feed back (33.008808ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 823.915763
+✔ ALVA-029 confirmed reference preferences require the actual confirmation record (21.362967ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 799.644568
+✔ ALVA-029 missing, stale revision and changed input never return an empty successful read (173.448038ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1021.903041
+✔ ALVA-029 altered and missing category files fail closed; explicit rebuild repairs them (208.574386ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 899.894692
+✔ ALVA-029 symlinks and forged generation paths cannot read outside the project (127.029176ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 975.39722
+✔ ALVA-029 concurrent writers never publish mixed generations or regress revision (272.834801ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 960.009673
+✔ ALVA-029 an invalid source write leaves the previous pointer and all published files intact (142.032114ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 985.282063
+✔ ALVA-029 read_user_context uses a fresh project callback and repairs once without accepting path arguments (177.26592ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 898.989549
+✔ ALVA-029 empty server override uses configured ALVA_DATA_DIR rather than the repository root (226.146244ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1018.601282
+✔ ALVA-029 concurrent authoritative changes during projection read return a stale error (124.809438ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 832.619889
+✔ ALVA-029 coffee/pet/plant positive cases retain exact source and object references (204.480002ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 925.420431
+✔ ALVA-029 negative statements and pending/inferred/rejected habits do not trigger positive findings (309.674633ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 980.558257
+✔ ALVA-029 supported pain checks clear after actual layout fixes (259.604818ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 967.365352
+✔ ALVA-029 changed current answers do not reuse positive historical questionnaire evidence (219.931107ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1006.684136
+✔ ALVA-029 confirmed correction supersedes the original habit without deleting provenance (376.519371ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1078.521354
+✔ ALVA-029 scoped habits do not leak to another room or unrelated object (231.266327ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 958.50152
+✔ ALVA-029 model summary cannot invent an unsupported habit absent from its actual quote (255.227962ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 936.511063
+✔ ALVA-029 coffee color and panda videos do not imply coffee-making or household pets (159.481459ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 866.853337
+✔ ALVA-029 geometry catches rotated footprint outside despite an inside center (144.124874ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 905.660889
+✔ ALVA-029 geometry catches furniture bridging a concave room notch and rotated overlap (167.335506ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1005.455874
+✔ ALVA-029 actual door-to-door grid comparison finds a barrier but permits a detour (214.211084ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 909.186097
+✔ ALVA-029 incomplete doors report a navigation limitation rather than universal passage success (114.988265ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1037.627044
+✔ ALVA-029 explicit material preference and functional requirement conflicts are independently sourced (173.417539ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 830.297734
+✔ ALVA-029 review freshness follows scene and context inputs, retaining reviewed revision after administrative writes (213.423363ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1127.248135
+✔ ALVA-029 save adoption preserves explicit choices while professional unknowns stay open (178.774829ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 925.574603
+✔ ALVA-029 missing or invalid layouts fail explicitly and stale context cannot be reviewed (161.748792ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 965.505158
+✔ ALVA-029 review tool always reloads inputs and reports persistence truthfully (245.630533ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1065.36182
+✔ ALVA-029 layout modification during review persistence invalidates tool success (203.726205ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1049.285039
+✔ ALVA-029 actual PGlite snapshot keeps adopted review and tradeoffs; save rollback/retry creates no partial version (8196.573046ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9763.026453
+✔ Chat produces sourced classification, owner confirms, MCP reads Markdown and saves the actual adopted review (13843.197598ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18579.394947
+✔ ALVA-038 explicit restore replaces the whole global draft from an existing manual snapshot and creates no archive point (11125.825477ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15256.972112
+[alva request error] /api/restore error: ALVA038 restore receipt fault
+    at pe.Ue (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/node_modules/@electric-sql/pg-protocol/src/parser.ts:442:11)
+    at pe.tt (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/node_modules/@electric-sql/pg-protocol/src/parser.ts:220:16)
+    at pe.parse (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/node_modules/@electric-sql/pg-protocol/src/parser.ts:104:21)
+    at N.qe (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/node_modules/@electric-sql/pglite/dist/index.js:5:1762)
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance/node_modules/@electric-sql/pglite/dist/index.js:5:1155)
+    at wasm://wasm/0267bb86:wasm-function[10930]:0x5a5ccf
+    at wasm://wasm/0267bb86:wasm-function[3585]:0x27eaeb
+    at wasm://wasm/0267bb86:wasm-function[3627]:0x2869d1
+    at wasm://wasm/0267bb86:wasm-function[3637]:0x286c2d
+    at wasm://wasm/0267bb86:wasm-function[9914]:0x54fd4d
+✔ ALVA-038 missing snapshot, stale revision and database failure never partially mutate current draft or versions (10963.552441ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15555.665263
+✔ ALVA-038 restore invalidates stale legacy building output instead of reusing it (11974.481651ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16372.676923
+✔ ALVA-038 prepareSnapshotRestore keeps current counters and does not mutate the saved object (12465.993772ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17627.78485
+Isolated test cases passed: 40

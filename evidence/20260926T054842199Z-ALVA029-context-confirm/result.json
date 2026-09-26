@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "run": "20260926T054842199Z-ALVA029-context-confirm",
+  "step": "context-confirm",
+  "candidate": "71c041e9fbc6d4a597cefc62e1aad75da10229ef",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "markdownConfirmed": [
+      {
+        "category": "habits",
+        "quote": "不喝咖啡，不养宠物，不需要绿植。"
+      }
+    ]
+  },
+  "errors": [],
+  "revision": 20,
+  "savedVersion": 2,
+  "threadId": "01a0dc3e-998f-79d2-9107-04d7cdf13b37"
+}

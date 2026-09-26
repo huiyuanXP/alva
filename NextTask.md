@@ -1,3 +1,7 @@
+## 2026-09-26 ALVA-029 验收完成并集成
+
+布局复核的对象/门窗/受阻路径定位、保存卡明细与非空用户取舍、布局变化后的旧审查拒绝均已完成。最终71c041e的12步真实Chat/MCP/浏览器联合链通过；40/40相关回归、类型/构建通过。同步040日照主线后的e149155再次通过类型/构建、真实MCP与二维/三维页面检查，错误0。证据与失败记录见[验收报告](docs/ALVA-029-acceptance-audit.md)。029已done，030可认领，不自动开工。066已生产完票；本轮029新增界面未发布。原工作区/私有数据保留，neat-freak已完成知识同步。
+
 ## 2026-09-26 ALVA-066 完成并通过生产 MCP 验收
 
 066 已标 done：main集成e44c23a，发布5bb823b（产品c53d3ac）。公网资源、有效验证码登录、生活/户型实际MCP调用、真实工具目录隔离及原thread往返Resume通过。设计数据与保存版本未变，页面错误0，已回到原living阶段。证据与回滚见[生产收据](docs/ALVA-066-production-release.md)。
@@ -19,9 +23,6 @@ neat-freak：本次代码/合同 changed-and-verified；完整验收、main 集�
 
 已发布主Chat Gemini 3.8及等待圆点上方的最新浅色进度。类型/构建、本次5组桌面手机浏览器和公网登录只读核验通过；模型接口3.8、JS/CSS哈希一致、页面错误0、项目revision不变。备份与回滚在.runtime/ALVA067-release-20260926T045448Z/；详情见[发布收据](docs/ALVA-067-chat-model-progress.md)。066验收环境未改，仍需同步main并重验阶段MCP。
 
-## 2026-09-26 ALVA-029 验收未通过
-
-主线保存路由缺少当前审查门禁及采用凭证，隔离HTTP路由探针已复现；029历史50/50模块通过、066真实复核/保存过程通过不等于最终同SHA验收。详见[验收复核](docs/ALVA-029-acceptance-audit.md)。保留xuanpu-chat-6pro署名与in-progress，不解锁030。下一步由029/066固定联合候选，补页面定位、布局变更失效、非空用户取舍与保存/刷新/恢复，再集成；本轮未改产品或生产。
 
 ## ALVA-067 已集成；ALVA-066 下一步同步新模型与进度展示
 
@@ -89,7 +90,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 | [ALVA-032](.scratch/alva-completion/issues/25-wall-evidence.md) | 墙体分类、证据与专业授权 | `topology` | Lexie | task/ALVA-032-Lexie / /home/ubuntu/Alva-worktrees/ALVA-032-Lexie | in-progress；业务实现 4fcdd02；第一轮4/4，第二轮真实HTTP+服务器管理员grant/revoke+重启通过，相关回归24/24，类型/构建/diff-check通过；已导出get_wall_professional_evidence；066已集成，接入前置已满足；原负责人可挂载工具并做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-039](.scratch/alva-completion/issues/32-desktop-walkthrough.md) | 桌面漫游与输入暂停 | `render` | Lexie | task/ALVA-039-Lexie / /home/ubuntu/Alva-worktrees/ALVA-039-Lexie | in-progress；与 ALVA-040 同 lane 但明确文件隔离：仅新增 web/src/scene/walkthrough/*、测试/证据，并最小修改 web/src/main.tsx 装配；不修改 BuildingView.tsx、SceneView.tsx、scene/sunlight*；测试端口43139 |
 | [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；历史第二轮产品门禁未过；066现已合main，接入前置已满足，原负责人可挂载get_confirmed_reference_preferences并做同SHA真实MCP联合验收，未完成前不标done |
-| [ALVA-029](.scratch/alva-completion/issues/22-layout-review.md) | 布局调整与保存前冲突复核 | `review` | codex-acceptance（用户授权续接；原实现 xuanpu-chat-6pro） | task/ALVA-029-codex-acceptance / /home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance | in-progress；基于已集成066的main完成同SHA联合验收及必要修复；api/review、web/src/review、定位接入及本票测试/脚本；main.tsx仅布局复核定位接线，不改039漫游；独立数据/动态端口；原029工作区保留 |
+| [ALVA-030](.scratch/alva-completion/issues/23-professional-unknowns.md) | 专业未知与用户取舍分离 | `review` |  |  | 依赖029已验收集成，待署名认领；不自动开工 |
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 

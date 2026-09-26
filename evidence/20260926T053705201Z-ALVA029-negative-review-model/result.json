@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "run": "20260926T053705201Z-ALVA029-negative-review-model",
+  "step": "negative-review-model",
+  "candidate": "5b9e19347d802d25703d2e2f9e84e10dc86b5aa5",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "read_user_context",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "run_layout_review",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "request_save",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已按您的要求依次调用工具读取已确认分类、复核当前布局，并出示了保存确认卡：\n\n---\n\n### 一、已确认分类读取结果（`read_user_context`）\n\n- **生活习惯（habits.md · confirmed）**：\n  - **当前生效条目**：`1cc11bb0-2634-415c-ac55-6e43addd9290`\n  - **内容**：“不喝咖啡，不养宠物，不需要绿植。”\n  - **适用范围**：合成客厅（`room-1`）\n  - **依据证据 ID**：`8555163d-4b74-4eb9-b66f-0393f0a20515`\n  - **更正状态**：原生活习惯（条目 `4516b88d-67d4-4483-baac-427351dd7a8b`）已标记为 `rejected`（已失效替换）。\n- **主观偏好（preferences.md）**：暂无已确认条目。\n- **明确需求（requirements.md）**：暂无已确认条目。\n- **未决与来源待分类（unresolved.md · pending）**：保留了旧记录以及近期的指令记录，未作为事实依据。\n\n---\n\n### 二、布局复核结果（`run_layout_review`）\n\n由于您的生活习惯更正（不再涉及咖啡台面、宠物玩具及绿植遮光），上一版的咖啡操作台、宠物玩具缝隙和植物采光冲突已不再触发。\n\n#### 1. 检查通过项\n- **几何占地（geometry）**：**检查通过**（0 项提示，无边界越界或重叠冲突）。\n- **生活行为（behavior）**：**检查通过**（0 项提示，原宠物相关检查因习惯更正而通过）。\n- **功能需求（requirement）**：**检查通过**（0 项提示，原绿植遮挡采光检查因习惯更正而通过）。\n- **家具专项（furniture）**：**检查通过**（0 项提示，原咖啡操作台筛查因习惯更正而通过）。\n\n#### 2. 发现的布局问题与取舍（1 项提示待权衡）\n- **门间动线阻隔（navigation · review-0fd4c54276a49b3ef37ad8c1）**：\n  - **涉及对象**：收纳柜（`barrier`）、左侧门（`door-left`）、右侧门（`door-right`）。\n  - **原因**：在 0.6 米通行宽度及 0.15 米网格假设下，中央收纳柜横向遮挡了左右两门之间的直线与绕行通路，未找到连通路径。\n  - **建议**：核对两门之间实际日常通行的必要性，可考虑缩短收纳柜深度/调整朝向，或在现场留出通行通道。\n\n#### 3. 资料不足与检查限制说明\n- **资料不足**：未建模门扇真实开启摆幅、设备实测尺寸及三维垂直空间结构。\n- **非合规结论**：0.6 米通道宽度及 0.15 米网格为演示筛查假设，本复核不构成施工、结构、无障碍或消防合规结论；检查通过项不代表已通过施工专业验证。\n\n---\n\n### 三、保存确认卡出示状态（`request_save`）\n\n- **确认卡动作 ID**：`9ae33f3a-503e-4501-a9a7-2490cb97de72`\n- **当前状态**：`awaiting_owner_confirmation`（等待业主确认中）\n- **目标版本**：版本 20 全局快照\n- **说明**：当前未对任何家具几何或布局进行修改，未自动保存，亦未代您确认任何取舍。保存确认卡已在界面上弹出，供您核对上述复核问题后，自主决定是否点击确认生成版本快照。",
+    "findings": [
+      {
+        "ruleId": "door-route-blocked",
+        "objects": [
+          "barrier",
+          "door-left",
+          "door-right"
+        ],
+        "path": {
+          "points": [
+            {
+              "x": 0.525,
+              "y": 3.0749999999999997
+            },
+            {
+              "x": 5.475,
+              "y": 3.0749999999999997
+            }
+          ],
+          "openingIds": [
+            "door-left",
+            "door-right"
+          ],
+          "clearanceMetres": 0.6
+        }
+      }
+    ]
+  },
+  "errors": [],
+  "revision": 23,
+  "savedVersion": 2,
+  "threadId": "01a0dc34-80da-79a1-b48b-e44df45ce235"
+}

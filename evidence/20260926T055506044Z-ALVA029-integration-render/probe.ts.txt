@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {resolve} from 'node:path';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {createServer} from 'node:net';
+import {chromium} from '@playwright/test';
+import {AlvaStore} from '../api/store.js';
+import {buildAlva} from '../api/api.js';
+const root=resolve('.runtime/alva029-release-71c041e');process.env.ALVA_DATA_DIR=resolve(root,'data');process.env.ALVA_AGENT_DIR=resolve(root,'agents');
+const out=resolve('evidence',new Date().toISOString().replace(/[-:.]/g,'')+'-ALVA029-integration-render');await mkdir(out,{recursive:true});
+const store=new AlvaStore(resolve(root,'db'));await store.init();const id=(await readFile(resolve(root,'project-id'),'utf8')).trim();
+const probe=createServer();await new Promise<void>(r=>probe.listen(0,'127.0.0.1',r));const address=probe.address();assert.ok(address&&typeof address==='object');const port=address.port;await new Promise<void>((r,j)=>probe.close(e=>e?j(e):r()));const origin=`http://127.0.0.1:${port}`;
+const app=await buildAlva(store,{origin});await app.listen({host:'127.0.0.1',port});const access=await store.issueInternalSession(id);
+const browser=await chromium.launch({headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage','--renderer-process-limit=1']});const page=await browser.newPage({viewport:{width:1440,height:1000}});page.setDefaultTimeout(20_000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+try{
+ const before=await store.get(id),thread=(await store.chatState(id)).threads.living.threadId;await page.context().addCookies([{name:'alva_session',value:access.token,url:origin,httpOnly:true,sameSite:'Strict'}]);await page.goto(origin);await page.getByLabel('咨询消息').waitFor();
+ const panel=page.locator('[data-action-kind="save_design"] .layout-review-panel');await panel.locator('[data-review-current="true"]').waitFor();assert.equal(await panel.locator('[data-review-rule="coffee-worktop"],[data-review-rule="pet-toy-clearance"],[data-review-rule="plant-daylight"]').count(),0);
+ await page.getByRole('button',{name:'全屋',exact:true}).click();await page.getByTestId('building-canvas').waitFor();await page.waitForFunction(()=>!!(document.querySelector('[data-testid="building-canvas"]') as any)?.alvaView);await page.screenshot({path:resolve(out,'merged-3d.png')});
+ await page.getByRole('button',{name:'平面',exact:true}).click();await panel.locator('[data-review-rule="door-route-blocked"]').getByRole('button',{name:'定位',exact:true}).click();await page.getByTestId('review-path').waitFor();await page.screenshot({path:resolve(out,'merged-review-2d.png')});
+ const after=await store.get(id);assert.deepEqual(after,before);assert.equal((await store.versions(id)).length,2);assert.equal((await store.chatState(id)).threads.living.threadId,thread);assert.deepEqual(errors,[]);
+ await writeFile(resolve(out,'result.json'),JSON.stringify({pass:true,candidate:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),errors,unchangedProject:true,savedVersion:after.savedVersion,threadPreserved:true,real3dCanvas:true,reviewPathVisible:true},null,2));console.log(out);
+}catch(error){await page.screenshot({path:resolve(out,'failure.png')}).catch(()=>{});await writeFile(resolve(out,'result.json'),JSON.stringify({pass:false,error:String(error),errors},null,2));throw error}
+finally{await browser.close();await app.close();await store.close()}

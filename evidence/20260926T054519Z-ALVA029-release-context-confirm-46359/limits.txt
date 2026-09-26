@@ -1,0 +1,6 @@
+run=20260926T054519Z-ALVA029-release-context-confirm-46359
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1927
+71c041e9fbc6d4a597cefc62e1aad75da10229ef

@@ -1,0 +1,6 @@
+run=20260926T054359Z-ALVA029-release-build-44741
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1586
+71c041e9fbc6d4a597cefc62e1aad75da10229ef

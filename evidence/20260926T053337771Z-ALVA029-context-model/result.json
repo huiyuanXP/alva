@@ -1,0 +1,26 @@
+{
+  "pass": true,
+  "run": "20260926T053337771Z-ALVA029-context-model",
+  "step": "context-model",
+  "candidate": "5b9e19347d802d25703d2e2f9e84e10dc86b5aa5",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "get_snapshot",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "propose_user_context",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已为您将原话整理为一条待确认的生活习惯（habits）候选条目，未拆分、未填写问卷、未生成家具，也未执行保存：\n\n- **分类**：生活习惯（habits）\n- **适用范围**：合成客厅（`room-1`）\n- **原话与内容**：“每天做咖啡，家里养狗，喜欢绿植与明亮采光。”\n- **依据证据 ID**：`dbdcfa03-de68-4614-8ad5-31840d34402f`\n- **当前状态**：待业主确认（pending）\n\n该条目目前为待确认候选卡片，请您在界面中核对并点击确认。确认前不会作为正式事实生效。"
+  },
+  "errors": [],
+  "revision": 4,
+  "savedVersion": 0,
+  "threadId": "01a0dc34-80da-79a1-b48b-e44df45ce235"
+}

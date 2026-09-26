@@ -1,0 +1,6 @@
+run=20260926T054648Z-ALVA029-release-repair-model-48018
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1945
+71c041e9fbc6d4a597cefc62e1aad75da10229ef

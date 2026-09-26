@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "run": "20260926T055015311Z-ALVA029-saved-state-model",
+  "step": "saved-state-model",
+  "candidate": "71c041e9fbc6d4a597cefc62e1aad75da10229ef",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "get_snapshot",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已实际调用 `get_snapshot` 读取当前项目快照，查询结果如下：\n\n### 1. `savedVersion` 数字\n* 在 `get_snapshot` 返回的 `project` 数据结构中，**不存在显式的 `savedVersion` 键名/独立数字字段**；\n* 当前工作稿标记为 **`dirty: true`**（表示存在未保存到新快照的修改）；\n* 从项目数据记录中可明确查到的版本数字关联为：\n  * **历史已保存版本号**：变更履历中确认存在的历史手动保存版本为 **`1`**；\n  * **待确认的目标版本号**：上一轮出示的保存确认卡（Action ID: `897eb825-bcc1-4d1e-bfb5-fe30843dee03`）中预备的目标版本为 **`20`**（当前状态仍为 `pending`，等待您手动点击确认）。\n\n---\n\n### 2. 是否有手动保存记录\n* **存在历史手动保存记录**：\n  * 在 `project.changes` 中明确记录有对手动快照的操作履历：\n    * 记录描述：`\"恢复到保存版本1（当前工作稿）\"`\n    * 上下文说明明确注明：*“当前未保存修改将被该手动快照整体替换；恢复本身不会创建新的快照；如需保留恢复后的状态，请再次手动保存”*。\n  * 这表明项目在历史上确实完成过**保存版本 1** 的手动保存。\n* **当前修改尚未正式生成新快照**：\n  * 当前处于 `dirty: true` 状态，上一轮的保存确认卡尚未被点击确认，因此目前尚未生成版本 1 之后的新编号快照。\n\n本轮为纯只读查询，未对场景、家具或设计做任何保存与修改。",
+    "savedStateAccurate": true
+  },
+  "errors": [],
+  "revision": 25,
+  "savedVersion": 2,
+  "threadId": "01a0dc3e-998f-79d2-9107-04d7cdf13b37"
+}

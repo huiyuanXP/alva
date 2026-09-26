@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "run": "20260926T053419169Z-ALVA029-review-model",
+  "step": "review-model",
+  "candidate": "5b9e19347d802d25703d2e2f9e84e10dc86b5aa5",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "read_user_context",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "run_layout_review",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "request_save",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已按您的要求依次执行了用户上下文读取、布局复核及保存确认卡出示。以下为详细核对结果：\n\n---\n\n### 一、已确认分类读取结果（`read_user_context`）\n\n- **生活习惯（habits.md · confirmed）**：\n  - 内容：“每天做咖啡，家里养狗，喜欢绿植与明亮采光。”\n  - 适用范围：合成客厅（`room-1`）\n  - 证据 ID：`dbdcfa03-de68-4614-8ad5-31840d34402f`\n- **主观偏好（preferences.md）**：暂无已确认条目。\n- **明确需求（requirements.md）**：暂无已确认条目。\n- **未决与来源待分类（unresolved.md · pending）**：包含待分类的最新聊天指令原话，未作为确认事实。\n\n---\n\n### 二、布局复核结果（`run_layout_review`）\n\n#### 1. 检查通过项\n- **几何占地检查（geometry）**：**检查通过**（0 项告警）。旋转占地、房间凹多边形边界与分离轴重叠检测正常（未模拟三维立体堆叠）。\n\n#### 2. 发现的布局问题与取舍提示（4 项待权衡）\n1. **门间动线阻隔（navigation · review-0fd4c54276a49b3ef37ad8c1）**：\n   - **原因**：收纳柜（`barrier`）横贯中间，在 0.6 米通行宽度假设下，左右两门（`door-left` 与 `door-right`）之间未找到贯通路径。\n   - **建议**：沿门间基线检查阻挡柜体，调整柜体位置或缩短尺寸后重新复核。\n2. **咖啡操作空间（furniture · review-031a9aed72ed086e1e04d6c7）**：\n   - **原因**：当前台面宽度仅 0.60 米；结合做咖啡习惯，放置咖啡机后的磨粉、压粉及清洁等侧方操作面较局促（0.8 米为系统筛查参考值）。\n   - **建议**：核对实际咖啡机与器具尺寸，补充台面宽度或侧方操作面。\n3. **高绿植与采光冲突（requirement · review-57de271182a44e0269cd97bd）**：\n   - **原因**：高绿植（`plant`，高 1.8 米）靠近窗洞（`window`），可能遮挡南向进光，与明亮采光偏好存在潜在冲突。\n   - **建议**：核对植物实际高度，或调整至窗侧侧光区以减少遮光。\n4. **宠物玩具空隙（behavior · review-8a07f77a13333574016dd467）**：\n   - **原因**：沙发离地空隙约 0.10 米，较小的宠物玩具容易滚入且不易掏取。\n   - **建议**：确认常玩玩具尺寸与扫地清洁习惯，可考虑落地底座或加装可拆卸挡条。\n\n#### 3. 资料不足与检查限制声明\n- **尺寸与现场资料不足**：当前缺乏实际咖啡设备尺寸、玩具规格、家具离地三维精准结构以及门扇开启摆幅数据。\n- **非合规结论**：本筛查基于 0.6 米通道与 0.15 米网格演示假设，不构成施工、结构、无障碍或消防合规结论；检查通过不代表绝对施工可行性。\n\n---\n\n### 三、保存确认卡出示状态（`request_save`）\n\n- **确认卡动作 ID**：`0fc0d104-585d-47db-b365-edb8bc9a8415`\n- **状态**：`awaiting_owner_confirmation`（等待业主确认中）\n- **说明**：当前未修改任何家具或墙体设计，未自动保存全局快照，也未代您确认任何取舍。保存确认卡已在界面上弹出，供您核对上述问题与取舍后自主决定是否点击确认。",
+    "findings": [
+      {
+        "ruleId": "coffee-worktop",
+        "objects": [
+          "table"
+        ]
+      },
+      {
+        "ruleId": "door-route-blocked",
+        "objects": [
+          "barrier",
+          "door-left",
+          "door-right"
+        ],
+        "path": {
+          "points": [
+            {
+              "x": 0.525,
+              "y": 3.0749999999999997
+            },
+            {
+              "x": 5.475,
+              "y": 3.0749999999999997
+            }
+          ],
+          "openingIds": [
+            "door-left",
+            "door-right"
+          ],
+          "clearanceMetres": 0.6
+        }
+      },
+      {
+        "ruleId": "plant-daylight",
+        "objects": [
+          "plant",
+          "window"
+        ]
+      },
+      {
+        "ruleId": "pet-toy-clearance",
+        "objects": [
+          "sofa"
+        ]
+      }
+    ]
+  },
+  "errors": [],
+  "revision": 8,
+  "savedVersion": 0,
+  "threadId": "01a0dc34-80da-79a1-b48b-e44df45ce235"
+}

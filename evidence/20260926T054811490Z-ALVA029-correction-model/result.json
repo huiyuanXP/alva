@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "run": "20260926T054811490Z-ALVA029-correction-model",
+  "step": "correction-model",
+  "candidate": "71c041e9fbc6d4a597cefc62e1aad75da10229ef",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "get_snapshot",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "propose_user_context",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已为您提出更正旧生活习惯的待确认分类候选，引用了本轮消息的真实证据，未代您确认、未保存快照，亦未修改任何家具：\n\n- **候选条目 ID**：`6d44f4b9-1297-4b13-8113-d0f6b72217eb`\n- **分类**：生活习惯（`habits`）\n- **原话引用与内容**：“不喝咖啡，不养宠物，不需要绿植。”\n- **适用范围**：合成客厅（`room-1`）\n- **更正目标（`supersedesId`）**：`f23e560d-1b88-45c4-8235-ee8c0232c239`（原生活习惯条目）\n- **真实证据 ID**：`9e9c35b0-a275-4e5c-9f15-6094c83bd511`\n- **当前状态**：**待业主确认（`pending_owner_confirmation`）**\n\n**提示**：在您于界面卡片上点击确认该更正前，原有的生活习惯依据依然保留有效。确认后将正式更正旧记录。",
+    "pendingCorrectionPreservesPrior": true
+  },
+  "errors": [],
+  "revision": 19,
+  "savedVersion": 2,
+  "threadId": "01a0dc3e-998f-79d2-9107-04d7cdf13b37"
+}

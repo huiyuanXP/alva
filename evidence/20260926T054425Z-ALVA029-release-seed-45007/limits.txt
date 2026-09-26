@@ -1,0 +1,6 @@
+run=20260926T054425Z-ALVA029-release-seed-45007
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1931
+71c041e9fbc6d4a597cefc62e1aad75da10229ef

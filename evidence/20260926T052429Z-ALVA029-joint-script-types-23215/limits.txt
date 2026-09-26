@@ -1,0 +1,6 @@
+run=20260926T052429Z-ALVA029-joint-script-types-23215
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2328
+2e47e5998b5037fe25be15082e708ce023f38ca6

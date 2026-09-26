@@ -1,0 +1,6 @@
+run=20260926T055500Z-ALVA029-integration-render-54030
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2389
+e149155d50a301783ee5632118f61612b6deafcb

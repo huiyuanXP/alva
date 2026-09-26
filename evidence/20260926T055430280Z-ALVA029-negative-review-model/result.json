@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "run": "20260926T055430280Z-ALVA029-negative-review-model",
+  "step": "negative-review-model",
+  "candidate": "e149155d50a301783ee5632118f61612b6deafcb",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "read_user_context",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "run_layout_review",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "request_save",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已按您的指令依次执行读取分类、布局复核与出示保存确认卡，具体执行与复核结果如下：\n\n---\n\n### 一、已确认分类读取结果（`read_user_context`）\n\n* **生活习惯（`habits.md`）**：\n  * **唯一生效的已确认条目**：`6d44f4b9-1297-4b13-8113-d0f6b72217eb`（状态：`confirmed`）\n  * **原话内容**：“不喝咖啡，不养宠物，不需要绿植。”\n  * **更正关系**：已替代（supersede）旧条目 `f23e560d-1b88-45c4-8235-ee8c0232c239`。\n* **未决项（`unresolved.md`）**：\n  * 旧习惯 `f23e560d-1b88-45c4-8235-ee8c0232c239`（“每天做咖啡，家里养狗，喜欢绿植与明亮采光。”）已标记为 `rejected`（废弃），退出有效约束；\n  * 其他指令类原话记录保持 `pending`，未作为事实引入。\n* **主观偏好与明确需求（`preferences.md` / `requirements.md`）**：当前无已确认条目。\n\n---\n\n### 二、布局复核结果（`run_layout_review`，审查编号：`layout-review-5b3b17673c7cb42e884c43a7`）\n\n#### 1. 发现的布局问题（待取舍）\n* **通行受阻（Finding `review-0fd4c54276a49b3ef37ad8c1` · `navigation` / `door-route-blocked`）**：\n  * **位置**：收纳柜（`barrier`）阻断了左门洞（`door-left`）与右门洞（`door-right`）之间的通路。\n  * **原因**：在 0.6m 通行净宽与 0.15m 网格假设下，清空家具时两门洞可直连，但当前收纳柜的摆放切断了门间直通路径。\n  * **建议**：检查阻挡家具的位置与进深，评估是否需要调整收纳柜摆放或接受绕行动线。\n\n#### 2. 检查通过项（规则校验无违规）\n* **生活习惯匹配（`behavior`：checked）**：由于生活习惯已更正为“不喝咖啡、不养宠、不需要绿植”，旧方案中关于咖啡角、宠物活动及绿植遮挡的相关告警已**全部消除并通过**；\n* **几何检查（`geometry`：checked）**：平面旋转占地、凹多边形边界与分离轴碰撞检测均无穿模重叠；\n* **原需求一致性（`requirement`：checked）**：未发现与已知需求冲突的配置；\n* **家具配置合理性（`furniture`：checked）**：基础家具尺寸与摆放规则检查通过。\n\n#### 3. 资料不足与检查限制（明确区分）\n* **现场实测与机电资料不足（GAP01）**：\n  * 动线以 0.6m 净宽和 0.15m 网格为演示假设，尚未纳入现场实测尺寸、门扇实际开启弧度、墙面踢脚线及插座/机电点位；\n* **工程与结构性能缺失（GAP02）**：\n  * 本复核为算法规则筛查，**不构成**承重连接、结构安全、消防疏散合规或真实材料防火/物理性能证明，检查通过（零提示）不代表工程或法规安全；\n* **决策责任与授权（GAP03）**：\n  * 业务资料未设立外部审批人，动线取舍与方案调整完全由您自主决定。\n\n---\n\n### 三、保存确认卡已出示（`request_save`）\n\n* **卡片 Action ID**：`0260d03b-9640-49cd-934f-0eec02bb9be0`\n* **当前状态**：`awaiting_owner_confirmation`（等待业主手动确认）\n* **目标快照版本**：预备版本 20\n* **说明**：系统未修改任何家具或户型，也未替您自动确认。请您在页面上查看上述通行问题与取舍后，由您本人手动点击卡片完成保存。",
+    "findings": [
+      {
+        "ruleId": "door-route-blocked",
+        "objects": [
+          "barrier",
+          "door-left",
+          "door-right"
+        ],
+        "path": {
+          "points": [
+            {
+              "x": 0.525,
+              "y": 3.0749999999999997
+            },
+            {
+              "x": 5.475,
+              "y": 3.0749999999999997
+            }
+          ],
+          "openingIds": [
+            "door-left",
+            "door-right"
+          ],
+          "clearanceMetres": 0.6
+        }
+      }
+    ]
+  },
+  "errors": [],
+  "revision": 28,
+  "savedVersion": 2,
+  "threadId": "01a0dc3e-998f-79d2-9107-04d7cdf13b37"
+}

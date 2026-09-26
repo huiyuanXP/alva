@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "run": "20260926T054852835Z-ALVA029-negative-review-model",
+  "step": "negative-review-model",
+  "candidate": "71c041e9fbc6d4a597cefc62e1aad75da10229ef",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "toolCalls": [
+      {
+        "name": "read_user_context",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "run_layout_review",
+        "stage": "living",
+        "isError": false
+      },
+      {
+        "name": "request_save",
+        "stage": "living",
+        "isError": false
+      }
+    ],
+    "reply": "已按您的要求依次读取用户分类、执行布局复核，并出示全局快照保存确认卡：\n\n---\n\n### 一、已确认分类读取结果（`read_user_context`）\n\n* **生活习惯（`habits.md`）**：\n  * **已确认生效**：条目 `6d44f4b9-1297-4b13-8113-d0f6b72217eb`\n    * 证据原话：“不喝咖啡，不养宠物，不需要绿植。”\n    * 状态：已确认生效，并已替代旧记录 `f23e560d-1b88-45c4-8235-ee8c0232c239`。\n* **未决/废弃项（`unresolved.md`）**：\n  * 旧习惯 `f23e560d-1b88-45c4-8235-ee8c0232c239`（原话：“每天做咖啡，家里养狗，喜欢绿植与明亮采光。”）已标记为 `rejected`（废弃），不再作为布局约束。\n* **偏好与需求（`preferences.md` / `requirements.md`）**：目前暂无已确认条目。\n\n---\n\n### 二、布局复核结果（`run_layout_review`，审查编号：`layout-review-83031e5e384f9fb79d9b1871`）\n\n* **生活习惯更新影响**：随着习惯更正，此前关于咖啡制作区、宠物活动及绿植采光的告警已**全部消除**。\n* **发现问题（待取舍）**：\n  * **通行阻塞（Finding `review-0fd4c54276a49b3ef37ad8c1`）**：收纳柜（`barrier`）阻断了左侧门洞（`door-left`）与右侧门洞（`door-right`）在 0.6m 通行假设下的直通动线。\n\n---\n\n### 三、检查通过项与资料不足界定\n\n1. **检查通过项**：\n   * 几何碰撞（geometry）、行为习惯匹配（behavior）、硬性需求一致性（requirement）及家具尺度配置（furniture）未见其他异常规则冲突。\n2. **资料不足与检查限制**：\n   * **现场与机电尺寸不足（GAP01）**：动线检查基于 0.6m 默认人体净宽算法模型，当前缺乏现场激光实测、踢脚线/门套厚度及插座机电设备实际定位数据；\n   * **结构与材料性能免责（GAP02）**：审查不构成承重、消防疏散安全、墙体锚固或材料物理性能的专业工程结论；\n   * **决策授权（GAP03）**：系统与资料均未指定外部审批人或负责人，任何布局调整与通行取舍均需由您自主决策。\n\n---\n\n### 四、全局快照保存确认卡（`request_save`）\n\n* **确认卡 ID**：`897eb825-bcc1-4d1e-bfb5-fe30843dee03`\n* **当前状态**：`awaiting_owner_confirmation`（等待业主手动确认）\n* **快照版本**：预备版本 20\n\n> **提示**：未修改任何家具或设计，也未代您确认。保存确认卡已推送到您的界面，请您结合上述通行问题与空间取舍，在页面上手动点击确认以生成全局快照。",
+    "findings": [
+      {
+        "ruleId": "door-route-blocked",
+        "objects": [
+          "barrier",
+          "door-left",
+          "door-right"
+        ],
+        "path": {
+          "points": [
+            {
+              "x": 0.525,
+              "y": 3.0749999999999997
+            },
+            {
+              "x": 5.475,
+              "y": 3.0749999999999997
+            }
+          ],
+          "openingIds": [
+            "door-left",
+            "door-right"
+          ],
+          "clearanceMetres": 0.6
+        }
+      }
+    ]
+  },
+  "errors": [],
+  "revision": 23,
+  "savedVersion": 2,
+  "threadId": "01a0dc3e-998f-79d2-9107-04d7cdf13b37"
+}

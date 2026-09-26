@@ -1,0 +1,10 @@
+{
+  "pass": false,
+  "run": "20260926T053112928Z-ALVA029-review-browser",
+  "step": "review-browser",
+  "checks": {
+    "syntheticPrerequisite": true
+  },
+  "errors": [],
+  "error": "TimeoutError: locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for getByTestId('review-path') to be visible\n    44 × locator resolved to hidden <polyline data-testid=\"review-path\" stroke-dasharray=\".12 .09\" points=\"0.525,3.0749999999999997 5.475,3.0749999999999997\"></polyline>\n"
+}

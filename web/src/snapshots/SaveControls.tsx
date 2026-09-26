@@ -1,3 +1,4 @@
+import type {LocateReview} from '../review/ReviewPanel.js';
 import {ReviewPanel} from '../review/ReviewPanel.js';
 import React, {useEffect, useRef, useState} from 'react';
 import type {Project} from '../../../api/model.js';
@@ -5,7 +6,7 @@ import type {SaveCommand, SaveReceipt} from '../../../packages/contracts/alva/sn
 import './snapshots.css';
 
 type Props = {
-  onLocate?:(roomId:string,objectId:string)=>void;
+  onLocate?:LocateReview;
   project: Project;
   disabled: boolean;
   onBusyChange: (busy: boolean) => void;
@@ -119,7 +120,7 @@ export function SaveControls({project, disabled, onBusyChange, onProject,onLocat
     <button disabled={disabled || working || phase === 'conflict'} onClick={() => void requestSave()}>
       {phase === 'reviewing'?'正在复核…':phase === 'saving' ? '正在保存…' : pending.current ? '重试保存' : '保存版本'}
     </button>
-    {reviewOpen&&<dialog open className="save-review-dialog" aria-label="保存前布局复核"><h2>保存前查看复核与取舍</h2><ReviewPanel project={project} disabled={disabled||working} onProject={onProject} onLocate={onLocate}/><button disabled={disabled||working} onClick={()=>{setReviewOpen(false);void act()}}>已查看复核，确认保存版本</button><button disabled={working} onClick={()=>setReviewOpen(false)}>暂不保存</button></dialog>}
+    {reviewOpen&&<dialog open className="save-review-dialog" aria-label="保存前布局复核"><h2>保存前查看复核与取舍</h2><ReviewPanel project={project} disabled={disabled||working} onProject={onProject} onLocate={onLocate?finding=>{setReviewOpen(false);onLocate(finding)}:undefined}/><button disabled={disabled||working} onClick={()=>{setReviewOpen(false);void act()}}>已查看复核，确认保存版本</button><button disabled={working} onClick={()=>setReviewOpen(false)}>暂不保存</button></dialog>}
     {message && <div className={`snapshot-feedback ${failed ? 'snapshot-feedback-error' : ''}`}
       role={failed ? 'alert' : 'status'} data-testid="snapshot-feedback">
       <strong>{failed ? '尚未确认保存成功' : phase === 'saved' ? '全局快照已保存' : '工作稿已重读'}</strong>

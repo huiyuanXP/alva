@@ -1,34 +1,46 @@
-# ALVA-029 验收复核：未通过
+# ALVA-029 验收：验收通过并已集成main
 
-2026-09-26 UTC；主线候选 `cafb8b8dc8fb2ea7be5e51fa72c6e26168113fef`。本次执行验收审计，不接管原负责人、不修改产品代码、不部署。ALVA-029 保持 in-progress，ALVA-030 不解锁。
+2026-09-26 UTC。候选 `71c041e9fbc6d4a597cefc62e1aad75da10229ef`；原实现 xuanpu-chat-6pro，本轮续接 codex-acceptance。066接入已进入main，之前缺少保存门禁的阻断已解除。本轮修复与验收在独立Worktree完成，未发布生产。
 
-## 审计时的阻断项
+## 用户可见结果
 
-审计时主线 `api/snapshots/routes.ts` 的 `/api/save` 只执行 `validateScene`，缺少当前审查校验和采用凭证。真实 Fastify 路由配合合成的已确认拓扑/建筑/家具与替身存储实测：无 `layoutReview` 时仍返回 HTTP 200，且无 `layoutReviewAdoption`。因此未满足“保存记录采用的审查版本和用户取舍”。这是路由级复现，不冒充真实数据库持久化或生产写入。
+保存确认卡、保存前弹窗和右侧审查标签使用同一份当前复核。五类结果保留原因、建议与引用；定位同时标出关联家具、门窗、房间和引擎返回的受阻基线路径，不把受阻路径称为推荐路线。复核区域独立滚动，定位时平面仍可见。
 
-审计时主线也尚无 `api/review/`、`api/user-context/` 及生活设计 MCP 新复核入口；旧 `/api/review` 不能代替本票合同。
+布局/资料变化后旧结果立即标为待复核，旧定位消失、取舍按钮禁用；服务端也拒绝旧审查保存和取舍。手动保存记录原审查版本、采用版本与明确用户取舍，刷新和显式恢复保持这些凭证。恢复不创建新快照，生活设计会话不变。
 
-## 066 集成候选更新
+## 验收证据
 
-用户已授权合并 066。候选包含 `saveProjectWithReview`、审查采用凭证及 review/user-context 模块，原主线路由缺口已随用户授权的 066 候选 c53d3ac 集成 main 补齐；本次合并不将 029 标记为完成，下面记录的非空取舍、页面定位等整票联合验收继续 pending。原审计证据不改写。
+[机器汇总](../evidence/20260926-ALVA029-final-summary/summary.json)列出12步独立run：同一候选SHA、相同源码清单、同一私有合成项目和同一个真实living thread。真实模型为Gemini 3.8 Flash High，主入口为 `/api/chat`，业务调用通过阶段HTTP MCP；前置户型/建筑是完整合成夹具，不声称真实识图或生产验收。
 
-## 已核查证据与边界
-
-| 验收项 | 核查结果 |
+| 验收项 | 结果与证据 |
 |---|---|
-| 五类检查、三类生活痛点正反例、原因与定位数据 | 029 独立模块 dd6f948 / 交接8aa0f1a已有实现；核查历史日志50/50、类型和构建记录，本轮未重复执行 |
-| 页面对象/路径定位、布局变动后的当前结果 | 最终候选的完整交互验收仍缺，不能以模块输出代替 |
-| 旧审查失效、采用版本与用户取舍保存 | 模块与存储测试有通过记录；当前主线保存路由门禁缺失，整体验收未通过 |
-| 主Chat实际MCP→读取Markdown→复核→保存 | 066过程证据已通过，尚未构成当前最终候选全票结果 |
+| 未审查不能保存 | `REVIEW_REQUIRED`，快照数0；seed run |
+| 分类/确认/真实Markdown | 模型提出候选，页面确认，读取私有Markdown与原话一致；两轮context-model/context-confirm |
+| 五类检查、三类生活痛点 | 真实run_layout_review分别报告五类状态，咖啡/宠物/绿植正例3项，原因与引用齐全；review-model |
+| 页面定位 | 三类痛点定位与门间受阻路线/两门洞/阻挡物可见；[通路截图](../evidence/20260926T054620677Z-ALVA029-review-browser/door-route-blocked.png) |
+| 非空取舍及手动保存 | 咖啡台取舍随v1保存；reviewedRevision=6、adoptedAtRevision=9，刷新一致；review-browser |
+| 旧审查不可复用 | 修改家具后，旧保存和旧取舍均返回`REVIEW_STALE`；界面禁止继续确认旧取舍 |
+| MCP错误与修复 | 真实request_save返回REVIEW_STALE，原thread实际执行read_user_context→run_layout_review→request_save，错误码/有序修复步骤保留；repair-model |
+| 布局修复后重算 | 台面/沙发间隙/植物高度调整并移除阻挡柜，三类痛点与阻塞均消失，保存v2 |
+| 快照恢复 | 页面预览并明确恢复v1后凭证/取舍保留，快照总数仍2、原thread不变；restore-browser |
+| 生活习惯反例 | 确认“不喝咖啡，不养宠物，不需要绿植”的更正后，家具保持v1样式但三项提示消失；negative-review-model/negative-browser |
+| 保存状态复述 | 真实get_snapshot后模型正确报告savedVersion=2及已有保存记录；saved-state-model |
 
-066 工作区 HEAD 在读取时为 `f1eeff2`，含 api/chat.ts、api/model.ts、api/store.ts、web/src/main.tsx 等未提交改动。其 `20260926T032820114Z-ALVA066-review-model` 与 `20260926T032844174Z-ALVA066-save-confirm` 是最新已核查过程证据；后者 savedVersion=2、reviewedRevision=151、adoptedAtRevision=153，decisions为空。不能据此证明非空用户取舍和所有三类痛点在当前同一SHA下完成端到端复验，也不能拼接不同版本结果为整票通过。
+最终候选分组类型检查通过；40/40相关回归通过，覆盖的180份API/合同/测试源码与最终候选逐项哈希一致；最终构建通过。浏览器全部步骤页面错误0。最终构建在 `evidence/20260926T054359Z-ALVA029-release-build-44741/`，保留既有大包警告。
 
-## 下一步补验
+## 合并最新main后的影响验证
 
-由原029/066负责人固定包含最新main的联合候选SHA，完成真实主Chat MCP分类/确认与更正、Markdown读取、五类复核；通过页面定位及三类痛点正反例，修改布局后拒绝旧审查；明确记录至少一条用户取舍，手动保存后刷新/恢复核对审查版本与取舍，验证失败不冒称成功。受影响回归通过后按现有集成流程合main，再关闭029。当前不覆盖他人工作区、不抢占共享入口、不扩大为066实施任务。
+验收后同步main `e2713d1`，个人合并候选 `e149155`，纳入刚完成的ALVA-040日照渲染；没有合并冲突，本票复核/保存/MCP逻辑未变。合并候选的分组类型、构建、实际主Chat read_user_context→run_layout_review→request_save、真实浏览器二维路径与三维建筑/日照加载全部通过，页面错误0，项目/快照数/原thread均不变。源码清单与已验候选核对一致，明细见机器汇总integration段。
 
-## 本次证据与知识收尾
+## 失败与历史边界
 
-路由探针及结果见 [probe.ts](../evidence/20260926T045348Z-ALVA029-acceptance-audit/probe.ts)、[result.json](../evidence/20260926T045348Z-ALVA029-acceptance-audit/result.json)。初次运行器因未继承PATH找不到node，未执行探针；补传PATH后成功，失败原因和重试独立记在 runner-attempts.json。
+- 先前主线cafb8b8缺失门禁的审计见 `evidence/20260926T045348Z-ALVA029-acceptance-audit/`；后续066集成已解除，不再作为现役阻断。
+- 本轮首次合成脚本未配置访问入口而失败，修正脚本后重建独立数据。初始预检遇到服务器余量不足/共享锁占用时未启动重任务，恢复后按同限额继续。
+- 初次浏览器发现长复核卡使画布离开可视区，路径也缺少可见端点；失败 `20260926T053112928Z-ALVA029-review-browser` 保留。修正后5b9e193已完整通过12步；随后保留首次痛点分析的独立参考区，再于最终71c041e的新项目重跑全部12步，避免旧分析与当前复核混淆。前次证据完整保留。
+- 旧029模块50/50与066历史过程记录仅作历史线索；本次真实链路独立留证。
 
-neat-freak：主线代码/路由缺口 verified-current；本次文档 changed-and-verified；最终联合MCP/浏览器/集成 pending；生产运行态及生成记忆 out-of-scope。已机械枚举文档、检查规则入口与Git/worktree状态，仅审计本票影响面。既有构建大包警告未解决，历史通过不改写。所有029/066未完成工作区与证据保留，本次不安排清场。单次路径指针临时文件已删除；可复跑探针作为验收证据保留。
+## 知识收尾
+
+neat-freak：代码/合成运行链路 verified-current；文档 changed-and-verified；main集成与最终检查 verified-current；生产及生成记忆 out-of-scope。已枚举157份跟踪Markdown并核查本票规则/结构/交接。全部原工作区、私有合成数据库、失败/成功证据保留；不清理其他任务现场。现有前端bundle超过500KB提示未消除。
+
+原始Vite构建输出有4处reporter行尾空格，完整保留原日志；源码、测试、文档和其余证据的diff检查通过，未将原始日志改写成无告警输出。

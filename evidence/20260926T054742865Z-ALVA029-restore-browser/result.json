@@ -1,0 +1,34 @@
+{
+  "pass": true,
+  "run": "20260926T054742865Z-ALVA029-restore-browser",
+  "step": "restore-browser",
+  "candidate": "71c041e9fbc6d4a597cefc62e1aad75da10229ef",
+  "checks": {
+    "syntheticPrerequisite": true,
+    "restoredAdoption": {
+      "reviewId": "layout-review-bbd3eaf39141ce534b0e2b4f",
+      "decisions": [
+        {
+          "note": "先保留现有咖啡台，实际设备到场后再补操作面。",
+          "decision": "accept_tradeoff",
+          "confirmed": true,
+          "findingId": "review-4a15f1451748e526efefbd9f"
+        }
+      ],
+      "reviewedRevision": 6,
+      "sceneFingerprint": "a0bc49f39ad479f50a19950e279028e8f11dd7c2a75aa904908c7b620f51210b",
+      "adoptedAtRevision": 9,
+      "pendingFindingIds": [
+        "review-0fd4c54276a49b3ef37ad8c1",
+        "review-8604a97eb1f765a69515dad8",
+        "review-b81b2c2d9458cccc67327442"
+      ],
+      "contextFingerprint": "3d34b3062a78d2545bda43ffa4adf666e30d2580c572825ab90ba5247c762b21",
+      "professionalUnknownIds": []
+    }
+  },
+  "errors": [],
+  "revision": 16,
+  "savedVersion": 2,
+  "threadId": "01a0dc3e-998f-79d2-9107-04d7cdf13b37"
+}
