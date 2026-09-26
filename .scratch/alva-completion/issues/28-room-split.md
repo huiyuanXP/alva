@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-033](26-wall-renovation.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 由 lzy 认领，在独立 Worktree `task/ALVA-035-lzy` / `/home/ubuntu/Alva-worktrees/ALVA-035-lzy` 实施；依赖 ALVA-033 已在 main 集成。
 
 - [ ] 子房间新旧来源可追溯；跨边界家具、开口和全屋/房间需求逐项确认。
 - [ ] 不丢锁定项与原话，歧义不自动猜；失败整个事务回滚。
