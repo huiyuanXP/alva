@@ -12,7 +12,7 @@
 
 **Status:** ready-for-agent
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 由 lzy 认领，在独立 Worktree `task/ALVA-033-lzy` / `/home/ubuntu/Alva-worktrees/ALVA-033-lzy` 实施；依赖 ALVA-032/021 已在 main 集成。
 
 - [ ] 专业角色提供依据后，业主可比较、确认合法改造；含成功保存与恢复样例。
 - [ ] 门窗迁移目标明确，整体几何/稳定引用校验后原子提交。
