@@ -1,0 +1,6 @@
+run=20260926T044207Z-ALVA066-stage-recovery-20pct-tests-5503
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2758
+f1eeff2ad3f1ddb00b740adc658992ddabef4f0d

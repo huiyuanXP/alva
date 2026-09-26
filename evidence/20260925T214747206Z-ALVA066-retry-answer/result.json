@@ -1,0 +1,17 @@
+{
+  "pass": false,
+  "run": "20260925T214747206Z-ALVA066-retry-answer",
+  "step": "retry-answer",
+  "checks": {
+    "job": {
+      "id": "a51d06b6-c34c-4efa-b137-0e68e53bf213",
+      "error": "本轮未取得家具候选或明确的无建议工具结果，不能标记为完成",
+      "roomId": "b0067df4-6047-40a8-ae9b-9aaea021e8e3",
+      "status": "failed",
+      "createdAt": "2026-09-25T21:42:05.279Z",
+      "evidenceId": "5e2d41ae-4772-49e5-9182-0d7f235e68df",
+      "questionId": "Q25"
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'failed'\n- 'completed'\n"
+}

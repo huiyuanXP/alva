@@ -1,0 +1,234 @@
+/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/api/import/response.ts:30
+  catch (error) { throw new LayoutOutputError('schema', error); }
+                        ^
+
+LayoutOutputError: 户型输出schema校验失败：[
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      0,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      1,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      2,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      3,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      4,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      5,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      6,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      7,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      8,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      9,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      10,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      11,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      12,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      13,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      14,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      15,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      16,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      17,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      18,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      19,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      20,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "walls",
+      21,
+      "evidence"
+    ],
+    "message": "Invalid input: expected array, received string"
+  }
+]
+    at parseLayoutOutput (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/api/import/response.ts:30:25)
+    at parseGeminiLayoutOutput (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/api/import/response.ts:69:10)
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/scripts/alva-066-replay-vision.ts:9:155) {
+  stage: 'schema',
+  statusCode: 422
+}
+
+Node.js v24.21.0

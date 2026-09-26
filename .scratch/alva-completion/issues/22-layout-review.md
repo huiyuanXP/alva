@@ -29,3 +29,13 @@
 **Development location:** 实施前阅读[统一目录规范](../../../docs/PROJECT-STRUCTURE.md)；按现役工程归属开发，不向旧工程写新功能。
 
 **Parallel lane:** `review`；同组默认串行，不同组满足依赖且文件归属不重叠时可并行。共享入口/schema/存储改动需先登记并协调，详见[认领与集成规则](../../../NextTask.md)。
+
+## Implementation handoff — 2026-09-26 / xuanpu-chat-6pro
+
+已通过 Herdr 第一终端第一页与 ALVA-066 主 Chat Agent 实际讨论并取得书面合同；不是单方面约定。现役独立模块合同见 [用户信息与布局复核](../../../docs/ALVA-029-user-context-layout-review.md)。
+
+用户信息位于 ALVA_DATA_DIR/user-context/<projectId>/generations/<revision>-<fingerprint>/，分 habits/preferences/requirements/unresolved/index 五份 Markdown，以 current.json 原子发布。保留原话、来源、范围、确认状态及更正链；缺失/过期/损坏不冒充无冲突。独立模块提供五类可解释复核、对象/路径定位、输入版本绑定、用户取舍及手动保存采用凭证。MCP adapter 工厂导出 read_user_context、run_layout_review，需由066装配到生活设计包。
+
+已有回归证据：`evidence/20260925T193904Z-ALVA029-regression-542737/`，49/49 通过，含新模块、ALVA-028 和真实 HTTP/PGlite ALVA-036 快照回归。首轮 33/34 的待确认记录去重缺陷已修复，失败证据 `evidence/20260925T193728Z-ALVA029-modules-542374/` 保留。最后补充空 dataRoot 回归后，固定实现提交并重新运行最终门禁；最终结果在后续证据交接记录。
+
+状态仍 **in-progress**：此增量未修改共享 Chat/schema/store/API/main.tsx，没有上线或真实阶段 MCP 通过声明。066 负责提取/确认/更正的生产端和共享入口；待同一候选 SHA 完成真实 Chat→Markdown→复核→页面定位/保存前展示→手动保存联合验收后关票。不自动创建快照，不关闭专业未知，不接预算或自动报价。

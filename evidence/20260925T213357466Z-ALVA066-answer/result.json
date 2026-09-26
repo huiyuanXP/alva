@@ -1,0 +1,18 @@
+{
+  "pass": false,
+  "run": "20260925T213357466Z-ALVA066-answer",
+  "step": "answer",
+  "checks": {
+    "draftNoRecommendation": true,
+    "job": {
+      "id": "ca3a6c01-ee95-488f-a6ae-92217ed13d3c",
+      "roomId": "b0067df4-6047-40a8-ae9b-9aaea021e8e3",
+      "status": "completed",
+      "createdAt": "2026-09-25T21:34:05.135Z",
+      "evidenceId": "eeca3a56-5c00-4e65-b788-787833c7356c",
+      "questionId": "Q25",
+      "proposalIds": []
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(current.messages.slice(before.messages.length).some(m=>m.toolCalls?.some(t=>t.name==='suggest_furniture'&&!t.isError)))\n"
+}

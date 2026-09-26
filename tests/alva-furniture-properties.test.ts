@@ -1,3 +1,4 @@
+import {seedLivingStage} from './fixtures/alva/living-stage.js';
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import {randomUUID} from 'node:crypto'
@@ -38,7 +39,7 @@ test('ALVA-025 API persists 2D/3D attributes atomically and rejects stale revisi
   const store=new AlvaStore();await store.init();const app=await buildAlva(store,{assets:false})
   try{
     const created=await store.create('ALVA-025 属性持久化回归');await store.ensureAccessCode(created.project.id)
-    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();p.scene.items=[{...itemFromAsset('alva-chair','room-1',1,1),id:'chair-1'}]})
+    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();p.scene.items=[{...itemFromAsset('alva-chair','room-1',1,1),id:'chair-1'}];seedLivingStage(p)})
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token}
     const assetsBefore=JSON.stringify((await store.get(created.project.id)).assets)
     const update={requestId:randomUUID(),expectedRevision:seeded.revision,changes:[{action:'update',targetId:'chair-1',values:{assetId:'alva-sofa',width:1.8,depth:.8,height:.9,color:'#102030',material:'metal',x:1.03,y:1.02,rotation:22}}],confirmed:true}
@@ -72,7 +73,7 @@ test('ALVA-025 Chat style proposal uses the same licensed replacement contract',
   const app=await buildAlva(store,{assets:false,chatCodex})
   try{
     const created=await store.create('ALVA-025 Chat款式回归');await store.ensureAccessCode(created.project.id)
-    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();p.scene.items=[{...itemFromAsset('alva-chair','room-1',1,1),id:'chair-1'}]})
+    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();p.scene.items=[{...itemFromAsset('alva-chair','room-1',1,1),id:'chair-1'}];seedLivingStage(p)})
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token}
     const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,text:'把椅子换成沙发款式，颜色 #223344，并保留房间关联',roomId:'room-1',model:'gemini-3.8-flash-high'}})
     assert.equal(response.statusCode,200,response.body)

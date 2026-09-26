@@ -1,0 +1,17 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: missing inspect_topology: 成功应用了 `repair_topology` 工具，T 型连接交点已通过分段方式建立共享节点，修复了之前的拓扑校验错误。
+
+当前项目状态更新至 `revision 17`。您可以继续之前的操作流程（如房间重命名、墙体校准等），系统已处于合规拓扑状态。请指示下一步。
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/scripts/alva-066-floorplan-continue.ts:33:94) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

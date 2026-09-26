@@ -1,0 +1,5 @@
+{
+  "pass": false,
+  "cause": "Isolated driver used random port with default origin 4180; browser POST was rejected before model invocation. Driver corrected to configure the probed port origin and assert Chat HTTP status.",
+  "businessAcceptance": false
+}

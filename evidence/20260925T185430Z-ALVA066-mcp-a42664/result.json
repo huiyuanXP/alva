@@ -1,0 +1,105 @@
+{
+  "run": "20260925T185430Z-ALVA066-mcp-a42664",
+  "transport": "dynamicTools-to-HTTP-MCP",
+  "version": "codex-cli 0.157.0",
+  "model": "gemini-3.1-flash-lite",
+  "results": [
+    {
+      "stage": "floorplan",
+      "resumed": false,
+      "threadId": "01a0d9eb-4cbf-7f22-8759-55a320f8c5f8",
+      "sameThread": true,
+      "toolNames": [
+        "inspect_floorplan_probe"
+      ],
+      "nonceReturned": true,
+      "reply": "The nonce is 67ed6a143ade465da76408b5.",
+      "methods": [
+        "account/rateLimits/updated",
+        "configWarning",
+        "item/agentMessage/delta",
+        "item/completed",
+        "item/started",
+        "item/tool/call",
+        "remoteControl/status/changed",
+        "thread/started",
+        "thread/status/changed",
+        "thread/tokenUsage/updated",
+        "turn/completed",
+        "turn/started",
+        "warning"
+      ]
+    },
+    {
+      "stage": "living",
+      "resumed": false,
+      "threadId": "01a0d9eb-5f13-7ef2-9ce0-ecdc7fb8cc95",
+      "sameThread": true,
+      "toolNames": [
+        "inspect_living_probe"
+      ],
+      "nonceReturned": true,
+      "reply": "The nonce is f503c32627223087af9a7ed3.",
+      "methods": [
+        "account/rateLimits/updated",
+        "configWarning",
+        "item/agentMessage/delta",
+        "item/completed",
+        "item/started",
+        "item/tool/call",
+        "remoteControl/status/changed",
+        "thread/started",
+        "thread/status/changed",
+        "thread/tokenUsage/updated",
+        "turn/completed",
+        "turn/started",
+        "warning"
+      ]
+    },
+    {
+      "stage": "floorplan",
+      "resumed": true,
+      "threadId": "01a0d9eb-4cbf-7f22-8759-55a320f8c5f8",
+      "sameThread": true,
+      "toolNames": [
+        "inspect_floorplan_probe"
+      ],
+      "nonceReturned": true,
+      "reply": "The nonce is 67ed6a143ade465da76408b5.",
+      "methods": [
+        "account/rateLimits/updated",
+        "configWarning",
+        "deprecationNotice",
+        "item/agentMessage/delta",
+        "item/completed",
+        "item/started",
+        "item/tool/call",
+        "remoteControl/status/changed",
+        "thread/goal/cleared",
+        "thread/status/changed",
+        "thread/tokenUsage/updated",
+        "turn/completed",
+        "turn/started",
+        "warning"
+      ]
+    }
+  ],
+  "pass": true,
+  "calls": [
+    {
+      "stage": "floorplan",
+      "name": "inspect_floorplan_probe",
+      "allowed": true
+    },
+    {
+      "stage": "living",
+      "name": "inspect_living_probe",
+      "allowed": true
+    },
+    {
+      "stage": "floorplan",
+      "name": "inspect_floorplan_probe",
+      "allowed": true
+    }
+  ]
+}

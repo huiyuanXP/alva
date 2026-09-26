@@ -1,0 +1,27 @@
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.621556ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (9865.751948ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.239555ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (35.319024ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (4.765034ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (1.07854ms)
+✔ Gemini 3.8 default recognizes its observed split-opening response after one repair (6.172165ms)
+✔ Gemini field mapping still rejects an opening outside its wall (4.21088ms)
+✔ Gemini recognizes unified openings with top-level geography after one repair (3.482075ms)
+✔ missing Gemini geography explanation gains an uncertainty label without changing geometry or accepting missing coordinates (4.658292ms)
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (12146.538008ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (9302.108566ms)
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (185.7837ms)
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (12.912311ms)
+✔ expired grants and cancellation cannot execute tools (5.34232ms)
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (11.389211ms)
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (6.458191ms)
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (9.602356ms)
+✔ stage threads, summaries and delivery IDs survive store restart and preserve legacy messages (7887.206966ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49713.361606

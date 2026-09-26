@@ -1,0 +1,6 @@
+run=20260925T203010Z-ALVA066-floorplan-recognize-557662
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2561
+087094cb48d3549cea054cb0fd6fae6dc7425b30

@@ -1,0 +1,226 @@
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (12216.444952ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16644.029566
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (10148.541545ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14141.831641
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (10002.184998ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14171.129652
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (214.529922ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1016.531114
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (96.109641ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 873.99929
+✔ expired grants and cancellation cannot execute tools (83.166925ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 892.728644
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (50.773126ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 947.764224
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (53.32578ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 908.994928
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (105.492571ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 896.422733
+✔ HTTP MCP argument errors retain field paths and tell the Agent how to repair them (55.435584ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 976.411893
+✔ building card survives unrelated answers, refreshes changed candidate without adopting, then explicitly confirms (11825.730129ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15849.844141
+✔ Chat reads complete UI diagnostics in both packs even when confirmed topology has no candidate (10191.360285ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14485.80825
+✔ ALVA-055 fully defined rectangular home with a door is connected and has no warnings (32.55295ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4572.855094
+✔ ALVA-055 detects all three annotated error classes with useful entity and position references (58.848772ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4222.030568
+✔ ALVA-055 subtracts room union rather than room area sum; overlaps cannot hide undefined space (99.772393ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4264.638796
+✔ ALVA-055 excludes outside concavities and wall thickness from internal voids (58.140022ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4102.914286
+✔ ALVA-055 finds unassigned closed subspaces and deduplicates nested enclosure faces (85.700723ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4196.347262
+✔ ALVA-055 void location never falls inside a defined island/inner ring (107.330367ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3996.596077
+✔ ALVA-055 rotation, wall direction and array order do not create false skew or disconnection (137.730714ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4166.099379
+✔ ALVA-055 short curved-wall approximation is warned rather than bypassing length threshold (38.508017ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4229.296969
+✔ ALVA-055 missing hosts and opening bounds produce errors, not invented position or connections (96.538155ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4403.832776
+✔ ALVA-055 tiny omitted area is below documented threshold; open boundaries are inconclusive (136.536266ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5681.62935
+✔ ALVA-055 no scene, invalid coordinates, self-crossing rooms and unsupported curves are not safe results (81.771719ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4285.398665
+✔ ALVA-055 T-junction and collinear overlap rejection is symmetric without changing the analysis graph (48.15202ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4230.247225
+✔ ALVA-055 authenticated GET diagnoses current candidate, edits refresh, read-only access never changes design (10157.959717ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14014.366242
+Isolated test cases passed: 25

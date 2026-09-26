@@ -1,0 +1,6 @@
+run=20260926T051130Z-ALVA066-merge-main-public-browser-19089
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1603
+c15b6292199c2744b44fa08349dabea82142413a

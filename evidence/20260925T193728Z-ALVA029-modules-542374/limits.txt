@@ -1,0 +1,6 @@
+run=20260925T193728Z-ALVA029-modules-542374
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2586
+7825bff0180ae3ca85b8a19598a6dea41aa16e31

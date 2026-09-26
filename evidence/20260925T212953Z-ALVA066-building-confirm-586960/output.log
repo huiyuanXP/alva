@@ -1,0 +1,11 @@
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.waitForResponse: Timeout 30000ms exceeded while waiting for event "response"
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/scripts/alva-066-floorplan-continue.ts:40:99) {
+  log: [],
+  name: 'TimeoutError'
+}
+
+Node.js v24.21.0

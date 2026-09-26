@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "origin": "https://symbol-nurses-worldwide-stan.trycloudflare.com",
+  "run": "20260926T034156715Z-ALVA066-public-preview",
+  "savedVersion": 2,
+  "threadId": "01a0da7b-a43f-7530-9c79-d217333cf2b3",
+  "tools": [
+    {
+      "name": "get_snapshot",
+      "stage": "living",
+      "isError": false
+    }
+  ],
+  "errors": []
+}

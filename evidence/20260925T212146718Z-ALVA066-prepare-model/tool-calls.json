@@ -1,0 +1,25 @@
+[
+  {
+    "name": "edit_topology",
+    "stage": "floorplan",
+    "isError": true,
+    "errorCode": "INVALID_ARGUMENTS"
+  },
+  {
+    "name": "edit_topology",
+    "stage": "floorplan",
+    "isError": true,
+    "errorCode": "REVISION_CONFLICT"
+  },
+  {
+    "name": "get_snapshot",
+    "stage": "floorplan",
+    "isError": false
+  },
+  {
+    "name": "edit_topology",
+    "stage": "floorplan",
+    "isError": true,
+    "errorCode": "BUSINESS_RULE_REJECTED"
+  }
+]

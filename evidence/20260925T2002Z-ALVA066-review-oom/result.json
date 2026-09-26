@@ -1,0 +1,12 @@
+{
+  "pass": false,
+  "unit": "alva-066-review-check.service",
+  "status": "oom-kill",
+  "memoryMax": "1500M",
+  "reportedMemoryPeak": "1.4G",
+  "passedBeforeInterruption": 20,
+  "cancelled": 3,
+  "sourceBase": "21e2fa9",
+  "uncommittedReviewIntegration": true,
+  "next": "retry with established Node heap and WASM compilation limits; no assertion or cgroup limit relaxation"
+}

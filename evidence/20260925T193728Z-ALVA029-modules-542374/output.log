@@ -1,0 +1,62 @@
+✔ ALVA-029 actual PGlite snapshot keeps adopted review and tradeoffs; save rollback/retry creates no partial version (6245.892691ms)
+✔ ALVA-029 coffee/pet/plant positive cases retain exact source and object references (271.813881ms)
+✔ ALVA-029 negative statements and pending/inferred/rejected habits do not trigger positive findings (164.57224ms)
+✔ ALVA-029 supported pain checks clear after actual layout fixes (78.219292ms)
+✔ ALVA-029 changed current answers do not reuse positive historical questionnaire evidence (74.621625ms)
+✔ ALVA-029 confirmed correction supersedes the original habit without deleting provenance (72.960427ms)
+✔ ALVA-029 scoped habits do not leak to another room or unrelated object (78.924528ms)
+✔ ALVA-029 model summary cannot invent an unsupported habit absent from its actual quote (42.487483ms)
+✔ ALVA-029 coffee color and panda videos do not imply coffee-making or household pets (41.097651ms)
+✔ ALVA-029 geometry catches rotated footprint outside despite an inside center (48.866937ms)
+✔ ALVA-029 geometry catches furniture bridging a concave room notch and rotated overlap (40.273909ms)
+✔ ALVA-029 actual door-to-door grid comparison finds a barrier but permits a detour (82.515398ms)
+✔ ALVA-029 incomplete doors report a navigation limitation rather than universal passage success (36.436782ms)
+✔ ALVA-029 explicit material preference and functional requirement conflicts are independently sourced (38.962989ms)
+✔ ALVA-029 review freshness follows scene and context inputs, retaining reviewed revision after administrative writes (78.556333ms)
+✔ ALVA-029 save adoption preserves explicit choices while professional unknowns stay open (49.892666ms)
+✔ ALVA-029 missing or invalid layouts fail explicitly and stale context cannot be reviewed (39.308098ms)
+✔ ALVA-029 review tool always reloads inputs and reports persistence truthfully (87.099694ms)
+✔ ALVA-029 layout modification during review persistence invalidates tool success (69.434875ms)
+✖ ALVA-029 classified Markdown round-trips real sources and is idempotent/private (191.236691ms)
+✔ ALVA-029 user quotes containing code fences remain data and cannot break the Markdown payload (49.588782ms)
+✔ ALVA-029 invented quotes, assistant sources, missing evidence and project traversal are rejected (2.440194ms)
+✔ ALVA-029 unclassified answers stay unresolved and historical evidence is not confirmed (0.903903ms)
+✔ ALVA-029 confirmed corrections supersede old facts; pending corrections cannot erase them (1.553559ms)
+✔ ALVA-029 explicit classifications tied to replaced answers are retired (0.77047ms)
+✔ ALVA-029 intake inferences never become confirmed facts and review outputs do not feed back (1.255871ms)
+✔ ALVA-029 confirmed reference preferences require the actual confirmation record (1.174629ms)
+✔ ALVA-029 missing, stale revision and changed input never return an empty successful read (77.101287ms)
+✔ ALVA-029 altered and missing category files fail closed; explicit rebuild repairs them (118.94501ms)
+✔ ALVA-029 symlinks and forged generation paths cannot read outside the project (39.434453ms)
+✔ ALVA-029 concurrent writers never publish mixed generations or regress revision (185.223825ms)
+✔ ALVA-029 an invalid source write leaves the previous pointer and all published files intact (40.938635ms)
+✔ ALVA-029 read_user_context uses a fresh project callback and repairs once without accepting path arguments (73.595523ms)
+✔ ALVA-029 concurrent authoritative changes during projection read return a stale error (35.876905ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 33
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11936.06635
+
+✖ failing tests:
+
+test at tests/alva-user-context.test.ts:1:920
+✖ ALVA-029 classified Markdown round-trips real sources and is idempotent/private (191.236691ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 4
+  
+      at <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/tests/alva-user-context.test.ts:28:10)
+      at async isolated (/home/ubuntu/Alva/.runtime/worktrees/ALVA-029-xuanpu-chat-6pro/tests/alva-user-context.test.ts:12:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,3 +1,16 @@
+import {LayoutOutputError} from './import/response.js';
+import {registerRecommendationQueue} from './mcp/recommendation-queue.js';
+import {registerLayoutReview} from './review/service.js';
+import {ContextProjectionError} from './user-context/index.js';
+import {registerContextProjection,registerUserContextDecisions} from './user-context/production.js';
+import {registerRoomStyles} from './room-style/index.js';
+import {registerChatActions} from './mcp/actions.js';
+import {generateBuildingCandidate,confirmBuilding} from './building/service.js';
+import {switchChatStage} from './mcp/sessions.js';
+import {applyCandidateTopology,calibrateCandidate,confirmCandidate,reopenTopology,repairCandidateTopology,drawCandidateWall} from './topology/service.js';
+import {registerFloorplanAttachments} from './import/attachment-routes.js';
+import {importFloorplan} from './import/service.js';
+import {registerStageRoutes} from './mcp/routes.js';
 import {registerIntake} from './intake/routes.js';
 import {registerDesignerAccess} from './access/designer-access.js';
 import {registerSnapshots} from './snapshots/routes.js';
@@ -15,8 +28,8 @@ import {DomainError,validateScene,calibrate,pointInPolygon,reject,type ImportSta
 import {applyTopologyCommand} from './topology/commands.js';
 import {validateTopology} from './topology/validate.js';
 import {registerTopologyDiagnostics} from './topology/routes.js';
-import {addWallFromClicks,applyTopologyRepair,firstTopologyRepairIssue} from './topology/repair.js';
-import {divideRoomByVirtualLine,zoneFromThreeWalls} from './zones.js';
+import {firstTopologyRepairIssue} from './topology/repair.js';
+import {applyZoneOperation} from './zones-service.js';
 import {createTopologyVersion} from './topology/calibration.js';
 import {generateBuilding,buildingFailureMessage,type BuildingCodexCall} from './building/generate.js';
 import {registerTodo} from './todo/routes.js';
@@ -26,23 +39,10 @@ import type {CodexInput} from './codex.js';
 import {review} from './business.js';
 import {registerReferences} from './references.js';
 import {recognizeLayout,layoutRecognitionModel} from './import.js';
-import {createCanvas,DOMMatrix,ImageData,Path2D} from '@napi-rs/canvas';
+import {imageData} from './import/image-data.js';
+export {imageData} from './import/image-data.js';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
-export async function imageData(mime:string,base64:string,filename='户型图'):Promise<SourceImage>{
- if(base64.length>16_000_000||!base64.length)reject('文件最大12MB');
- const data=Buffer.from(base64,'base64');
- if(mime==='image/png'&&data.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))return {mime,data:base64,originalMime:mime,filename};
- if(mime==='image/jpeg'&&data[0]===255&&data[1]===216&&data[2]===255)return {mime,data:base64,originalMime:mime,filename};
- if(mime==='application/pdf'&&data.subarray(0,5).toString()==='%PDF-'){
-  // Single-floor import uses page one and shows that choice to the owner.
-  Object.assign(globalThis,{DOMMatrix,ImageData,Path2D});
-  const {getDocument}=await import('pdfjs-dist/legacy/build/pdf.mjs');
-  const task=getDocument({data:new Uint8Array(data),useSystemFonts:true});const doc=await task.promise;
-  try{const page=await doc.getPage(1),initial=page.getViewport({scale:1}),view=page.getViewport({scale:Math.min(2,1800/Math.max(initial.width,initial.height))});const canvas=createCanvas(Math.ceil(view.width),Math.ceil(view.height));await page.render({canvasContext:canvas.getContext('2d') as never,viewport:view,canvas:canvas as never}).promise;return {mime:'image/png',data:canvas.toBuffer('image/png').toString('base64'),originalMime:mime,originalData:base64,filename,page:1,pages:doc.numPages}}finally{await task.destroy()}
- }
- return reject('仅支持内容有效的PNG、JPEG或PDF');
-}
-export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,transcriptionCall}:{assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;transcriptionCall?:TranscriptionCall}={}){
+export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,visionCodex,transcriptionCall,automaticRecommendations=true}:{automaticRecommendations?:boolean;assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;visionCodex?:(input:CodexInput)=>Promise<string>;transcriptionCall?:TranscriptionCall}={}){
  const publicPayload=(value:unknown):unknown=>{if(Array.isArray(value))return value.map(publicPayload);if(value&&typeof value==='object'){const result:Record<string,unknown>={};for(const [key,item] of Object.entries(value as Record<string,unknown>)){if(key==='budget')continue;result[key]=publicPayload(item)}return result}return value};
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
  app.addHook('preSerialization',async(_req,_reply,payload)=>publicPayload(payload));
@@ -53,7 +53,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  const activeBuilding=new Map<string,AbortController>();
  const activeTranscriptions=new Map<string,AbortController>();
  const failedAccess=new Map<string,{count:number;resetAt:number}>();
- app.setErrorHandler((err,req,reply)=>{if(!(err instanceof DomainError)&&!(err instanceof z.ZodError)){const detail=String(err instanceof Error?err.stack:err).replaceAll(process.env.OPENAI_API_KEY||'__absent_key__','[REDACTED]');console.error('[alva request error]',req.url.split('?')[0],detail)}const code=err instanceof DomainError?err.statusCode:err instanceof z.ZodError?400:500;reply.code(code).send({error:code===500?'处理失败，草稿已保留，请重试':err instanceof Error?err.message:'请求无效'})});
+ app.setErrorHandler((err,req,reply)=>{if(!(err instanceof DomainError)&&!(err instanceof ContextProjectionError)&&!(err instanceof LayoutOutputError)&&!(err instanceof z.ZodError)){const detail=String(err instanceof Error?err.stack:err).replaceAll(process.env.OPENAI_API_KEY||'__absent_key__','[REDACTED]');console.error('[alva request error]',req.url.split('?')[0],detail)}const code=err instanceof DomainError||err instanceof ContextProjectionError||err instanceof LayoutOutputError?err.statusCode:err instanceof z.ZodError?400:500;reply.code(code).send({...err instanceof ContextProjectionError||err instanceof LayoutOutputError?err.detail:{},error:code===500?'处理失败，草稿已保留，请重试':err instanceof Error?err.message:'请求无效'})});
  app.addHook('onRequest',async(req,reply)=>{
   reply.header('X-Content-Type-Options','nosniff').header('Referrer-Policy','no-referrer');
   if(req.url.startsWith('/api/'))reply.header('Cache-Control','no-store');
@@ -64,6 +64,12 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
    if(s.role==='designer'&&!['GET','HEAD'].includes(req.method)&&req.url.split('?')[0]!=='/api/logout')throw new DomainError(403,'设计师入口为只读');
   }
  });
+ registerFloorplanAttachments(app,session);
+ registerStageRoutes(app,store,session,active,chatCodex);
+ registerChatActions(app,store,session,active);
+ registerRoomStyles(app,store,session);
+ registerContextProjection(app,store);registerUserContextDecisions(app,store,session);registerLayoutReview(app,store,session);
+ if(automaticRecommendations)registerRecommendationQueue(app,store,session,active);
  registerTodo(app);
  registerTopologyDiagnostics(app,store,session);
  app.get('/healthz',async()=>({ok:true,application:'alva'}));
@@ -85,24 +91,32 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  app.post('/api/projects',async req=>{if(session(req).role!=='owner')reject('仅业主可新建',403);const {name}=z.object({name:z.string().min(1).max(100)}).parse(req.body);return store.create(name)});
  const mutate=async(req:object,body:unknown,operation:string,fn:(p:Project)=>void|Promise<void>)=>{const s=session(req);if(s.role!=='owner')reject('仅业主可修改设计',403);const b=Command.parse(body);return store.mutate(s.projectId,b.requestId,b.expectedRevision,operation,body,fn)};
  app.post('/api/candidate/correct',async req=>{const b=Command.extend({scene:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-correct',p=>{const candidate=validateTopology(b.scene);candidate.calibration=null;for(const w of candidate.walls){w.structural='unknown';w.evidence=[]}p.candidate=candidate})});
- app.post('/api/candidate/topology',async req=>{const b=Command.extend({operation:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-topology',p=>{if(!p.candidate)reject('请先导入户型');const result=applyTopologyCommand(p.candidate!,b.operation);result.scene.calibration=null;p.candidate=result.scene;p.changes.push({id:randomUUID(),description:result.description,evidenceIds:[],context:['ALVA-010 墙线与房间轮廓校正'],createdAt:new Date().toISOString()})})});
+ app.post('/api/candidate/topology',async req=>{const b=Command.extend({operation:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-topology',p=>{applyCandidateTopology(p,b)})});
  app.get('/api/candidate/topology/problem',async req=>{const p=await store.get(session(req).projectId);return {issue:p.candidate?firstTopologyRepairIssue(p.candidate):null,revision:p.revision}});
- app.post('/api/candidate/topology/repair',async req=>{const b=Command.extend({issueId:z.string().min(1),optionId:z.string().min(1)}).parse(req.body);return mutate(req,b,'candidate-topology-repair',p=>{const candidate=p.candidate;if(!candidate)reject('请先导入户型');const result=applyTopologyRepair(candidate!,b.issueId,b.optionId);p.candidate=result.scene;p.changes.push({id:randomUUID(),description:result.description,evidenceIds:[],context:['业主从拓扑错误建议中选择修复方案；后台执行后重新检查'],createdAt:new Date().toISOString()})})});
- app.post('/api/candidate/topology/draw-wall',async req=>{const b=Command.extend({a:z.object({x:z.number().finite(),y:z.number().finite()}),b:z.object({x:z.number().finite(),y:z.number().finite()})}).parse(req.body);return mutate(req,b,'candidate-draw-wall',p=>{const candidate=p.candidate;if(!candidate)reject('请先导入户型');const result=addWallFromClicks(candidate!,b.a,b.b);p.candidate=result.scene;p.changes.push({id:randomUUID(),description:result.description,evidenceIds:[],context:['业主在二维平面图上点击起点和终点补画墙线；后台自动吸附到附近端点或墙体'],createdAt:new Date().toISOString()})})});
+ app.post('/api/candidate/topology/repair',async req=>{const b=Command.extend({issueId:z.string().min(1),optionId:z.string().min(1)}).parse(req.body);return mutate(req,b,'candidate-topology-repair',p=>repairCandidateTopology(p,b))});
+ app.post('/api/candidate/topology/draw-wall',async req=>{const b=Command.extend({a:z.object({x:z.number().finite(),y:z.number().finite()}),b:z.object({x:z.number().finite(),y:z.number().finite()})}).parse(req.body);return mutate(req,b,'candidate-draw-wall',p=>drawCandidateWall(p,b))});
  app.post('/api/ui/room-label',async req=>{const b=Command.extend({roomId:z.string().min(1),position:z.object({x:z.number().finite(),y:z.number().finite()})}).parse(req.body);return mutate(req,b,'room-label-position',p=>{const scene=p.candidate||p.scene;if(!scene)reject('当前没有可编辑户型');const currentScene=scene!;const room=currentScene.rooms.find(r=>r.id===b.roomId);if(!room)reject('区域不存在');if(!pointInPolygon(b.position,room!.polygon))reject('区域名称请放在对应区域内部');p.roomLabelPositions={...(p.roomLabelPositions||{}),[b.roomId]:b.position}})});
- app.post('/api/zones/divide',async req=>{const b=Command.extend({a:z.object({x:z.number().finite(),y:z.number().finite()}),b:z.object({x:z.number().finite(),y:z.number().finite()})}).parse(req.body);return mutate(req,b,'zone-divide',p=>{if(p.candidate||!p.scene||!p.confirmedTopology)reject('请先确认户型，再进行功能分区');const zones=divideRoomByVirtualLine(p.scene!,b.a,b.b,(p.zones?.length||0)+1),roomId=zones[0]!.roomId;p.zones=[...(p.zones||[]).filter(z=>z.roomId!==roomId),...zones];p.dirty=true;p.changes.push({id:randomUUID(),description:`新增虚拟分区线并形成 ${zones.length} 个功能区`,evidenceIds:[],context:['功能分区不新增实体墙，不改变已确认拓扑或建筑3D结构'],createdAt:new Date().toISOString()})})});
- app.post('/api/zones/three-wall',async req=>{const b=Command.extend({point:z.object({x:z.number().finite(),y:z.number().finite()})}).parse(req.body);return mutate(req,b,'zone-three-wall',p=>{if(p.candidate||!p.scene||!p.confirmedTopology)reject('请先确认户型，再进行功能分区');const zone=zoneFromThreeWalls(p.scene!,b.point,(p.zones?.length||0)+1);p.zones=[...(p.zones||[]),zone];p.dirty=true;p.changes.push({id:randomUUID(),description:`根据三面墙自动形成新功能区“${zone.name}”`,evidenceIds:[],context:['第四边为虚拟分区边界，不创建真实墙体'],createdAt:new Date().toISOString()})})});
- app.post('/api/zones/rename',async req=>{const b=Command.extend({zoneId:z.string().min(1),name:z.string().trim().min(1).max(80)}).parse(req.body);return mutate(req,b,'zone-rename',p=>{const zone=(p.zones||[]).find(z=>z.id===b.zoneId);if(!zone)reject('功能区不存在');zone!.name=b.name;p.dirty=true})});
- app.post('/api/zones/remove',async req=>{const b=Command.extend({zoneId:z.string().min(1)}).parse(req.body);return mutate(req,b,'zone-remove',p=>{const before=p.zones?.length||0;p.zones=(p.zones||[]).filter(z=>z.id!==b.zoneId);if(p.zones.length===before)reject('功能区不存在');p.dirty=true})});
- app.post('/api/candidate/calibrate',async req=>{const b=Command.extend({wallId:z.string(),length:z.number().positive(),source:z.string().min(1)}).parse(req.body);return mutate(req,b,'calibrate',p=>{if(!p.candidate)reject('请先导入户型');p.candidate=validateTopology(calibrate(p.candidate!,b.wallId,b.length,b.source))})});
- app.post('/api/candidate/confirm',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'confirm-layout',p=>{if(!p.candidate?.calibration?.confirmed)reject('请先用已知墙长完成校准');const confirmed=validateTopology(p.candidate);const topology=createTopologyVersion(p,confirmed);p.topologyVersions=[...(p.topologyVersions||[]),topology];p.confirmedTopology=topology;p.scene=structuredClone(confirmed);p.candidate=null;if(p.confirmedBuilding&&p.buildingState.topologyFingerprint!==topology.sourceFingerprint)p.buildingState={status:'expired',topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:p.buildingState.attempts,updatedAt:new Date().toISOString(),error:'拓扑已更新，旧建筑场景需要重新生成'};p.dirty=true;p.changes.push({id:randomUUID(),description:`确认已校准拓扑 v${topology.version}`,evidenceIds:[],context:topology.assumptions,createdAt:new Date().toISOString()})})});
- app.post('/api/topology/reopen',async req=>{const b=Command.extend({confirmed:z.literal(true),discardDownstream:z.literal(true)}).parse(req.body);const s=session(req);if(activeBuilding.has(s.projectId))reject('当前仍在生成建筑3D，请先取消或等待完成',409);return mutate(req,b,'reopen-topology',p=>{const topology=p.confirmedTopology;if(!topology)reject('当前没有已确认户型可返回修改');const candidate=structuredClone(topology!.scene);candidate.items=[];p.candidate=candidate;p.scene=null;p.confirmedTopology=undefined;p.buildingCandidate=undefined;p.confirmedBuilding=undefined;p.buildingState={status:'idle',attempts:0,updatedAt:new Date().toISOString()};p.proposals=[];p.zones=[];p.findings=p.findings.filter(f=>f.stage!=='review');p.dirty=true;p.changes.push({id:randomUUID(),description:`返回修改户型（基于原确认拓扑 v${topology!.version}）；已清除该户型之后的空间设计、家具方案与建筑3D`,evidenceIds:[],context:['用户明确确认：修改房型将放弃当前房型之后的所有空间设计修改；原图、证据、问卷回答和聊天记录保留'],createdAt:new Date().toISOString()})})});
+ app.post('/api/zones/divide',async req=>{const b=Command.extend({a:z.object({x:z.number().finite(),y:z.number().finite()}),b:z.object({x:z.number().finite(),y:z.number().finite()})}).parse(req.body);return mutate(req,b,'zone-divide',p=>applyZoneOperation(p,{kind:'divide',a:b.a,b:b.b}))});
+ app.post('/api/zones/three-wall',async req=>{const b=Command.extend({point:z.object({x:z.number().finite(),y:z.number().finite()})}).parse(req.body);return mutate(req,b,'zone-three-wall',p=>applyZoneOperation(p,{kind:'three-wall',point:b.point}))});
+ app.post('/api/zones/rename',async req=>{const b=Command.extend({zoneId:z.string().min(1),name:z.string().trim().min(1).max(80)}).parse(req.body);return mutate(req,b,'zone-rename',p=>applyZoneOperation(p,{kind:'rename',zoneId:b.zoneId,name:b.name}))});
+ app.post('/api/zones/remove',async req=>{const b=Command.extend({zoneId:z.string().min(1)}).parse(req.body);return mutate(req,b,'zone-remove',p=>applyZoneOperation(p,{kind:'remove',zoneId:b.zoneId}))});
+ app.post('/api/candidate/calibrate',async req=>{const b=Command.extend({wallId:z.string(),length:z.number().positive(),source:z.string().min(1)}).parse(req.body);return mutate(req,b,'calibrate',p=>{calibrateCandidate(p,b)})});
+ app.post('/api/candidate/confirm',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'confirm-layout',p=>{confirmCandidate(p,b)})});
+ app.post('/api/topology/reopen',async req=>{const b=Command.extend({confirmed:z.literal(true),discardDownstream:z.literal(true)}).parse(req.body);const s=session(req);if(activeBuilding.has(s.projectId))reject('当前仍在生成建筑3D，请先取消或等待完成',409);return mutate(req,b,'reopen-topology',p=>{reopenTopology(p,b)})});
  app.get('/api/building',async req=>{const p=await store.get(session(req).projectId);return {state:p.buildingState,candidate:p.buildingCandidate||null,confirmed:p.confirmedBuilding||null}});
- app.post('/api/building/generate',async req=>{const b=Command.parse(req.body);const s=session(req);if(s.role!=='owner')reject('仅业主可生成建筑',403);const before=await store.get(s.projectId),topology=before.confirmedTopology!;if(!topology)reject('请先确认拓扑版本');if(before.buildingState?.status==='processing')reject('当前已有建筑生成任务，请等待或取消',409);if((before.buildingState?.attempts||0)>=3)reject('建筑生成失败次数已达上限，请先确认拓扑后再重试');const controller=new AbortController();activeBuilding.set(s.projectId,controller);const started=await store.mutate(s.projectId,randomUUID(),b.expectedRevision,'building-start',{requestId:b.requestId,topologyVersion:topology!.version,topologyFingerprint:topology!.sourceFingerprint},p=>{p.buildingState={status:'processing',requestId:b.requestId,topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:(p.buildingState?.attempts||0)+1,updatedAt:new Date().toISOString()}});
-  try{const generated=await generateBuilding(started,topology!.scene,topology!.version,topology!.sourceFingerprint,controller.signal,buildingCodex);return await store.mutate(s.projectId,randomUUID(),started.revision,'building-complete',{requestId:b.requestId},p=>{p.buildingCandidate=generated;p.buildingState={status:'succeeded',requestId:b.requestId,topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:p.buildingState.attempts,updatedAt:new Date().toISOString()}})}catch(error){const cancelled=controller.signal.aborted,current=await store.get(s.projectId);const message=cancelled?'建筑生成已取消，已有场景保持不变':buildingFailureMessage(error);await store.mutate(s.projectId,randomUUID(),current.revision,'building-failed',{requestId:b.requestId,error:message},p=>{p.buildingState={status:cancelled?'cancelled':'failed',requestId:b.requestId,topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:p.buildingState.attempts,error:message,updatedAt:new Date().toISOString()}});throw new DomainError(cancelled?409:422,message)}finally{activeBuilding.delete(s.projectId)}});
- app.post('/api/building/confirm',async req=>{const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);return mutate(req,b,'confirm-building',p=>{if(!p.buildingCandidate)reject('请先生成并预览建筑场景');if(!p.confirmedTopology||p.buildingState.topologyFingerprint!==p.confirmedTopology!.sourceFingerprint)reject('建筑场景已过期，请针对当前拓扑重新生成');p.confirmedBuilding=structuredClone(p.buildingCandidate);p.buildingCandidate=undefined;p.buildingState={...p.buildingState,status:'confirmed',updatedAt:new Date().toISOString()};p.dirty=true;p.changes.push({id:randomUUID(),description:`确认建筑场景（拓扑 v${p.confirmedTopology!.version}）`,evidenceIds:[],context:[`建筑生成回指来源指纹 ${p.confirmedTopology!.sourceFingerprint}`],createdAt:new Date().toISOString()})})});
+ app.post('/api/building/generate',async req=>{
+  const b=Command.parse(req.body),s=session(req);if(s.role!=='owner')reject('仅业主可生成建筑',403);
+  if(activeBuilding.has(s.projectId))reject('当前已有建筑生成任务，请等待或取消',409);
+  const controller=new AbortController();activeBuilding.set(s.projectId,controller);
+  try{return await generateBuildingCandidate(store,s.projectId,b,controller.signal,buildingCodex)}finally{activeBuilding.delete(s.projectId)}
+ });
+ app.post('/api/building/confirm',async req=>{
+  const b=Command.extend({confirmed:z.literal(true)}).parse(req.body);
+  const project=await mutate(req,b,'confirm-building',p=>confirmBuilding(p));
+  await switchChatStage(store,project.id,'living',project.revision);return project;
+ });
  registerIntake(app,store,session);
- registerConsultation(app,store,session,active,chatCodex,activeTranscriptions,transcriptionCall);registerReferences(app,store,session,chatCodex);registerExports(app,store,session);
+ registerConsultation(app,store,session,active,chatCodex,activeTranscriptions,transcriptionCall,visionCodex);registerReferences(app,store,session,chatCodex);registerExports(app,store,session);
  registerSnapshots(app,store,session);
  app.post('/api/restore',async req=>{const b=Command.extend({version:z.number().int().positive(),confirmed:z.literal(true)}).parse(req.body),s=session(req);if(activeBuilding.has(s.projectId))reject('当前仍在生成建筑3D，请先取消或等待完成后再恢复快照',409);const snap=await store.snapshot(s.projectId,b.version);return mutate(req,b,'restore',p=>{const restored=prepareSnapshotRestore(snap,p.revision,p.savedVersion);Object.assign(p,restored);p.changes.push({id:randomUUID(),description:`恢复到保存版本${b.version}（当前工作稿）`,evidenceIds:[],context:['用户明确确认：当前未保存修改将被该手动快照整体替换','恢复本身不会创建新的快照；如需保留恢复后的状态，请再次手动保存'],createdAt:new Date().toISOString()})})});
  app.post('/api/import',async(req,reply)=>{
@@ -117,18 +131,11 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   const emit=(type:string,data:unknown)=>{if(!reply.raw.destroyed)reply.raw.write(`event: ${type}\ndata: ${JSON.stringify(data)}\n\n`)};
   const heartbeat=setInterval(()=>emit('status',{text:'正在识别墙、门窗和房间…'}),12000);
   const disconnect=()=>{if(!reply.raw.writableEnded)controller.abort()};reply.raw.on('close',disconnect);
- const startedAt=new Date().toISOString();
   try{
    if(replay){emit('status',{text:'正在返回已完成的导入结果…'});emit('project',replay);emit('done',{ok:true,replayed:true});return}
-   emit('status',{text:b.mime==='application/pdf'?'正在读取PDF第1页…':'正在读取户型图…'});
-   await store.setImportState(s.projectId,{status:'processing',message:b.mime==='application/pdf'?'正在读取PDF第1页并交给Codex识别…':'正在读取户型图并交给Codex识别…',requestId:b.requestId,sourceMime:b.mime,filename,startedAt});
-   const image=await imageData(b.mime,b.data,filename);
-   await store.setImportState(s.projectId,{status:'processing',message:image.page?`正在识别PDF第${image.page}页（共${image.pages}页）…`:'正在由Codex识别当前附件…',requestId:b.requestId,sourceMime:b.mime,filename,page:image.page,pages:image.pages,startedAt});
-   const candidate=await recognizeLayout(`data:${image.mime};base64,${image.data}`,undefined,controller.signal);
-   if(controller.signal.aborted)throw new Error('已取消');
-   const finishedAt=new Date().toISOString();
-   const p=await store.mutate(s.projectId,b.requestId,b.expectedRevision,'import',input,p=>{p.candidate=candidate;p.sourceImage=image;p.importState={status:'succeeded',message:'Codex已完成识别，二维候选待你核对和校准。',requestId:b.requestId,sourceMime:image.originalMime,filename:image.filename,page:image.page,pages:image.pages,provider:'codex',model:layoutRecognitionModel(),startedAt,finishedAt};p.dirty=true;p.evidence.push({id:randomUUID(),quote:`用户上传${image.originalMime==='application/pdf'?'PDF第1页预览':'户型图'}；Codex实际读取该附件并生成墙、房间、门窗候选，尺寸仍未校准`,source:'image',createdAt:finishedAt})});emit('project',p);emit('done',{ok:true});
-  }catch(e){const cancelled=controller.signal.aborted;const status:ImportState={status:cancelled?'cancelled':'failed',message:cancelled?'导入已取消，原工作稿和已确认场景保持不变':'识图未成功，原工作稿和已确认场景保持不变；请重试或更换清晰附件',requestId:b.requestId,sourceMime:b.mime,filename,startedAt,finishedAt:new Date().toISOString()};try{await store.setImportState(s.projectId,status);await store.failure(s.projectId,'import',cancelled?'取消':'识图失败')}catch{}emit('error',{error:cancelled?'已取消导入':e instanceof DomainError?e.message:'识图未成功，原设计保持不变，请重试或更换清晰图片'})}
+   const project=await importFloorplan(store,s.projectId,{...b,filename},controller.signal,text=>emit('status',{text}),visionCodex);
+   emit('project',project);emit('done',{ok:true});
+  }catch(e){emit('error',{error:controller.signal.aborted?'已取消导入':e instanceof DomainError?e.message:'识图未成功，原设计保持不变，请重试或更换清晰图片'})}
   finally{clearInterval(heartbeat);active.delete(s.projectId);reply.raw.end()}
  });
  app.post('/api/cancel',async req=>{const id=session(req).projectId;active.get(id)?.abort();activeBuilding.get(id)?.abort();return {cancelled:true}});

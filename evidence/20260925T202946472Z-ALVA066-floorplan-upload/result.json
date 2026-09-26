@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "run": "20260925T202946472Z-ALVA066-floorplan-upload",
+  "step": "upload",
+  "privateRun": "20260925T202946472Z-ALVA066-floorplan-upload",
+  "projectId": "fd2e11bb-eb42-4016-a578-b120bafb904e",
+  "sourceSha256": "01dc27e90296a1bd81af0a65589b3220137156f1011dfb530b778b3a8dd4f1e8",
+  "trueAttachment": true,
+  "realVision": false
+}

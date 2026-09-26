@@ -1,0 +1,7 @@
+[Unit]
+Description=ALVA-066 shared validation and preview budget
+[Slice]
+CPUQuota=80%
+MemoryAccounting=yes
+MemoryMax=20%
+MemorySwapMax=0

@@ -1,0 +1,12 @@
+✔ only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption (11096.321077ms)
+✔ recommendation tools reject unconfirmed invocation, disallowed assets, collisions and replaced answer sources (8160.846435ms)
+✔ server starts the stage Agent after confirmation without a follow-up browser Chat request (8733.339963ms)
+✔ a silent model cannot complete a recommendation; an explicit MCP no-furniture reason can (9067.838868ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41095.358516

@@ -1,0 +1,6 @@
+run=20260925T222240Z-ALVA066-real-purpose-model-613515
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2557
+ba1c9e68bffca9717fac899fadc2da45e8b6aa88

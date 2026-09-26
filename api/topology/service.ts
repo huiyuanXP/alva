@@ -1,0 +1,25 @@
+import {randomUUID} from 'node:crypto';
+import {calibrate,reject,type Project} from '../model.js';
+import {applyTopologyCommand} from './commands.js';
+import {validateTopology} from './validate.js';
+import {addWallFromClicks,applyTopologyRepair} from './repair.js';
+import type {XY} from '../model.js';
+import {createTopologyVersion} from './calibration.js';
+
+export function applyCandidateTopology(p:Project,b:{operation:unknown}){if(!p.candidate)reject('请先导入户型');const result=applyTopologyCommand(p.candidate!,b.operation);result.scene.calibration=null;p.candidate=result.scene;p.changes.push({id:randomUUID(),description:result.description,evidenceIds:[],context:['ALVA-010 墙线与房间轮廓校正'],createdAt:new Date().toISOString()})}
+export function calibrateCandidate(p:Project,b:{wallId:string;length:number;source:string}){if(!p.candidate)reject('请先导入户型');p.candidate=validateTopology(calibrate(p.candidate!,b.wallId,b.length,b.source))}
+export function confirmCandidate(p:Project,b:unknown){if(!p.candidate?.calibration?.confirmed)reject('请先用已知墙长完成校准');const confirmed=validateTopology(p.candidate);const topology=createTopologyVersion(p,confirmed);p.topologyVersions=[...(p.topologyVersions||[]),topology];p.confirmedTopology=topology;p.scene=structuredClone(confirmed);p.candidate=null;if(p.confirmedBuilding&&p.buildingState.topologyFingerprint!==topology.sourceFingerprint)p.buildingState={status:'expired',topologyVersion:topology.version,topologyFingerprint:topology.sourceFingerprint,attempts:p.buildingState.attempts,updatedAt:new Date().toISOString(),error:'拓扑已更新，旧建筑场景需要重新生成'};p.dirty=true;p.changes.push({id:randomUUID(),description:`确认已校准拓扑 v${topology.version}`,evidenceIds:[],context:topology.assumptions,createdAt:new Date().toISOString()})}
+export function reopenTopology(p:Project,b:unknown){const topology=p.confirmedTopology;if(!topology)reject('当前没有已确认户型可返回修改');const candidate=structuredClone(topology!.scene);candidate.items=[];p.candidate=candidate;p.scene=null;p.confirmedTopology=undefined;p.buildingCandidate=undefined;p.confirmedBuilding=undefined;p.buildingState={status:'idle',attempts:0,updatedAt:new Date().toISOString()};p.proposals=[];p.layoutReview=undefined;p.layoutReviewAdoption=undefined;p.roomStyles={};p.roomStyleCandidates=[];for(const job of p.answerRecommendations||[])job.status='invalidated';p.zones=[];p.findings=p.findings.filter(f=>f.stage!=='review');p.dirty=true;p.changes.push({id:randomUUID(),description:`返回修改户型（基于原确认拓扑 v${topology!.version}）；已清除该户型之后的空间设计、家具方案与建筑3D`,evidenceIds:[],context:['用户明确确认：修改房型将放弃当前房型之后的所有空间设计修改；原图、证据、问卷回答和聊天记录保留'],createdAt:new Date().toISOString()})}
+
+export function repairCandidateTopology(p:Project,b:{issueId:string;optionId:string}){
+ if(p.confirmedTopology)reject('请先明确确认返回修改户型');
+ if(!p.candidate)reject('请先导入户型');
+ const result=applyTopologyRepair(p.candidate!,b.issueId,b.optionId);p.candidate=result.scene;
+ p.changes.push({id:randomUUID(),description:result.description,evidenceIds:[],context:['按明确选择的拓扑修复选项执行，并重新检查'],createdAt:new Date().toISOString()});
+}
+export function drawCandidateWall(p:Project,b:{a:XY;b:XY}){
+ if(p.confirmedTopology)reject('请先明确确认返回修改户型');
+ if(!p.candidate)reject('请先导入户型');
+ const result=addWallFromClicks(p.candidate!,b.a,b.b);p.candidate=result.scene;
+ p.changes.push({id:randomUUID(),description:result.description,evidenceIds:[],context:['按明确提供的起终点补画墙线，并自动吸附附近端点或墙体'],createdAt:new Date().toISOString()});
+}

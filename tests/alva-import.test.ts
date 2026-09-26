@@ -1,3 +1,4 @@
+import {parseGeminiLayoutOutput,parseLayoutOutput} from '../api/import/response.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -87,4 +88,17 @@ test('Gemini recognizes unified openings with top-level geography after one repa
   assert.equal(calls,2);assert.equal(result.walls.length,4);assert.equal(result.openings.length,1);
   assert.deepEqual(result.geography,geography);
  }finally{if(priorVision===undefined)delete process.env.OPENAI_VISION_MODEL;else process.env.OPENAI_VISION_MODEL=priorVision}
+});
+
+
+test('missing Gemini geography explanation gains an uncertainty label without changing geometry or accepting missing coordinates',()=>{
+ const source=scene(),input={...source,geography:{latitude:31,north:0}};
+ const result=parseGeminiLayoutOutput(JSON.stringify(input));assert.deepEqual(result.walls,source.walls);assert.deepEqual(result.rooms,source.rooms);assert.deepEqual(result.openings,source.openings);assert.match(result.geography.assumption,/未核实/);
+ assert.throws(()=>parseGeminiLayoutOutput(JSON.stringify({...input,geography:{north:0}})),/latitude/);
+});
+
+
+test('an exact terminal closing vertex is equivalent, while internal repeated points remain invalid',()=>{
+ const source=scene(),closed=structuredClone(source);closed.rooms[0].polygon.push({...closed.rooms[0].polygon[0]});assert.deepEqual(parseLayoutOutput(JSON.stringify(closed)),source);
+ const repeated=structuredClone(source);repeated.rooms[0].polygon.splice(2,0,{...repeated.rooms[0].polygon[0]});assert.throws(()=>parseLayoutOutput(JSON.stringify(repeated)),/重复顶点/);
 });

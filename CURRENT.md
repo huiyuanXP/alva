@@ -1,3 +1,7 @@
+## 2026-09-26 ALVA-066 已集成，尚未发布
+
+用户授权的候选 `c53d3ac` 已进入 main，含最新 Gemini 3.8 与快照恢复兼容修复。合并影响验证通过，066/029 保持 in-progress；生产不变。现役边界与下一步见 [NextTask](NextTask.md)，证据见 [临时预览](docs/ALVA-066-temporary-preview.md)。
+
 ## 2026-09-26 ALVA-067 已发布并通过公网登录核验
 
 已发布主Chat Gemini 3.8及等待圆点上方的最新浅色进度。类型/构建、本次5组桌面手机浏览器和公网登录只读核验通过；模型接口3.8、JS/CSS哈希一致、页面错误0、项目revision不变。备份与回滚在.runtime/ALVA067-release-20260926T045448Z/；详情见[发布收据](docs/ALVA-067-chat-model-progress.md)。066验收环境未改，仍需同步main并重验阶段MCP。

@@ -1,0 +1,6 @@
+run=20260926T040618Z-ALVA066-stage-recovery-verify-fixed-741960
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2221
+f1eeff2ad3f1ddb00b740adc658992ddabef4f0d

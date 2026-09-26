@@ -1,3 +1,4 @@
+import {seedLivingStage} from './fixtures/alva/living-stage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -33,7 +34,7 @@ test('ALVA-024 Chat proposal uses the same server transform rules before preview
   const app=await buildAlva(store,{assets:false,chatCodex});
   try{
     const created=await store.create('ALVA-024 Chat家具回归');await store.ensureAccessCode(created.project.id);
-    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();p.scene.items=[{...itemFromAsset('alva-chair','room-1',1,1),id:'chair-1'}]});
+    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();p.scene.items=[{...itemFromAsset('alva-chair','room-1',1,1),id:'chair-1'}];seedLivingStage(p)});
     const session=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+session.token};
     const response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,text:'把椅子移动到 1.03 米并旋转 22 度',roomId:null,model:'gemini-3.8-flash-high'}});
     assert.equal(response.statusCode,200,response.body);

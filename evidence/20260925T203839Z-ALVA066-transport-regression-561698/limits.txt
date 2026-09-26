@@ -1,0 +1,6 @@
+run=20260925T203839Z-ALVA066-transport-regression-561698
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2565
+087094cb48d3549cea054cb0fd6fae6dc7425b30

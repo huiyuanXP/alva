@@ -1,0 +1,6 @@
+run=20260926T032511Z-ALVA066-context-recovery-typecheck-702837
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2540
+43f4466ebe1451252a38c4984ba13cab5b321bf5

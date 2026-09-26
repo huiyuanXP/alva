@@ -1,3 +1,4 @@
+import {seedLivingStage} from './fixtures/alva/living-stage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -14,7 +15,7 @@ function cookie(login:any){return {cookie:'alva_session='+login.cookies[0].value
 
 test('ALVA-041 model/manual candidates stay pending until explicit confirmation; cancel does not pollute requirements',async()=>{
  const prior=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE=code;
- const store=new AlvaStore();await store.init();const created=await store.create('ALVA-041');await store.ensureAccessCode(created.project.id);await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=structuredClone(scene)});
+ const store=new AlvaStore();await store.init();const created=await store.create('ALVA-041');await store.ensureAccessCode(created.project.id);await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=structuredClone(scene);seedLivingStage(p)});
  let calls=0;const model=async(input:CodexInput)=>{calls++;assert.ok(input.images?.[0]?.startsWith('data:image/png;base64,'));assert.match(input.text||'',/不能.*尺寸|禁止输出具体尺寸/);return JSON.stringify({annotations:[{preference:'like',feature:'浅色、留白和轻盈家具造型'},{preference:'dislike',feature:'过于复杂的吊灯造型'}]})};
  const app=await buildAlva(store,{assets:false,origin:'http://localhost',chatCodex:model});
  try{
@@ -35,7 +36,7 @@ test('ALVA-041 rejects reference candidates that pretend to prove dimensions, st
 });
 
 test('ALVA-041 main Chat actually invokes the pending reference-preference tool for an attached reference image',async()=>{
- const prior=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE=code;const store=new AlvaStore();await store.init();const created=await store.create('ALVA-041-chat');await store.ensureAccessCode(created.project.id);await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=structuredClone(scene)});let captured:CodexInput|undefined,toolResult:any;
+ const prior=process.env.ALVA_ACCESS_CODE;process.env.ALVA_ACCESS_CODE=code;const store=new AlvaStore();await store.init();const created=await store.create('ALVA-041-chat');await store.ensureAccessCode(created.project.id);await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=structuredClone(scene);seedLivingStage(p)});let captured:CodexInput|undefined,toolResult:any;
  const chatCodex=async(input:CodexInput)=>{captured=input;const tool=input.tools?.find(t=>t.name==='propose_reference_preferences');assert.ok(tool);toolResult=await tool!.run({annotations:[{preference:'like',feature:'低饱和浅色与简洁家具线条'}]});input.onDelta?.('我先把这张图里的视觉偏好作为待确认候选。');return '我先把这张图里的视觉偏好作为待确认候选，请你确认后再进入正式需求。'};
  const app=await buildAlva(store,{assets:false,origin:'http://localhost',chatCodex});
  try{const login=await app.inject({method:'POST',url:'/api/access',headers:{origin:'http://localhost'},payload:{code}}),headers=cookie(login),before=await store.get(created.project.id),response=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:before.revision,text:'我喜欢这张图的浅色和简洁感，作为客厅参考。',roomId:'living',model:'gemini-3.8-flash-high',image:{mime:'image/png',data:png}}});assert.equal(response.statusCode,200,response.body);assert.ok(captured);assert.match(captured!.text||'',/propose_reference_preferences/);assert.equal(toolResult.status,'pending_owner_confirmation');const batches=await listReferenceBatches(store,created.project.id);assert.equal(batches.length,1);assert.equal(batches[0].status,'pending');assert.equal(batches[0].roomId,'living');assert.equal(batches[0].sourceText,'我喜欢这张图的浅色和简洁感，作为客厅参考。');assert.equal(batches[0].annotations[0].origin,'model');const after=await store.get(created.project.id);assert.equal(after.findings.some(f=>f.objectIds.includes(`reference:${batches[0].id}`)),false)}finally{await app.close();await store.close();if(prior===undefined)delete process.env.ALVA_ACCESS_CODE;else process.env.ALVA_ACCESS_CODE=prior}

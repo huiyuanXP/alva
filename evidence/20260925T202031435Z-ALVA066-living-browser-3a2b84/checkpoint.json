@@ -1,0 +1,9 @@
+{
+  "run": "20260925T202031435Z-ALVA066-living-browser-3a2b84",
+  "checks": {
+    "syntheticBuildingPrerequisite": true,
+    "realVisionAcceptance": false,
+    "realUiReceipt": true,
+    "styleConfirmedWithoutGeometryChange": true
+  }
+}

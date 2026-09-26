@@ -1,0 +1,6 @@
+run=20260925T193618Z-ALVA029-typecheck-542065
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2624
+7825bff0180ae3ca85b8a19598a6dea41aa16e31

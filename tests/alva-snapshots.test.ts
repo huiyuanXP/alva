@@ -1,3 +1,4 @@
+import {ensureCurrentReview} from '../api/review/service.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -25,7 +26,7 @@ test('ALVA-036 manual global snapshots: real HTTP/database, atomicity and durabl
   const headers = {cookie: `alva_session=${auth.cookies[0].value}`};
   const get = () => store.get(project.id);
   const count = async () => (await store.versions(project.id)).length;
-  const command = async (): Promise<SaveCommand> => ({requestId: randomUUID(), expectedRevision: (await get()).revision, confirmed: true});
+  const command = async (): Promise<SaveCommand> => {let p=await get();if(p.scene)p=await ensureCurrentReview(store,p.id,p.revision);return {requestId:randomUUID(),expectedRevision:p.revision,confirmed:true}};
   const save = (payload: SaveCommand) => app.inject({method: 'POST', url: '/api/save', headers, payload});
   let durableCommand: SaveCommand, durableReceipt: SaveReceipt;
   try {
@@ -72,15 +73,15 @@ test('ALVA-036 manual global snapshots: real HTTP/database, atomicity and durabl
 
     await t.test('snapshot keeps every global field and preserves acknowledged/unresolved findings exactly', async () => {
       await store.mutate(project.id, randomUUID(), null, 'rich-fixture', {}, p => {seedSnapshotProject(p); p.candidate = structuredClone(p.scene);});
-      const before = await get();
+      const b=await command(),before = await get();
       validateBuildingScene(before.confirmedBuilding, before.confirmedTopology!.scene, 1, 'a'.repeat(64));
-      const b = await command(), response = await save(b);
+      const response = await save(b);
       assert.equal(response.statusCode, 200);
       const after = response.json<Project & {saveReceipt: SaveReceipt}>();
       const snapshot = await store.snapshot(project.id, after.saveReceipt.version);
-      const {revision: _r, savedVersion: _v, dirty: _d, ...expected} = before;
-      const {revision: r, savedVersion: v, dirty: d, ...actual} = snapshot;
-      assert.deepEqual(actual, expected);
+      const {revision: _r, savedVersion: _v, dirty: _d,layoutReviewAdoption:_adoption, ...expected} = before;
+      const {revision: r, savedVersion: v, dirty: d,layoutReviewAdoption:adoption, ...actual} = snapshot;
+      assert.deepEqual(actual, expected);assert.equal(adoption?.reviewId,before.layoutReview?.id);assert.equal(adoption?.adoptedAtRevision,before.revision);
       assert.equal(r, before.revision + 1); assert.equal(v, before.savedVersion + 1); assert.equal(d, false);
       assert.deepEqual(snapshot.findings, before.findings);
       assert.equal(snapshot.findings[0].status, 'acknowledged');

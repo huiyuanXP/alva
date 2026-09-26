@@ -1,0 +1,6 @@
+{
+  "pass": false,
+  "run": "20260925T204008188Z-ALVA066-inject",
+  "threadId": "01a0da4b-fedf-7273-81bb-3feeb658b8ac",
+  "error": "AssertionError [ERR_ASSERTION]: Repeated stage entry must not inject the handoff twice\n\n2 !== 1\n"
+}

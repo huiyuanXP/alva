@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "run": "20260925T210346430Z-ALVA066-vision-replay",
+  "scope": "Replay of two captured real vision outputs; not a new model or successful Chat call",
+  "results": [
+    {
+      "file": "vision-20b26e8a-6ba8-498e-a3a8-73df2c8b45ca.txt",
+      "sha256": "393a3762dc4cbdf1377ec564985c66fccfa4cf8fca2ce8a0bbef7d2c2afbb7ca",
+      "pass": false,
+      "error": "LayoutOutputError: 户型输出schema校验失败：[\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"walls\",\n      0,\n      \"evidence\"\n    ],\n    \"message\": \"Invalid input: expected array, received string\"\n  },\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"walls\",\n      1,\n      \"evidence\"\n    ],\n    \"message\": \"Invalid input: expected array, received string\"\n  },\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"walls\",\n      2,\n      \"evidence\"\n    ],\n    \"message\": \"Invalid input: expected array, received string\"\n  },\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"walls\",\n      3,\n      \"evidence\"\n    ],\n    \"message\": \"Invalid input: expected array, received string\"\n  },\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"walls\",\n      4,\n      \"evidence\"\n    ],\n    \"message\": \"Invalid input: expected array, received string\"\n  },\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"walls\",\n      5,\n      \"evidence\"\n    ],\n    \"message\": \"Invalid input: expected array, received string\"\n  },\n  {\n    \"expected\": \"array\",\n    \"co"
+    },
+    {
+      "file": "vision-7985efbf-0500-46a7-abb0-ff6b6a109b13.txt",
+      "sha256": "43c9d048d30ca8ee83b69aa7552e32a89c6ededad092f21f502c4d1c98706e7a",
+      "pass": true,
+      "counts": {
+        "walls": 22,
+        "rooms": 5,
+        "openings": 9
+      },
+      "topologyIssue": null
+    }
+  ]
+}

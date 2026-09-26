@@ -151,3 +151,17 @@ test('room rename is semantic metadata and persists while wall-derived polygon r
  const renamed=applyTopologyCommand(base,{kind:'rename-room',roomId:'room',name:'客餐厅'});assert.equal(renamed.scene.rooms[0].name,'客餐厅');assert.equal(renamed.scene.rooms[0].purpose,'客餐厅');
  const moved=applyTopologyCommand(renamed.scene,{kind:'move-wall-endpoint',wallId:'a',end:'b',point:{x:4.5,y:0}});assert.equal(moved.scene.rooms.find(r=>r.id==='room')?.name,'客餐厅');
 });
+
+import {emptyProject} from '../api/model.js';
+import {repairCandidateTopology,drawCandidateWall} from '../api/topology/service.js';
+import {createTopologyVersion} from '../api/topology/calibration.js';
+test('shared repair and draw services preserve confirmation boundary and reject stale repair identities',()=>{
+ const p=emptyProject('synthetic service boundary');p.candidate=scene();p.candidate.openings=[];
+ p.candidate.walls.push({...p.candidate.walls[0],id:'duplicate'});
+ const issue=firstTopologyRepairIssue(p.candidate)!;assert.ok(issue);
+ const before=structuredClone(p.candidate);assert.throws(()=>repairCandidateTopology(p,{issueId:'stale',optionId:'remove-b'}),/问题已经变化/);assert.deepEqual(p.candidate,before);
+ repairCandidateTopology(p,{issueId:issue.id,optionId:'remove-b'});assert.equal(p.candidate.calibration,null);assert.equal(p.candidate.walls.length,before.walls.length-1);
+ const confirmedScene=scene();p.confirmedTopology=createTopologyVersion(p,confirmedScene);const candidate=structuredClone(p.candidate);
+ assert.throws(()=>repairCandidateTopology(p,{issueId:issue.id,optionId:'remove-a'}),/返回修改/);
+ assert.throws(()=>drawCandidateWall(p,{a:{x:0,y:0},b:{x:1,y:1}}),/返回修改/);assert.deepEqual(p.candidate,candidate);
+});

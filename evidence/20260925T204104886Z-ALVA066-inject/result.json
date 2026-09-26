@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "run": "20260925T204104886Z-ALVA066-inject",
+  "threadId": "01a0da4c-dc55-7a71-a975-27788fd77c72",
+  "nonceReadFromPersistedInjection": true,
+  "injections": 1,
+  "deliveryCallbacks": 2
+}

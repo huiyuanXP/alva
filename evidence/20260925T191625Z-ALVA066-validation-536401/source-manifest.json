@@ -1,0 +1,18 @@
+{
+  "api/codex.ts": "21397cc64770fbebf338d1e7a104362ff29b5919f2d9563c42e0cadcb2b06cd6",
+  "api/store.ts": "b1f3d010d806ff0fdd0fe5cfef3921fa11364768d0cb20e6acbde0c75102c16d",
+  "api/api.ts": "8f9266382cd9020fb3dd9bec144f89e9a49b1258bd4520962e2c7c73ad9310b4",
+  "api/mcp/routes.ts": "f0e6509de17e8e54f6b1be6c86953d4c3d9a8dace68b4502863d998e7a0f568c",
+  "api/mcp/server.ts": "452465201f5f97ffdc7797d14f6fdc609fc4976a78e41130eaf677104fe7c63f",
+  "api/mcp/sessions.ts": "642bbe1aa2bc4846a827e59652031d6dfc864102b488c959da8b7b5a863a4985",
+  "api/mcp/floorplan.ts": "b27984a2d12a12f6c4996d05c78833479603465776f9a49b5b17742e17dba830",
+  "api/mcp/runtime.ts": "53d9cc88ee881a1c22ada4a4be8d3d36043417c86550cc83dc3cfd47c3919bb8",
+  "api/mcp/contracts.ts": "b68345d8f84c0ea8f3f813866e9647ee14f08d68706b9a5d3e2171013ce89806",
+  "api/import/service.ts": "fdba37f33af7f95d74f452330d5144df2c5638ed79a2690c9993a5c219d0bd7e",
+  "api/import/attachments.ts": "d405735debbd71def58b11d0f2525f8d6f063729783eccd4c47b60327b021bbf",
+  "api/import/attachment-routes.ts": "5e9c77e4c9dd8872f6bbe23329710e9f6b380945871d2dcd0265463675c12167",
+  "api/import/image-data.ts": "45546e69e90ab61aa458b3e82fcf166fb9e05f323e0dfbca9bd60ef6790bcd39",
+  "api/import/response.ts": "0dcb66095213da4837b07eb95a4d3aeed9c930d9bd86738764a3a7a25f8765e8",
+  "api/building/service.ts": "603b631c5e4653f08f21500500905847ccc7fee89ba1563383ef0bec57570c6a",
+  "api/topology/service.ts": "7d8e4fd456bcbf4eb3213cbecb14333bfff7162afb4535aa146dd68c2efcb116"
+}

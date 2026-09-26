@@ -1,0 +1,22 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 很抱歉，在尝试识别户型图时，识图模型返回了格式校验错误（`VISION_OUTPUT_SCHEMA`），导致无法生成待校正候选。
+
+这说明当前系统的识图处理模块遇到了内部数据适配问题，并非因为您上传的附件无效。
+
+**错误详情**：模型输出缺少了 `geography.assumption` 字段，未能通过数据校验。
+
+**处理建议**：
+我已经记录了此错误。由于这是系统的内部处理环节问题，请您允许我稍作等待后再次尝试，或者您可以告知我是否需要检查附件本身是否完整。目前我还无法为您进行后续的校准或拓扑调整。
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/scripts/alva-066-floorplan-check.ts:22:908) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

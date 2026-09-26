@@ -1,0 +1,6 @@
+run=20260926T034154Z-ALVA066-public-preview-browser-710737
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2260
+73194d2898b3422b6832032778ee503f5381cc18

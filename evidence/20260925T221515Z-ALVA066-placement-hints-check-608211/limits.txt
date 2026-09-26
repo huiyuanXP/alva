@@ -1,0 +1,6 @@
+run=20260925T221515Z-ALVA066-placement-hints-check-608211
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2552
+ba1c9e68bffca9717fac899fadc2da45e8b6aa88

@@ -16,13 +16,13 @@ export async function recognizeLayout(imageUrl:string,onDelta?:(text:string)=>vo
  const reasoningEffort=process.env.OPENAI_VISION_REASONING_EFFORT?.trim()||(model==='gemini-3.8-flash-high'?'high':undefined);
  let raw=await codex({text:`请读取用户户型图并创建可编辑的墙、门窗和房间候选，严格按输出schema返回JSON。只读图，不调用外部资源。
 坐标：x向右，y向下，米。没有真实尺寸时将图上最长整体边暂设为10米，calibration必须null。纬度31、north0、assumption写“暂用纬度31°、图上方为北；待用户确认”。墙高度2.8、厚度0.15仅估算，structural全部unknown、evidence为空。
-沿可见粗线重建外墙和内墙，每条墙a/b不相等，尽量共用交点；门窗必须放在openings数组中，kind只能是door或window，不要输出独立doors/windows字段；房间必须有purpose。门窗必须绑定实际wallId，offset是开口中心（不是起始边缘）沿墙a到b的距离除以墙长，width用米。必须满足width/(2*墙长)<=offset<=1-width/(2*墙长)。例如墙长2米、开口宽1.6米且居中时offset=0.5，不能填左边缘比例0.1；不能越界；门洞中心与宽度从图上比例估算。门高度2.1/sill0，窗height1.2/sill0.9。
-房间polygon至少3个顶点、按同一方向环绕、不得自交；房间可以是非矩形；区分厨房的水槽灶台和卧室的床。看不清用途请写“用途待确认”，不要仅根据家具猜出身份/健康信息。每个ID不同。rooms.locked全部false。items为空，不从固定样例填家具。只产候选，后续由用户校准和修正。`,images:[imageUrl],model,reasoningEffort,outputSchema:schema,timeoutMs:VISION_TIMEOUT_MS,onDelta,signal});
+沿可见粗线重建外墙和内墙，每条墙a/b不相等，尽量共用交点；门窗必须放在openings数组中，kind只能是door或window，不要输出独立doors/windows字段；每个房间必须同时有 name（显示名称）和 purpose（用途）两个字段；geography必须为含latitude/north/assumption的嵌套对象，不要把地理字段放在顶层。门窗必须绑定实际wallId，offset是开口中心（不是起始边缘）沿墙a到b的距离除以墙长，width用米。必须满足width/(2*墙长)<=offset<=1-width/(2*墙长)。例如墙长2米、开口宽1.6米且居中时offset=0.5，不能填左边缘比例0.1；不能越界；门洞中心与宽度从图上比例估算。门高度2.1/sill0，窗height1.2/sill0.9。
+房间polygon至少3个顶点、按同一方向环绕、不得自交；房间可以是非矩形；区分厨房的水槽灶台和卧室的床。看不清用途请写“用途待确认”，不要仅根据家具猜出身份/健康信息。每个ID不同。rooms.locked全部false。items为空，不从固定样例填家具。只产候选，后续由用户校准和修正。仅输出JSON对象，不要前言、总结或Markdown。\n完整输出JSON Schema（所有required字段必须提供）：${JSON.stringify(schema)}`,images:[imageUrl],model,reasoningEffort,outputSchema:schema,timeoutMs:VISION_TIMEOUT_MS,onDelta,signal});
  let s:SceneData;
  try{s=parseLayoutOutput(normalizeStructuredOutput(raw))}catch(error){
   if(!(error instanceof LayoutOutputError))throw error;
   signal?.throwIfAborted();
-  raw=await codex({text:layoutRepairPrompt(raw,error),images:[imageUrl],model,reasoningEffort,outputSchema:schema,timeoutMs:VISION_TIMEOUT_MS,onDelta,signal});
+  raw=await codex({text:layoutRepairPrompt(raw,error)+`\n完整输出JSON Schema：${JSON.stringify(schema)}`,images:[imageUrl],model,reasoningEffort,outputSchema:schema,timeoutMs:VISION_TIMEOUT_MS,onDelta,signal});
   // JSON, schema and geometry all share the same one-repair budget. A second
   // invalid response propagates; it must never become a saved candidate.
   try{s=parseLayoutOutput(normalizeStructuredOutput(raw))}

@@ -1,3 +1,4 @@
+import {seedLivingStage} from './fixtures/alva/living-stage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -26,7 +27,7 @@ test('ALVA-022 purpose confirmation is independent from layout and rejects locke
   const store=new AlvaStore();await store.init();const app=await buildAlva(store,{assets:false});
   try{
     const created=await store.create('ALVA-022 用途分离回归');await store.ensureAccessCode(created.project.id);
-    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene()});
+    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();seedLivingStage(p)});
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token};
     const before=await store.get(created.project.id),beforeItems=JSON.stringify(before.scene!.items.map(i=>({id:i.id,x:i.x,y:i.y,width:i.width,roomId:i.roomId})));
     const confirmed=await app.inject({method:'POST',url:'/api/purpose/confirm',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,roomId:'living',purpose:'亲子阅读',sourceText:'客厅改为亲子阅读空间',confirmed:true}});
@@ -70,7 +71,7 @@ test('ALVA-022 purpose can produce previewable layout proposals and only a separ
   const app=await buildAlva(store,{assets:false,chatCodex});
   try{
     const created=await store.create('ALVA-022 布局建议回归');await store.ensureAccessCode(created.project.id);
-    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene()});
+    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();seedLivingStage(p)});
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token};
     const purpose=await app.inject({method:'POST',url:'/api/purpose/confirm',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,roomId:'living',purpose:'亲子阅读',sourceText:'客厅改为亲子阅读空间',confirmed:true}});
     const chat=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:purpose.json().revision,text:'用途确认后请按0.2米调整阅读布局',roomId:'living',model:'gemini-3.8-flash-high'}});

@@ -1,15 +1,17 @@
+import {ReviewPanel} from '../review/ReviewPanel.js';
 import React, {useEffect, useRef, useState} from 'react';
 import type {Project} from '../../../api/model.js';
 import type {SaveCommand, SaveReceipt} from '../../../packages/contracts/alva/snapshots.js';
 import './snapshots.css';
 
 type Props = {
+  onLocate?:(roomId:string,objectId:string)=>void;
   project: Project;
   disabled: boolean;
   onBusyChange: (busy: boolean) => void;
   onProject: (project: Project) => void;
 };
-type Phase = 'ready' | 'saving' | 'saved' | 'error' | 'conflict' | 'reloading';
+type Phase = 'ready' | 'saving' | 'saved' | 'error' | 'conflict' | 'reloading' | 'reviewing';
 const pendingKey = (id: string) => `alva:pending-save:v1:${id}`;
 
 function readPending(id: string): SaveCommand | null {
@@ -21,7 +23,8 @@ function readPending(id: string): SaveCommand | null {
   } catch { return null; }
 }
 
-export function SaveControls({project, disabled, onBusyChange, onProject}: Props) {
+export function SaveControls({project, disabled, onBusyChange, onProject,onLocate}: Props) {
+  const [reviewOpen,setReviewOpen]=useState(false);
   const [initialPending] = useState(() => readPending(project.id));
   const pending = useRef<SaveCommand | null>(initialPending);
   const inFlight = useRef(false);
@@ -96,15 +99,27 @@ export function SaveControls({project, disabled, onBusyChange, onProject}: Props
     }
   }
 
-  const working = phase === 'saving' || phase === 'reloading';
+  async function requestSave(){
+    if(pending.current||!project.scene){await act();return}
+    if(disabled||inFlight.current)return;
+    inFlight.current=true;onBusyChange(true);setPhase('reviewing');setMessage('');
+    try{
+      const response=await fetch('/api/layout-review/prepare',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({expectedRevision:project.revision})});
+      const data=await response.json();if(!response.ok)throw new Error(data.error);
+      onProject(data);setReviewOpen(true);setPhase('ready');
+    }catch(e){setPhase('error');setMessage((e as Error).message)}finally{inFlight.current=false;onBusyChange(false)}
+  }
+
+  const working = phase === 'saving' || phase === 'reloading' || phase === 'reviewing';
   const failed = phase === 'error' || phase === 'conflict';
   return <div className="snapshot-controls" aria-label="手动全局快照">
     <span className={`save-state ${project.dirty ? 'dirty' : ''}`} data-testid="snapshot-dirty">
       {project.dirty ? '未保存工作稿' : project.savedVersion ? `已保存 · v${project.savedVersion}` : '尚未保存'}
     </span>
-    <button disabled={disabled || working || phase === 'conflict'} onClick={() => void act()}>
-      {phase === 'saving' ? '正在保存…' : pending.current ? '重试保存' : '保存版本'}
+    <button disabled={disabled || working || phase === 'conflict'} onClick={() => void requestSave()}>
+      {phase === 'reviewing'?'正在复核…':phase === 'saving' ? '正在保存…' : pending.current ? '重试保存' : '保存版本'}
     </button>
+    {reviewOpen&&<dialog open className="save-review-dialog" aria-label="保存前布局复核"><h2>保存前查看复核与取舍</h2><ReviewPanel project={project} disabled={disabled||working} onProject={onProject} onLocate={onLocate}/><button disabled={disabled||working} onClick={()=>{setReviewOpen(false);void act()}}>已查看复核，确认保存版本</button><button disabled={working} onClick={()=>setReviewOpen(false)}>暂不保存</button></dialog>}
     {message && <div className={`snapshot-feedback ${failed ? 'snapshot-feedback-error' : ''}`}
       role={failed ? 'alert' : 'status'} data-testid="snapshot-feedback">
       <strong>{failed ? '尚未确认保存成功' : phase === 'saved' ? '全局快照已保存' : '工作稿已重读'}</strong>

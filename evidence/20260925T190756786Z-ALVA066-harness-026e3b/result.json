@@ -1,0 +1,109 @@
+{
+  "pass": true,
+  "run": "20260925T190756786Z-ALVA066-harness-026e3b",
+  "transport": "dynamicTools-to-HTTP-MCP",
+  "turns": [
+    {
+      "stage": "floorplan",
+      "threadId": "01a0d9f7-9990-7cf0-a585-4da0aa6ab33a",
+      "resumed": false,
+      "revision": 2,
+      "nonceReturned": true,
+      "repairExplained": true,
+      "methods": [
+        "configWarning",
+        "remoteControl/status/changed",
+        "thread/started",
+        "warning",
+        "thread/status/changed",
+        "turn/started",
+        "item/started",
+        "item/completed",
+        "item/tool/call",
+        "thread/tokenUsage/updated",
+        "account/rateLimits/updated",
+        "item/agentMessage/delta",
+        "turn/completed"
+      ]
+    },
+    {
+      "stage": "living",
+      "threadId": "01a0d9f7-ad7a-7661-aca5-5ea18f5b474e",
+      "resumed": false,
+      "revision": 3,
+      "nonceReturned": true,
+      "repairExplained": true,
+      "methods": [
+        "configWarning",
+        "remoteControl/status/changed",
+        "thread/started",
+        "warning",
+        "thread/status/changed",
+        "turn/started",
+        "item/started",
+        "item/completed",
+        "item/tool/call",
+        "thread/tokenUsage/updated",
+        "account/rateLimits/updated",
+        "item/agentMessage/delta",
+        "turn/completed"
+      ]
+    },
+    {
+      "stage": "floorplan",
+      "threadId": "01a0d9f7-9990-7cf0-a585-4da0aa6ab33a",
+      "resumed": true,
+      "revision": 4,
+      "nonceReturned": true,
+      "repairExplained": true,
+      "methods": [
+        "configWarning",
+        "remoteControl/status/changed",
+        "deprecationNotice",
+        "thread/status/changed",
+        "thread/tokenUsage/updated",
+        "thread/goal/cleared",
+        "warning",
+        "turn/started",
+        "item/started",
+        "item/completed",
+        "item/tool/call",
+        "account/rateLimits/updated",
+        "item/agentMessage/delta",
+        "turn/completed"
+      ]
+    }
+  ],
+  "calls": [
+    {
+      "stage": "floorplan",
+      "name": "read_floorplan",
+      "error": false
+    },
+    {
+      "stage": "floorplan",
+      "name": "check_revision",
+      "error": true
+    },
+    {
+      "stage": "living",
+      "name": "read_living",
+      "error": false
+    },
+    {
+      "stage": "living",
+      "name": "check_revision",
+      "error": true
+    },
+    {
+      "stage": "floorplan",
+      "name": "read_floorplan",
+      "error": false
+    },
+    {
+      "stage": "floorplan",
+      "name": "check_revision",
+      "error": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.880089ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (10084.288244ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.60697ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (12.00345ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (3.85218ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (0.901742ms)
+✔ Gemini 3.8 default recognizes its observed split-opening response after one repair (4.708191ms)
+✔ Gemini field mapping still rejects an opening outside its wall (3.707842ms)
+✔ Gemini recognizes unified openings with top-level geography after one repair (3.265531ms)
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (11476.378843ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (8585.693974ms)
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (196.520796ms)
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (14.606498ms)
+✔ expired grants and cancellation cannot execute tools (43.253486ms)
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (19.271629ms)
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (12.283666ms)
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (9.837128ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39397.322383

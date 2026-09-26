@@ -1,0 +1,12 @@
+✔ only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption (9699.123207ms)
+✔ recommendation tools reject unconfirmed invocation, disallowed assets, collisions and replaced answer sources (7951.213402ms)
+✔ server starts the stage Agent after confirmation without a follow-up browser Chat request (8318.970683ms)
+✔ Chat produces sourced classification, owner confirms, MCP reads Markdown and saves the actual adopted review (11564.973638ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 45138.503624

@@ -1,3 +1,4 @@
+import {seedLivingStage} from './fixtures/alva/living-stage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -82,7 +83,7 @@ test('ALVA-021 requires two different candidates for ambiguous requests but allo
   const app=await buildAlva(store,{assets:false,chatCodex});
   try{
     const created=await store.create('ALVA-021 候选数量回归');await store.ensureAccessCode(created.project.id);
-    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene()});
+    const seeded=await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=scene();seedLivingStage(p)});
     const internal=await store.issueInternalSession(created.project.id),headers={cookie:'alva_session='+internal.token};
     const first=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:seeded.revision,text:'帮我调整一下沙发',roomId:null,model:'gemini-3.8-flash-high'}});
     assert.equal(first.statusCode,200,first.body);

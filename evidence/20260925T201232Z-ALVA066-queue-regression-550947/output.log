@@ -1,0 +1,16 @@
+✔ only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption (7925.845126ms)
+✔ recommendation tools reject unconfirmed invocation, disallowed assets, collisions and replaced answer sources (6077.890259ms)
+✔ server starts the stage Agent after confirmation without a follow-up browser Chat request (6391.819836ms)
+✔ Chat produces sourced classification, owner confirms, MCP reads Markdown and saves the actual adopted review (9288.492832ms)
+✔ ALVA-022 purpose confirmation is independent from layout and rejects locked rooms (7860.117297ms)
+✔ ALVA-022 purpose can produce previewable layout proposals and only a separately selected layout is adopted (7203.714521ms)
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (8516.442785ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (6577.200549ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 74737.854765

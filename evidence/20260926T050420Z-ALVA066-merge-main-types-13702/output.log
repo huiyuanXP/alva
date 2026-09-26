@@ -1,0 +1,11 @@
+web/src/main.tsx(115,10): error TS17008: JSX element 'div' has no corresponding closing tag.
+web/src/main.tsx(121,3): error TS17008: JSX element 'main' has no corresponding closing tag.
+web/src/main.tsx(133,1182): error TS17002: Expected corresponding JSX closing tag for 'Conversation'.
+web/src/main.tsx(133,1188): error TS17002: Expected corresponding JSX closing tag for 'ChatProgressContext.Provider'.
+web/src/main.tsx(135,61): error TS17002: Expected corresponding JSX closing tag for 'aside'.
+web/src/main.tsx(135,76): error TS17002: Expected corresponding JSX closing tag for 'main'.
+web/src/main.tsx(135,107): error TS17002: Expected corresponding JSX closing tag for 'div'.
+web/src/main.tsx(142,4): error TS17002: Expected corresponding JSX closing tag for 'Conversation'.
+web/src/main.tsx(145,4): error TS17002: Expected corresponding JSX closing tag for 'aside'.
+web/src/main.tsx(146,1): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+web/src/main.tsx(148,1): error TS1005: '</' expected.

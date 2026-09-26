@@ -1,0 +1,6 @@
+run=20260925T205353Z-ALVA066-renderer-browser-569156
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2602
+087094cb48d3549cea054cb0fd6fae6dc7425b30

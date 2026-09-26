@@ -2,11 +2,15 @@
 
 2026-09-26 UTC；主线候选 `cafb8b8dc8fb2ea7be5e51fa72c6e26168113fef`。本次执行验收审计，不接管原负责人、不修改产品代码、不部署。ALVA-029 保持 in-progress，ALVA-030 不解锁。
 
-## 阻断项
+## 审计时的阻断项
 
-当前主线 `api/snapshots/routes.ts` 的 `/api/save` 只执行 `validateScene`，缺少当前审查校验和采用凭证。真实 Fastify 路由配合合成的已确认拓扑/建筑/家具与替身存储实测：无 `layoutReview` 时仍返回 HTTP 200，且无 `layoutReviewAdoption`。因此未满足“保存记录采用的审查版本和用户取舍”。这是路由级复现，不冒充真实数据库持久化或生产写入。
+审计时主线 `api/snapshots/routes.ts` 的 `/api/save` 只执行 `validateScene`，缺少当前审查校验和采用凭证。真实 Fastify 路由配合合成的已确认拓扑/建筑/家具与替身存储实测：无 `layoutReview` 时仍返回 HTTP 200，且无 `layoutReviewAdoption`。因此未满足“保存记录采用的审查版本和用户取舍”。这是路由级复现，不冒充真实数据库持久化或生产写入。
 
-主线也尚无 `api/review/`、`api/user-context/` 及生活设计 MCP 新复核入口；旧 `/api/review` 不能代替本票合同。
+审计时主线也尚无 `api/review/`、`api/user-context/` 及生活设计 MCP 新复核入口；旧 `/api/review` 不能代替本票合同。
+
+## 066 集成候选更新
+
+用户已授权合并 066。候选包含 `saveProjectWithReview`、审查采用凭证及 review/user-context 模块，原主线路由缺口已随用户授权的 066 候选 c53d3ac 集成 main 补齐；本次合并不将 029 标记为完成，下面记录的非空取舍、页面定位等整票联合验收继续 pending。原审计证据不改写。
 
 ## 已核查证据与边界
 

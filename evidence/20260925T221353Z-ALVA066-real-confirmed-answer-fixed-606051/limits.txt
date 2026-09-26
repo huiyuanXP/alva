@@ -1,0 +1,6 @@
+run=20260925T221353Z-ALVA066-real-confirmed-answer-fixed-606051
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2562
+ba1c9e68bffca9717fac899fadc2da45e8b6aa88

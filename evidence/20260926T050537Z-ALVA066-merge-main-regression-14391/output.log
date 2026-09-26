@@ -1,0 +1,156 @@
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (11220.60786ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15499.585413
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (11773.474885ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15939.15449
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (10264.421893ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13989.473582
+✔ building card survives unrelated answers, refreshes changed candidate without adopting, then explicitly confirms (10613.760979ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14925.284093
+✔ Chat reads complete UI diagnostics in both packs even when confirmed topology has no candidate (10445.713855ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14489.83313
+✔ ALVA-038 explicit restore replaces the whole global draft from an existing manual snapshot and creates no archive point (11141.629881ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15458.211072
+[alva request error] /api/restore error: ALVA038 restore receipt fault
+    at pe.Ue (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pg-protocol/src/parser.ts:442:11)
+    at pe.tt (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pg-protocol/src/parser.ts:220:16)
+    at pe.parse (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pg-protocol/src/parser.ts:104:21)
+    at N.qe (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pglite/dist/index.js:5:1762)
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pglite/dist/index.js:5:1155)
+    at wasm://wasm/0267bb86:wasm-function[10930]:0x5a5ccf
+    at wasm://wasm/0267bb86:wasm-function[3585]:0x27eaeb
+    at wasm://wasm/0267bb86:wasm-function[3627]:0x2869d1
+    at wasm://wasm/0267bb86:wasm-function[3637]:0x286c2d
+    at wasm://wasm/0267bb86:wasm-function[9914]:0x54fd4d
+✔ ALVA-038 missing snapshot, stale revision and database failure never partially mutate current draft or versions (10573.610299ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14621.892261
+✔ ALVA-038 restore invalidates stale legacy building output instead of reusing it (9671.141843ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13628.096044
+✔ ALVA-038 prepareSnapshotRestore keeps current counters and does not mutate the saved object (9799.785766ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14024.597242
+✔ ALVA-017 chat model catalogue is explicit and reference images require matching PNG/JPEG bytes (3.585304ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4313.142079
+✔ ALVA-017 routes keep model/chat private, reject raw Codex surface and invalid image before mutation (11014.60376ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14915.777346
+✔ only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption (9942.809212ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14279.810673
+✔ recommendation tools reject unconfirmed invocation, disallowed assets, collisions and replaced answer sources (9114.766394ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13401.303132
+✔ server starts the stage Agent after confirmation without a follow-up browser Chat request (10340.142206ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14467.836142
+✔ a silent model cannot complete a recommendation; an explicit MCP no-furniture reason can (11336.276763ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15491.211297
+✔ Chat produces sourced classification, owner confirms, MCP reads Markdown and saves the actual adopted review (10844.388302ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15104.90382
+Isolated test cases passed: 16

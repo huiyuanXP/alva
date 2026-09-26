@@ -1,0 +1,7 @@
+{
+  "pass": false,
+  "run": "20260925T215539998Z-ALVA066-style-confirm",
+  "step": "style-confirm",
+  "checks": {},
+  "error": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
+}

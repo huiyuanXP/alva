@@ -1,0 +1,6 @@
+run=20260925T203752Z-ALVA066-transport-typecheck-561368
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2571
+087094cb48d3549cea054cb0fd6fae6dc7425b30

@@ -1,0 +1,6 @@
+run=20260926T044929Z-ALVA066-stage-versions-regression-7821
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2753
+f1eeff2ad3f1ddb00b740adc658992ddabef4f0d

@@ -1,0 +1,11 @@
+tests/alva-stage-recovery.test.ts(14,81): error TS2322: Type 'unknown' is not assignable to type 'InjectPayload | undefined'.
+tests/alva-stage-recovery.test.ts(22,125): error TS2339: Property 'statusCode' does not exist on type 'void & Promise<Response> & Chain'.
+tests/alva-stage-recovery.test.ts(23,134): error TS2339: Property 'statusCode' does not exist on type 'void & Promise<Response> & Chain'.
+tests/alva-stage-recovery.test.ts(23,149): error TS2345: Argument of type '(body: InjectPayload) => Chain' is not assignable to parameter of type 'string | Error | undefined'.
+tests/alva-stage-recovery.test.ts(23,186): error TS2339: Property 'json' does not exist on type 'void & Promise<Response> & Chain'.
+tests/alva-stage-recovery.test.ts(25,125): error TS2339: Property 'statusCode' does not exist on type 'void & Promise<Response> & Chain'.
+tests/alva-stage-recovery.test.ts(26,138): error TS2339: Property 'statusCode' does not exist on type 'void & Promise<Response> & Chain'.
+tests/alva-stage-recovery.test.ts(26,153): error TS2345: Argument of type '(body: InjectPayload) => Chain' is not assignable to parameter of type 'string | Error | undefined'.
+tests/alva-stage-recovery.test.ts(26,189): error TS2339: Property 'json' does not exist on type 'void & Promise<Response> & Chain'.
+tests/alva-stage-recovery.test.ts(27,132): error TS2339: Property 'statusCode' does not exist on type 'void & Promise<Response> & Chain'.
+tests/alva-stage-recovery.test.ts(27,147): error TS2345: Argument of type '(body: InjectPayload) => Chain' is not assignable to parameter of type 'string | Error | undefined'.

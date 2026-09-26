@@ -1,0 +1,10 @@
+{
+  "pass": false,
+  "run": "20260925T201512975Z-ALVA066-living-browser-473f2a",
+  "checks": {
+    "syntheticBuildingPrerequisite": true,
+    "realVisionAcceptance": false
+  },
+  "errors": [],
+  "error": "Error: page.waitForTimeout: Target page, context or browser has been closed"
+}

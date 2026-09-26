@@ -1,0 +1,6 @@
+run=20260925T193904Z-ALVA029-regression-542737
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2587
+7825bff0180ae3ca85b8a19598a6dea41aa16e31

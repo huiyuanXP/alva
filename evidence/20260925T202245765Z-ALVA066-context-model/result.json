@@ -1,0 +1,7 @@
+{
+  "pass": false,
+  "run": "20260925T202245765Z-ALVA066-context-model",
+  "step": "context-model",
+  "error": "AssertionError [ERR_ASSERTION]: missing propose_user_context: 抱歉，在处理您的习惯记录时，系统提示分类范围存在问题（房间标识校验未通过）。\n\n为了准确记录您的生活习惯，我需要先明确一下：您提到的“客厅”在当前项目模型中对应的房间是“合成验收客厅”（ID: `room`）。\n\n是否确认将“每天晚上在客厅阅读半小时”作为一项生活习惯记录到该房间下？如果确认，请告知我，我将重新尝试分类。此外，为了更好地配合您的阅读习惯，您可以点击下方的问卷，确认关于客厅功能布局的偏好：\n\n  [客厅阅读与功能偏好（问卷）](ask_question?questionId=Q31)",
+  "continuedFrom": "20260925T202031435Z-ALVA066-living-browser-3a2b84"
+}

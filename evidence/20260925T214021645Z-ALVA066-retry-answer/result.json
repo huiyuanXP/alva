@@ -1,0 +1,18 @@
+{
+  "pass": false,
+  "run": "20260925T214021645Z-ALVA066-retry-answer",
+  "step": "retry-answer",
+  "checks": {
+    "job": {
+      "id": "ca3a6c01-ee95-488f-a6ae-92217ed13d3c",
+      "roomId": "b0067df4-6047-40a8-ae9b-9aaea021e8e3",
+      "status": "completed",
+      "createdAt": "2026-09-25T21:34:05.135Z",
+      "evidenceId": "eeca3a56-5c00-4e65-b788-787833c7356c",
+      "questionId": "Q25",
+      "proposalIds": [],
+      "noFurnitureReason": "suggest_furniture 工具无法处理“客餐厅（验收标注）”的添加请求，经核实该空间与我的阅读习惯需求相关，但工具逻辑可能与房间ID或状态限制冲突。已向系统技术层记录此错误。"
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(job.proposalIds?.length)\n"
+}

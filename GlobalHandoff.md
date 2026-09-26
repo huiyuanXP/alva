@@ -1,3 +1,10 @@
+## 2026-09-26 ALVA-066 临时预览占用
+
+当前 066 Worktree 已合入最新 main，独立预览占用 127.0.0.1:4186 和原隔离验收数据库，原阶段 thread 保留。不得对该库并发运行独立验收进程。生产未改；运行入口与已知回复错误见 [临时预览](docs/ALVA-066-temporary-preview.md)。
+
+## 2026-09-26 主 Chat 上下文边界（066 候选）
+
+基础约束用 thread 配置，普通轮次不重复附完整项目与历史；阶段进入送去重摘要和快照，详细状态按需 MCP 读取。compact 成功与工具目录可见不代表业务调用完成，验收须核对实际结果。代码仍在 066 个人分支，未部署；详见主 Chat 合同和 066 检查点。
 ## 2026-09-26 ALVA-067 已发布并通过公网登录核验
 
 已发布主Chat Gemini 3.8及等待圆点上方的最新浅色进度。类型/构建、本次5组桌面手机浏览器和公网登录只读核验通过；模型接口3.8、JS/CSS哈希一致、页面错误0、项目revision不变。备份与回滚在.runtime/ALVA067-release-20260926T045448Z/；详情见[发布收据](docs/ALVA-067-chat-model-progress.md)。066验收环境未改，仍需同步main并重验阶段MCP。
@@ -210,6 +217,15 @@ neat-freak过程事实已同步：局部代码/实测verified-current，整票/�
 ## 2026-09-26 · ALVA-037 快照只读预览合同
 全局历史只展示 `/api/save` 创建的手动快照；版本列表时间由 `AlvaStore.versions()` 统一转 ISO。读取 `/api/versions/:version` 仅返回保存副本，不修改当前工作稿、revision 或版本列表。前端 `SnapshotHistory` 使用独立覆盖层渲染快照 2D/3D、需求与依据，不把快照赋值给当前 App project；关闭预览即回到原工作稿。只有明确 restore 才允许替换工作状态。
 
+## 2026-09-26 ALVA-066 确认与诊断合同
+
+确认卡使用相关业务域的持久化数字版本，不使用内容哈希；旧卡刷新不等于用户确认。MCP 户型/生活阶段都可读取页面同源诊断详情，自动修复 issue 为空不能解释成无告警。当前仅个人 Worktree 临时预览验证，未发布。资源采用共享 alva066.slice 合计物理内存 20%、零 swap；入口和证据以 docs/ALVA-066-temporary-preview.md 为准。
 
 ## 2026-09-26 · ALVA-038 快照全局恢复合同
 恢复只接受已存在的手动快照，并通过 `/api/restore` 显式确认执行；预览仍保持只读。恢复采用 `prepareSnapshotRestore()` 深拷贝快照完整 Project 状态，保留当前 revision/savedVersion 计数并标记 dirty；恢复本身不创建新快照或恢复前备份点。不存在快照、stale revision、数据库失败均不部分写入。若当前正在生成建筑3D，restore 409；快照内 building 与其 confirmedTopology 版本/指纹不一致时建筑结果清空并标记 expired，不能误用过期3D。
+
+## 2026-09-26 ALVA-066 与主线同步
+
+用户授权集成；066 候选保留主线 Gemini 3.8、进度展示与快照恢复。主 Chat 进度使用 ChatProgressContext，保留阶段消息筛选、MCP 附件与 UI 回执；新增恢复测试必须先生成当前审查，再保存。此次合并不关闭 029，不将生产发布状态与代码集成状态混同。
+
+2026-09-26 集成确认：用户授权的 `c53d3ac` 已进入 main；保存前复核与采用凭证也随 066 集成，旧 029 主线路由缺口是历史审计事实。029 整票验收仍 pending；生产未发布。

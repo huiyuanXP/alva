@@ -1,0 +1,82 @@
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (11117.431295ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15258.547789
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (10218.023833ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14124.135055
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (9922.775102ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15601.079124
+✔ building card survives unrelated answers, refreshes changed candidate without adopting, then explicitly confirms (10305.138274ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14358.918025
+✔ Chat reads complete UI diagnostics in both packs even when confirmed topology has no candidate (10123.445312ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14269.33644
+▶ ALVA-036 manual global snapshots: real HTTP/database, atomicity and durable retries
+  ✔ requires owner, explicit confirmation and session-scoped project (79.088395ms)
+  ✔ questionnaire-only drafts can be saved; missing-scene export is explicit 422 (96.274374ms)
+  ✔ edits, analysis/generation persistence and confirmations never create archive points (1650.576731ms)
+  ✔ snapshot keeps every global field and preserves acknowledged/unresolved findings exactly (239.923755ms)
+[alva request error] /api/save Error: isolated_save_fault
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/api/store.ts:98:57)
+    at async <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pglite/src/base.ts:514:24)
+  ✔ actual snapshot INSERT followed by failure rolls back snapshot, draft and receipt; retry works (199.317477ms)
+[alva request error] /api/save error: ALVA036 isolated receipt write fault
+    at pe.Ue (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pg-protocol/src/parser.ts:442:11)
+    at pe.tt (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pg-protocol/src/parser.ts:220:16)
+    at pe.parse (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pg-protocol/src/parser.ts:104:21)
+    at N.qe (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pglite/dist/index.js:5:1762)
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/node_modules/@electric-sql/pglite/dist/index.js:5:1155)
+    at wasm://wasm/0267bb86:wasm-function[10930]:0x5a5ccf
+    at wasm://wasm/0267bb86:wasm-function[3585]:0x27eaeb
+    at wasm://wasm/0267bb86:wasm-function[3627]:0x2869d1
+    at wasm://wasm/0267bb86:wasm-function[3637]:0x286c2d
+    at wasm://wasm/0267bb86:wasm-function[9914]:0x54fd4d
+  ✔ real database failure after project update and receipt insertion is fully atomic (545.644692ms)
+  ✔ simultaneous duplicate saves commit one version; distinct stale requests return conflict (131.351145ms)
+  ✔ retry after later edits returns current work plus original save receipt, never rolls back (155.80368ms)
+  ✔ conflicts can be explicitly reread and saved with a fresh request (503.774376ms)
+  ✔ new snapshots exclude legacy budgets but never rewrite working or older states (774.487843ms)
+  ✔ legacy full-response command receipts remain retryable without new per-operation state (234.215456ms)
+  ✔ close/reopen preserves snapshots, timestamps, sessions and exactly-once retries (1892.064491ms)
+✔ ALVA-036 manual global snapshots: real HTTP/database, atomicity and durable retries (16483.084656ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20806.04639
+Isolated test cases passed: 6

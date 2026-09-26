@@ -1,0 +1,1 @@
+{"finalGate":false,"reason":"Typecheck exited 0, but repair hint representation and test assertions changed before the driver was collected. Repeat final typecheck against fixed sources."}
