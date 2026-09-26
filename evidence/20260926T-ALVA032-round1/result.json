@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "round": 1,
+  "tests": {"passed": 4, "failed": 0},
+  "checks": [
+    "professional grant is distinct from owner/designer and classification keeps operator/source audit",
+    "calibration alone never grants demolition; unknown/loadbearing/protected reject",
+    "only professionally classified nonloadbearing wall can be formally removed by professional",
+    "server-admin revocation is audited and invalidates current session/invite"
+  ],
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "diffCheck": "passed"
+}
