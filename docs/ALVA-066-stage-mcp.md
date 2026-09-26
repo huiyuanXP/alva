@@ -2,7 +2,7 @@
 
 **ID:** ALVA-066
 **Status:** in-progress
-**Execution state:** integrated / integration-prerequisite-satisfied / awaiting-production-acceptance；main e44c23a；共享入口开发占用已释放。
+**Execution state:** deployed / integration-prerequisite-satisfied / awaiting-authenticated-production-acceptance；2026-09-26 05:32 UTC，发布5bb823b；见[生产收据](ALVA-066-production-release.md)。
 **Owner:** codex-stage-mcp
 **Date:** 2026-09-25
 **Dependencies:** ALVA-065；已完成业务以 main 实现为准。ALVA-057 在途共享问卷/schema/页面需协调。
@@ -68,7 +68,7 @@ MCP 为默认优先调用渠道。错误必须从工具返回可解释结构，�
 - [ ] 切回户型讨论不清空设计；明确修改拓扑后旧候选失效，再回生活设计送达失效摘要。
 - [ ] 越权、跨项目、错误/缺失附件、过期凭据、revision 冲突均有可解释 MCP 错误且无正式污染。
 - [ ] 直接按钮回归通过；所有已完成业务主 Chat 实际工具调用证据可追踪。
-- [ ] 备份/回滚可用，生产分别验两个阶段调用、可见性与会话恢复。
+- [ ] 备份/回滚已准备、服务与公网资源已验证；生产登录后两个阶段实际调用、可见性与会话恢复待有效验证码。
 
 ## 初始核验与 Implementation handoff
 

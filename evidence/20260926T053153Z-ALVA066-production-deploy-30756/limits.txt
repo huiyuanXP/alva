@@ -1,0 +1,6 @@
+run=20260926T053153Z-ALVA066-production-deploy-30756
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2175
+5bb823b6991d971f65f2ff69eacfe8421208eb3c

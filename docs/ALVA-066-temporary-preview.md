@@ -10,7 +10,7 @@
 - 运行配置和入口脚本：本 Worktree `.runtime/alva066-preview/`。主 Chat 随 main 更新为 Gemini 3.8 Flash High；识图保持 Gemini 3.8 Flash High。
 - 数据：原隔离验收项目 `.runtime/20260925T202946472Z-ALVA066-floorplan-upload/`，保留用户修改及原阶段 thread；2026-09-26 重启后只读验证为 revision 176、户型阶段、拓扑已确认、建筑待生成，诊断告警 0。未恢复旧备份覆盖用户操作。尺寸与需求包含明确合成验收数据，不是生产客户项目。
 - 启动前备份：`.runtime/alva066-preview/pre-start-backup/`。预览运行时，禁止对同一验收数据库同时启动 CLI 实测脚本；公网检查通过 HTTP 操作现有服务。
-- 生产 `alva.service`、生产 Tunnel、MCP 远端服务配置未改。
+- 生产现已按用户后续授权发布066，见[生产收据](ALVA-066-production-release.md)；生产 Tunnel 和 Coding Machine MCP 配置保持不变。
 
 ## 运行管理
 
@@ -61,3 +61,5 @@ neat-freak：代码、预览运行、合同及规则 changed-and-verified；整�
 main 已包含 066 集成提交 e44c23a（05:12:53 UTC）；生产 alva.service 主 PID 10760、子 Node PID 10772，仍为 04:54:57 UTC 启动，启动命令无 watch。生产本机回源 127.0.0.1:4173 返回 index-CJYIuDYm.js / index-COlzMmhx.css，与 ALVA-067 发布记录一致。临时预览公网返回 index-DywQUvK0.js / index-CSh0hGL9.css，包含066合并候选。
 
 本次检查的仓库、systemd timer/path 与应用启动配置未发现 main 合并后自动构建/部署机制；main 集成与预览更新由 Agent 按用户授权显式执行。生产服务工作目录虽是 main，常驻进程不会因 Git 合并重新加载模块。本次未重启、未发布、未操作客户数据。生产公网普通 HTTP 请求返回403，因此生产资源判断基于实际服务回源及进程，不声称本轮完成公网登录或业务验收。
+
+2026-09-26 05:32 UTC后：生产已发布066；此前本页的“生产未发布/仍为067”为历史核查记录。临时预览恢复且继续保留。

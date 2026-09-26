@@ -1,3 +1,7 @@
+## 2026-09-26 ALVA-066 已发布生产
+
+生产候选5bb823b已部署；公网资源与页面通过，登录后实际两阶段MCP验收待有效验证码。066仍in-progress，接入前置已释放。现役证据与回滚见[发布收据](docs/ALVA-066-production-release.md)。
+
 ## 2026-09-26 ALVA-066 已集成，尚未发布
 
 用户授权的候选 `c53d3ac` 已进入 main，含最新 Gemini 3.8 与快照恢复兼容修复。合并影响验证通过，066/029 保持 in-progress；生产不变。现役边界与下一步见 [NextTask](NextTask.md)，证据见 [临时预览](docs/ALVA-066-temporary-preview.md)。

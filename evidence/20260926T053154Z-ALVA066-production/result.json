@@ -1,0 +1,11 @@
+{
+  "run": "20260926T053154Z-ALVA066-production",
+  "candidate": "5bb823b6991d971f65f2ff69eacfe8421208eb3c",
+  "runtimeSource": "c53d3ac",
+  "previousRelease": "189fa20",
+  "backup": "/home/ubuntu/Alva/.runtime/20260926T053154Z-ALVA066-production",
+  "status": "deployed",
+  "autoRollback": false,
+  "localHealth": 200,
+  "publishedAt": "2026-09-26T05:32:26.443481+00:00"
+}
