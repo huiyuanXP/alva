@@ -28,6 +28,7 @@ import {DomainError,validateScene,calibrate,pointInPolygon,reject,type ImportSta
 import {applyTopologyCommand} from './topology/commands.js';
 import {validateTopology} from './topology/validate.js';
 import {registerTopologyDiagnostics} from './topology/routes.js';
+import {registerProfessionalWalls} from './topology/professional-access.js';
 import {firstTopologyRepairIssue} from './topology/repair.js';
 import {applyZoneOperation} from './zones-service.js';
 import {createTopologyVersion} from './topology/calibration.js';
@@ -61,7 +62,9 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   if(req.url.startsWith('/api/')&&!['/api/access','/api/public-access'].includes(req.url.split('?')[0])){
    const s=await store.session(req.cookies.alva_session||'');sessions.set(req,s);
    const id=req.url.match(/^\/api\/projects\/([^/?]+)/)?.[1];if(id&&id!==s.projectId)throw new DomainError(403,'无权访问其他项目');
-   if(s.role==='designer'&&!['GET','HEAD'].includes(req.method)&&req.url.split('?')[0]!=='/api/logout')throw new DomainError(403,'设计师入口为只读');
+   const path=req.url.split('?')[0];
+   if(s.role==='professional'&&!['GET','HEAD'].includes(req.method)&&!['/api/logout','/api/professional/walls/classify','/api/professional/walls/remove'].includes(path))throw new DomainError(403,'专业角色仅可执行受控墙体专业操作');
+   if(s.role==='designer'&&!['GET','HEAD'].includes(req.method)&&path!=='/api/logout')throw new DomainError(403,'设计师入口为只读');
   }
  });
  registerFloorplanAttachments(app,session);
@@ -72,6 +75,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  if(automaticRecommendations)registerRecommendationQueue(app,store,session,active);
  registerTodo(app);
  registerTopologyDiagnostics(app,store,session);
+ registerProfessionalWalls(app,store,session);
  app.get('/healthz',async()=>({ok:true,application:'alva'}));
  app.post('/api/access',async(req,reply)=>{
   const b=z.object({code:z.string().trim().min(16).max(200),inviteToken:z.string().min(32).max(200).optional()}).parse(req.body),key=req.ip,now=Date.now(),prior=failedAccess.get(key);

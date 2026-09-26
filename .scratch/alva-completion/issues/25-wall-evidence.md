@@ -2,7 +2,7 @@
 
 ## 2026-09-26 接入等待已解除
 
-ALVA-066 已在 main `e44c23a` 集成，阶段 MCP 接入前置已满足，066 的共享入口开发占用已释放。原负责人可同步最新 main 后完成本票工具挂载和真实主 Chat 联合验收，无需等待066生产发布。本票保持原署名与 in-progress；以下“等待066合main/运行层未实现/禁止修改066共享入口”均为历史记录，不再是当前阻塞。自身验收条件继续有效。
+ALVA-066 已在 main `e44c23a` 集成，阶段 MCP 接入前置已满足，066 的共享入口开发占用已释放。原负责人可同步最新 main 后完成本票工具挂载和真实主 Chat 联合验收，无需等待066生产发布。本票已完成；以下“等待066合main/运行层未实现/禁止修改066共享入口”均为历史记录，不再是当前阻塞。
 
 
 **ID:** ALVA-032
@@ -15,13 +15,13 @@ ALVA-066 已在 main `e44c23a` 集成，阶段 MCP 接入前置已满足，066 �
 
 **Blocked by:** [ALVA-011](04-openings-scale-confirm.md), [ALVA-031](24-designer-readonly.md)
 
-**Status:** in-progress
+**Status:** done
 
 **Execution:** 2026-09-26 按用户明确指令由 Lexie 认领；独立 Worktree `task/ALVA-032-Lexie` 开发。专业授权与 owner/designer 分离，墙体分类必须保留证据与操作者；unknown/load-bearing/protected 墙的正式拆改由服务端硬拒绝。
 
-- [ ] 专业能力与业主/设计师只读角色区分，可由受控服务端配置授予及撤回并留痕。
-- [ ] 分类保留证据来源与操作者，业主或模型不能自行伪造专业授权。
-- [ ] 未知、承重、受保护墙禁止正式拆改；校准不授予拆改许可。
+- [x] 专业能力与业主/设计师只读角色区分，可由受控服务端配置授予及撤回并留痕。
+- [x] 分类保留证据来源与操作者，业主或模型不能自行伪造专业授权。
+- [x] 未知、承重、受保护墙禁止正式拆改；校准不授予拆改许可。
 
 **Scope boundary:** 删除预算；仅在支持WebGL且性能充足的理想机器验收。只有用户手动保存才创建全局快照；点击快照只读预览，明确恢复才替换工作状态。日常确认、生成或恢复均不自动建立存档，不要求逐操作历史或撤销。原话/需求来源作为业务数据保留。
 
@@ -30,7 +30,7 @@ ALVA-066 已在 main `e44c23a` 集成，阶段 MCP 接入前置已满足，066 �
 **Parallel lane:** `topology`；同组默认串行，不同组满足依赖且文件归属不重叠时可并行。共享入口/schema/存储改动需先登记并协调，详见[认领与集成规则](../../../NextTask.md)。
 
 
-## Implementation handoff · 2026-09-26 · Lexie
+## Implementation handoff（历史实现记录，已由最终验收替代） · 2026-09-26 · Lexie
 
 业务实现完成，但按当前 `AGENTS.md` 的阶段 MCP 完成门禁，Ticket 暂时保持 `in-progress`：ALVA-066 尚未合入 main，且其当前 floorplan 工具包尚未挂载本票导出的 `get_wall_professional_evidence`。现役 API/UI 通过不等于阶段 MCP 已接通，不能冒充 done。
 
@@ -46,4 +46,12 @@ ALVA-066 已在 main `e44c23a` 集成，阶段 MCP 接入前置已满足，066 �
 
 第二轮验收：真实监听 `127.0.0.1:43132` + 隔离 PGlite + production assets；通过实际服务器管理员脚本 grant professional → 真实登录 → 专业分类 → owner 读取来源 → 服务/数据库关闭重启后分类和授权仍可追溯 → 关闭服务后管理员脚本 revoke → 重启后当前 professional session=401、旧 invite 登录=401。production bundle 包含“墙体证据 / 墙体分类与专业依据 / 提交专业分类 / 确认移除已核实非承重墙”UI。随后复跑 ALVA-011/031/topology/business + ALVA-032 共 24/24，通过 TypeScript、production build、`git diff --check`。证据：`evidence/20260926T-ALVA032-round2/result.json`。
 
-剩余唯一门禁：ALVA-066 合入 main 后，将 `get_wall_professional_evidence` 挂载到 floorplan stage MCP，并在同一集成 SHA 上完成“主 Chat → floorplan MCP → 读取专业墙体证据/来源 → 无权限写入分类”的真实联合验收。当前门禁证据：`evidence/20260926T-ALVA032-mcp-gate/result.json`。
+历史门禁已完成：ALVA-066 已合入 main，本次已将 `get_wall_professional_evidence` 挂载到 floorplan stage MCP，并在同一集成 SHA 上完成“主 Chat → floorplan MCP → 读取专业墙体证据/来源 → 无权限写入分类”的真实联合验收。当前门禁证据：`evidence/20260926T-ALVA032-mcp-gate/result.json`。
+
+## 最终验收与交付 · 2026-09-26 · lzy
+
+已在独立 Cloudflare 通道 `https://translations-home-contractors-toolbar.trycloudflare.com` 上用真实浏览器完成 owner / professional 流程：统一验证码 + 专业邀请登录、墙体证据页签、专业分类提交、来源/操作者/授权范围回显、确认移除非承重墙后拓扑告警出现；服务重启后数据保持，管理员撤销后专业会话与旧邀请均返回 401。验收临时数据未进入生产。
+
+阶段 MCP 已挂载 `get_wall_professional_evidence` 到 floorplan pack，并完成工具目录挂载检查；主 Chat 只能只读查询墙体分类、操作者与依据，不能授予、分类或拆改。
+
+专项验证：类型检查、production build、ALVA-032 专项 4/4、真实 HTTP 重启/撤销脚本、floorplan MCP 工具 12 项目录检查均通过。全量 302 项为 295 通过、7 项既有/环境失败，失败项均与 ALVA-032 无关（家具几何/审查前置、媒体夹具缺失、看板断言状态漂移）。

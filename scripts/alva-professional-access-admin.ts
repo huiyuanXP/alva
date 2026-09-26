@@ -1,0 +1,4 @@
+import {resolve} from 'node:path';
+import {AlvaStore} from '../api/store.js';
+const [action,projectId,...rest]=process.argv.slice(2);if(!action||!projectId)throw new Error('用法：grant <projectId> <operatorId> <authority> <grantEvidence> 或 revoke <projectId> <grantId> [revokedBy]');
+const dir=resolve(process.env.ALVA_DATA_DIR||'.runtime/alva-data'),store=new AlvaStore(resolve(dir,'db'));await store.init();try{if(action==='grant'){const [operatorId,authority,grantEvidence]=rest;if(!operatorId||!authority||!grantEvidence)throw new Error('grant 参数不足');console.log(JSON.stringify(await store.grantProfessional(projectId,operatorId,authority,grantEvidence,'server-admin'),null,2))}else if(action==='revoke'){const [grantId,revokedBy='server-admin']=rest;if(!grantId)throw new Error('revoke 参数不足');console.log(JSON.stringify({revoked:await store.revokeProfessional(projectId,grantId,revokedBy)},null,2))}else throw new Error('action 必须是 grant 或 revoke')}finally{await store.close()}

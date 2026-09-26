@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "run": "20260926T-ALVA032-round2",
+  "homeStatus": 200,
+  "uiLabelsPresent": true,
+  "professionalRole": true,
+  "classificationPersisted": true,
+  "ownerCanTraceSource": true,
+  "grantIsServerConfigured": true,
+  "serviceRestartReload": true,
+  "revokeAudited": true,
+  "revokedSessionStatus": 401,
+  "revokedInviteLoginStatus": 401
+}

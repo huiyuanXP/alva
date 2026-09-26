@@ -31,3 +31,4 @@
 .snapshot-current-draft{display:grid;gap:3px;padding:12px;border:1px solid #9aa999;border-radius:10px;background:#f0f4ec}.snapshot-current-draft span{font-size:12px;color:var(--live)}
 
 .walkthrough-status{position:absolute;z-index:5;left:14px;bottom:14px;display:grid;gap:3px;padding:9px 12px;border:1px solid #c5cbbb;border-radius:9px;background:#faf9f3e8;box-shadow:0 5px 18px #343c3222;font-size:11px;pointer-events:none}.walkthrough-status b{color:var(--live)}.walkthrough-status span{color:#656c5d}
+ .professional-wall-panel{display:grid;gap:10px}.professional-grants,.wall-classification-history{display:grid;gap:7px}.professional-grants article,.wall-classification-history article,.wall-classification-summary{display:grid;gap:3px;padding:9px;border:1px solid #dedad0;border-radius:8px;background:#faf8f2}.professional-wall-panel fieldset{display:grid;gap:8px}.professional-wall-panel textarea{min-height:64px}

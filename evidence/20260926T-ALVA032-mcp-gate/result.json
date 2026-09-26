@@ -1,0 +1,9 @@
+{
+  "ok": false,
+  "ticket": "ALVA-032",
+  "gate": "floorplan-stage MCP actual tool invocation on current product main",
+  "mainHasStageMcpRuntime": false,
+  "alva066BranchHasFloorplanMcpRuntime": true,
+  "alva066BranchHasGetWallProfessionalEvidenceMounted": false,
+  "reason": "Current main has no stage MCP runtime. ALVA-066 branch has floorplanTools but does not mount get_wall_professional_evidence. Business/API/UI acceptance passed, but project AGENTS.md requires actual stage-MCP invocation before ticket can be done."
+}
