@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-013](06-example-building-views.md), [ALVA-024](17-furniture-transform.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领。与 ALVA-040 同属 render lane，但明确文件隔离：ALVA-039 仅新增 `web/src/scene/walkthrough/*` 并最小修改 `web/src/main.tsx` 装配，不修改 ALVA-040 占用的 `BuildingView.tsx`、`SceneView.tsx` 或 `scene/sunlight*`。
 
 - [ ] WASD前后/横移与鼠标视角有效，墙和家具阻挡、合法门洞可通过。
 - [ ] 输入框聚焦、Esc、失焦均立即清空移动状态，恢复后不自动滑行。
