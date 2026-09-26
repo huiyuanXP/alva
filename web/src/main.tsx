@@ -97,7 +97,7 @@ function App(){
  const moveRoomLabel=async(roomId:string,position:XY)=>{try{const next=await api('/ui/room-label',{...command(),roomId,position});setProject(next)}catch(e){setError((e as Error).message)}};
  const divideZone=async(a:XY,b:XY)=>{try{const next=await mutate('/zones/divide',{a,b});setZoneDrawMode(false);setStatus('已添加虚拟分区线；它只划分功能区域，不会生成真实墙体。');setSelected(next.zones?.at(-1)?.id||'')}catch{}};
  const autoZone=async(point:XY)=>{try{const next=await mutate('/zones/three-wall',{point});setStatus('已根据三面墙生成新功能区，缺失的一边作为虚拟边界。');setSelected(next.zones?.at(-1)?.id||'')}catch{}};
- const building=project?.buildingCandidate||project?.confirmedBuilding;
+ const building=project&&project.buildingState?.status!=='expired'?(project.buildingCandidate||project.confirmedBuilding):undefined;
  const generateBuilding=async()=>{if(!project?.confirmedTopology)return;setError('');setBusy(true);try{const next=await api('/building/generate',{requestId:crypto.randomUUID(),expectedRevision:project.revision});setProject(next)}catch(e){setError((e as Error).message)}finally{setBusy(false)}};
  const confirmBuilding=async()=>{if(!project?.buildingCandidate)return;void mutate('/building/confirm',{confirmed:true}).catch(()=>{})};
  const cancelBuilding=async()=>{try{await api('/building/cancel',{});setStatus('已请求取消建筑生成')}catch(e){setError((e as Error).message)}};
