@@ -1,0 +1,24 @@
+Running as unit: alva069-749465f80ba9.service; invocation ID: c3559db48925465e8f399a39d30f9ee5
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2604 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.31 kB
+web/dist/assets/index-BwaCoKJf.css     36.63 kB │ gzip:   8.55 kB
+web/dist/assets/index-C_4KWF69.js   1,256.29 kB │ gzip: 360.12 kB
+
+✓ built in 1.89s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+ALVA069_JOB_EXIT=0
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 2.487s
+CPU time consumed: 1.892s
+Memory peak: 375.3M
+Memory swap peak: 0B

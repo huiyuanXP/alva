@@ -1,0 +1,21 @@
+{
+  "runId": "20260926T111251Z-ALVA069-chat-merged-types-9243ed",
+  "command": [
+    "env",
+    "GOMEMLIMIT=650MiB",
+    "GOGC=50",
+    "GOMAXPROCS=1",
+    "node",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 40.23,
+  "evidence": "evidence/20260926T111251Z-ALVA069-chat-merged-types-9243ed"
+}

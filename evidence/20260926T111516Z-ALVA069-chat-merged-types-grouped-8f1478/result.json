@@ -1,0 +1,17 @@
+{
+  "runId": "20260926T111516Z-ALVA069-chat-merged-types-grouped-8f1478",
+  "command": [
+    "bash",
+    "-c",
+    "for group in api web tests; do GOMEMLIMIT=400MiB GOGC=20 GOMAXPROCS=1 node node_modules/typescript/bin/tsc --noEmit -p \".runtime/alva069-check/tsconfig-$group.json\" || exit; done"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 22.13,
+  "evidence": "evidence/20260926T111516Z-ALVA069-chat-merged-types-grouped-8f1478"
+}

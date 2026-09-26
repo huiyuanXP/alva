@@ -1,0 +1,26 @@
+Running as unit: alva069-bfbdae101d31.service
+
+Interrupted while running:
+
+⚠ tests/alva-stage-sessions.test.ts (tests/alva-stage-sessions.test.ts:1:1)
+✖ tests/alva-stage-sessions.test.ts (7658.30784ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 0
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7672.147114
+
+✖ failing tests:
+
+test at tests/alva-stage-sessions.test.ts:1:1
+✖ tests/alva-stage-sessions.test.ts (7658.30784ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+Finished with result: oom-kill
+Main processes terminated with: code=killed/status=TERM
+Service runtime: 8.127s
+CPU time consumed: 6.547s
+Memory peak: 1.1G
+Memory swap peak: 0B

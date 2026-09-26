@@ -1,0 +1,7 @@
+Running as unit: alva069-ac092b75d0a3.service; invocation ID: f26499d0afe442e7b8c3559edb10b6c2
+Finished with result: oom-kill
+Main processes terminated with: code=killed/status=TERM
+Service runtime: 39.463s
+CPU time consumed: 30.129s
+Memory peak: 1.1G
+Memory swap peak: 0B

@@ -1,0 +1,18 @@
+{
+  "runId": "20260926T111651Z-ALVA069-chat-merged-stage-regression-40dd5c",
+  "command": [
+    "node",
+    "node_modules/tsx/dist/cli.mjs",
+    "--test",
+    "tests/alva-stage-sessions.test.ts"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 18.12,
+  "evidence": "evidence/20260926T111651Z-ALVA069-chat-merged-stage-regression-40dd5c"
+}

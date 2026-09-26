@@ -1,0 +1,22 @@
+{
+  "runId": "20260926T111350Z-ALVA069-chat-merged-types-heap-68e1ec",
+  "command": [
+    "env",
+    "NODE_OPTIONS=--max-old-space-size=650",
+    "GOMEMLIMIT=650MiB",
+    "GOGC=50",
+    "GOMAXPROCS=1",
+    "node",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 40.25,
+  "evidence": "evidence/20260926T111350Z-ALVA069-chat-merged-types-heap-68e1ec"
+}

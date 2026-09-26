@@ -1,0 +1,19 @@
+Running as unit: alva069-2dc0f473aed1.service
+✔ stage threads, summaries and delivery IDs survive store restart and preserve legacy messages (10592.351623ms)
+✔ failed stage entry retries the same handoff without switching or duplicating it (4772.039128ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16700.36256
+
+ALVA069_JOB_EXIT=0
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 16.935s
+CPU time consumed: 13.550s
+Memory peak: 1.1G
+Memory swap peak: 0B

@@ -1,0 +1,17 @@
+{
+  "runId": "20260926T110912Z-ALVA069-chat-browser-final-55b3ce",
+  "command": [
+    "node",
+    "node_modules/tsx/dist/cli.mjs",
+    "scripts/alva-069-browser.ts"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1600M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 22.13,
+  "evidence": "evidence/20260926T110912Z-ALVA069-chat-browser-final-55b3ce"
+}

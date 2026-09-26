@@ -30,6 +30,18 @@ export async function switchChatStage(store:AlvaStore,projectId:string,to:ChatSt
  catch(error){await store.updateChatState(projectId,state=>{if(state.active===next.active&&state.generation===next.generation)state.entryWarning=mcpFailure(error).structuredContent.error as McpFailure})}
  return store.chatState(projectId);
 }
+/** Retry delivery for the current stage without creating another handoff or changing stage. */
+export async function retryStageEntry(store:AlvaStore,projectId:string,stage:ChatStage,expectedRevision:number){
+ const state=await store.chatState(projectId),project=await store.get(projectId);
+ if(project.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后重试交接');
+ if(state.active!==stage)throw new DomainError(409,'当前阶段已变化，请刷新后重试');
+ const enter=entryHandlers.get(store);
+ if(!enter)throw new DomainError(503,'阶段交接服务暂不可用，请稍后重试');
+ try{await enter(projectId,state);await store.updateChatState(projectId,current=>{if(current.active===stage&&current.generation===state.generation)delete current.entryWarning})}
+ catch(error){await store.updateChatState(projectId,current=>{if(current.active===stage&&current.generation===state.generation)current.entryWarning=mcpFailure(error).structuredContent.error as McpFailure})}
+ return store.chatState(projectId);
+}
+
 /** Metadata is separate from design snapshots, so restoring a design never swaps thread identities. */
 export async function rememberThread(store:AlvaStore,projectId:string,stage:ChatStage,threadId:string){
  return store.updateChatState(projectId,state=>{

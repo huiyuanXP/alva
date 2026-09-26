@@ -1,0 +1,22 @@
+{
+  "runId": "20260926T110445Z-ALVA069-chat-build-16b439",
+  "command": [
+    "env",
+    "NODE_OPTIONS=--max-old-space-size=600",
+    "RAYON_NUM_THREADS=1",
+    "node",
+    "node_modules/vite/bin/vite.js",
+    "build",
+    "--config",
+    "web/vite.config.ts"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=800M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 4.05,
+  "evidence": "evidence/20260926T110445Z-ALVA069-chat-build-16b439"
+}

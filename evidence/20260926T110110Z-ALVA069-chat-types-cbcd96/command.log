@@ -1,0 +1,9 @@
+Running as unit: alva069-09baf0231ffa.service; invocation ID: 3d1305db6f6a4001803bcfc90fcdcfe7
+
+ALVA069_JOB_EXIT=0
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 49.006s
+CPU time consumed: 36.517s
+Memory peak: 1.1G
+Memory swap peak: 0B

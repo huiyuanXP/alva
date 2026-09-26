@@ -1,0 +1,21 @@
+{
+  "runId": "20260926T110110Z-ALVA069-chat-types-cbcd96",
+  "command": [
+    "env",
+    "GOMEMLIMIT=650MiB",
+    "GOGC=50",
+    "GOMAXPROCS=1",
+    "node",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "limits": [
+    "CPUQuota=80%",
+    "MemoryMax=1200M",
+    "TasksMax=128",
+    "RuntimeMaxSec=540"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 50.8,
+  "evidence": "evidence/20260926T110110Z-ALVA069-chat-types-cbcd96"
+}

@@ -1,0 +1,38 @@
+Running as unit: alva069-4db95e2bd482.service; invocation ID: 56ba2aff65844abfbbd01cd76b6353da
+✔ stage threads, summaries and delivery IDs survive store restart and preserve legacy messages (11892.343751ms)
+✖ failed stage entry retries the same handoff without switching or duplicating it (6309.368869ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19916.052441
+
+✖ failing tests:
+
+test at tests/alva-stage-sessions.test.ts:36:1
+✖ failed stage entry retries the same handoff without switching or duplicating it (6309.368869ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-069-chatgpt-chat-ui/tests/alva-stage-sessions.test.ts:49:33)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+ALVA069_JOB_EXIT=1
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 20.197s
+CPU time consumed: 15.254s
+Memory peak: 1.1G
+Memory swap peak: 0B
