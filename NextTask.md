@@ -26,7 +26,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 ## 2026-09-25 ALVA-036 正式完结
 
-手动全局快照已验收并集成，后随 ALVA-064 的 main 构建发布到生产；公网资源与本机构建哈希一致。生产保存写入未单独验收，隔离保存验收和发布边界见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。ALVA-037 仍可认领，ALVA-038 仍依赖 037；旧“历史”入口不代表两票完成。
+手动全局快照已验收并集成，后随 ALVA-064 的 main 构建发布到生产；公网资源与本机构建哈希一致。生产保存写入未单独验收，隔离保存验收和发布边界见[单票交接](.scratch/alva-completion/issues/29-manual-snapshot.md)。ALVA-037 已于 2026-09-26 完成并集成只读快照预览；ALVA-038 已解锁，可继续实现明确恢复。
 
 
 ## 2026-09-25 协调清理与根目录锁观察
