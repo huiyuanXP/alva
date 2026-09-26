@@ -31,3 +31,9 @@ main 集成 `39bc74f`，生产静态资源 `/assets/index-OlKM2r75.js` 公网返
 ### 文案精简生产发布收据
 
 main `23a79da` 已发布；生产资源 `/assets/index-1gXRCXyU.js` 返回 200，包含 `Warm, cozy`、`Warm whites, light wood` 和新的单问句文案。发布前备份原静态资源、源码及停止服务后的 132MiB 数据库于 `.runtime/alva057-copy-20260926T030543Z/`，重启系统级 `alva.service` 后服务 active。公网登录只读浏览器验收通过：新资源、问卷弹窗可用，脚本错误 0；证据 `evidence/2026-09-26T030838473Z-ALVA057-copy-public/result.json`。ALVA-066 阶段 MCP 仍待联验，057 保持 in-progress。
+
+## 2026-09-26 入口图标、长题提示与选项图标
+
+入口保留左侧咨询栏右上角的小号按钮，房屋符号换为带话筒的 Headset 图标。截图里的 Q09 只以 “Got pictures you love?” 作标题；Pinterest/Houzz/Instagram 等例子移到下方灰色说明。Q06、Q08、Q11、Q31、Q38、Q39、Q45、C2、C4、C5 等共 23 个长题或带额外指令的题目同步拆分；第一题使用标题下的 14px 灰字，卡内后续题目用字段说明，不修改题目 ID 和答题结构。Look & feel 的 Q06 氛围和 Q10 排斥项、以及同类 Q26 照明和 Q32 材料选项加入语义线条图标；Q07 色板和 Q08 风格图沿用现有图像方案，不填充无意义的通用方框。
+
+隔离工作区类型检查、41/41 回归、生产构建、恢复与 Chat 7 组、桌面/手机 6 组、入口反馈浏览器检查均通过。Q06 桌面截图见本轮 `evidence/2026-09-26T033514706Z-ALVA057-browser/q06-icons.png`。专项视觉验收通过：Q09 标题和灰字分层、Q06 的 10 个选项图标、Q10 的 8 个图标及入口耳麦均在合成项目真实浏览器中核对，页面错误 0。证据 `evidence/2026-09-26T033640287Z-ALVA057-visual/`。生产收据待部署后补记。

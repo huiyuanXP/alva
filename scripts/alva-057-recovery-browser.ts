@@ -76,7 +76,7 @@ try {
 
   await modal.getByLabel('Respondent').selectOption(sam);
   await expect(modal.getByRole('heading')).toHaveText('Which palette appeals most to you?');
-  const colorNote = modal.getByLabel('Any colors you love, or would never have? (optional)');
+  const colorNote = modal.getByLabel('Which colors would you love to use or avoid?');
   const beforeLoss = await current(sam);
   const requestIds: string[] = [];
   let loseFirstResponse = true;

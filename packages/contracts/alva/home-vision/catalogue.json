@@ -459,7 +459,7 @@
           "field": "tone",
           "type": "multi",
           "max": 3,
-          "prompt": "Forget style names for a moment. When you walk in, how do you want your home to feel? Pick up to three.",
+          "prompt": "When you walk in, how do you want your home to feel?",
           "options": [
             {
               "id": "Q06a.cozy",
@@ -501,7 +501,8 @@
               "id": "Q06a.welcoming",
               "label": "Welcoming for guests"
             }
-          ]
+          ],
+          "helper": "Forget style names for a moment. Pick up to three."
         }
       ],
       "priority": "P3"
@@ -555,7 +556,8 @@
           "id": "Q07b",
           "field": "colors_love_avoid",
           "type": "text",
-          "prompt": "Any colors you love, or would never have? (optional)"
+          "prompt": "Which colors would you love to use or avoid?",
+          "helper": "Optional. Tell us about colors you love and colors you would never choose."
         }
       ],
       "priority": "P3"
@@ -571,7 +573,7 @@
           "field": "style",
           "type": "multi",
           "display": "image_cards",
-          "prompt": "Do any of these style names mean something to you? Totally optional.",
+          "prompt": "Do any of these style names mean something to you?",
           "options": [
             {
               "id": "Q08a.dont_know",
@@ -631,7 +633,8 @@
               "label": "Wabi-sabi"
             }
           ],
-          "logic": "Stored as the user's own words. Designer checks against Q09 images."
+          "logic": "Stored as the user's own words. Designer checks against Q09 images.",
+          "helper": "Optional. Choose any that resonate with you."
         }
       ],
       "priority": "P3"
@@ -650,7 +653,8 @@
             "image",
             "link"
           ],
-          "prompt": "Got pictures you love? Pinterest boards, Houzz, Instagram, a hotel, a friend's place: anything goes."
+          "prompt": "Got pictures you love?",
+          "helper": "Pinterest boards, Houzz, Instagram, a hotel or a friend’s place: anything goes."
         },
         {
           "id": "Q09b",
@@ -725,8 +729,8 @@
           "id": "Q11a",
           "field": "retained",
           "type": "text_with_photo",
-          "prompt": "Is there something you'd love to keep because it means something to you? A family piece, some art, a favorite chair…",
-          "helper": "Leave blank if nothing comes to mind.",
+          "prompt": "Is there something you'd love to keep because it means something to you?",
+          "helper": "A family piece, some art or a favorite chair. Leave blank if nothing comes to mind.",
           "logic": "If answered, the designer asks for size and condition later (replaces v1's full furniture inventory)."
         }
       ],
@@ -1127,8 +1131,8 @@
           "field": "room.kitchen.appliances",
           "type": "text",
           "show_if": "!NO_COOK",
-          "prompt": "Any must-have appliances? (optional)",
-          "helper": "e.g. induction cooktop, double oven, dishwasher, wine fridge, steam oven, rice cooker"
+          "prompt": "Which appliances are must-haves?",
+          "helper": "Optional. For example, an induction cooktop, double oven, dishwasher, wine fridge, steam oven or rice cooker."
         }
       ],
       "logic": "HEAVY_COOK → ventilation check; HEAVY_COOK && MARKET_SG → Q16a.wet_dry shown.",
@@ -1525,7 +1529,7 @@
           "id": "Q20c",
           "field": "room.bathroom.features",
           "type": "multi",
-          "prompt": "Any specific features? (optional)",
+          "prompt": "Which bathroom features matter to you?",
           "options": [
             {
               "id": "Q20c.bidet",
@@ -1548,7 +1552,8 @@
               "label": "Rain shower"
             }
           ],
-          "max": 3
+          "max": 3,
+          "helper": "Optional. Choose any features that would make the space work better."
         }
       ],
       "priority": "P3"
@@ -1793,7 +1798,7 @@
           "id": "Q24a",
           "field": "hosting_profile.overnight",
           "type": "single",
-          "prompt": "How often do you have overnight guests, and where should they sleep?",
+          "prompt": "What guest sleeping setup do you need?",
           "options": [
             {
               "id": "Q24a.rarely",
@@ -1818,7 +1823,8 @@
               "id": "Q24a.long_stays",
               "label": "Long stays (e.g. parents for weeks): they need their own storage and privacy"
             }
-          ]
+          ],
+          "helper": "Think about how often guests stay and where they might sleep."
         }
       ],
       "priority": "P3"
@@ -2034,7 +2040,7 @@
           "field": "hvac_type",
           "type": "multi",
           "collapsed": true,
-          "prompt": "How is it heated and cooled? (optional)",
+          "prompt": "How is your home heated and cooled?",
           "other": false,
           "options": [
             {
@@ -2062,7 +2068,8 @@
               "label": "A wood-burning fireplace"
             }
           ],
-          "max": 3
+          "max": 3,
+          "helper": "Optional. Select the systems you already use."
         },
         {
           "id": "Q27c",
@@ -2264,7 +2271,7 @@
           "type": "multi",
           "min": 2,
           "max": 2,
-          "prompt": "When space or budget runs short, which two things would you protect above everything else?",
+          "prompt": "Which two things matter most when space or budget is limited?",
           "options": [
             {
               "id": "Q31a.storage",
@@ -2317,7 +2324,8 @@
               "id": "Q31a.sustainability",
               "label": "Sustainability"
             }
-          ]
+          ],
+          "helper": "Choose the priorities you would protect above everything else."
         }
       ],
       "priority": "P3"
@@ -2333,7 +2341,7 @@
           "field": "material_priorities",
           "type": "multi",
           "max": 3,
-          "prompt": "When it comes to materials and furniture, what matters most? Pick up to three.",
+          "prompt": "What matters most in your materials and furniture?",
           "options": [
             {
               "id": "Q32a.natural",
@@ -2368,13 +2376,15 @@
               "id": "Q32a.performance",
               "label": "Stain-resistant, performance fabrics"
             }
-          ]
+          ],
+          "helper": "Pick up to three."
         },
         {
           "id": "Q32b",
           "field": "sourcing_preferences.brands",
           "type": "text",
-          "prompt": "Any brands or stores you love? (optional)"
+          "prompt": "Which brands or stores do you love?",
+          "helper": "Optional. Leave blank if none come to mind."
         }
       ],
       "logic": "If HAS_CHILDREN || HAS_PETS, show Q32a.durable first (never pre-selected).",
@@ -2582,9 +2592,10 @@
           "type": "per_room_single",
           "show_if": "count_selected(Q05a) >= 2 && !ONE_ROOM",
           "collapsed": true,
-          "prompt": "Want to set this room by room? (optional)",
+          "prompt": "Would you like to set the level of change room by room?",
           "rooms_from": "Q05a",
-          "options_from": "Q35a"
+          "options_from": "Q35a",
+          "helper": "Optional. You can choose a different scope for each space."
         }
       ],
       "priority": "P3"
@@ -2711,7 +2722,8 @@
           "id": "Q38a",
           "field": "known_fixed_elements",
           "type": "text_with_photo",
-          "prompt": "Is there anything you already know can't be moved or changed? For example a window, a column, a pipe, or a wall you've been told is structural."
+          "prompt": "Is there anything you already know can't be moved or changed?",
+          "helper": "For example, a window, column, pipe or a wall you have been told is structural."
         }
       ],
       "priority": "P1"
@@ -2726,11 +2738,11 @@
           "id": "Q39a",
           "field": "approvals_constraints",
           "type": "multi",
-          "prompt": "Are there any rules or permissions that might affect the work? Tick anything that could apply.",
+          "prompt": "Are there any rules or permissions that might affect the work?",
           "prompt_variants": {
             "RENTING": "What does your lease allow?"
           },
-          "helper": "Don't worry if you're unsure. Your designer will help check.",
+          "helper": "Tick anything that could apply. Don't worry if you're unsure; your designer will help check.",
           "options": [
             {
               "id": "Q39a.removable_only",
@@ -3035,7 +3047,7 @@
           "id": "Q44a",
           "field": "budget_scope",
           "type": "multi",
-          "prompt": "What should this budget include? Tick all that apply.",
+          "prompt": "What should this budget include?",
           "options": [
             {
               "id": "Q44a.construction",
@@ -3099,7 +3111,8 @@
               "exclusive": true
             }
           ],
-          "logic": "Unticked visible items are listed in the brief as 'possibly outside the budget, confirm'."
+          "logic": "Unticked visible items are listed in the brief as 'possibly outside the budget, confirm'.",
+          "helper": "Tick all that apply."
         }
       ],
       "priority": "P3"
@@ -3114,8 +3127,8 @@
           "id": "Q45a",
           "field": "contingency",
           "type": "single",
-          "prompt": "Renovations can uncover surprises. Have you set aside a contingency?",
-          "helper": "Many people keep 10–20% in reserve, especially in older homes.",
+          "prompt": "Have you set aside a contingency?",
+          "helper": "Renovations can uncover surprises. Many people keep 10–20% in reserve, especially in older homes.",
           "options": [
             {
               "id": "Q45a.separate",
@@ -3533,7 +3546,8 @@
           "id": "Q50d",
           "field": "past_experience",
           "type": "text",
-          "prompt": "What would you like to be different from any past experience with a designer or contractor? (optional)"
+          "prompt": "What would you change about past work with a designer or contractor?",
+          "helper": "Optional. Leave blank if you haven't worked with one."
         }
       ],
       "priority": "P3"
@@ -3696,7 +3710,8 @@
           "field": "child_room.furniture_model",
           "type": "text",
           "show_if": "selected(C1a.crib_chosen)",
-          "prompt": "Which crib or furniture? (optional)"
+          "prompt": "Which crib or furniture do you have in mind?",
+          "helper": "Optional. Share any pieces you have already chosen."
         }
       ],
       "note_for_designer": "Place sleep furniture according to current safe-sleep guidance for the market (e.g. AAP in the US, NHS / Lullaby Trust in the UK); a suitable professional verifies it.",
@@ -3713,7 +3728,7 @@
           "id": "C2a",
           "field": "access_needs",
           "type": "multi",
-          "prompt": "Would anything make getting around at home easier or safer for anyone? Tell us what would help; no medical details needed.",
+          "prompt": "Would anything make getting around at home easier or safer?",
           "options": [
             {
               "id": "C2a.shower_bath",
@@ -3744,7 +3759,8 @@
               "label": "Nothing needed right now",
               "exclusive": true
             }
-          ]
+          ],
+          "helper": "Tell us what would help; no medical details needed."
         },
         {
           "id": "C2b",
@@ -3862,7 +3878,7 @@
           "id": "C4a",
           "field": "sensitivities",
           "type": "multi",
-          "prompt": "Is anyone at home sensitive to anything we should avoid? Share only what you're comfortable with.",
+          "prompt": "Is anyone at home sensitive to anything we should avoid?",
           "options": [
             {
               "id": "C4a.smells",
@@ -3893,7 +3909,8 @@
               "id": "C4a.pro_advice",
               "label": "We have professional advice we're happy to share"
             }
-          ]
+          ],
+          "helper": "Share only what you're comfortable with."
         }
       ],
       "logic": "Store preferences only. Never ask for diagnoses. Treat as sensitive data.",
@@ -3910,7 +3927,7 @@
           "id": "C5a",
           "field": "preference_divergence.approach",
           "type": "single",
-          "prompt": "It's really common for people to like different things. How would you like us to handle it?",
+          "prompt": "How would you like us to handle different tastes?",
           "options": [
             {
               "id": "C5a.one_each",
@@ -3928,13 +3945,15 @@
               "id": "C5a.talk_it_through",
               "label": "Let's talk it through with the designer"
             }
-          ]
+          ],
+          "helper": "It is common for people at home to prefer different things."
         },
         {
           "id": "C5b",
           "field": "preference_divergence.where",
           "type": "text",
-          "prompt": "Where do you differ most? (optional)"
+          "prompt": "Where do your tastes differ most?",
+          "helper": "Optional. Tell us about the rooms or decisions where you disagree."
         }
       ],
       "priority": "P3"
