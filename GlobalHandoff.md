@@ -197,3 +197,7 @@ neat-freak过程事实已同步：局部代码/实测verified-current，整票/�
 
 ## 2026-09-26 · ALVA-037 快照只读预览合同
 全局历史只展示 `/api/save` 创建的手动快照；版本列表时间由 `AlvaStore.versions()` 统一转 ISO。读取 `/api/versions/:version` 仅返回保存副本，不修改当前工作稿、revision 或版本列表。前端 `SnapshotHistory` 使用独立覆盖层渲染快照 2D/3D、需求与依据，不把快照赋值给当前 App project；关闭预览即回到原工作稿。只有明确 restore 才允许替换工作状态。
+
+
+## 2026-09-26 · ALVA-038 快照全局恢复合同
+恢复只接受已存在的手动快照，并通过 `/api/restore` 显式确认执行；预览仍保持只读。恢复采用 `prepareSnapshotRestore()` 深拷贝快照完整 Project 状态，保留当前 revision/savedVersion 计数并标记 dirty；恢复本身不创建新快照或恢复前备份点。不存在快照、stale revision、数据库失败均不部分写入。若当前正在生成建筑3D，restore 409；快照内 building 与其 confirmedTopology 版本/指纹不一致时建筑结果清空并标记 expired，不能误用过期3D。

@@ -1,4 +1,5 @@
 import type {Project} from '../model.js';
+import {validateBuildingScene} from '../building/types.js';
 
 // These legacy questions were explicitly removed from snapshot/delivery scope.
 // Do not change the working questionnaire or rewrite previously saved versions.
@@ -35,4 +36,34 @@ export function snapshotProject(project: Project): Project {
   }
   if (snapshot.intakeProgress?.cursor && isBudgetAnswer(snapshot.intakeProgress.cursor)) snapshot.intakeProgress.cursor = null;
   return snapshot;
+}
+
+
+/** Prepare a saved snapshot as the new working draft without mutating the saved copy.
+ *  Current revision/version counters are retained; incompatible legacy building results are expired instead of reused. */
+export function prepareSnapshotRestore(snapshot: Project, currentRevision: number, currentSavedVersion: number): Project {
+  const restored = structuredClone(snapshot);
+  restored.revision = currentRevision;
+  restored.savedVersion = currentSavedVersion;
+  restored.dirty = true;
+  const topology = restored.confirmedTopology;
+  if (!topology) {
+    restored.buildingCandidate = undefined;
+    restored.confirmedBuilding = undefined;
+    if (restored.buildingState.status !== 'idle') restored.buildingState = {status: 'expired', attempts: restored.buildingState.attempts || 0, updatedAt: new Date().toISOString(), error: '恢复的快照没有已确认拓扑，建筑结果已作废'};
+    return restored;
+  }
+  let buildingValid = true;
+  for (const building of [restored.buildingCandidate, restored.confirmedBuilding]) {
+    if (!building) continue;
+    try { validateBuildingScene(building, topology.scene, topology.version, topology.sourceFingerprint); }
+    catch { buildingValid = false; break; }
+  }
+  const stateMatches = !restored.buildingState.topologyFingerprint || restored.buildingState.topologyFingerprint === topology.sourceFingerprint;
+  if (!buildingValid || !stateMatches) {
+    restored.buildingCandidate = undefined;
+    restored.confirmedBuilding = undefined;
+    restored.buildingState = {status: 'expired', topologyVersion: topology.version, topologyFingerprint: topology.sourceFingerprint, attempts: restored.buildingState.attempts || 0, updatedAt: new Date().toISOString(), error: '快照中的建筑结果与保存时拓扑不一致，已作废；请重新生成建筑3D'};
+  }
+  return restored;
 }

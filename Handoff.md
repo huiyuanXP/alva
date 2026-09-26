@@ -329,3 +329,7 @@ Lexie 完成并验收设计师只读授权：统一验证码+invite token 登录
 
 ## 2026-09-26 · ALVA-037 快照列表与只读状态预览
 Lexie 完成独立快照历史/预览层：列表仅显示手动保存版本，展示当前工作稿未保存状态、版本号和 ISO 时间；空列表有明确空态。点击版本进入独立只读覆盖层，可查看二维、三维、需求/依据；不调用模型、不替换当前工作稿，失败可重试。显式恢复按钮仍调用既有 `/api/restore`。同时修复 PGlite timestamp 在 `/api/versions` 被序列化为 `{}` 的问题。个人实现 `3ab060d`；第一轮 15/15，第二轮真实 HTTP + 相关回归 20/20，通过 TypeScript/production build/diff-check。ALVA-038 已解锁。
+
+
+## 2026-09-26 · ALVA-038 从快照恢复全局状态
+Lexie 完成快照显式全局恢复强化。恢复 scene/topology/building/answers/evidence/messages/findings/proposals/changes/zones 等完整状态；失败/冲突保持原子，恢复不自动建快照。增加建筑生成并发 409 保护及旧快照建筑指纹校验，避免恢复后旧生成任务或过期3D误用。UI确认文案明确未保存修改会被替换、恢复前不会自动备份。个人实现 `a812678`；第一轮 19/19，第二轮真实 HTTP + 相关回归 24/24，通过 TypeScript/production build/diff-check。

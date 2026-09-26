@@ -1,6 +1,7 @@
 import {registerIntake} from './intake/routes.js';
 import {registerDesignerAccess} from './access/designer-access.js';
 import {registerSnapshots} from './snapshots/routes.js';
+import {prepareSnapshotRestore} from './snapshots/state.js';
 import Fastify from 'fastify';
 import cookie from '@fastify/cookie';
 import rateLimit from '@fastify/rate-limit';
@@ -103,7 +104,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  registerIntake(app,store,session);
  registerConsultation(app,store,session,active,chatCodex,activeTranscriptions,transcriptionCall);registerReferences(app,store,session,chatCodex);registerExports(app,store,session);
  registerSnapshots(app,store,session);
- app.post('/api/restore',async req=>{const b=Command.extend({version:z.number().int().positive(),confirmed:z.literal(true)}).parse(req.body);const snap=await store.snapshot(session(req).projectId,b.version);return mutate(req,b,'restore',p=>{const revision=p.revision,savedVersion=p.savedVersion;Object.assign(p,structuredClone(snap),{revision,savedVersion,dirty:true});p.changes.push({id:randomUUID(),description:`回退到保存版本${b.version}（工作稿）`,evidenceIds:[],context:[],createdAt:new Date().toISOString()})})});
+ app.post('/api/restore',async req=>{const b=Command.extend({version:z.number().int().positive(),confirmed:z.literal(true)}).parse(req.body),s=session(req);if(activeBuilding.has(s.projectId))reject('当前仍在生成建筑3D，请先取消或等待完成后再恢复快照',409);const snap=await store.snapshot(s.projectId,b.version);return mutate(req,b,'restore',p=>{const restored=prepareSnapshotRestore(snap,p.revision,p.savedVersion);Object.assign(p,restored);p.changes.push({id:randomUUID(),description:`恢复到保存版本${b.version}（当前工作稿）`,evidenceIds:[],context:['用户明确确认：当前未保存修改将被该手动快照整体替换','恢复本身不会创建新的快照；如需保留恢复后的状态，请再次手动保存'],createdAt:new Date().toISOString()})})});
  app.post('/api/import',async(req,reply)=>{
   const s=session(req);if(s.role!=='owner')reject('仅业主可导入',403);
   const b=Command.extend({mime:z.string(),data:z.string(),filename:z.string().trim().min(1).max(255).optional()}).parse(req.body);

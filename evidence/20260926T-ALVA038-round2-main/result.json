@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "run": "20260926T-ALVA038-round2-main",
+  "homeStatus": 200,
+  "uiConfirmationCopyPresent": true,
+  "explicitRestoreReplacedWholeDraft": true,
+  "restoreCreatesNoSnapshot": true,
+  "activeBuildingRestoreStatus": 409,
+  "activeBuildingRestoreBlocked": true,
+  "snapshotsPersistAfterRestart": true,
+  "restoreWorksAfterRestart": true,
+  "versionCount": 1
+}
