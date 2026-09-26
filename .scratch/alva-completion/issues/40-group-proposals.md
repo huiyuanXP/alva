@@ -10,9 +10,13 @@
 
 **Blocked by:** [ALVA-046](39-reference-furniture.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+
+**Owner:** Lexie
+
+**Branch / Worktree:** `task/ALVA-047-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-047-Lexie`
 
 - [ ] 至少两组真实差异且可预览，周边参考不自动勾选，锁定对象排除。
 - [ ] 整组全成或全败、版本冲突和幂等均验证，失败不留部分家具。
