@@ -96,7 +96,8 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-030](.scratch/alva-completion/issues/23-professional-unknowns.md) | 专业未知与用户取舍分离 | `review` | Lexie | `task/ALVA-030-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-030-Lexie` | 预计 review/store/MCP 合同相关文件；依赖029已验收集成，in-progress || [ALVA-033](.scratch/alva-completion/issues/26-wall-renovation.md) | 非承重墙改造与开口迁移 | `renovation` |  |  | 依赖032/021已验收集成，待署名认领；不自动开工 |
+| [ALVA-033](.scratch/alva-completion/issues/26-wall-renovation.md) | 非承重墙改造与开口迁移 | `renovation` |  |  | 依赖032/021已验收集成，待署名认领；不自动开工 |
+| [ALVA-044](.scratch/alva-completion/issues/37-audience-documents.md) | 设计师任务书与业主说明 | `delivery` |  |  | 依赖016/030/036/042/043已验收集成，待署名认领；不自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
