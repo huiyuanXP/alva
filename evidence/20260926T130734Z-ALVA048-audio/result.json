@@ -1,0 +1,16 @@
+{
+  "ticket": "ALVA-019",
+  "round": 1,
+  "source": "file",
+  "provider": "real",
+  "fixtureBytes": 58002,
+  "transcriptLength": 31,
+  "transcriptPreview": "How old is the Brooklyn Bridge?",
+  "projectRevisionBefore": 0,
+  "projectRevisionAfterTranscription": 0,
+  "sentText": "ALVA019_CORRECTED_TEXT_用户已经修改转写内容",
+  "storedUserText": "ALVA019_CORRECTED_TEXT_用户已经修改转写内容",
+  "storedEvidenceQuote": "ALVA019_CORRECTED_TEXT_用户已经修改转写内容",
+  "audioPersisted": false,
+  "passed": true
+}

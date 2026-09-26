@@ -1,0 +1,25 @@
+✔ ALVA-015 manual answers are visible to later Chat snapshots (5.192032ms)
+✔ ALVA-015 Chat confirmation keeps exact quote, cannot duplicate, and locked values require explicit unlock (5178.055557ms)
+✔ persistent Chat snapshots retain current geometry once and keep historical topology metadata (2.112046ms)
+✔ intake drafts survive retrieval without becoming answers/snapshots; confirmation and auth are enforced (6302.868204ms)
+✔ ALVA-028 confirmed answer creates sourced life-pain findings idempotently (5222.671148ms)
+✔ ALVA-028 negative wording produces no invented pain finding (3039.675984ms)
+✔ ALVA-014 keeps 60 IDs, disables removed scope and keeps time planning (2.214342ms)
+✔ ALVA-014 answers stay scoped, preserve explicit states and enforce locks (5.178301ms)
+✔ ALVA-014 HTTP contract omits legacy budget and removed write route (4872.611553ms)
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (6101.686724ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (3112.888412ms)
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (2885.705149ms)
+✔ ALVA-016 unanswered statistics keep project/room scopes independent and exclude disabled questions (4.855953ms)
+✔ ALVA-016 repeated analyze with no new evidence is a no-op (4916.163263ms)
+✔ ALVA-019 successful WAV transcription returns editable text without persisting audio or sending chat (4932.065422ms)
+✔ ALVA-019 cancellation aborts transcription and leaves project untouched (2897.039291ms)
+✔ ALVA-019 provider failure and invalid WAV never create chat/evidence side effects (3078.275358ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66232.850396

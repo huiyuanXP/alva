@@ -3,7 +3,8 @@ import {mainChatAgent} from './main-chat-agent.js';
 import {spawn} from 'node:child_process';
 import {createInterface} from 'node:readline';
 import {mkdir,rm} from 'node:fs/promises';
-import {resolve} from 'node:path';
+import {existsSync} from 'node:fs';
+import {dirname,resolve} from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
 import {mcpFailure,McpError} from './mcp/contracts.js';
 import {codexTimeoutMs} from './codex-timeout.js';
@@ -24,7 +25,9 @@ export async function runCodex(input:CodexInput):Promise<string>{
  const args=['app-server','--listen','stdio://'];
  const configure=(object:Record<string,unknown>,prefix='')=>{for(const [key,value]of Object.entries(object)){const path=prefix?`${prefix}.${key}`:key;if(value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length)configure(value as Record<string,unknown>,path);else args.push('-c',`${path}=${JSON.stringify(value)}`)}};configure(config);
  // CODEX_HOME is used for its documented purpose: isolate this application call's Codex configuration and state.
- const child=spawn('codex',args,{cwd:work,env:{PATH:process.env.PATH,HOME:process.env.HOME,CODEX_HOME:home,OPENAI_API_KEY:process.env.OPENAI_API_KEY},stdio:['pipe','pipe','pipe']});
+ const siblingCodex=resolve(dirname(process.execPath),'codex');
+ const child=spawn(existsSync(siblingCodex)?siblingCodex:'codex',args,{cwd:work,env:{PATH:process.env.PATH,HOME:process.env.HOME,CODEX_HOME:home,OPENAI_API_KEY:process.env.OPENAI_API_KEY},stdio:['pipe','pipe','pipe']});
+ child.stdin.on('error',()=>{});
  const exited=new Promise<void>(ok=>child.once('exit',()=>ok()));
  let sequence=0,threadId='',turnId='',final='',settled=false,diagnostic='',compactionSeen=false;
  const pending=new Map<number,{resolve:(v:any)=>void;reject:(e:Error)=>void}>();
@@ -33,7 +36,7 @@ export async function runCodex(input:CodexInput):Promise<string>{
  // Attach immediately so startup/turn errors never cause an unhandled rejection.
  completion.catch(()=>{});
  const failAll=(error:Error)=>{if(settled)return;settled=true;fail(error);for(const p of pending.values())p.reject(error);pending.clear()};
- const send=(packet:unknown)=>{if(!child.stdin.destroyed)child.stdin.write(JSON.stringify(packet)+'\n')};
+ const send=(packet:unknown)=>{if(child.stdin.destroyed)return;try{child.stdin.write(JSON.stringify(packet)+'\n')}catch{}};
  const rpc=(method:string,params:unknown)=>new Promise<any>((resolve,reject)=>{const id=++sequence;pending.set(id,{resolve,reject});send({id,method,params})});
  const timer=setTimeout(()=>failAll(new Error(`Codex调用超时（${timeoutMs/1000}秒），请重试`)),timeoutMs);
  const abort=()=>{if(threadId&&turnId)send({id:++sequence,method:'turn/interrupt',params:{threadId,turnId}});failAll(new Error('已取消'));child.kill('SIGTERM')};

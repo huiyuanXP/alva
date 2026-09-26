@@ -1,0 +1,16 @@
+{
+  "ticket": "ALVA-048",
+  "model": "gemini-3.8-flash-high",
+  "text": {
+    "done": true,
+    "responseChars": 387
+  },
+  "image": {
+    "done": true,
+    "responseChars": 198
+  },
+  "sceneUnchanged": true,
+  "snapshotUnchanged": true,
+  "imageNotPersisted": true,
+  "errors": []
+}

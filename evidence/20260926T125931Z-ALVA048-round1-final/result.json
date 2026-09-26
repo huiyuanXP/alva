@@ -1,0 +1,11 @@
+{
+  "ticket": "ALVA-048",
+  "round": 1,
+  "run": "evidence/20260926T125931Z-ALVA048-round1-final",
+  "tests": 63,
+  "pass": 63,
+  "fail": 0,
+  "skipped": 0,
+  "typecheck": true,
+  "baseline_exclusion": "tests/alva-business.test.ts excluded from formal set because unchanged main reproduces its stale collision-coordinate failure; recorded separately, not skipped"
+}
