@@ -1,3 +1,7 @@
+## 2026-09-26 ALVA-029 验收未通过
+
+主线保存路由缺少当前审查门禁及采用凭证，隔离HTTP路由探针已复现；029历史50/50模块通过、066真实复核/保存过程通过不等于最终同SHA验收。详见[验收复核](docs/ALVA-029-acceptance-audit.md)。保留xuanpu-chat-6pro署名与in-progress，不解锁030。下一步由029/066固定联合候选，补页面定位、布局变更失效、非空用户取舍与保存/刷新/恢复，再集成；本轮未改产品或生产。
+
 ## ALVA-067 发布认领
 
 2026-09-26 用户明确授权部署；codex-chat-feedback 负责发布已验main候选189fa20，备份/回滚/公网核验。复用独立Worktree /home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback，发布分支 release/ALVA-067-chat-progress。仅占用alva.service生产发布窗口，不修改066验收环境。

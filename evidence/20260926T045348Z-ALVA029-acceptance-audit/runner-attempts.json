@@ -1,0 +1,14 @@
+{
+  "attempt1": {
+    "exitCode": 127,
+    "reason": "systemd user service PATH did not contain node; probe did not execute"
+  },
+  "attempt2": {
+    "exitCode": 0,
+    "repair": "Pass current PATH to isolated systemd unit",
+    "cpuQuota": "20%",
+    "memoryMax": "400M",
+    "memorySwapMax": 0
+  },
+  "historicalModuleEvidence": "029 worktree evidence/20260925T194339Z-ALVA029-final-regression-543861/output.log: 50 tests, 50 pass, 0 fail; inspected, not rerun"
+}
