@@ -69,3 +69,11 @@
 .stage-chat-content>p[role=status]{margin:8px 2px;font-size:12px;line-height:1.5}
 .stage-chat-content .stage-entry-warning{margin:6px 0 12px}
 .chat-stages .segmented button.active{color:#4f5e4a}
+
+.chat-stages{padding-bottom:0;border-bottom:0}
+.chat .messages{padding-top:0}
+.chat-stage-extras:empty{display:none}
+.chat-stage-extras>details{margin:6px 0 10px;border-top:1px solid #e4e3da}
+.chat-stage-extras>label{margin:8px 0 12px}
+
+.chat-stages{min-height:0}
