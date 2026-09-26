@@ -16,4 +16,8 @@ main集成 `817c253`。发布前备份原代码、dist与停止服务后的127Mi
 
 用户按两张生产截图要求：入口改为左侧咨询栏右上角小号鼠尾草色按钮；从流程移除地点问题Q02，保留历史填写值但不计入当前摘要；住宅类型等有语义图标的选项采用房屋/公寓图标，其余无对应图标时不显示默认方格；删除选项下方只改变答案状态而不前进的单字“Skip”，底部“Skip for now”负责实际跳过；“Something else?”明确提示可填写并显示输入占位文字。无地区回答时默认展示通用住宅类型，不推断用户所在地或预算货币。历史Q02光标在打开时定位到Q03，不重写历史答案。
 
-基于当时主线 `bef7cfb` 在隔离工作区复验：类型检查、41项回归和生产构建通过；7组保存/Chat、6组原有布局/手机浏览器及针对反馈的入口/无Q02/图标/自填/跳过浏览器检查通过。详细证据分别见 `evidence/20260926T022948Z-ALVA057-release-typecheck-664684/`、`...023021Z-ALVA057-release-regression-664887/`、`...023146Z-ALVA057-release-build-666902/`、`...023148Z-ALVA057-release-recovery-browser-666977/`、`...023211Z-ALVA057-release-layout-browser-667611/`、`...023233Z-ALVA057-release-feedback-browser-668067/`；视觉截图见 `evidence/2026-09-26T023237409Z-ALVA057-feedback/`。生产部署收据另补。
+基于当时主线 `bef7cfb` 在隔离工作区复验：类型检查、41项回归和生产构建通过；7组保存/Chat、6组原有布局/手机浏览器及针对反馈的入口/无Q02/图标/自填/跳过浏览器检查通过。详细证据分别见 `evidence/20260926T022948Z-ALVA057-release-typecheck-664684/`、`...023021Z-ALVA057-release-regression-664887/`、`...023146Z-ALVA057-release-build-666902/`、`...023148Z-ALVA057-release-recovery-browser-666977/`、`...023211Z-ALVA057-release-layout-browser-667611/`、`...023233Z-ALVA057-release-feedback-browser-668067/`；视觉截图见 `evidence/2026-09-26T023237409Z-ALVA057-feedback/`。生产发布详情见下方反馈修订收据。
+
+## 界面反馈生产发布收据
+
+main 集成 `39bc74f`，生产静态资源 `/assets/index-OlKM2r75.js` 公网返回 200。切换前备份代码和静态资源、停服后的数据库于 `.runtime/alva057-feedback-20260926T023523Z/`，仅重启系统级 `alva.service`，当前 active；未鉴权问卷接口返回 401。使用用户提供的现役访问码经公网 Chromium 只读核验：入口宽 143px、高 34px、浅绿背景，打开现有答卷直接显示 `What kind of home is it?`，无页面脚本错误；未新填答案。结果 `evidence/2026-09-26T024129886Z-ALVA057-feedback-public/result.json`。ALVA-066 阶段 MCP 联合验收继续单列，057 仍 in-progress。
