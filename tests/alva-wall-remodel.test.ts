@@ -6,7 +6,7 @@ import {buildAlva} from '../api/api.js';
 import {createTopologyVersion} from '../api/topology/calibration.js';
 import type {SceneData} from '../api/model.js';
 
-const code='alva033-remodel-code-123456';
+const code=process.env.ALVA033_TEST_CODE; if(!code) throw new Error("ALVA033_TEST_CODE must be provided");
 const scene=():SceneData=>({walls:[
  {id:'bottom-left',a:{x:0,y:0},b:{x:3,y:0},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
  {id:'bottom-right',a:{x:3,y:0},b:{x:6,y:0},thickness:.15,height:2.8,structural:'unknown',evidence:[]},
