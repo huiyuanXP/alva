@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "ticket": "ALVA-032",
+  "round": 1,
+  "tests": {"passed": 4, "failed": 0},
+  "checks": [
+    "professional grant distinct from owner/designer with operator/source audit",
+    "calibration alone never grants demolition; unknown/loadbearing/protected reject",
+    "only professionally classified nonloadbearing can be formally removed",
+    "server-admin revocation is audited and invalidates active professional session/invite"
+  ]
+}

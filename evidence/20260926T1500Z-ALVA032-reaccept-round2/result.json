@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "ticket": "ALVA-032",
+  "round": 2,
+  "toolMounted": true,
+  "stageMcpCalled": true,
+  "operator": "engineer-reaccept",
+  "evidence": "结构图 RE-032 + 现场复核",
+  "formalRemovalAllowed": false,
+  "chatExplainedSource": true
+}

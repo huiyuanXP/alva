@@ -55,3 +55,10 @@ ALVA-066 已在 main `e44c23a` 集成，阶段 MCP 接入前置已满足，066 �
 阶段 MCP 已挂载 `get_wall_professional_evidence` 到 floorplan pack，并完成工具目录挂载检查；主 Chat 只能只读查询墙体分类、操作者与依据，不能授予、分类或拆改。
 
 专项验证：类型检查、production build、ALVA-032 专项 4/4、真实 HTTP 重启/撤销脚本、floorplan MCP 工具 12 项目录检查均通过。全量 302 项为 295 通过、7 项既有/环境失败，失败项均与 ALVA-032 无关（家具几何/审查前置、媒体夹具缺失、看板断言状态漂移）。
+
+
+### Re-acceptance · 2026-09-26 · current main
+
+按用户要求在当前 main 重新验收。第一轮 `tests/alva-wall-professional.test.ts` 4/4 通过：专业角色与 owner/designer 分离、操作者/资质/依据可追溯、校准不授予拆改许可、unknown/loadbearing/protected 拒绝、仅有专业证据的 nonloadbearing 可正式拆改、撤销即时失效。证据：`evidence/20260926T1500Z-ALVA032-reaccept-round1/result.json`。
+
+第二轮走真实主 Chat → floorplan Stage MCP：模型只能通过 `mcp_list_tools` / `mcp_call_tool`，目录实际包含 `get_wall_professional_evidence`；调用后读取到 `operator=engineer-reaccept`、依据“结构图 RE-032 + 现场复核”、墙体分类 `loadbearing`，`formalRemovalAllowed=false`，Chat 能解释来源且未修改墙体分类。证据：`evidence/20260926T1500Z-ALVA032-reaccept-round2/result.json`。随后在 ALVA-042 main 集成态与 042 专项合跑共 12/12，通过 TypeScript、production build。
