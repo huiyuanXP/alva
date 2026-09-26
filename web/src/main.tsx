@@ -1,3 +1,4 @@
+import {FurnitureStudio} from './scene/furniture/FurnitureStudio.js';
 import {VisionQuestionCards} from './chat/VisionQuestionCards.js';
 import {UserContextCards} from './user-context/UserContextCards.js';
 import {ReviewOverlay} from './review/ReviewOverlay.js';
@@ -152,4 +153,4 @@ function App(){
  {link&&role&&<div className="modal"><section><h2>设计师只读邀请</h2><p>对方必须先输入统一验证码；邀请只保留只读身份，不能修改设计。</p><textarea readOnly value={link}/><button onClick={()=>void navigator.clipboard.writeText(link).then(()=>setStatus('链接已复制'))}>复制链接</button><button onClick={()=>setLink('')}>关闭</button></section></div>}
  </div>
 }
-createRoot(document.getElementById('root')!).render(<App/>);
+createRoot(document.getElementById('root')!).render(location.pathname==='/furniture-render'?<FurnitureStudio/>:<App/>);

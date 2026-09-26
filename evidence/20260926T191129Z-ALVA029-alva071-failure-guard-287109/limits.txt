@@ -1,0 +1,6 @@
+run=20260926T191129Z-ALVA029-alva071-failure-guard-287109
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2318
+56a41e46238b3989da8cdecca50ac6221ba2ea11

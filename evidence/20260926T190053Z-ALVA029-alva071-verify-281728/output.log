@@ -1,0 +1,44 @@
+✔ model tool rejects stale/locked targets; concurrent revision prevents proposal; success is preview-only and snapshot-safe (7765.822447ms)
+✔ all seven catalogue assets have distinct detailed geometry within authoritative footprint (869.8525ms)
+✔ critic receives original request, design summary and actual render images; revision uses feedback before passing (149.234261ms)
+✔ three visual rejections fail closed, no accepted model and no fourth generation (85.47744ms)
+✔ single cube, fabricated reviewed model and missing render cannot bypass critic (6.577973ms)
+✔ cancelled generation never reaches visual review or success (4.925258ms)
+✔ ALVA-040 noon solstice elevations agree with independent 90-latitude+declination benchmarks (1.827838ms)
+✔ ALVA-040 morning is east and afternoon west when plan top is north (0.411098ms)
+✔ ALVA-040 changing north rotates the light without changing elevation or geographic azimuth (0.259609ms)
+✔ ALVA-040 hemisphere changes are real geometry, not fixed northern-hemisphere presets (0.382816ms)
+✔ ALVA-040 night is below the horizon with zero direct sunlight (0.560221ms)
+✔ ALVA-040 24:00/00:00 and north 360/0 are equivalent, without mutating the input (2.020254ms)
+✔ ALVA-040 all supported latitude/date/hour/orientation samples yield finite unit directions (71.896095ms)
+✔ ALVA-040 malformed or out-of-contract parameters return stable errors, never silent coercion (1.588011ms)
+✔ ALVA-040 ground-shadow rays reverse east/west and grow in winter (0.540827ms)
+✔ ALVA-040 both renderers use a real Three.js directional light aimed relative to scene center (6.177447ms)
+✔ ALVA-040 shadow camera encloses all scene corners for small/large and translated layouts (6.998638ms)
+✔ ALVA-040 rendering night disables sun shadows and subsequent daylight restores them (8.907763ms)
+✔ ALVA-040 visible date/time labels are non-leap and half hours are minutes, not 14.5:00 (0.663106ms)
+✔ ALVA-040 empty/non-finite render bounds are rejected before creating lights (0.399111ms)
+✔ UI action waits for exact authenticated page receipt and cancellation is explainable (341.456034ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15549.318943
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2705 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-BYmWQf1E.css     38.40 kB │ gzip:   8.86 kB
+web/dist/assets/index-l8yed1Mb.js   1,370.80 kB │ gzip: 394.92 kB
+
+✓ built in 2.53s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

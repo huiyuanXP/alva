@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "checks": [
+    "real main Chat invoked living MCP and generated an approved candidate without adopting",
+    "owner preview/confirmation, detailed scene rendering and reload preserve model and placement without autosave"
+  ],
+  "calls": [
+    {
+      "images": 0,
+      "hasOriginal": true,
+      "hasDesignSummary": false
+    },
+    {
+      "images": 3,
+      "hasOriginal": true,
+      "hasDesignSummary": true,
+      "threadId": "01a0df22-d450-70f3-b021-a8b1570fcafa"
+    },
+    {
+      "images": 0,
+      "hasOriginal": true,
+      "hasDesignSummary": false,
+      "threadId": "01a0df22-d450-70f3-b021-a8b1570fcafa"
+    },
+    {
+      "images": 3,
+      "hasOriginal": true,
+      "hasDesignSummary": true,
+      "threadId": "01a0df22-d450-70f3-b021-a8b1570fcafa"
+    }
+  ],
+  "errors": [],
+  "parts": 30,
+  "modelHash": "281209056670bb2ffb0756335fb406a17b9bcab55dbc702de710c3a98107cd02",
+  "attempts": 2,
+  "critique": {
+    "issues": [],
+    "repairs": [],
+    "verdict": "pass",
+    "observations": [
+      "front-right视角观察：右前圆柱桌腿与抽屉外侧板已完全分离并保留独立间距，通过右前连系梁实现了平稳自然的结构过渡，彻底消除了几何穿插；抽屉正面配备双支脚固定的拉丝黄铜圆柱拉手，抽屉边缘暗缝阴影圈层次分明，浅木质与金属配件对比自然。",
+      "back-left视角观察：抽屉纵深已合理收缩且底部齐平，抽屉盒背面增加了完整的后封背板，彻底消除了上一轮向后悬挑露底与贯通空洞的问题；背面承重裙梁与侧向裙梁规整交汇，桌下背面视觉整洁封闭、构造合理。",
+      "front-detail正面近景观察：桌面顶层原有的共面重叠与Z-fighting闪烁噪点已彻底消除，主桌面圆角曲面完整平滑，下沉倒角层收口规整；左前裙梁横档与抽屉左立板实现了无缝对齐闭合，框架结构连续稳定，完全消除了悬空断开缺陷。"
+    ],
+    "detailAdequate": true,
+    "matchesRequest": true
+  },
+  "toolCalls": [
+    {
+      "name": "get_snapshot",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "generate_furniture_model",
+      "stage": "living",
+      "isError": false
+    }
+  ]
+}

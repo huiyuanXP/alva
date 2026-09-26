@@ -1,3 +1,4 @@
+import type {FurnitureRenderer} from './furniture/render.js';
 import {LayoutOutputError} from './import/response.js';
 import {registerRecommendationQueue} from './mcp/recommendation-queue.js';
 import {registerLayoutReview} from './review/service.js';
@@ -47,7 +48,7 @@ import {recognizeLayout,layoutRecognitionModel} from './import.js';
 import {imageData} from './import/image-data.js';
 export {imageData} from './import/image-data.js';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
-export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,visionCodex,transcriptionCall,automaticRecommendations=true}:{automaticRecommendations?:boolean;assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;visionCodex?:(input:CodexInput)=>Promise<string>;transcriptionCall?:TranscriptionCall}={}){
+export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,visionCodex,furnitureCodex,furnitureRender,transcriptionCall,automaticRecommendations=true}:{automaticRecommendations?:boolean;assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;visionCodex?:(input:CodexInput)=>Promise<string>;furnitureCodex?:(input:CodexInput)=>Promise<string>;furnitureRender?:FurnitureRenderer;transcriptionCall?:TranscriptionCall}={}){
  const publicPayload=(value:unknown):unknown=>{if(Array.isArray(value))return value.map(publicPayload);if(value&&typeof value==='object'){const result:Record<string,unknown>={};for(const [key,item] of Object.entries(value as Record<string,unknown>)){if(key==='budget')continue;result[key]=publicPayload(item)}return result}return value};
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
  app.addHook('preSerialization',async(_req,_reply,payload)=>publicPayload(payload));
@@ -127,7 +128,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   await switchChatStage(store,project.id,'living',project.revision);return project;
  });
  registerIntake(app,store,session);
- registerConsultation(app,store,session,active,chatCodex,activeTranscriptions,transcriptionCall,visionCodex);registerReferences(app,store,session,chatCodex);registerReferenceFurniture(app,store,session);registerExports(app,store,session);
+ registerConsultation(app,store,session,active,chatCodex,activeTranscriptions,transcriptionCall,visionCodex,{call:furnitureCodex,render:furnitureRender});registerReferences(app,store,session,chatCodex);registerReferenceFurniture(app,store,session);registerExports(app,store,session);
  registerSnapshots(app,store,session);
  app.post('/api/restore',async req=>{const b=Command.extend({version:z.number().int().positive(),confirmed:z.literal(true)}).parse(req.body),s=session(req);if(activeBuilding.has(s.projectId))reject('当前仍在生成建筑3D，请先取消或等待完成后再恢复快照',409);const snap=await store.snapshot(s.projectId,b.version);return mutate(req,b,'restore',p=>{const restored=prepareSnapshotRestore(snap,p.revision,p.savedVersion);Object.assign(p,restored);p.changes.push({id:randomUUID(),description:`恢复到保存版本${b.version}（当前工作稿）`,evidenceIds:[],context:['用户明确确认：当前未保存修改将被该手动快照整体替换','恢复本身不会创建新的快照；如需保留恢复后的状态，请再次手动保存'],createdAt:new Date().toISOString()})})});
  app.post('/api/import',async(req,reply)=>{

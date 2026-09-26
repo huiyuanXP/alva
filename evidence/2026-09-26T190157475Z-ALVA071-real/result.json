@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "checks": [
+    "real main Chat invoked living MCP and generated an approved candidate without adopting",
+    "owner preview/confirmation, detailed scene rendering and reload preserve model and placement without autosave"
+  ],
+  "calls": [
+    {
+      "images": 0,
+      "hasOriginal": true,
+      "hasDesignSummary": false
+    },
+    {
+      "images": 3,
+      "hasOriginal": true,
+      "hasDesignSummary": true,
+      "threadId": "01a0df18-db03-7490-9e4d-b06609ebad71"
+    },
+    {
+      "images": 0,
+      "hasOriginal": true,
+      "hasDesignSummary": false,
+      "threadId": "01a0df18-db03-7490-9e4d-b06609ebad71"
+    },
+    {
+      "images": 3,
+      "hasOriginal": true,
+      "hasDesignSummary": true,
+      "threadId": "01a0df18-db03-7490-9e4d-b06609ebad71"
+    }
+  ],
+  "errors": [],
+  "parts": 28,
+  "modelHash": "8ae97a0283cd3924c32566df2be2336a52754f8b4f13dcfe317f053e9f00f890",
+  "attempts": 2,
+  "critique": {
+    "issues": [],
+    "repairs": [],
+    "verdict": "pass",
+    "observations": [
+      "在front-right视角中，正面左侧横梁已无缝抵接抽屉左侧内隔板，右侧新增的结构封边立柱使抽屉右沿与右前圆柱桌腿之间形成了清晰规整的装配安全间隙，彻底消除了上一轮的几何穿插与碰撞；抽屉黄铜横拉手与四角桌腿底部的金属护套材质分界清晰，比例均衡稳固。",
+      "在back-left视角中，后部加固横梁连接左右后柱腿，结构轮廓完整结实；抽屉箱体通过增设右封闭侧板与后部密封挡板实现了完整围合，从背面及斜下视角观察均无部件悬空或内部构造暴露现象，桌面穿线孔盖的沉孔嵌入式五金质感逼真。",
+      "在front-detail正面正视视角中，正面横梁底边缘与抽屉底平线精确对齐在同一水平基准面上，视觉下沿平整连贯；抽屉面板周圈的深色阴影分缝深邃均匀，与微倒角圆角桌面板及底沿收口线条层次分明，四根独立圆柱桌腿垂直支撑稳当。"
+    ],
+    "detailAdequate": true,
+    "matchesRequest": true
+  },
+  "toolCalls": [
+    {
+      "name": "get_snapshot",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "generate_furniture_model",
+      "stage": "living",
+      "isError": false
+    }
+  ]
+}

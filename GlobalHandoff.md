@@ -1,3 +1,7 @@
+## 家具模型与视觉critic合同（ALVA-071）
+
+共享模型合同在 packages/contracts/alva/furniture-model.ts；两种3D视图与审查截图共用 web/src/scene/furniture。定制模型只能通过生活MCP generate_furniture_model审查后进入候选，原始需求取服务端用户消息，三视角均为实际WebGL图；生成/审查失败不得口头冒称成功。属性保存保留模型，仅换不同目录款式时清除；后续属性修改不冒充已经重审。生产未发布，详见 [ALVA-071](docs/ALVA-071-furniture-models.md)。
+
 ## 主工作区3D渲染职责（ALVA-070）
 
 普通3D统一使用SceneView；BuildingView仅保留既有建筑漫游及独立建筑展示。选中变化不重建renderer；同房间家具/样式更新保留相机，显式房间切换仍聚焦。详情见 [交互合同与验收](docs/ALVA-070-scene-interaction.md)。已集成未发布。

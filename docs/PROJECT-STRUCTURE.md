@@ -138,3 +138,7 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 ## ALVA-068 需求猜测与扩展问卷
 
 `api/consultation/vision-questions.ts`提供生活设计MCP出题与上下文校验，`vision-routes.ts`处理用户确认；`api/intake/vision-service.ts`为Chat与057独立问卷共用的保存/版本/失效服务。`packages/contracts/alva/home-vision/chat.ts`定义题卡和按填写者保存的扩展答案，`consultation-question.ts`提供通用结果卡展示与文本序列化。`web/src/chat/VisionQuestionCards.tsx`和`OutcomeQuestionCard.tsx`展示猜测/示例/确认，`web/src/intake/ChatAnswers.tsx`在独立问卷展示回填说明。用户确认后复用家具建议队列；不增加数据库或图片生成服务。合同与验收见[ALVA-068](ALVA-068-outcome-questions.md)。
+
+## ALVA-071 家具细节建模
+
+`packages/contracts/alva/furniture-model.ts` 定义可序列化的部件几何、审查与来源；`api/furniture/{generate-model,model-tools,render}.ts` 负责模型调用、生活设计MCP、重试和三视角截图。`web/src/scene/furniture/` 提供目录细节模型、程序纹理和统一Three.js几何，SceneView、BuildingView与内部 `/furniture-render` 工作室共用；内部工作室为空白渲染入口，不载入项目数据。原始prompt、失败轮次和PNG留在私有 `.runtime/furniture-models/`，模型/审查摘要随Item进入保存与交付。生成仅出原有Proposal候选，API禁止直接注入visualModel绕过critic。普通布局仍沿现役business校验。

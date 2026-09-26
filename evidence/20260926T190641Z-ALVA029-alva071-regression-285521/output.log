@@ -1,0 +1,127 @@
+✔ ALVA-025 licensed style replacement preserves instance identity and asset definitions (13.751195ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4525.100175
+✔ ALVA-025 API persists 2D/3D attributes atomically and rejects stale revisions (10187.079987ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14096.941419
+✔ ALVA-025 Chat style proposal uses the same licensed replacement contract (10183.152641ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14889.516523
+✔ ALVA-024 normalizes transforms and rejects boundary, collision and locked bypass atomically (15.598575ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4493.884069
+✔ ALVA-024 Chat proposal uses the same server transform rules before preview and adoption (10558.256917ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14688.597009
+✔ ALVA-021 preview exposes real candidate scene and adoption is selected-only, idempotent, stale-safe and atomic (9903.250172ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14261.336335
+✔ ALVA-021 requires two different candidates for ambiguous requests but allows one precise candidate (11626.845731ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15547.183837
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (173.804436ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1204.582104
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (49.01759ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1090.628361
+✔ expired grants and cancellation cannot execute tools (96.32218ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 855.276399
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (197.389004ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1029.595774
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (56.672448ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 865.533722
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (92.467316ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 859.207756
+✔ HTTP MCP argument errors retain field paths and tell the Agent how to repair them (48.530755ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 911.26973
+Isolated test cases passed: 14

@@ -1,0 +1,10 @@
+✔ model tool rejects stale/locked targets; concurrent revision prevents proposal; success is preview-only and snapshot-safe (7377.25124ms)
+✔ main Chat suppresses a fabricated success response after furniture rendering fails (12766.155446ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22145.014395

@@ -1,0 +1,32 @@
+{
+  "checks": [
+    "real main Chat invoked living MCP and generated an approved candidate without adopting"
+  ],
+  "calls": [
+    {
+      "images": 0,
+      "hasOriginal": true,
+      "hasDesignSummary": false
+    },
+    {
+      "images": 3,
+      "hasOriginal": true,
+      "hasDesignSummary": true,
+      "threadId": "01a0df12-60a5-7920-bd02-0e471004b9b5"
+    },
+    {
+      "images": 0,
+      "hasOriginal": true,
+      "hasDesignSummary": false,
+      "threadId": "01a0df12-60a5-7920-bd02-0e471004b9b5"
+    },
+    {
+      "images": 3,
+      "hasOriginal": true,
+      "hasDesignSummary": true,
+      "threadId": "01a0df12-60a5-7920-bd02-0e471004b9b5"
+    }
+  ],
+  "errors": [],
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n403 !== 200\n"
+}

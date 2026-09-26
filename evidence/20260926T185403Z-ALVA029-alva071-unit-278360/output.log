@@ -1,0 +1,25 @@
+✖ all seven catalogue assets have distinct detailed geometry within authoritative footprint (559.184437ms)
+✔ critic receives original request, design summary and actual render images; revision uses feedback before passing (159.465004ms)
+✔ three visual rejections fail closed, no accepted model and no fourth generation (141.057665ms)
+✔ single cube, fabricated reviewed model and missing render cannot bypass critic (25.395993ms)
+✔ cancelled generation never reaches visual review or success (7.970035ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2221.798076
+
+✖ failing tests:
+
+test at tests/alva-furniture-model.test.ts:1:1535
+✖ all seven catalogue assets have distinct detailed geometry within authoritative footprint (559.184437ms)
+  Error: 部件坐标/弧度超范围
+      at validateFurnitureModel (/home/ubuntu/Alva-worktrees/ALVA-071-codex-furniture/packages/contracts/alva/furniture-model.ts:35:140)
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-071-codex-furniture/tests/alva-furniture-model.test.ts:21:41)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
