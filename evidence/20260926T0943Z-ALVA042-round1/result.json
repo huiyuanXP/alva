@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "round": 1,
+  "tests": {"passed": 4, "failed": 0},
+  "checks": [
+    "explicit confirmation preserves locked answers",
+    "stale/wrong room confirmation returns 409 and leaves candidate pending",
+    "confirmed-only query/tool excludes pending references and delivery marks reference-only",
+    "real /api/chat get_snapshot sees confirmed source and not pending analysis"
+  ],
+  "typecheck": "passed",
+  "diffCheck": "passed"
+}

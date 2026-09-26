@@ -252,3 +252,7 @@ neat-freak过程事实已同步：局部代码/实测verified-current，整票/�
 
 ## 2026-09-26 · ALVA-039 桌面漫游输入与碰撞合同
 确认建筑的 walk 模式由独立 `WalkthroughController` 接管：Pointer Lock + WASD/方向键 + 鼠标 yaw/pitch；相机方向通过 OrbitControls target 驱动，与 BuildingView、ALVA-040 日照/季节 render loop 共存。碰撞从权威 SceneData 解析：墙体与旋转家具阻挡；仅 floor-level 且宽高足够的真实 door opening 放行，window 不作为通道。输入框聚焦、Esc、window blur 均清空按键并退出锁定，重新进入不得沿用旧输入。BuildingView host/alvaView 重建时控制器重新绑定最新实例。
+
+
+## 2026-09-26 · ALVA-042 已确认参考图偏好 Stage MCP 合同
+生活设计阶段 MCP 现役工具 `get_confirmed_reference_preferences` 只返回 owner 已明确确认的参考图片视觉偏好及来源，pending/cancelled 永不进入返回。参考图只作为视觉偏好来源，不可证明尺寸、结构、真实材料身份或材料性能。确认前不写需求；确认时重新校验作用房间，不能覆盖锁定问卷答案。交付文本和 sidecar 明确带 `referencePreferences` / “参考图偏好·仅参考”。

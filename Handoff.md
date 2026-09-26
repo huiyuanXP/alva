@@ -373,3 +373,7 @@ Lexie 完成快照显式全局恢复强化。恢复 scene/topology/building/answ
 
 ## 2026-09-26 · ALVA-039 桌面漫游与输入暂停
 Lexie 完成桌面漫游。个人实现 `51f95f0`，随后持续同步 ALVA-066/067、ALVA-040、ALVA-029 最新 main 并复验；入口冲突始终以最新 main 为基线最小装配。第一轮 7/7；最终最新 main 真实 Chromium：Pointer Lock=true、WASD 位移 0.340m、鼠标视角有效、wall=false / door=true / furniture=false / free=true，输入聚焦/失焦/Esc 无漂移，房间/全屋返回成功，console errors=[]。截图与控制台证据见 `evidence/20260926T1324Z-ALVA039-round2-post029/`。
+
+
+## 2026-09-26 · ALVA-042 偏好确认与后续建议引用
+Lexie 在 ALVA-066 Stage MCP 合入后完成最终接线：living pack 挂载 `get_confirmed_reference_preferences`，并在当前新版 export 保留 room styles/user context/layout review 等主线字段的同时加入参考偏好来源标识。第一轮 ALVA-041+042 共 8/8；第二轮真实 HTTP + 保存/重启 + living Stage MCP 实际调用通过，confirmedCount=1、pendingExcluded=true、deliveryMarkedReference=true、stageMcpCalled=true、chatCitedConfirmedSource=true。
