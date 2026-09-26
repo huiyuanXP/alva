@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-011](04-openings-scale-confirm.md), [ALVA-031](24-designer-readonly.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领；独立 Worktree `task/ALVA-032-Lexie` 开发。专业授权与 owner/designer 分离，墙体分类必须保留证据与操作者；unknown/load-bearing/protected 墙的正式拆改由服务端硬拒绝。
 
 - [ ] 专业能力与业主/设计师只读角色区分，可由受控服务端配置授予及撤回并留痕。
 - [ ] 分类保留证据来源与操作者，业主或模型不能自行伪造专业授权。
