@@ -1,0 +1,6 @@
+run=20260926T033710Z-ALVA066-main-merge-verify-708262
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2512
+8dd6b5e41d4db8cb8b760ea8aafadb85ea4fee03

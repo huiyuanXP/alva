@@ -1,0 +1,6 @@
+run=20260926T033557Z-ALVA066-main-merge-typecheck-707634
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2511
+8dd6b5e41d4db8cb8b760ea8aafadb85ea4fee03

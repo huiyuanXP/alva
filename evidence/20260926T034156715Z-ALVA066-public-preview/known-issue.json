@@ -1,0 +1,9 @@
+{
+  "code": "MODEL_SAVE_STATUS_MISSTATEMENT",
+  "actualSavedVersion": 2,
+  "actualTool": "get_snapshot",
+  "toolSucceeded": true,
+  "modelClaim": "暂无已通过正式保存流程生成的编号快照记录",
+  "status": "pending",
+  "scope": "model response interpretation; server snapshot remains v2"
+}
