@@ -12,3 +12,10 @@ html.hv-modal-open #root{max-width:100%;overflow:clip}
 .hv-dialog[data-card="Q05"]{width:760px}.hv-dialog[data-card="Q07"],.hv-dialog[data-card="Q08"]{width:820px}.hv-dialog[data-card="Q05"] .hv-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hv-field-group{min-width:0}.hv-palette .hv-cap{min-height:44px}.hv-dialog .hv-field-group>.hv-controls{margin-top:8px}.hv-dialog .hv-field-group>.hv-controls .hv-ghost{min-height:28px}@media(max-width:600px){.hv-dialog[data-card="Q05"] .hv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .hv-footer{position:sticky;bottom:44px;z-index:2;background:#fff;padding-top:10px;padding-bottom:6px}.hv-savebar{min-height:44px;margin-top:0}.hv-shell{gap:24px}
+
+/* Compact entry in the consultation heading, aligned with existing sage controls. */
+.chat>.panel-heading{flex-wrap:nowrap;gap:10px}
+.chat>.panel-heading .home-intake-button{display:inline-flex!important;align-items:center;justify-content:center;width:auto;min-height:34px;padding:7px 12px!important;gap:6px!important;border:1px solid #c5ceba!important;border-radius:999px!important;background:#e8eddf!important;color:#4f6346!important;box-shadow:none!important;white-space:nowrap;transform:none!important}
+.chat>.panel-heading .home-intake-button:hover{background:#dce5d2!important;box-shadow:none!important}
+.chat>.panel-heading .home-intake-button strong{display:inline;font-size:12px;line-height:1.2;font-weight:600}
+.chat>.panel-heading .home-intake-button>span{font-size:15px;line-height:1}

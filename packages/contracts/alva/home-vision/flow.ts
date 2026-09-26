@@ -34,7 +34,7 @@ export function condition(expr:string|undefined,a:Answers,f:Set<string>,people:R
 }
 export function flags(a:Answers):Set<string>{
  let f=new Set<string>();const country=(raw(a,'Q02a') as Record<string,Value>|undefined)?.country;
- const market=country?({'United States':'US','United Kingdom':'UK',Singapore:'SG',Japan:'JP'}[String(country)]||'OTHER'):null;
+ const market=country?({'United States':'US','United Kingdom':'UK',Singapore:'SG',Japan:'JP'}[String(country)]||'OTHER'):'OTHER';
  if(market)f.add('MARKET_'+market);
  for(let pass=0;pass<8;pass++){
   const next=new Set<string>(market?['MARKET_'+market]:[]);
@@ -59,7 +59,7 @@ export function options(i:Item,a:Answers,f=flags(a)):Option[]{
 }
 export const prompt=(i:Item,a:Answers,f=flags(a))=>Object.entries(i.prompt_variants||{}).find(([e])=>condition(e,a,f))?.[1]||i.prompt||i.label||i.id;
 const roomCards:Record<string,string[]>={entry:['Q12'],living:['Q13','Q14','Q24'],kitchen:['Q15','Q16','Q17','Q14'],dining:['Q17','Q14'],bedroom:['Q18','Q19'],bathroom:['Q20'],office:['Q21'],kids:['Q22','C1'],nursery:['C1'],laundry:['Q23'],guest:['Q24'],outdoor:['Q25']};
-export function path(a:Answers):Card[]{const f=flags(a);let list=cards.filter(c=>condition(c.show_if,a,f));if(f.has('ONE_ROOM')){const ids=roomCards[selectedRooms(a,'Q05a',f)[0]?.split('.')[1]]||[];list=list.filter(c=>c.stage!=='S3'||ids.includes(c.card)||['Q26','Q27','Q28'].includes(c.card))}if(f.has('EXPLORING'))list=list.filter(c=>c.stage!=='S5'||c.card==='Q34').filter(c=>c.stage!=='S6'||c.card==='Q43');
+export function path(a:Answers):Card[]{const f=flags(a);let list=cards.filter(c=>c.card!=='Q02'&&condition(c.show_if,a,f));if(f.has('ONE_ROOM')){const ids=roomCards[selectedRooms(a,'Q05a',f)[0]?.split('.')[1]]||[];list=list.filter(c=>c.stage!=='S3'||ids.includes(c.card)||['Q26','Q27','Q28'].includes(c.card))}if(f.has('EXPLORING'))list=list.filter(c=>c.stage!=='S5'||c.card==='Q34').filter(c=>c.stage!=='S6'||c.card==='Q43');
  const sorted:Card[]=[];for(const c of list.filter(c=>!c.insert_after)){sorted.push(c);sorted.push(...list.filter(x=>x.insert_after===c.card))}for(const c of list)if(!sorted.includes(c))sorted.push(c);
  const priorityRoom=picked(a,'Q05b')[0];
  const priority=selectedRooms(a,'Q05a',f).includes(priorityRoom)?roomCards[priorityRoom?.split('.')[1]]||[]:[];

@@ -11,3 +11,9 @@
 ## 生产发布收据
 
 main集成 `817c253`。发布前备份原代码、dist与停止服务后的127MiB数据库副本于 `.runtime/alva057-questionnaire-20260926T020017Z/`；保留旧资源，原服务工作目录不变，重启仅 `alva.service`。新版首页资源 `/assets/index-MGEQ5jJb.js` 已经公网200，首页与健康200，未鉴权问卷API401。使用用户提供的现役验证码进行只读公网Chromium核验：登录200、新入口/Q01显示、GET新版问卷 `home-vision-v4`、关闭后revision不变、页面脚本错误0。证据 `evidence/2026-09-26T020331622Z-ALVA057-questionnaire-public/result.json`。没有在生产填写新答案，也没有声称 ALVA-066 阶段MCP可用。
+
+## 2026-09-26 界面反馈修订
+
+用户按两张生产截图要求：入口改为左侧咨询栏右上角小号鼠尾草色按钮；从流程移除地点问题Q02，保留历史填写值但不计入当前摘要；住宅类型等有语义图标的选项采用房屋/公寓图标，其余无对应图标时不显示默认方格；删除选项下方只改变答案状态而不前进的单字“Skip”，底部“Skip for now”负责实际跳过；“Something else?”明确提示可填写并显示输入占位文字。无地区回答时默认展示通用住宅类型，不推断用户所在地或预算货币。历史Q02光标在打开时定位到Q03，不重写历史答案。
+
+基于当时主线 `bef7cfb` 在隔离工作区复验：类型检查、41项回归和生产构建通过；7组保存/Chat、6组原有布局/手机浏览器及针对反馈的入口/无Q02/图标/自填/跳过浏览器检查通过。详细证据分别见 `evidence/20260926T022948Z-ALVA057-release-typecheck-664684/`、`...023021Z-ALVA057-release-regression-664887/`、`...023146Z-ALVA057-release-build-666902/`、`...023148Z-ALVA057-release-recovery-browser-666977/`、`...023211Z-ALVA057-release-layout-browser-667611/`、`...023233Z-ALVA057-release-feedback-browser-668067/`；视觉截图见 `evidence/2026-09-26T023237409Z-ALVA057-feedback/`。生产部署收据另补。

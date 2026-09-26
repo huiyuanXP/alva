@@ -1,0 +1,6 @@
+run=20260926T023211Z-ALVA057-release-layout-browser-667611
+CPUQuota=80%
+MemoryMax=1600M
+MemorySwapMax=0
+headroomMiB=2444
+bef7cfb6b59c481b5b92421da79b9bde23f5d022
