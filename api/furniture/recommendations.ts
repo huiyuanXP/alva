@@ -8,7 +8,8 @@ import type {AlvaStore} from '../store.js';
 
 export function recommendationContext(p:Project,id:string){
  const job=p.answerRecommendations?.find(j=>j.id===id);if(!job||job.status==='invalidated')throw new DomainError(409,'回答建议任务已失效');
- const answer=p.answers.find(a=>a.evidenceId===job.evidenceId&&a.confirmed);if(!answer)throw new DomainError(409,'依据回答已被更正，请使用新回答生成建议');
+ const extension=job.respondentId?p.homeVision?.responses.find(r=>r.id===job.respondentId)?.chatAnswers?.find(a=>a.evidenceId===job.evidenceId&&a.status==='active'&&a.state==='answered'):undefined;
+ const answer=job.respondentId?(extension?{questionId:extension.questionId,roomId:extension.roomId,text:extension.text,state:extension.state,confirmed:true,evidenceId:extension.evidenceId,locked:false}:undefined):p.answers.find(a=>a.evidenceId===job.evidenceId&&a.confirmed);if(!answer)throw new DomainError(409,'依据回答已被更正，请使用新回答生成建议');
  const rooms=(p.scene?.rooms||[]).filter(r=>!r.locked&&(!answer.roomId||r.id===answer.roomId));
  return {job,answer,rooms};
 }

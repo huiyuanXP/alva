@@ -1,0 +1,2 @@
+tests/alva-outcome-questions.test.ts(43,17): error TS2741: Property 'confirmed' is missing in type '{ questionId: string; roomId: string; state: "answered"; text: string; evidenceId: string; locked: false; }' but required in type 'Answer'.
+tests/alva-outcome-questions.test.ts(54,116): error TS2339: Property 'length' does not exist on type 'never'.

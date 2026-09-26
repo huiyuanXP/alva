@@ -1,3 +1,4 @@
+import type {VisionChatAnswer} from './chat.js';
 import {effectiveValue} from './field-values.js';
 import source from './catalogue.json';
 export type Option={id:string;label:string;helper?:string;show_if?:string;sets?:string[];tags?:string[];exclusive?:boolean;note_if?:Record<string,string>;label_variants?:Record<string,string>};
@@ -6,7 +7,7 @@ export type Card={card:string;stage:string;title:string;show_if:string;insert_af
 export type Value=string|number|boolean|null|Value[]|{[key:string]:Value};
 export type Answer={state:'answered'|'unknown'|'skipped';value:Value};
 export type Answers=Record<string,Answer>;
-export type Response={id:string;name:string;answers:Answers;cursor:string;updatedAt:string;version:number};
+export type Response={chatAnswers?:VisionChatAnswer[];id:string;name:string;answers:Answers;cursor:string;updatedAt:string;version:number};
 export type Vision={version:'home-vision-v4';responses:Response[]};
 export const cards=source.cards as unknown as Card[];
 export const frame=source.stageItem as Item;
@@ -138,4 +139,4 @@ export function brief(a:Answers){const active=activeAnswers(a);return items.filt
 export function priorities(a:Answers,people:Response[]){const active=activeAnswers(a),f=flags(active);const respondents=people.map(person=>({...person,answers:activeAnswers(person.answers)}));return source.priorityRules.filter(r=>r.id!=='R99'&&condition(r.when,active,f,respondents))}
 
 // Uploaded bytes remain in the project store; model context receives names and references only.
-export function consultationVision(v:Vision|undefined){if(!v)return undefined;const trim=(x:Value|undefined):Value=>{if(x===undefined)return null;if(Array.isArray(x))return x.map(trim);if(x&&typeof x==='object')return Object.fromEntries(Object.entries(x).filter(([k])=>k!=='data').map(([k,y])=>[k,trim(y)]));return x};return {version:v.version,responses:v.responses.map(r=>({id:r.id,name:r.name,answers:brief(r.answers).map(x=>({...x,value:trim(x.value)}))}))}}
+export function consultationVision(v:Vision|undefined){if(!v)return undefined;const trim=(x:Value|undefined):Value=>{if(x===undefined)return null;if(Array.isArray(x))return x.map(trim);if(x&&typeof x==='object')return Object.fromEntries(Object.entries(x).filter(([k])=>k!=='data').map(([k,y])=>[k,trim(y)]));return x};return {version:v.version,responses:v.responses.map(r=>({id:r.id,name:r.name,chatAnswers:r.chatAnswers?.filter(a=>a.status==='active'),answers:brief(r.answers).map(x=>({...x,value:trim(x.value)}))}))}}

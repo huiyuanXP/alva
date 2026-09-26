@@ -1,0 +1,6 @@
+run=20260926T060123Z-ALVA066-alva068-modules-fixed-58749
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1545
+e35cf47c35a5d20f6b4bcca9696f326d91037275

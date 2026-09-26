@@ -134,3 +134,7 @@ ALVA-066控件共用服务补充：`api/topology/service.ts`统一拓扑编辑�
 ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API 与阶段 MCP 共用的只读诊断来源，覆盖候选和当前工作稿；返回告警实体、坐标、检查限制及修复指导。`api/mcp/actions.ts` 维护按确认类型计算的依据及过期卡刷新，刷新不采用设计，仍需用户再次确认。
 
 `api/store.ts` 在项目提交事务内维护 `confirmationVersions` 数字版本，`api/mcp/actions.ts` 只比较卡片版本与当前版本，不使用确认依据哈希；旧卡刷新后才可确认。ALVA-066 验证与预览共用 `ops/alva/alva066.slice` 的整机 20% 内存、0 swap、CPU80% 预算，`scripts/alva-066-verify.sh` 提供分组类型检查、逐用例隔离回归和构建。
+
+## ALVA-068 需求猜测与扩展问卷
+
+`api/consultation/vision-questions.ts`提供生活设计MCP出题与上下文校验，`vision-routes.ts`处理用户确认；`api/intake/vision-service.ts`为Chat与057独立问卷共用的保存/版本/失效服务。`packages/contracts/alva/home-vision/chat.ts`定义题卡和按填写者保存的扩展答案，`consultation-question.ts`提供通用结果卡展示与文本序列化。`web/src/chat/VisionQuestionCards.tsx`和`OutcomeQuestionCard.tsx`展示猜测/示例/确认，`web/src/intake/ChatAnswers.tsx`在独立问卷展示回填说明。用户确认后复用家具建议队列；不增加数据库或图片生成服务。合同与验收见[ALVA-068](ALVA-068-outcome-questions.md)。

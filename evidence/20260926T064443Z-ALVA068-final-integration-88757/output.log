@@ -1,0 +1,251 @@
+✔ hypothesis and queued expanded question do not save answers or recommendation jobs (89.602146ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4404.729701
+✔ multi-person selection and exact source quotes prevent mixing preferences (137.852703ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4368.583842
+✔ native choice constraints reject old IDs, hidden options and duplicate answers (108.528652ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4213.842608
+✔ explicit confirmation syncs native answer and illustrative details without legacy mapping (99.701155ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4059.3313
+✔ independent form edits invalidate old cards and recommendations while preserving unrelated answers (292.325044ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4283.466353
+✔ free text syncs to supported other value, unknown answers never generate furniture (169.340593ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4100.59198
+✔ actual Chat routes persist successful cards, discard failed turns and synchronize through confirmation route (11370.982346ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15620.918762
+✔ confirmed native Chat answer automatically starts the living Agent and floorplan cannot confirm (10376.972175ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15503.503304
+✔ room changes preserve an inactive priority without rejecting the next draft (104.715322ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4460.170633
+✔ one-room transition preserves raw whole-home answers without activating room flags (207.482795ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4430.537153
+✔ area remains a draft until both a number and an explicit unit are present (28.042196ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4306.519391
+✔ budget currency is never inferred and unfinished ranges do not enter the brief (92.600518ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4137.196589
+✔ hidden nested property details are retained but excluded from effective answers (82.343148ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4037.813733
+✔ per-room scope excludes removed rooms and hidden options without deleting the draft (30.831295ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4204.691078
+✔ explicit unknown controls trigger source rules while unfinished budgets stay unknown (106.372074ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4389.784532
+✔ inactive room answers cannot create follow-up priorities (30.164527ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4189.304527
+✔ same multi-selections in different orders do not manufacture a disagreement (50.024059ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4294.913476
+✔ invalid selection shapes, duplicate options and disabled other choices are rejected (3.960356ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4133.838954
+✔ reference removal never transfers another image annotation to the next image (4.412353ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5030.176961
+✔ manual snapshots preserve the new versioned questionnaire and its explicit budget (4.036696ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4036.180145
+✔ consultation includes valid references but not uploaded bytes or an unfinished currency (22.903962ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4058.503927
+✔ real API enforces read-only access and preserves respondent isolation during conflict and replay (9987.688661ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14102.604291
+✔ retiring location keeps historical answers but shows a usable general home type (60.29389ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 584.4717
+✔ ALVA-015 manual answers are visible to later Chat snapshots (5.612987ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4500.578477
+✔ ALVA-015 Chat confirmation keeps exact quote, cannot duplicate, and locked values require explicit unlock (10327.920434ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14333.854982
+✔ persistent Chat snapshots retain current geometry once and keep historical topology metadata (20.522274ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3998.208899
+Isolated test cases passed: 26
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2601 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-BsavPCOi.css     33.53 kB │ gzip:   7.87 kB
+web/dist/assets/index-D9MNYbix.js   1,243.69 kB │ gzip: 356.75 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.29s
+/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions/evidence/20260926T064758123Z-ALVA068-browser-confirm

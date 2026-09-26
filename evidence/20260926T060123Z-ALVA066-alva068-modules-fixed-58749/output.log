@@ -1,0 +1,16 @@
+✔ outcome card preserves four source choices and never writes answers or designs (21.11802ms)
+✔ missing examples and repeated meanings fail with explainable errors (3.700556ms)
+✔ verbatim prompt and incompatible Home Vision IDs are rejected (0.860404ms)
+✔ recommendations require confirmed evidence, not raw chat or invented IDs (7.056421ms)
+✔ room questions require current room and cannot read another room evidence (4.300118ms)
+✔ tool rereads latest state and refuses answered or locked question (12.913075ms)
+✔ selection text creates suggestions only after the existing explicit confirmation service (0.801273ms)
+✔ HTTP MCP exposes outcome schema and carries errors without claiming success (119.3926ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2181.472224

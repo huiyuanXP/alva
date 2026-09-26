@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "step": "browser-confirm",
+  "checks": {
+    "syntheticBuilding": true,
+    "automaticFurnitureDrain": false,
+    "nativeSelectedLabel": "Warm whites, light wood",
+    "otherPersonUnchanged": true,
+    "syncedNativeAndDetails": true,
+    "pendingFurnitureJob": true,
+    "pageErrors": []
+  }
+}

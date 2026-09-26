@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "standalone component; main app pending",
+  "widths": [
+    1280,
+    390
+  ],
+  "cards": 3,
+  "pageErrors": []
+}

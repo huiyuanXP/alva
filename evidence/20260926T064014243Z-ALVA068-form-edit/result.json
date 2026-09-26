@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "step": "form-edit",
+  "checks": {
+    "syntheticBuilding": true,
+    "automaticFurnitureDrain": false,
+    "independentFormChanged": true
+  }
+}

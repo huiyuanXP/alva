@@ -1,10 +1,10 @@
-## 2026-09-26 ALVA-068 结果式问答：独立模块完成，主入口待协调
+## 2026-09-26 ALVA-068 已验收并集成，未发布
 
-用户已授权创建并实施，To Do List已显示in-progress；署名codex-outcome-questions，独立提交`3fa54b1`，工作区`/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions`。已实现生活设计出题工具工厂、具体结果/示例/取舍卡、选择后独立确认；9/9回归及受影响类型检查、3组真实模型HTTP MCP、桌面/手机6组组件检查通过。均使用20%总内存/0swap与共享heavy锁。
+主Chat先展示未确认的需求猜测、依据与不确定项，再提供具体结果/示例/取舍。确认后同步同一填写者的Home Vision原字段与扩展问答；独立问卷保留，修改后旧扩展结论失效，Chat重读新版本。生活设计MCP为默认入口，错误提供稳定码及修复步骤；确认使用数字版本，不用哈希。
 
-用户已明确授权保留057独立问卷并继续068接线，新增要求“先猜需求，再出扩展问卷，确认结果同步回独立问卷”。068现占用api/chat.ts、mainChatAgent、api/intake/vision及共用服务、Home Vision共享合同、web/src/main.tsx题卡/填写者接线、IntakeDialog扩展答案展示、推荐任务适配；保留057题库与原流程，不接管其他票。先在独立Worktree完成同填写者双向读写与主Chat实际MCP联合验收，再集成；未发布。
+真实主Chat/HTTP MCP三轮及浏览器双向同步通过，最终分组类型检查、26/26相关回归、前端构建与To Do List浏览器检查通过，CPU80%/20%总内存/0swap，无OOM。详情与边界见[ALVA-068](docs/ALVA-068-outcome-questions.md)。新题卡窄栏可用；整个主工作区仍有既有手机横向溢出，bundle警告保留。
 
-neat-freak：独立代码/文档/组件verified-current，主入口与整票验收pending，生成记忆out-of-scope；测试已结束，工作区与证据保留。生产运行不因本次认领/过程提交改变，其他票保留各自状态。
+068已done并释放占用；057继续ready-for-agent，042保留署名，030/033依赖就绪待认领，不自动开工。本票未发布生产。neat-freak：代码/文档/票据changed-and-verified，规则verified-current，发布/生成记忆out-of-scope；私有合成现场、失败证据与Worktree保留供复核。
 
 ## 2026-09-26 ALVA-029 验收完成并集成
 
@@ -82,6 +82,8 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 - 若认领此残留锁，必须把下一行标记中的 `unclaimed` 改为实际署名，定时器将保留文件。
 <!-- alva-root-lock-owner: unclaimed -->
 
+执行结果：2026-09-26 06:49:54 UTC定时器已释放身份未变且无人认领的根目录残留锁；正式协调锁保留。
+
 旧 053/056 复核证据目录已归档提交；历史分支和其他 Worktree 保留。未完成预览分支不在本次清理范围。重型任务仍使用任务资源限额与共享锁串行运行。
 
 ## 当前集成偏好
@@ -94,9 +96,9 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-068](.scratch/alva-completion/issues/45-outcome-questions.md) | 主 Chat 结果式问题、选项与示例 | `chat` | codex-outcome-questions | task/ALVA-068-codex-outcome-questions / /home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions | in-progress；独立模块3fa54b1，9/9回归/类型/3组真实模型MCP/6组组件检查通过；用户已授权共享入口接线及确认答案同步057；实现中，未集成/发布；20%总内存/0swap，共享heavy锁 |
 | [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；历史第二轮产品门禁未过；066现已合main，接入前置已满足，原负责人可挂载get_confirmed_reference_preferences并做同SHA真实MCP联合验收，未完成前不标done |
-| [ALVA-030](.scratch/alva-completion/issues/23-professional-unknowns.md) | 专业未知与用户取舍分离 | `review` |  |  | 依赖029已验收集成，待署名认领；不自动开工 |
+| [ALVA-030](.scratch/alva-completion/issues/23-professional-unknowns.md) | 专业未知与用户取舍分离 | `review` |  |  | 依赖029已验收集成，待署名认领；不自动开工 || [ALVA-033](.scratch/alva-completion/issues/26-wall-renovation.md) | 非承重墙改造与开口迁移 | `renovation` |  |  | 依赖032/021已验收集成，待署名认领；不自动开工 |
+
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
 

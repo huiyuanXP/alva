@@ -1,10 +1,10 @@
-## 2026-09-26 ALVA-068 结果式问答：独立模块完成，主入口待协调
+## 2026-09-26 ALVA-068 已验收并集成，未发布
 
-用户已授权创建并实施，To Do List已显示in-progress；署名codex-outcome-questions，独立提交`3fa54b1`，工作区`/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions`。已实现生活设计出题工具工厂、具体结果/示例/取舍卡、选择后独立确认；9/9回归及受影响类型检查、3组真实模型HTTP MCP、桌面/手机6组组件检查通过。均使用20%总内存/0swap与共享heavy锁。
+主Chat先展示未确认的需求猜测、依据与不确定项，再提供具体结果/示例/取舍。确认后同步同一填写者的Home Vision原字段与扩展问答；独立问卷保留，修改后旧扩展结论失效，Chat重读新版本。生活设计MCP为默认入口，错误提供稳定码及修复步骤；确认使用数字版本，不用哈希。
 
-尚未接入主Chat、合入产品或发布。057仍登记chat.ts/main.tsx共享占用；已写协调请求，并向用户提出仅出题/题卡接线授权询问，尚未收到答复。收到合同回复或授权后完成最小接线、基础指令、主Chat实际端到端与最新main联合验收，再集成；独立工具探针不能替代主入口验收。详细接口和证据在个人工作区`docs/ALVA-068-outcome-questions.md`及单票。新旧问卷题号不能互相映射。
+真实主Chat/HTTP MCP三轮及浏览器双向同步通过，最终分组类型检查、26/26相关回归、前端构建与To Do List浏览器检查通过，CPU80%/20%总内存/0swap，无OOM。详情与边界见[ALVA-068](docs/ALVA-068-outcome-questions.md)。新题卡窄栏可用；整个主工作区仍有既有手机横向溢出，bundle警告保留。
 
-neat-freak：独立代码/文档/组件verified-current，主入口与整票验收pending，生成记忆out-of-scope；测试已结束，工作区与证据保留。生产运行不因本次认领/过程提交改变，其他票保留各自状态。
+068已done并释放占用；057继续ready-for-agent，042与030等保留自身状态，不自动开工。本票未发布生产。neat-freak：代码/文档/票据changed-and-verified，规则verified-current，发布/生成记忆out-of-scope；私有合成现场、失败证据与Worktree保留供复核。
 
 ## 2026-09-26 ALVA-029 验收完成并集成
 

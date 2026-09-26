@@ -1,0 +1,127 @@
+✔ hypothesis and queued expanded question do not save answers or recommendation jobs (83.794178ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4397.34685
+✔ multi-person selection and exact source quotes prevent mixing preferences (152.844568ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4044.470028
+✔ native choice constraints reject old IDs, hidden options and duplicate answers (124.277226ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4313.322915
+✔ explicit confirmation syncs native answer and illustrative details without legacy mapping (93.014366ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4389.977419
+✔ independent form edits invalidate old cards and recommendations while preserving unrelated answers (178.95171ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4385.782854
+✔ free text syncs to supported other value, unknown answers never generate furniture (213.230749ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4373.638908
+✔ actual Chat routes persist successful cards, discard failed turns and synchronize through confirmation route (10752.750125ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14898.674126
+✔ confirmed native Chat answer automatically starts the living Agent and floorplan cannot confirm (13319.959042ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17488.255944
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (14207.248848ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19342.148805
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (21338.963814ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31029.920826
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (17587.25764ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24995.223784
+✔ published tracker preserves original IDs and includes the new outcome-question ticket (60.92452ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1735.535275
+✔ source changes drive unlock, claim, errors and revision without a copied database (23.337034ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 937.639531
+✔ read-only board HTTP routes, real source, no-store and unknown-path handling (326.362336ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1339.34753
+Isolated test cases passed: 14

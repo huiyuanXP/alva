@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "step": "seed",
+  "checks": {
+    "syntheticBuilding": true,
+    "automaticFurnitureDrain": false
+  }
+}

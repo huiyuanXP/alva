@@ -1,3 +1,4 @@
+import {ChatAnswers} from './ChatAnswers.js';
 import React,{useEffect,useRef,useState} from 'react';
 import type {Project} from '../../../api/model.js';
 import {type Answers,type Response,type Value,stages,cards,path,flags,condition,prompt,answered,raw,options,priorities,activeAnswers,picked} from '../../../packages/contracts/alva/home-vision/flow.js';
@@ -65,7 +66,7 @@ export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
       pending.current=null;setConflict(true);
       throw new Error('Newer answers were saved in another window. Your edits are still here; copy them before loading the saved answers.');
      }
-     state.current={...state.current!,version:stored.version,updatedAt:stored.updatedAt};
+     state.current={...state.current!,version:stored.version,updatedAt:stored.updatedAt,chatAnswers:stored.chatAnswers};
      pending.current=null;persisted.current=attempt.generation;
      setCurrent(state.current);setPeople(savedProject.homeVision.responses);onUpdate(savedProject);
     }
@@ -102,6 +103,7 @@ export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
  {!valid&&<p className="hv-note">Complete the fields and required selections before continuing. You can skip this question instead.</p>}
  {f.has('ACCESS_SIGNAL')&&!a.C2a&&!['C2','Q01','Q02','Q03','Q04'].includes(card.card)&&<button className="hv-ghost" onClick={()=>go('C2')}>Would you like to share any accessibility needs?</button>}
  {(done||card.card==='C5')&&f.has('MULTI_DECIDER')&&!readOnly&&<div><button className="hv-ghost" onClick={()=>setAddPerson(true)}>Invite someone to add their own answers</button><p className="hv-note">Keep each person's preferences separate. They can answer here, or use a link with the project's existing access code.</p>{addPerson&&<div className="hv-row"><input className="hv-field" placeholder="Their name" aria-label="New respondent name" value={newName} maxLength={80} onChange={e=>setNewName(e.target.value)}/><button className="hv-ghost" onClick={()=>void create()}>Create separate response</button></div>}</div>}
+ <ChatAnswers response={current}/>
  <div className="hv-footer"><div>{summary||done||overview?<button className="hv-ghost" onClick={()=>setOverview(!overview)}>Review all stages</button>:<button className="hv-ghost" onClick={skip}>Skip for now</button>}<small>You can change this anytime.</small></div><button className="hv-cta" disabled={loading||saving||(!summary&&!done&&!overview&&!readOnly&&(!ready||!valid))} onClick={()=>{if(done)void close();else if(summary){const n=Number(stage.slice(1));go(n===7?'complete':route.find(c=>c.stage==='S'+(n+1))?.card||'complete')}else if(overview)setOverview(false);else next()}}>{done?'Save & close':summary?'Next stage':'Continue'}</button></div>
  </>}
  {error&&<div role="alert" className="hv-error">{error}{!current?<button className="hv-ghost" disabled={loading} onClick={()=>void load()}>Retry loading</button>:conflict?<><button className="hv-ghost" onClick={()=>void navigator.clipboard.writeText(JSON.stringify(state.current,null,2)).catch(()=>setError('Could not copy. Your edits are still in this window.'))}>Copy unsaved answers</button><button className="hv-ghost" onClick={()=>{if(window.confirm('Discard the unsaved edits in this window and load the latest saved answers?'))void load()}}>Load saved answers</button></>:<button className="hv-ghost" disabled={saving} onClick={()=>void persist()}>Retry save</button>}</div>}

@@ -1,0 +1,17 @@
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2601 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-BsavPCOi.css     33.53 kB │ gzip:   7.87 kB
+web/dist/assets/index-CXG-v9vd.js   1,244.73 kB │ gzip: 357.16 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.04s
+/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions/evidence/20260926T063626009Z-ALVA068-seed
+/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions/evidence/20260926T063639725Z-ALVA068-model-style

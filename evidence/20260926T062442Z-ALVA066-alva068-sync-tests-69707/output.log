@@ -1,0 +1,145 @@
+✔ hypothesis and queued expanded question do not save answers or recommendation jobs (250.924378ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6656.740396
+✔ multi-person selection and exact source quotes prevent mixing preferences (220.064904ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4849.811422
+✔ native choice constraints reject old IDs, hidden options and duplicate answers (88.887702ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4829.20635
+✔ explicit confirmation syncs native answer and illustrative details without legacy mapping (162.783604ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5907.368943
+✔ independent form edits invalidate old cards and recommendations while preserving unrelated answers (139.747475ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4892.828733
+✔ free text syncs to supported other value, unknown answers never generate furniture (229.790724ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4941.782705
+✔ actual Chat routes persist successful cards, discard failed turns and synchronize through confirmation route (12684.506496ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17634.604172
+✔ all supplied cards and ZIP copy; stage paths are bounded and conditional (57.041383ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5298.453236
+✔ whole-home expansion, pet/child filters, hidden old choices do not set flags (85.88117ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4315.527177
+✔ rental, no-cooking, spend/save and unknown semantics (35.305166ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3997.57742
+✔ authenticated per-person saving, conflict and retry; no snapshots or legacy overwrite (11167.408499ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15237.644159
+✔ empty optional groups and other text remain unanswered (1.356759ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4183.596173
+✔ only confirmed answers queue recommendations; main Chat calls MCP and retains candidates until owner adoption (10093.475053ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14393.84846
+✔ recommendation tools reject unconfirmed invocation, disallowed assets, collisions and replaced answer sources (9098.535091ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13130.524932
+✔ server starts the stage Agent after confirmation without a follow-up browser Chat request (9974.471584ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14100.605164
+✔ a silent model cannot complete a recommendation; an explicit MCP no-furniture reason can (10902.838342ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14970.220313
+Isolated test cases passed: 16

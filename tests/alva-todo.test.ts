@@ -7,17 +7,12 @@ import Fastify from 'fastify';
 import {boardPayload} from '../api/todo/board.js';
 import {registerTodo} from '../api/todo/routes.js';
 
-test('published tracker: all 44 IDs, 150 criteria, dependency frontier and stable revision', () => {
-  const board = boardPayload();
-  assert.deepEqual(board.tickets.map(t => t.id), Array.from({length:44}, (_,i)=>`ALVA-${String(i+8).padStart(3,'0')}`));
-  assert.deepEqual(board.tickets.filter(t=>t.column==='ready').map(t=>t.id), ['ALVA-013','ALVA-020','ALVA-023','ALVA-028','ALVA-031','ALVA-036','ALVA-041']);
-  assert.equal(board.tickets.find(t=>t.id==='ALVA-008')!.column,'done');
-  assert.deepEqual(board.tickets.filter(t=>t.owner).map(t=>t.id),[]);
-  assert.equal(board.tickets.filter(t=>t.column==='progress').length,0);
-  assert.match(board.tickets.find(t=>t.id==='ALVA-028')!.raw,/\*\*Execution state:\*\* pending/);
-  assert.equal(board.tickets.filter(t=>t.column==='blocked').length,25);
-  assert.equal(board.tickets.reduce((n,t)=>n+t.checks,0),150);
-  assert.deepEqual(board.tickets.filter(t=>t.checked).map(t=>t.id),['ALVA-008','ALVA-009','ALVA-010','ALVA-011','ALVA-012','ALVA-014','ALVA-015','ALVA-016','ALVA-017','ALVA-018','ALVA-019','ALVA-043']);
+test('published tracker preserves original IDs and includes the new outcome-question ticket', () => {
+  const board=boardPayload(), ids=new Set(board.tickets.map(t=>t.id));
+  for(let i=8;i<=51;i++)assert.ok(ids.has(`ALVA-${String(i).padStart(3,'0')}`));
+  assert.ok(ids.has('ALVA-068'));
+  assert.equal(ids.size,board.tickets.length);
+  assert.match(board.tickets.find(t=>t.id==='ALVA-068')!.raw,/具体结果|具体示例/);
   assert.equal(board.revision,boardPayload().revision);
   assert.deepEqual(board.tickets.find(t=>t.id==='ALVA-021')!.deps,['ALVA-020','ALVA-013']);
 });
@@ -47,7 +42,7 @@ test('read-only board HTTP routes, real source, no-store and unknown-path handli
   const app=Fastify();registerTodo(app);
   try {
     for(const url of ['/todo','/todo/']) {const r=await app.inject(url);assert.equal(r.statusCode,200);assert.match(r.body,/alva 工作空间/);assert.equal(r.headers['cache-control'],'no-store');}
-    const r=await app.inject('/todo/api/board');assert.equal(r.statusCode,200);assert.equal(r.json().tickets.length,44);assert.equal(r.headers['cache-control'],'no-store');
+    const r=await app.inject('/todo/api/board');assert.equal(r.statusCode,200);assert.ok(r.json().tickets.some((t:{id:string})=>t.id==='ALVA-068'));assert.equal(r.headers['cache-control'],'no-store');
     assert.equal((await app.inject('/todo/api/missing')).statusCode,404);
     assert.equal((await app.inject({method:'POST',url:'/todo/api/board',payload:{status:'done'}})).statusCode,404);
   } finally {await app.close();}

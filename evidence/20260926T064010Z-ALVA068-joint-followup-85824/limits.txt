@@ -1,0 +1,6 @@
+run=20260926T064010Z-ALVA068-joint-followup-85824
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2611
+51f82382b644a2a2a626ebc85db0a9031a595a38

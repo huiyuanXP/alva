@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "step": "browser-followup",
+  "checks": {
+    "syntheticBuilding": true,
+    "automaticFurnitureDrain": false,
+    "nativeSelectedLabel": "Cool whites, grays",
+    "otherPersonUnchanged": true,
+    "syncedNativeAndDetails": true,
+    "pendingFurnitureJob": true,
+    "pageErrors": []
+  }
+}

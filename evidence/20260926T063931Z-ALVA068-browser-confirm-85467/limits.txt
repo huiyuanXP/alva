@@ -1,0 +1,6 @@
+run=20260926T063931Z-ALVA068-browser-confirm-85467
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2608
+51f82382b644a2a2a626ebc85db0a9031a595a38

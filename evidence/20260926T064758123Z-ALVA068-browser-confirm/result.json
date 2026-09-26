@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "step": "browser-confirm",
+  "checks": {
+    "syntheticBuilding": true,
+    "automaticFurnitureDrain": false,
+    "nativeSelectedLabels": [
+      "A spot for keys, bags and mail"
+    ],
+    "otherPersonUnchanged": true,
+    "syncedNativeAndDetails": true,
+    "pendingFurnitureJob": true,
+    "pageErrors": []
+  }
+}

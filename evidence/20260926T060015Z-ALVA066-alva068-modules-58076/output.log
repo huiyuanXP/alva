@@ -1,0 +1,29 @@
+✔ outcome card preserves four source choices and never writes answers or designs (14.533831ms)
+✔ missing examples and repeated meanings fail with explainable errors (2.327566ms)
+✔ verbatim prompt and incompatible Home Vision IDs are rejected (0.720247ms)
+✔ recommendations require confirmed evidence, not raw chat or invented IDs (2.417296ms)
+✔ room questions require current room and cannot read another room evidence (0.84719ms)
+✔ tool rereads latest state and refuses answered or locked question (4.98043ms)
+✔ selection text creates suggestions only after the existing explicit confirmation service (0.577352ms)
+✖ HTTP MCP exposes outcome schema and carries errors without claiming success (89.791582ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1236.920088
+
+✖ failing tests:
+
+test at tests/alva-outcome-questions.test.ts:1:6774
+✖ HTTP MCP exposes outcome schema and carries errors without claiming success (89.791582ms)
+  Error: 题卡缺少有效内容：question: Invalid input: expected string, received undefined；reason: Invalid input: expected string, received undefined；options: Invalid input: expected array, received undefined；evidenceIds: Invalid input: expected array, received undefined
+      at call (/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions/api/mcp/server.ts:79:27)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions/tests/alva-outcome-questions.test.ts:62:17)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    detail: { code: 'QUESTION_CONTENT_INVALID', message: '题卡缺少有效内容：question: Invalid input: expected string, received undefined；reason: Invalid input: expected string, received undefined；options: Invalid input: expected array, received undefined；evidenceIds: Invalid input: expected array, received undefined', retryable: false, repairActions: [ [Object] ], currentRevision: 0 }
+  }

@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "origin": "http://127.0.0.1:37497",
+  "revision": "77a8900690d6",
+  "tickets": 45,
+  "ready": 2,
+  "blocked": 10,
+  "checks": 155,
+  "alva068": "in-progress",
+  "assertions": [
+    "count",
+    "source-revision",
+    "search",
+    "detail",
+    "deep-link-reload",
+    "lane-filter",
+    "refresh-retains-filter",
+    "plan",
+    "spec",
+    "mobile-overflow",
+    "console"
+  ],
+  "errors": []
+}

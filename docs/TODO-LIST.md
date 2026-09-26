@@ -2,7 +2,7 @@
 
 入口：https://prod.huiyuanxp.com/todo 。只读看板；JSON 数据：`/todo/api/board`。
 
-权威源为 `.scratch/alva-completion/issues/*.md` 的44张产品票；主目录 `NextTask.md` 提供认领署名、分支/Worktree和协调说明。维护任务ALVA-052独立记录，不混入产品范围。
+权威源为 `.scratch/alva-completion/issues/*.md` 的原44张产品票及后续追加正式任务（如ALVA-068）；主目录 `NextTask.md` 提供认领署名、分支/Worktree和协调说明。维护任务ALVA-052独立记录，不混入产品范围。
 
 每次请求重读源文件，网页每30秒自动刷新，也支持手动刷新。main中的Ticket状态、认领和文档更新不需要重新上传或重启；个人Worktree完成未集成时不影响线上。`ready-for-agent`只表示定义就绪；所有前置done才进可认领列，已署名/进行中进入进行中列，未完成依赖或显式blocked进入等待依赖列。done仅以正式票状态为准，勾选验收项不自动判done；维护者仍须遵守NextTask的验收与集成规则。
 
@@ -19,6 +19,6 @@ node_modules/.bin/tsx scripts/alva-todo-check.ts
 ALVA_TODO_ORIGIN=https://prod.huiyuanxp.com node_modules/.bin/tsx scripts/alva-todo-check.ts
 ```
 
-浏览器本地检查只启独立只读Fastify服务，动态选择空闲端口，不启动数据库。公网检查比对当前源版本，验证44票、搜索、详情/刷新深链、并行组筛选、文档标签、窄屏布局和控制台；不调用模型或创建业务会话。证据写入独立`evidence/*-ALVA-052-todo/`。
+浏览器本地检查只启独立只读Fastify服务，动态选择空闲端口，不启动数据库。公网检查比对当前源版本，验证正式票集合、搜索、详情/刷新深链、并行组筛选、文档标签、窄屏布局和控制台；不调用模型或创建业务会话。证据写入独立`evidence/*-ALVA-052-todo/`。
 
 发布使用已有alva.service，保持MCP、Tunnel和业务数据不变。发布前把`api/api.ts`保存到私有`.runtime/alva-todo-rollback/<run-id>/api.ts`。若本次路由有问题，将该备份复制回`api/api.ts`后重启alva.service即可撤销注册；再以Git审查恢复的源码，不执行全库reset，不删除Ticket或数据库。

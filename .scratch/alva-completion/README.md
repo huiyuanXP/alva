@@ -72,4 +72,4 @@
 
 ## 新增用户任务
 
-- [ALVA-068 主 Chat 结果式问答与具体示例](issues/45-outcome-questions.md)：in-progress，codex-outcome-questions；不重排原44票。
+- [ALVA-068 主 Chat 结果式问答与具体示例](issues/45-outcome-questions.md)：done，已集成main、未发布；不重排原44票。

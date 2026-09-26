@@ -1,0 +1,7 @@
+.outcome-question .choices { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,240px),1fr)); gap: 10px; }
+.outcome-question .choices button { text-align: left; white-space: normal; overflow-wrap: anywhere; padding: 12px; }
+.outcome-question .choices button[aria-pressed="true"] { outline: 2px solid #356458; outline-offset: 1px; }
+.outcome-question .choices p { margin: 8px 0 0; line-height: 1.5; }
+.outcome-question textarea { display: block; box-sizing: border-box; width: 100%; min-height: 72px; }
+.outcome-question .answer-states { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+@media (max-width: 560px) { .outcome-question .choices { grid-template-columns: 1fr; } }

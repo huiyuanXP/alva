@@ -18,7 +18,7 @@ export function registerRecommendationQueue(app:FastifyInstance,store:AlvaStore,
    const latest=await store.get(projectId);if(['pending','running'].includes(latest.answerRecommendations?.find(j=>j.id===job.id)?.status||''))return;
   }
  };
- const routes=new Set(['/api/project','/api/answers','/api/intake/confirm','/api/pending-answers/confirm','/api/chat/stages/switch','/api/chat/actions/confirm','/api/building/confirm']);
+ const routes=new Set(['/api/intake/vision/chat/confirm','/api/project','/api/answers','/api/intake/confirm','/api/pending-answers/confirm','/api/chat/stages/switch','/api/chat/actions/confirm','/api/building/confirm']);
  app.addHook('onResponse',async(req,reply)=>{
   if(closing||reply.statusCode>=400||!routes.has(req.url.split('?')[0]))return;
   let user:Session;try{user=session(req)}catch{return}if(user.role!=='owner'||drains.has(user.projectId))return;
