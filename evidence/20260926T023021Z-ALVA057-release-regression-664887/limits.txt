@@ -1,0 +1,6 @@
+run=20260926T023021Z-ALVA057-release-regression-664887
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2581
+bef7cfb6b59c481b5b92421da79b9bde23f5d022

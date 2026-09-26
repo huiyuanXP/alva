@@ -1,0 +1,65 @@
+✔ ALVA-015 manual answers are visible to later Chat snapshots (6.349778ms)
+✔ ALVA-015 Chat confirmation keeps exact quote, cannot duplicate, and locked values require explicit unlock (7812.441628ms)
+✔ ALVA-017 chat model catalogue is explicit and reference images require matching PNG/JPEG bytes (3.38032ms)
+✔ ALVA-017 routes keep model/chat private, reject raw Codex surface and invalid image before mutation (7229.580523ms)
+✔ retiring location keeps historical answers but shows a usable general home type (28.63525ms)
+✔ room changes preserve an inactive priority without rejecting the next draft (61.605376ms)
+✔ one-room transition preserves raw whole-home answers without activating room flags (27.27828ms)
+✔ area remains a draft until both a number and an explicit unit are present (4.58558ms)
+✔ budget currency is never inferred and unfinished ranges do not enter the brief (3.963956ms)
+✔ hidden nested property details are retained but excluded from effective answers (3.471715ms)
+✔ per-room scope excludes removed rooms and hidden options without deleting the draft (4.669651ms)
+✔ explicit unknown controls trigger source rules while unfinished budgets stay unknown (60.31781ms)
+✔ inactive room answers cannot create follow-up priorities (5.48131ms)
+✔ same multi-selections in different orders do not manufacture a disagreement (21.85043ms)
+✔ invalid selection shapes, duplicate options and disabled other choices are rejected (0.670146ms)
+✔ reference removal never transfers another image annotation to the next image (0.597838ms)
+✔ manual snapshots preserve the new versioned questionnaire and its explicit budget (1.40187ms)
+✔ consultation includes valid references but not uploaded bytes or an unfinished currency (4.532774ms)
+✔ real API enforces read-only access and preserves respondent isolation during conflict and replay (7998.939541ms)
+✔ all supplied cards and ZIP copy; stage paths are bounded and conditional (64.199637ms)
+✔ whole-home expansion, pet/child filters, hidden old choices do not set flags (22.902963ms)
+✔ rental, no-cooking, spend/save and unknown semantics (8.215858ms)
+✔ authenticated per-person saving, conflict and retry; no snapshots or legacy overwrite (8621.030947ms)
+✔ empty optional groups and other text remain unanswered (44.043227ms)
+✔ intake drafts survive retrieval without becoming answers/snapshots; confirmation and auth are enforced (7526.526055ms)
+✔ ALVA-014 keeps 60 IDs, disables removed scope and keeps time planning (3.270108ms)
+✔ ALVA-014 answers stay scoped, preserve explicit states and enforce locks (4.813113ms)
+✔ ALVA-014 HTTP contract omits legacy budget and removed write route (7681.399859ms)
+▶ ALVA-036 manual global snapshots: real HTTP/database, atomicity and durable retries
+  ✔ requires owner, explicit confirmation and session-scoped project (38.370179ms)
+  ✔ questionnaire-only drafts can be saved; missing-scene export is explicit 422 (63.623467ms)
+  ✔ edits, analysis/generation persistence and confirmations never create archive points (192.656474ms)
+  ✔ snapshot keeps every global field and preserves acknowledged/unresolved findings exactly (113.766417ms)
+[alva request error] /api/save Error: isolated_save_fault
+    at <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-feedback-20260926/api/store.ts:71:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-feedback-20260926/node_modules/@electric-sql/pglite/src/base.ts:514:24)
+  ✔ actual snapshot INSERT followed by failure rolls back snapshot, draft and receipt; retry works (213.701987ms)
+[alva request error] /api/save error: ALVA036 isolated receipt write fault
+    at pe.Ue (/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-feedback-20260926/node_modules/@electric-sql/pg-protocol/src/parser.ts:442:11)
+    at pe.tt (/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-feedback-20260926/node_modules/@electric-sql/pg-protocol/src/parser.ts:220:16)
+    at pe.parse (/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-feedback-20260926/node_modules/@electric-sql/pg-protocol/src/parser.ts:104:21)
+    at N.qe (/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-feedback-20260926/node_modules/@electric-sql/pglite/dist/index.js:5:1762)
+    at <anonymous> (/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-feedback-20260926/node_modules/@electric-sql/pglite/dist/index.js:5:1155)
+    at wasm://wasm/0267bb86:wasm-function[10930]:0x5a5ccf
+    at wasm://wasm/0267bb86:wasm-function[3585]:0x27eaeb
+    at wasm://wasm/0267bb86:wasm-function[3627]:0x2869d1
+    at wasm://wasm/0267bb86:wasm-function[3637]:0x286c2d
+    at wasm://wasm/0267bb86:wasm-function[9914]:0x54fd4d
+  ✔ real database failure after project update and receipt insertion is fully atomic (222.903503ms)
+  ✔ simultaneous duplicate saves commit one version; distinct stale requests return conflict (75.136862ms)
+  ✔ retry after later edits returns current work plus original save receipt, never rolls back (90.890729ms)
+  ✔ conflicts can be explicitly reread and saved with a fresh request (85.162528ms)
+  ✔ new snapshots exclude legacy budgets but never rewrite working or older states (37.853623ms)
+  ✔ legacy full-response command receipts remain retryable without new per-operation state (79.836576ms)
+  ✔ close/reopen preserves snapshots, timestamps, sessions and exactly-once retries (1079.547953ms)
+✔ ALVA-036 manual global snapshots: real HTTP/database, atomicity and durable retries (10028.701907ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 41
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 84547.922377

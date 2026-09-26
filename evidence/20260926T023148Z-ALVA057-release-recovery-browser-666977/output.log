@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "dir": "evidence/2026-09-26T023152224Z-ALVA057-recovery-browser",
+  "checks": [
+    "explicit area unit: partial draft saves, but does not enter the brief or enable Continue",
+    "a genuinely committed response can be lost and retried with the same request ID, without duplicate writes",
+    "real concurrent update preserves local edits; cancel keeps them, explicit reload resolves the conflict",
+    "respondent link opens the named response after reload, without merging another person’s answers",
+    "budget amounts require an explicitly selected currency, and save without creating a global snapshot",
+    "initial read failure has a functioning reload action",
+    "isolated-model main Chat: real get_snapshot tool, separate respondents, SSE reply, questionnaire resume without writes"
+  ]
+}

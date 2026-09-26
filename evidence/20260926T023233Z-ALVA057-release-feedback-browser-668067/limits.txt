@@ -1,0 +1,6 @@
+run=20260926T023233Z-ALVA057-release-feedback-browser-668067
+CPUQuota=80%
+MemoryMax=1600M
+MemorySwapMax=0
+headroomMiB=2487
+bef7cfb6b59c481b5b92421da79b9bde23f5d022

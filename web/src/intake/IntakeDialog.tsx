@@ -23,7 +23,8 @@ export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
    const wanted=state.current?.id||new URLSearchParams(location.hash.slice(1)).get('vision');
    const selected=data.responses.find((r:Response)=>r.id===wanted);
    if(wanted&&!selected)throw new Error('This response is not available. Check the shared link or reopen from the project.');
-   const next=selected||data.responses[0]||{id:crypto.randomUUID(),name:'Your answers',answers:{},cursor:'Q01',updatedAt:'',version:0};
+   const loaded=selected||data.responses[0]||{id:crypto.randomUUID(),name:'Your answers',answers:{},cursor:'Q01',updatedAt:'',version:0};
+   const next=loaded.cursor==='Q02'?{...loaded,cursor:'Q03'}:loaded;
    pending.current=null;generation.current=0;persisted.current=0;
    setPeople(data.responses);setDirty(false);setConflict(false);assign(next,false);
   }catch(e){if(mounted.current)setError((e as Error).message)}
