@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "checks": [
+    "prominent entry, ZIP single cards, autosave/close/reload",
+    "market localization and pet-dependent fields",
+    "ZIP multi/grid/priority, stage summary, ZIP palettes",
+    "failed save retains edits; retry persists",
+    "iPhone device-emulated layout, touch controls and desktop Escape save/close",
+    "versioned storage, no global snapshot, no page errors"
+  ],
+  "errors": []
+}
