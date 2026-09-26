@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-037](30-snapshot-preview.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领；独立 Worktree `task/ALVA-038-Lexie` 开发。复用 ALVA-037 只读预览层和现有 restore 路由，补齐全局原子恢复、冲突/失败不污染、恢复不建新快照、重启可读与建筑结果一致性。
 
 - [ ] 恢复入口只接受已存在的手动快照；点击快照只预览，点击恢复才覆盖当前工作状态，明确未保存修改将被替换。
 - [ ] 场景、拓扑、建筑结果、需求、原话依据和取舍整体恢复；失败/冲突不部分写入，不提供单步撤销或任意操作点恢复。
