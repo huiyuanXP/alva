@@ -1,0 +1,1 @@
+tests/alva-stage-chat.test.ts(83,65): error TS2339: Property 'session' does not exist on type '{ token: string; projectId: string; role: Role; }'.

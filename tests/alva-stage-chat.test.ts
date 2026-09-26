@@ -18,6 +18,7 @@ test('actual Chat routes bridge only active MCP pack, retain threads, resume on 
   await input.session.onThread(input.session.threadId||`original-${stage}`);
   if(input.resumeOnly)return input.session.threadId!;
   if(input.injectOnly){await input.session.onHandoffsDelivered?.((input.session.handoffs||[]).map(h=>h.id));return input.session.threadId||`original-${stage}`}
+  assert.ok(input.text.length<10000,'Ordinary turn must not duplicate full project/history before the snapshot tool');
   const snapshot=await input.tools!.find(t=>t.name==='get_snapshot')!.run({}) as any;
   const p=stage==='floorplan'?snapshot.snapshot.project:snapshot.project;
   assert.equal(p.id,project.id);assert.ok(p.revision>0);
@@ -70,4 +71,40 @@ test('confirmation rejects stale basis, wrong stage, cross-project ID and concur
   assert.deepEqual(results.map(r=>r.statusCode).sort(),[200,409]);const action=(await store.chatActions(project.id)).find(a=>a.id===current.action.id)!;
   assert.equal((await store.get(project.id)).savedVersion,action.status==='confirmed'?1:0);
  }finally{await app.close();await store.close()}
+});
+
+test('unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls',async()=>{
+ const {runStageChat}=await import('../api/mcp/runtime.js');
+ const {StageMcpServer}=await import('../api/mcp/server.js');
+ const store=new AlvaStore();await store.init();const server=new StageMcpServer();
+ try{
+  for(const scenario of ['recover','bounded','observed'] as const){
+   const {project}=await store.create(`ALVA-066 recovery ${scenario}`);
+   const session={projectId:project.id,role:'owner' as const,authGeneration:1};
+   let attempts=0,calls=0;const deltas:string[]=[];
+   const operation=runStageChat({store,server,session,authorize:async()=>session,
+    snapshot:async()=>{throw new Error('ordinary turns must use MCP for snapshots')},
+    packs:{floorplan:[{name:'get_snapshot',description:'Read current state',inputSchema:{type:'object'},run:async()=>{calls++;return {revision:0}}}],living:[]},
+    input:{text:'读取当前状态',onDelta:text=>deltas.push(text)},
+    runModel:async input=>{
+     attempts++;
+     assert.equal(input.session?.threadId,attempts===1?undefined:`recovery-${scenario}`);
+     await input.session!.onThread(`recovery-${scenario}`);
+     input.onDelta?.('工具不可用');
+     if(scenario==='observed'||(scenario==='recover'&&attempts===2)){
+      await input.tools!.find(t=>t.name==='mcp_call_tool')!.run({name:'get_snapshot',arguments:{}});
+      return scenario==='observed'?'工具不可用':'已读取';
+     }
+     await input.tools!.find(t=>t.name==='mcp_list_tools')!.run({});
+     return '工具不可用';
+    }});
+   if(scenario==='bounded'){
+    await assert.rejects(operation,(error:any)=>error.detail?.code==='MCP_EXECUTION_UNVERIFIED');
+    assert.deepEqual(deltas,[]);assert.equal(attempts,2);assert.equal(calls,0);
+   }else{
+    assert.equal(await operation,scenario==='recover'?'已读取':'工具不可用');
+    assert.equal(attempts,scenario==='recover'?2:1);assert.equal(calls,1);assert.equal(deltas.length,1);
+   }
+  }
+ }finally{await server.close();await store.close()}
 });

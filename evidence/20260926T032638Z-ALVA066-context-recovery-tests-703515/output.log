@@ -1,0 +1,65 @@
+✔ ALVA-029 coffee/pet/plant positive cases retain exact source and object references (292.898208ms)
+✔ ALVA-029 negative statements and pending/inferred/rejected habits do not trigger positive findings (195.071823ms)
+✔ ALVA-029 supported pain checks clear after actual layout fixes (79.837643ms)
+✔ ALVA-029 changed current answers do not reuse positive historical questionnaire evidence (85.033613ms)
+✔ ALVA-029 confirmed correction supersedes the original habit without deleting provenance (75.47189ms)
+✔ ALVA-029 scoped habits do not leak to another room or unrelated object (80.88102ms)
+✔ ALVA-029 model summary cannot invent an unsupported habit absent from its actual quote (38.962941ms)
+✔ ALVA-029 coffee color and panda videos do not imply coffee-making or household pets (43.055932ms)
+✔ ALVA-029 geometry catches rotated footprint outside despite an inside center (40.267099ms)
+✔ ALVA-029 geometry catches furniture bridging a concave room notch and rotated overlap (42.549198ms)
+✔ ALVA-029 actual door-to-door grid comparison finds a barrier but permits a detour (124.848394ms)
+✔ ALVA-029 incomplete doors report a navigation limitation rather than universal passage success (38.857284ms)
+✔ ALVA-029 explicit material preference and functional requirement conflicts are independently sourced (56.47528ms)
+✔ ALVA-029 review freshness follows scene and context inputs, retaining reviewed revision after administrative writes (82.35184ms)
+✔ ALVA-029 save adoption preserves explicit choices while professional unknowns stay open (49.649279ms)
+✔ ALVA-029 missing or invalid layouts fail explicitly and stale context cannot be reviewed (37.922226ms)
+✔ ALVA-029 review tool always reloads inputs and reports persistence truthfully (88.313314ms)
+✔ ALVA-029 layout modification during review persistence invalidates tool success (72.095335ms)
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (10773.254537ms)
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (10422.539457ms)
+✖ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (8693.980598ms)
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (180.725565ms)
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (13.46722ms)
+✔ expired grants and cancellation cannot execute tools (5.880987ms)
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (13.603487ms)
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (6.805272ms)
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (46.521409ms)
+✔ HTTP MCP argument errors retain field paths and tell the Agent how to repair them (11.943353ms)
+✔ ALVA-029 classified Markdown round-trips real sources and is idempotent/private (153.788949ms)
+✔ ALVA-029 user quotes containing code fences remain data and cannot break the Markdown payload (40.783541ms)
+✔ ALVA-029 invented quotes, assistant sources, missing evidence and project traversal are rejected (3.771844ms)
+✔ ALVA-029 unclassified answers stay unresolved and historical evidence is not confirmed (1.314437ms)
+✔ ALVA-029 confirmed corrections supersede old facts; pending corrections cannot erase them (1.592755ms)
+✔ ALVA-029 explicit classifications tied to replaced answers are retired (0.706605ms)
+✔ ALVA-029 intake inferences never become confirmed facts and review outputs do not feed back (1.082969ms)
+✔ ALVA-029 confirmed reference preferences require the actual confirmation record (1.161813ms)
+✔ ALVA-029 missing, stale revision and changed input never return an empty successful read (132.740594ms)
+✔ ALVA-029 altered and missing category files fail closed; explicit rebuild repairs them (124.925796ms)
+✔ ALVA-029 symlinks and forged generation paths cannot read outside the project (41.103976ms)
+✔ ALVA-029 concurrent writers never publish mixed generations or regress revision (191.734962ms)
+✔ ALVA-029 an invalid source write leaves the previous pointer and all published files intact (50.995649ms)
+✔ ALVA-029 read_user_context uses a fresh project callback and repairs once without accepting path arguments (73.944762ms)
+✔ ALVA-029 empty server override uses configured ALVA_DATA_DIR rather than the repository root (41.520934ms)
+✔ ALVA-029 concurrent authoritative changes during projection read return a stale error (35.96618ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 43
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39111.094061
+
+✖ failing tests:
+
+test at tests/alva-stage-chat.test.ts:1:7785
+✖ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (8693.980598ms)
+  Error: 会话已过期或验证码已更换
+      at AlvaStore.session (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/api/store.ts:41:579)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp/tests/alva-stage-chat.test.ts:84:18)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    statusCode: 401
+  }

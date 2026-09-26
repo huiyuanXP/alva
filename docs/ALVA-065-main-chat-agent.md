@@ -2,28 +2,34 @@
 
 2026-09-25 起，本文件是后续功能接入主 Chat 的现役入口说明。主 Chat 的代码身份是 `api/main-chat-agent.ts` 中的 `mainChatAgent`；服务端装配在 `api/chat.ts`，运行器在 `api/codex.ts`。网页唯一主入口是登录后首页左侧“咨询”栏，`web/src/main.tsx` 的发送动作请求 `POST /api/chat`；`POST /api/chat/cancel` 取消当前请求。`GET /api/models` 当前只列出 `gemini-3.1-flash-lite`。Gemini 3.8 Flash High 是**图片户型识别**模型，由 `api/import.ts` 选择，不能误写成主 Chat 模型。
 
-## ALVA-066 开工时的执行基线（尚未迁移）
+## ALVA-066 当前实现（候选已隔离实测，生产状态见 CURRENT）
 
 ```text
 登录后的咨询输入框 → POST /api/chat → registerConsultation
-  → 本轮项目快照、用户原话与图片 + 明确注册的 BusinessTool[]
-  → runCodex → Codex App Server / Responses provider → 动态工具白名单
-  → SSE 状态/文本/项目 → 项目消息和候选持久化 → 网页展示
+  → 项目所属阶段、最新快照、未送达摘要
+  → runCodex：新建或 thread/resume 同一项目阶段的持久 thread
+  → mcp_list_tools / mcp_call_tool（App Server dynamicTools 受控桥接）
+  → 本机 HTTP MCP /mcp/floorplan 或 /mcp/living
+  → 共用业务服务校验 → SSE 结果/确认卡/UI action → 页面与持久状态
 ```
 
-`runCodex` 为每次调用建隔离的临时进程和 thread，使用只读 sandbox、`approvalPolicy=never`、无 shell、文件写入、网页搜索和 MCP 工具。只有本轮 `BusinessTool[]` 能被模型调用；未注册的工具请求被拒绝。服务端对工具参数、项目权限、revision、确认条件和结果负责；模型输出本身不等于状态变更。跨轮连续性来自项目存储和注入的快照/最近消息，**不是**保留同一个 Codex thread。ALVA-063 的“同会话截图自查”是独立隔离流程，没有自动接入主 Chat。
+安装版原生 HTTP MCP 的目录和 Resume 探针可用，但现役模型网关没有完成原生工具调用，因此当前采用已批准的 dynamicTools → HTTP MCP 桥接，不能宣称原生调用通过。两个固定入口解决旧 thread 无法替换 dynamicTools 目录的问题；Agent 先列出现役目录，再用 `mcp_call_tool({name,arguments})` 执行业务工具。业务工具登记在 `api/chat.ts` 的 `packs`，HTTP transport/grant 在 `api/mcp/`；桥接不绕过该层的授权和错误。
 
-主 Chat 的业务提示词和工具注册目前在 `api/chat.ts`；Codex 进程协议、工具分发、超时和取消在 `api/codex.ts`。`api/main-chat-agent.ts` 固定 agent 名称、路由、现役模型与基础指令。后续改主 Chat 模型、入口、基础指令或 Harness 行为，必须把代码、本文、受影响测试和生产验收一起更新；新增业务工具按下面的接入约定实施。`api/codex.ts` 同时服务识图和建筑生成，不能把它们都称为主 Chat agent。
+`api/codex.ts` 对主 Chat 保留项目/阶段专属 CODEX_HOME 和非临时 thread。阶段切换先预检 Resume，进入时以 `thread/inject_items` 送达快照和待送达摘要；`alva_chat_stages` 持久化 thread 与送达 ID。恢复去重核对当前 thread 私有 rollout，不能跨项目读取历史。主 Chat 仍禁止 shell、文件写入和网页搜索；真实项目写入仅由受控业务工具执行。辅助识图/建筑调用保持独立临时 thread，无主 Chat 工具和会话继承。
+
+基础约束通过 thread/start、thread/resume 的 `baseInstructions` 配置维护，不作为普通用户消息重复追加。普通轮次传当前请求、必要调用约定和项目 revision，不附完整项目及聊天历史；详情由 `get_snapshot` 按需读取。阶段进入时仍注入最新快照和未送达摘要。传配置参数不等于追加历史；不假定 compact 会修复模型漏调工具，也不把目录读取成功当业务执行成功。
+
+旧每请求临时 thread 已删除，迁移只能保留历史项目消息并首次创建阶段 thread、注入摘要；不得宣称 Resume 旧临时会话。长会话使用提前自动压缩，恢复仍是原 thread；必要时可用官方 `thread/compact/start`，不能用新会话冒充压缩。
 
 ## 新功能接入合同（2026-09-25 起生效）
 
-实施票为 [ALVA-066](ALVA-066-stage-mcp.md)。下面是已批准的目标合同；上面的临时 thread 执行链仍是当前代码基线，不把目标写成已上线。
+实施票为 [ALVA-066](ALVA-066-stage-mcp.md)。下面是现行功能合同。实现候选、main 集成、生产发布分别记录，不把隔离验收等同上线。
 
 主 Chat 默认优先通过 MCP 使用业务功能。每个后续用户功能必须在同一 Ticket 将工具接入所属 MCP，并以主 Chat 实际调用的端到端结果验收；直接 API、按钮、提示词或自然语言成功回复不能代替调用证据。只有本票确证原生 MCP 不可用时，允许由 dynamicTools 桥接相同 MCP 服务与校验合同，并明确记录当前传输方式。
 
 | 归属 | 工具范围 | 可见阶段 |
 |---|---|---|
-| 户型导入 MCP | 附件识图、标注、墙/门窗、校准、拓扑确认、建筑生成与确认 | 户型 |
+| 户型导入 MCP | 附件识图、标注、墙/门窗、校准、拓扑确认、建筑生成与确认；受约束界面操作 | 户型 |
 | 生活设计 MCP | 已完成问卷、家具、用途/布局、偏好、审查、保存、交付；房间样式候选；受约束界面操作 | 生活设计 |
 
 每次主 Agent 只配置当前阶段的一包工具，服务端再次检查短期凭据绑定的项目、角色、阶段、有效期及最新状态。识图与建筑生成等辅助模型不得继承主 Chat MCP。新功能必须明确归属；跨阶段流程由阶段切换与交接摘要连接，不给单个 Agent 同时装载两包。
@@ -38,7 +44,7 @@
 
 MCP 工具必须返回模型可理解的失败内容，业务失败用 isError=true 并带结构化错误。合同至少包含 code、message、retryable、repairActions，能够取得时附 currentRevision、相关对象/字段和 confirmationRequired。参数/权限/阶段/附件/revision/确认/碰撞/供应端/取消错误须有稳定分类；内容不含密钥或其他项目数据。
 
-Agent 应根据错误指出未完成什么、具体原因与下一步（重新上传、选择房间、重读项目、用户确认或稍后重试）。不可吞错、把失败包装为成功、盲目重试不可重试错误；取消/超时后的写入状态不明时先核对幂等结果再操作。桥接必须保留 MCP 错误与修复语义。
+Agent 应根据错误指出未完成什么、具体原因与下一步（重新上传、选择房间、重读项目、用户确认或稍后重试）。不可吞错、把失败包装为成功、盲目重试不可重试错误；取消/超时后的写入状态不明时先核对幂等结果再操作。桥接必须保留 MCP 错误与修复语义。家具候选校验失败不能用“不需要家具”结束任务；经服务端验证的位置提示仅供模型修正候选，不代表最优动线或用户采用。
 
 ## 完成条件
 

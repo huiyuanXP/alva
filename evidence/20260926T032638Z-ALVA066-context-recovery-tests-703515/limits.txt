@@ -1,0 +1,6 @@
+run=20260926T032638Z-ALVA066-context-recovery-tests-703515
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2513
+43f4466ebe1451252a38c4984ba13cab5b321bf5

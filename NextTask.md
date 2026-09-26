@@ -1,3 +1,11 @@
+## 2026-09-26 ALVA-066 上下文修复检查点（个人分支）
+
+普通轮次取消完整项目/历史重复注入，真实输入由约 6.7 万降至 2,961 字符；基础约束仍为 thread 配置。修复审查错误的工具指引，增加无业务调用时同 thread 有限纠正及对应回归。类型检查、44/44 相关测试、原 living thread 实际读取→复核→保存卡及浏览器确认 savedVersion=2 通过。失败证据保留，模型此前仍有漏调；不宣称整体可靠性已完成。详见 [ALVA-066](docs/ALVA-066-stage-mcp.md) 最新检查点。
+
+066/029 仍 in-progress，本次未合 main、未发布。下一步须先合并最新 main 的 057/037，再完成同候选联合验收；不能将旧分支直接发布。用户收尾后原持续目标仍暂停，本轮只处理授权的调查修复。
+
+neat-freak：本次代码/合同 changed-and-verified；完整验收、main 集成及生产 pending；生成记忆 out-of-scope；私有现场和历史失败证据保留。共享重任务已结束，锁按 runner 释放。
+
 ## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
 
 [ALVA-066](docs/ALVA-066-stage-mcp.md) 已获用户执行授权，已完成协议和代码基线核验；用户已授权处理原未提交修改；codex-stage-mcp 已认领，先做原生 MCP/网关隔离探针。主 Chat 后续功能按新版 MCP 合同同票验收。

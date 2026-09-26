@@ -172,3 +172,15 @@ neat-freak过程对齐：协议/定向回归/渲染局部verified-current；原�
 原floorplan thread恢复并只讨论不清空设计通过（20260925T221740118Z）；页面明确返回修改后，旧建筑、场景、候选、样式、审查和回答建议失效通过（20260925T221837155Z）。随后真实MCP将一处门窗宽度缩小0.05米，来源明确为隔离合成修改，重校准并页面确认拓扑v2（20260925T221858696Z、20260925T221950176Z）。真实重新生成建筑并页面确认通过（20260925T222017037Z、20260925T222101246Z），恢复同一living thread并立即送达失效摘要；随后实际get_snapshot只读讨论通过（20260925T222213268Z）。首次仅用注入快照而未调用get_snapshot的run按探针要求保留失败，不放宽断言。房间用途MCP提案/页面确认/刷新且家具不变通过（20260925T222244022Z、20260925T222312546Z），真实参考图片经主Chat提出待确认偏好候选通过（20260925T222333515Z）。
 
 类型检查221311通过于位置提示前；221515虽退出0，但采集期间提示表示与测试断言变更，不计最终固定源码门禁，已有source-change-note.json。当前所有过程成功/失败均保留，整票同候选最终门禁、main产品集成、备份发布与生产验收尚未完成。066/029保持in-progress，不关闭040/057。neat-freak：本次局部实测verified-current；完整交付/生产pending；MCP优先规则verified-current；生成记忆out-of-scope；所有私有原始协议和数据库留.runtime，未清场。
+
+## 2026-09-26 上下文精简与执行核对
+
+本轮修复位于个人 Worktree，未集成 main、未部署。平台 bwrap 启动问题在恢复 Full Access 后已消失；不属于 Alva MCP 的业务授权失败。原 living thread 的官方 compact 已成功，后续实际目录仍含读取、复核、保存工具，没有证据表明 compact 丢失了 MCP。
+
+`baseInstructions` 是 thread/start、thread/resume 配置，不作为用户消息追加。发现普通轮次重复注入完整 consultationSnapshot（含历史消息），已改为项目 ID/revision，详细状态由 get_snapshot 读取；阶段进入仍送快照及去重摘要。私有 rollout 统计：旧普通轮次 66,726–69,794 字符，新轮次 2,961 字符，约减少 96%；不是当前上下文 token 数，也未消除工具结果的上下文开销。
+
+REVIEW_STALE/REQUIRED 现在返回准确工具名称和有序修复步骤；没有业务调用却声称工具不可用时，同一 thread 在总时限内最多纠正一次，仍不执行则返回 MCP_EXECUTION_UNVERIFIED。回复正文经核对后一次发送，工具/进度事件继续流式；该有限检查不保证识别全部错误叙述，不重复已有业务调用。已补新建 thread 重试、最多两次、正文不泄漏失败猜测及已执行业务不重试测试。
+
+验证：类型检查 `20260926T032556Z-ALVA066-context-recovery-typecheck-fixed-703178`；相关回归 44/44 `20260926T032730Z-ALVA066-context-recovery-tests-fixed-703975`；原 living thread 真实 read_user_context → run_layout_review → request_save 通过 `20260926T032820114Z-ALVA066-review-model`。前序失败均保留；曾有成功复核但漏出保存卡的模型行为，单次通过不代表稳定性已全面解决。066/029 继续 in-progress。
+
+浏览器确认与重读通过：`20260926T032844174Z-ALVA066-save-confirm`，savedVersion=2，reviewedRevision=151、adoptedAtRevision=153，原 living thread 不变；该记录不代替 main 集成及生产验收。

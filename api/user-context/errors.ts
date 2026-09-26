@@ -17,6 +17,15 @@ export class ContextProjectionError extends Error {
       code === 'CONTEXT_IO_FAILED' ? 503 : 422;
     const action = code.startsWith('REVIEW_') ? 'rerun_layout_review' :
       code === 'CONTEXT_SOURCE_INVALID' ? 'correct_user_context_sources' : 'rebuild_user_context';
+    if (code === 'REVIEW_STALE' || code === 'REVIEW_REQUIRED') {
+      this.retryable = true;
+      this.detail = {code, message, retryable: true, repairActions: [
+        {action: 'read_user_context', message: '审查缺失或过期不代表工具不可用。实际调用 mcp_call_tool({name:"read_user_context",arguments:{}}) 重读当前项目 Markdown。'},
+        {action: 'run_layout_review', message: '随后实际调用 mcp_call_tool({name:"run_layout_review",arguments:{}}) 重新复核；不可沿用旧会话结论。'},
+        {action: 'request_save', message: '复核成功后，如用户已要求保存卡，调用 mcp_call_tool({name:"request_save",arguments:{}}) 出示卡片；只出示卡片，不替用户确认或跳过待处理取舍。'},
+      ]};
+      return;
+    }
     this.detail = {code, message, retryable, repairActions: [{action, message:
       action === 'rerun_layout_review' ? '重读当前项目并运行布局复核，再由用户确认取舍。' :
       action === 'correct_user_context_sources' ? '核对本项目原话、证据和更正关系，再重新确认信息。' :
