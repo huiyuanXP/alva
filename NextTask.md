@@ -1,8 +1,10 @@
-## 2026-09-26 ALVA-066 已按用户授权集成 main
+## 2026-09-26 ALVA-066 接入前置已满足，共享入口占用已释放
 
-集成个人候选 `c53d3ac`（含修复 `c15b629`），保留主线 `9fdf91c` 的 Gemini 3.8 主 Chat、进度展示和快照恢复。主线现已包含两阶段 MCP、持久会话、数字版本确认卡、页面同源诊断与保存复核门禁。分组类型、16 项合并回归、构建、Gemini 3.8 实际 MCP/浏览器及预览公网只读验证通过；证据与现役临时地址见 [临时预览](docs/ALVA-066-temporary-preview.md)。
+066 已集成 main `e44c23a`，两阶段 MCP、持久会话、确认与诊断可作为后续功能的开发基线。032、040、042、057 可由原负责人同步最新 main，接入所属 MCP 并执行本票实际 Chat 联验；不再等待 066 完票或生产发布，不再受 066 对 api/chat.ts、api/mcp、store/model/api.ts 和 web/src/main.tsx 的开发占用限制。共享入口仍按各票实际改动串行协调，不覆盖他人代码。
 
-下一步：继续用户验收与 066/029 尚缺的整票联合门禁；029 页面定位、非空用户取舍及已知保存状态复述问题仍 pending，不关闭票、不解锁030。生产仍是 ALVA-067 发布版本，本次未重启或发布。预览保留，本任务所有进程合计内存 20%、零 swap。neat-freak：代码集成/预览/合同 changed-and-verified，生产和生成记忆 out-of-scope；旧证据与未完成工作区保留。以下为历史与其他任务记录。
+066 状态为 **已集成、接入前置已满足，待发布验收**；原票要求的备份/回滚及生产两个阶段调用、可见性、会话恢复尚未完成，因此暂不标整票 done。本次不发布生产。029 自身的定位/取舍等验收归029，保留 codex-acceptance 现有认领；030 是否解锁以029等正式直接依赖为准。其他票不因解除接入等待自动标done。
+
+neat-freak：代码集成事实 verified-current；依赖、占用与交接文档 changed-and-verified；066生产验收 pending，生成记忆 out-of-scope。保留临时预览、原工作区及证据，未删除共享锁文件。以下为历史与其他任务记录。
 
 ## 2026-09-26 ALVA-066 上下文修复检查点（个人分支）
 
@@ -83,11 +85,10 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-066](docs/ALVA-066-stage-mcp.md) | 两阶段 MCP 与持久 Chat | `chat` | codex-stage-mcp | task/ALVA-066-codex-stage-mcp / /home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp | in-progress；先 api/codex.ts、api/mcp、独立探针；后 api/chat.ts、store、model、api.ts 与 web 入口需衔接057；端口使用127.0.0.1动态分配 |
-| [ALVA-032](.scratch/alva-completion/issues/25-wall-evidence.md) | 墙体分类、证据与专业授权 | `topology` | Lexie | task/ALVA-032-Lexie / /home/ubuntu/Alva-worktrees/ALVA-032-Lexie | in-progress；业务实现 4fcdd02；第一轮4/4，第二轮真实HTTP+服务器管理员grant/revoke+重启通过，相关回归24/24，类型/构建/diff-check通过；已导出get_wall_professional_evidence；等待ALVA-066 floorplan stage MCP合入并挂载后做同SHA真实MCP联合验收，未完成前不标done |
+| [ALVA-032](.scratch/alva-completion/issues/25-wall-evidence.md) | 墙体分类、证据与专业授权 | `topology` | Lexie | task/ALVA-032-Lexie / /home/ubuntu/Alva-worktrees/ALVA-032-Lexie | in-progress；业务实现 4fcdd02；第一轮4/4，第二轮真实HTTP+服务器管理员grant/revoke+重启通过，相关回归24/24，类型/构建/diff-check通过；已导出get_wall_professional_evidence；066已集成，接入前置已满足；原负责人可挂载工具并做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-039](.scratch/alva-completion/issues/32-desktop-walkthrough.md) | 桌面漫游与输入暂停 | `render` | Lexie | task/ALVA-039-Lexie / /home/ubuntu/Alva-worktrees/ALVA-039-Lexie | in-progress；与 ALVA-040 同 lane 但明确文件隔离：仅新增 web/src/scene/walkthrough/*、测试/证据，并最小修改 web/src/main.tsx 装配；不修改 BuildingView.tsx、SceneView.tsx、scene/sunlight*；测试端口43139 |
-| [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` | chatgpt-sunlight | task/ALVA-040-chatgpt-sunlight / /home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight | in-progress；独立日照实现 7c5129e：17/17测试、类型/构建、13/13浏览器检查通过；主Chat/MCP及UI action回执待066；不改057/066/029共享入口；未集成/未部署 |
-| [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；第二轮产品门禁未过：main尚无阶段MCP，066分支living pack也未挂get_confirmed_reference_preferences；须等066合main后做同SHA真实MCP联合验收，未完成前不标done |
+| [ALVA-040](.scratch/alva-completion/issues/33-sunlight-seasons.md) | 昼夜季节与地理假设 | `render` | chatgpt-sunlight | task/ALVA-040-chatgpt-sunlight / /home/ubuntu/Alva/.runtime/worktrees/ALVA-040-chatgpt-sunlight | in-progress；独立日照实现 7c5129e：17/17测试、类型/构建、13/13浏览器检查通过；066接入前置已满足；原负责人可接入生活设计MCP与UI action回执，共享入口按实际改动协调；未集成/未部署 |
+| [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；历史第二轮产品门禁未过；066现已合main，接入前置已满足，原负责人可挂载get_confirmed_reference_preferences并做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-029](.scratch/alva-completion/issues/22-layout-review.md) | 布局调整与保存前冲突复核 | `review` | codex-acceptance（用户授权续接；原实现 xuanpu-chat-6pro） | task/ALVA-029-codex-acceptance / /home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance | in-progress；基于已集成066的main完成同SHA联合验收及必要修复；api/review、web/src/review、定位接入及本票测试/脚本；main.tsx仅布局复核定位接线，不改039漫游；独立数据/动态端口；原029工作区保留 |
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
@@ -166,8 +167,8 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
-| [ALVA-057](docs/ALVA-057-home-vision.md) | xuanpu-chat-6pro | task/ALVA-057-xuanpu-chat-6pro；/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-xuanpu-chat-6pro；questions；api/intake、api/model.ts、api/chat.ts、web/src/intake、web/src/main.tsx、packages/contracts/alva/home-vision、相关脚本/测试；测试4287 | in-progress；问卷业务已发布，阶段MCP待ALVA-066 |
+| [ALVA-057](docs/ALVA-057-home-vision.md) | xuanpu-chat-6pro | task/ALVA-057-xuanpu-chat-6pro；/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-xuanpu-chat-6pro；questions；api/intake、api/model.ts、api/chat.ts、web/src/intake、web/src/main.tsx、packages/contracts/alva/home-vision、相关脚本/测试；测试4287 | in-progress；问卷业务已发布，066接入前置已满足，可在最新main完成本票阶段MCP联验 |
 
-恢复提交 `53a39fc`，类型/40项回归/13组浏览器/构建通过。现役dynamicTools读取适配不等于阶段MCP接入；问卷业务已合main并生产发布；阶段MCP仍未完成，下一步见票据。当前无执行进程或重任务占用，重新实施前核对共享文件。
+恢复提交 `53a39fc`，类型/40项回归/13组浏览器/构建通过。现役dynamicTools读取适配不等于阶段MCP接入；问卷业务已合main并生产发布；066阶段MCP运行层已集成，本票尚需联验，下一步见票据。当前无执行进程或重任务占用，重新实施前核对共享文件。
 
 用户批准新版预算采集，不扩展自动报价。保留独立Git索引、共享重任务锁、CPU80%/1200M（浏览器1600M）与资源采样；不改MCP/生产资源配置。原yang-chatgpt分支及Worktree保留，不清场。

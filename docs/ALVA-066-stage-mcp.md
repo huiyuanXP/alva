@@ -2,12 +2,20 @@
 
 **ID:** ALVA-066
 **Status:** in-progress
-**Execution state:** 用户已授权处理原未提交修改，协调清理完成；2026-09-25 codex-stage-mcp 署名开工，先做隔离 MCP/网关探针。
+**Execution state:** integrated / integration-prerequisite-satisfied / awaiting-production-acceptance；main e44c23a；共享入口开发占用已释放。
 **Owner:** codex-stage-mcp
 **Date:** 2026-09-25
 **Dependencies:** ALVA-065；已完成业务以 main 实现为准。ALVA-057 在途共享问卷/schema/页面需协调。
 **Branch / Worktree:** task/ALVA-066-codex-stage-mcp；/home/ubuntu/Alva-worktrees/ALVA-066-codex-stage-mcp。
 **Scope:** 本票是新增接入与房间样式任务，不改写 ALVA-008–051 的编号或完成状态。
+
+## 2026-09-26 ALVA-066 接入前置已满足，共享入口占用已释放
+
+066 已集成 main `e44c23a`，两阶段 MCP、持久会话、确认与诊断可作为后续功能的开发基线。032、040、042、057 可由原负责人同步最新 main，接入所属 MCP 并执行本票实际 Chat 联验；不再等待 066 完票或生产发布，不再受 066 对 api/chat.ts、api/mcp、store/model/api.ts 和 web/src/main.tsx 的开发占用限制。共享入口仍按各票实际改动串行协调，不覆盖他人代码。
+
+066 状态为 **已集成、接入前置已满足，待发布验收**；原票要求的备份/回滚及生产两个阶段调用、可见性、会话恢复尚未完成，因此暂不标整票 done。本次不发布生产。029 自身的定位/取舍等验收归029，保留 codex-acceptance 现有认领；030 是否解锁以029等正式直接依赖为准。其他票不因解除接入等待自动标done。
+
+neat-freak：代码集成事实 verified-current；依赖、占用与交接文档 changed-and-verified；066生产验收 pending，生成记忆 out-of-scope。保留临时预览、原工作区及证据，未删除共享锁文件。以下为历史与其他任务记录。
 
 ## 2026-09-26 ALVA-066 预览反馈修复已验证
 
