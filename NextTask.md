@@ -1,3 +1,11 @@
+## 2026-09-26 ALVA-068 已生产发布并复验
+
+用户授权发布已完成：固定main `6eef743`，08:30 UTC上线。公网资源与已验构建一致、有效登录、当前floorplan实际inspect_topology、独立问卷入口通过，最终只读复验设计/问卷/候选/保存状态不变，页面错误0。生产当前处于户型阶段，未替用户确认建筑；生活问卷确认同步以本票隔离真实链路验收为据。
+
+生产现由ALVA068-release.conf固定到私有release目录，main后续提交/构建不会自动发布；To Do List仍读取main。备份、回滚、失败run与验收边界见[发布收据](docs/ALVA-068-production-release.md)。068临时预览已恢复，CPU80%/总内存20%/swap0；旧066应用仍停止。其他票状态不因发布自动改变。
+
+neat-freak已同步代码、运行态、合同和文档；生成记忆out-of-scope，备份及私有复核现场保留。以下带未发布字样的旧检查点为当时状态，以本节及发布收据为准。
+
 ## 2026-09-26 ALVA-068 当前临时预览
 
 用户要求的最新main同步已完成，候选2380658在068 Worktree通过类型/构建、公网登录与Chat页面检查。当前链接 https://chamber-supposed-boring-opponents.trycloudflare.com ，详情见[068预览记录](docs/ALVA-068-outcome-questions.md)。测试项目为合成Alex/Sam，生产未改。

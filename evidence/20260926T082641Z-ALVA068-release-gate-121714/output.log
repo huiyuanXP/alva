@@ -1,0 +1,103 @@
+✔ hypothesis and queued expanded question do not save answers or recommendation jobs (93.484352ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4712.792399
+✔ multi-person selection and exact source quotes prevent mixing preferences (160.04986ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4218.544676
+✔ native choice constraints reject old IDs, hidden options and duplicate answers (73.834563ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4375.966579
+✔ explicit confirmation syncs native answer and illustrative details without legacy mapping (96.244753ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4369.573633
+✔ independent form edits invalidate old cards and recommendations while preserving unrelated answers (387.31626ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4382.030258
+✔ free text syncs to supported other value, unknown answers never generate furniture (149.254477ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4210.202933
+✔ actual Chat routes persist successful cards, discard failed turns and synchronize through confirmation route (10606.709236ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14761.270662
+✔ confirmed native Chat answer automatically starts the living Agent and floorplan cannot confirm (11490.864545ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15807.136546
+/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions/tests/alva-wall-remodel.test.ts:9
+const code=process.env.ALVA033_TEST_CODE; if(!code) throw new Error("ALVA033_TEST_CODE must be provided");
+                                                          ^
+
+Error: ALVA033_TEST_CODE must be provided
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-068-codex-outcome-questions/tests/alva-wall-remodel.test.ts:9:59)
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.21.0
+✖ tests/alva-wall-remodel.test.ts (4336.798645ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4379.289468
+
+✖ failing tests:
+
+test at tests/alva-wall-remodel.test.ts:1:1
+✖ tests/alva-wall-remodel.test.ts (4336.798645ms)
+  'test failed'
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', '--max-old-space-size=160', '--max-semi-space-size=4', '--liftoff-only', '--no-wasm-tier-up', '--wasm-lazy-compilation', '--wasm-num-compilation-tasks=1', '--import', 'tsx', '--test', '--test-concurrency=1', '--test-name-pattern', '^ALVA\\-033\\ preview\\ is\\ read\\-only\\ and\\ returns\\ a\\ topology\\-bound\\ migrated\\ opening$', 'tests/alva-wall-remodel.test.ts']' returned non-zero exit status 1.

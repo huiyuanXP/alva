@@ -1,0 +1,52 @@
+✔ ALVA-033 preview is read-only and returns a topology-bound migrated opening (10471.466209ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14609.607834
+✔ ALVA-033 confirmation atomically creates a new topology, keeps opening identity, and expires old building (11262.808542ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15359.513691
+✔ ALVA-033 rejects missing/illegal migrations, stale previews, and designer access without pollution (10265.204531ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14390.332675
+✔ ALVA-033 confirmation is idempotent for the same request (10063.527166ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14213.463254
+Isolated test cases passed: 4
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2602 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.31 kB
+web/dist/assets/index-CbM2xHpa.css     34.09 kB │ gzip:   7.97 kB
+web/dist/assets/index-Ca6AQU93.js   1,248.57 kB │ gzip: 358.07 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.14s

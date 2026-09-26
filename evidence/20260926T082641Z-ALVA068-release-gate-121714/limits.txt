@@ -1,0 +1,6 @@
+run=20260926T082641Z-ALVA068-release-gate-121714
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2624
+e5158b5acf4c3ddf5f7c62e3df6134893b13bb83

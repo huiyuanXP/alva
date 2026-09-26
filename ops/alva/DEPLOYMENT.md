@@ -1,3 +1,9 @@
+## 2026-09-26 当前发布入口
+
+生产已固定到main `6eef743`，通过`/etc/systemd/system/alva.service.d/ALVA068-release.conf`指向`.runtime/20260926T082943Z-ALVA068-production/release/`。后续main提交/构建不自动发布，须完成验收后显式切换发布目录；不要只重启服务就宣称新main已上线。原数据、环境、生产Tunnel及Coding Machine MCP配置保持。看板仍链接main实时状态。备份、回滚及生产验收边界见[ALVA-068收据](../../docs/ALVA-068-production-release.md)。
+
+以下为基础运维与历史约定，路径冲突以上述当前发布入口为准。
+
 # alva 当前发布与回滚
 
 用户2026-09-19已授权停用旧站点并复用旧Tunnel文件。业务地址 https://prod.huiyuanxp.com；既有远端路由回源 http://localhost:4173，无DNS修改。

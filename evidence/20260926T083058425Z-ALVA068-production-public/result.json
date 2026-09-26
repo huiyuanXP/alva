@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "origin": "https://prod.huiyuanxp.com",
+  "assets": {
+    "/assets/index-Ca6AQU93.js": "8168e909094887445af10096cbe3e275cdde2852085b2cbc776226b7633b540a",
+    "/assets/index-CbM2xHpa.css": "777d1bccbb395580c1b18adf4bcdc3953260664aca5a7c1c33fe5c5bf840392a"
+  },
+  "authenticated": true,
+  "error": "AssertionError [ERR_ASSERTION]: Production context must already be living for read-only acceptance\n+ actual - expected\n\n+ 'floorplan'\n- 'living'\n"
+}

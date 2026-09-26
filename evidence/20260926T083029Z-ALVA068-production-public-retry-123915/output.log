@@ -1,0 +1,19 @@
+{"out":"evidence/20260926T083031424Z-ALVA068-production-public","passed":false,"origin":"https://prod.huiyuanxp.com","assets":{},"error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n403 !== 200\n"}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+403 !== 200
+
+    at <anonymous> (/home/ubuntu/Alva/.runtime/alva068-release/public.mts:10:80) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 403,
+  expected: 200,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

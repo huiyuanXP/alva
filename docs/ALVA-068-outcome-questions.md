@@ -1,6 +1,6 @@
 # ALVA-068 先猜需求，再用结果式问卷验证
 
-状态：**隔离验收通过，已集成main；未发布**。
+状态：**隔离验收通过，已集成main并发布生产**。
 正式票：[ALVA-068](../.scratch/alva-completion/issues/45-outcome-questions.md)。保留057独立问卷的题库、条件流程和按人保存；现役模型不变。
 
 ## 用户流程
@@ -60,3 +60,5 @@ MCP错误包含稳定code、message、retryable、repairActions。典型错误�
 应用、Tunnel及验证共用`alva066.slice`：CPU80%、总内存20%（803680256 bytes）、swap0。旧066预览应用暂时停止，为新预览腾出同一预算；原数据库与Tunnel保留，不再将旧链接列为当前预览。
 
 证据：`evidence/20260926T080258Z-ALVA068-preview-build-113686/`、`evidence/20260926T080427Z-ALVA068-preview-public-114235/`、`evidence/20260926T080429727Z-ALVA068-public-preview/`。neat-freak：代码/文档/临时运行态changed-and-verified；生产发布与生成记忆out-of-scope；原复核现场保留，既有bundle警告未改。
+
+2026-09-26生产发布完成：固定main 6eef743，公网登录/资源/当前户型MCP与独立问卷入口通过；生活问卷同步使用隔离证据。部署/回滚和边界见[生产收据](ALVA-068-production-release.md)。

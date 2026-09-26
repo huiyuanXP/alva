@@ -1,0 +1,11 @@
+{
+  "run": "20260926T082943Z-ALVA068-production",
+  "candidate": "6eef743e7db7a5398380d03cc27406a1c1e7b110",
+  "backup": "/home/ubuntu/Alva/.runtime/20260926T082943Z-ALVA068-production",
+  "status": "deployed",
+  "previousBackend": "main source at 08:16 start; matching current product source",
+  "rollback": "/home/ubuntu/Alva/.runtime/20260926T082943Z-ALVA068-production/rollback.sh",
+  "localHealth": 200,
+  "publishedAt": "2026-09-26T08:30:08.428431+00:00",
+  "sourcePinned": true
+}
