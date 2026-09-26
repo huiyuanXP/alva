@@ -1,59 +1,109 @@
 import React,{useEffect,useRef,useState} from 'react';
 import type {Project} from '../../../api/model.js';
-import type {IntakeDraft} from '../../../api/intake/routes.js';
-import './intake.css';
-
-type Question={id:string;scope:'project'|'room';group:string;question:string;choices:string[];conditional:boolean;why:string};
+import {type Answers,type Response,type Value,stages,cards,path,flags,condition,prompt,answered,raw,options,priorities,activeAnswers,picked} from '../../../packages/contracts/alva/home-vision/flow.js';
+import {Field} from './VisionFields.js';
+import {completeValue,hasValue} from '../../../packages/contracts/alva/home-vision/field-values.js';
+import {updateReferences} from '../../../packages/contracts/alva/home-vision/references.js';
+import './vision.css';
 type Props={project:Project;readOnly:boolean;onUpdate:(p:Project)=>void;onClose:()=>void};
-const key=(q:string,r:string|null)=>JSON.stringify([q,r]);
-const labels={answered:'已回答',unknown:'暂不确定',skipped:'暂时跳过',not_applicable:'不适用'};
+function display(v:Value|undefined):string{if(v==null)return 'Not answered';if(typeof v==='string'||typeof v==='number')return String(v);if(Array.isArray(v))return v.map(display).join(', ');return Object.entries(v).filter(([k])=>!['data','mime'].includes(k)).map(([k,x])=>k==='name'?String(x):display(x)).join(' · ')}
 export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
- const dialog=useRef<HTMLDialogElement>(null),active=useRef(document.activeElement as HTMLElement|null),revision=useRef(project.revision);
- const [questions,setQuestions]=useState<Question[]>([]),[drafts,setDrafts]=useState<Record<string,IntakeDraft>>({}),[questionId,setQuestionId]=useState('Q01'),[roomId,setRoomId]=useState(''),[branch,setBranch]=useState(false),[summary,setSummary]=useState(false),[dirty,setDirty]=useState(false),[saving,setSaving]=useState(false),[loading,setLoading]=useState(true),[error,setError]=useState(''),[notice,setNotice]=useState(''),[closing,setClosing]=useState(false);
- useEffect(()=>{revision.current=project.revision},[project.revision]);
- useEffect(()=>{dialog.current?.showModal();const previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';let cancelled=false;
-  fetch('/api/intake').then(async r=>{const d=await r.json();if(!r.ok)throw new Error(d.error);return d}).then(d=>{if(cancelled)return;setQuestions(d.questions);setDrafts(Object.fromEntries(d.progress.drafts.map((x:IntakeDraft)=>[key(x.questionId,x.roomId),x])));const cursor=d.progress.cursor;const first=d.questions.find((q:Question)=>!q.conditional&&q.scope==='project'&&!project.answers.some(a=>a.questionId===q.id));setQuestionId(cursor?.questionId||first?.id||'Q01');setBranch(!!d.questions.find((q:Question)=>q.id===cursor?.questionId)?.conditional);setRoomId(cursor?.roomId||project.scene?.rooms[0]?.id||'');setNotice(d.progress.updatedAt?'已恢复上次保存的进度':'每次聊一个问题，按自己的节奏来。')}).catch(e=>{if(!cancelled)setError(e.message)}).finally(()=>{if(!cancelled)setLoading(false)});
-  return()=>{cancelled=true;document.body.style.overflow=previousOverflow;active.current?.focus()};
+ const dialog=useRef<HTMLDialogElement>(null),focus=useRef(document.activeElement as HTMLElement|null);
+ const [people,setPeople]=useState<Response[]>([]),[current,setCurrent]=useState<Response|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(''),[saving,setSaving]=useState(false),[dirty,setDirty]=useState(false),[saved,setSaved]=useState(false),[overview,setOverview]=useState(false),[newName,setNewName]=useState(''),[addPerson,setAddPerson]=useState(false),[conflict,setConflict]=useState(false);
+ const state=useRef<Response|null>(null),generation=useRef(0),persisted=useRef(0),mutex=useRef<Promise<boolean>|null>(null),mounted=useRef(true);
+ const pending=useRef<{body:string;id:string;version:number;generation:number}|null>(null);
+ const assign=(r:Response,changed=true)=>{state.current=r;setCurrent(r);if(changed){generation.current++;setDirty(true);setSaved(false)}};
+ const load=async()=>{
+  setLoading(true);setError('');
+  try {
+   const response=await fetch('/api/intake/vision');
+   if(!response.ok)throw new Error('Unable to load your answers. Please retry.');
+   const data=await response.json();
+   if(!mounted.current)return;
+   const wanted=state.current?.id||new URLSearchParams(location.hash.slice(1)).get('vision');
+   const selected=data.responses.find((r:Response)=>r.id===wanted);
+   if(wanted&&!selected)throw new Error('This response is not available. Check the shared link or reopen from the project.');
+   const next=selected||data.responses[0]||{id:crypto.randomUUID(),name:'Your answers',answers:{},cursor:'Q01',updatedAt:'',version:0};
+   pending.current=null;generation.current=0;persisted.current=0;
+   setPeople(data.responses);setDirty(false);setConflict(false);assign(next,false);
+  }catch(e){if(mounted.current)setError((e as Error).message)}
+  finally{if(mounted.current)setLoading(false)}
+ };
+ useEffect(()=>{
+  const old=document.body.style.overflow;
+  document.documentElement.classList.add('hv-modal-open');
+  document.body.style.overflow='hidden';dialog.current?.showModal();mounted.current=true;void load();
+  return()=>{mounted.current=false;document.documentElement.classList.remove('hv-modal-open');document.body.style.overflow=old;focus.current?.focus()};
  },[]);
- useEffect(()=>{const warn=(e:BeforeUnloadEvent)=>{if(dirty){e.preventDefault();e.returnValue=''}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn)},[dirty]);
- const list=questions.filter(q=>q.conditional===branch),q=list.find(q=>q.id===questionId)||list[0],index=list.findIndex(x=>x.id===q?.id),rid=q?.scope==='room'?roomId||null:null,k=key(q?.id||'',rid),existing=project.answers.find(a=>key(a.questionId,a.roomId)===k),draft=drafts[k],value=draft||existing;
- const locked=!!existing?.locked,editable=!readOnly&&!locked&&!saving,scopeOK=q?.scope==='project'||!!project.scene?.rooms.some(r=>r.id===rid);
- const currentText=value?.text||'',currentState=value?.state||'answered';
- const picked=q?.choices.find(c=>currentText===c||currentText.startsWith(c+'\n补充：'));
- const supplement=picked?(currentText.startsWith(picked+'\n补充：')?currentText.slice(picked.length+4):''):currentText;
- const put=(text:string,state:IntakeDraft['state']=currentState)=>{if(!q||!editable||!scopeOK)return;setDrafts(d=>({...d,[k]:{questionId:q.id,roomId:rid,text,state}}));setDirty(true);setNotice('有未保存的修改');setError('')};
- const cursor=()=>q&&scopeOK?{questionId:q.id,roomId:rid}:null;
- const request=async(path:string,body:object)=>{const r=await fetch('/api/intake/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requestId:crypto.randomUUID(),expectedRevision:revision.current,...body})});const p=await r.json();if(!r.ok){if(r.status===409){const fresh=await fetch('/api/project');if(fresh.ok){const current=await fresh.json();revision.current=current.revision;onUpdate(current)}}throw new Error(r.status===409?'项目已更新，已刷新版本；你的草稿仍在，请检查后再次保存。':p.error||'保存失败，请重试')}revision.current=p.revision;onUpdate(p);return p as Project};
- const save=async(close=false)=>{if(readOnly||saving)return;setSaving(true);setError('');try{await request('progress',{drafts:Object.values(drafts),cursor:cursor()});setDirty(false);setNotice('进度已保存，可以放心关闭。');setClosing(false);if(close)onClose()}catch(e){setError((e as Error).message)}finally{setSaving(false)}};
- const confirm=async()=>{if(!q||!scopeOK||!editable)return;setSaving(true);setError('');try{await request('confirm',{answer:{questionId:q.id,roomId:rid,text:currentText,state:currentState},confirmed:true});const remaining={...drafts};delete remaining[k];setDrafts(remaining);await request('progress',{drafts:Object.values(remaining),cursor:cursor()});setDirty(false);setNotice('此回答已确认并保存。');if(index+1<list.length){const next=list[index+1];setQuestionId(next.id);if(next.group!==q.group)setSummary(true)}else setSummary(true)}catch(e){setError((e as Error).message)}finally{setSaving(false)}};
- const close=()=>{if(dirty&&!readOnly)setClosing(true);else onClose()};
- const go=(id:string)=>{setQuestionId(id);setSummary(false);setNotice('');if(!readOnly)setDirty(true)};
- const answered=list.filter(x=>project.answers.some(a=>a.questionId===x.id&&a.roomId===(x.scope==='project'?null:roomId))).length;
- return <dialog ref={dialog} className="intake-dialog" aria-labelledby="intake-title" onCancel={e=>{e.preventDefault();close()}}>
-  <div className="intake-shell">
-   <div className="intake-heading"><div><span className="eyebrow">从生活出发 · alva</span><h2 id="intake-title">聊聊你的家</h2></div><button className="intake-close" aria-label="关闭问卷" onClick={close}>×</button></div>
-   <p className="intake-intro">不急着填完。一次一个问题，让家的想法慢慢清晰。</p>
-   {loading?<p role="status">正在读取问卷与已保存进度…</p>:<>
-    <div className="intake-navigation"><div className="intake-tabs"><button aria-pressed={!branch} onClick={()=>{setBranch(false);setQuestionId(questions.find(x=>!x.conditional)!.id);setSummary(false)}}>基础问题</button><button aria-pressed={branch} onClick={()=>{setBranch(true);setQuestionId(questions.find(x=>x.conditional)!.id);setSummary(false)}}>按需补充</button></div><button className="intake-text-button" onClick={()=>setSummary(s=>!s)}>{summary?'回到当前问题':'查看已答小结'}</button></div>
-    <div className="intake-progress"><span>{branch?'相关时再补充，无需逐项填写':'可以跳过，也可以随时回来修改'}</span><span>已记录 {answered} / {list.length}</span></div><progress value={answered} max={list.length||1} aria-label="问卷完成进度"/>
-    {summary?<section className="intake-summary"><h3>目前，我们了解了这些</h3><p>点击一条回答，可返回该题查看或更正。</p>{project.answers.filter(a=>questions.some(x=>x.id===a.questionId)).map(a=><button key={key(a.questionId,a.roomId)} onClick={()=>{const target=questions.find(x=>x.id===a.questionId)!;setBranch(target.conditional);setRoomId(a.roomId||roomId);go(a.questionId)}}><small>{a.questionId} · {a.roomId?project.scene?.rooms.find(r=>r.id===a.roomId)?.name:'全屋'} · {labels[a.state]}</small><b>{questions.find(x=>x.id===a.questionId)?.question}</b><span>{a.text||labels[a.state]}</span></button>)}{!project.answers.length&&<p>还没有正式确认的回答。已保存的草稿可回到题目继续填写。</p>}<button onClick={()=>setSummary(false)}>继续聊聊</button></section>:q&&<>
-    <div className="intake-question-nav"><label>当前题目<select aria-label="选择问卷题目" value={q.id} onChange={e=>go(e.target.value)}>{list.map(x=><option key={x.id} value={x.id}>{x.id} · {x.group} · {x.question}</option>)}</select></label>{q.scope==='room'&&<label>这道题属于<select aria-label="问卷房间" value={roomId} onChange={e=>{setRoomId(e.target.value);setNotice('');if(!readOnly)setDirty(true)}}><option value="">请选择房间</option>{project.scene?.rooms.map(r=><option key={r.id} value={r.id}>{r.name}</option>)}</select></label>}</div>
-    <section className="intake-card" aria-labelledby="intake-question"><div className="intake-meta"><span>{q.group} · {q.id}</span><span>{index+1} / {list.length}</span></div><h3 id="intake-question">{q.question}</h3>{q.why&&<p className="intake-why">{q.why}</p>}
-     {!scopeOK&&<p className="intake-hint">房间问题需要先确认户型并选择房间。你可以先填写全屋问题，或保存进度后继续。</p>}
-     {locked&&<p className="intake-hint">这条回答已锁定。请在右侧“需求”中解除锁定后修改。</p>}
-     {readOnly&&<p className="intake-hint">当前为只读预览，可以查看已记录的回答。</p>}
-     <div className="intake-options" role="group" aria-label="回答选项">{q.choices.map((choice,i)=><button key={choice} disabled={!editable||!scopeOK} aria-pressed={picked===choice&&currentState==='answered'} onClick={()=>put(choice+(supplement?'\n补充：'+supplement:''),'answered')}><span className="intake-letter">{String.fromCharCode(65+i)}</span><span>{choice}</span><span className="intake-check" aria-hidden="true">{picked===choice&&currentState==='answered'?'✓':''}</span></button>)}</div>
-     <label className="intake-free">E · 自由补充<textarea aria-label="问卷自由补充" disabled={!editable||!scopeOK} maxLength={2500} placeholder="都不完全符合？直接写下你的想法，也可以补充所选答案。" value={supplement} onChange={e=>put(picked?picked+(e.target.value?'\n补充：'+e.target.value:''):e.target.value)}/></label>
-     <div className="intake-states">{currentState!=='answered'&&<button disabled={!editable||!scopeOK} onClick={()=>put(currentText,'answered')}>改为填写回答</button>}{(['unknown','skipped','not_applicable'] as const).map(state=><button key={state} disabled={!editable||!scopeOK} aria-pressed={currentState===state} onClick={()=>put('',state)}>{labels[state]}</button>)}</div>
-     {currentState==='not_applicable'&&<p className="intake-hint">请在自由补充中简要说明不适用的原因。</p>}
-     <p className="intake-scope">本次确认仅记录：{q.scope==='project'?'全屋':project.scene?.rooms.find(r=>r.id===rid)?.name||'待选房间'} · {q.question} 不会确认整套方案。</p>
-     {existing&&!draft&&<small>已记录：{labels[existing.state]}{existing.text?' · '+existing.text:''}</small>}
-     <div className="intake-step-actions"><button disabled={index<=0||saving} onClick={()=>go(list[index-1].id)}>上一题</button><button disabled={!editable||!scopeOK||((currentState==='answered'||currentState==='not_applicable')&&!currentText.trim())} className="intake-primary" onClick={()=>void confirm()}>确认此回答</button><button disabled={index>=list.length-1||saving} onClick={()=>go(list[index+1].id)}>下一题 →</button></div>
-    </section></>}
-   </>}
-   {error&&<p role="alert" className="intake-error">{error}</p>}
-   {closing&&<div className="intake-close-prompt" role="group" aria-label="关闭前保存"><b>还有未保存的修改</b><p>保存进度后，下次可以接着填写。</p><div><button disabled={saving} className="intake-primary" onClick={()=>void save(true)}>保存并关闭</button><button disabled={saving} onClick={onClose}>放弃未保存修改</button><button onClick={()=>setClosing(false)}>继续填写</button></div></div>}
-   <div className="intake-footer"><span role="status">{saving?'正在保存…':notice}</span><div><button onClick={close}>稍后再聊</button><button className="intake-primary" disabled={loading||saving||readOnly||!questions.length} onClick={()=>void save()}>保存进度</button></div></div>
-  </div>
- </dialog>;
+ useEffect(()=>{if(error)dialog.current?.querySelector('[role="alert"]')?.scrollIntoView({block:'center'})},[error]);
+ const persist=async():Promise<boolean>=>{
+  if(readOnly)return true;
+  if(conflict)return false;
+  if(mutex.current){const running=mutex.current;const ok=await running;if(mutex.current===running)mutex.current=null;if(!ok)return false;return persist()}
+  if(!state.current||generation.current===persisted.current)return true;
+  const run=async()=>{
+   setSaving(true);setError('');
+   try {
+    while(generation.current!==persisted.current) {
+     if(!pending.current) {
+      const r=state.current!,n=generation.current;
+      pending.current={id:r.id,version:r.version,generation:n,body:JSON.stringify({requestId:crypto.randomUUID(),id:r.id,name:r.name,answers:r.answers,cursor:r.cursor,expectedVersion:r.version})};
+     }
+     // Retry the exact request: a transport or 5xx failure may follow a commit.
+     const attempt=pending.current;
+     const response=await fetch('/api/intake/vision',{method:'POST',headers:{'Content-Type':'application/json'},body:attempt.body});
+     const savedProject=await response.json();
+     if(!response.ok) {
+      if(response.status<500)pending.current=null;
+      if(response.status===409)setConflict(true);
+      throw new Error(response.status===409?'Another window saved newer answers. Your edits are still here. Copy them before choosing to load the saved answers.':savedProject.error||savedProject.message||'Could not save. Your answers are still here; please retry.');
+     }
+     const stored=savedProject.homeVision.responses.find((r:Response)=>r.id===attempt.id);
+     // Replays return the current project; do not adopt another writer's version.
+     if(!stored||stored.version!==attempt.version+1) {
+      pending.current=null;setConflict(true);
+      throw new Error('Newer answers were saved in another window. Your edits are still here; copy them before loading the saved answers.');
+     }
+     state.current={...state.current!,version:stored.version,updatedAt:stored.updatedAt};
+     pending.current=null;persisted.current=attempt.generation;
+     setCurrent(state.current);setPeople(savedProject.homeVision.responses);onUpdate(savedProject);
+    }
+    setDirty(false);setSaved(true);return true;
+   }catch(e){setError((e as Error).message);return false}
+   finally{setSaving(false)}
+  };
+  const running=run();mutex.current=running;const ok=await running;
+  if(mutex.current===running)mutex.current=null;
+  return ok;
+ };
+ useEffect(()=>{if(!dirty||readOnly||error||loading||conflict)return;const t=setTimeout(()=>void persist(),650);return()=>clearTimeout(t)},[current,dirty,error,loading,conflict]);
+ useEffect(()=>{const handler=(e:BeforeUnloadEvent)=>{if(generation.current!==persisted.current){e.preventDefault();e.returnValue=''}};window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler)},[]);
+ const close=async()=>{if(await persist())onClose()};
+ const a=current?.answers||{},f=flags(a),route=path(a),cursor=current?.cursor||'Q01',summary=cursor.startsWith('summary:'),done=cursor==='complete';
+ const stage=summary?cursor.split(':')[1]:done?'S7':route.find(c=>c.card===cursor)?.stage||'S1';
+ const card=route.find(c=>c.card===cursor)||route.find(c=>c.stage===stage)||route[0],stageCards=route.filter(c=>c.stage===stage),idx=stageCards.findIndex(c=>c.card===card?.card),visible=card.items.filter(i=>condition(i.show_if,a,f));
+ const go=(next:string)=>{if(!current)return;assign({...state.current!,cursor:next},!readOnly);setOverview(false);dialog.current?.scrollTo({top:0});};
+ const put=(id:string,value:Value,status:'answered'|'unknown'|'skipped'='answered')=>{if(readOnly||!state.current)return;const base=id==='Q09a'&&status==='answered'?updateReferences(state.current.answers,value):state.current.answers;const next={...base,[id]:{state:status,value}};assign({...state.current,answers:next});if(!conflict)setError('')};
+ const progressTotal=stageCards.filter(c=>c.card.startsWith('Q')).length||stageCards.length;const progressPosition=Math.max(1,stageCards.slice(0,idx+1).filter(c=>c.card.startsWith('Q')).length);
+ const next=()=>{const n=route.indexOf(card);go(route[n+1]?.stage===stage?route[n+1].card:'summary:'+stage)};
+ const skip=()=>{if(!readOnly&&state.current){const answers={...a};for(const i of visible)if(!answered(a,i.id))answers[i.id]={state:'skipped',value:null};assign({...state.current,answers})}next()};
+ const effective=activeAnswers(a);
+ const ready=visible.some(i=>answered(effective,i.id)||a[i.id]?.state==='unknown');
+ const valid=visible.every(i=>!hasValue(raw(a,i.id))||completeValue(i,raw(a,i.id),field=>condition(field.show_if,a,f)));
+ const switchPerson=async(id:string)=>{if(!await persist())return;const r=people.find(p=>p.id===id);if(r){generation.current=0;persisted.current=0;assign(r,false);setDirty(false);setOverview(false)}};
+ const create=async()=>{if(!newName.trim()||!await persist())return;generation.current=0;persisted.current=0;assign({id:crypto.randomUUID(),name:newName.trim(),answers:{},cursor:'Q01',version:0,updatedAt:''});setAddPerson(false);setNewName('')};
+ const title=summary?'Your '+stages[Number(stage.slice(1))-1].toLowerCase()+' summary':done?'Your home vision, captured':overview?'Your answers':prompt(visible[0]||card.items[0],a,f);
+ return <dialog data-card={card.card} className={'hv-dialog '+(['Q05','Q07','Q08'].includes(card.card)||summary||overview?'wide':'')} ref={dialog} aria-label="Your Home Vision" onCancel={e=>{e.preventDefault();void close()}}><div className="hv-shell">
+ <div className="hv-top">{!loading&&cursor!=='Q01'&&<button className="hv-round" aria-label="Previous question" onClick={()=>{if(summary)go(stageCards.at(-1)!.card);else if(overview)setOverview(false);else go(route[Math.max(0,route.indexOf(card)-1)].card)}}>‹</button>}<div><span className="hv-stage">{stages[Number(stage.slice(1))-1]} · {summary||done?progressTotal:progressPosition} of {progressTotal}</span><progress max={progressTotal||1} value={summary||done?progressTotal:progressPosition} aria-label="Stage progress"/></div><button className="hv-round" aria-label="Save and close questionnaire" onClick={()=>void close()}>×</button></div>
+ {loading?<p role="status">Loading your answers…</p>:!current?<p>Unable to load the questionnaire.</p>:<>
+ <div className="hv-heading"><h2 className="hv-title" id="hv-title">{title}</h2><p className="hv-subtitle">{summary?'Review your answers. Select a question to make a change.':done?'Review your answers with your designer. Nothing is final until you agree on it together.':overview?'Pick a stage to review or continue.':visible[0]?.helper&&visible[0].helper!=='Collapsed by default.'?visible[0].helper:card.card==='Q05'?'Select all that apply.':''}</p></div>
+ {overview?<div className="hv-summary">{stages.map((s,n)=><button key={s} onClick={()=>go('summary:S'+(n+1))}><b>{s}</b><small>{route.filter(c=>c.stage==='S'+(n+1)).flatMap(c=>c.items).filter(i=>answered(a,i.id)).length} answers recorded</small></button>)}</div>:summary||done?<div className="hv-summary">{(done?route:stageCards).map(c=><button key={c.card} onClick={()=>go(c.card)}><b>{prompt(c.items[0],a,f)}</b>{c.items.filter(i=>condition(i.show_if,a,f)).map(i=>{const answer=a[i.id];const opts=options(i,a,f);let value=display(raw(effective,i.id));for(const o of opts)value=value.replaceAll(o.id,o.label);return <small key={i.id}>{answer?.state==='unknown'?'Not sure yet':answer?.state==='skipped'?'Skipped — revisit anytime':value}</small>})}</button>)}{done&&priorities(a,people).length>0&&<details><summary>Topics to discuss with your designer</summary>{priorities(a,people).map(p=><p className="hv-note" key={p.id}>{p.note}</p>)}</details>}</div>:<div className="hv-items" key={card.card}>{card.collapsed?<details><summary>Optional: share sensitivities</summary>{visible.map(i=><Field key={i.id} item={i} answers={a} put={put} disabled={readOnly}/>)}</details>:visible.map((i,n)=><Field key={i.id} item={i} answers={a} put={put} disabled={readOnly} hideTitle={n===0}/>)}</div>}
+ {!valid&&<p className="hv-note">Complete the fields and required selections before continuing. You can skip this question instead.</p>}
+ {f.has('ACCESS_SIGNAL')&&!a.C2a&&!['C2','Q01','Q02','Q03','Q04'].includes(card.card)&&<button className="hv-ghost" onClick={()=>go('C2')}>Would you like to share any accessibility needs?</button>}
+ {(done||card.card==='C5')&&f.has('MULTI_DECIDER')&&!readOnly&&<div><button className="hv-ghost" onClick={()=>setAddPerson(true)}>Invite someone to add their own answers</button><p className="hv-note">Keep each person's preferences separate. They can answer here, or use a link with the project's existing access code.</p>{addPerson&&<div className="hv-row"><input className="hv-field" placeholder="Their name" aria-label="New respondent name" value={newName} maxLength={80} onChange={e=>setNewName(e.target.value)}/><button className="hv-ghost" onClick={()=>void create()}>Create separate response</button></div>}</div>}
+ <div className="hv-footer"><div>{summary||done||overview?<button className="hv-ghost" onClick={()=>setOverview(!overview)}>Review all stages</button>:<button className="hv-ghost" onClick={skip}>Skip for now</button>}<small>You can change this anytime.</small></div><button className="hv-cta" disabled={loading||saving||(!summary&&!done&&!overview&&!readOnly&&(!ready||!valid))} onClick={()=>{if(done)void close();else if(summary){const n=Number(stage.slice(1));go(n===7?'complete':route.find(c=>c.stage==='S'+(n+1))?.card||'complete')}else if(overview)setOverview(false);else next()}}>{done?'Save & close':summary?'Next stage':'Continue'}</button></div>
+ </>}
+ {error&&<div role="alert" className="hv-error">{error}{!current?<button className="hv-ghost" disabled={loading} onClick={()=>void load()}>Retry loading</button>:conflict?<><button className="hv-ghost" onClick={()=>void navigator.clipboard.writeText(JSON.stringify(state.current,null,2)).catch(()=>setError('Could not copy. Your edits are still in this window.'))}>Copy unsaved answers</button><button className="hv-ghost" onClick={()=>{if(window.confirm('Discard the unsaved edits in this window and load the latest saved answers?'))void load()}}>Load saved answers</button></>:<button className="hv-ghost" disabled={saving} onClick={()=>void persist()}>Retry save</button>}</div>}
+ <div className="hv-savebar"><span role="status">{readOnly?'Read-only view':saving?'Saving…':dirty?'Unsaved changes':saved||current?.updatedAt?'All changes saved':'Answers save automatically'}</span><div className="hv-row">{people.length>1&&<select aria-label="Respondent" className="hv-person" value={current?.id} onChange={e=>void switchPerson(e.target.value)}>{people.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select>}<button className="hv-ghost" disabled={loading} onClick={()=>setOverview(!overview)}>Review</button><button className="hv-ghost" disabled={loading||saving||readOnly} onClick={()=>void persist()}>Save now</button>{current&&people.length>1&&<button className="hv-ghost" onClick={()=>void navigator.clipboard.writeText(location.origin+location.pathname+'#vision='+current.id).then(()=>setSaved(true)).catch(()=>setError('Unable to copy the link.'))}>Copy link</button>}</div></div>
+ </div></dialog>;
 }

@@ -1,0 +1,6 @@
+run=20260926T015731Z-ALVA057-release-recovery-browser-656269
+CPUQuota=80%
+MemoryMax=1600M
+MemorySwapMax=0
+headroomMiB=2568
+272c5f93c9ab9403dde3cfcb06b6854ae107842d

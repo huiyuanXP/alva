@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Q01 What brings you here</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;background:#f5f5f7;color:#1d1d1f;-webkit-font-smoothing:antialiased}
+a{color:#0066cc}a:hover{color:#004f9e}
+.opt{appearance:none;width:100%;display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:16px;border:1.5px solid #e3e3e8;background:#ffffff;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease}
+.opt:hover{border-color:#c7c7cc;background:#fbfbfd}
+.opt:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(0,113,227,.28)}
+.opt.on{border-color:#0071e3;background:#f2f8ff;box-shadow:0 0 0 1px #0071e3 inset}
+.ico{flex:none;width:44px;height:44px;border-radius:12px;background:#f2f2f5;display:flex;align-items:center;justify-content:center;color:#1d1d1f;transition:background-color .18s ease,color .18s ease}
+.opt.on .ico{background:#0071e3;color:#ffffff}
+.radio{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid #c7c7cc;box-sizing:border-box;display:flex;align-items:center;justify-content:center;transition:border-color .18s ease,background-color .18s ease}
+.opt.on .radio{border-color:#0071e3;background:#0071e3}
+.cta{appearance:none;border:0;border-radius:980px;padding:0 28px;height:48px;min-width:140px;font:inherit;font-size:17px;font-weight:500;letter-spacing:-.01em;background:#0071e3;color:#ffffff;cursor:pointer;transition:background-color .18s ease,opacity .18s ease}
+.cta:hover{background:#0077ed}
+.cta:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(0,113,227,.3)}
+.cta.off{background:#d2d2d7;color:#6e6e73;cursor:default}
+.ghost{appearance:none;border:0;background:transparent;font:inherit;font-size:15px;color:#0066cc;cursor:pointer;height:44px;padding:0 4px;border-radius:8px}
+.ghost:hover{text-decoration:underline}
+.close{appearance:none;border:0;width:36px;height:36px;border-radius:50%;background:#ededf0;color:#424245;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .18s ease}
+.close:hover{background:#e1e1e6}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; position: relative; overflow: hidden; background: #f5f5f7;">
+
+  <div aria-hidden="true" style="position: absolute; inset: -40px; filter: blur(18px); transform: scale(1.02); display: flex; flex-direction: column;">
+    <div style="height: 92px; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: space-between; padding: 0 160px; border-bottom: 1px solid #e5e5ea;">
+      <div style="width: 140px; height: 18px; border-radius: 9px; background: #1d1d1f;"></div>
+      <div style="display: flex; gap: 36px;">
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 64px; padding: 110px 200px 0; align-items: center;">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 22px;">
+        <div style="width: 520px; height: 56px; border-radius: 14px; background: #1d1d1f;"></div>
+        <div style="width: 420px; height: 56px; border-radius: 14px; background: #1d1d1f;"></div>
+        <div style="width: 380px; height: 16px; border-radius: 8px; background: #86868b; margin-top: 12px;"></div>
+        <div style="width: 180px; height: 48px; border-radius: 24px; background: #0071e3; margin-top: 18px;"></div>
+      </div>
+      <div style="width: 560px; height: 460px; border-radius: 32px; background: linear-gradient(160deg, #d9cbb8 0%, #b8a58c 55%, #8d7a63 100%);"></div>
+    </div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(29,29,31,0.32);"></div>
+
+  <div role="dialog" aria-modal="true" aria-labelledby="q01-title" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 580px; box-sizing: border-box; background: #ffffff; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.22), 0 4px 14px rgba(0,0,0,0.08); padding: 28px 36px 32px; display: flex; flex-direction: column; gap: 24px;">
+
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: #6e6e73; text-transform: uppercase;">Getting started · 1 of 5</div>
+        <div style="height: 4px; border-radius: 2px; background: #ececf0; overflow: hidden;">
+          <div style="width: 20%; height: 4px; border-radius: 2px; background: #0071e3;"></div>
+        </div>
+      </div>
+      <button class="close" type="button" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"></path></svg>
+      </button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <h2 id="q01-title" style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif; font-size: 34px; line-height: 1.12; font-weight: 700; letter-spacing: -0.022em; color: #1d1d1f;">What brings you here?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.47; color: #6e6e73;">Pick the one that sounds most like you right now.</p>
+    </div>
+
+    <div role="radiogroup" aria-labelledby="q01-title" style="display: flex; flex-direction: column; gap: 10px;">
+
+      <button class="opt {{c1}}" type="button" role="radio" aria-checked="{{a1}}" onClick="{{p1}}">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span>
+        <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #1d1d1f;">Moving into a new home</span>
+          <span style="font-size: 14px; color: #6e6e73;">Starting fresh in a new space</span>
+        </span>
+        <span class="radio"><sc-if value="{{sel1}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+      </button>
+
+      <button class="opt {{c2}}" type="button" role="radio" aria-checked="{{a2}}" onClick="{{p2}}">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c1.5-4 4-6 8-6s6.5 2 8 6"></path><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+        <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: rgb(29, 29, 31)">Giving my current home a new style</span>
+          <span style="font-size: 14px; color: rgb(110, 110, 115)">A new look for the place I already love</span>
+        </span>
+        <span class="radio"><sc-if value="{{sel2}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+      </button>
+
+      <button class="opt {{c3}}" type="button" role="radio" aria-checked="{{a3}}" onClick="{{p3}}">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5a4 4 0 0 0 4.9 4.9l-9 9a2.1 2.1 0 0 1-3-3l9-9"></path><path d="M14.5 5.5 17 3l4 4-2.5 2.5"></path></svg></span>
+        <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: rgb(29, 29, 31)">Planning a home renovation</span>
+          <span style="font-size: 14px; color: rgb(110, 110, 115)">Kitchens, bathrooms, new layouts</span>
+        </span>
+        <span class="radio"><sc-if value="{{sel3}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+      </button>
+
+      <button class="opt {{c4}}" type="button" role="radio" aria-checked="{{a4}}" onClick="{{p4}}">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="M3.5 12h8.5V3.5"></path><circle cx="16.5" cy="16.5" r="1.4"></circle></svg></span>
+        <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: rgb(29, 29, 31)">One room to refresh</span>
+          <span style="font-size: 14px; color: rgb(110, 110, 115)">Focus on a single space</span>
+        </span>
+        <span class="radio"><sc-if value="{{sel4}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+      </button>
+
+      <button class="opt {{c5}}" type="button" role="radio" aria-checked="{{a5}}" onClick="{{p5}}">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"></path></svg></span>
+        <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: rgb(29, 29, 31)">Exploring my design ideas</span>
+          <span style="font-size: 14px; color: rgb(110, 110, 115)">No plans yet, just curious</span>
+        </span>
+        <span class="radio"><sc-if value="{{sel5}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+      </button>
+
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 4px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <button class="ghost" type="button" onClick="{{skip}}" style="align-self: flex-start;">Skip for now</button>
+        <span style="font-size: 13px; color: #6e6e73;">You can change this anytime.</span>
+      </div>
+      <button class="cta {{ctaClass}}" type="button" disabled="{{noSel}}" aria-disabled="{{noSel}}">Continue</button>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const p = (this.state && this.state.picked) || 0;
+    const v = {};
+    for (let i = 1; i <= 5; i++) {
+      v['c' + i] = p === i ? 'on' : '';
+      v['a' + i] = p === i ? 'true' : 'false';
+      v['sel' + i] = p === i;
+      v['p' + i] = () => this.setState({ picked: i });
+    }
+    v.noSel = p === 0;
+    v.ctaClass = p === 0 ? 'off' : '';
+    v.skip = () => this.setState({ picked: 0 });
+    return v;
+  }
+}
+</script>
+</body>
+</html>

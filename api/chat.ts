@@ -1,3 +1,4 @@
+import {consultationVision} from '../packages/contracts/alva/home-vision/flow.js';
 import {mainChatAgent} from './main-chat-agent.js';
 import type {FastifyInstance} from 'fastify';import {z} from 'zod';import {randomUUID} from 'node:crypto';
 import {runCodex,type BusinessTool,type CodexInput} from './codex.js';import {AlvaStore,type Session} from './store.js';import {catalogue,unansweredForScope,applyAnswer,applyAnswerWithEvidence,applyChanges,ChangeSchema,review} from './business.js';import {reject,DomainError,type Project,type Proposal,type Change} from './model.js';
@@ -27,7 +28,7 @@ export function consultationSnapshot(started:Project,roomId:string|null){
  const activeAnswers=started.answers.filter(a=>catalogue.find(q=>q.id===a.questionId)?.enabled);
  const disabledEvidence=new Set(started.answers.filter(a=>!catalogue.find(q=>q.id===a.questionId)?.enabled).map(a=>a.evidenceId));
  const activeEvidence=started.evidence.filter(e=>!disabledEvidence.has(e.id));
- return {project:{...modelProject,answers:activeAnswers,evidence:activeEvidence,sourceImage:undefined,messages:started.messages.slice(-12)},roomId,questions:catalogue.filter(q=>q.enabled&&!started.answers.some(a=>a.questionId===q.id&&a.roomId===(q.scope==='project'?null:roomId))),scope:{active,pending:scopeRequests.filter(scope=>scope.status==='pending')},scopeCandidates:started.scene?scopeCandidates(started.scene):null};
+ return {project:{...modelProject,homeVision:consultationVision(started.homeVision),answers:activeAnswers,evidence:activeEvidence,sourceImage:undefined,messages:started.messages.slice(-12)},roomId,questions:catalogue.filter(q=>q.enabled&&!started.answers.some(a=>a.questionId===q.id&&a.roomId===(q.scope==='project'?null:roomId))),scope:{active,pending:scopeRequests.filter(scope=>scope.status==='pending')},scopeCandidates:started.scene?scopeCandidates(started.scene):null};
 }
 export type TranscriptionCall=(data:string,format:'wav',signal:AbortSignal)=>Promise<string>;
 export async function transcribeAudio(data:string,format:'wav',signal:AbortSignal){
@@ -83,6 +84,7 @@ export function registerConsultation(app:FastifyInstance,store:AlvaStore,session
   reply.raw.on('close',()=>{if(!reply.raw.writableEnded)controller.abort()});const pulse=setInterval(()=>emit('status',{text:'正在结合当前项目整理…'}),12000);const businessGuidance=businessGuidanceForChat(b.text);let modelStreamed='';
   try{const text=await runChatModel({text:`你是alva生活需求顾问。读取快照后回应用户。用户未提供户型时引导上传图，不编造已建模。
 当前房间：${b.roomId||'全屋'}。优先每轮1题，只有直接相关时最多2题。使用ask_question显示选择卡；用户明确回答任一启用问卷问题时必须先调用propose_answer保存本轮原话，提取结果留待用户点击确认；手填答案会出现在get_snapshot里，应与Chat确认答案同等对待。模糊家具修改调用propose_changes给至少2种不同方案；全屋、多房间或指代不唯一时先调用propose_scope，等待范围卡片确认或取消后再生成候选；默认排除所有锁定项，房间用途与布局分开。不要编造健康/身份信息，不处理已停用问题，不下结构安全结论。用户本轮附带参考图并明确讨论喜欢/不喜欢时，调用 propose_reference_preferences 生成待确认候选；参考图只能表达视觉偏好，不能作为尺寸、结构、真实材料或材料性能证据。不要声明正式保存或采用。
+Your Home Vision 是独立的 home-vision-v4 问卷。get_snapshot.project.homeVision 提供按填写者分开的有效回答，不能合并不同人的偏好。其 Q01a 等题号与旧 catalogue 不兼容，绝不能交给旧 ask_question/propose_answer 或映射成旧题号。用户要开始、继续或修改这份问卷时，引导点击咨询栏的 Your Home Vision 入口，由本人在问卷中填写并确认；不要声称已替用户填写。预算仅采集明确选择的货币与金额，不推断单位、不自动报价；附件名称和链接不表示已读取图片、外链或已转写语音。
 ${businessGuidancePrompt}
 业务指导上下文：${JSON.stringify(businessGuidance)}
 用户原话：${b.text}`,model:b.model,tools,images:b.image?[`data:${b.image.mime};base64,${b.image.data}`]:[],signal:controller.signal,onDelta:t=>{if(businessGuidance.matched)modelStreamed+=t;else{streamed+=t;emit('delta',{id:assistantId,text:t})}},onEvent:(e:any)=>{if(e.method==='item/tool/call')emit('status',{text:'正在核对项目资料与建议范围…'})}});

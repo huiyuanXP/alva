@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Q07 Palette</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;background:#f5f5f7;color:#1d1d1f;-webkit-font-smoothing:antialiased}
+a{color:#0066cc}a:hover{color:#004f9e}
+.cta{appearance:none;border:0;border-radius:980px;padding:0 28px;height:48px;min-width:140px;font:inherit;font-size:17px;font-weight:500;letter-spacing:-.01em;background:#0071e3;color:#ffffff;cursor:pointer;transition:background-color .18s ease}
+.cta:hover{background:#0077ed}
+.cta:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(0,113,227,.3)}
+.cta.off{background:#d2d2d7;color:#6e6e73;cursor:default}
+.ghost{appearance:none;border:0;background:transparent;font:inherit;font-size:15px;color:#0066cc;cursor:pointer;height:44px;padding:0 4px;border-radius:8px}
+.ghost:hover{text-decoration:underline}
+.back{appearance:none;border:0;background:#ededf0;color:#424245;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.back:hover{background:#e1e1e6}
+.close{appearance:none;border:0;width:36px;height:36px;border-radius:50%;background:#ededf0;color:#424245;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .18s ease}
+.close:hover{background:#e1e1e6}
+.pal{appearance:none;display:flex;flex-direction:column;gap:0;padding:0;border-radius:18px;border:1.5px solid #e3e3e8;background:#ffffff;cursor:pointer;text-align:left;font:inherit;color:#1d1d1f;overflow:hidden;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.pal:hover{border-color:#c7c7cc;transform:translateY(-1px)}
+.pal:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(0,113,227,.28)}
+.pal.on{border-color:#0071e3;box-shadow:0 0 0 1px #0071e3 inset,0 8px 24px rgba(0,113,227,.14)}
+.cap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;font-size:14px;font-weight:600;letter-spacing:-.01em;min-height:44px;box-sizing:border-box}
+.rad{flex:none;width:22px;height:22px;border-radius:50%;box-sizing:border-box;border:1.5px solid #c7c7cc;display:flex;align-items:center;justify-content:center}
+.pal.on .rad,.samp.on .rad{border-color:#0071e3;background:#0071e3}
+.samp{appearance:none;width:100%;display:flex;align-items:center;gap:14px;padding:14px 18px;box-sizing:border-box;border-radius:16px;border:1.5px dashed #c7c7cc;background:#fbfbfd;cursor:pointer;text-align:left;font:inherit;color:#1d1d1f;transition:border-color .18s ease,background-color .18s ease}
+.samp:hover{border-color:#86868b}
+.samp.on{border-style:solid;border-color:#0071e3;background:#f2f8ff;box-shadow:0 0 0 1px #0071e3 inset}
+.field{width:100%;box-sizing:border-box;height:48px;padding:0 16px;border-radius:12px;border:1.5px solid #d2d2d7;background:#ffffff;font:inherit;font-size:16px;color:#1d1d1f;transition:border-color .18s ease,box-shadow .18s ease}
+.field::placeholder{color:#86868b}
+.field:focus{outline:none;border-color:#0071e3;box-shadow:0 0 0 4px rgba(0,113,227,.18)}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1000px; position: relative; overflow: hidden; background: #f5f5f7;">
+  <div aria-hidden="true" style="position: absolute; inset: -40px; filter: blur(18px); transform: scale(1.02); display: flex; flex-direction: column;">
+    <div style="height: 92px; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: space-between; padding: 0 160px; border-bottom: 1px solid #e5e5ea;">
+      <div style="width: 140px; height: 18px; border-radius: 9px; background: #1d1d1f;"></div>
+      <div style="display: flex; gap: 36px;">
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+        <div style="width: 70px; height: 12px; border-radius: 6px; background: #86868b;"></div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 64px; padding: 130px 200px 0; align-items: center;">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 22px;">
+        <div style="width: 520px; height: 56px; border-radius: 14px; background: #1d1d1f;"></div>
+        <div style="width: 420px; height: 56px; border-radius: 14px; background: #1d1d1f;"></div>
+        <div style="width: 380px; height: 16px; border-radius: 8px; background: #86868b; margin-top: 12px;"></div>
+        <div style="width: 180px; height: 48px; border-radius: 24px; background: #0071e3; margin-top: 18px;"></div>
+      </div>
+      <div style="width: 560px; height: 520px; border-radius: 32px; background: linear-gradient(160deg, #d9cbb8 0%, #b8a58c 55%, #8d7a63 100%);"></div>
+    </div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(29,29,31,0.32);"></div>
+
+  <div role="dialog" aria-modal="true" aria-labelledby="qtitle" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 820px; box-sizing: border-box; background: #ffffff; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.22), 0 4px 14px rgba(0,0,0,0.08); padding: 28px 36px 32px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <button class="back" type="button" aria-label="Back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2 4 7l5 5"></path></svg>
+      </button>
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: #6e6e73; text-transform: uppercase;">Look &amp; feel · 2 of 6</div>
+        <div style="height: 4px; border-radius: 2px; background: #ececf0; overflow: hidden;">
+          <div style="width: 33%; height: 4px; border-radius: 2px; background: #0071e3;"></div>
+        </div>
+      </div>
+      <button class="close" type="button" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"></path></svg>
+      </button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <h2 id="qtitle" style="margin: 0; font-size: 34px; line-height: 1.12; font-weight: 700; letter-spacing: -0.022em; color: #1d1d1f;">Which palette appeals most to you?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.47; color: #6e6e73;">Go with your gut. You'll see real samples later.</p>
+    </div>
+    <div role="radiogroup" aria-labelledby="qtitle" style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+        <button class="pal {{c_warm_light}}" type="button" role="radio" aria-checked="{{a_warm_light}}" onClick="{{p_warm_light}}">
+          <span aria-hidden="true" style="display: flex; height: 132px; gap: 3px; background: #ffffff;">
+            <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #F4EFE6;"></span>
+              <span style="height: 34px; background: #D9C2A0;"></span>
+            </span>
+            <span style="width: 38%; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #E8DFD2;"></span>
+              <span style="height: 44px; background: #B89B74;"></span>
+            </span>
+          </span>
+          <span class="cap"><span>Warm whites &amp; light wood</span><span class="rad"><sc-if value="{{s_warm_light}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span></span>
+        </button>
+        <button class="pal {{c_warm_deep}}" type="button" role="radio" aria-checked="{{a_warm_deep}}" onClick="{{p_warm_deep}}">
+          <span aria-hidden="true" style="display: flex; height: 132px; gap: 3px; background: #ffffff;">
+            <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #E6DCCD;"></span>
+              <span style="height: 34px; background: #8A6546;"></span>
+            </span>
+            <span style="width: 38%; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #C9B8A1;"></span>
+              <span style="height: 44px; background: #5C4331;"></span>
+            </span>
+          </span>
+          <span class="cap"><span>Warm neutrals &amp; deeper wood</span><span class="rad"><sc-if value="{{s_warm_deep}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span></span>
+        </button>
+        <button class="pal {{c_cool}}" type="button" role="radio" aria-checked="{{a_cool}}" onClick="{{p_cool}}">
+          <span aria-hidden="true" style="display: flex; height: 132px; gap: 3px; background: #ffffff;">
+            <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #F2F3F5;"></span>
+              <span style="height: 34px; background: #C9CDD2;"></span>
+            </span>
+            <span style="width: 38%; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #9AA1A9;"></span>
+              <span style="height: 44px; background: #5F666E;"></span>
+            </span>
+          </span>
+          <span class="cap"><span>Cool whites &amp; grays</span><span class="rad"><sc-if value="{{s_cool}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span></span>
+        </button>
+        <button class="pal {{c_pops}}" type="button" role="radio" aria-checked="{{a_pops}}" onClick="{{p_pops}}">
+          <span aria-hidden="true" style="display: flex; height: 132px; gap: 3px; background: #ffffff;">
+            <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #FAFAFA;"></span>
+              <span style="height: 34px; background: #E4E4E4;"></span>
+            </span>
+            <span style="width: 38%; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #F2B134;"></span>
+              <span style="height: 44px; background: #2F6FDB;"></span>
+            </span>
+          </span>
+          <span class="cap"><span>Crisp white with pops of color</span><span class="rad"><sc-if value="{{s_pops}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span></span>
+        </button>
+        <button class="pal {{c_moody}}" type="button" role="radio" aria-checked="{{a_moody}}" onClick="{{p_moody}}">
+          <span aria-hidden="true" style="display: flex; height: 132px; gap: 3px; background: #ffffff;">
+            <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #283330;"></span>
+              <span style="height: 34px; background: #5B2E35;"></span>
+            </span>
+            <span style="width: 38%; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #1F2A44;"></span>
+              <span style="height: 44px; background: #B08D57;"></span>
+            </span>
+          </span>
+          <span class="cap"><span>Rich, deep, moody colors</span><span class="rad"><sc-if value="{{s_moody}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span></span>
+        </button>
+        <button class="pal {{c_earthy}}" type="button" role="radio" aria-checked="{{a_earthy}}" onClick="{{p_earthy}}">
+          <span aria-hidden="true" style="display: flex; height: 132px; gap: 3px; background: #ffffff;">
+            <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #E9DCC8;"></span>
+              <span style="height: 34px; background: #C2693E;"></span>
+            </span>
+            <span style="width: 38%; display: flex; flex-direction: column; gap: 3px;">
+              <span style="flex-grow: 1; background: #7C8456;"></span>
+              <span style="height: 44px; background: #D8B98C;"></span>
+            </span>
+          </span>
+          <span class="cap"><span>Earthy tones</span><span class="rad"><sc-if value="{{s_earthy}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span></span>
+        </button>
+      </div>
+      <button class="samp {{c_samples}}" type="button" role="radio" aria-checked="{{a_samples}}" onClick="{{p_samples}}">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: #f2f2f5; display: flex; align-items: center; justify-content: center; flex: none;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg>
+        </span>
+        <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 16px; font-weight: 600; letter-spacing: -0.01em;">I'd like to see real samples first</span>
+          <span style="font-size: 14px; color: #6e6e73;">Your designer will bring swatches to choose from</span>
+        </span>
+        <span class="rad"><sc-if value="{{s_samples}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"></path></svg></sc-if></span>
+      </button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <label for="q07b" style="font-size: 15px; font-weight: 600; color: #1d1d1f;">Any colors you love, or would never have? <span style="font-weight: 400; color: #6e6e73;">(optional)</span></label>
+      <input id="q07b" class="field" type="text" placeholder="e.g. Love sage green, no bright red">
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <button class="ghost" type="button" onClick="{{clear}}" style="align-self: flex-start;">Skip for now</button>
+        <span style="font-size: 13px; color: #6e6e73;">You can change this anytime.</span>
+      </div>
+      <button class="cta {{ctaClass}}" type="button" disabled="{{noSel}}" aria-disabled="{{noSel}}">Continue</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const picked = (this.state && this.state.picked) || null;
+    const keys = ["warm_light", "warm_deep", "cool", "pops", "moody", "earthy", "samples"];
+    const v = {};
+    keys.forEach(k => {
+      v['c_' + k] = picked === k ? 'on' : '';
+      v['a_' + k] = picked === k ? 'true' : 'false';
+      v['s_' + k] = picked === k;
+      v['p_' + k] = () => this.setState({ picked: k });
+    });
+    v.noSel = !picked;
+    v.ctaClass = picked ? '' : 'off';
+    v.clear = () => this.setState({ picked: null });
+    return v;
+  }
+}
+</script>
+</body>
+</html>

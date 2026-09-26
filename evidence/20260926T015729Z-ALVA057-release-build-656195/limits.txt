@@ -1,0 +1,6 @@
+run=20260926T015729Z-ALVA057-release-build-656195
+CPUQuota=80%
+MemoryMax=1200M
+MemorySwapMax=0
+headroomMiB=2358
+272c5f93c9ab9403dde3cfcb06b6854ae107842d
