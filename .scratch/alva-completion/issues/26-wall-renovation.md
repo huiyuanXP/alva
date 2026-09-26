@@ -31,3 +31,9 @@
 - 预览不写入正式数据；确认校验基线拓扑、版本和预览指纹，支持同一 requestId 幂等，失败、越权、缺证据、非法迁移和过期版本均不污染场景。
 - 前端增加“改造预览”面板，显示专业证据、墙体与门窗迁移目标、三维候选、确认理由及取消路径；拓扑确认后旧建筑结果明确提示过期。
 - 验证：ALVA-033 专项测试 4/4 通过；npm run check、npm run build:alva、git diff --check 通过。临时 Cloudflare 通道的真实 Chrome 验收完成专业分类、预览、门窗迁移、确认、保存版本、历史只读预览及明确恢复确认；通道仅用于验收，收尾后释放。
+
+## Lexie independent verification
+
+- 2026-09-26 用户再次要求 Lexie 认领 ALVA-033 时，本票已由 lzy 完成并合入 `main`（`f5bdd9c`），因此未覆盖或伪造第二次认领；改为在现役 `main` 上独立复验。
+- 第一轮：`ALVA033_TEST_CODE=<local-test-code> tsx --test tests/alva-wall-remodel.test.ts`，4/4 通过，0 fail，0 skip。覆盖只读预览、开口稳定 ID 迁移、原子确认、新拓扑版本、旧建筑失效、非法迁移/越权/过期拒绝和幂等。
+- 第二轮：`npm run check`、`npm run build:alva` 均通过；专业墙体 + ALVA-033 + stage MCP/Chat 扩大回归 18/18 通过，0 fail，0 skip。构建仅保留既有 bundle >500 kB 警告。
