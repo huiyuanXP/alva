@@ -10,9 +10,13 @@
 
 **Blocked by:** [ALVA-029](22-layout-review.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+
+**Owner:** Lexie
+
+**Branch / Worktree:** `task/ALVA-030-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-030-Lexie`
 
 - [ ] 没有重量/支撑证据只列待核实，不判定承载成立或失效。
 - [ ] 确认偏好或知悉问题不能关闭专业风险。
