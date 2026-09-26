@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-036](29-manual-snapshot.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领；独立 Worktree `task/ALVA-037-Lexie` 开发。复用 ALVA-036 手动快照后端合同，新增只读预览状态与列表空态/时间展示；预览读取绝不调用模型、不修改工作稿。
 
 - [ ] 列表仅展示用户手动保存的存档点，编号/时间明确，与当前未保存工作稿区分；没有快照时显示空状态。
 - [ ] 点击快照加载其2D/3D、需求与依据等对应状态，不调用模型重新生成、不修改工作稿；退出预览回到原工作状态。
