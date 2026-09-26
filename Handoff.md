@@ -6,6 +6,10 @@
 
 neat-freak：本次代码/合同 changed-and-verified；完整验收、main 集成及生产 pending；生成记忆 out-of-scope；私有现场和历史失败证据保留。共享重任务已结束，锁按 runner 释放。
 
+## 2026-09-26 ALVA-057 问卷视觉修订已上线
+
+main `f9fd9ef` 已发布耳麦入口、23 处长题主问句与灰色提示分层、Q06/Q10/Q26/Q32 语义图标。41/41 回归、构建、桌面和手机浏览器以及 Q09 专项截图通过；公网新资源和登录弹窗只读核验通过。收据见 `docs/ALVA-057-questionnaire-release.md`。057 阶段 MCP 联验仍待 066，状态 in-progress。
+
 ## 2026-09-26 ALVA-057 英文问卷文案精简已上线
 
 main `23a79da` 已发布：两道双问句合并，99 个选项标签改写为短语或逗号分隔；隔离 41/41 回归、构建与浏览器检查通过，公网新资源和只读弹窗通过。收据见 `docs/ALVA-057-questionnaire-release.md`。阶段 MCP 待 066 联验，057 继续 in-progress。

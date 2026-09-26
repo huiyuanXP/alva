@@ -8,6 +8,10 @@ neat-freak：本次代码/合同 changed-and-verified；完整验收、main 集�
 
 ## ALVA-066 两阶段 MCP：codex-stage-mcp 已认领
 
+## 2026-09-26 ALVA-057 问卷视觉修订发布
+
+main `f9fd9ef` 已上线入口耳麦、长题提示分层及语义选项图标；发布收据见 `docs/ALVA-057-questionnaire-release.md`。057 阶段 MCP 仍待 066 联验，状态 in-progress。
+
 ## 2026-09-26 ALVA-057 文案精简发布
 
 main `23a79da` 已上线问卷单问句与选项标签精简，收据见 `docs/ALVA-057-questionnaire-release.md`；057 阶段 MCP 仍待 066 联验，状态 in-progress。
