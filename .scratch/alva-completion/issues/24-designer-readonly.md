@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-008](01-shared-login-code.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领；独立 Worktree `task/ALVA-031-Lexie` 开发。复用现有统一验证码/session/invite 基础，补齐设计师只读授权、撤销与跨项目拒绝；避开 ALVA-066/057 正占用的 Chat/MCP 共享入口。
 
 - [ ] 设计师也必须通过统一验证码门槛，分享不绕过入口限制。
 - [ ] 页面可查看授权内容；直接调用编辑/采用/保存/恢复接口也被拒绝，不能仅隐藏按钮。
