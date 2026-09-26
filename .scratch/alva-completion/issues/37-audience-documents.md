@@ -10,9 +10,13 @@
 
 **Blocked by:** [ALVA-016](09-unanswered-followup.md), [ALVA-030](23-professional-unknowns.md), [ALVA-036](29-manual-snapshot.md), [ALVA-042](35-preference-confirmation.md), [ALVA-043](36-business-guidance.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+
+**Owner:** Lexie
+
+**Branch / Worktree:** `task/ALVA-044-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-044-Lexie`
 
 - [ ] 逐项映射业务D01–D10/U01–U05：原话、需求、偏好、痛点、取舍、未决、家具材料、实施计划。
 - [ ] DOCX有可编辑正文，PDF与之使用同一版本；不是截图Word，不包含预算或金额章节。
