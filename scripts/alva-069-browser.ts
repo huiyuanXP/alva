@@ -22,7 +22,7 @@ try{
  const context=await browser.newContext({viewport:{width:1440,height:900}});const session=await store.issueInternalSession(project.id);await context.addCookies([{name:'alva_session',value:session.token,domain:'127.0.0.1',path:'/'}]);const page=await context.newPage();const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(origin);
  await expect(page.getByText('先看采光。')).toBeVisible();await expect(page.locator('.message.assistant strong')).toHaveText('先看采光。');await expect(page.locator('.message.assistant li')).toHaveCount(2);
  const bubble=await page.locator('.message.user').boundingBox(),column=await page.locator('aside.chat').boundingBox(),warning=await page.locator('.stage-entry-warning').boundingBox();assert.ok(bubble&&column&&warning);
- assert.ok(bubble.width<column.width*.9,`user bubble ${bubble.width} too wide for chat ${column.width}`);assert.ok(warning.y+warning.height<(await page.locator('.messages').boundingBox())!.y,'handoff warning overlaps messages');
+ assert.ok(bubble.width<column.width*.9,`user bubble ${bubble.width} too wide for chat ${column.width}`);assert.ok(await page.locator('.messages .stage-entry-warning').count()===1,'handoff warning should scroll with chat');assert.equal(await page.locator('.chat-stages>small').innerText(),'当前阶段：户型导入');await expect(page.getByRole('button',{name:'Chat with Room'})).toBeVisible();
  await page.screenshot({path:resolve(evidence,'chat-desktop.png')});
  await page.setViewportSize({width:390,height:844});await page.screenshot({path:resolve(evidence,'chat-narrow.png')});
  let retries=0,delivered=false;
