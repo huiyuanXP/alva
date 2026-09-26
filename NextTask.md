@@ -114,7 +114,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-048](.scratch/alva-completion/issues/41-acceptance-groups-1-4.md) | 验收组1–4 | `acceptance` |  |  | 依赖047已验收集成，待署名认领；不自动开工 |
+| [ALVA-048](.scratch/alva-completion/issues/41-acceptance-groups-1-4.md) | 验收组1–4 | `acceptance-business` | Lexie | `task/ALVA-048-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-048-Lexie` | 最终回归第1–4组、验收证据与必要修复；依赖047已验收集成，in-progress |
 | [ALVA-049](.scratch/alva-completion/issues/42-acceptance-groups-5-8.md) | 验收组5–8 | `acceptance` |  |  | 依赖047已验收集成，待署名认领；不自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。

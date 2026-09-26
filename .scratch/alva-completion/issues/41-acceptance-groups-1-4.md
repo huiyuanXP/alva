@@ -10,9 +10,13 @@
 
 **Blocked by:** [ALVA-047](40-group-proposals.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+
+**Owner:** Lexie
+
+**Branch / Worktree:** `task/ALVA-048-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-048-Lexie`
 
 - [ ] 两张不同真实户型经识图/校准；同源拓扑与建筑生成关联有效，保留坏几何拒绝。
 - [ ] 真实文字/图片/转写、取消重试、问卷双向/锁定、痛点双阶段正反例全部验证。
