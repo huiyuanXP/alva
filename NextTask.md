@@ -85,7 +85,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-032](.scratch/alva-completion/issues/25-wall-evidence.md) | 墙体分类、证据与专业授权 | `topology` | Lexie | task/ALVA-032-Lexie / /home/ubuntu/Alva-worktrees/ALVA-032-Lexie | in-progress；业务实现 4fcdd02；第一轮4/4，第二轮真实HTTP+服务器管理员grant/revoke+重启通过，相关回归24/24，类型/构建/diff-check通过；已导出get_wall_professional_evidence；066已集成，接入前置已满足；原负责人可挂载工具并做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-039](.scratch/alva-completion/issues/32-desktop-walkthrough.md) | 桌面漫游与输入暂停 | `render` | Lexie | task/ALVA-039-Lexie / /home/ubuntu/Alva-worktrees/ALVA-039-Lexie | in-progress；与 ALVA-040 同 lane 但明确文件隔离：仅新增 web/src/scene/walkthrough/*、测试/证据，并最小修改 web/src/main.tsx 装配；不修改 BuildingView.tsx、SceneView.tsx、scene/sunlight*；测试端口43139 |
 | [ALVA-042](.scratch/alva-completion/issues/35-preference-confirmation.md) | 偏好确认与后续建议引用 | `references` | Lexie | task/ALVA-042-Lexie / /home/ubuntu/Alva-worktrees/ALVA-042-Lexie | in-progress；2026-09-26 复验：业务分支 de7bb04 第一轮4/4 + HTTP保存/重启通过；历史第二轮产品门禁未过；066现已合main，接入前置已满足，原负责人可挂载get_confirmed_reference_preferences并做同SHA真实MCP联合验收，未完成前不标done |
 | [ALVA-029](.scratch/alva-completion/issues/22-layout-review.md) | 布局调整与保存前冲突复核 | `review` | codex-acceptance（用户授权续接；原实现 xuanpu-chat-6pro） | task/ALVA-029-codex-acceptance / /home/ubuntu/Alva-worktrees/ALVA-029-codex-acceptance | in-progress；基于已集成066的main完成同SHA联合验收及必要修复；api/review、web/src/review、定位接入及本票测试/脚本；main.tsx仅布局复核定位接线，不改039漫游；独立数据/动态端口；原029工作区保留 |

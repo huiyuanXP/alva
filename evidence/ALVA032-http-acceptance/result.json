@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "run": "ALVA032-http-acceptance",
+  "homeStatus": 200,
+  "uiLabelsPresent": true,
+  "professionalRole": true,
+  "classificationPersisted": true,
+  "ownerCanTraceSource": true,
+  "grantIsServerConfigured": true,
+  "serviceRestartReload": true,
+  "revokeAudited": true,
+  "revokedSessionStatus": 401,
+  "revokedInviteLoginStatus": 401
+}
