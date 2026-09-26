@@ -1,3 +1,7 @@
+## ALVA-067 发布认领
+
+2026-09-26 用户明确授权部署；codex-chat-feedback 负责发布已验main候选189fa20，备份/回滚/公网核验。复用独立Worktree /home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback，发布分支 release/ALVA-067-chat-progress。仅占用alva.service生产发布窗口，不修改066验收环境。
+
 ## ALVA-067 已集成；ALVA-066 下一步同步新模型与进度展示
 
 主Chat已切为 Gemini 3.8 Flash High；保留等待圆点，最新工具进度改为其上方浅色文字，不再进入顶部横幅。类型/构建、17/17回归、桌面/手机与真实Chat工具调用通过；[ALVA-067](docs/ALVA-067-chat-model-progress.md)记录证据及失败run。未部署，066验收工作区未改，须同步main后重跑受影响阶段MCP门禁。
