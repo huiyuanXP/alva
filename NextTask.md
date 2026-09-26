@@ -174,7 +174,7 @@ ALVA-054 已完成集成：新增“聊聊你的家”逐题问卷；生产发�
 
 | 任务 | 署名 | 工作区与边界 | 状态 |
 |---|---|---|---|
-| [ALVA-057](docs/ALVA-057-home-vision.md) | xuanpu-chat-6pro | task/ALVA-057-xuanpu-chat-6pro；/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-xuanpu-chat-6pro；questions；api/intake、api/model.ts、api/chat.ts、web/src/intake、web/src/main.tsx、packages/contracts/alva/home-vision、相关脚本/测试；测试4287 | in-progress；问卷业务已发布；用户现授权068在保留057题库/独立流程的前提下接入Chat与问卷同步，共享入口该部分由068实施；057其他范围/署名保留 |
+| [ALVA-057](docs/ALVA-057-home-vision.md) |  | 既有实现保留在 task/ALVA-057-xuanpu-chat-6pro；/home/ubuntu/Alva/.runtime/worktrees/ALVA-057-xuanpu-chat-6pro；恢复提交 53a39fc | ready-for-agent；用户要求释放原认领。问卷业务已发布；066阶段MCP已就绪，剩余联验待新负责人认领；068已获授权的共享入口接线继续由068负责，认领前先核对其文件占用 |
 
 恢复提交 `53a39fc`，类型/40项回归/13组浏览器/构建通过。现役dynamicTools读取适配不等于阶段MCP接入；问卷业务已合main并生产发布；066阶段MCP运行层已集成，本票尚需联验，下一步见票据。当前无执行进程或重任务占用，重新实施前核对共享文件。
 
