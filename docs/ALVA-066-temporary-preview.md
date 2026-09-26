@@ -55,3 +55,9 @@ neat-freak：代码、预览运行、合同及规则 changed-and-verified；整�
 合并后预览公网登录与页面只读复验通过：`evidence/20260926T051132532Z-ALVA066-stage-recovery-public/`；地址保持不变，revision 176、页面错误 0。
 
 集成状态：用户已授权，个人候选 `c53d3ac` 已合入 main；本次没有生产发布。
+
+## 2026-09-26 05:27 UTC 集成与运行态只读核查
+
+main 已包含 066 集成提交 e44c23a（05:12:53 UTC）；生产 alva.service 主 PID 10760、子 Node PID 10772，仍为 04:54:57 UTC 启动，启动命令无 watch。生产本机回源 127.0.0.1:4173 返回 index-CJYIuDYm.js / index-COlzMmhx.css，与 ALVA-067 发布记录一致。临时预览公网返回 index-DywQUvK0.js / index-CSh0hGL9.css，包含066合并候选。
+
+本次检查的仓库、systemd timer/path 与应用启动配置未发现 main 合并后自动构建/部署机制；main 集成与预览更新由 Agent 按用户授权显式执行。生产服务工作目录虽是 main，常驻进程不会因 Git 合并重新加载模块。本次未重启、未发布、未操作客户数据。生产公网普通 HTTP 请求返回403，因此生产资源判断基于实际服务回源及进程，不声称本轮完成公网登录或业务验收。
