@@ -1,0 +1,14 @@
+{
+  "origin": "https://prod.huiyuanxp.com",
+  "authenticated": true,
+  "checks": [
+    "current production asset",
+    "authenticated Your Home Vision button",
+    "Q01 master and versioned questionnaire API",
+    "close without edits preserves revision",
+    "zero page errors"
+  ],
+  "loginStatus": 200,
+  "noBusinessWrites": true,
+  "ok": true
+}

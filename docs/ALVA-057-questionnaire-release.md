@@ -7,3 +7,7 @@
 在独立工作区按共享重任务锁/CPU80%/1200M（浏览器1600M）验证：类型检查和生产构建退出0；40/40 问卷、Chat、权限、快照相关测试通过；保存/恢复与隔离模型 Chat 的 7 组浏览器检查，以及界面、Q1/Q5/Q7、iPhone 设备模拟的 6 组检查通过，页面错误0。证据 `evidence/20260926T015534Z-ALVA057-release-typecheck-655385/`、`...015606Z-ALVA057-release-regression-655590/`、`...015729Z-ALVA057-release-build-656195/`、`...015731Z-ALVA057-release-recovery-browser-656269/`、`...015752Z-ALVA057-release-layout-browser-656484/`，详细浏览器结果及截图在同次 `evidence/2026-09-26T015735191Z-ALVA057-recovery-browser/` 与 `...015756015Z-ALVA057-browser/`。
 
 生产部署与登录后核验结果另记，未完成前不得把隔离验收称为线上通过。原接力工作区保留，ALVA-066 与其他未完成票状态不变。
+
+## 生产发布收据
+
+main集成 `817c253`。发布前备份原代码、dist与停止服务后的127MiB数据库副本于 `.runtime/alva057-questionnaire-20260926T020017Z/`；保留旧资源，原服务工作目录不变，重启仅 `alva.service`。新版首页资源 `/assets/index-MGEQ5jJb.js` 已经公网200，首页与健康200，未鉴权问卷API401。使用用户提供的现役验证码进行只读公网Chromium核验：登录200、新入口/Q01显示、GET新版问卷 `home-vision-v4`、关闭后revision不变、页面脚本错误0。证据 `evidence/2026-09-26T020331622Z-ALVA057-questionnaire-public/result.json`。没有在生产填写新答案，也没有声称 ALVA-066 阶段MCP可用。
