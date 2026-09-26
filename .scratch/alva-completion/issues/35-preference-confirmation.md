@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-041](34-reference-annotation.md), [ALVA-015](08-chat-answer-confirmation.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 按用户明确指令由 Lexie 认领；独立 Worktree `task/ALVA-042-Lexie` 开发。优先复用 ALVA-041 的 confirmed reference 数据边界，并通过生活设计阶段 MCP 接入真实咨询，避开 ALVA-057 当前占用的共享 Chat/Project 入口。
 
 - [ ] 点击确认才进入需求，不能覆盖锁定答案或错误房间。
 - [ ] 真实咨询能读取已确认偏好并解释来源，未确认分析不冒充已确认。
