@@ -1,3 +1,7 @@
+## ALVA-067 主 Chat 模型与等待反馈
+
+用户当前明确要求修复066验收依赖；codex-chat-feedback 认领，独立分支 task/ALVA-067-codex-chat-feedback，Worktree /home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback。范围仅 main-chat-agent.ts 模型、main.tsx 请求等待状态及独立 chat Loading 组件；不接管066，不修改其Worktree。完成后先集成main，066同步main后重验受影响门禁。
+
 ## 2026-09-26 ALVA-057 问卷视觉修订发布
 
 main `f9fd9ef` 已上线入口耳麦、长题提示分层及语义选项图标；发布收据见 `docs/ALVA-057-questionnaire-release.md`。057 阶段 MCP 仍待 066 联验，状态 in-progress。
