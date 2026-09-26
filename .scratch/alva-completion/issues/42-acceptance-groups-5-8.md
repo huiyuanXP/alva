@@ -10,9 +10,9 @@
 
 **Blocked by:** [ALVA-047](40-group-proposals.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
-**Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+**Execution:** 2026-09-26 由 lzy 认领，在独立 Worktree `task/ALVA-049-lzy` / `/home/ubuntu/Alva-worktrees/ALVA-049-lzy` 实施；ALVA-047 已在 main 集成。
 
 - [ ] 家具/用途/受控墙改/合并拆分、版本回退与导出逐项覆盖，含故障和越权负例。
 - [ ] 漫游、碰撞、光照、焦点在理想机器上真实浏览器验证，控制台error为0。
