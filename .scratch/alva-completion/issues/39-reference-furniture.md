@@ -10,9 +10,13 @@
 
 **Blocked by:** [ALVA-018](11-cancel-retry.md), [ALVA-019](12-voice-transcription.md), [ALVA-022](15-room-purpose.md), [ALVA-025](18-furniture-properties.md), [ALVA-026](19-furniture-return.md), [ALVA-027](20-furniture-transfer.md), [ALVA-037](30-snapshot-preview.md), [ALVA-038](31-snapshot-restore.md), [ALVA-039](32-desktop-walkthrough.md), [ALVA-040](33-sunlight-seasons.md), [ALVA-045](38-delivery-bundle.md)
 
-**Status:** ready-for-agent
+**Status:** in-progress
 
 **Execution:** 已发布，尚未实施。依赖全部在 main 集成且验收完成后，按 NextTask 署名认领，在独立 Worktree 开发；本次协作规则更新不自动认领或开工。
+
+**Owner:** Lexie
+
+**Branch / Worktree:** `task/ALVA-046-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-046-Lexie`
 
 - [ ] 严格最后实施约束；来源/许可、推断尺寸与实测状态可见，不把图片当可靠几何。
 - [ ] 至少可比较候选资产，确认后产生新UUID并保留来源，拒绝不改变场景。

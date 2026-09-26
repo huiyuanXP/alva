@@ -114,6 +114,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
+| [ALVA-046](.scratch/alva-completion/issues/39-reference-furniture.md) | 参考家具变成可确认实例 | `proposals` | Lexie | `task/ALVA-046-Lexie` / `/home/ubuntu/Alva-worktrees/ALVA-046-Lexie` | 预计 reference furniture/候选资产/确认与测试；依赖018/019/022/025/026/027/037/038/039/040/045已验收集成，in-progress |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 
