@@ -1,0 +1,19 @@
+{
+  "ticket": "ALVA-049",
+  "pass": true,
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 401 ()"
+  ],
+  "expectedConsole": [
+    "Failed to load resource: the server responded with a status of 401 ()"
+  ],
+  "unexpectedConsole": [],
+  "checks": [
+    "empty-code-disabled",
+    "cloudflare-login",
+    "delivery-download",
+    "delivery-success-status"
+  ],
+  "source": "真实 Chromium + 独立 Cloudflare 通道；登录前 session 401 是预期门禁响应；私有验证码未写入结果"
+}
