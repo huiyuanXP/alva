@@ -1,14 +1,14 @@
+## ALVA-067 发布完成；下一步066同步main
+
+已发布主Chat Gemini 3.8及等待圆点上方的最新浅色进度。类型/构建、本次5组桌面手机浏览器和公网登录只读核验通过；模型接口3.8、JS/CSS哈希一致、页面错误0、项目revision不变。备份与回滚在.runtime/ALVA067-release-20260926T045448Z/；详情见[发布收据](docs/ALVA-067-chat-model-progress.md)。066验收环境未改，仍需同步main并重验阶段MCP。
+
 ## 2026-09-26 ALVA-029 验收未通过
 
 主线保存路由缺少当前审查门禁及采用凭证，隔离HTTP路由探针已复现；029历史50/50模块通过、066真实复核/保存过程通过不等于最终同SHA验收。详见[验收复核](docs/ALVA-029-acceptance-audit.md)。保留xuanpu-chat-6pro署名与in-progress，不解锁030。下一步由029/066固定联合候选，补页面定位、布局变更失效、非空用户取舍与保存/刷新/恢复，再集成；本轮未改产品或生产。
 
-## ALVA-067 发布认领
-
-2026-09-26 用户明确授权部署；codex-chat-feedback 负责发布已验main候选189fa20，备份/回滚/公网核验。复用独立Worktree /home/ubuntu/Alva-worktrees/ALVA-067-codex-chat-feedback，发布分支 release/ALVA-067-chat-progress。仅占用alva.service生产发布窗口，不修改066验收环境。
-
 ## ALVA-067 已集成；ALVA-066 下一步同步新模型与进度展示
 
-主Chat已切为 Gemini 3.8 Flash High；保留等待圆点，最新工具进度改为其上方浅色文字，不再进入顶部横幅。类型/构建、17/17回归、桌面/手机与真实Chat工具调用通过；[ALVA-067](docs/ALVA-067-chat-model-progress.md)记录证据及失败run。未部署，066验收工作区未改，须同步main后重跑受影响阶段MCP门禁。
+主Chat已切为 Gemini 3.8 Flash High；保留等待圆点，最新工具进度改为其上方浅色文字，不再进入顶部横幅。类型/构建、17/17回归、桌面/手机与真实Chat工具调用通过；[ALVA-067](docs/ALVA-067-chat-model-progress.md)记录证据及失败run。2026-09-26已部署并完成公网登录只读核验；066验收工作区未改，须同步main后重跑受影响阶段MCP门禁。
 
 ## 2026-09-26 ALVA-057 问卷视觉修订发布
 

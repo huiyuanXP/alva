@@ -1,0 +1,6 @@
+run=20260926T045820Z-ALVA067-release-public-valid-code-12142
+CPUQuota=80%
+MemoryMax=1600M
+MemorySwapMax=0
+headroomMiB=2324
+b2cbe1c76a0ef2f4edf735135ee4f4965260bf61

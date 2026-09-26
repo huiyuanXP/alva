@@ -26,12 +26,24 @@ web/src/chat/ChatProgress.tsx 通过 assistant-ui 当前消息运行状态，在
 
 ## Implementation handoff
 
-状态 done（实现已集成main，未部署）。个人实现 a6cee8c，署名 codex-chat-feedback；本票不是066整票结论。
+状态 done（实现已集成main，2026-09-26已部署并通过登录后只读线上核验）。个人实现 a6cee8c，署名 codex-chat-feedback；本票不是066整票结论。
 
 17/17相关回归通过：evidence/20260926T040414Z-ALVA067-regression-limited-738636/result.json。已同步main的ALVA-038恢复实现与ALVA-039认领记录，未覆盖其他署名；回归在含038的基线上完成。
 
 ## neat-freak 收尾
 
-代码与隔离运行态 changed-and-verified；主Chat合同及部署说明 changed-and-verified；规则 verified-current，按本次明确修复范围在独立工作区实现；机器生成记忆 out-of-scope；生产发布及066候选同步 pending。个人Worktree、原失败记录和截图保留供复核，未清理其他任务或私有现场。无新增顶层工程、共享合同或依赖。
+代码与隔离运行态 changed-and-verified；主Chat合同及部署说明 changed-and-verified；规则 verified-current，按本次明确修复范围在独立工作区实现；机器生成记忆 out-of-scope；生产发布 changed-and-verified；公网登录后核验 changed-and-verified；066候选同步 pending。个人Worktree、原失败记录和截图保留供复核，未清理其他任务或私有现场。无新增顶层工程、共享合同或依赖。
 
 集成核验：产品文件与个人已验提交逐文件相同，源码/文档diff-check通过；构建原始output.log包含Vite输出的一处行尾空格，作为原始证据保留，不伪造重写日志。
+
+## 2026-09-26 生产发布
+
+用户明确授权部署主线候选189fa20。发布构建包含已集成的ALVA-038快照恢复，ALVA-066独立分支不在此次发布范围。类型/构建通过（evidence/20260926T045301Z-ALVA067-release-build-10330/），本次构建桌面/手机、流式状态替换、失败/取消清除共5组浏览器检查通过（evidence/2026-09-26T045515621Z-ALVA067-chat-54a389/result.json）。
+
+已于2026-09-26 04:54 UTC发布。备份.runtime/ALVA067-release-20260926T045448Z/包含发布前源码、dist、私有配置和停服后的数据压缩包；rollback.sh恢复发布前静态资源并重启原后端（发布前后后端源码相同）。备份校验及重启收据见evidence/ALVA067-release-20260926T045448Z/result.json。保留旧哈希资源，不改生产项目、MCP或066验收环境。
+
+公网health/home正常，JS /assets/index-CJYIuDYm.js与CSS /assets/index-COlzMmhx.css都与本次构建SHA256一致，登录页页面错误0，未鉴权模型接口401。独立APIRequestContext取资源403，真实浏览器内fetch验证成功；前序失败run保留。前次公网证据evidence/2026-09-26T045704879Z-ALVA067-public/result.json记录资产校验成功，但当时登录核验未通过：用户提供验证码及服务器旧码均被原应用拒绝401，没有修改验证码或绕过验证。随后用户提供有效验证码，登录后只读线上核验通过，详见下段。
+
+neat-freak：代码/构建/隔离UI/公网资源verified-current；文档changed-and-verified；登录后线上验证verified-current；066联合门禁及机器记忆out-of-scope；备份和个人Worktree保留。构建大chunk提示仍属既有范围外事项。
+
+最终公网核验：evidence/2026-09-26T045822505Z-ALVA067-public/result.json，登录成功、咨询模型选择器与GET /api/models均为gemini-3.8-flash-high，JS/CSS哈希一致，页面错误0，项目revision不变。用户提供验证码仅临时用于核验，临时文件已删除，未更换应用验证码，未将凭据写入Git。
