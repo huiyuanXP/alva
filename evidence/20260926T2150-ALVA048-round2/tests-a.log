@@ -1,0 +1,39 @@
+✔ ALVA-012 generates two topology-bound layouts and confirms each saved preview (7082.187904ms)
+✔ ALVA-012 rejects a forged output and retains no unverified building (3134.226989ms)
+✔ building generation uses dedicated OPENAI_BUILDING_MODEL without changing general OPENAI_MODEL (0.855817ms)
+✔ building generation normalizes provider items alias and fixed units before strict validation (2.950128ms)
+✔ reopen confirmed topology returns to 2D candidate and discards downstream room design while preserving source context (2926.71454ms)
+✔ ALVA-011 validates opening bounds, overlap, wall association and vertical clearance (2.276707ms)
+✔ ALVA-011 edits openings, calibrates, confirms immutable topology and survives reload (5291.386599ms)
+✔ real private attachment bytes are scoped by project and corruption is explainable (39.434009ms)
+✔ ALVA-017 chat model catalogue is explicit and reference images require matching PNG/JPEG bytes (2.630435ms)
+✔ ALVA-017 routes keep model/chat private, reject raw Codex surface and invalid image before mutation (4846.858366ms)
+✔ ALVA-009 preserves PDF origin and discloses the rendered page (2292.346769ms)
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (12.912959ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (1.18579ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (1.930601ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (2.731873ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.576201ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (2.995477ms)
+✔ ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds (0.437678ms)
+✔ ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate (1.128507ms)
+✔ ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair (1.559524ms)
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.699921ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (4933.225695ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.604785ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (13.109702ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (4.557873ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (0.762589ms)
+✔ Gemini 3.8 default recognizes its observed split-opening response after one repair (4.860306ms)
+✔ Gemini field mapping still rejects an opening outside its wall (3.773701ms)
+✔ Gemini recognizes unified openings with top-level geography after one repair (3.17499ms)
+✔ missing Gemini geography explanation gains an uncertainty label without changing geometry or accepting missing coordinates (1.604436ms)
+✔ an exact terminal closing vertex is equivalent, while internal repeated points remain invalid (1.442495ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41955.450392

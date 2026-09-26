@@ -1,0 +1,5 @@
+
+> alva@0.1.0 check
+> tsc --noEmit
+
+scripts/alva-048-real-candidates.ts(7,598): error TS2554: Expected 2 arguments, but got 1.

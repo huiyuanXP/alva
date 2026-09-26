@@ -1,0 +1,8 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {distance,type Project,type SceneData} from '../api/model.js';
+import {calibrateCandidate,confirmCandidate} from '../api/topology/service.js';
+import {emptyProject} from '../api/model.js';
+const run='evidence/20260926T2150-ALVA048-round1';await mkdir(run,{recursive:true});
+const files=['evidence/20260926T135233881Z-b0b209c8/candidate.json','evidence/20260926T135658528Z-380e7741/candidate.json'];const out:any[]=[];
+for(const [index,file] of files.entries()){const scene=JSON.parse(await readFile(file,'utf8')) as SceneData;const p=emptyProject('ALVA-048 real '+(index+1)) as Project;p.candidate=structuredClone(scene);p.sourceImage={mime:'image/png',data:'aW1hZ2U=',originalMime:'image/png',filename:index?'real-2.png':'real-1.png'};const wall=p.candidate.walls[0]!,known=Number(distance(wall.a,wall.b).toFixed(2));calibrateCandidate(p,{wallId:wall.id,length:known,source:'ALVA-048 本轮明确输入的已知边长'});const actual=distance(p.candidate!.walls.find(w=>w.id===wall.id)!.a,p.candidate!.walls.find(w=>w.id===wall.id)!.b);confirmCandidate(p,{confirmed:true});out.push({file,walls:p.scene!.walls.length,rooms:p.scene!.rooms.length,openings:p.scene!.openings.length,wallId:wall.id,known,actual,error:Math.abs(actual-known),topologyVersion:p.confirmedTopology!.version,sourceFingerprint:p.confirmedTopology!.sourceFingerprint,assumptions:p.confirmedTopology!.assumptions});}
+await writeFile(run+'/real-candidate-calibration.json',JSON.stringify(out,null,2));console.log(JSON.stringify(out));if(out.some(x=>x.error>.01||!x.sourceFingerprint))process.exitCode=1;

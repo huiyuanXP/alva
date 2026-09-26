@@ -1,0 +1,87 @@
+✔ ALVA-012 generates two topology-bound layouts and confirms each saved preview (6478.958029ms)
+✔ ALVA-012 rejects a forged output and retains no unverified building (3025.254673ms)
+✔ building generation uses dedicated OPENAI_BUILDING_MODEL without changing general OPENAI_MODEL (0.801978ms)
+✔ building generation normalizes provider items alias and fixed units before strict validation (2.922967ms)
+✔ reopen confirmed topology returns to 2D candidate and discards downstream room design while preserving source context (2932.25867ms)
+✖ alva atomic edit group, distinct instance identities, immutable asset pool and protected walls (9.386363ms)
+✔ alva pain findings have positive and negative coffee/pet/plant controls at both analysis stages (3.226603ms)
+✔ alva 60 stable question IDs, disabled Q58, separate answer states and server-enforced locked fields (2.642008ms)
+✔ ALVA-011 validates opening bounds, overlap, wall association and vertical clearance (1.859203ms)
+✔ ALVA-011 edits openings, calibrates, confirms immutable topology and survives reload (5345.132139ms)
+✔ ALVA-018 dedicated chat cancellation aborts only the active chat controller (4745.595821ms)
+✔ ALVA-018 failure reasons distinguish cancel, timeout and unavailable provider (1.064755ms)
+✔ ALVA-015 manual answers are visible to later Chat snapshots (5.163193ms)
+✔ ALVA-015 Chat confirmation keeps exact quote, cannot duplicate, and locked values require explicit unlock (5042.686637ms)
+✔ persistent Chat snapshots retain current geometry once and keep historical topology metadata (1.768295ms)
+✔ real private attachment bytes are scoped by project and corruption is explainable (42.508795ms)
+✔ ALVA-017 chat model catalogue is explicit and reference images require matching PNG/JPEG bytes (2.492578ms)
+✔ ALVA-017 routes keep model/chat private, reject raw Codex surface and invalid image before mutation (4751.345411ms)
+✔ ALVA-009 preserves PDF origin and discloses the rendered page (2336.878831ms)
+✔ ALVA-053 plain JSON and one complete fence preserve all original coordinates (12.671104ms)
+✔ ALVA-053 malformed JSON, prose and incomplete/multiple fences remain failures (0.967195ms)
+✔ ALVA-053 array coordinates and string evidence cannot be guessed into schema validity (2.029521ms)
+✔ ALVA-053 geometry checks still reject duplicate IDs, short walls and overflowing openings (2.6585ms)
+✔ ALVA-053 one repair request identifies each failed contract stage without weakening it (0.445456ms)
+✔ ALVA-053 oversized output is rejected before JSON/schema evaluation (2.746332ms)
+✔ ALVA-053 vision deadline is explicit while ordinary calls remain at 120 seconds (0.382666ms)
+✔ ALVA-053/056 empty structured response and missing wall/room sets cannot overwrite a candidate (0.913755ms)
+✔ ALVA-056 offset means opening center, not its left edge, without automatic coordinate repair (1.457827ms)
+✔ ALVA-009 keeps attachment provenance for image imports and exposes stable source metadata (1.594092ms)
+✔ ALVA-009 replays duplicate imports and failures preserve the previous candidate (4902.512428ms)
+✔ floor-plan structured output normalization accepts bare JSON, Markdown fences and surrounding prose (1.17632ms)
+✔ floor-plan recognition uses OPENAI_VISION_MODEL and parses fenced provider JSON (12.495371ms)
+✔ floor-plan recognition repairs parse/schema failures with the same dedicated vision model (3.996273ms)
+✔ floor-plan contract normalization accepts equivalent provider field shapes without inventing geometry (0.883514ms)
+✔ Gemini 3.8 default recognizes its observed split-opening response after one repair (4.805085ms)
+✔ Gemini field mapping still rejects an opening outside its wall (3.473914ms)
+✔ Gemini recognizes unified openings with top-level geography after one repair (4.257942ms)
+✔ missing Gemini geography explanation gains an uncertainty label without changing geometry or accepting missing coordinates (2.524789ms)
+✔ an exact terminal closing vertex is equivalent, while internal repeated points remain invalid (1.571902ms)
+✔ intake drafts survive retrieval without becoming answers/snapshots; confirmation and auth are enforced (5093.010895ms)
+✔ ALVA-029 coffee/pet/plant positive cases retain exact source and object references (145.005722ms)
+✔ ALVA-029 negative statements and pending/inferred/rejected habits do not trigger positive findings (164.122677ms)
+✔ ALVA-029 supported pain checks clear after actual layout fixes (77.271726ms)
+✔ ALVA-029 changed current answers do not reuse positive historical questionnaire evidence (74.656849ms)
+✔ ALVA-029 confirmed correction supersedes the original habit without deleting provenance (73.960885ms)
+✔ ALVA-029 scoped habits do not leak to another room or unrelated object (76.033633ms)
+✔ ALVA-029 model summary cannot invent an unsupported habit absent from its actual quote (38.909077ms)
+✔ ALVA-029 coffee color and panda videos do not imply coffee-making or household pets (37.486486ms)
+✔ ALVA-029 geometry catches rotated footprint outside despite an inside center (39.054421ms)
+✔ ALVA-029 geometry catches furniture bridging a concave room notch and rotated overlap (36.491483ms)
+✔ ALVA-029 actual door-to-door grid comparison finds a barrier but permits a detour (76.841419ms)
+✔ ALVA-029 incomplete doors report a navigation limitation rather than universal passage success (34.85195ms)
+✔ ALVA-029 explicit material preference and functional requirement conflicts are independently sourced (40.317789ms)
+✔ ALVA-029 review freshness follows scene and context inputs, retaining reviewed revision after administrative writes (80.025535ms)
+✔ ALVA-029 save adoption preserves explicit choices while professional unknowns stay open (46.21359ms)
+✔ ALVA-029 missing or invalid layouts fail explicitly and stale context cannot be reviewed (34.876515ms)
+✔ ALVA-029 review tool always reloads inputs and reports persistence truthfully (83.252875ms)
+✔ ALVA-029 layout modification during review persistence invalidates tool success (69.947836ms)
+✔ ALVA-028 confirmed answer creates sourced life-pain findings idempotently (5147.93146ms)
+✔ ALVA-028 negative wording produces no invented pain finding (3058.414952ms)
+✔ ALVA-014 keeps 60 IDs, disables removed scope and keeps time planning (2.265799ms)
+✔ ALVA-014 answers stay scoped, preserve explicit states and enforce locks (6.351439ms)
+✔ ALVA-014 HTTP contract omits legacy budget and removed write route (4932.487263ms)
+ℹ tests 63
+ℹ suites 0
+ℹ pass 62
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81647.977393
+
+✖ failing tests:
+
+test at tests/alva-business.test.ts:3:1
+✖ alva atomic edit group, distinct instance identities, immutable asset pool and protected walls (9.386363ms)
+  Error: 家具与“操作台 / 书桌”占地重叠，请调整位置或方向
+      at reject (/home/ubuntu/Alva-worktrees/ALVA-048-Lexie/api/model.ts:49:63)
+      at validateFurniturePlacement (/home/ubuntu/Alva-worktrees/ALVA-048-Lexie/api/business.ts:56:14)
+      at applyChanges (/home/ubuntu/Alva-worktrees/ALVA-048-Lexie/api/business.ts:111:458)
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-048-Lexie/tests/alva-business.test.ts:3:213)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    statusCode: 422
+  }
