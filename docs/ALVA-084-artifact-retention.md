@@ -54,4 +54,12 @@ Git不包含生产数据库、上传与密钥。数据备份单独轮换和验�
 
 ## 验证与Implementation handoff
 
-保护测试覆盖24小时阈值、preview不删除、生产/上传保护、Git跟踪文件、符号链接、活动进程路径、长运行锁、近期run整体保护、PNG消费即删及越界拒绝。5项保护测试通过；真实run子进程输出/完成回执通过；真实view_image后discard删除通过。13个近期浏览器验收脚本已接入ALVA_ACCEPTANCE_DIR，截图/私有输出不再写长期evidence。实际安装/首轮清理与远端状态由main集成后补记。
+保护测试覆盖24小时阈值、preview不删除、生产/上传保护、Git跟踪文件、符号链接、活动进程路径、长运行锁、近期run整体保护、PNG消费即删及越界拒绝。5项保护测试通过；真实run子进程输出/完成回执通过；真实view_image后discard删除通过。13个近期浏览器验收脚本已接入ALVA_ACCEPTANCE_DIR，截图/私有输出不再写长期evidence。main集成7bc5ace已推送并用git ls-remote确认GitHub一致；现役生产SHA 327adf3是远端main祖先。systemd service/timer校验通过，timer已安装启用，每小时运行。全工作区preview：121817文件、1685658359逻辑字节（约1.57GiB），正式首轮运行结果见下。
+
+## 生产运维启用收据（2026-09-27）
+
+Status: done。定时器enabled/active，首次手动启动oneshot已正常退出（ExecMainStatus=0、Result=success）。实际删除121817文件、1685658359逻辑字节，Git跟踪文件跳过74183次；根卷可用约32G、使用率59%。公网健康ok，应用仍运行082固定release，未重启或发布业务代码。ISO带连字符旧run命名已补覆盖并通过相同保护测试，将由下一定时周期处理。
+
+5项Python保护测试、13个变更浏览器脚本TS语法、systemd单元校验、run子进程回执及真实view_image→discard验证通过。初次读取journal摘要因默认省略长MESSAGE而解析失败，改用--all后取得完整成功收据；此为日志读取问题，不是清理失败。
+
+neat-freak：代码/运维运行态/规则verified-current，文档及工作区changed-and-verified，生成记忆out-of-scope。历史Git分支内已跟踪证据和无法安全识别的旧诊断目录仍保留，不宣称全盘历史资源均已清空。原两项根目录未跟踪文件未动。
