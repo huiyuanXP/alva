@@ -1,3 +1,7 @@
+## ALVA-086 当前认领
+
+Codex：英文默认产品README、中文README、英文许可证与test1产品展示素材。Worktree /home/ubuntu/Alva-worktrees/ALVA-086-codex-readme；分支 task/ALVA-086-codex-readme。仅文档/展示资产，不改业务代码或项目设计。Status: in-progress。
+
 ## 2026-09-27 ALVA-084 已完成并启用
 
 开发截图通过统一查看入口即用即删；其他验收产物保留24小时，每小时自动清理。13个近期浏览器脚本已接入新目录，424个main二进制验收文件移出跟踪。首轮成功清理121817文件、约1.57GiB，可用约32G；生产健康，应用仍为082。GitHub已同步实现并确认现役生产SHA可恢复，代码靠Git，数据备份独立。详情见[保留与回滚合同](docs/ALVA-084-artifact-retention.md)。
