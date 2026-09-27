@@ -49,3 +49,7 @@ ALVA066_TASK_SECONDS=1800 bash scripts/alva-066-run.sh alva073-browser node --ma
 neat-freak：代码、隔离运行链与文档 changed-and-verified；项目规则 verified-current，无新增顶层工程或依赖边界。主Chat合同、问卷合同、目录规范与本票交接已同步。生产仍固定 ALVA-072 release，本票发布 out-of-scope；当前生产登录后复验 pending 属于此前发布边界。生成记忆 out-of-scope，未改写宿主管理内容。
 
 已删除本次无用盘点与生成配置；失败run、合成数据、原thread和Worktree保留供复核，不执行破坏性清场。重任务共用CPU80%、总内存20%、swap0预算；验收后恢复068临时预览。既有Vite大bundle提示仍保留，不影响本次构建通过。
+
+## 发布状态更新
+
+2026-09-27用户明确授权后已发布生产aa4f900，覆盖上述开发时未发布状态；服务与公网资源验证通过，登录后复验边界见[发布收据](ALVA-073-production-release.md)。

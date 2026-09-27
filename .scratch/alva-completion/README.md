@@ -76,4 +76,4 @@
 
 - [ALVA-072 新建与切换项目](issues/46-project-switching.md)：done，已验收、集成main并发布；登录后复验边界见发布收据。
 
-- [ALVA-073 主Chat阶段开场与断点引导](issues/47-stage-guidance.md)：done，已验收并集成main；未发布生产。
+- [ALVA-073 主Chat阶段开场与断点引导](issues/47-stage-guidance.md)：done，已验收、集成并发布；线上登录后复验边界见发布收据。

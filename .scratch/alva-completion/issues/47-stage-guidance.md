@@ -21,3 +21,7 @@
 18项相关回归、最终分组类型与构建、5项专项复验、两轮真实模型/MCP/浏览器8步链均通过，页面错误0。测试夹具授权遗漏的失败run保留。详见 [功能合同与证据](../../../docs/ALVA-073-stage-guidance.md)。
 
 个人实现a15b2e1已在main串行squash集成；不自动发布生产。neat-freak已同步受影响合同与结构说明；生产固定072 release，生成记忆out-of-scope，Worktree/合成复核现场保留。
+
+## 生产发布
+
+用户授权后2026-09-27已发布aa4f900；健康与公网资源验证通过，登录后复验pending。备份、回滚及边界见[发布收据](../../../docs/ALVA-073-production-release.md)。
