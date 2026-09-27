@@ -1,6 +1,6 @@
 ## 2026-09-27 当前发布入口
 
-生产固定main `e4755c0`，`/etc/systemd/system/alva.service.d/ALVA081-release.conf` 指向 `.runtime/20260927T170845Z-ALVA081-production/release/`。已确认范围的家具生成修复已上线；公网健康、登录页和资源哈希通过，生产登录后复验pending。见[ALVA-081收据](../../docs/ALVA-081-production-release.md)。环境仍为 `.runtime/alva-prod.env`，MCP/Tunnel不变。后续开发验收完成按用户授权直接发布，main提交本身不改变固定release。
+生产固定main `327adf3`，`/etc/systemd/system/alva.service.d/ALVA082-release.conf` 指向 `.runtime/20260927T173500Z-ALVA082-production/release/`。全屋家具目录补齐并完成用户授权布置；公网健康、资源哈希、登录后29件显示及刷新保持通过。见[ALVA-082收据](../../docs/ALVA-082-production-release.md)。环境仍为 `.runtime/alva-prod.env`，MCP/Tunnel不变。后续开发验收完成按用户授权直接发布，main提交本身不改变固定release。
 
 以下为基础运维与历史约定，路径冲突以上述当前发布入口为准。
 

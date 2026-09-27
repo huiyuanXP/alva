@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "before": {
+    "items": 29,
+    "worldChildren": 117
+  },
+  "after": {
+    "items": 29,
+    "worldChildren": 117
+  },
+  "errors": [],
+  "roomCount": 8,
+  "confirmedPurposes": 3,
+  "savedVersionUnchanged": true,
+  "topologyAndBuildingUnchanged": true,
+  "doorwayObstructions": 0,
+  "checkedDoorPairs": 22,
+  "workingDraftPersisted": true
+}
