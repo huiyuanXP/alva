@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "checks": [
+    "floorplan main Chat actually calls current-stage MCP",
+    "right stage entry → living transcript and real living questionnaire MCP",
+    "left return resumes original floorplan thread and history",
+    "left living return and reload retain living thread"
+  ],
+  "errors": [],
+  "floorThread": "01a0e329-17ff-74b0-948c-9e6eb143f4e8",
+  "livingThread": "01a0e329-cad5-7251-b191-36721d8c0a77",
+  "messages": [
+    {
+      "id": "e2e33ff3-d663-4dc9-89fb-f0c499c7ec65",
+      "role": "user",
+      "text": "请实际读取当前阶段断点，简短说明现在的下一步，不修改任何设计。",
+      "stage": "floorplan",
+      "status": "completed",
+      "createdAt": "2026-09-27T13:58:35.461Z"
+    },
+    {
+      "id": "2e4591f9-0b69-4598-8145-517a3f78bb15",
+      "role": "assistant",
+      "text": "当前项目的阶段断点状态已读取完毕：\n\n1. **当前状态**：\n   - 户型拓扑及比例已完成校准并确认。\n   - 建筑三维模型已生成并确认完成（状态为 `confirmed`）。\n   - 本轮未对任何户型、墙体、尺寸或家具设计进行修改。\n\n2. **下一步操作**：\n   - 户型导入阶段的所有步骤均已完成，无需重做上传、校准或建筑确认。\n   - 您可以直接点击进入**「生活设计」**阶段，继续完善生活习惯与空间需求问卷。",
+      "stage": "floorplan",
+      "status": "completed",
+      "language": "zh",
+      "createdAt": "2026-09-27T13:58:35.461Z",
+      "toolCalls": [
+        {
+          "name": "get_snapshot",
+          "stage": "floorplan",
+          "isError": false
+        },
+        {
+          "name": "get_stage_guidance",
+          "stage": "floorplan",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "33f68b641f38a0cd99890b71b5c1a8c6442e2b1d2516629c7ad455f11ed4e5da"
+    },
+    {
+      "id": "79a0a32d-b6c8-4800-b373-f559f1e1a716",
+      "role": "user",
+      "text": "请实际读取生活问卷当前进度，简短告诉我哪些信息还没填，不生成或修改家具。",
+      "stage": "living",
+      "status": "completed",
+      "createdAt": "2026-09-27T13:59:21.271Z"
+    },
+    {
+      "id": "7f75cad2-fe57-44d4-804d-cad2542c81e0",
+      "role": "assistant",
+      "text": "已实际读取您当前项目的生活问卷进度，以下是具体状态与待补充信息梳理：\n\n### 1. 当前问卷完成进度\n* **当前填写者**：我的回答（版本：`0`）\n* **已保存回答数**：`0` 项（整套生活问卷目前处于初始阶段，所有模块均尚未填写）。\n* **设计变更说明**：本轮未生成、添加或修改任何空间家具与硬装设计。\n\n---\n\n### 2. 尚未填写的核心信息分类\n整套 Home Vision 问卷包含以下核心板块，目前均待逐步梳理与确认：\n\n1. **规划起点与基本情况**：\n   * 设计出发点（如新居入驻、局部焕新、翻新改造或探索灵感）\n   * 房屋类型、同住常住成员及本次重点规划的空间范围\n2. **氛围感受与色材风格意向**：\n   * 空间期望氛围感、色彩偏好与避让禁忌、风格倾向\n   * 灵感参考图及希望保留的既有纪念物品\n3. **日常习惯与空间功能需求**：\n   * 工作/学习空间使用频率与配置诉求\n   * 照明偏好、采暖/制冷及舒适度与安全考量\n   * 收纳整理习惯与未来 5–10 年生活变化预期\n4. **家具材质偏好与优先级取舍**：\n   * 空间与资源受限时的核心保护项\n   * 家具材质、敏感避让及智能家居配置偏好\n5. **周期、预算与协作方式**：\n   * 居住周期、工期计划与预算范围取舍\n   * 决策方式与交付成果偏好\n\n---\n\n### 3. 下一步操作引导\n* **当前操作**：已为您出示第 1 题（**Q01a · 设计出发点**）的待确认题卡，包含不同方案取舍供您参考。\n* **确认方式**：该题卡当前处于待确认状态，您可以在界面卡片中直接点击选择最符合的选项；选择确认后，系统将自动记录并推进下一道相关题目。",
+      "stage": "living",
+      "status": "completed",
+      "language": "zh",
+      "createdAt": "2026-09-27T13:59:21.271Z",
+      "toolCalls": [
+        {
+          "name": "get_interface_language",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "get_snapshot",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "read_question_context",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "get_stage_guidance",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "read_question_context",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "ask_question",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "get_stage_guidance",
+          "stage": "living",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "7e31cf283889413cb434a26eeb39ab39336f61785d111bb3531f6e34ab8b5177"
+    }
+  ]
+}

@@ -13618,5 +13618,13 @@
   {
     "zh": "进入生活设计 →",
     "en": "Enter Living design →"
+  },
+  {
+    "zh": "正在停止当前回复并切换阶段…",
+    "en": "Stopping the current reply and switching stages…"
+  },
+  {
+    "zh": "当前回复尚未停止，请稍后再次切换。",
+    "en": "The current reply has not stopped yet. Please try switching again shortly."
   }
 ]

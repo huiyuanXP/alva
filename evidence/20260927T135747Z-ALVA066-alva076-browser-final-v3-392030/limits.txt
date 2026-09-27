@@ -1,0 +1,6 @@
+run=20260927T135747Z-ALVA066-alva076-browser-final-v3-392030
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2150
+0f614643bfe3f973eac5a907961ddb2a03ec4990

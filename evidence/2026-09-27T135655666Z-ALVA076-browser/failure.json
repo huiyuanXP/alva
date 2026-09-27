@@ -1,0 +1,7 @@
+{
+  "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 0\nReceived:   0\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+  "checks": [],
+  "errors": [],
+  "started": 1,
+  "cancelled": 0
+}

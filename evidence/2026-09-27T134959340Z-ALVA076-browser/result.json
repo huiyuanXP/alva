@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "checks": [
+    "click living interrupts in-flight automatic floorplan guidance, waits for cancellation and switches",
+    "click floorplan interrupts in-flight living guidance and resumes original conversation",
+    "English navigation works while automatic guidance is streaming",
+    "narrow English navigation remains clickable during streaming",
+    "unconfirmed building explains prerequisite visibly instead of a dead disabled tab"
+  ],
+  "errors": [],
+  "started": 4,
+  "cancelled": 4
+}

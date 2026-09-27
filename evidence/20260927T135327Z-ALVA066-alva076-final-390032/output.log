@@ -1,0 +1,49 @@
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2713 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-Cn1ruIKk.css     40.40 kB │ gzip:   9.31 kB
+web/dist/assets/index-C023-QsA.js   1,732.82 kB │ gzip: 529.21 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.81s
+✖ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (10958.631009ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17518.714845
+
+✖ failing tests:
+
+test at tests/alva-stage-chat.test.ts:1:466
+✖ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (10958.631009ms)
+  AssertionError [ERR_ASSERTION]: Handoff delivered on entry, before the next chat
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-076-codex-stage-unblock/tests/alva-stage-chat.test.ts:44:177)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', '--max-old-space-size=128', '--max-semi-space-size=2', '--liftoff-only', '--no-wasm-tier-up', '--wasm-lazy-compilation', '--wasm-num-compilation-tasks=1', '--import', 'tsx', '--test', '--test-isolation=none', '--test-concurrency=1', '--test-name-pattern', '^actual\\ Chat\\ routes\\ bridge\\ only\\ active\\ MCP\\ pack,\\ retain\\ threads,\\ resume\\ on\\ switch,\\ and\\ require\\ owner\\ confirmation$', 'tests/alva-stage-chat.test.ts']' returned non-zero exit status 1.

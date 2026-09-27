@@ -1,3 +1,9 @@
+## 2026-09-27 ALVA-076已集成，继续获准发布
+
+修复线上阶段导航等待模型Resume/交接和自动引导busy拒绝切换：手动导航只持久化阶段及摘要，下一轮Chat恢复原thread并实际送达；Chat期间点击先取消旧流，再切换。按钮蓝色选中，缺少建筑时显式提示。个人68c6e72；类型/构建、5项回归、5步浏览器和真实Chat/MCP四步通过。详见[ALVA-076](docs/ALVA-076-stage-navigation.md)。
+
+用户已提供有效验证码，已确认生产owner/建筑就绪与实际交接失败；继续在既有发布授权内备份发布并登录后验证。050/051不自动开工；neat-freak已同步合同，生成记忆out-of-scope，复核现场保留。
+
 ## 2026-09-27 ALVA-074 / 075 已联合发布
 
 用户授权后10:09 UTC已发布固定main `96503ad`：中英文界面及Agent输出语言、左右阶段导航和原会话恢复一起上线。169个产品文件与最终验收清单一致；服务健康、公网JS/CSS哈希、真实浏览器中英文切换和刷新保持通过，页面错误0。
@@ -162,7 +168,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-076](.scratch/alva-completion/issues/50-stage-navigation-blocking.md) | 线上阶段按钮阻塞复查与修复 | `chat` | codex-stage-unblock | task/ALVA-076-codex-stage-unblock / /home/ubuntu/Alva-worktrees/ALVA-076-codex-stage-unblock | 阶段切换与自动引导；in-progress |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
