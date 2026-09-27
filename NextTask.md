@@ -144,6 +144,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
+| [ALVA-073](.scratch/alva-completion/issues/47-stage-guidance.md) | 主Chat阶段开场与断点引导 | `chat` | codex-guidance | task/ALVA-073-codex-guidance / /home/ubuntu/Alva-worktrees/ALVA-073-codex-guidance | api/chat.ts、api/model.ts、阶段MCP、web/src/main.tsx；动态隔离端口；in-progress |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
