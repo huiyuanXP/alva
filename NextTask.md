@@ -1,3 +1,7 @@
+## ALVA-082 全屋家具与卫浴布置 — in-progress
+
+Owner: codex-home；分支task/ALVA-082-codex-home；Worktree /home/ubuntu/Alva-worktrees/ALVA-082-codex-home。用户授权代为生成全屋内容；补齐缺失许可程序几何，按现有业务校验布置与配色。共享api/model.ts、家具几何、Chat快照；测试随机端口。客户项目/凭据仅留私有运行目录。
+
 ## 2026-09-27 ALVA-081 已发布
 
 17:09 UTC发布固定main `e4755c0`：家具生成使用精简许可资产/房间上下文与明确参数，工具失败能修正，空结果原会话有限纠正；不再以配色代替家具。真实多房间两套候选→采用5件家具→刷新通过，页面错误0；最终类型/回归通过。175项产品文件与验收候选一致，公网健康、登录页和资源哈希通过。见[发布收据](docs/ALVA-081-production-release.md)。
