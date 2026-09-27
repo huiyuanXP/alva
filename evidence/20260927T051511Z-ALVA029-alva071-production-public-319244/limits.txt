@@ -1,0 +1,6 @@
+run=20260927T051511Z-ALVA029-alva071-production-public-319244
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2184
+0c52ea080de95f7811e7bc03d5a1159cf75d2556

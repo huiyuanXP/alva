@@ -1,5 +1,7 @@
 # ALVA-071 详细家具模型与视觉自检
 
+2026-09-27：已发布生产；健康、公网资源和实际家具截图通过，登录复验待有效验证码。[发布收据](ALVA-071-production-release.md)为最新运行状态，下方保留实施时的验收记录。
+
 状态 done；已主线集成、未发布；负责人 codex-furniture；用户授权修复方块家具、MCP详细建模、原始需求及多视角渲染critic与重试。
 
 根因：目录只有尺寸/颜色/材料，Item无模型字段；SceneView和BuildingView均逐件BoxGeometry；propose_changes/suggest_furniture只负责目录选择与布局，没有mesh生成器或视觉critic。ALVA-063户型自检是同会话多模态实验，不能当成现役家具已有能力。

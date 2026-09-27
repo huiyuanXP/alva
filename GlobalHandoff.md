@@ -1,3 +1,7 @@
+## 2026-09-27 ALVA-070/071 已发布生产
+
+用户授权后已发布固定main `0c52ea0`，包含SceneView交互修复与详细家具生成/三视角critic。服务健康、公网资源哈希及生产真实三视角截图通过；旧验证码失效，登录后只读验收pending，已向用户请求当前验证码。未自动更改设计、采用家具或保存。生产已改由ALVA071-release.conf固定，旧069 release及数据备份可回滚；详见 [发布收据](docs/ALVA-071-production-release.md)。neat-freak已同步，失败与复核现场保留。下方未发布字样均为历史检查点。
+
 ## 家具模型与视觉critic合同（ALVA-071）
 
 共享模型合同在 packages/contracts/alva/furniture-model.ts；两种3D视图与审查截图共用 web/src/scene/furniture。定制模型只能通过生活MCP generate_furniture_model审查后进入候选，原始需求取服务端用户消息，三视角均为实际WebGL图；生成/审查失败不得口头冒称成功。属性保存保留模型，仅换不同目录款式时清除；后续属性修改不冒充已经重审。生产未发布，详见 [ALVA-071](docs/ALVA-071-furniture-models.md)。

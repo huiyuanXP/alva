@@ -1,0 +1,18 @@
+
+<--- Last few GCs --->
+
+[319272:0x3ce6e000]    24756 ms: Mark-Compact (reduce) 177.6 (182.0) -> 175.6 (179.0) MB, pooled: 0 MB, 254.31 / 0.00 ms  (+ 247.8 ms in 20 steps since start of marking, biggest step 47.0 ms, walltime since start of marking 553 ms) (average mu = 0.304, cu
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x931db0  [node]
+ 2: 0x75968e node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]
+ 3: 0xc70d60  [node]
+ 4: 0xc70e4f  [node]
+ 5: 0xf14725  [node]
+ 6: 0xf14752  [node]
+ 7: 0xf14a4a  [node]
+ 8: 0xf2574a  [node]
+ 9: 0xf29af0  [node]
+10: 0x19c77d1  [node]
+scripts/alva-029-task.sh: line 32: 319272 Aborted                 (core dumped) "$@"

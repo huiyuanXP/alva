@@ -1,0 +1,19 @@
+{"out":"evidence/20260927T051558070Z-ALVA071-production-public","passed":false,"origin":"https://prod.huiyuanxp.com","assets":{"/assets/index-l8yed1Mb.js":"d2baa81ccc4c2b1d685a851bcca1114e4818d08a938fa1d6f99c956ba60b7883","/assets/index-BYmWQf1E.css":"e01ae8f53e691f1665670d5324f7622ba9d94e2ba10ecae62039290f26771248"},"error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n"}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+401 !== 200
+
+    at <anonymous> (/home/ubuntu/Alva/.runtime/alva071-release/public.mts:14:231) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 401,
+  expected: 200,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0
