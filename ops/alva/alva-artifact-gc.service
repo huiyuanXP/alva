@@ -1,0 +1,11 @@
+[Unit]
+Description=Alva development artifact retention (24 hours)
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu/Alva
+ExecStart=/usr/bin/flock -n /home/ubuntu/Alva/.git/alva-artifact-gc.lock /usr/bin/python3 /home/ubuntu/Alva/scripts/alva-artifacts.py gc --all-worktrees --apply
+Nice=15
+IOSchedulingClass=idle
+TimeoutStartSec=15min

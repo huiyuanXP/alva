@@ -48,7 +48,7 @@
 
 新任务单独编号 ALVA-000 起，不重排旧库 week/step。`/home/ubuntu/aws-hackthon` 全目录已归档且不再使用；不读取其中产品源码、样例、业主数据或旧部署状态。当前 Coding Machine MCP 是唯一临时例外，仍依赖该目录下 `.venv-mcp` 与 `.mcp-runtime`；只保留和读取运行所需内容，待迁移到 `alva-*` 目录后再删除旧目录。凭据查找只以 [远端访问](docs/REMOTE-ACCESS.md) 指定的现役私有运行配置为准。用户已授权使用prod.huiyuanxp.com，并要求开发验收完成后直接部署上线，无需重复询问发布确认；每次发布前准备备份和回滚，MCP服务配置不变。
 
-恢复读取 CURRENT.md、Handoff.md、NextTask.md、SPEC.md、ACCEPTANCE.md 和 PROGRESS.md；拆票阶段再读 TICKET-PROPOSAL.md，草案不等于获准执行；已发布票以 `.scratch/alva-completion/README.md` 为入口，用户限定只发票时不得自动开工。每票个人Worktree提交后，由集成人在main完成一次实现集成提交并覆盖Handoff/NextTask；认领提交独立记录；失败和证据按新 run ID 保留。
+恢复读取 CURRENT.md、Handoff.md、NextTask.md、SPEC.md、ACCEPTANCE.md 和 PROGRESS.md；拆票阶段再读 TICKET-PROPOSAL.md，草案不等于获准执行；已发布票以 `.scratch/alva-completion/README.md` 为入口，用户限定只发票时不得自动开工。每票个人Worktree提交后，由集成人在main完成一次实现集成提交并覆盖Handoff/NextTask；认领提交独立记录；失败和证据按新 run ID 区分；开发产物仅保留24小时，视觉截图查看后立即删除，文本结论进入Git。
 
 最新协作规则见 [NextTask.md](NextTask.md)：依赖就绪的任务允许署名认领后在独立 Worktree 并行；覆盖此前全局串行限制。所有认领与集成协调在主目录串行进行，不共享开发工作区。没有认领不自动启动任务或子 Agent。新服务及数据用 alva-* 名称；端口选择前核验占用。业务密钥不进入 Git；只通过环境或私有运行配置传入。
 
@@ -59,3 +59,11 @@
 开发或新增文件前必须读 [项目结构规范](docs/PROJECT-STRUCTURE.md)。现役代码只进入 api、web 及规范指定的共享层；按功能目录放置，禁止向旧工程/参考附件写新功能。规划目录按 Ticket 实施时创建，不把目录规范当功能开工授权。新增顶层工程、共享合同迁移或依赖边界改变时，同步该规范与实际构建/测试入口。
 
 生活设计的问卷、选择与确认界面统一复用 `web/src/vision/VisionTemplate.tsx`，保持 Home Vision 的苹果风格；右侧不新增家具等独立选项卡。分段回答由用户 Submit 后统一发送主 Chat，并通过生活 MCP 接续下一段；待答段不得被自动引导抢占。行为与验收见 [ALVA-078](docs/ALVA-078-vision-template.md)。
+
+## 开发产物与回滚（ALVA-084，覆盖历史长期保留约定）
+
+- Agent视觉截图即用即弃：放`.runtime/visual/`或验收目录；一次工具调用中先`view_image`取得图片内容，再运行`python3 scripts/alva-artifacts.py discard <绝对PNG路径>`删除。不可把用户上传图、产品素材、references当截图删除。
+- 新验收使用`python3 scripts/alva-artifacts.py run <唯一run-id> <命令...>`；脚本通过`ALVA_ACCEPTANCE_DIR`取得独立输出目录，截图/临时库/模型原始输出放其中。该入口持有运行锁；完成后保留24小时，每小时自动清理，失败产物同样适用。文本结论在过期前写进票据或docs，原始文件不入Git。
+- 旧`evidence/`及安全识别的隔离run由同一清理器管理；Git已跟踪文件不由定时器删除。历史分支中的已跟踪证据随分支整合/退役处理，不让清理任务污染工作区。
+- 代码恢复以Git提交SHA为准，GitHub提供远端副本；发布前核实发布SHA已存在远端。现役release保持固定，不从可变main直接运行。数据库、上传、密钥配置单独备份，不能用Git回滚替代。
+- 入口与保护边界见[产物保留与代码回滚](docs/ALVA-084-artifact-retention.md)。

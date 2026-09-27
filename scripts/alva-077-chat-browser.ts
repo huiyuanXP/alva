@@ -10,7 +10,7 @@ import {buildAlva} from '../api/api.js';
 import {applyAnswer} from '../api/business.js';
 import {questionnaireChanges} from '../packages/contracts/alva/questionnaire-batch.js';
 import {seedLivingStage} from '../tests/fixtures/alva/living-stage.js';
-const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA077-real-chat',out=resolve('evidence',run),root=resolve('.runtime',run);await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
+const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA077-real-chat',out=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run)),root=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run),'private');await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
 process.env.OPENAI_API_KEY||=process.env.NEWAPI_KEY;assert.ok(process.env.OPENAI_API_KEY);process.env.ALVA_AGENT_DIR=resolve(root,'agents');process.env.ALVA_ACCESS_CODE=randomBytes(24).toString('hex');
 const store=new AlvaStore(resolve(root,'db'));await store.init();const {project}=await store.create('Batch questionnaire synthetic verification');await store.ensureAccessCode(project.id);
 await store.mutate(project.id,randomUUID(),0,'synthetic-building-and-answers',{},p=>{

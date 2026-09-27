@@ -10,7 +10,7 @@ import {buildAlva} from '../api/api.js';
 import {applyAnswer} from '../api/business.js';
 import {publishProposals} from '../api/furniture/proposal-decisions.js';
 import {seedLivingStage} from '../tests/fixtures/alva/living-stage.js';
-const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA077-browser',out=resolve('evidence',run);await mkdir(out,{recursive:true});process.env.ALVA_ACCESS_CODE=randomBytes(24).toString('hex');
+const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA077-browser',out=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run));await mkdir(out,{recursive:true});process.env.ALVA_ACCESS_CODE=randomBytes(24).toString('hex');
 const store=new AlvaStore();await store.init();const {project}=await store.create('Questionnaire batches');await store.ensureAccessCode(project.id);
 await store.mutate(project.id,randomUUID(),0,'seed',{},p=>{seedLivingStage(p);applyAnswer(p,{questionId:'Q01',roomId:null,text:'Reading chair',state:'answered',confirmed:true,locked:false})});
 let calls=0;let release:(()=>void)|undefined;
