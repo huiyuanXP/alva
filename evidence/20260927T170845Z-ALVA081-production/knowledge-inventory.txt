@@ -1,0 +1,12 @@
+ALVA-081 knowledge closeout, 2026-09-27
+Full read-only mechanical inventory retained privately in .runtime/alva081-deploy/knowledge-inventory-full.txt.
+Scope: current Alva project and directly relevant instruction chain; no other project content audit.
+Code: verified-current, 175 product files match tested candidate and pinned release.
+Runtime: public health, Chromium login and JS/CSS hashes verified-current; authenticated production check pending (no current code).
+Docs: CURRENT/Handoff/NextTask/GlobalHandoff/PROGRESS, project structure, main Chat contract and deployment entry changed-and-verified.
+Rules: canonical AGENTS.md unchanged, scope and worktree workflow checked.
+Memory: generated memory out-of-scope; no writes.
+Remote: main 96503ad, push out-of-scope.
+Workspace: own implementation f4ac7a6 integrated; worktree and failed/real runs retained. Pre-existing alva-coordination.lock and h -u origin main unchanged.
+Transient residue: incomplete dependency copy and disposable probes removed; downloadable npm cache reclaimed after disk exhaustion. Product dependency versions unchanged.
+Warnings: existing Vite chunk size notice; disk headroom remains limited. No cleanup of other worktrees or backups.

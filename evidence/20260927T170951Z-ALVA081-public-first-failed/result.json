@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "error": "First public health request returned non-2xx immediately after release; exact HTTP status was not captured",
+  "followup": "Direct public health probe returned 200, local health 200, new service active with NRestarts=0; run full public browser check again"
+}

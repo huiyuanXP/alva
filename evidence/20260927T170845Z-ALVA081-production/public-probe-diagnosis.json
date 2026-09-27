@@ -1,0 +1,8 @@
+{
+  "initialNodeFetch": 403,
+  "bodyType": "Cloudflare Just a moment challenge",
+  "curlHealth": 200,
+  "browserLogin": true,
+  "serviceRestarts": 0,
+  "conclusion": "Node fetch client challenge, not an application health failure; no Cloudflare policy changes"
+}

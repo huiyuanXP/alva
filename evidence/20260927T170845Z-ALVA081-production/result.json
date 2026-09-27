@@ -1,0 +1,20 @@
+{
+  "run": "20260927T170845Z-ALVA081-production",
+  "candidate": "e4755c0d3787a904b1cf378d1b6af7658c5c4108",
+  "verifiedSourceFiles": 175,
+  "backup": "/home/ubuntu/Alva/.runtime/20260927T170845Z-ALVA081-production",
+  "status": "deployed",
+  "rollback": "/home/ubuntu/Alva/.runtime/20260927T170845Z-ALVA081-production/rollback.sh",
+  "assets": {
+    "index-C1DrE0XX.css": "bf11a9a28ad642506a6c708d047d4ef7044a7e7009544399327f67e39bfae76f",
+    "index-Ds3JyArA.js": "5275a2122523cf58340e19d175fed7c090cba65184c1817d8af86709b9c531c8"
+  },
+  "localHealth": 200,
+  "publishedAt": "2026-09-27T17:09:21.926373+00:00",
+  "sourcePinned": true,
+  "publicHealth": 200,
+  "publicAssetHashes": true,
+  "loginVisible": true,
+  "authenticatedReadOnly": "pending: no current code",
+  "pageErrors": []
+}

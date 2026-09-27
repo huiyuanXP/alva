@@ -1,6 +1,6 @@
 # ALVA-081 已确认范围的家具生成修复
 
-Status: done（已验收集成，待发布）
+Status: done（已发布e4755c0；生产登录后复验pending）
 Owner: codex-stream
 
 ## 原因与行为
@@ -21,6 +21,6 @@ Owner: codex-stream
 
 过程失败：复制依赖时磁盘空间不足，删除本次不完整副本并清理可下载npm缓存，改用同版本依赖硬链接（不修改依赖）；066共享slice有常驻预览导致回归OOM，保留失败证据，换029独立测试slice，仍CPU80%/20%内存/0swap，通过7项。未改生产/MCP资源配置。
 
-neat-freak已盘点；代码及隔离回归verified-current，真实模型verified-current、生产pending；生成记忆与远端推送out-of-scope。保留Worktree与失败证据；发布前必须备份和准备回滚。
+neat-freak已盘点；代码及隔离回归verified-current，真实模型及生产公网表面verified-current、生产登录后pending；生成记忆与远端推送out-of-scope。保留Worktree与失败证据；发布前必须备份和准备回滚。
 
-个人最终提交`f4ac7a6`；main按最终源码manifest核验后squash集成。下一步按用户授权备份/发布。
+个人最终提交`f4ac7a6`；main按最终源码manifest核验后squash集成。已备份并发布，见[生产收据](ALVA-081-production-release.md)。
