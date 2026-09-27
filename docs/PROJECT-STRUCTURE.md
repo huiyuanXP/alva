@@ -125,7 +125,7 @@ ALVA-052现役看板位于`api/todo/`与`web/todo/`，通过已有alva服务提�
 
 ALVA-066 业务增量：`api/room-style` 与 `packages/contracts/alva/room-style.ts` 管样式候选/确认；`web/src/room-style` 管卡片、表面颜色和材质预览。`api/furniture/recommendations.ts` 与 answer-recommendation 合同管已确认回答的候选工具，草稿不排任务。`api/mcp/ui-actions.ts` 与 `web/src/chat/use-ui-actions.ts` 管受约束页面操作及真实回执；阶段确认元数据由 store 的 alva_chat_actions 管理。上述代码未完成整票验收，不构成上线声明。
 
-ALVA-029/066联合模块：`api/user-context/`维护私有Markdown投影、来源校验与分类候选/确认；`api/review/`维护有限规则复核、取舍与采用凭证；对应前端在`web/src/user-context/`和`web/src/review/`。`api/snapshots/service.ts`为直接API/MCP共用保存门禁；`api/room-purpose/service.ts`为直接确认与Chat确认卡共用用途业务。`api/mcp/recommendation-queue.ts`调度已确认回答的持久建议任务；模型与HTTP工具仍经既有Harness。所有资料以Project为权威，Markdown只在私有ALVA_DATA_DIR内生成，不能写入产品源码或文档。
+ALVA-029/066联合模块：`api/user-context/`维护私有Markdown投影、来源校验与分类候选/确认；`api/review/`维护有限规则复核、取舍与采用凭证；对应前端在`web/src/user-context/`和`web/src/review/`。`api/snapshots/service.ts`为直接API/MCP共用保存门禁；`api/room-purpose/service.ts`为直接确认与Chat确认卡共用用途业务。ALVA-077已退役自动建议队列；`packages/contracts/alva/questionnaire-batch.ts`管理显式发送快照与未发送比较，`api/chat.ts`装配批次读取MCP，模型与HTTP工具仍经既有Harness。所有资料以Project为权威，Markdown只在私有ALVA_DATA_DIR内生成，不能写入产品源码或文档。
 
 `api/mcp/handoff-history.ts`仅为摘要恢复去重读取App Server返回的当前stage私有rollout，验证路径所属CODEX_HOME及thread身份；不代替Project数据、不跨项目搜历史。进入阶段由sessions/routes协调thread/inject_items，普通模型调用仍唯一走api/codex.ts。
 
@@ -137,7 +137,7 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 
 ## ALVA-068 需求猜测与扩展问卷
 
-`api/consultation/vision-questions.ts`提供生活设计MCP出题与上下文校验，`vision-routes.ts`处理用户确认；`api/intake/vision-service.ts`为Chat与057独立问卷共用的保存/版本/失效服务。`packages/contracts/alva/home-vision/chat.ts`定义题卡和按填写者保存的扩展答案，`consultation-question.ts`提供通用结果卡展示与文本序列化。`web/src/chat/VisionQuestionCards.tsx`和`OutcomeQuestionCard.tsx`展示猜测/示例/确认，`web/src/intake/ChatAnswers.tsx`在独立问卷展示回填说明。用户确认后复用家具建议队列；不增加数据库或图片生成服务。合同与验收见[ALVA-068](ALVA-068-outcome-questions.md)。
+`api/consultation/vision-questions.ts`提供生活设计MCP出题与上下文校验，`vision-routes.ts`处理用户确认；`api/intake/vision-service.ts`为Chat与057独立问卷共用的保存/版本/失效服务。`packages/contracts/alva/home-vision/chat.ts`定义题卡和按填写者保存的扩展答案，`consultation-question.ts`提供通用结果卡展示与文本序列化。`web/src/chat/VisionQuestionCards.tsx`和`OutcomeQuestionCard.tsx`展示猜测/示例/确认，`web/src/intake/ChatAnswers.tsx`在独立问卷展示回填说明。用户确认只保存问卷，ALVA-077由用户显式发送批次后统一建议；不增加数据库或图片生成服务。合同与验收见[ALVA-068](ALVA-068-outcome-questions.md)。
 
 ## ALVA-071 家具细节建模
 
@@ -154,3 +154,7 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 ## ALVA-074 中英文
 
 `packages/contracts/alva/i18n/` 维护无运行时平台依赖的语言类型、双向词典及输出语言指令；`api/i18n/context.ts` 负责请求与 MCP 的语言上下文。`web/src/i18n/` 提供 React 语言状态和 JSX 展示适配器，现役 Vite 使用 `@alva-i18n` JSX import source，tsconfig paths 为类型检查解析；不修改旧 apps 构建入口。固定展示文本与业务存储值分离，用户文本显式保留。验收入口 `tests/alva-i18n.test.ts`、`scripts/alva-074-browser.ts`；契约见 [ALVA-074](ALVA-074-bilingual-interface.md)。
+
+## ALVA-077 问卷批次与候选队列
+
+`api/furniture/proposal-decisions.ts`维护候选设计依据和轮次替换，`packages/contracts/alva/canonical-json.ts`提供跨数据库键顺序稳定比较。批次与已发送状态随Project持久化；前端主Chat发送按钮、Proposal卡片、SceneView分别负责显式发送、逐张决策和隐藏小预览日照说明。见[行为与验收](ALVA-077-questionnaire-batches.md)。

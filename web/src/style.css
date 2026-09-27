@@ -96,3 +96,5 @@
 .chat-stages{position:relative;z-index:1;flex-shrink:0}
 .chat-stages .segmented button.active{background:var(--live);color:#fff}
 .chat-stages .stage-navigation-notice{font-size:12px;line-height:1.5;margin:6px 0;max-width:100%}
+
+.proposal{position:relative}.proposal-close{position:absolute;right:8px;top:8px;padding:2px 9px;font-size:22px;line-height:1.2}.proposal h3{padding-right:28px}.questionnaire-send{display:flex;flex-direction:column;gap:6px;margin:8px 0}.decision-queue-count{display:block;padding:6px 0}

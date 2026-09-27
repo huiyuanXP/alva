@@ -1,6 +1,10 @@
-## ALVA-077 问卷批量发送与决策卡修复（in-progress）
+## 2026-09-27 ALVA-077 已验收集成，准备发布
 
-署名 codex-batch；用户授权本轮修复。分支 `task/ALVA-077-codex-batch`，Worktree `/home/ubuntu/Alva-worktrees/ALVA-077-codex-batch`。占用 api/chat.ts、api/model.ts、api/store.ts、api/furniture/、api/mcp/recommendation-queue.ts、问卷服务、共享合同、web/src/main.tsx、Panels.tsx、SceneView.tsx 与阶段引导。隔离端口使用前检查。验收后集成发布，其他票不自动开工。
+问卷改为显式批量发送；真实主Chat经生活MCP读取多题后统一生成，后续新增回答留待下批。候选仅校验设计变化，×及暂不采用不受版本、预览和Chat忙碌阻断；新轮覆盖、同轮逐张；小预览隐藏日照说明。
+
+个人实现9c758c6；10项相关回归、类型/构建、5项浏览器专项、4步真实Chat/MCP及5步原阶段导航回归通过，页面错误0。171项产品源码与最终验收清单一致。详情见[ALVA-077](docs/ALVA-077-questionnaire-batches.md)。生产仍为076固定release，下一步按已有授权备份并发布本候选。
+
+neat-freak已同步现役批次合同与结构文档，生成记忆out-of-scope；既有bundle/窄屏问题、复核现场保留。050未认领、051仍等050，不自动开工。
 
 ## 2026-09-27 ALVA-076已发布并登录后验收
 

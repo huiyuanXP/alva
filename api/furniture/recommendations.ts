@@ -1,3 +1,4 @@
+import type {QuestionnaireSnapshot} from '../../packages/contracts/alva/questionnaire-batch.js';
 import {McpError} from '../mcp/contracts.js';
 import {randomUUID} from 'node:crypto';
 import {z} from 'zod';
@@ -26,12 +27,12 @@ function placementHints(scene:NonNullable<Project['scene']>,change:z.infer<typeo
  }
  return hints;
 }
-export function recommendationTools(store:AlvaStore,projectId:string,jobId:string|undefined,proposals:Proposal[],onNoFurniture?:(reason:string)=>void):BusinessTool[]{
+export function recommendationTools(store:AlvaStore,projectId:string,jobId:string|undefined,proposals:Proposal[],onNoFurniture?:(reason:string)=>void,batch?:QuestionnaireSnapshot):BusinessTool[]{
  let suggestionFailed=false;
- const tools:BusinessTool[]=[{name:'suggest_furniture',description:'仅在本轮由已确认问卷回答触发时，提出相关房间的家具候选。服务端检查许可资产、房间边界与碰撞；不采用，等待用户确认。不能基于问卷草稿调用。',inputSchema:z.toJSONSchema(Suggestion),run:async args=>{
-  if(!jobId)throw new DomainError(422,'请先确认问卷回答，再使用对应的家具建议任务');
+ const tools:BusinessTool[]=[{name:'suggest_furniture',description:'仅在业主明确发送问卷批次或重试已确认回答时，综合本批多题提出相关房间的家具候选。服务端检查许可资产、房间边界与碰撞；不采用，等待用户确认。不能基于问卷草稿调用。',inputSchema:z.toJSONSchema(Suggestion),run:async args=>{
+  if(!jobId&&!batch)throw new DomainError(422,'请先确认问卷回答，再使用对应的家具建议任务');
   const parsed=Suggestion.safeParse(args);if(!parsed.success)throw new McpError({code:'FURNITURE_ARGUMENTS_INVALID',message:'家具候选参数无效：'+parsed.error.issues.map(i=>i.path.join('.')+' '+i.message).join('；').slice(0,1200),retryable:true,repairActions:[{action:'correct_furniture_arguments',message:'每项changes使用{action:add,targetId:房间ID,values:{assetId:许可资产ID,roomId:同一房间ID,x:横坐标,y:纵坐标}}；坐标是values.x和values.y，不是position对象。重读快照取得当前revision与房间范围后修正。'}]});const b=parsed.data,p=await store.get(projectId);if(p.revision!==b.expectedRevision)throw new DomainError(409,'项目已更新，请重读快照');
-  const {job,rooms}=recommendationContext(p,jobId);if(!p.scene||!p.confirmedBuilding)throw new DomainError(422,'请先确认建筑');
+  const {rooms}=batch?{rooms:(p.scene?.rooms||[]).filter(r=>!r.locked)}:recommendationContext(p,jobId!);const evidenceIds=batch?[...batch.answers.map(a=>a.evidenceId),...(batch.homeVision?.responses||[]).flatMap(r=>(r.chatAnswers||[]).map(a=>a.evidenceId))]:[recommendationContext(p,jobId!).job.evidenceId];if(!p.scene||!p.confirmedBuilding)throw new DomainError(422,'请先确认建筑');
   if(b.roomIds.some(id=>!rooms.some(r=>r.id===id)))throw new DomainError(422,'建议包含不相关、不存在或锁定的房间');
   if(proposals.length)throw new DomainError(422,'本轮已提出候选，请先由用户比较确认');
   const candidates:Proposal[]=[];
@@ -42,11 +43,11 @@ export function recommendationTools(store:AlvaStore,projectId:string,jobId:strin
     if(!b.roomIds.includes(roomId)||change.targetId!==roomId)throw new McpError({code:'FURNITURE_ROOM_MISMATCH',message:'家具targetId和values.roomId必须都是本轮roomIds中的同一房间ID；资产ID填values.assetId',retryable:true,repairActions:[{action:'correct_room_id',message:'重读get_snapshot，将targetId与values.roomId设为目标房间ID，不要填资产ID'}]});
    }
    const changes=v.changes.map(change=>({...change,values:{...change.values,newId:randomUUID()}}));try{applyChanges(p.scene,changes)}catch(error){if(!(error instanceof DomainError))throw error;throw new McpError({code:'FURNITURE_PLACEMENT_INVALID',message:error.message,retryable:true,repairActions:[{action:'adjust_placement',message:'保留现有家具，按许可资产的完整宽深与旋转占地选取房间内空位；坐标是家具中心，不是边角。不能把几次位置失败说成整个房间无空间。候选尺寸与位置：'+JSON.stringify(changes.map(c=>({roomId:c.values.roomId,x:c.values.x,y:c.values.y,rotation:c.values.rotation||0,asset:assets.find(a=>a.id===c.values.assetId)})))+'；现有物品：'+JSON.stringify(p.scene.items.filter(i=>b.roomIds.includes(i.roomId)).map(i=>({id:i.id,x:i.x,y:i.y,width:i.width,depth:i.depth,rotation:i.rotation}))) },{action:'validated_positions',message:JSON.stringify({scope:'仅首件候选，有限采样验证，不代表最优动线或自动采用；空列表不代表房间无解',positions:placementHints(p.scene,v.changes[0])})}]})};
-   candidates.push({id:randomUUID(),...v,changes,evidenceIds:[job.evidenceId],baseRevision:p.revision+1,status:'proposed',scopeRequired:false});
+   candidates.push({id:randomUUID(),...v,changes,evidenceIds,baseRevision:p.revision+1,status:'proposed',scopeRequired:false});
   }
   proposals.push(...candidates);return {status:'pending_owner_confirmation',variants:candidates.map(p=>({id:p.id,title:p.title})),relatedRoomIds:b.roomIds};
  }},...(!onNoFurniture?[]:[{name:'skip_furniture_suggestion',description:'已确认回答与新增家具无关时，明确记录不提出家具的原因。不能用它掩盖工具失败或缺少调用；不修改场景。',inputSchema:z.toJSONSchema(z.object({reason:z.string().trim().min(5).max(1200)}).strict()),run:async(args:unknown)=>{
-  if(!jobId)throw new DomainError(422,'当前没有已确认回答触发的建议任务');const {reason}=z.object({reason:z.string().trim().min(5).max(1200)}).strict().parse(args);recommendationContext(await store.get(projectId),jobId);if(suggestionFailed||/工具|失败|错误|权限|冲突|暂不可用|不支持|无法处理|碰撞|重叠|空位|technical|error|fail/i.test(reason))throw new McpError({code:'RECOMMENDATION_UNRESOLVED_ERROR',message:'工具失败不能作为不需要家具的原因，请修复调用后重试',retryable:true,repairActions:[{action:'mcp_list_tools',message:'获取suggest_furniture的完整参数结构，再用mcp_call_tool传name和arguments对象调用；持续失败应报错，不能记为无家具需求'}]});if(proposals.length)throw new DomainError(422,'已有家具候选，不能同时记录无建议');onNoFurniture(reason);return {status:'no_furniture_needed',reason};
+  if(!jobId&&!batch)throw new DomainError(422,'当前没有已确认回答触发的建议任务');const {reason}=z.object({reason:z.string().trim().min(5).max(1200)}).strict().parse(args);if(!batch)recommendationContext(await store.get(projectId),jobId!);if(suggestionFailed||/工具|失败|错误|权限|冲突|暂不可用|不支持|无法处理|碰撞|重叠|空位|technical|error|fail/i.test(reason))throw new McpError({code:'RECOMMENDATION_UNRESOLVED_ERROR',message:'工具失败不能作为不需要家具的原因，请修复调用后重试',retryable:true,repairActions:[{action:'mcp_list_tools',message:'获取suggest_furniture的完整参数结构，再用mcp_call_tool传name和arguments对象调用；持续失败应报错，不能记为无家具需求'}]});if(proposals.length)throw new DomainError(422,'已有家具候选，不能同时记录无建议');onNoFurniture(reason);return {status:'no_furniture_needed',reason};
  }}])];
  return tools.map(tool=>tool.name!=='suggest_furniture'?tool:{...tool,run:async args=>{try{return await tool.run(args)}catch(error){suggestionFailed=true;throw error}}});
 }

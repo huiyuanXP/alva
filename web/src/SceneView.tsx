@@ -9,7 +9,7 @@ import type {SunlightSettings} from '../../packages/contracts/alva/sunlight.js';
 import {createSunlightRig, type SunlightRig} from './scene/sunlight.js';
 import {SunlightReadout} from './scene/SunlightReadout.js';
 const EMPTY_STYLES:RoomStyles={};
-export function SceneView({roomStyles=EMPTY_STYLES,scene,selected,onSelect,onMove,mode='3d',time=14,day=172,focusRoom}:{roomStyles?:RoomStyles;scene:SceneData;selected?:string;onSelect?:(id:string)=>void;onMove?:(id:string,x:number,y:number)=>void|Promise<void>;mode?:'3d'|'walk';time?:number;day?:number;focusRoom?:string}){
+export function SceneView({roomStyles=EMPTY_STYLES,scene,selected,onSelect,onMove,mode='3d',time=14,day=172,focusRoom,showSunlightReadout=true}:{showSunlightReadout?:boolean;roomStyles?:RoomStyles;scene:SceneData;selected?:string;onSelect?:(id:string)=>void;onMove?:(id:string,x:number,y:number)=>void|Promise<void>;mode?:'3d'|'walk';time?:number;day?:number;focusRoom?:string}){
  const root=useRef<HTMLDivElement>(null),latest=useRef({onSelect,onMove,selected});latest.current={onSelect,onMove,selected};
  const selection=useRef<((id?:string)=>void)|null>(null);
  const savedCamera=useRef<{mode:string;focusRoom?:string;position:THREE.Vector3;target:THREE.Vector3;quaternion:THREE.Quaternion}|null>(null);
@@ -62,5 +62,5 @@ export function SceneView({roomStyles=EMPTY_STYLES,scene,selected,onSelect,onMov
  },[scene,roomStyles,mode,focusRoom]);
  useEffect(()=>{selection.current?.(selected)},[selected]);
  useEffect(()=>{lighting.current?.rig.update(settingsRef.current);lighting.current?.invalidate()},[time,day,scene.geography.latitude,scene.geography.north]);
- return <div className="scene-host" ref={root} data-testid="scene-view">{mode==='3d'&&onMove&&<small style={{position:'absolute',top:8,left:12,pointerEvents:'none',background:'#faf9f3dd',padding:'4px 8px',borderRadius:6}}>拖动旋转视角 · Shift + 拖动选中家具可移动</small>}<SunlightReadout settings={settings} assumption={scene.geography.assumption}/></div>;
+ return <div className="scene-host" ref={root} data-testid="scene-view">{mode==='3d'&&onMove&&<small style={{position:'absolute',top:8,left:12,pointerEvents:'none',background:'#faf9f3dd',padding:'4px 8px',borderRadius:6}}>拖动旋转视角 · Shift + 拖动选中家具可移动</small>}{showSunlightReadout&&<SunlightReadout settings={settings} assumption={scene.geography.assumption}/>}</div>;
 }

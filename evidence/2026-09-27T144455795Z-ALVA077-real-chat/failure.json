@@ -1,0 +1,6 @@
+{
+  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('dialog').getByText('Exploring my design ideas', { exact: true })\n",
+  "checks": [],
+  "errors": [],
+  "messages": []
+}

@@ -25,7 +25,7 @@
 
 `api/intake/vision-service.ts::saveVisionResponse`为直接问卷与Chat确认共用的验证/版本/保存逻辑，保留扩展答案并使已被修改或隐藏的依据失效。`Response.chatAnswers`保留用户真正确认的文本、原生值、是否映射、evidenceId、确认时间及active/superseded状态。原Project.answers不混入另一套题号。
 
-`answerRecommendations.respondentId`区分Home Vision来源；确认answered状态才排队，生成问题、点选、跳过和未知均不排队。`recommendationContext`只读取仍active的对应填写者已确认扩展答案。家具建议仍使用原许可资产/边界/碰撞校验并等待采用。
+`answerRecommendations.respondentId`区分Home Vision来源；确认answered状态才排队，生成问题、点选、跳过和未知均不排队。`recommendationContext`只读取仍active的对应填写者已确认扩展答案。ALVA-077起这些任务不再自动生成建议；用户显式发送问卷批次后统一读取，仍使用原许可资产/边界/碰撞校验并等待采用，见[现役批次合同](ALVA-077-questionnaire-batches.md)。
 
 MCP错误包含稳定code、message、retryable、repairActions。典型错误：`VISION_RESPONDENT_REQUIRED`、`VISION_BASIS_INVALID`、`VISION_VALUE_INVALID`、`VISION_VERSION_CONFLICT`、`VISION_SCENE_CHANGED`、`VISION_USE_FORM`。页面保留选择和错误原因，可修正后重试；问卷已更新时重新出题，不覆盖新答案。
 

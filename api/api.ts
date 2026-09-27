@@ -2,7 +2,6 @@ import {withLanguage,requestLanguage,localize} from './i18n/context.js';
 import {registerProjects} from './projects/routes.js';
 import type {FurnitureRenderer} from './furniture/render.js';
 import {LayoutOutputError} from './import/response.js';
-import {registerRecommendationQueue} from './mcp/recommendation-queue.js';
 import {registerLayoutReview} from './review/service.js';
 import {ContextProjectionError} from './user-context/index.js';
 import {registerContextProjection,registerUserContextDecisions} from './user-context/production.js';
@@ -50,7 +49,7 @@ import {recognizeLayout,layoutRecognitionModel} from './import.js';
 import {imageData} from './import/image-data.js';
 export {imageData} from './import/image-data.js';
 const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().int().min(0)});
-export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,visionCodex,furnitureCodex,furnitureRender,transcriptionCall,automaticRecommendations=true}:{automaticRecommendations?:boolean;assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;visionCodex?:(input:CodexInput)=>Promise<string>;furnitureCodex?:(input:CodexInput)=>Promise<string>;furnitureRender?:FurnitureRenderer;transcriptionCall?:TranscriptionCall}={}){
+export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,visionCodex,furnitureCodex,furnitureRender,transcriptionCall,automaticRecommendations=false}:{automaticRecommendations?:boolean;assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;visionCodex?:(input:CodexInput)=>Promise<string>;furnitureCodex?:(input:CodexInput)=>Promise<string>;furnitureRender?:FurnitureRenderer;transcriptionCall?:TranscriptionCall}={}){
  const publicPayload=(value:unknown):unknown=>{if(Array.isArray(value))return value.map(publicPayload);if(value&&typeof value==='object'){const result:Record<string,unknown>={};for(const [key,item] of Object.entries(value as Record<string,unknown>)){if(key==='budget')continue;result[key]=publicPayload(item)}return result}return value};
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
  app.addHook('onRequest',(req,_reply,done)=>withLanguage(requestLanguage(req),done));
@@ -81,7 +80,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  registerChatActions(app,store,session,active);
  registerRoomStyles(app,store,session);
  registerContextProjection(app,store);registerUserContextDecisions(app,store,session);registerLayoutReview(app,store,session);
- if(automaticRecommendations)registerRecommendationQueue(app,store,session,active);
+ // Questionnaire changes are sent only by an explicit owner Chat batch.
  registerTodo(app);
  registerTopologyDiagnostics(app,store,session);
  registerProfessionalWalls(app,store,session);

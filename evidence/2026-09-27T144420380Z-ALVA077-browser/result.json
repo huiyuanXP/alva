@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "checks": [
+    "saved questionnaire and page reload do not automatically call Chat",
+    "one explicit send makes one batch; one visible card with unobscured real 3D preview",
+    "English close means reject and reveals the next card",
+    "dismiss remains usable while Chat is generating",
+    "new decision replaces old queue; preview errors do not prevent dismiss"
+  ],
+  "calls": 2,
+  "errors": []
+}

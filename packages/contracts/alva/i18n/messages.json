@@ -13626,5 +13626,33 @@
   {
     "zh": "当前回复尚未停止，请稍后再次切换。",
     "en": "The current reply has not stopped yet. Please try switching again shortly."
+  },
+  {
+    "zh": "把问卷的新更改发送给 Chat",
+    "en": "Send questionnaire changes to Chat"
+  },
+  {
+    "zh": "问卷更改已保存，点击后统一生成建议。",
+    "en": "Changes saved. Send them together when you are ready."
+  },
+  {
+    "zh": "关闭并暂不采用",
+    "en": "Close without applying"
+  },
+  {
+    "zh": "待处理候选：",
+    "en": "Pending proposals: "
+  },
+  {
+    "zh": "没有待发送的问卷更改",
+    "en": "There are no questionnaire changes to send"
+  },
+  {
+    "zh": "尚未读取本次问卷批次",
+    "en": "This questionnaire batch has not been read yet"
+  },
+  {
+    "zh": "问卷批次不能携带其他请求",
+    "en": "Send questionnaire changes as a separate request"
   }
 ]

@@ -1,3 +1,5 @@
+> 问卷建议现役行为已由[ALVA-077显式批次发送](ALVA-077-questionnaire-batches.md)替代；下文自动触发/队列记录为066历史验收。
+
 # ALVA-066 主 Chat 按阶段接入两包 MCP
 
 **ID:** ALVA-066

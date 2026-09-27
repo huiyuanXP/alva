@@ -1,0 +1,7 @@
+{
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"completed\"\nReceived: undefined\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate",
+  "checks": [
+    "saved questionnaire and page reload do not automatically call Chat"
+  ],
+  "errors": []
+}

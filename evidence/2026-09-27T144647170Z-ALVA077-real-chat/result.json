@@ -1,0 +1,34 @@
+{
+  "pass": true,
+  "checks": [
+    "rapid questionnaire choices save and close at any time without starting Chat",
+    "one owner click invokes real main Agent, reads multi-answer batch via living MCP and generates once without adopting",
+    "actual candidate preview renders with no Solar time overlay",
+    "close is persisted rejection with no design mutation; refresh keeps sent batch consumed"
+  ],
+  "errors": [],
+  "toolCalls": [
+    {
+      "name": "read_questionnaire_batch",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_snapshot",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "suggest_furniture",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_stage_guidance",
+      "stage": "living",
+      "isError": false
+    }
+  ],
+  "proposalCount": 2,
+  "thread": "01a0e355-8453-7a20-b9fa-45777ea7d78c"
+}

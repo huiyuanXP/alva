@@ -40,15 +40,15 @@ test('recommendation tools reject unconfirmed invocation, disallowed assets, col
  }finally{await store.close()}
 });
 
-test('server starts the stage Agent after confirmation without a follow-up browser Chat request',async()=>{
+test('confirmation and project reload never start the Agent without explicit batch sending',async()=>{
  const store=new AlvaStore();await store.init();const {project}=await store.create('synthetic automatic trigger');await store.ensureAccessCode(project.id);
  let p=await store.mutate(project.id,randomUUID(),0,'seed',{},seedLivingStage);let calls=0;
  const headers={cookie:`alva_session=${(await store.issueInternalSession(project.id)).token}`};
  const app=await buildAlva(store,{assets:false,chatCodex:async input=>{calls++;const snapshot=await input.tools!.find(t=>t.name==='get_snapshot')!.run({}) as any;await input.tools!.find(t=>t.name==='suggest_furniture')!.run({expectedRevision:snapshot.project.revision,roomIds:['room'],variants:[{title:'椅子建议',rationale:'已确认的阅读需求',changes:[{action:'add',targetId:'room',values:{roomId:'room',assetId:'alva-chair',x:1,y:1}}]}]});return '有一份家具候选等待你确认'}});
  try{
   const r=await app.inject({method:'POST',url:'/api/intake/confirm',headers,payload:{requestId:randomUUID(),expectedRevision:p.revision,answer:{questionId:'Q01',roomId:null,text:'需要阅读空间',state:'answered'},confirmed:true}});assert.equal(r.statusCode,200,r.body);
-  const deadline=Date.now()+10_000;do{await new Promise(resolve=>setTimeout(resolve,50));p=await store.get(p.id)}while(p.answerRecommendations?.[0]?.status!=='completed'&&Date.now()<deadline);
-  assert.equal(p.answerRecommendations![0].status,'completed');assert.equal(calls,1);assert.equal(p.proposals.length,1);assert.ok(p.messages.at(-1)?.toolCalls?.some(t=>t.name==='suggest_furniture'&&!t.isError));
+  await app.inject({url:'/api/project',headers});await new Promise(resolve=>setTimeout(resolve,100));p=await store.get(p.id);
+  assert.equal(p.answerRecommendations![0].status,'pending');assert.equal(calls,0);assert.equal(p.proposals.length,0);
  }finally{await app.close();await store.close()}
 });
 

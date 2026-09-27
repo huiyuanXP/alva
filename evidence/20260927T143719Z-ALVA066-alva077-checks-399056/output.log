@@ -1,0 +1,34 @@
+✖ batch MCP reads multiple answers once, keeps later changes pending and retries failure (12573.324116ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16941.343938
+
+✖ failing tests:
+
+test at tests/alva-questionnaire-batch.test.ts:1:942
+✖ batch MCP reads multiple answers once, keeps later changes pending and retries failure (12573.324116ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-077-codex-batch/tests/alva-questionnaire-batch.test.ts:27:251)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', '--max-old-space-size=128', '--max-semi-space-size=2', '--liftoff-only', '--no-wasm-tier-up', '--wasm-lazy-compilation', '--wasm-num-compilation-tasks=1', '--import', 'tsx', '--test', '--test-isolation=none', '--test-concurrency=1', '--test-name-pattern', '^batch\\ MCP\\ reads\\ multiple\\ answers\\ once,\\ keeps\\ later\\ changes\\ pending\\ and\\ retries\\ failure$', 'tests/alva-questionnaire-batch.test.ts']' returned non-zero exit status 1.
