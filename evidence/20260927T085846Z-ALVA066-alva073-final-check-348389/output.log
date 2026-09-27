@@ -1,0 +1,61 @@
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2709 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-vcxkhEhD.css     39.64 kB │ gzip:   9.15 kB
+web/dist/assets/index-BinsdSTn.js   1,376.42 kB │ gzip: 397.41 kB
+
+✓ built in 2.70s
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✔ ALVA-073 checkpoints follow actual progress and survive message writes and reload (44.98815ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4549.63154
+✔ ALVA-073 living skips answered unknown skipped and hidden questions per respondent (149.301454ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4176.459697
+✔ ALVA-073 automatic Chat uses MCP, no fake user evidence, deduplicates and retries failed checks (11103.095199ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14871.298629
+✔ ALVA-073 concurrent automatic requests run once and stage changes invalidate their guidance (12139.16137ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16284.070887
+✔ ALVA-073 living MCP enforces next question, separates respondents and reuses pending cards (12255.217195ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16946.184595
+Isolated test cases passed: 5

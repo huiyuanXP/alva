@@ -146,3 +146,7 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 ## ALVA-072 多项目入口
 
 `api/projects/` 提供业主项目目录、新建/切换事务和当前阶段 MCP 适配；`packages/contracts/alva/projects.ts` 为导航参数唯一合同。`web/src/projects/` 承载顶部项目面板及绑定当前标签页项目的请求函数，现有页面请求共用该函数。`alva_owner_projects` 仅纳入原授权项目与入口创建的项目，不自动公开数据库内全部历史项目；当前项目存于每个设备的 session，邀请固定项目。结构与会话验收见 [ALVA-072](ALVA-072-project-switching.md)。
+
+## ALVA-073 阶段引导
+
+`api/consultation/stage-guidance.ts` 为主 Chat、当前阶段 MCP 与只读进度查询共用的断点计算和执行证据校验；系统轮仍走 `api/chat.ts` 和原阶段 thread。`web/src/chat/use-stage-guidance.ts` 负责空闲触发、去重与失败重试，StageControls 共享切换忙碌状态。合同与验收见 [ALVA-073](ALVA-073-stage-guidance.md)。

@@ -1,0 +1,37 @@
+✔ ALVA-073 checkpoints follow actual progress and survive message writes and reload (6.326483ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5864.446157
+✔ ALVA-073 living skips answered unknown skipped and hidden questions per respondent (121.865981ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4193.783093
+✔ ALVA-073 automatic Chat uses MCP, no fake user evidence, deduplicates and retries failed checks (11404.443362ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15474.328963
+✔ ALVA-073 concurrent automatic requests run once and stage changes invalidate their guidance (10692.008393ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14686.737101
+Isolated test cases passed: 4

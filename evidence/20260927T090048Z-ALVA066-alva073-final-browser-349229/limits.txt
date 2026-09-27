@@ -1,0 +1,6 @@
+run=20260927T090048Z-ALVA066-alva073-final-browser-349229
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2491
+35dcd4a7d4cb254a4b1a91db253b643568c9be55

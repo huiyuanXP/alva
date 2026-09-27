@@ -17,7 +17,7 @@
 
 `api/codex.ts` 对主 Chat 保留项目/阶段专属 CODEX_HOME 和非临时 thread。阶段切换先预检 Resume，进入时以 `thread/inject_items` 送达快照和待送达摘要；`alva_chat_stages` 持久化 thread 与送达 ID。恢复去重核对当前 thread 私有 rollout，不能跨项目读取历史。主 Chat 仍禁止 shell、文件写入和网页搜索；真实项目写入仅由受控业务工具执行。辅助识图/建筑调用保持独立临时 thread，无主 Chat 工具和会话继承。
 
-基础约束通过 thread/start、thread/resume 的 `baseInstructions` 配置维护，不作为普通用户消息重复追加。普通轮次传当前请求、必要调用约定和项目 revision，不附完整项目及聊天历史；详情由 `get_snapshot` 按需读取。阶段进入时仍注入最新快照和未送达摘要。传配置参数不等于追加历史；不假定 compact 会修复模型漏调工具，也不把目录读取成功当业务执行成功。
+基础约束通过 thread/start、thread/resume 的 `baseInstructions` 配置维护，不作为普通用户消息重复追加。普通轮次传当前请求、必要调用约定和项目 revision，不附完整项目及聊天历史；详情由 `get_snapshot` 按需读取。阶段进入时仍注入最新快照和未送达摘要。页面初始化、恢复和阶段切换另通过同一主Chat发起系统引导轮，当前阶段 MCP 的 get_stage_guidance 定位真实断点；不写伪用户原话，已完成断点去重，失败可重试。具体顺序和执行证据门禁见 [ALVA-073](ALVA-073-stage-guidance.md)。传配置参数不等于追加历史；不假定 compact 会修复模型漏调工具，也不把目录读取成功当业务执行成功。
 
 旧每请求临时 thread 已删除，迁移只能保留历史项目消息并首次创建阶段 thread、注入摘要；不得宣称 Resume 旧临时会话。长会话使用提前自动压缩，恢复仍是原 thread；必要时可用官方 `thread/compact/start`，不能用新会话冒充压缩。
 

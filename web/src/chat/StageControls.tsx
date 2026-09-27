@@ -3,8 +3,9 @@ import {createPortal} from 'react-dom';
 import type {Project} from '../../../api/model.js';
 import type {ChatAction,ChatStage} from '../../../packages/contracts/alva/chat-actions.js';
 type Action=ChatAction&{stale:boolean;staleReason?:string};
-export function StageControls({project,busy,readOnly,request,onProject,onStage,onError,onRequest,saveReview,contentTarget}:{project:Project;busy:boolean;readOnly:boolean;request:(path:string,body?:unknown)=>Promise<any>;onProject:(p:Project)=>void;onStage:(stage:ChatStage)=>void;onError:(message:string)=>void;onRequest?:(text:string)=>void;saveReview?:React.ReactNode;contentTarget?:HTMLElement|null}){
- const [stage,setStage]=useState<ChatStage>('floorplan'),[actions,setActions]=useState<Action[]>([]),[working,setWorking]=useState(false),[entryWarning,setEntryWarning]=useState(''),[notice,setNotice]=useState('');
+export function StageControls({onWorking,project,busy,readOnly,request,onProject,onStage,onError,onRequest,saveReview,contentTarget}:{onWorking?:(working:boolean)=>void;project:Project;busy:boolean;readOnly:boolean;request:(path:string,body?:unknown)=>Promise<any>;onProject:(p:Project)=>void;onStage:(stage:ChatStage)=>void;onError:(message:string)=>void;onRequest?:(text:string)=>void;saveReview?:React.ReactNode;contentTarget?:HTMLElement|null}){
+ const [stage,setStage]=useState<ChatStage>('floorplan'),[actions,setActions]=useState<Action[]>([]),[working,setWorkingState]=useState(false),[entryWarning,setEntryWarning]=useState(''),[notice,setNotice]=useState('');
+ const setWorking=(value:boolean)=>{setWorkingState(value);onWorking?.(value)};
  const sequence=useRef(0);
  const refresh=async()=>{const current=++sequence.current;const [state,list]=await Promise.all([request('/chat/stages'),request('/chat/actions')]);if(current!==sequence.current)return;setEntryWarning(state.entryWarning?.message||'');setStage(state.active);onStage(state.active);setActions(list.filter((a:Action)=>a.status==='pending'))};
  useEffect(()=>{void refresh().catch(e=>onError(e.message));const sync=()=>{if(document.visibilityState==='visible')void refresh().catch(()=>{})};const timer=window.setInterval(sync,15000);window.addEventListener('focus',sync);return()=>{window.clearInterval(timer);window.removeEventListener('focus',sync);sequence.current++}},[project.id,project.revision,busy]);

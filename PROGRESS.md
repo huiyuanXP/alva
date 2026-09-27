@@ -1,3 +1,9 @@
+## 2026-09-27 ALVA-073 阶段开场与断点引导
+
+完成系统引导轮、get_stage_guidance共用状态、真实检查/问卷执行证据验证、页面空闲触发与失败重试，个人实现a15b2e1。18项相关回归、最终类型/构建与5项专项复验通过；两轮真实主Chat→HTTP MCP→浏览器各8步通过，原thread往返、未知答案跳过和题卡复用已验，页面错误0。最终source manifest与main集成内容一致。证据、测试夹具失败记录及限制见[ALVA-073](docs/ALVA-073-stage-guidance.md)。
+
+neat-freak：代码/隔离运行态/文档changed-and-verified，规则verified-current；生产发布与生成记忆out-of-scope。068预览恢复并健康，生产未改。既有bundle警告保留，复核现场与失败证据保留；073移除认领，050/051状态不变。
+
 ## 2026-09-27 ALVA-072 已发布生产
 
 用户授权后已发布固定main `30156f7`（08:16 UTC）。顶部项目名可新建/切换，空项目从主Chat附件开始，原数据和验证码保留。发布前数据备份、回滚脚本已准备；服务/公网首页/JS与CSS哈希/未登录API拒绝通过，页面错误0。生产固定到072 release，后续main改动不自动上线；详见 [发布收据](docs/ALVA-072-production-release.md)。

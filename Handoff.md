@@ -1,3 +1,9 @@
+## 2026-09-27 ALVA-073 集成交接
+
+个人实现a15b2e1已squash集成：系统引导轮仍走原主Chat和当前阶段MCP，不写伪用户原话；assistant guidanceKey保存断点，失败不标完成。get_stage_guidance为API与MCP共用来源，校准后强制inspect_topology，生活阶段强制查问卷并创建/复用当前题卡。未完成断点回退可以再次引导，普通刷新去重。
+
+验收：18项相关回归、最终类型/构建、专项5/5、两轮真实浏览器8步通过，错误0；与最终验收source manifest逐文件相同。详见[ALVA-073](docs/ALVA-073-stage-guidance.md)。生产仍为072固定release，未部署；068预览恢复healthz通过。neat-freak已完成合同/目录/交接同步，生成记忆out-of-scope，复核现场保留。
+
 ## 2026-09-27 ALVA-072 已发布生产
 
 用户授权后已发布固定main `30156f7`（08:16 UTC）。顶部项目名可新建/切换，空项目从主Chat附件开始，原数据和验证码保留。发布前数据备份、回滚脚本已准备；服务/公网首页/JS与CSS哈希/未登录API拒绝通过，页面错误0。生产固定到072 release，后续main改动不自动上线；详见 [发布收据](docs/ALVA-072-production-release.md)。

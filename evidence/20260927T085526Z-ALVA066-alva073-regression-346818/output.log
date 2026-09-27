@@ -1,0 +1,163 @@
+✔ ALVA-073 checkpoints follow actual progress and survive message writes and reload (14.115044ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4549.031846
+✔ ALVA-073 living skips answered unknown skipped and hidden questions per respondent (101.62925ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3945.946232
+✔ ALVA-073 automatic Chat uses MCP, no fake user evidence, deduplicates and retries failed checks (11317.818967ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15280.691199
+✔ ALVA-073 concurrent automatic requests run once and stage changes invalidate their guidance (11659.887104ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15825.614268
+✔ ALVA-073 living MCP enforces next question, separates respondents and reuses pending cards (11837.239792ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16380.749602
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (11820.356338ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16066.020883
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (10474.910146ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14489.28563
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (10709.200388ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14784.334439
+✔ hypothesis and queued expanded question do not save answers or recommendation jobs (143.756678ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4526.042184
+✔ multi-person selection and exact source quotes prevent mixing preferences (288.02173ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4013.503001
+✔ native choice constraints reject old IDs, hidden options and duplicate answers (83.53821ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3879.156174
+✔ explicit confirmation syncs native answer and illustrative details without legacy mapping (81.614172ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4110.115915
+✔ independent form edits invalidate old cards and recommendations while preserving unrelated answers (104.864674ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4045.112026
+✔ free text syncs to supported other value, unknown answers never generate furniture (141.106915ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4205.039314
+✔ actual Chat routes persist successful cards, discard failed turns and synchronize through confirmation route (10819.253164ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15088.782724
+✔ confirmed native Chat answer automatically starts the living Agent and floorplan cannot confirm (12172.091119ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16100.967858
+✔ ALVA-072 navigation preserves projects and isolates sessions, stale tabs, invitations and replay (10771.798551ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14843.225781
+✔ ALVA-072 both stage MCP packs expose project navigation with explicit errors and no implicit creation (10329.722541ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14323.916835
+Isolated test cases passed: 18

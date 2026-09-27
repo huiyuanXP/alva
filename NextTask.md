@@ -1,3 +1,7 @@
+## 2026-09-27 ALVA-073 已完成；下一步发布候选
+
+阶段开场与断点引导已验收集成，073释放署名与共享入口占用；详情见[ALVA-073](docs/ALVA-073-stage-guidance.md)。本轮未发布，生产仍固定072 release；需要上线时按现役流程备份、切换并复验。050保持ready-for-agent未认领，051仍依赖050，其余任务不自动开工。
+
 ## 2026-09-27 ALVA-072 已发布生产
 
 用户授权后已发布固定main `30156f7`（08:16 UTC）。顶部项目名可新建/切换，空项目从主Chat附件开始，原数据和验证码保留。发布前数据备份、回滚脚本已准备；服务/公网首页/JS与CSS哈希/未登录API拒绝通过，页面错误0。生产固定到072 release，后续main改动不自动上线；详见 [发布收据](docs/ALVA-072-production-release.md)。
@@ -144,7 +148,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-073](.scratch/alva-completion/issues/47-stage-guidance.md) | 主Chat阶段开场与断点引导 | `chat` | codex-guidance | task/ALVA-073-codex-guidance / /home/ubuntu/Alva-worktrees/ALVA-073-codex-guidance | api/chat.ts、api/model.ts、阶段MCP、web/src/main.tsx；动态隔离端口；in-progress |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。

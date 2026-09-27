@@ -1,0 +1,63 @@
+✔ ALVA-073 checkpoints follow actual progress and survive message writes and reload (6.725702ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4550.99557
+✔ ALVA-073 living skips answered unknown skipped and hidden questions per respondent (210.03863ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4171.410418
+✔ ALVA-073 automatic Chat uses MCP, no fake user evidence, deduplicates and retries failed checks (11472.672975ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15273.661414
+✔ ALVA-073 concurrent automatic requests run once and stage changes invalidate their guidance (10355.67202ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14660.603838
+✖ ALVA-073 living MCP enforces next question, separates respondents and reuses pending cards (10831.852452ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24900.249039
+
+✖ failing tests:
+
+test at tests/alva-stage-guidance.test.ts:1:7704
+✖ ALVA-073 living MCP enforces next question, separates respondents and reuses pending cards (10831.852452ms)
+  DomainError: 授权项目尚未配置
+      at AlvaStore.config (/home/ubuntu/Alva-worktrees/ALVA-073-codex-guidance/api/store.ts:48:224)
+      at async AlvaStore.createSession (/home/ubuntu/Alva-worktrees/ALVA-073-codex-guidance/api/store.ts:50:86)
+      at async TestContext.<anonymous> (/home/ubuntu/Alva-worktrees/ALVA-073-codex-guidance/tests/alva-stage-guidance.test.ts:68:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    statusCode: 503
+  }
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', '--max-old-space-size=128', '--max-semi-space-size=2', '--liftoff-only', '--no-wasm-tier-up', '--wasm-lazy-compilation', '--wasm-num-compilation-tasks=1', '--import', 'tsx', '--test', '--test-isolation=none', '--test-concurrency=1', '--test-name-pattern', '^ALVA\\-073\\ living\\ MCP\\ enforces\\ next\\ question,\\ separates\\ respondents\\ and\\ reuses\\ pending\\ cards$', 'tests/alva-stage-guidance.test.ts']' returned non-zero exit status 1.

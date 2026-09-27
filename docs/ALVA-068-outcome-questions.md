@@ -62,3 +62,5 @@ MCP错误包含稳定code、message、retryable、repairActions。典型错误�
 证据：`evidence/20260926T080258Z-ALVA068-preview-build-113686/`、`evidence/20260926T080427Z-ALVA068-preview-public-114235/`、`evidence/20260926T080429727Z-ALVA068-public-preview/`。neat-freak：代码/文档/临时运行态changed-and-verified；生产发布与生成记忆out-of-scope；原复核现场保留，既有bundle警告未改。
 
 2026-09-26生产发布完成：固定main 6eef743，公网登录/资源/当前户型MCP与独立问卷入口通过；生活问卷同步使用隔离证据。部署/回滚和边界见[生产收据](ALVA-068-production-release.md)。
+
+阶段开场与恢复后的主动问卷引导见 [ALVA-073](ALVA-073-stage-guidance.md)：实际查询当前填写者，跳过已回答/未知/跳过项，复用有效待确认卡；复杂表单仍使用本票的独立问卷入口。
