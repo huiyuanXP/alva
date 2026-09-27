@@ -1,3 +1,7 @@
+## ALVA-081 生成过程被提前中断 — in-progress
+
+Owner: codex-stream；分支 task/ALVA-081-codex-stream；Worktree /home/ubuntu/Alva-worktrees/ALVA-081-codex-stream。范围 api/chat.ts、范围接续回归与真实MCP验收；端口由监听自动分配。用户授权修复并直接发布。
+
 ## 2026-09-27 ALVA-080 已发布
 
 16:34 UTC发布固定main `1993a77`：确认范围后接续原始需求，经主Chat/生活MCP生成家具候选；旧已确认未生成范围可继续，失败可重试，采用后刷新主场景。174项源码/配置与已验候选一致；类型、5项回归、5项浏览器和3项真实Chat/MCP通过，页面错误0。公网健康、登录页及JS/CSS哈希通过；缺有效登录会话，生产登录后复验pending。见[发布收据](docs/ALVA-080-production-release.md)。
