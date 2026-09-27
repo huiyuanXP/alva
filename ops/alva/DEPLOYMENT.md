@@ -1,6 +1,6 @@
 ## 2026-09-27 当前发布入口
 
-生产固定到 main `3542aaa`，`/etc/systemd/system/alva.service.d/ALVA078-release.conf` 指向 `.runtime/20260927T153116Z-ALVA078-production/release/`。全局 Vision 模板及分段问卷闭环已上线；服务、公网登录页与资源哈希通过，生产登录后复验 pending。见[ALVA-078收据](../../docs/ALVA-078-production-release.md)。现役环境仍为 `.runtime/alva-prod.env`，MCP/Tunnel 不变；后续 main 提交不自动上线。
+生产固定到 main `480b8c5`，`/etc/systemd/system/alva.service.d/ALVA079-release.conf` 指向 `.runtime/20260927T155154Z-ALVA079-production/release/`。漫游与全屋共用门窗渲染已上线；服务、公网登录页和资源哈希通过，登录后复验pending。见[ALVA-079收据](../../docs/ALVA-079-production-release.md)。环境仍为 `.runtime/alva-prod.env`，MCP/Tunnel不变。后续开发验收完成即按用户授权发布；main提交本身不改变固定release。
 
 以下为基础运维与历史约定，路径冲突以上述当前发布入口为准。
 

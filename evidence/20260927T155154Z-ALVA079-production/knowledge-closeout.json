@@ -1,0 +1,12 @@
+{
+  "code": "verified-current",
+  "runtime": "public verified; authenticated pending",
+  "docs": "changed-and-verified",
+  "rules": "changed-and-verified",
+  "memory": "out-of-scope",
+  "remote": "96503ad; push out-of-scope",
+  "workspace": "retained for review",
+  "warnings": [
+    "existing Vite bundle warning"
+  ]
+}

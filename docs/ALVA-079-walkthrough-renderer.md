@@ -1,6 +1,6 @@
 # ALVA-079 漫游复用全屋渲染
 
-Status: done（已验收，集成记录见main交接；未发布）
+Status: done（已验收、集成并发布480b8c5；登录后生产复验pending）
 Owner: codex-walk
 
 用户要求 Walk Through 与 Whole Room 使用同一门窗渲染，能够穿门跨房间。
@@ -28,8 +28,8 @@ WalkthroughController 绑定 scene-view，复用既有拓扑碰撞及安全起�
 
 ## Implementation handoff
 
-本票未发布生产。既有Vite >500kB bundle提示仍在；不宣称用户显卡帧率验收。独立工作区与证据保留供复核；验收脚本自己的临时合成数据库按原约定删除。没有读取或修改生产业主数据。
+本票已发布生产，见[发布收据](ALVA-079-production-release.md)。既有Vite >500kB bundle提示仍在；不宣称用户显卡帧率验收。独立工作区与证据保留供复核；验收脚本自己的临时合成数据库按原约定删除。没有读取或修改生产业主数据。
 
-neat-freak：代码/隔离运行态/文档 changed-and-verified；项目规则 verified-current；生产发布 pending；远端同步和生成记忆 out-of-scope。只读盘点完成，根目录两项既有未跟踪残留保留。无需新增规则或长期记忆。
+neat-freak：代码/隔离运行态/文档 changed-and-verified；项目规则 verified-current；生产公网表面 verified-current、登录后复验 pending；远端同步和生成记忆 out-of-scope。只读盘点完成，根目录两项既有未跟踪残留保留。无需新增规则或长期记忆。
 
 main集成核验：个人实现 `46d83f8`，全部产品与验收脚本同已验Worktree字节一致；提交范围未包含根既有未跟踪文件。原始日志中的行尾空白及OOM中断采样行按证据保留；产品、脚本和文档空白检查通过。
