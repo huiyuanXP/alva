@@ -1,3 +1,7 @@
+## ALVA-085 当前认领
+
+Codex认领：学习与个人非商业自用许可证。分支 task/ALVA-085-codex-license；Worktree /home/ubuntu/Alva-worktrees/ALVA-085-codex-license。范围：根LICENSE、README、npm许可元数据与交接文档；不改运行代码。Status: in-progress。
+
 ## ALVA-084 当前认领
 
 Codex认领：开发验收产物24小时清理、截图消费即删、Git代码回滚合同。分支 task/ALVA-084-codex-retention；Worktree /home/ubuntu/Alva-worktrees/ALVA-084-codex-retention。修改 scripts/ops/tests/AGENTS/结构与运维文档；不占业务端口，不改生产产品代码。Status: in-progress。
