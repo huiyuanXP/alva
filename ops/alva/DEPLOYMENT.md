@@ -1,6 +1,6 @@
 ## 2026-09-27 当前发布入口
 
-生产固定到main `96503ad`，由 `/etc/systemd/system/alva.service.d/ALVA074075-release.conf` 指向 `.runtime/20260927T100837Z-ALVA074075-production/release/`。中英文界面/Agent输出和阶段导航修复已联合发布；原数据、验证码、MCP与Tunnel配置保留。服务、公网资源及双语登录页已核验，登录后交互复验仍待有效验证码。备份、回滚与边界见[联合发布收据](../../docs/ALVA-074075-production-release.md)。后续main提交不自动发布，To Do List仍读取main。
+生产固定到main `0a25f98`，`/etc/systemd/system/alva.service.d/ALVA076-release.conf` 指向 `.runtime/20260927T140152Z-ALVA076-production/release/`。含中英文与不等待模型的阶段导航；正常登录后的两阶段往返、自动回复中切换、原thread/设计不变、公网资源均通过。备份/回滚见[ALVA-076收据](../../docs/ALVA-076-production-release.md)。现役环境 `.runtime/alva-prod.env`，验证码由用户提供正常登录验证；临时副本已删除。后续main提交不自动上线。
 
 以下为基础运维与历史约定，路径冲突以上述当前发布入口为准。
 
