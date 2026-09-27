@@ -1,0 +1,4 @@
+api/chat.ts(113,1015): error TS2339: Property 'generation' does not exist on type 'ScopeRequest'.
+api/chat.ts(146,277): error TS2339: Property 'generation' does not exist on type 'ScopeRequest'.
+api/scope/continuation.ts(9,11): error TS2339: Property 'generation' does not exist on type 'ScopeRequest'.
+api/scope/continuation.ts(22,8): error TS2339: Property 'generation' does not exist on type 'ScopeRequest'.

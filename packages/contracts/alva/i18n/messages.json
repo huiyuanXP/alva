@@ -13654,5 +13654,17 @@
   {
     "zh": "问卷批次不能携带其他请求",
     "en": "Send questionnaire changes as a separate request"
+  },
+  {
+    "zh": "正在生成已确认范围的家具候选…",
+    "en": "Generating furniture candidates for the confirmed scope…"
+  },
+  {
+    "zh": "范围已确认，继续生成家具候选，预览后再确认摆放。",
+    "en": "Scope confirmed. Generate furniture candidates, then preview and confirm the placement."
+  },
+  {
+    "zh": "继续生成家具候选",
+    "en": "Continue generating furniture candidates"
   }
 ]

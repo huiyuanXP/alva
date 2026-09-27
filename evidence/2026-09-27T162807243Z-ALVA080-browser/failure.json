@@ -1,0 +1,84 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n4 !== 2\n",
+  "checks": [
+    "scope confirmation immediately starts main Chat without another user message",
+    "no-op response is a visible persisted failure; refresh offers retry",
+    "MCP returns scoped real candidates without adopting or saving"
+  ],
+  "errors": [],
+  "messages": [
+    {
+      "id": "384c9cfa-4874-4501-bfeb-4a5a328180f9",
+      "role": "user",
+      "text": "请为客厅摆放一张阅读椅，使用现有许可目录家具即可；保留现有房间和墙体，生成两种不同位置的方案供我比较。不要生成问卷。",
+      "stage": "living",
+      "status": "completed",
+      "createdAt": "2026-09-27T16:28:17.623Z"
+    },
+    {
+      "id": "32c48bae-c771-43f8-aaf9-4ab966296f43",
+      "role": "user",
+      "text": "已确认范围，请继续生成家具与布局候选。",
+      "stage": "living",
+      "status": "completed",
+      "createdAt": "2026-09-27T16:28:24.563Z"
+    },
+    {
+      "id": "df43ed8d-931d-4353-980c-2c37d8f71b23",
+      "role": "assistant",
+      "text": "接下来会为你摆放家具",
+      "error": "范围已确认，但本轮没有生成可预览的家具或布局候选，请重试生成，请重试",
+      "stage": "living",
+      "status": "failed",
+      "language": "zh",
+      "createdAt": "2026-09-27T16:28:24.563Z",
+      "toolCalls": []
+    },
+    {
+      "id": "c47c9c85-9ca0-4a54-bb64-633704484350",
+      "role": "user",
+      "text": "已确认范围，请继续生成家具与布局候选。",
+      "stage": "living",
+      "status": "completed",
+      "createdAt": "2026-09-27T16:28:26.687Z"
+    },
+    {
+      "id": "a0559ce1-6441-47a6-a80e-e2cae29f8c2d",
+      "role": "assistant",
+      "text": "家具候选已生成，等待你采用",
+      "stage": "living",
+      "status": "completed",
+      "language": "zh",
+      "createdAt": "2026-09-27T16:28:26.687Z",
+      "toolCalls": [
+        {
+          "name": "propose_changes",
+          "stage": "living",
+          "isError": false
+        }
+      ]
+    },
+    {
+      "id": "93015e8f-881d-4a9b-873e-c6241f0d72a2",
+      "role": "assistant",
+      "text": "",
+      "error": "模型当前不可用或处理失败，请重试",
+      "stage": "living",
+      "status": "failed",
+      "language": "zh",
+      "createdAt": "2026-09-27T16:28:31.796Z",
+      "toolCalls": []
+    },
+    {
+      "id": "e485e57d-d0a8-4176-9562-0384ae812572",
+      "role": "assistant",
+      "text": "",
+      "error": "模型当前不可用或处理失败，请重试",
+      "stage": "living",
+      "status": "failed",
+      "language": "zh",
+      "createdAt": "2026-09-27T16:28:37.217Z",
+      "toolCalls": []
+    }
+  ]
+}

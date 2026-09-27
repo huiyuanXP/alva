@@ -1,3 +1,9 @@
+## 2026-09-27 ALVA-080 已验收并集成，待发布
+
+修复范围卡确认后只保存范围、未接续家具生成：现在接续原始需求经主Chat/生活MCP生成真实候选；无候选报错并可重试，旧确认范围可继续生成。采用后家具进入主场景且刷新保持，按钮忙碌禁用、错误在卡内可见。类型、5项回归、构建、5项浏览器及3项真实Chat/MCP闭环通过，页面错误0。个人实现f8a620e；见[ALVA-080](docs/ALVA-080-furniture-confirmation.md)。
+
+按用户持续授权直接部署，当前仍079 release，下一步备份并发布080，再验证公网。neat-freak已同步；私有诊断/失败run/Worktree保留，既有bundle提示保留。050未认领、051仍待050，不自动开工。
+
 ## 2026-09-27 ALVA-079 已发布
 
 15:52 UTC已发布固定 main `480b8c5`：漫游与全屋共用拓扑门窗渲染，真实门洞可通行；主Chat可通过MCP进入漫游。173项源码/配置与已验候选一致，服务健康、公网登录页和JS/CSS哈希通过，页面错误0。隔离环境穿门往返与真实Chat/MCP已验；当前缺少生产验证码/有效会话，登录后复验pending。见[发布收据](docs/ALVA-079-production-release.md)。
@@ -188,7 +194,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| ALVA-080 | 家具确认后未显示修复 | furniture | codex-confirm | task/ALVA-080-codex-confirm / /home/ubuntu/Alva-worktrees/ALVA-080-codex-confirm | main.tsx、Panels、api/chat.ts、api/model.ts、scope及接续模块、i18n字典；独立动态端口；in-progress |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。

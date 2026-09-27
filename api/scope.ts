@@ -2,19 +2,8 @@ import {randomUUID} from 'node:crypto';
 import {reject,type Change,type Project,type Proposal,type SceneData} from './model.js';
 
 export type ScopeStatus='pending'|'confirmed'|'cancelled';
-export type ScopeRequest={
- id:string;
- status:ScopeStatus;
- reason:string;
- roomIds:string[];
- itemIds:string[];
- excludedRoomIds:string[];
- excludedItemIds:string[];
- sourceMessageId?:string;
- baseRevision:number;
- createdAt:string;
- confirmedAt?:string;
-};
+import type {ScopeRequest} from './model.js';
+export type {ScopeRequest} from './model.js';
 
 function selectable(scene:SceneData,roomIds:string[],itemIds:string[]){
  const rooms=scene.rooms.filter(room=>roomIds.includes(room.id));
@@ -72,7 +61,7 @@ export function confirmScope(project:Project,scopeId:string,roomIds:string[],ite
  if(!request||request.status!=='pending')reject('范围请求不存在、已确认或已取消');
  if(roomIds.some(id=>!request!.roomIds.includes(id))||itemIds.some(id=>!request!.itemIds.includes(id)))reject('确认范围不能超出待确认范围');
  const selected=selectable(project.scene!,roomIds,itemIds);
- project.scopeRequests=requests.map(scope=>scope.id===scopeId?{...scope,...selected,status:'confirmed' as const,baseRevision:project.revision+1,confirmedAt:new Date().toISOString()}:scope);
+ project.scopeRequests=requests.map(scope=>scope.id===scopeId?{...scope,...selected,status:'confirmed' as const,generation:{status:'pending' as const},baseRevision:project.revision+1,confirmedAt:new Date().toISOString()}:scope);
  return project;
 }
 

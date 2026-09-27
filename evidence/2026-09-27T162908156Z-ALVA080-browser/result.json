@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "real": false,
+  "checks": [
+    "scope confirmation immediately starts main Chat without another user message",
+    "no-op response is a visible persisted failure; refresh offers retry",
+    "MCP returns scoped real candidates without adopting or saving",
+    "adoption inserts furniture into rendered main scene; reload persists without duplicate generation or snapshot",
+    "legacy confirmed scope without generation state remains resumable"
+  ],
+  "errors": [],
+  "toolCalls": [
+    {
+      "name": "propose_changes",
+      "stage": "living",
+      "isError": false
+    }
+  ],
+  "scopeGeneration": {
+    "status": "completed",
+    "proposalIds": [
+      "654c26c6-46ab-43da-bebd-299764e30c03",
+      "61aa7842-d7ea-421b-a711-b34363b1c061"
+    ]
+  },
+  "items": 1
+}

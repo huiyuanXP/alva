@@ -1,0 +1,6 @@
+run=20260927T163118Z-ALVA029-alva080-final-431845
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2141
+a3b5fc9bb2ad502e69e91778e4e6abdd3ab46e59
