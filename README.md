@@ -1,25 +1,153 @@
+<div align="center">
+
 # alva
 
-业主通过 Chat 整理生活需求、校准户型、预览确认修改，再导出设计师可编辑的同版本交付。当前核心链已发布于 https://prod.huiyuanxp.com ，登录需统一验证码。登录后左侧“咨询”栏是主 Chat Agent 入口；其 Agent/Harness 合同见[ALVA-065](docs/ALVA-065-main-chat-agent.md)。完整保留范围仍未完成，不是最终验收状态。
+**Make room for your life.**
 
-本地当前版本提供中文 / English 切换：登录页、顶部工作区和问卷均有语言入口，Agent 后续回复跟随界面语言，历史对话与用户原文保留。实现与验收见 [ALVA-074](docs/ALVA-074-bilingual-interface.md)，上线状态以交接记录为准。
+Turn everyday living preferences into a designer-ready brief and an interactive view of your home.
 
-开发必读[文件结构与工程归属](docs/PROJECT-STRUCTURE.md)，专题索引见[docs](docs/README.md)。
+[Live app](https://prod.huiyuanxp.com/) · [Watch the demo](https://github.com/huiyuanXP/alva/releases/download/product-demo-2026-09-28/alva-demo.mp4) · [Getting started](#getting-started) · [License](#license)
 
-恢复入口 [Handoff.md](Handoff.md)，规格 [SPEC.md](SPEC.md)，范围 [SCOPE.md](SCOPE.md)，验证 [ACCEPTANCE.md](ACCEPTANCE.md)。
+[![alva product demo: a furnished home and an interior view](docs/media/demo-preview.gif)](https://github.com/huiyuanXP/alva/releases/download/product-demo-2026-09-28/alva-demo.mp4)
 
-安装 `npm ci --ignore-scripts`；检查 `npm run check`；构建 `npm run build:alva`；按 `.env.example` 将配置传入进程环境后运行 `npm run start:alva`。配置文件不会自动加载。本地默认 127.0.0.1:4180，未配置公共入口时使用私有初始链接；线上已启用统一验证码。空项目需上传自己的户型，不载入固定样例。
+</div>
 
-核心测试：`node_modules/.bin/tsx --test tests/alva-foundation.test.ts tests/alva-business.test.ts`。真实浏览器链：`node_modules/.bin/tsx scripts/alva-browser.ts`（须先启动本地服务并配置真实模型，约数分钟，生成独立合成验收项目）。运维入口 [ops/alva/README.md](ops/alva/README.md)。
+alva helps homeowners explain how they live and helps designers spend less time on repetitive initial inquiries. A conversational agent gathers routines, preferences, constraints, and room requirements, connects them to the floorplan, and prepares a traceable brief for the next design conversation.
 
-`apps/api`、`apps/web`、`vendor/openplan3d` 是只读来源复用到本仓库的保留基线；旧 `start`、`build` 与旧测试入口保留兼容，新产品使用带 `alva` 的命令。
+The hosted app requires an access code from its administrator. You can also [run it locally](#getting-started).
 
-全部44张正式票见[本地tracker](.scratch/alva-completion/README.md)，研究见[登录与建筑3D](Research/LOGIN-IMPORT-3D.md)。原主题保留在[范围来源](TICKET-PROPOSAL.md)，现役执行定义以正式 tracker 和 [NextTask](NextTask.md) 为准。
+## Features
 
-并行协作从[NextTask认领表](NextTask.md)进入：署名认领、每票独立Worktree、main串行集成后解锁后继。
+- **Conversational intake** — share needs through chat, guided questions, reference images, and voice transcribed into editable text.
+- **Proactive suggestions** — the agent proposes likely preferences and follow-up choices. Inferences stay visibly separate from confirmed answers.
+- **Floorplan import and calibration** — import a plan, review rooms and openings, and calibrate the model against a known measurement.
+- **Spatial previews** — inspect furniture and room layouts in 2D and 3D, rotate the home, and look around from inside it.
+- **Sunlight exploration** — vary solar time and season to see how illumination changes under the displayed geographic assumptions.
+- **Designer-ready handoff** — collect needs, their sources, confirmed choices, and spatial views into a versioned delivery package.
+- **Project continuity** — keep projects separate, save explicit snapshots, and return to an earlier design conversation.
+- **English and Chinese** — switch the interface language while retaining original user input and conversation history.
 
-## 许可证
+## See it in action
 
-本项目原创内容采用 [alva 学习与个人非商业使用许可证 1.0](LICENSE)：允许非商业学习、教学、研究，以及个人和家庭非商业自用；允许按原许可免费分享、fork 和修改。禁止商用，包括收费服务、商业产品集成、企业业务内部使用及客户交付；商业用途须另获著作权人书面授权。
+The **76-second product demo** uses real interface recordings, with English narration and captions.
 
-这是源码可用的非商业许可证，不是 OSI 开源许可证。第三方依赖、代码和素材仍遵守各自许可证；用户上传内容不在授权范围内。完整条款以 LICENSE 为准。
+[![Watch the alva product demo](docs/media/demo-poster.jpg)](https://github.com/huiyuanXP/alva/releases/download/product-demo-2026-09-28/alva-demo.mp4)
+
+[Download MP4](https://github.com/huiyuanXP/alva/releases/download/product-demo-2026-09-28/alva-demo.mp4) · [English subtitles](https://github.com/huiyuanXP/alva/releases/download/product-demo-2026-09-28/alva-demo.en.srt) · [Demo release](https://github.com/huiyuanXP/alva/releases/tag/product-demo-2026-09-28)
+
+| Understand the preference | Explore the space |
+| --- | --- |
+| ![A proposed preference is explicitly labeled as an unconfirmed guess](docs/media/preference-inference.jpg) | ![A first-person view into the furnished home](docs/media/interior-view.jpg) |
+
+![Sunlight changing across a furnished home](docs/media/sunlight-view.jpg)
+
+Sunlight views are illustrative estimates, not on-site measurements. Layout suggestions and checks support the design conversation; they do not replace site measurements or professional review.
+
+## How it works
+
+1. **Bring a floorplan.** Upload your own drawing, check the interpreted geometry, and set a known wall length.
+2. **Describe everyday life.** Explain routines, preferences, and what needs to work better. The agent asks focused follow-up questions.
+3. **Review the possibilities.** Inspect suggestions and spatial previews, clarify assumptions, and confirm the changes you want.
+4. **Hand off the context.** Save a version and export the brief together with its supporting information and views.
+
+## Architecture
+
+The browser combines a React interface with Three.js spatial views. A Fastify API manages project state in PGlite. The conversational agent runs through Codex App Server and accesses stage-specific MCP tools backed by shared domain services.
+
+```mermaid
+flowchart LR
+    UI[React + Three.js] <--> API[Fastify API]
+    API <--> State[(PGlite project state)]
+    API <--> Agent[Conversational agent]
+    Agent --> Tools[Stage-specific MCP tools]
+    Tools --> Services[Shared domain services]
+    API --> Services
+    Services <--> State
+```
+
+Models propose changes; application services validate the request, its scope, and any required user confirmation before applying it. The floorplan-import and living-design stages expose different tool sets.
+
+## Getting started
+
+### Requirements
+
+- Node.js **22.12 or newer** and npm.
+- A `codex` CLI available on `PATH`, providing the App Server interface used by the backend.
+- An OpenAI-compatible provider that supports the Responses API and the configured models.
+- Chromium for browser-based furniture rendering and browser checks.
+
+### Install
+
+```bash
+git clone https://github.com/huiyuanXP/alva.git
+cd alva
+npm ci --ignore-scripts
+npx playwright install chromium
+cp .env.example .env
+```
+
+Edit `.env` with your own provider endpoint, API key, and model configuration. The current consultation model is defined in [`api/main-chat-agent.ts`](api/main-chat-agent.ts); the provider must support that model. `OPENAI_MODEL` is a fallback and does not override the consultation model. Voice input also requires the audio Chat Completions interface used by [`api/chat.ts`](api/chat.ts).
+
+| Variable | Purpose |
+| --- | --- |
+| `OPENAI_BASE_URL` | Responses-compatible provider endpoint |
+| `OPENAI_API_KEY` | Provider credential |
+| `OPENAI_MODEL` | Fallback model for calls without an explicit model |
+| `OPENAI_VISION_MODEL` | Floorplan image-recognition model |
+| `OPENAI_FURNITURE_MODEL` | Furniture-model generation model |
+| `ALVA_ORIGIN` | Application origin; local default `http://127.0.0.1:4180` |
+| `ALVA_PORT` | Local HTTP port; default `4180` |
+| `ALVA_DATA_DIR` | Project data directory; default `.runtime/alva-data` |
+
+### Run
+
+The application reads the process environment; it does not automatically load `.env`. On macOS or Linux:
+
+```bash
+set -a
+. ./.env
+set +a
+
+npm run build:alva
+npm run start:alva
+```
+
+Open **http://127.0.0.1:4180**. With the default configuration, the first startup writes a local sign-in code to `.runtime/alva-access-code`. Use that code on the login screen. A new project starts empty and expects your own floorplan.
+
+### Development checks
+
+```bash
+npm run check
+npm run build:alva
+
+# Core project and business-flow tests
+node_modules/.bin/tsx --test \
+  tests/alva-foundation.test.ts \
+  tests/alva-business.test.ts
+```
+
+## Project structure
+
+```text
+api/                    HTTP API, agent runtime, MCP tools, and domain services
+web/                    React interface and Three.js scene rendering
+packages/contracts/     Shared types, validation contracts, and localization
+scripts/                Development and verification utilities
+tests/                  Automated tests
+docs/media/             Product screenshots and demo previews
+ops/                    Deployment configuration
+```
+
+The active application uses `api/`, `web/`, and the `*:alva` commands above.
+
+## Contributing
+
+Bug reports and focused pull requests are welcome. For a bug report, include the behavior you expected, what happened, and a minimal reproduction. For code changes, run the relevant checks and describe the behavior the change verifies.
+
+<a id="许可证"></a>
+
+## License
+
+Original project content is available under the [alva Learning and Personal Noncommercial License 1.0](LICENSE). It permits noncommercial learning, teaching, research, and personal or household use. Commercial use requires separate permission.
+
+This is a custom source-available license, not an OSI-approved open-source license. Third-party components retain their own licenses.
