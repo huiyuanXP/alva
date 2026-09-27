@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'living'
+- 'floorplan'
+
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-075-codex-stage-fix/scripts/alva-075-chat-browser.ts:22:222) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'living',
+  expected: 'floorplan',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

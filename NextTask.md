@@ -1,8 +1,8 @@
-## 2026-09-27 ALVA-073 已发布生产
+## 2026-09-27 ALVA-075 已修复并集成，未发布
 
-用户授权后09:08 UTC已发布固定main `aa4f900`。主Chat首次开场、户型自查、生活问卷及阶段切换/Resume断点引导已上线。服务健康、公网资源哈希与未登录API拒绝通过，页面错误0；登录后线上复验仍待当前有效验证码，未改认证或生产项目。备份、回滚及完整边界见 [发布收据](docs/ALVA-073-production-release.md)。
+阶段导航现在同步左侧Chat与右侧生活工作区，右侧入口和左侧按钮共用服务端阶段切换；确认卡读取失败不再阻断阶段更新，往返保留各阶段原thread和历史。二维确认文案明确后续建筑步骤。个人实现d490a7a；类型/构建、8项回归、7项最终浏览器与4步真实Chat/HTTP MCP通过，页面错误0。证据和失败run见[ALVA-075](docs/ALVA-075-stage-navigation.md)。
 
-生产固定073 release，后续main改动不自动发布。neat-freak已同步发布与交接；生成记忆out-of-scope，备份及复核现场保留。050未认领、051仍等050，其余任务不自动开工。下方“未发布”为历史检查点。
+生产仍固定073 release，本票未发布。074保留原认领，集成时须保留本票导航逻辑并复核共享main.tsx/StageControls；050未认领、051仍等待050，不自动开工。neat-freak已同步，生成记忆out-of-scope，既有bundle警告和复核现场保留。
 
 ## 2026-09-27 ALVA-073 已完成；下一步发布候选
 
@@ -154,7 +154,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-075](.scratch/alva-completion/issues/49-stage-navigation.md) | 阶段按钮与Chat同步修复 | `chat` | codex-stage-fix | task/ALVA-075-codex-stage-fix / /home/ubuntu/Alva-worktrees/ALVA-075-codex-stage-fix | web/src/main.tsx、chat/StageControls.tsx；与074文字改动集成时复核；in-progress |
 | [ALVA-074](.scratch/alva-completion/issues/48-bilingual-interface.md) | 中英文界面与Agent输出语言 | `chat` | codex-i18n | task/ALVA-074-codex-i18n / /home/ubuntu/Alva-worktrees/ALVA-074-codex-i18n | web/src、api/chat与语言参数、共享语言合同；动态隔离端口；in-progress |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 

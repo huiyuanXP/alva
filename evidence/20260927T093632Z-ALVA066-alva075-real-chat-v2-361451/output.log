@@ -1,0 +1,1 @@
+{"out":"/home/ubuntu/Alva-worktrees/ALVA-075-codex-stage-fix/evidence/2026-09-27T093637223Z-ALVA075-real-chat","checks":["floorplan main Chat actually calls current-stage MCP","right stage entry → living transcript and real living questionnaire MCP","left return resumes original floorplan thread and history","left living return and reload retain living thread"]}

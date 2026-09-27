@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "checks": [
+    "floorplan navigation enabled; living gated until building confirmation",
+    "right building confirmation synchronizes left active stage and transcript",
+    "left navigation returns to retained floorplan conversation without reopening topology",
+    "right living entry uses same server stage navigation",
+    "confirmation-card failure does not freeze stage or navigation",
+    "reload restores server stage and matching transcript",
+    "narrow viewport buttons remain clickable in both directions"
+  ],
+  "errors": []
+}

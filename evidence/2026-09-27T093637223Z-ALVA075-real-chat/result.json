@@ -1,0 +1,76 @@
+{
+  "pass": true,
+  "checks": [
+    "floorplan main Chat actually calls current-stage MCP",
+    "right stage entry → living transcript and real living questionnaire MCP",
+    "left return resumes original floorplan thread and history",
+    "left living return and reload retain living thread"
+  ],
+  "errors": [],
+  "floorThread": "01a0e239-7a4b-7f72-baa1-86875af919dc",
+  "livingThread": "01a0e239-bce5-7db1-bcde-546c44636f42",
+  "messages": [
+    {
+      "id": "f1924f50-b803-4012-b7fd-32193feaf380",
+      "role": "user",
+      "text": "请实际读取当前阶段断点，简短说明现在的下一步，不修改任何设计。",
+      "stage": "floorplan",
+      "status": "completed",
+      "createdAt": "2026-09-27T09:36:51.944Z"
+    },
+    {
+      "id": "43e56549-e045-426c-9061-95168aedf45c",
+      "role": "assistant",
+      "text": "已读取当前阶段最新状态与断点：\n\n- **当前状态**：户型拓扑与建筑 3D 均已确认完毕（建筑状态为 `confirmed`），上传、墙线校准及建筑生成确认等前置步骤已完成。\n- **下一步操作**：无需重新上传或修改任何设计，直接点击页面上的**“生活设计”**即可进入下一阶段，继续进行生活需求与空间问卷梳理。",
+      "stage": "floorplan",
+      "status": "completed",
+      "createdAt": "2026-09-27T09:36:51.944Z",
+      "toolCalls": [
+        {
+          "name": "get_snapshot",
+          "stage": "floorplan",
+          "isError": false
+        },
+        {
+          "name": "get_stage_guidance",
+          "stage": "floorplan",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "a0ccfce0cc254a5f88686dfccbdf54502858d7bf2cfe8e86dc41272780674bff"
+    },
+    {
+      "id": "1e3f3c7b-dfc3-46aa-8350-81063a1d7d93",
+      "role": "user",
+      "text": "请实际读取生活问卷当前进度，简短告诉我哪些信息还没填，不生成或修改家具。",
+      "stage": "living",
+      "status": "completed",
+      "createdAt": "2026-09-27T09:37:10.399Z"
+    },
+    {
+      "id": "5ab1b3c0-e8c7-4ab5-8f18-ebd43755634f",
+      "role": "assistant",
+      "text": "已实际读取当前生活需求问卷（Home Vision）的最新状态与进度：\n\n### 当前问卷进度\n- **当前填写者**：我的回答（版本 0）\n- **完成进度**：**0 项已填 / 全部待填**（目前问卷尚未记录任何已保存回答）。\n\n---\n\n### 主要未填信息板块\n1. **项目目标与空间范围**：咨询的核心目标（Q01a）、房屋基本类型（Q03a）、本次优先梳理的空间范围（Q05a）等。\n2. **居住成员与日常习惯**：常住与同住成员（Q04a）、居家办公/学习空间需求（Q21a-c）、日常收纳与清洁维护习惯（Q28a）等。\n3. **空间感受与风格偏好**：希望进门后的生活感受（Q06a）、色调与材质倾向（Q07a/b）、明确不想要或避雷的做法（Q10a）等。\n4. **舒适度与细节性能**：照明偏好与现状困扰（Q26a/b）、温控及舒适度顾虑（Q27a-c）、智能家居程度（Q33a/b）等。\n5. **决策与进度安排**：房屋权属与居住周期（Q34a-c）、关键入住日期与分期意愿（Q40a/Q42a）、设计决策人及资料共享范围（Q48a-Q51c）等。\n\n---\n\n**下一步建议**：\n本阶段无需修改现有家具或建筑。你可以随时在页面中打开问卷自主填写，或告诉我开始从第一题（**Q01a：这次咨询最希望解决的核心计划/目标**）起逐项确认。",
+      "stage": "living",
+      "status": "completed",
+      "createdAt": "2026-09-27T09:37:10.399Z",
+      "toolCalls": [
+        {
+          "name": "get_snapshot",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "read_question_context",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "get_stage_guidance",
+          "stage": "living",
+          "isError": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2709 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-vcxkhEhD.css     39.64 kB │ gzip:   9.15 kB
+web/dist/assets/index-BwSEEuGO.js   1,377.22 kB │ gzip: 397.70 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.00s
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (12582.566983ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17073.218911
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (10878.660951ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15084.045561
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (11888.293941ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16000.644366
+✔ ALVA-073 checkpoints follow actual progress and survive message writes and reload (7.734927ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4559.430969
+✔ ALVA-073 living skips answered unknown skipped and hidden questions per respondent (90.432007ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4071.001442
+✔ ALVA-073 automatic Chat uses MCP, no fake user evidence, deduplicates and retries failed checks (11156.990153ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15177.448451
+✔ ALVA-073 concurrent automatic requests run once and stage changes invalidate their guidance (10360.671668ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14408.146954
+✔ ALVA-073 living MCP enforces next question, separates respondents and reuses pending cards (14341.890766ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18460.318883
+Isolated test cases passed: 8
+{"out":"/home/ubuntu/Alva-worktrees/ALVA-075-codex-stage-fix/evidence/2026-09-27T094009049Z-ALVA075-browser","checks":["floorplan navigation enabled; living gated until building confirmation","right building confirmation synchronizes left active stage and transcript","left navigation returns to retained floorplan conversation without reopening topology","right living entry uses same server stage navigation","confirmation-card failure does not freeze stage or navigation","reload restores server stage and matching transcript","narrow viewport buttons remain clickable in both directions"]}
