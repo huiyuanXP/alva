@@ -1,3 +1,7 @@
+## ALVA-077 问卷批量发送与决策卡修复（in-progress）
+
+署名 codex-batch；用户授权本轮修复。分支 `task/ALVA-077-codex-batch`，Worktree `/home/ubuntu/Alva-worktrees/ALVA-077-codex-batch`。占用 api/chat.ts、api/model.ts、api/store.ts、api/furniture/、api/mcp/recommendation-queue.ts、问卷服务、共享合同、web/src/main.tsx、Panels.tsx、SceneView.tsx 与阶段引导。隔离端口使用前检查。验收后集成发布，其他票不自动开工。
+
 ## 2026-09-27 ALVA-076已发布并登录后验收
 
 14:02 UTC发布固定main `0a25f98`。阶段导航不再等待模型Resume/交接；自动Chat期间点击会停止旧回复后切换，蓝色标识当前阶段。生产正常登录owner后英文两阶段4次往返通过（0.5–0.9秒），自动回复中切换1.2秒通过，页面错误0；原thread、设计/问卷/保存版本保持，已回原floorplan。见[发布收据](docs/ALVA-076-production-release.md)。
