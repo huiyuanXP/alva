@@ -1,6 +1,8 @@
-## ALVA-085 当前认领
+## ALVA-085 已完成；当前下一步
 
-Codex认领：学习与个人非商业自用许可证。分支 task/ALVA-085-codex-license；Worktree /home/ubuntu/Alva-worktrees/ALVA-085-codex-license。范围：根LICENSE、README、npm许可元数据与交接文档；不改运行代码。Status: in-progress。
+非商业许可证已集成，说明见 [LICENSE](LICENSE) 与 [README](README.md#许可证)。本票认领释放，无后续功能任务自动开工；本轮未推送远端，无需生产重部署。ALVA-084 已有 main 集成 `7bc5ace`，下方 in-progress 是历史认领记录，不代表当前占用。其余票保留各自状态和协作规则。
+
+以下为历史交接与协作规则。
 
 ## ALVA-084 当前认领
 

@@ -17,3 +17,9 @@
 全部44张正式票见[本地tracker](.scratch/alva-completion/README.md)，研究见[登录与建筑3D](Research/LOGIN-IMPORT-3D.md)。原主题保留在[范围来源](TICKET-PROPOSAL.md)，现役执行定义以正式 tracker 和 [NextTask](NextTask.md) 为准。
 
 并行协作从[NextTask认领表](NextTask.md)进入：署名认领、每票独立Worktree、main串行集成后解锁后继。
+
+## 许可证
+
+本项目原创内容采用 [alva 学习与个人非商业使用许可证 1.0](LICENSE)：允许非商业学习、教学、研究，以及个人和家庭非商业自用；允许按原许可免费分享、fork 和修改。禁止商用，包括收费服务、商业产品集成、企业业务内部使用及客户交付；商业用途须另获著作权人书面授权。
+
+这是源码可用的非商业许可证，不是 OSI 开源许可证。第三方依赖、代码和素材仍遵守各自许可证；用户上传内容不在授权范围内。完整条款以 LICENSE 为准。
