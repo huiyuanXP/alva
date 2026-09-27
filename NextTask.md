@@ -1,3 +1,7 @@
+## ALVA-084 当前认领
+
+Codex认领：开发验收产物24小时清理、截图消费即删、Git代码回滚合同。分支 task/ALVA-084-codex-retention；Worktree /home/ubuntu/Alva-worktrees/ALVA-084-codex-retention。修改 scripts/ops/tests/AGENTS/结构与运维文档；不占业务端口，不改生产产品代码。Status: in-progress。
+
 ## 2026-09-27 磁盘占用复盘完成
 
 详见[ALVA-083占用复盘](docs/ALVA-083-storage-cleanup.md)：清理后仍有外部开发worktree约15G、主项目.runtime约9.9G、停用旧部署约7.1G。主要增长来自每票重复依赖、验收副本/截图与无轮换全量备份；现役数据约708MiB。共享依赖、验收保留期、分层备份和容量告警均为建议，尚未实施。下一步按用户选择实施优化；本轮只分析，未继续删除或开工其他票。
