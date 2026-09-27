@@ -35,11 +35,13 @@ class RetentionTest(unittest.TestCase):
         prod = self.file('.runtime/20260901T000000Z-ALVA082-production/data.bin')
         upload = self.file('.runtime/alva-uploads/a.png')
         isolated = self.file('.runtime/20260901T000000Z-ALVA082-browser/db/data')
-        self.assertEqual(a.collect(self.root, active=set())['files'], 2)
+        iso = self.file('.runtime/2026-09-01T000000Z-ALVA082-browser/db/data')
+        self.assertEqual(a.collect(self.root, active=set())['files'], 3)
         self.assertTrue(old.exists())
         a.collect(self.root, apply=True, active=set())
         self.assertFalse(old.exists())
         self.assertFalse(isolated.exists())
+        self.assertFalse(iso.exists())
         self.assertTrue(all(p.exists() for p in [recent, prod, upload]))
 
     def test_tracked_symlinks_and_active_run(self):
