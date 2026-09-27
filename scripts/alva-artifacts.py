@@ -53,7 +53,7 @@ def candidates(root):
     runtime = root/'.runtime'
     if runtime.is_dir() and not runtime.is_symlink():
         for p in runtime.iterdir():
-            if p.is_dir() and not p.is_symlink() and re.match(r'^\d{8}T.*ALVA', p.name, re.I) and not PROTECTED.search(p.name):
+            if p.is_dir() and not p.is_symlink() and re.match(r'^(?:\d{8}T|\d{4}-\d{2}-\d{2}T).*ALVA', p.name, re.I) and not PROTECTED.search(p.name):
                 yield p
 
 
