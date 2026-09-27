@@ -1,0 +1,1 @@
+{"out":"/home/ubuntu/Alva/evidence/2026-09-27T101051223Z-ALVA074075-public","checks":["public HTTPS, health and unauthenticated API","public JS/CSS match pinned tested release","live Chinese/English login switch and persisted preference"],"errors":[],"loginStatus":401,"authenticated":false}

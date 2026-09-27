@@ -20,8 +20,8 @@
 
 失败证据保留：092411 类型语法、092506/093137 误包装业务参数、092838 全量类型 OOM、093353/093443 共享内存限制、095036 测试空数组类型推断。最终采用分组类型检查、测试单进程隔离和暂停临时预览，保持 CPU80% / 总内存20% / swap0；没有提高预算。
 
-本票未发布生产。既有 bundle 大小警告保留。私有合成现场和失败证据保留供复核；一次性词典生成工具不进入产品依赖。
+本票已随96503ad联合发布，线上边界见[发布收据](ALVA-074075-production-release.md)。既有 bundle 大小警告保留。私有合成现场和失败证据保留供复核；一次性词典生成工具不进入产品依赖。
 
 ## 知识收尾
 
-neat-freak：代码/合同/目录和功能交接 changed-and-verified；规则 verified-current；生成记忆 out-of-scope；生产发布 not-applicable（本票未发布）。最终集成状态以根 Handoff / NextTask 为准。
+neat-freak：代码/合同/目录和功能交接 changed-and-verified；规则 verified-current；生成记忆 out-of-scope；生产发布 verified-current；登录后生产交互复验 pending。最终集成状态以根 Handoff / NextTask 为准。

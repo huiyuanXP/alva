@@ -1,6 +1,6 @@
 ## 2026-09-27 当前发布入口
 
-生产固定到main `aa4f900`，由 `/etc/systemd/system/alva.service.d/ALVA073-release.conf` 指向 `.runtime/20260927T090745Z-ALVA073-production/release/`。包含主Chat首次开场和阶段断点引导；原数据、验证码、MCP与Tunnel配置保留。服务与公网资源已核验，登录后复验pending。备份、回滚及边界见 [ALVA-073收据](../../docs/ALVA-073-production-release.md)。后续main提交不自动发布，To Do List仍读取main。
+生产固定到main `96503ad`，由 `/etc/systemd/system/alva.service.d/ALVA074075-release.conf` 指向 `.runtime/20260927T100837Z-ALVA074075-production/release/`。中英文界面/Agent输出和阶段导航修复已联合发布；原数据、验证码、MCP与Tunnel配置保留。服务、公网资源及双语登录页已核验，登录后交互复验仍待有效验证码。备份、回滚与边界见[联合发布收据](../../docs/ALVA-074075-production-release.md)。后续main提交不自动发布，To Do List仍读取main。
 
 以下为基础运维与历史约定，路径冲突以上述当前发布入口为准。
 

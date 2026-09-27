@@ -13,3 +13,7 @@
 ## Implementation handoff
 
 实现与两轮真实 Chat/MCP 双语验收已完成，最终类型/构建及阶段导航回归通过，已集成 main（个人实现 16ae8db）。语言保持在浏览器与每轮 Prompt，thread 和业务值不变；目录、证据和边界见 [ALVA-074](../../../docs/ALVA-074-bilingual-interface.md)。已合并 ALVA-075 导航修复，未部署生产。
+
+## 联合发布
+
+2026-09-27用户授权后与另一项修改共同发布96503ad。服务/公网资源/双语登录页通过，登录后生产交互复验pending，见[发布收据](../../../docs/ALVA-074075-production-release.md)。此前“未发布”为开发检查点。

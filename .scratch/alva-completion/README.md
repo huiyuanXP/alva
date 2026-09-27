@@ -78,6 +78,6 @@
 
 - [ALVA-073 主Chat阶段开场与断点引导](issues/47-stage-guidance.md)：done，已验收、集成并发布；线上登录后复验边界见发布收据。
 
-- [ALVA-075 阶段导航与Chat同步](issues/49-stage-navigation.md)：done，已验收并集成，未发布。
+- [ALVA-075 阶段导航与Chat同步](issues/49-stage-navigation.md)：done，已验收并集成；074/075已联合发布，边界见发布收据。
 
-- [ALVA-074 中英文界面与Agent输出语言](issues/48-bilingual-interface.md)：done，已验收并集成，未发布。
+- [ALVA-074 中英文界面与Agent输出语言](issues/48-bilingual-interface.md)：done，已验收并集成；074/075已联合发布，边界见发布收据。

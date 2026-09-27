@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "checks": [
+    "public HTTPS, health and unauthenticated API",
+    "public JS/CSS match pinned tested release",
+    "live Chinese/English login switch and persisted preference"
+  ],
+  "hashes": {
+    "index-BzsMfRCN.js": "cb17c8e9f222f5b558b7d07d6486790ad0294c43305cf681ba80c41e9ec266af",
+    "index-srOQRtdU.css": "8bd319b0051979403120737e6392c3f1d699b0384af361a4788d36450c249306"
+  },
+  "errors": [],
+  "loginStatus": 401,
+  "authenticated": false,
+  "authenticatedVerification": "pending: current configured code unavailable or rejected"
+}

@@ -1,10 +1,18 @@
+## 2026-09-27 ALVA-074 / 075 已联合发布
+
+用户授权后10:09 UTC已发布固定main `96503ad`：中英文界面及Agent输出语言、左右阶段导航和原会话恢复一起上线。169个产品文件与最终验收清单一致；服务健康、公网JS/CSS哈希、真实浏览器中英文切换和刷新保持通过，页面错误0。
+
+当前保存的验证码返回401，登录后生产交互复验pending；未改验证码或生产项目。备份、回滚、失败run及边界见[联合发布收据](docs/ALVA-074075-production-release.md)。生产固定到074075 release，后续main提交不自动上线。050未认领、051仍等050，不自动开工。
+
+neat-freak已同步；生成记忆out-of-scope，既有bundle提示/窄屏溢出及复核现场保留。以下未发布内容为历史检查点。
+
 ## 2026-09-27 双语展示与每轮输出语言
 
-ALVA-074已集成、未发布。唯一语言合同和词典在 packages/contracts/alva/i18n；网页展示适配不翻译 value/ID/用户原话，新增用户文本必须标 raw 或 translate=no。请求头 X-Alva-Language 与 Chat language 驱动 start/resume、引导和后台建议；MCP get_interface_language只读返回本轮语言，工具执行恢复同一上下文。导出缓存包含语言，不能跨语言复用旧文件。新增展示文案同步词典并保持用户存储值原样。机制与验收见 [ALVA-074](docs/ALVA-074-bilingual-interface.md)。
+ALVA-074已随96503ad联合发布。唯一语言合同和词典在 packages/contracts/alva/i18n；网页展示适配不翻译 value/ID/用户原话，新增用户文本必须标 raw 或 translate=no。请求头 X-Alva-Language 与 Chat language 驱动 start/resume、引导和后台建议；MCP get_interface_language只读返回本轮语言，工具执行恢复同一上下文。导出缓存包含语言，不能跨语言复用旧文件。新增展示文案同步词典并保持用户存储值原样。机制与验收见 [ALVA-074](docs/ALVA-074-bilingual-interface.md)。
 
 ## 2026-09-27 阶段导航统一入口
 
-ALVA-075已集成、未发布。右侧生活工作区随Chat阶段，右侧进入按钮复用StageControls服务端切换；阶段读取独立于确认卡读取，初始化完成前不发自动引导，切换中不发消息。074已保留这些行为并完成阶段导航回归。证据与边界见[ALVA-075](docs/ALVA-075-stage-navigation.md)。
+ALVA-075已随96503ad联合发布。右侧生活工作区随Chat阶段，右侧进入按钮复用StageControls服务端切换；阶段读取独立于确认卡读取，初始化完成前不发自动引导，切换中不发消息。074已保留这些行为并完成阶段导航回归。证据与边界见[ALVA-075](docs/ALVA-075-stage-navigation.md)。
 
 ## 2026-09-27 ALVA-073 已发布生产
 

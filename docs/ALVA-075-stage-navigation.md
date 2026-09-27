@@ -23,8 +23,8 @@
 
 ## 交付边界
 
-个人实现 `d490a7a` 已集成main，源码与最终验收清单一致；本票尚未发布生产。只对隔离合成项目执行写入；生产服务、项目与验证码未变。既有 Vite >500 kB bundle 提示保留。
+个人实现 `d490a7a` 已集成main，源码与最终验收清单一致；本票已随96503ad联合发布，线上边界见[发布收据](ALVA-074075-production-release.md)。只对隔离合成项目执行写入；生产服务、项目与验证码未变。既有 Vite >500 kB bundle 提示保留。
 
-neat-freak：代码、隔离浏览器及真实Chat/MCP changed-and-verified；规则 verified-current，目录/依赖边界未变；生产发布与生成记忆 out-of-scope。Worktree及失败/合成验收现场保留供复核。
+neat-freak：代码、隔离浏览器及真实Chat/MCP changed-and-verified；规则 verified-current，目录/依赖边界未变；生产发布 verified-current，登录后复验 pending，生成记忆 out-of-scope。Worktree及失败/合成验收现场保留供复核。
 
 收尾复核：本票验证后恢复068预览；09:40 UTC后的再次暂停由ALVA-074独占测试窗口执行，074服务配置带自己的恢复trap，本票不干预其测试。

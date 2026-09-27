@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/Alva/.runtime/alva07475-release/deploy.py", line 38, in <module>
+    shutil.copytree('/etc/systemd/system/alva.service.d',b/'previous-service-dropins')
+  File "/usr/lib/python3.12/shutil.py", line 600, in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/shutil.py", line 554, in _copytree
+    raise Error(errors)
+shutil.Error: [('/etc/systemd/system/alva.service.d/ALVA069-compact-chat.conf', '/home/ubuntu/Alva/.runtime/20260927T100723Z-ALVA074075-production/previous-service-dropins/ALVA069-compact-chat.conf', "[Errno 13] Permission denied: '/etc/systemd/system/alva.service.d/ALVA069-compact-chat.conf'")]
