@@ -1,0 +1,55 @@
+✔ ALVA-072 navigation preserves projects and isolates sessions, stale tabs, invitations and replay (10714.49912ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14816.98245
+✔ ALVA-072 both stage MCP packs expose project navigation with explicit errors and no implicit creation (11034.058611ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15092.497916
+✔ ALVA-008 requires the shared code before project, media, export, or model routes (10750.961432ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16619.653014
+✔ ALVA-031 designer requires shared code plus invite and remains read-only across direct write APIs (10591.271705ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15005.394116
+✔ ALVA-031 owner can revoke designer access; active session and old invite immediately stop working, designer can logout (10339.969451ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14385.519652
+✔ ALVA-031 invite management is owner-only even though list is GET (10099.92128ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13938.346191
+Isolated test cases passed: 6

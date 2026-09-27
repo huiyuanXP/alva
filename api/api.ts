@@ -1,3 +1,4 @@
+import {registerProjects} from './projects/routes.js';
 import type {FurnitureRenderer} from './furniture/render.js';
 import {LayoutOutputError} from './import/response.js';
 import {registerRecommendationQueue} from './mcp/recommendation-queue.js';
@@ -66,7 +67,8 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
   if(req.headers.origin&&req.headers.origin!==origin&&!['GET','HEAD'].includes(req.method))throw new DomainError(403,'来源不匹配');
   if(req.url.startsWith('/api/')&&!['/api/access','/api/public-access'].includes(req.url.split('?')[0])){
    const s=await store.session(req.cookies.alva_session||'');sessions.set(req,s);
-   const id=req.url.match(/^\/api\/projects\/([^/?]+)/)?.[1];if(id&&id!==s.projectId)throw new DomainError(403,'无权访问其他项目');
+   const expectedProject=req.headers['x-alva-project'];if(expectedProject&&expectedProject!==s.projectId&&req.url.split('?')[0]!=='/api/projects/navigate')throw new DomainError(409,'当前项目已在其他标签页切换，请刷新页面后重试');
+   const id=req.url.match(/^\/api\/projects\/([^/?]+)/)?.[1];if(id&&!['navigate','prepare'].includes(id)&&id!==s.projectId)throw new DomainError(403,'无权访问其他项目');
    const path=req.url.split('?')[0];
    if(s.role==='professional'&&!['GET','HEAD'].includes(req.method)&&!['/api/logout','/api/professional/walls/classify','/api/professional/walls/remove'].includes(path))throw new DomainError(403,'专业角色仅可执行受控墙体专业操作');
    if(s.role==='designer'&&!['GET','HEAD'].includes(req.method)&&path!=='/api/logout')throw new DomainError(403,'设计师入口为只读');
@@ -100,7 +102,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  app.get('/api/topology/versions',async req=>(await store.get(session(req).projectId)).topologyVersions||[]);
  app.get('/api/topology/confirmed',async req=>(await store.get(session(req).projectId)).confirmedTopology||null);
  registerDesignerAccess(app,store,session);
- app.post('/api/projects',async req=>{if(session(req).role!=='owner')reject('仅业主可新建',403);const {name}=z.object({name:z.string().min(1).max(100)}).parse(req.body);return store.create(name)});
+ registerProjects(app,store,session);
  const mutate=async(req:object,body:unknown,operation:string,fn:(p:Project)=>void|Promise<void>)=>{const s=session(req);if(s.role!=='owner')reject('仅业主可修改设计',403);const b=Command.parse(body);return store.mutate(s.projectId,b.requestId,b.expectedRevision,operation,body,fn)};
  app.post('/api/candidate/correct',async req=>{const b=Command.extend({scene:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-correct',p=>{const candidate=validateTopology(b.scene);candidate.calibration=null;for(const w of candidate.walls){w.structural='unknown';w.evidence=[]}p.candidate=candidate})});
  app.post('/api/candidate/topology',async req=>{const b=Command.extend({operation:z.unknown()}).parse(req.body);return mutate(req,b,'candidate-topology',p=>{applyCandidateTopology(p,b)})});

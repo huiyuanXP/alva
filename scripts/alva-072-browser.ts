@@ -1,0 +1,31 @@
+import {createServer} from 'node:net';
+import assert from 'node:assert/strict';
+import {randomBytes} from 'node:crypto';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {chromium,expect} from '@playwright/test';
+import {AlvaStore} from '../api/store.js';
+import {buildAlva} from '../api/api.js';
+const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA072-browser',out=resolve('evidence',run),root=resolve('.runtime',run);await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
+process.env.OPENAI_API_KEY||=process.env.NEWAPI_KEY;assert.ok(process.env.OPENAI_API_KEY,'Existing model credential required');process.env.ALVA_AGENT_DIR=resolve(root,'agents');process.env.ALVA_ACCESS_CODE=randomBytes(24).toString('hex');
+const store=new AlvaStore(resolve(root,'db'));await store.init();const first=await store.create('原来的家');await store.ensureAccessCode(first.project.id);
+const port=await new Promise<number>(done=>{const listener=createServer();listener.listen(0,'127.0.0.1',()=>{const port=(listener.address() as {port:number}).port;listener.close(()=>done(port))})});const origin=`http://127.0.0.1:${port}`;
+const app=await buildAlva(store,{assets:true,automaticRecommendations:false,origin});await app.listen({host:'127.0.0.1',port});const auth=await store.issueInternalSession(first.project.id);
+const browser=await chromium.launch({headless:true,executablePath:'/home/ubuntu/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',args:['--disable-dev-shm-usage','--renderer-process-limit=1','--disable-gpu']});const context=await browser.newContext({viewport:{width:1280,height:900}});await context.addCookies([{name:'alva_session',value:auth.token,url:origin}]);const page=await context.newPage(),errors:string[]=[],checks:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+try{
+ await page.goto(origin);await expect(page.getByRole('button',{name:'新建或切换项目'})).toHaveText('原来的家 ▾');
+ const chat=async(text:string)=>{await page.getByRole('textbox',{name:'咨询消息'}).fill(text);const done=page.waitForResponse(r=>r.url().endsWith('/api/chat'),{timeout:180000});await page.getByRole('button',{name:'发送 ↑',exact:true}).click();const response=await done;await response.finished();assert.equal(response.status(),200);await expect(page.getByRole('button',{name:'取消',exact:true})).toHaveCount(0,{timeout:180000});};
+ await chat('请为我准备一个名为“重新开始的家”的全新空项目，打开新建项目确认面板，等我点击后再创建。');
+ const dialog=page.getByRole('dialog',{name:'新建 / 切换项目'});await expect(dialog).toBeVisible();await expect(dialog.getByLabel('新项目名称')).toHaveValue('重新开始的家');const afterChat=await store.get(first.project.id);const tools=afterChat.messages.at(-1)!.toolCalls;assert.ok(tools?.some(t=>t.name==='request_project_navigation'&&!t.isError));assert.equal((await store.db.query('SELECT id FROM alva_projects')).rows.length,1);checks.push('real main Chat → floorplan HTTP MCP → visible project manager + UI receipt, no implicit creation');
+ await page.screenshot({path:resolve(out,'chat-create-confirm.png')});const oldThread=(await store.chatState(first.project.id)).threads.floorplan.threadId;assert.ok(oldThread);
+ await dialog.getByRole('button',{name:'新建并进入'}).click();await expect(page.getByRole('button',{name:'新建或切换项目'})).toHaveText('重新开始的家 ▾');
+ const current=await context.request.get(origin+'/api/project'),blank=await current.json();assert.notEqual(blank.id,first.project.id);assert.equal(blank.revision,0);assert.equal(blank.scene,null);assert.equal(blank.candidate,null);assert.equal(blank.savedVersion,0);assert.deepEqual(blank.messages,[]);await expect(page.getByRole('button',{name:'添加户型图 →'})).toBeVisible();
+ await page.reload();await expect(page.getByRole('button',{name:'新建或切换项目'})).toHaveText('重新开始的家 ▾');checks.push('confirmation creates an empty project, enters floorplan and survives reload');await page.screenshot({path:resolve(out,'empty-project.png')});
+ // Import entry must select a real attachment for main Chat, not call direct import.
+ const chooser=page.waitForEvent('filechooser');await page.getByRole('button',{name:'添加户型图 →'}).click();await (await chooser).setFiles({name:'synthetic-floorplan.png',mimeType:'image/png',buffer:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=','base64')});await expect(page.getByText('synthetic-floorplan.png',{exact:false}).first()).toBeVisible();checks.push('empty-state import selects an actual attachment for main Chat');await page.reload();
+ await chat('请列出我的项目，再打开切回“原来的家”的确认面板，等待我点击切换。');await expect(dialog).toBeVisible();const newChat=await store.get(blank.id);assert.ok(newChat.messages.at(-1)!.toolCalls?.some(t=>t.name==='list_projects'&&!t.isError));assert.ok(newChat.messages.at(-1)!.toolCalls?.some(t=>t.name==='request_project_navigation'&&!t.isError));
+ await dialog.locator('li').filter({hasText:'原来的家'}).getByRole('button',{name:'切换到此项目'}).click();await expect(page.getByRole('button',{name:'新建或切换项目'})).toHaveText('原来的家 ▾');assert.deepEqual(await store.get(first.project.id),afterChat);checks.push('real Chat lists projects and prepares switch; owner confirmation returns with original state intact');
+ await chat('请列出我的项目，不新建、不切换。');assert.equal((await store.chatState(first.project.id)).threads.floorplan.threadId,oldThread);checks.push('return to original project resumes the original main Chat thread');
+ await page.getByRole('button',{name:'新建或切换项目'}).click();await expect(dialog).toBeVisible();await page.setViewportSize({width:390,height:844});await page.screenshot({path:resolve(out,'mobile-projects.png')});const bounds=await dialog.boundingBox();assert.ok(bounds&&bounds.width<=390&&bounds.x>=0);await dialog.getByRole('button',{name:'关闭项目面板'}).click();
+ assert.deepEqual(errors,[]);await writeFile(resolve(root,'restart.json'),JSON.stringify({projectId:first.project.id,secondId:blank.id,session:auth.token,threadId:oldThread}));await writeFile(resolve(out,'result.json'),JSON.stringify({pass:true,checks,errors,tools,oldThread},null,2));console.log(JSON.stringify({out,root,checks}));
+}catch(error){await writeFile(resolve(out,'failure.json'),JSON.stringify({error:String(error),checks,errors},null,2));await page.screenshot({path:resolve(out,'failure.png')}).catch(()=>{});throw error}finally{await browser.close();await app.close();await store.close()}

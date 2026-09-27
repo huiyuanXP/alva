@@ -67,3 +67,7 @@ Agent 应根据错误指出未完成什么、具体原因与下一步（重新�
 ## 家具详细建模（ALVA-071）
 
 生活设计工具 `generate_furniture_model` 接收最新revision与existing/new目标，用户原话由服务端取当前Chat消息。它调用详细几何生成→同源三视角PNG→同会话视觉critic，最多3轮；不合格、渲染失败、取消或版本变化不得创建可采用候选。普通目录参数化模型不冒充本次定制/自检结果；生成成功仍须业主预览确认。长建模工具使主Chat单轮总上限为600秒，保留取消；具体审查合同与验证见 [ALVA-071](ALVA-071-furniture-models.md)。
+
+## 新建与切换项目（ALVA-072）
+
+两个阶段各自当前 MCP 工具包提供 `list_projects` 和 `request_project_navigation`，不同时加载两包。工具只列出业主授权目录，或通过 `project_manager` UI action 打开已校验的新建/切换面板并等待页面回执；`awaiting_user_confirmation` 不能解释为创建或切换成功。用户在面板点击后才调用共用项目服务，原会话 Chat 工具不会跨到另一项目写入。新项目有独立阶段 thread，切回原项目恢复原 thread；详见 [ALVA-072](ALVA-072-project-switching.md)。

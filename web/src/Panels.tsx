@@ -1,3 +1,4 @@
+import {projectFetch as fetch} from './projects/session.js';
 import {ProfessionalWallPanel} from './topology/ProfessionalWallPanel.js';
 import {RemodelPanel} from './topology/RemodelPanel.js';
 import {RoomMergePanel} from './topology/RoomMergePanel.js';

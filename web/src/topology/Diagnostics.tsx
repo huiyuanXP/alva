@@ -1,3 +1,4 @@
+import {projectFetch as fetch} from '../projects/session.js';
 import {useEffect,useState} from 'react';
 import type {Project,SceneData} from '../../../api/model.js';
 import type {TopologyDiagnosticsResponse,TopologyWarning,TopologyWarningCode} from '../../../packages/contracts/alva/topology-diagnostics.js';

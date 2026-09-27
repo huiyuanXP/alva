@@ -1,3 +1,11 @@
+## 2026-09-27 ALVA-072 已验收并集成，未发布
+
+顶部项目名已提供新建/切换入口；新项目为空并从主Chat户型附件开始，旧项目工作稿、保存版本及聊天保留。设备session独立选择，旧标签页请求有项目绑定，设计师/专业邀请固定原项目。当前阶段MCP可列项目及打开同一确认面板，用户点击后才创建/切换。
+
+16项相关回归、类型/构建、真实主Chat→HTTP MCP→页面回执→新建/切回与原thread恢复、独立进程重启、桌面/手机面板通过，页面错误0。详情及失败证据见 [ALVA-072](docs/ALVA-072-project-switching.md)。本票未发布，生产仍为071固定release；068临时预览已按原数据/配置恢复并健康。neat-freak收尾完成，既有bundle警告及主工作区手机横向溢出保留，复核现场保留。
+
+下一步：需要线上使用本入口时，按发布流程备份并切换已验候选，再验证登录/新建/切回。未自动创建生产项目或改验证码。ALVA-050依赖就绪未认领，ALVA-051仍等待050；其他任务不自动开工。
+
 ## 2026-09-27 GitHub 仓库同步
 
 用户授权将现有 main 推送至 https://github.com/huiyuanXP/alva 。origin 保持该仓库 HTTPS 地址；SSH publickey 认证未通过，使用已登录 huiyuanXP 的 GitHub CLI 配置 Git HTTPS 认证。推送结果以远端 main 与本地 HEAD 一致核验。
@@ -128,8 +136,7 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| ALVA-072 | 新建与切换项目 | `access` | codex-projects | task/ALVA-072-codex-projects / /home/ubuntu/Alva-worktrees/ALVA-072-codex-projects | api/store.ts、api/api.ts、api/chat.ts、web/src/main.tsx；独立端口待核验；in-progress |
-| [ALVA-049](.scratch/alva-completion/issues/42-acceptance-groups-5-8.md) | 验收组5–8 | `acceptance-scene` | lzy | 已合并 main；Worktree 已释放 | 编辑/保存/交付/桌面真实回归，独立 Cloudflare 通道；done |
+| [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
 

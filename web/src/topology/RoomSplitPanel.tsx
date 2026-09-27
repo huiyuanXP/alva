@@ -1,3 +1,4 @@
+import {projectFetch as fetch} from '../projects/session.js';
 import React,{useMemo,useRef,useState} from 'react';
 import type {Project,SceneData,XY} from '../../../api/model.js';
 import {SceneView} from '../SceneView.js';

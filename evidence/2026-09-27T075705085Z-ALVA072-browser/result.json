@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "checks": [
+    "real main Chat → floorplan HTTP MCP → visible project manager + UI receipt, no implicit creation",
+    "confirmation creates an empty project, enters floorplan and survives reload",
+    "empty-state import selects an actual attachment for main Chat",
+    "real Chat lists projects and prepares switch; owner confirmation returns with original state intact",
+    "return to original project resumes the original main Chat thread"
+  ],
+  "errors": [],
+  "tools": [
+    {
+      "name": "get_snapshot",
+      "stage": "floorplan",
+      "isError": false
+    },
+    {
+      "name": "request_project_navigation",
+      "stage": "floorplan",
+      "isError": false
+    }
+  ],
+  "oldThread": "01a0e1de-5a3c-7fa1-b844-967d5e85d8be"
+}

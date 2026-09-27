@@ -1,3 +1,4 @@
+import {projectFetch as fetch} from '../projects/session.js';
 import type {LocateReview} from '../review/ReviewPanel.js';
 import {ReviewPanel} from '../review/ReviewPanel.js';
 import React, {useEffect, useRef, useState} from 'react';

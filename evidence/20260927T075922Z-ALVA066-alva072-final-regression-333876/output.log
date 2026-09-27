@@ -1,0 +1,110 @@
+ALVA-072 persisted project list, current session, separate histories and original Chat thread verified in fresh process
+✔ ALVA-072 navigation preserves projects and isolates sessions, stale tabs, invitations and replay (10999.562961ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15097.914371
+✔ ALVA-072 both stage MCP packs expose project navigation with explicit errors and no implicit creation (10800.977919ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14683.835846
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (14191.583248ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18927.245093
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (10320.121266ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14346.170729
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (10061.261351ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14271.590079
+✔ two loopback MCP packs enforce stage, project, expiry and current authorization (128.532017ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1255.171164
+✔ MCP errors retain revision and actionable repair in the dynamic bridge (77.648409ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 769.696042
+✔ expired grants and cancellation cannot execute tools (37.650674ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 829.587848
+✔ stable catalog bridge discovers new stage tools and rejects removed or other-stage tools (105.107811ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 759.184918
+✔ vision contract failures preserve their stage and repair instructions through HTTP MCP (83.483168ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 793.85574
+✔ cancellation interrupts an HTTP MCP call while waiting for response headers (86.259506ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 769.90527
+✔ HTTP MCP argument errors retain field paths and tell the Agent how to repair them (37.075326ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 730.557935
+Isolated test cases passed: 12
