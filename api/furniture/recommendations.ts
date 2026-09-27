@@ -14,10 +14,10 @@ export function recommendationContext(p:Project,id:string){
  const rooms=(p.scene?.rooms||[]).filter(r=>!r.locked&&(!answer.roomId||r.id===answer.roomId));
  return {job,answer,rooms};
 }
-const FurnitureAddition=z.object({action:z.literal('add'),targetId:z.string().min(1).describe('目标房间ID，必须与values.roomId相同；不是资产ID'),values:z.object({assetId:z.string().min(1).describe('快照许可资产ID，例如alva-chair'),roomId:z.string().min(1).describe('目标房间ID'),x:z.number().finite().describe('房间内部的平面横坐标，单位米'),y:z.number().finite().describe('房间内部的平面纵坐标，单位米'),rotation:z.number().finite().optional()}).strict()}).strict();
+export const FurnitureAddition=z.object({action:z.literal('add'),targetId:z.string().min(1).describe('目标房间ID，必须与values.roomId相同；不是资产ID'),values:z.object({assetId:z.string().min(1).describe('快照许可资产ID，例如alva-chair'),roomId:z.string().min(1).describe('目标房间ID'),x:z.number().finite().describe('房间内部的平面横坐标，单位米'),y:z.number().finite().describe('房间内部的平面纵坐标，单位米'),rotation:z.number().finite().optional()}).strict()}).strict();
 const Suggestion=z.object({expectedRevision:z.number().int().min(0),roomIds:z.array(z.string()).min(1).max(30),variants:z.array(z.object({title:z.string().min(1).max(100),rationale:z.string().min(1).max(1200),changes:z.array(FurnitureAddition).min(1).max(30)}).strict()).min(1).max(3)}).strict();
 /** Bounded read-only search through the same placement validator; hints never adopt furniture. */
-function placementHints(scene:NonNullable<Project['scene']>,change:z.infer<typeof FurnitureAddition>){
+export function placementHints(scene:NonNullable<Project['scene']>,change:z.infer<typeof FurnitureAddition>){
  const room=scene.rooms.find(r=>r.id===change.values.roomId);if(!room||!assets.some(a=>a.id===change.values.assetId))return [];
  const xs=room.polygon.map(p=>p.x),ys=room.polygon.map(p=>p.y),minX=Math.min(...xs),minY=Math.min(...ys),width=Math.max(...xs)-minX,depth=Math.max(...ys)-minY;
  const hints:{x:number;y:number;rotation:number}[]=[];

@@ -1,0 +1,19 @@
+✔ confirmed scope resumes original demand, fails without candidates, retries and adopts once (10788.982071ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15160.724274
+✔ scope repair resumes same thread with compact assets, explicit add schema and atomic variants (10868.818973ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15222.692627
+Isolated test cases passed: 2

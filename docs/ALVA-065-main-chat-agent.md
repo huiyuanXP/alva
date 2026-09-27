@@ -75,3 +75,7 @@ Agent 应根据错误指出未完成什么、具体原因与下一步（重新�
 ## 界面输出语言（ALVA-074）
 
 主 Chat 请求显式携带 `language: zh | en`，默认取 `X-Alva-Language`（缺省中文）。每轮追加输出语言指令，覆盖历史语言；start/resume、阶段引导、问卷题卡和后台建议均遵守。阶段 MCP 的 `get_interface_language` 返回本轮语言；不修改业务 ID、原生选项值、用户原话或历史回答。实现与验收见 [ALVA-074](ALVA-074-bilingual-interface.md)。
+
+## 已确认范围的家具生成
+
+ALVA-081范围接续优先调用`get_furniture_context`读取许可资产与几何，`propose_changes`展示明确add参数。范围生成轮只装配家具/配色相关工具；空家具结果在原thread/原总时限内纠正一次，仍失败保留真实错误。多候选整批校验，不留下失败调用的部分候选。见[ALVA-081](ALVA-081-furniture-generation.md)。

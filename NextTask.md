@@ -1,6 +1,6 @@
-## ALVA-081 生成过程被提前中断 — in-progress
+## 2026-09-27 ALVA-081 已验收集成，准备发布
 
-Owner: codex-stream；分支 task/ALVA-081-codex-stream；Worktree /home/ubuntu/Alva-worktrees/ALVA-081-codex-stream。范围 api/chat.ts、范围接续回归与真实MCP验收；端口由监听自动分配。用户授权修复并直接发布。
+修复范围已确认却只生成配色的问题：精简家具MCP上下文、明确添加参数、错误修正提示、空结果同thread有限纠正及多候选原子验证。真实多房间两套候选/采用/刷新通过，页面错误0；最终类型与回归通过。见[ALVA-081](docs/ALVA-081-furniture-generation.md)。用户已授权直接上线，下一步备份并发布已验候选。其他票不自动开工。
 
 ## 2026-09-27 ALVA-080 已发布
 

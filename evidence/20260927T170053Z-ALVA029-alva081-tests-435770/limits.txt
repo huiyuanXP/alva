@@ -1,0 +1,6 @@
+run=20260927T170053Z-ALVA029-alva081-tests-435770
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1985
+bbe0bb061a37d2d44ca8adb02732b073afcf295b

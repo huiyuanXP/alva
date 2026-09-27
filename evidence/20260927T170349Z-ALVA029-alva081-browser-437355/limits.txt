@@ -1,0 +1,6 @@
+run=20260927T170349Z-ALVA029-alva081-browser-437355
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2069
+456504c956aa8cd65a4b0f092d858c128d012da4

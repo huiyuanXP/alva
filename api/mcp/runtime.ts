@@ -13,6 +13,7 @@ export type StageRunInput={
  snapshot:()=>Promise<unknown>;
  input:Omit<CodexInput,'session'|'tools'>;
  runModel?:(input:CodexInput)=>Promise<string>;
+ completionRepair?:()=>string|undefined;
  onTool?:(event:{stage:ChatStage;name:string;result:McpResult})=>void;
 };
 /** Uses exactly the active pack; callers cannot grant a stage via model arguments. */
@@ -46,6 +47,11 @@ export async function runStageChat(options:StageRunInput){
    await authorize();
    if(deadline-Date.now()>1000&&!input.signal?.aborted)result=await invoke(`执行核对：上一轮没有发出任何业务MCP调用，只有工具目录读取。因此不能报告业务工具不可用或调用失败。请继续完成原请求，实际使用 mcp_call_tool({name:"业务工具名",arguments:{}})；如只需讨论则如实回答。原请求：${input.text}`,deadline-Date.now());
    if(unobservedFailure(result))throw new McpError({code:'MCP_EXECUTION_UNVERIFIED',message:'Agent未实际调用业务工具，本次操作尚未执行；没有证据表明MCP服务不可用',retryable:true,repairActions:[{action:'retry_requested_operation',message:'重试原请求并检查实际业务工具结果；不要跳过复核或确认步骤'}]});
+  }
+  const repair=options.completionRepair?.();
+  if(repair&&deadline-Date.now()>1000&&!input.signal?.aborted){
+   await authorize();
+   result=await invoke(repair+'\n原请求：'+input.text,deadline-Date.now());
   }
   // Publish only the checked response; failed guesses must not be streamed as facts.
   input.onDelta?.(result);

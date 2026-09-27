@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "real": true,
+  "checks": [
+    "scope confirmation immediately starts main Chat without another user message",
+    "MCP returns scoped real candidates without adopting or saving",
+    "adoption inserts furniture into rendered main scene; reload persists without duplicate generation or snapshot"
+  ],
+  "errors": [],
+  "toolCalls": [
+    {
+      "name": "get_furniture_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "propose_changes",
+      "stage": "living",
+      "isError": true,
+      "errorCode": "INVALID_ARGUMENTS"
+    },
+    {
+      "name": "propose_changes",
+      "stage": "living",
+      "isError": true,
+      "errorCode": "INVALID_ARGUMENTS"
+    },
+    {
+      "name": "propose_changes",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_snapshot",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "propose_room_style",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "propose_room_style",
+      "stage": "living",
+      "isError": false
+    }
+  ],
+  "scopeGeneration": {
+    "status": "completed",
+    "proposalIds": [
+      "6d4a2653-c463-4a26-ad9e-aa43886bf045",
+      "f6a16dd8-ad41-43d7-a05b-fda913c6ab9c"
+    ]
+  },
+  "items": 5
+}

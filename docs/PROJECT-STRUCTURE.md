@@ -166,3 +166,5 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 ALVA-079：主工作区全屋与漫游统一由 `web/src/SceneView.tsx` 构建拓扑门窗几何；`scene/walkthrough/WalkthroughController.tsx` 只控制同一场景的第一人称相机和输入，碰撞复用 `collision.ts`。`BuildingView` 仅供独立建筑/快照展示，不再作为主漫游渲染器。阶段 MCP `set_view` 的 `walk` 通过既有 `ui-action` 合同和页面回执进入相同入口。
 
 ALVA-080：`api/scope/continuation.ts` 校验范围接续、保留原始需求并验证候选产出；`ScopeRequest` 类型统一由 `api/model.ts` 定义，`scope.ts` 仅兼容转出。`api/chat.ts` 在现役Chat/MCP链中持久化生成状态，主界面确认范围后接续同一Chat；旧已确认未生成范围提供恢复入口。
+
+ALVA-081：`api/furniture/context.ts`提供精简家具MCP上下文、添加schema、原校验器的位置修复提示及范围生成工具包；`api/mcp/runtime.ts`在同thread/总时限内最多追加一次结果纠正。见[家具生成修复](ALVA-081-furniture-generation.md)。

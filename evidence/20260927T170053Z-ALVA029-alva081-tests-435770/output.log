@@ -1,0 +1,64 @@
+✔ confirmed scope resumes original demand, fails without candidates, retries and adopts once (13457.156023ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18133.656717
+✔ scope repair resumes same thread with compact assets, explicit add schema and atomic variants (12352.741228ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17180.801168
+✔ ALVA-020 scope cancellation preserves design and does not create a snapshot (22.283161ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1133.214813
+✔ ALVA-020 confirms only unlocked in-range targets and binds proposals (31.948309ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 939.79441
+✔ actual Chat routes bridge only active MCP pack, retain threads, resume on switch, and require owner confirmation (11899.15408ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16572.820461
+✔ confirmation rejects stale basis, wrong stage, cross-project ID and concurrent reject/confirm (12560.800978ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17007.16758
+✔ unverified failure recovery retains a newly created thread, is bounded and never repeats observed business calls (10145.691218ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14913.395202
+Isolated test cases passed: 7
