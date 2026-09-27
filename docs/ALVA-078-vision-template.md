@@ -2,7 +2,7 @@
 
 用户授权：以 Your Home Vision 的苹果风格作为问卷和选择模板，右侧逐题填写，每段最多四题，Submit 一次发送左侧 Chat，Agent 统一回答并生成下一段；房间范围和设计采用使用 Room Vision 弹窗；取消右侧家具等独立选项卡。
 
-状态：done，已验收并集成 main；署名 codex-vision；依赖 ALVA-077 已集成。本票未发布。
+状态：done，已验收并集成 main；署名 codex-vision；依赖 ALVA-077 已集成。已发布固定 main 3542aaa；见[发布收据](ALVA-078-production-release.md)。
 
 ## 行为合同
 
@@ -30,7 +30,7 @@
 - [6项真实主Chat/MCP结果](../evidence/2026-09-27T152053111Z-ALVA078-real-chat/result.json)
 - [右侧问卷](../evidence/2026-09-27T152053111Z-ALVA078-real-chat/next-section-desktop.png)、[Room Vision确认弹窗](../evidence/2026-09-27T152026579Z-ALVA078-browser/room-vision-popup.png)
 
-生产仍是077固定release，本票未切换；旧068临时预览使用原工作区、原私有配置和原合成数据库恢复。所有失败 run 与合成复核现场保留。
+生产已切换078固定release；旧068临时预览使用原工作区、原私有配置和原合成数据库恢复。所有失败 run 与合成复核现场保留。
 
 已知验收环境问题：旧临时预览与测试共享整机 20% 内存限制，首轮扩大回归触发 OOM；暂停旧临时预览后单元回归通过。多进程 Chromium 加三维弹窗也触发一次 OOM，后续采用单进程 Chromium 降低验收占用，不改变产品渲染或放宽资源限额。旧预览已按原入口恢复，回源4188 /healthz复验记录随收尾保留。
 
@@ -38,6 +38,6 @@
 
 ## neat-freak 收尾
 
-代码与受影响合同/结构文档 changed-and-verified；AGENTS 单一规则来源 verified-current；生产发布 out-of-scope（当前077 release）；生成记忆 out-of-scope，未手改；工作区保留本票 Worktree、合成现场和失败证据供复核。既有 Vite bundle 体积提示保留，未把整站手机页头布局纳入本票。临时预览恢复后再次核验运行态；集成人覆盖根交接与认领表。
+代码与受影响合同/结构文档 changed-and-verified；AGENTS 单一规则来源 verified-current；生产公网表面 verified-current，登录后复验 pending；生成记忆 out-of-scope，未手改；工作区保留本票 Worktree、合成现场和失败证据供复核。既有 Vite bundle 体积提示保留，未把整站手机页头布局纳入本票。临时预览恢复后再次核验运行态；集成人覆盖根交接与认领表。
 
-集成收尾：已同步main的077发布记录，170个产品文件与最终验收候选一致，main构建通过。原068临时预览已恢复且健康，生产仍077固定release；[收尾收据](../evidence/20260927T152053111Z-ALVA078-closeout/result.json)。
+集成收尾：已同步main的077发布记录，170个产品文件与最终验收候选一致，main构建通过。原068临时预览已恢复且健康，生产现已发布078，详见发布收据；[收尾收据](../evidence/20260927T152053111Z-ALVA078-closeout/result.json)。

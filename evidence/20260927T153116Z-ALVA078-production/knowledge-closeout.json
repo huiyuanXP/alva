@@ -1,0 +1,12 @@
+{
+  "code": "verified-current",
+  "runtime": "public surface verified; authenticated pending",
+  "docs": "changed-and-verified",
+  "rules": "verified-current",
+  "memory": "out-of-scope",
+  "workspace": "verified-current; retained",
+  "warnings": [
+    "existing Vite bundle warning"
+  ],
+  "remote": "out-of-scope"
+}

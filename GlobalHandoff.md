@@ -1,6 +1,6 @@
 ## ALVA-078 全局 Vision 模板
 
-后续生活设计问卷/选项/确认复用 `web/src/vision/VisionTemplate.tsx` 的外框、选项和勾选组件，保留 Home Vision 苹果风格；不再添加家具等右侧独立选项卡。每段最多四题，Submit 合为一条消息沿现役批次链路调用主Chat/MCP并生成下一段；有待答段时自动引导等待。整段确认原子保存、按填写者隔离、相同提交可重试。详见[ALVA-078](docs/ALVA-078-vision-template.md)。本票已集成未发布，生产仍077。
+后续生活设计问卷/选项/确认复用 `web/src/vision/VisionTemplate.tsx` 的外框、选项和勾选组件，保留 Home Vision 苹果风格；不再添加家具等右侧独立选项卡。每段最多四题，Submit 合为一条消息沿现役批次链路调用主Chat/MCP并生成下一段；有待答段时自动引导等待。整段确认原子保存、按填写者隔离、相同提交可重试。详见[ALVA-078](docs/ALVA-078-vision-template.md)。本票已发布固定 main 3542aaa；公网健康、登录页和资源哈希通过，登录后复验 pending，见[078发布收据](docs/ALVA-078-production-release.md)。
 
 ## ALVA-077 问卷发送与决策依据
 

@@ -1,0 +1,21 @@
+{
+  "run": "20260927T153116Z-ALVA078-production",
+  "candidate": "3542aaab78ec21514eeca5752f6b73f7c2460107",
+  "verifiedSourceFiles": 173,
+  "backup": "/home/ubuntu/Alva/.runtime/20260927T153116Z-ALVA078-production",
+  "status": "live-verified-public-surface",
+  "rollback": "/home/ubuntu/Alva/.runtime/20260927T153116Z-ALVA078-production/rollback.sh",
+  "assets": {
+    "index-C1DrE0XX.css": "bf11a9a28ad642506a6c708d047d4ef7044a7e7009544399327f67e39bfae76f",
+    "index-Uab8xNMG.js": "11e4f304b168f616443e265afd93fbf79ed6cf330b4d93b6e2e11c356fd1fb24"
+  },
+  "localHealth": 200,
+  "publishedAt": "2026-09-27T15:31:43.264956+00:00",
+  "sourcePinned": true,
+  "publicHealth": 200,
+  "publicAssetHashesMatch": true,
+  "pageErrors": [],
+  "publicLoginPage": true,
+  "authenticatedVerification": "pending: no current access code or authenticated browser session available; no credentials changed",
+  "businessWrites": false
+}
