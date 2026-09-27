@@ -162,3 +162,5 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 ## ALVA-078 全局 Vision 模板
 
 `web/src/vision/VisionTemplate.tsx` 与 `vision-template.css` 统一 Home/Room Vision 外框、模态弹窗和选项按钮；原生 `intake/VisionFields.tsx`、`IntakeDialog.tsx` 和 Chat 生成题复用它。`api/consultation/vision-routes.ts` 的整段确认复用单题服务，`vision-questions.ts` 的生活 MCP 负责最多四题的动态问卷，`api/chat.ts` 在批次回复后生成下一段。行为和验证见 [ALVA-078](ALVA-078-vision-template.md)。
+
+ALVA-079：主工作区全屋与漫游统一由 `web/src/SceneView.tsx` 构建拓扑门窗几何；`scene/walkthrough/WalkthroughController.tsx` 只控制同一场景的第一人称相机和输入，碰撞复用 `collision.ts`。`BuildingView` 仅供独立建筑/快照展示，不再作为主漫游渲染器。阶段 MCP `set_view` 的 `walk` 通过既有 `ui-action` 合同和页面回执进入相同入口。

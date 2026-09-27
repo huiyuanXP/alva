@@ -1,3 +1,11 @@
+## 2026-09-27 ALVA-079 已验收并集成，未发布
+
+漫游与全屋统一使用 SceneView 的拓扑门窗渲染，保留真实门洞通行、墙窗/家具碰撞与输入暂停；主Chat可通过生活MCP set_view(mode=walk)进入相同场景。实际键盘穿门往返、门窗网格一致、暂停/房间切换、真实Chat/MCP页面回执与全屋5项浏览器回归通过，页面错误0；类型、5项相关回归和构建通过。个人实现46d83f8，详见[ALVA-079](docs/ALVA-079-walkthrough-renderer.md)。
+
+本票未发布，生产仍为078固定release。neat-freak已同步；既有bundle提示、失败run和复核Worktree保留，生成记忆/远端同步out-of-scope。050未认领、051仍等待050，不自动开工。
+
+下一步：如需线上使用，按发布流程备份并切换已验079候选，再登录验证漫游；不因集成自动发布。
+
 ## 2026-09-27 ALVA-078 已发布
 
 15:31 UTC 已发布固定 main `3542aaa`：Home Vision 苹果风格模板全局复用，每段最多四题、一次 Submit 发送 Chat 并生成下一段，Room Vision 确认弹窗及移除旧家具侧栏已上线。173项源码/配置与验收清单一致，服务健康、公网登录页和 JS/CSS 哈希检查通过，页面错误0。完整真实 Chat/MCP 闭环已在隔离环境验收；缺少现行验证码/有效会话，生产登录后复验 pending。见[发布收据](docs/ALVA-078-production-release.md)。
@@ -182,7 +190,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| ALVA-079 | 漫游复用全屋门窗渲染 | `render` | codex-walk | task/ALVA-079-codex-walk / /home/ubuntu/Alva-worktrees/ALVA-079-codex-walk | main.tsx、SceneView.tsx、WalkthroughController、ui-action共享合同及MCP视图描述；43139已核验空闲；in-progress |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。

@@ -85,3 +85,5 @@
 - [ALVA-076 阶段导航解除模型等待](issues/50-stage-navigation-blocking.md)：done，已发布并正常登录生产验证。
 
 - [ALVA-078 全局Vision模板与分段问卷循环](issues/51-vision-template.md)：done，已验收集成，未发布；右侧问卷与Room Vision确认模板统一。
+
+- [ALVA-079 漫游与全屋统一渲染](../../docs/ALVA-079-walkthrough-renderer.md)：done，已验收集成，未发布；主Chat MCP可进入漫游。

@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "run": "20260927-ALVA079-browser-4",
+  "sameGeometry": true,
+  "geometry": {
+    "door": false,
+    "header": true,
+    "window": false,
+    "sill": true,
+    "glass": true
+  },
+  "crossed": [
+    2.5000000000000004,
+    1.6199999999999997,
+    4.600000000000001
+  ],
+  "returnedThroughDoor": true,
+  "pointerLock": true,
+  "wasdDistance": 0.08000000000000007,
+  "mouseYawChanged": true,
+  "collision": {
+    "wall": false,
+    "door": true,
+    "furniture": false,
+    "free": true,
+    "window": false
+  },
+  "inputFocusClearsKeys": true,
+  "windowBlurClearsKeys": true,
+  "escapePausesWithoutDrift": true,
+  "roomNavigation": true,
+  "wholeHomeReturn": true,
+  "consoleErrors": []
+}

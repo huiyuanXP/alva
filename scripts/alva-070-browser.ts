@@ -47,7 +47,8 @@ const store=new AlvaStore();await store.init();
 const created=await store.create('ALVA070 synthetic');await store.ensureAccessCode(created.project.id);
 await store.mutate(created.project.id,randomUUID(),0,'seed',{},p=>{p.scene=fixture;const v=createTopologyVersion(p,fixture);p.confirmedTopology=v;p.topologyVersions=[v];p.confirmedBuilding=buildingFor(fixture,v.version,v.sourceFingerprint);p.buildingState={status:'confirmed',topologyVersion:v.version,topologyFingerprint:v.sourceFingerprint,attempts:1,updatedAt:new Date().toISOString()}});
 const app=await buildAlva(store,{assets:true,origin:'http://127.0.0.1'});const origin=await app.listen({host:'127.0.0.1',port:0});
-const browser=await chromium.launch({headless:true,executablePath:'/home/ubuntu/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage']});
+global.gc?.();
+const browser=await chromium.launch({headless:true,executablePath:'/home/ubuntu/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage','--renderer-process-limit=1','--single-process','--no-zygote','--js-flags=--max-old-space-size=96']});
 const checks:string[]=[],errors:string[]=[];
 try{
  const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript('globalThis.__name = (value) => value');const session=await store.issueInternalSession(created.project.id);await context.addCookies([{name:'alva_session',value:session.token,domain:'127.0.0.1',path:'/'}]);const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto(origin);await page.getByRole('button',{name:'全屋',exact:true}).click();

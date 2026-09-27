@@ -22,7 +22,7 @@ export class UiActionBridge{
   });
  }
  tool(store:AlvaStore,projectId:string,signal:AbortSignal,emit:(request:UiActionRequest)=>void):BusinessTool{return {
-  name:'set_view',description:'请求当前页面切换二维/三维、聚焦房间或调整日照（时间与年内日期）。仅改变显示，等待真实页面回执；没有 applied 回执不能宣称生效。',inputSchema:z.toJSONSchema(SceneUiActionSchema),run:async args=>{
+  name:'set_view',description:'请求当前页面切换二维/全屋三维/漫游（walk）、聚焦房间或调整日照（时间与年内日期）。仅改变显示，等待真实页面回执；没有 applied 回执不能宣称生效。',inputSchema:z.toJSONSchema(SceneUiActionSchema),run:async args=>{
    const action=UiActionSchema.parse(args),p=await store.get(projectId),scene=p.scene||p.candidate;
    if(!scene&&action.kind!=='project_manager')throw new DomainError(422,'请先导入户型才能调整预览');
    if(action.kind==='focus_room'&&action.roomId&&!scene!.rooms.some(r=>r.id===action.roomId))throw new DomainError(422,'房间不存在');

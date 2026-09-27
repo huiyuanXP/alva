@@ -1,3 +1,9 @@
+## 2026-09-27 ALVA-079 已验收并集成，未发布
+
+漫游与全屋统一使用 SceneView 的拓扑门窗渲染，保留真实门洞通行、墙窗/家具碰撞与输入暂停；主Chat可通过生活MCP set_view(mode=walk)进入相同场景。实际键盘穿门往返、门窗网格一致、暂停/房间切换、真实Chat/MCP页面回执与全屋5项浏览器回归通过，页面错误0；类型、5项相关回归和构建通过。个人实现46d83f8，详见[ALVA-079](docs/ALVA-079-walkthrough-renderer.md)。
+
+本票未发布，生产仍为078固定release。neat-freak已同步；既有bundle提示、失败run和复核Worktree保留，生成记忆/远端同步out-of-scope。050未认领、051仍等待050，不自动开工。
+
 ## 2026-09-27 ALVA-078 已发布
 
 15:31 UTC 已发布固定 main `3542aaa`：Home Vision 苹果风格模板全局复用，每段最多四题、一次 Submit 发送 Chat 并生成下一段，Room Vision 确认弹窗及移除旧家具侧栏已上线。173项源码/配置与验收清单一致，服务健康、公网登录页和 JS/CSS 哈希检查通过，页面错误0。完整真实 Chat/MCP 闭环已在隔离环境验收；缺少现行验证码/有效会话，生产登录后复验 pending。见[发布收据](docs/ALVA-078-production-release.md)。

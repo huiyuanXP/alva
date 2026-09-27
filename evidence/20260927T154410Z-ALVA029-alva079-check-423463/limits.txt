@@ -1,0 +1,6 @@
+run=20260927T154410Z-ALVA029-alva079-check-423463
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=1926
+9a62297ffe78ba0a987908c84da19cacf60857c7

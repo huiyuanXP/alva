@@ -1,3 +1,5 @@
+2026-09-27现役更新：[ALVA-079](../../../docs/ALVA-079-walkthrough-renderer.md)将主漫游统一到SceneView；下文BuildingView记录为039历史实现。
+
 # 32: 桌面漫游与输入暂停
 
 **ID:** ALVA-039

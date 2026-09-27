@@ -1,0 +1,27 @@
+{
+  "toolCalls": [
+    {
+      "name": "set_view",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_stage_guidance",
+      "stage": "living",
+      "isError": false
+    }
+  ],
+  "receipts": [
+    {
+      "status": 200,
+      "body": {
+        "id": "8df8d413-5754-498d-aec6-faf02b96a34b",
+        "status": "applied",
+        "applied": {
+          "kind": "view",
+          "mode": "walk"
+        }
+      }
+    }
+  ]
+}

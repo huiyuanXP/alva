@@ -1,0 +1,8 @@
+/home/ubuntu/Alva-worktrees/ALVA-079-codex-walk/scripts/alva-walkthrough-browser-check.ts:19
+ if(JSON.stringify(await signature())!==JSON.stringify(wholeRoom))throw new Error('whole room and walkthrough geometry differ');
+                                                                        ^
+
+Error: whole room and walkthrough geometry differ
+    at <anonymous> (/home/ubuntu/Alva-worktrees/ALVA-079-codex-walk/scripts/alva-walkthrough-browser-check.ts:19:73)
+
+Node.js v24.21.0

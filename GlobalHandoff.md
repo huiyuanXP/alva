@@ -1,3 +1,9 @@
+## 2026-09-27 ALVA-079 已验收并集成，未发布
+
+漫游与全屋统一使用 SceneView 的拓扑门窗渲染，保留真实门洞通行、墙窗/家具碰撞与输入暂停；主Chat可通过生活MCP set_view(mode=walk)进入相同场景。实际键盘穿门往返、门窗网格一致、暂停/房间切换、真实Chat/MCP页面回执与全屋5项浏览器回归通过，页面错误0；类型、5项相关回归和构建通过。个人实现46d83f8，详见[ALVA-079](docs/ALVA-079-walkthrough-renderer.md)。
+
+本票未发布，生产仍为078固定release。neat-freak已同步；既有bundle提示、失败run和复核Worktree保留，生成记忆/远端同步out-of-scope。050未认领、051仍等待050，不自动开工。
+
 ## ALVA-078 全局 Vision 模板
 
 后续生活设计问卷/选项/确认复用 `web/src/vision/VisionTemplate.tsx` 的外框、选项和勾选组件，保留 Home Vision 苹果风格；不再添加家具等右侧独立选项卡。每段最多四题，Submit 合为一条消息沿现役批次链路调用主Chat/MCP并生成下一段；有待答段时自动引导等待。整段确认原子保存、按填写者隔离、相同提交可重试。详见[ALVA-078](docs/ALVA-078-vision-template.md)。本票已发布固定 main 3542aaa；公网健康、登录页和资源哈希通过，登录后复验 pending，见[078发布收据](docs/ALVA-078-production-release.md)。
@@ -76,7 +82,7 @@ neat-freak：代码无改动；远端同步核验在本任务收尾执行；交�
 
 ## 主工作区3D渲染职责（ALVA-070）
 
-普通3D统一使用SceneView；BuildingView仅保留既有建筑漫游及独立建筑展示。选中变化不重建renderer；同房间家具/样式更新保留相机，显式房间切换仍聚焦。详情见 [交互合同与验收](docs/ALVA-070-scene-interaction.md)。已集成未发布。
+主工作区普通3D和漫游已由ALVA-079统一使用SceneView；BuildingView仅保留独立建筑/快照展示。选中变化不重建renderer；同房间家具/样式更新保留相机，显式房间切换仍聚焦。详情见 [交互合同与验收](docs/ALVA-070-scene-interaction.md)。已集成未发布。
 
 ## 2026-09-26 ALVA-047 已验收并集成
 
@@ -373,7 +379,7 @@ neat-freak过程事实已同步：局部代码/实测verified-current，整票/�
 
 
 ## 2026-09-26 · ALVA-039 桌面漫游输入与碰撞合同
-确认建筑的 walk 模式由独立 `WalkthroughController` 接管：Pointer Lock + WASD/方向键 + 鼠标 yaw/pitch；相机方向通过 OrbitControls target 驱动，与 BuildingView、ALVA-040 日照/季节 render loop 共存。碰撞从权威 SceneData 解析：墙体与旋转家具阻挡；仅 floor-level 且宽高足够的真实 door opening 放行，window 不作为通道。输入框聚焦、Esc、window blur 均清空按键并退出锁定，重新进入不得沿用旧输入。BuildingView host/alvaView 重建时控制器重新绑定最新实例。
+主工作区 walk 模式由独立 `WalkthroughController` 接管（ALVA-079起统一绑定SceneView）：Pointer Lock + WASD/方向键 + 鼠标 yaw/pitch；相机方向通过 OrbitControls target 驱动，与 SceneView、ALVA-040 日照/季节 render loop 共存。碰撞从权威 SceneData 解析：墙体与旋转家具阻挡；仅 floor-level 且宽高足够的真实 door opening 放行，window 不作为通道。输入框聚焦、Esc、window blur 均清空按键并退出锁定，重新进入不得沿用旧输入。SceneView host/alvaView 重建时控制器重新绑定最新实例。
 
 
 ## 2026-09-26 · ALVA-042 已确认参考图偏好 Stage MCP 合同
