@@ -17,7 +17,7 @@ import type {CodexInput} from '../api/codex.js';
 const pass={verdict:'pass',detailAdequate:true,matchesRequest:true,observations:['前右视角有独立座垫和圆角扶手','背左视角有独立背板及支撑连接','正面视角能看见坐垫边缘缝线'],issues:[],repairs:[]};
 const renders={images:['data:image/png;base64,YQ==','data:image/png;base64,Yg==','data:image/png;base64,Yw=='],views:['front-right','back-left','front-detail'],stats:{meshes:15,triangles:30000},bounds:{min:[-.5,0,-.5],max:[.5,1,.5]}};
 const dimensions={width:2.1,height:.8,depth:.9};
-test('all seven catalogue assets have distinct detailed geometry within authoritative footprint',()=>{
+test('all catalogue assets have distinct detailed geometry within authoritative footprint',()=>{
  for(const asset of assets){const model=validateFurnitureModel(catalogueFurniture(asset.id,asset.color,asset.material)),item=itemFromAsset(asset.id,'room',0,0);const object=furnitureObject(item);object.updateMatrixWorld(true);const size=new THREE.Box3().setFromObject(object).getSize(new THREE.Vector3()),stats=furnitureStats(object);assert.ok(stats.meshes>=8);assert.ok(stats.triangles>2500);for(const [actual,expected] of [[size.x,item.width],[size.y,item.height],[size.z,item.depth]])assert.ok(Math.abs(actual-expected)<1e-5,asset.id);assert.ok(model.parts.some(p=>p.role==='detail'));disposeFurniture(object)}
 });
 test('critic receives original request, design summary and actual render images; revision uses feedback before passing',async()=>{

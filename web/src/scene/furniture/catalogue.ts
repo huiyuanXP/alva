@@ -1,6 +1,8 @@
+import {homeFixture} from './home-fixtures.js';
 import type {FurnitureModelData,FurniturePartData} from '../../../../packages/contracts/alva/furniture-model.js';
 /** Original CC0 assemblies. Old instances acquire geometry without changing stored dimensions. */
 export function catalogueFurniture(assetId:string,color:string,material:string):FurnitureModelData{
+ const fixture=homeFixture(assetId,color);if(fixture)return fixture;
  const parts:FurniturePartData[]=[];
  const add=(label:string,shape:FurniturePartData['shape'],pos:number[],size:number[],role:FurniturePartData['role']='detail',mat=material,tint=color,rotation=[0,0,0],radius=.06)=>parts.push({id:`part-${parts.length}`,label,shape,position:pos as [number,number,number],size:size as [number,number,number],role,material:mat as FurniturePartData['material'],color:tint,rotation:rotation as [number,number,number],radius,path:[],profile:[]});
  const box=(label:string,pos:number[],size:number[],role:FurniturePartData['role']='detail',mat=material,tint=color)=>add(label,'roundedBox',pos,size,role,mat,tint);

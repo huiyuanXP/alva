@@ -1,0 +1,6 @@
+run=20260927T173144Z-ALVA029-alva082-script-types-443214
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2089
+7e68e315b5a20bc0330d6c16f0ea2c7270a9c7d2

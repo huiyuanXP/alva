@@ -168,3 +168,5 @@ ALVA-079：主工作区全屋与漫游统一由 `web/src/SceneView.tsx` 构建�
 ALVA-080：`api/scope/continuation.ts` 校验范围接续、保留原始需求并验证候选产出；`ScopeRequest` 类型统一由 `api/model.ts` 定义，`scope.ts` 仅兼容转出。`api/chat.ts` 在现役Chat/MCP链中持久化生成状态，主界面确认范围后接续同一Chat；旧已确认未生成范围提供恢复入口。
 
 ALVA-081：`api/furniture/context.ts`提供精简家具MCP上下文、添加schema、原校验器的位置修复提示及范围生成工具包；`api/mcp/runtime.ts`在同thread/总时限内最多追加一次结果纠正。见[家具生成修复](ALVA-081-furniture-generation.md)。
+
+ALVA-082：新增投影、电竞、厨房及卫浴的原创目录几何位于`web/src/scene/furniture/home-fixtures.ts`，复用catalogue分派和既有MCP/业务校验；资产权威仍在`api/model.ts`，store读取旧项目时刷新目录。

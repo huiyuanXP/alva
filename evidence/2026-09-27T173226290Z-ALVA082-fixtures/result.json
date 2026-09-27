@@ -1,0 +1,69 @@
+{
+  "pass": true,
+  "results": [
+    {
+      "id": "alva-projector",
+      "parts": 16,
+      "views": [
+        "front-right",
+        "back-left",
+        "front-detail"
+      ]
+    },
+    {
+      "id": "alva-screen",
+      "parts": 10,
+      "views": [
+        "front-right",
+        "back-left",
+        "front-detail"
+      ]
+    },
+    {
+      "id": "alva-gaming-desk",
+      "parts": 23,
+      "views": [
+        "front-right",
+        "back-left",
+        "front-detail"
+      ]
+    },
+    {
+      "id": "alva-kitchen-unit",
+      "parts": 21,
+      "views": [
+        "front-right",
+        "back-left",
+        "front-detail"
+      ]
+    },
+    {
+      "id": "alva-vanity",
+      "parts": 14,
+      "views": [
+        "front-right",
+        "back-left",
+        "front-detail"
+      ]
+    },
+    {
+      "id": "alva-shower",
+      "parts": 14,
+      "views": [
+        "front-right",
+        "back-left",
+        "front-detail"
+      ]
+    },
+    {
+      "id": "alva-toilet",
+      "parts": 10,
+      "views": [
+        "front-right",
+        "back-left",
+        "front-detail"
+      ]
+    }
+  ],
+  "errors": []
+}

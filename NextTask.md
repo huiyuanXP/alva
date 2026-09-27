@@ -1,6 +1,6 @@
-## ALVA-082 全屋家具与卫浴布置 — in-progress
+## 2026-09-27 ALVA-082 产品已集成，待发布与实际布置
 
-Owner: codex-home；分支task/ALVA-082-codex-home；Worktree /home/ubuntu/Alva-worktrees/ALVA-082-codex-home。用户授权代为生成全屋内容；补齐缺失许可程序几何，按现有业务校验布置与配色。共享api/model.ts、家具几何、Chat快照；测试随机端口。客户项目/凭据仅留私有运行目录。
+新增7类原创许可目录几何：投影设备、电竞桌、厨房组合柜和卫浴三件套；现有项目读取现役目录。类型、7项回归、构建、7类21张三视角及真实主Chat/MCP候选→采用→刷新通过。个人实现50c32de。见[ALVA-082](docs/ALVA-082-home-fixtures.md)。下一步按用户授权备份发布，并通过认证业务入口应用已校验家居布置；尚未写入客户家具。
 
 ## 2026-09-27 ALVA-081 已发布
 

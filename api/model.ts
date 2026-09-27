@@ -45,6 +45,13 @@ export const assets=[
 {id:'alva-cabinet',name:'收纳柜',width:1.2,depth:.45,height:1.8,material:'wood',color:'#bca68a',license:'CC0 · alva程序几何'},
 {id:'alva-plant',name:'绿植',width:.45,depth:.45,height:1.2,material:'wood',color:'#648268',license:'CC0 · alva程序几何'},
 {id:'alva-coffee',name:'咖啡机',width:.35,depth:.4,height:.4,material:'metal',color:'#535958',license:'CC0 · alva程序几何'},
+{id:'alva-projector',name:'投影仪与矮柜',width:1.0,depth:0.4,height:0.8,material:'wood',color:'#DDD5C6',license:'CC0 · alva原创程序几何'},
+{id:'alva-screen',name:'投影幕布',width:1.8,depth:0.18,height:1.8,material:'metal',color:'#F4F3EF',license:'CC0 · alva原创程序几何'},
+{id:'alva-gaming-desk',name:'电竞桌与电脑',width:1.4,depth:0.7,height:1.25,material:'wood',color:'#DCE8E1',license:'CC0 · alva原创程序几何'},
+{id:'alva-kitchen-unit',name:'厨房水槽灶台柜',width:1.6,depth:0.6,height:1.05,material:'wood',color:'#DFE6DB',license:'CC0 · alva原创程序几何'},
+{id:'alva-vanity',name:'洗手台与镜柜',width:0.6,depth:0.45,height:1.7,material:'wood',color:'#DDE7E2',license:'CC0 · alva原创程序几何'},
+{id:'alva-shower',name:'小型玻璃淋浴间',width:0.8,depth:0.8,height:2.1,material:'glass',color:'#D7E6E1',license:'CC0 · alva原创程序几何'},
+{id:'alva-toilet',name:'坐便器',width:0.4,depth:0.65,height:0.8,material:'stone',color:'#F4F3EE',license:'CC0 · alva原创程序几何'},
 ] as {id:string;name:string;width:number;depth:number;height:number;material:string;color:string;license:string}[];
 export function emptyProject(name='我们的家'):Project{return {roomLabelPositions:{},zones:[],scopeRequests:[],purposeConfirmations:[],layoutConfirmations:[],id:randomUUID(),name,revision:0,savedVersion:0,dirty:false,scene:null,candidate:null,answers:[],evidence:[],messages:[],findings:[],proposals:[],changes:[],archivedFurniture:[],assets:structuredClone(assets),topologyVersions:[],buildingState:{status:'idle',attempts:0,updatedAt:new Date().toISOString()},lastAnalysisEvidence:0,createdAt:new Date().toISOString()}}
 export class DomainError extends Error{constructor(public statusCode:number,message:string){super(message)}}
