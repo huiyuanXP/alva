@@ -1,3 +1,11 @@
+## 2026-09-27 GitHub 仓库同步
+
+用户授权将现有 main 推送至 https://github.com/huiyuanXP/alva 。origin 保持该仓库 HTTPS 地址；SSH publickey 认证未通过，使用已登录 huiyuanXP 的 GitHub CLI 配置 Git HTTPS 认证。推送结果以远端 main 与本地 HEAD 一致核验。
+
+本任务仅同步 Git，不改变生产部署或其他票状态。下一步保留原有待办，不自动开工；ALVA-070/071 公网登录只读复验仍待有效验证码。
+
+neat-freak：代码无改动；远端同步核验在本任务收尾执行；交接文档 changed-and-verified，规则 verified-current；生产与生成记忆 out-of-scope。原有未跟踪文件 alva-coordination.lock 和 `h -u origin main` 保留且不纳入提交。
+
 ## 2026-09-27 ALVA-070/071 已发布生产
 
 用户授权后已发布固定main `0c52ea0`，包含SceneView交互修复与详细家具生成/三视角critic。服务健康、公网资源哈希及生产真实三视角截图通过；旧验证码失效，登录后只读验收pending，已向用户请求当前验证码。未自动更改设计、采用家具或保存。生产已改由ALVA071-release.conf固定，旧069 release及数据备份可回滚；详见 [发布收据](docs/ALVA-071-production-release.md)。neat-freak已同步，失败与复核现场保留。下方未发布字样均为历史检查点。
