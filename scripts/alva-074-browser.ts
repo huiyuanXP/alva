@@ -8,7 +8,7 @@ import {chromium,expect} from '@playwright/test';
 import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
 import {seedLivingStage} from '../tests/fixtures/alva/living-stage.js';
-const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA074-browser',out=resolve('evidence',run),root=resolve('.runtime',run);await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
+const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA074-browser',out=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run)),root=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run),'private');await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
 process.env.OPENAI_API_KEY||=process.env.NEWAPI_KEY;assert.ok(process.env.OPENAI_API_KEY);process.env.ALVA_AGENT_DIR=resolve(root,'agents');process.env.ALVA_ACCESS_CODE=randomBytes(24).toString('hex');
 const store=new AlvaStore(resolve(root,'db'));await store.init();const {project}=await store.create('我的中文项目');await store.ensureAccessCode(project.id);
 const port=await new Promise<number>(done=>{const s=createServer();s.listen(0,'127.0.0.1',()=>{const port=(s.address() as {port:number}).port;s.close(()=>done(port))})}),origin=`http://127.0.0.1:${port}`;

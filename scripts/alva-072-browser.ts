@@ -6,7 +6,7 @@ import {resolve} from 'node:path';
 import {chromium,expect} from '@playwright/test';
 import {AlvaStore} from '../api/store.js';
 import {buildAlva} from '../api/api.js';
-const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA072-browser',out=resolve('evidence',run),root=resolve('.runtime',run);await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
+const run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA072-browser',out=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run)),root=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run),'private');await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
 process.env.OPENAI_API_KEY||=process.env.NEWAPI_KEY;assert.ok(process.env.OPENAI_API_KEY,'Existing model credential required');process.env.ALVA_AGENT_DIR=resolve(root,'agents');process.env.ALVA_ACCESS_CODE=randomBytes(24).toString('hex');
 const store=new AlvaStore(resolve(root,'db'));await store.init();const first=await store.create('原来的家');await store.ensureAccessCode(first.project.id);
 const port=await new Promise<number>(done=>{const listener=createServer();listener.listen(0,'127.0.0.1',()=>{const port=(listener.address() as {port:number}).port;listener.close(()=>done(port))})});const origin=`http://127.0.0.1:${port}`;

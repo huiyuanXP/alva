@@ -1,0 +1,11 @@
+[Unit]
+Description=Hourly Alva development artifact cleanup
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=60
+Unit=alva-artifact-gc.service
+
+[Install]
+WantedBy=timers.target

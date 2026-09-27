@@ -22,7 +22,7 @@
 ├── packages/contracts/           共享合同；alva 专用定义按票提取
 ├── Research/                     研究记录与示例分析
 ├── docs/                         项目结构、技术决策与开发说明
-├── evidence/<run-id>/            独立验收结果与截图
+├── evidence/<run-id>/            历史文本验收结果；临时产物不再入Git
 ├── tests/                        alva-*.test.ts；browser/ 为旧工程测试
 ├── scripts/                      alva-* 验收、运维脚本
 ├── ops/                          alva 服务配置；原 MCP 配置保留
@@ -56,7 +56,7 @@
 | 两端共享结构与纯校验 | `packages/contracts/alva/` | 无 Node、数据库、React、Three.js 或模型进程依赖 |
 | 模块内部类型/工具 | 使用它的模块目录内 | 不因名称叫 types/utils 就放共享包；只有真正跨模块复用才上移 |
 | 测试与合成夹具 | `tests/alva-<feature>.test.ts`；必要时新建 `tests/fixtures/alva/` | 使用合成/获准公开数据，不使用生产客户数据 |
-| 真实浏览器与模型验收 | `scripts/alva-<feature>-check.ts` | 结果写入独立 evidence run；私有原始数据留在 .runtime |
+| 真实浏览器与模型验收 | `scripts/alva-<feature>-check.ts` | 使用受锁保护的 .runtime/acceptance/<run-id>；视觉截图即用即弃，原始产物24小时过期，文本结论入docs |
 | 运维与发布 | `ops/alva/`；可执行探针在 `scripts/alva-*` | 模板与说明入库，有效配置留私有运行目录 |
 | 产品素材 | `web/src/assets/` | 随代码构建；用户上传不是产品素材，不放这里 |
 | 研究/技术决策 | `Research/`、`docs/` | 决策建议命名 `YYYY-MM-DD-<topic>.md`；专题文档直接放对应目录，不额外套项目名 |
@@ -170,3 +170,5 @@ ALVA-080：`api/scope/continuation.ts` 校验范围接续、保留原始需求�
 ALVA-081：`api/furniture/context.ts`提供精简家具MCP上下文、添加schema、原校验器的位置修复提示及范围生成工具包；`api/mcp/runtime.ts`在同thread/总时限内最多追加一次结果纠正。见[家具生成修复](ALVA-081-furniture-generation.md)。
 
 ALVA-082：新增投影、电竞、厨房及卫浴的原创目录几何位于`web/src/scene/furniture/home-fixtures.ts`，复用catalogue分派和既有MCP/业务校验；资产权威仍在`api/model.ts`，store读取旧项目时刷新目录。
+
+ALVA-084：开发产物管理入口`scripts/alva-artifacts.py`，自动任务`ops/alva/alva-artifact-gc.{service,timer}`；仅管理开发验收目录，详见[保留合同](ALVA-084-artifact-retention.md)。

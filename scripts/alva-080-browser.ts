@@ -9,7 +9,7 @@ import {buildAlva} from '../api/api.js';
 import {applyAnswer} from '../api/business.js';
 import {seedLivingStage} from '../tests/fixtures/alva/living-stage.js';
 import {createScopeRequest,confirmScope} from '../api/scope.js';
-const real=process.argv.includes('--real'),run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA080-'+(real?'real':'browser'),out=resolve('evidence',run),root=resolve('.runtime',run);await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
+const real=process.argv.includes('--real'),run=new Date().toISOString().replace(/[:.]/g,'')+'-ALVA080-'+(real?'real':'browser'),out=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run)),root=resolve(process.env.ALVA_ACCEPTANCE_DIR||resolve('.runtime','acceptance',run),'private');await mkdir(out,{recursive:true});await mkdir(root,{recursive:true});
 process.env.OPENAI_API_KEY||=process.env.NEWAPI_KEY;process.env.ALVA_AGENT_DIR=resolve(root,'agents');process.env.ALVA_ACCESS_CODE=randomBytes(24).toString('hex');
 const store=new AlvaStore(resolve(root,'db'));await store.init();const {project}=await store.create('Scope furniture synthetic');await store.ensureAccessCode(project.id);
 await store.mutate(project.id,randomUUID(),0,'seed',{},p=>{seedLivingStage(p);applyAnswer(p,{questionId:'Q01',roomId:null,text:'希望有阅读角',state:'answered',confirmed:true,locked:false});p.scene!.items=[];const id=randomUUID();p.messages.push({id,role:'user',text:'请为客厅摆放一张阅读椅，使用现有许可目录家具即可；保留现有房间和墙体，生成两种不同位置的方案供我比较。不要生成问卷。',status:'completed',stage:'living',createdAt:new Date().toISOString()});p.scopeRequests=[createScopeRequest(p,{roomIds:['room'],itemIds:[],reason:'阅读椅摆放范围',sourceMessageId:id})];});
