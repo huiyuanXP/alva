@@ -158,3 +158,7 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 ## ALVA-077 问卷批次与候选队列
 
 `api/furniture/proposal-decisions.ts`维护候选设计依据和轮次替换，`packages/contracts/alva/canonical-json.ts`提供跨数据库键顺序稳定比较。批次与已发送状态随Project持久化；前端主Chat发送按钮、Proposal卡片、SceneView分别负责显式发送、逐张决策和隐藏小预览日照说明。见[行为与验收](ALVA-077-questionnaire-batches.md)。
+
+## ALVA-078 全局 Vision 模板
+
+`web/src/vision/VisionTemplate.tsx` 与 `vision-template.css` 统一 Home/Room Vision 外框、模态弹窗和选项按钮；原生 `intake/VisionFields.tsx`、`IntakeDialog.tsx` 和 Chat 生成题复用它。`api/consultation/vision-routes.ts` 的整段确认复用单题服务，`vision-questions.ts` 的生活 MCP 负责最多四题的动态问卷，`api/chat.ts` 在批次回复后生成下一段。行为和验证见 [ALVA-078](ALVA-078-vision-template.md)。

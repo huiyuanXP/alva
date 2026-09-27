@@ -1,3 +1,4 @@
+import {VisionShell} from '../vision/VisionTemplate.js';
 import {raw as untranslated,t,LanguageSwitch,useLanguage} from '../i18n/language.js';
 import {projectFetch as fetch} from '../projects/session.js';
 import {ChatAnswers} from './ChatAnswers.js';
@@ -8,10 +9,11 @@ import {Field} from './VisionFields.js';
 import {completeValue,hasValue} from '../../../packages/contracts/alva/home-vision/field-values.js';
 import {updateReferences} from '../../../packages/contracts/alva/home-vision/references.js';
 import './vision.css';
-type Props={project:Project;readOnly:boolean;onUpdate:(p:Project)=>void;onClose:()=>void};
+type Props={project:Project;readOnly:boolean;onUpdate:(p:Project)=>void;onClose:()=>void;embedded?:boolean;respondentId?:string;onSubmit?:(respondentId:string,text:string)=>Promise<unknown>};
 function display(v:Value|undefined):string{if(v==null)return t('Not answered');if(typeof v==='string'||typeof v==='number')return String(v);if(Array.isArray(v))return v.map(display).join(', ');return Object.entries(v).filter(([k])=>!['data','mime'].includes(k)).map(([k,x])=>k==='name'?String(x):display(x)).join(' · ')}
-export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
+export function IntakeDialog({project,readOnly,onUpdate,onClose,embedded=false,respondentId,onSubmit}:Props){
  const language=useLanguage();
+ const [sectionCount,setSectionCount]=useState(0),[submitting,setSubmitting]=useState(false);
  const dialog=useRef<HTMLDialogElement>(null),focus=useRef(document.activeElement as HTMLElement|null);
  const [people,setPeople]=useState<Response[]>([]),[current,setCurrent]=useState<Response|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(''),[saving,setSaving]=useState(false),[dirty,setDirty]=useState(false),[saved,setSaved]=useState(false),[overview,setOverview]=useState(false),[newName,setNewName]=useState(''),[addPerson,setAddPerson]=useState(false),[conflict,setConflict]=useState(false);
  const state=useRef<Response|null>(null),generation=useRef(0),persisted=useRef(0),mutex=useRef<Promise<boolean>|null>(null),mounted=useRef(true);
@@ -24,17 +26,19 @@ export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
    if(!response.ok)throw new Error('Unable to load your answers. Please retry.');
    const data=await response.json();
    if(!mounted.current)return;
-   const wanted=state.current?.id||new URLSearchParams(location.hash.slice(1)).get('vision');
+   const wanted=respondentId||state.current?.id||new URLSearchParams(location.hash.slice(1)).get('vision');
    const selected=data.responses.find((r:Response)=>r.id===wanted);
    if(wanted&&!selected)throw new Error('This response is not available. Check the shared link or reopen from the project.');
    const loaded=selected||data.responses[0]||{id:crypto.randomUUID(),name:t('Your answers'),answers:{},cursor:'Q01',updatedAt:'',version:0};
-   const next=loaded.cursor==='Q02'?{...loaded,cursor:'Q03'}:loaded;
+   const remaining=embedded?path(loaded.answers).find(c=>c.items.some(i=>condition(i.show_if,loaded.answers,flags(loaded.answers))&&!loaded.answers[i.id])):undefined;
+   const next=embedded?{...loaded,cursor:remaining?.card||'complete'}:loaded.cursor==='Q02'?{...loaded,cursor:'Q03'}:loaded;
    pending.current=null;generation.current=0;persisted.current=0;
    setPeople(data.responses);setDirty(false);setConflict(false);assign(next,false);
   }catch(e){if(mounted.current)setError((e as Error).message)}
   finally{if(mounted.current)setLoading(false)}
  };
  useEffect(()=>{
+  if(embedded){mounted.current=true;void load();return()=>{mounted.current=false}}
   const old=document.body.style.overflow;
   document.documentElement.classList.add('hv-modal-open');
   document.body.style.overflow='hidden';dialog.current?.showModal();mounted.current=true;void load();
@@ -90,16 +94,19 @@ export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
  const go=(next:string)=>{if(!current)return;assign({...state.current!,cursor:next},!readOnly);setOverview(false);dialog.current?.scrollTo({top:0});};
  const put=(id:string,value:Value,status:'answered'|'unknown'|'skipped'='answered')=>{if(readOnly||!state.current)return;const base=id==='Q09a'&&status==='answered'?updateReferences(state.current.answers,value):state.current.answers;const next={...base,[id]:{state:status,value}};assign({...state.current,answers:next});if(!conflict)setError('')};
  const progressTotal=stageCards.filter(c=>c.card.startsWith('Q')).length||stageCards.length;const progressPosition=Math.max(1,stageCards.slice(0,idx+1).filter(c=>c.card.startsWith('Q')).length);
- const next=()=>{const n=route.indexOf(card);go(route[n+1]?.stage===stage?route[n+1].card:'summary:'+stage)};
- const skip=()=>{if(!readOnly&&state.current){const answers={...a};for(const i of visible)if(!answered(a,i.id))answers[i.id]={state:'skipped',value:null};assign({...state.current,answers})}next()};
+ const sectionEnd=!!onSubmit&&(sectionCount>=3||route[route.indexOf(card)+1]?.stage!==stage);
+ const next=()=>{const n=route.indexOf(card);setSectionCount(c=>c+1);go(route[n+1]?.stage===stage?route[n+1].card:'summary:'+stage)};
+ const submitSection=async()=>{if(!onSubmit||!current)return;setSubmitting(true);try{const n=route.indexOf(card);go(route[n+1]?.card||'complete');if(!await persist())return;await onSubmit(current.id,route.slice(Math.max(0,n-sectionCount),n+1).flatMap(c=>c.items.filter(i=>condition(i.show_if,state.current!.answers,flags(state.current!.answers))).map(i=>{const a=state.current!.answers,answer=a[i.id];let value=display(raw(a,i.id));for(const option of options(i,a))value=value.replaceAll(option.id,t(option.label));return prompt(i,a)+'\n'+(answer?.state==='unknown'?t('Not sure yet'):answer?.state==='skipped'?t('Skip for now'):value)})).join('\n\n'));setSectionCount(0)}catch(e){setError((e as Error).message)}finally{setSubmitting(false)}};
+ const skip=()=>{if(!readOnly&&state.current){const answers={...a};for(const i of visible)if(!answered(a,i.id))answers[i.id]={state:'skipped',value:null};assign({...state.current,answers})}if(!sectionEnd)next()};
  const effective=activeAnswers(a);
- const ready=visible.some(i=>answered(effective,i.id)||a[i.id]?.state==='unknown');
+ const ready=visible.some(i=>answered(effective,i.id)||a[i.id]?.state==='unknown'||a[i.id]?.state==='skipped');
  const valid=visible.every(i=>!hasValue(raw(a,i.id))||completeValue(i,raw(a,i.id),field=>condition(field.show_if,a,f)));
  const switchPerson=async(id:string)=>{if(!await persist())return;const r=people.find(p=>p.id===id);if(r){generation.current=0;persisted.current=0;assign(r,false);setDirty(false);setOverview(false)}};
  const create=async()=>{if(!newName.trim()||!await persist())return;generation.current=0;persisted.current=0;assign({id:crypto.randomUUID(),name:newName.trim(),answers:{},cursor:'Q01',version:0,updatedAt:''});setAddPerson(false);setNewName('')};
  const title=summary?(language==='en'?'Your '+stages[Number(stage.slice(1))-1].toLowerCase()+' summary':t(stages[Number(stage.slice(1))-1])+'总结'):done?'Your home vision, captured':overview?'Your answers':prompt(visible[0]||card.items[0],a,f);
- return <dialog data-card={card.card} className={'hv-dialog '+(['Q05','Q07','Q08'].includes(card.card)||summary||overview?'wide':'')} ref={dialog} aria-label="Your Home Vision" onCancel={e=>{e.preventDefault();void close()}}><div className="hv-shell">
- <div className="hv-top"><LanguageSwitch disabled={saving}/>{!loading&&cursor!=='Q01'&&<button className="hv-round" aria-label="Previous question" onClick={()=>{if(summary)go(stageCards.at(-1)!.card);else if(overview)setOverview(false);else go(route[Math.max(0,route.indexOf(card)-1)].card)}}>‹</button>}<div><span className="hv-stage">{stages[Number(stage.slice(1))-1]} · {summary||done?progressTotal:progressPosition} of {progressTotal}</span><progress max={progressTotal||1} value={summary||done?progressTotal:progressPosition} aria-label="Stage progress"/></div><button className="hv-round" aria-label="Save and close questionnaire" onClick={()=>void close()}>×</button></div>
+ const Container=embedded?'section':'dialog';
+ return <Container data-card={card.card} className={'hv-dialog '+(embedded?'hv-embedded ':'')+(['Q05','Q07','Q08'].includes(card.card)||summary||overview?'wide':'')} ref={dialog as any} aria-label="Your Home Vision" onCancel={e=>{e.preventDefault();void close()}}><VisionShell>
+ <div className="hv-top">{!embedded&&<LanguageSwitch disabled={saving}/>}{!loading&&cursor!=='Q01'&&<button className="hv-round" aria-label="Previous question" onClick={()=>{setSectionCount(c=>Math.max(0,c-1));if(summary)go(stageCards.at(-1)!.card);else if(overview)setOverview(false);else go(route[Math.max(0,route.indexOf(card)-1)].card)}}>‹</button>}<div><span className="hv-stage">{embedded?'Your Home Vision':stages[Number(stage.slice(1))-1]} · {onSubmit?Math.min(sectionCount+1,4):summary||done?progressTotal:progressPosition} / {onSubmit?4:progressTotal}</span><progress max={progressTotal||1} value={summary||done?progressTotal:progressPosition} aria-label="Stage progress"/></div>{!embedded&&<button className="hv-round" aria-label="Save and close questionnaire" onClick={()=>void close()}>×</button>}</div>
  {loading?<p role="status">Loading your answers…</p>:!current?<p>Unable to load the questionnaire.</p>:<>
  <div className="hv-heading"><h2 className="hv-title" id="hv-title">{title}</h2><p className="hv-subtitle">{summary?'Review your answers. Select a question to make a change.':done?'Review your answers with your designer. Nothing is final until you agree on it together.':overview?'Pick a stage to review or continue.':visible[0]?.helper&&visible[0].helper!=='Collapsed by default.'?visible[0].helper:card.card==='Q05'?'Select all that apply.':''}</p></div>
  {overview?<div className="hv-summary">{stages.map((s,n)=><button key={s} onClick={()=>go('summary:S'+(n+1))}><b>{s}</b><small>{route.filter(c=>c.stage==='S'+(n+1)).flatMap(c=>c.items).filter(i=>answered(a,i.id)).length} answers recorded</small></button>)}</div>:summary||done?<div className="hv-summary">{(done?route:stageCards).map(c=><button key={c.card} onClick={()=>go(c.card)}><b>{prompt(c.items[0],a,f)}</b>{c.items.filter(i=>condition(i.show_if,a,f)).map(i=>{const answer=a[i.id];const opts=options(i,a,f);let value=display(raw(effective,i.id));for(const o of opts)value=value.replaceAll(o.id,t(o.label));return <small key={i.id}>{answer?.state==='unknown'?'Not sure yet':answer?.state==='skipped'?'Skipped — revisit anytime':untranslated(value)}</small>})}</button>)}{done&&priorities(a,people).length>0&&<details><summary>Topics to discuss with your designer</summary>{priorities(a,people).map(p=><p className="hv-note" key={p.id}>{p.note}</p>)}</details>}</div>:<div className="hv-items" key={card.card}>{card.collapsed?<details><summary>Optional: share sensitivities</summary>{visible.map(i=><Field key={i.id} item={i} answers={a} put={put} disabled={readOnly}/>)}</details>:visible.map((i,n)=><Field key={i.id} item={i} answers={a} put={put} disabled={readOnly} hideTitle={n===0}/>)}</div>}
@@ -107,9 +114,9 @@ export function IntakeDialog({project,readOnly,onUpdate,onClose}:Props){
  {f.has('ACCESS_SIGNAL')&&!a.C2a&&!['C2','Q01','Q02','Q03','Q04'].includes(card.card)&&<button className="hv-ghost" onClick={()=>go('C2')}>Would you like to share any accessibility needs?</button>}
  {(done||card.card==='C5')&&f.has('MULTI_DECIDER')&&!readOnly&&<div><button className="hv-ghost" onClick={()=>setAddPerson(true)}>Invite someone to add their own answers</button><p className="hv-note">Keep each person's preferences separate. They can answer here, or use a link with the project's existing access code.</p>{addPerson&&<div className="hv-row"><input className="hv-field" placeholder="Their name" aria-label="New respondent name" value={newName} maxLength={80} onChange={e=>setNewName(e.target.value)}/><button className="hv-ghost" onClick={()=>void create()}>Create separate response</button></div>}</div>}
  <ChatAnswers response={current}/>
- <div className="hv-footer"><div>{summary||done||overview?<button className="hv-ghost" onClick={()=>setOverview(!overview)}>Review all stages</button>:<button className="hv-ghost" onClick={skip}>Skip for now</button>}<small>You can change this anytime.</small></div><button className="hv-cta" disabled={loading||saving||(!summary&&!done&&!overview&&!readOnly&&(!ready||!valid))} onClick={()=>{if(done)void close();else if(summary){const n=Number(stage.slice(1));go(n===7?'complete':route.find(c=>c.stage==='S'+(n+1))?.card||'complete')}else if(overview)setOverview(false);else next()}}>{done?'Save & close':summary?'Next stage':'Continue'}</button></div>
+ <div className="hv-footer"><div>{summary||done||overview?<button className="hv-ghost" onClick={()=>setOverview(!overview)}>Review all stages</button>:<button className="hv-ghost" onClick={skip}>Skip for now</button>}<small>You can change this anytime.</small></div><button className="hv-cta" disabled={loading||saving||submitting||(!summary&&!done&&!overview&&!readOnly&&(!ready||!valid))} onClick={()=>{if(sectionEnd&&!summary&&!done&&!overview){void submitSection();return}if(done)void close();else if(summary){const n=Number(stage.slice(1));go(n===7?'complete':route.find(c=>c.stage==='S'+(n+1))?.card||'complete')}else if(overview)setOverview(false);else next()}}>{submitting?(language==='en'?'Submitting…':'正在提交…'):sectionEnd&&!summary&&!done&&!overview?(language==='en'?'Submit':'提交'):done?'Save & close':summary?'Next stage':'Continue'}</button></div>
  </>}
  {error&&<div role="alert" className="hv-error">{error}{!current?<button className="hv-ghost" disabled={loading} onClick={()=>void load()}>Retry loading</button>:conflict?<><button className="hv-ghost" onClick={()=>void navigator.clipboard.writeText(JSON.stringify(state.current,null,2)).catch(()=>setError('Could not copy. Your edits are still in this window.'))}>Copy unsaved answers</button><button className="hv-ghost" onClick={()=>{if(window.confirm(t('Discard the unsaved edits in this window and load the latest saved answers?')))void load()}}>Load saved answers</button></>:<button className="hv-ghost" disabled={saving} onClick={()=>void persist()}>Retry save</button>}</div>}
  <div className="hv-savebar"><span role="status">{readOnly?'Read-only view':saving?'Saving…':dirty?'Unsaved changes':saved||current?.updatedAt?'All changes saved':'Answers save automatically'}</span><div className="hv-row">{people.length>1&&<select aria-label="Respondent" className="hv-person" value={current?.id} onChange={e=>void switchPerson(e.target.value)}>{people.map(p=><option key={p.id} value={p.id}>{untranslated(p.name)}</option>)}</select>}<button className="hv-ghost" disabled={loading} onClick={()=>setOverview(!overview)}>Review</button><button className="hv-ghost" disabled={loading||saving||readOnly} onClick={()=>void persist()}>Save now</button>{current&&people.length>1&&<button className="hv-ghost" onClick={()=>void navigator.clipboard.writeText(location.origin+location.pathname+'#vision='+current.id).then(()=>setSaved(true)).catch(()=>setError('Unable to copy the link.'))}>Copy link</button>}</div></div>
- </div></dialog>;
+ </VisionShell></Container>;
 }

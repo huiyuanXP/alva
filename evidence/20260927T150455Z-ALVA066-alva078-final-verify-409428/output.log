@@ -1,0 +1,108 @@
+✔ one section commits all answers of the same respondent without self-staling (104.195139ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1263.365216
+✔ invalid later answer rolls back the whole section (103.377285ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1160.844008
+✔ section rejects mixed respondents and stale versions before saving (93.857598ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 943.45832
+✔ living MCP can generate four distinct questions in one section and rejects a fifth (167.233638ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1190.64688
+✔ retry after a committed section is idempotent and cannot silently replace submitted choices (107.64229ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 994.981783
+✔ ALVA-073 checkpoints follow actual progress and survive message writes and reload (5.526104ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4748.275339
+✔ ALVA-073 living skips answered unknown skipped and hidden questions per respondent (97.45819ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4328.830783
+✔ ALVA-073 automatic Chat uses MCP, no fake user evidence, deduplicates and retries failed checks (10846.640765ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14953.024266
+✔ ALVA-073 concurrent automatic requests run once and stage changes invalidate their guidance (12113.04423ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16196.783233
+✔ ALVA-073 living MCP enforces next question, separates respondents and reuses pending cards (11702.332989ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15842.323913
+Isolated test cases passed: 10
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 2714 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                     0.38 kB │ gzip:   0.30 kB
+web/dist/assets/index-DzPDFnk4.css     43.07 kB │ gzip:   9.73 kB
+web/dist/assets/index-e8DhgqqS.js   1,701.75 kB │ gzip: 520.64 kB
+
+✓ built in 2.42s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+{"out":"/home/ubuntu/Alva-worktrees/ALVA-078-codex-vision/evidence/2026-09-27T150632820Z-ALVA078-browser","checks":["one question at a time; choices are drafts until section Submit; no furniture tabs","one Submit saves both answers, sends one main Chat turn, and displays the Agent’s next section through MCP","refresh restores the next section without sending a duplicate turn","narrow viewport keeps Vision options usable","Room Vision popup shares the template, renders a real preview and closes without adopting"]}
+{"out":"/home/ubuntu/Alva-worktrees/ALVA-078-codex-vision/evidence/2026-09-27T150654716Z-ALVA078-real-chat","checks":["one question at a time; choices are drafts until section Submit; no furniture tabs","one Submit saves both answers, sends one main Chat turn, and displays the Agent’s next section through MCP","refresh restores the next section without sending a duplicate turn","narrow viewport keeps Vision options usable","Room Vision popup shares the template, renders a real preview and closes without adopting"]}

@@ -17,7 +17,7 @@
 `api/consultation/vision-questions.ts`导出`createVisionQuestionTools`，只装配到living MCP：
 
 - `read_question_context({questionId?})`：未指定题号时列出当前可见题目，指定后返回原生选项、当前填写者版本及依据。只读，不传上传字节，不把附件元数据作为需求事实。
-- `ask_question`：要求hypothesis/basis/uncertainty/question/reason/options/assumptions；选项包含title/outcome/example/tradeoff及原生value。验证题号、条件、值格式、唯一性、填写者、版本与原话引用，每轮最多两题。只排队，成功Chat轮次才写入`Project.visionQuestions`，失败或取消不落卡。
+- `ask_question`：要求hypothesis/basis/uncertainty/question/reason/options/assumptions；选项包含title/outcome/example/tradeoff及原生value。验证题号、条件、值格式、唯一性、填写者、版本与原话引用，每段最多四题（ALVA-078）。只排队，成功Chat轮次才写入`Project.visionQuestions`，失败或取消不落卡。
 
 旧目录中的ask_question同名但不同结构，Resume时必须重读现役MCP目录。新工具只接受Home Vision原生题号，不能把旧Q07映射成Q07a；旧提取工具propose_answer只保留明确旧题场景，不能写Home Vision。旧增量追问卡引导回主Chat重构问题，不直接复述旧题。
 

@@ -41,7 +41,37 @@ export function confirmVisionQuestion(p:Project,b:z.infer<typeof Confirm>){
  if(b.state==='answered')p.answerRecommendations=[...(p.answerRecommendations||[]),{id:randomUUID(),questionId:card.questionId,respondentId:r.id,roomId:card.roomId,evidenceId,status:'pending',createdAt:at}];
  card.status='confirmed';
 }
+const SectionConfirm=Confirm.omit({id:true,optionId:true,customText:true,state:true}).extend({answers:z.array(Confirm.pick({id:true,optionId:true,customText:true,state:true})).min(1).max(4)});
+export function confirmVisionSection(p:Project,b:z.infer<typeof SectionConfirm>){
+ const cards=b.answers.map(a=>p.visionQuestions?.find(c=>c.id===a.id));
+ if(new Set(b.answers.map(a=>a.id)).size!==b.answers.length||cards.some(c=>!c))visionError('VISION_SECTION_INVALID','本段题目缺失或重复，请重新读取问卷。');
+ const first=cards[0]!;
+ if(cards.some(c=>c!.respondentId!==first.respondentId||c!.sourceMessageId!==first.sourceMessageId))visionError('VISION_SECTION_MIXED','一段问卷必须属于同一填写者和同一轮。');
+ if(cards.every(c=>c!.status==='confirmed')){
+  const saved=p.homeVision?.responses.find(r=>r.id===first.respondentId)?.chatAnswers||[];
+  const same=b.answers.every((a,i)=>{const c=cards[i]!,prior=saved.find(x=>x.id===a.id&&x.status==='active'),option=c.options.find(o=>o.id===a.optionId);return prior?.state===a.state&&(a.state!=='answered'||prior.text===(a.customText||(option?outcomeAnswer(option,c.language):'')))});
+  if(!same)visionError('VISION_SECTION_ALREADY_SUBMITTED','本段已提交，请读取已保存回答，修改时重新生成问卷。');
+  return;
+ }
+ const version=p.homeVision?.responses.find(r=>r.id===first.respondentId)?.version||0;
+ if(cards.some(c=>c!.status!=='awaiting_owner_confirmation'||c!.responseVersion!==version))visionError('VISION_VERSION_CONFLICT','本段问卷已变化，请重新读取后提交。');
+ // Work on a clone: validation of a later conditional answer cannot partially save a section.
+ const draft=structuredClone(p);
+ for(const answer of b.answers){
+  const card=draft.visionQuestions!.find(c=>c.id===answer.id)!;
+  card.responseVersion=draft.homeVision?.responses.find(r=>r.id===card.respondentId)?.version||0;
+  confirmVisionQuestion(draft,{...b,...answer});
+ }
+ Object.assign(p,draft);
+}
 export function registerVisionChat(app:FastifyInstance,store:AlvaStore,session:(req:object)=>Session){
+ app.post('/api/intake/vision/chat/section',async(req,reply)=>{
+  try{
+   const user=session(req);if(user.role!=='owner')reject('仅业主可以确认问卷',403);
+   const b=SectionConfirm.parse(req.body);if((await store.chatState(user.projectId)).active!=='living')visionError('VISION_WRONG_STAGE','请切回生活设计阶段后提交问卷。');
+   return await store.mutate(user.projectId,b.requestId,b.expectedRevision,'vision-section-confirm',b,p=>confirmVisionSection(p,b));
+  }catch(e){if(e instanceof McpError)return reply.code(409).send({error:e.message,detail:e.detail});throw e}
+ });
  app.post('/api/intake/vision/chat/confirm',async(req,reply)=>{
   try{
    const user=session(req);if(user.role!=='owner')reject('仅业主可以确认问卷',403);

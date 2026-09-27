@@ -1,0 +1,133 @@
+{
+  "pass": true,
+  "real": true,
+  "checks": [
+    "an existing pending Vision section suppresses duplicate automatic stage guidance",
+    "one question at a time; choices are drafts until section Submit; no furniture tabs",
+    "one Submit saves both answers, sends one main Chat turn, and displays the Agent’s next section through MCP",
+    "refresh restores the next section without sending a duplicate turn",
+    "narrow viewport keeps Vision options usable",
+    "Room Vision popup shares the template, renders a real preview and closes without adopting"
+  ],
+  "errors": [],
+  "calls": 0,
+  "toolCalls": [
+    {
+      "name": "read_questionnaire_batch",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_snapshot",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_business_guidance",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_business_guidance",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "skip_furniture_suggestion",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "ask_question",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "ask_question",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "ask_question",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "ask_question",
+      "stage": "living",
+      "isError": true,
+      "errorCode": "VISION_VERBATIM"
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "ask_question",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "get_stage_guidance",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    }
+  ],
+  "thread": "01a0e374-ade1-7580-abe9-2ed7ea2d597b"
+}

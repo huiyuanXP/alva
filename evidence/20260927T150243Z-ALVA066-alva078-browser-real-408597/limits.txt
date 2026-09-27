@@ -1,0 +1,6 @@
+run=20260927T150243Z-ALVA066-alva078-browser-real-408597
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2357
+cb3209e7c6ccd6af3a849a744444de055e2de0a4

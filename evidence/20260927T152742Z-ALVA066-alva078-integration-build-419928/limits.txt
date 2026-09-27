@@ -1,0 +1,6 @@
+run=20260927T152742Z-ALVA066-alva078-integration-build-419928
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2110
+a32df42eea0016fae631e3519b0641e29f8752cb

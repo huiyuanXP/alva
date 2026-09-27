@@ -1,0 +1,37 @@
+{
+  "pass": true,
+  "real": false,
+  "checks": [
+    "one question at a time; choices are drafts until section Submit; no furniture tabs",
+    "one Submit saves both answers, sends one main Chat turn, and displays the Agent’s next section through MCP",
+    "refresh restores the next section without sending a duplicate turn",
+    "a second Submit repeats the loop exactly once and generates a third section",
+    "narrow viewport keeps Vision options usable",
+    "Room Vision popup shares the template, renders a real preview and closes without adopting",
+    "native conditional form also waits for explicit section Submit, then resumes generated Vision questions"
+  ],
+  "errors": [],
+  "calls": 3,
+  "toolCalls": [
+    {
+      "name": "read_questionnaire_batch",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "skip_furniture_suggestion",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "read_question_context",
+      "stage": "living",
+      "isError": false
+    },
+    {
+      "name": "ask_question",
+      "stage": "living",
+      "isError": false
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "reason": "Final real-browser run exposed automatic stage guidance starting while a generated Vision section was already awaiting answers. Stopped our isolated runner to fix the missing pending-section guard. Earlier deterministic browser result passed; this run is not a final full-candidate success.",
+  "productionChanged": false
+}

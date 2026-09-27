@@ -83,3 +83,5 @@
 - [ALVA-074 中英文界面与Agent输出语言](issues/48-bilingual-interface.md)：done，已验收并集成；074/075已联合发布，边界见发布收据。
 
 - [ALVA-076 阶段导航解除模型等待](issues/50-stage-navigation-blocking.md)：done，已发布并正常登录生产验证。
+
+- [ALVA-078 全局Vision模板与分段问卷循环](issues/51-vision-template.md)：done，已验收集成，未发布；右侧问卷与Room Vision确认模板统一。

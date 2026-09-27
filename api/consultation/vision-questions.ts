@@ -51,16 +51,17 @@ function basisFor(p:Project,r:Response,sourceMessageId:string){
  ];
 }
 export function createVisionQuestionTools(o:{readProject:()=>Promise<Project>;respondentId?:string;sourceMessageId:string;roomId:string|null;queue:(card:VisionQuestion)=>void}):BusinessTool[]{
- const draftId=randomUUID(),asked=new Set<string>();
+ const draftId=randomUUID(),asked=new Map<string,VisionQuestion>();
  return [{name:'read_question_context',description:'先读取当前填写者的原生Home Vision题目、选项、已保存回答和本轮原话，再猜测需求并出扩展问题。questionId可省略以列出相关题目，选定后传questionId读取详细选项；不写数据。多人须先由用户在页面选择填写者。',inputSchema:z.toJSONSchema(z.object({questionId:z.string().optional()}).strict()),run:async raw=>{
   const {questionId}=z.object({questionId:z.string().optional()}).strict().parse(raw),p=await o.readProject(),r=chooseRespondent(p,o.respondentId,draftId);
   const visible=visibleVisionItems(r);if(questionId&&!visible.some(i=>i.id===questionId))visionError('VISION_QUESTION_HIDDEN','题号不在当前原生问卷路径中；请省略questionId读取现役题目，不能将旧Q12映射成Q12a。');
-  return {respondent:{id:r.id,name:r.name,version:r.version},sources:basisFor(p,r,o.sourceMessageId),questions:visible.filter(i=>!questionId||i.id===questionId).map(i=>({id:i.id,prompt:prompt(i,r.answers),helper:i.helper,type:i.type,max:i.max,min:i.min,otherAllowed:i.other!==false,options:questionId?options(i,r.answers):undefined,currentAnswer:r.answers[i.id],chatSupported:supported.has(i.type)})),instructions:'先展示有依据且明确未确认的需求猜测，再用有具体结果、示例与取舍的2–4个选项验证；包括能纠正猜测的不同方向，不能只提供赞同猜测的选项。用户确认后才同步独立问卷。'};
+  return {respondent:{id:r.id,name:r.name,version:r.version},queuedQuestionIds:[...asked.keys()],remainingSectionCapacity:4-asked.size,sources:basisFor(p,r,o.sourceMessageId),questions:visible.filter(i=>!questionId||i.id===questionId).map(i=>({id:i.id,prompt:prompt(i,r.answers),helper:i.helper,type:i.type,max:i.max,min:i.min,otherAllowed:i.other!==false,options:questionId?options(i,r.answers):undefined,currentAnswer:r.answers[i.id],chatSupported:supported.has(i.type)})),instructions:'先展示有依据且明确未确认的需求猜测，再用有具体结果、示例与取舍的2–4个选项验证；包括能纠正猜测的不同方向，不能只提供赞同猜测的选项。用户确认后才同步独立问卷。'};
  }},{name:'ask_question',description:'基于read_question_context提出“需求猜测→扩展问卷”卡片，每个选项含原生答案value及具体结果/示例/取舍。不会保存答案；确认后回填同一填写者的独立问卷。旧题号不可用。',inputSchema:z.toJSONSchema(VisionQuestionInput),run:async raw=>{
   const parsed=VisionQuestionInput.safeParse(raw);if(!parsed.success)visionError('VISION_QUESTION_INVALID',parsed.error.issues.slice(0,5).map(i=>i.path.join('.')+': '+i.message).join('；'));
   const b=parsed.data,p=await o.readProject(),r=chooseRespondent(p,o.respondentId,draftId);
   if(r.version!==b.expectedVersion)visionError('VISION_VERSION_CONFLICT','独立问卷已更新，请重读后出题。');
-  if(asked.size>=2||asked.has(b.questionId))visionError('VISION_TURN_LIMIT','每轮最多两题，同题不能重复排队。');
+  if(asked.has(b.questionId))return {status:'awaiting_owner_confirmation',card:asked.get(b.questionId),notice:'本段已包含这题，不重复排队；请继续尚未排入的题目或结束本轮回复。'};
+  if(asked.size>=4)visionError('VISION_TURN_LIMIT','本段已经生成四题，请结束本轮回复，等待用户Submit后再生成下一段。');
   if(o.roomId&&!p.scene?.rooms.some(r=>r.id===o.roomId))visionError('VISION_ROOM_MISSING','当前房间已不存在，请重新选择。');
   const sources=basisFor(p,r,o.sourceMessageId);
   if(b.basis.some(ref=>!sources.some(s=>s.id===ref.id&&s.quote.includes(ref.quote))))visionError('VISION_BASIS_INVALID','猜测依据必须引用此填写者的已保存回答或本轮原话，不能编造或借用他人偏好。');
@@ -71,6 +72,6 @@ export function createVisionQuestionTools(o:{readProject:()=>Promise<Project>;re
   const item=items.find(i=>i.id===b.questionId)!;if(b.question===prompt(item,r.answers))visionError('VISION_VERBATIM','请结合需求猜测重构验证问题，不照读原题。');
   const {expectedVersion:_,...content}=b;
   const card:VisionQuestion={...content,id:randomUUID(),respondentId:r.id,respondentName:r.name,responseVersion:r.version,roomId:o.roomId,topologyVersion:p.confirmationVersions?.topology??0,sourceMessageId:o.sourceMessageId,status:'awaiting_owner_confirmation',createdAt:new Date().toISOString(),options:b.options,evidenceIds:b.basis.map(s=>s.id)};
-  o.queue(card);asked.add(b.questionId);return {status:card.status,card,notice:'待确认题卡已生成，将随成功响应返回；猜测和答案尚未写入独立问卷。'};
+  o.queue(card);asked.set(b.questionId,card);return {status:card.status,card,notice:'待确认题卡已生成，将随成功响应返回；猜测和答案尚未写入独立问卷。'};
  }}];
 }

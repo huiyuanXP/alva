@@ -1,3 +1,7 @@
+## ALVA-078 生活设计问卷交互
+
+右侧采用统一 Vision 模板，逐题填写、每段最多四题，Submit 一次发送主 Chat，实际生活 MCP 回复并生成下一段；房间/设计确认复用 Room Vision，家具等独立侧栏选项卡退役。规则、实际调用验收与发布边界见 [ALVA-078](docs/ALVA-078-vision-template.md)。
+
 # alva 全屋咨询与交付规格
 
 持久名称：alva。下列完整需求取自本轮 NextTask，附件与当前用户追加指令优先于旧库规格。

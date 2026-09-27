@@ -1,0 +1,21 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {emptyProject} from '../api/model.js';
+import {seedLivingStage} from './fixtures/alva/living-stage.js';
+import {visionQuestionInput} from './fixtures/alva/vision-question.js';
+import {createVisionQuestionTools} from '../api/consultation/vision-questions.js';
+import {confirmVisionSection} from '../api/consultation/vision-routes.js';
+import type {VisionQuestion} from '../packages/contracts/alva/home-vision/chat.js';
+async function seed(){const p=emptyProject();seedLivingStage(p);const sourceMessageId=randomUUID();p.messages.push({id:sourceMessageId,role:'user',text:'喜欢浅木色，但不喜欢每天擦柜子',status:'completed',createdAt:new Date().toISOString()});const cards:VisionQuestion[]=[];const tools=createVisionQuestionTools({readProject:async()=>p,sourceMessageId,roomId:null,queue:c=>cards.push(c)});const ask=tools.find(t=>t.name==='ask_question')!;await ask.run(visionQuestionInput(sourceMessageId));await ask.run({...visionQuestionInput(sourceMessageId),questionId:'Q07b',question:'想补充哪一种颜色？',options:visionQuestionInput(sourceMessageId).options.map((o,i)=>({...o,value:i?'soft green':'warm white'}))});p.visionQuestions=cards;return {p,cards}}
+const command=(cards:VisionQuestion[])=>({requestId:randomUUID(),expectedRevision:0,confirmed:true as const,answers:cards.map(c=>({id:c.id,state:'answered' as const,optionId:'A'}))});
+test('one section commits all answers of the same respondent without self-staling',async()=>{const {p,cards}=await seed();confirmVisionSection(p,command(cards));assert.equal(p.homeVision!.responses.length,1);assert.equal(p.homeVision!.responses[0].answers.Q07a.value,'Q07a.warm_light_wood');assert.equal(p.homeVision!.responses[0].answers.Q07b.value,'warm white');assert.ok(p.visionQuestions!.every(c=>c.status==='confirmed'));assert.equal(p.homeVision!.responses[0].chatAnswers!.length,2)});
+test('invalid later answer rolls back the whole section',async()=>{const {p,cards}=await seed(),before=structuredClone(p),b=command(cards);b.answers[1].optionId='missing';assert.throws(()=>confirmVisionSection(p,b),/选项/);assert.deepEqual(p,before)});
+test('section rejects mixed respondents and stale versions before saving',async()=>{const {p,cards}=await seed();cards[1].respondentId=randomUUID();assert.throws(()=>confirmVisionSection(p,command(cards)),/同一填写者/);assert.equal(p.homeVision,undefined);cards[1].respondentId=cards[0].respondentId;cards[1].responseVersion=5;assert.throws(()=>confirmVisionSection(p,command(cards)),/已变化/);assert.equal(p.homeVision,undefined)});
+test('living MCP can generate four distinct questions in one section and rejects a fifth',async()=>{
+ const p=emptyProject();seedLivingStage(p);const sourceMessageId=randomUUID();p.messages.push({id:sourceMessageId,role:'user',text:'喜欢浅木色，但不喜欢每天擦柜子',status:'completed',createdAt:new Date().toISOString()});const queued:VisionQuestion[]=[];const tools=createVisionQuestionTools({readProject:async()=>p,sourceMessageId,roomId:null,queue:c=>queued.push(c)});const read=tools.find(t=>t.name==='read_question_context')!,ask=tools.find(t=>t.name==='ask_question')!;
+ for(const questionId of ['Q01a','Q06a','Q07a','Q07b']){const ctx=await read.run({questionId}) as any,q=ctx.questions[0],input=visionQuestionInput(sourceMessageId);await ask.run({...input,questionId,question:'Which result fits your home for '+questionId+'?',options:input.options.map((o,i)=>({...o,value:q.type==='text'?['warm white','soft green'][i]:q.type==='multi'?[q.options[i].id]:q.options[i].id}))})}
+ assert.equal(queued.length,4);await ask.run(visionQuestionInput(sourceMessageId));assert.equal(queued.length,4);await assert.rejects(ask.run({...visionQuestionInput(sourceMessageId),questionId:'Q08a'}),(e:any)=>e.detail?.code==='VISION_TURN_LIMIT');assert.equal(p.homeVision,undefined);
+});
+
+test('retry after a committed section is idempotent and cannot silently replace submitted choices',async()=>{const {p,cards}=await seed(),b=command(cards);confirmVisionSection(p,b);const before=structuredClone(p);confirmVisionSection(p,{...b,requestId:randomUUID()});assert.deepEqual(p,before);b.answers[1].optionId='B';assert.throws(()=>confirmVisionSection(p,b),/已提交/);assert.deepEqual(p,before)});

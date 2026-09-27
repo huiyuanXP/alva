@@ -1,0 +1,18 @@
+{
+  "previewRestored": {
+    "ok": true,
+    "application": "alva"
+  },
+  "previewService": "alva068-preview-app",
+  "productionUnchanged": "WorkingDirectory=/home/ubuntu/Alva/.runtime/20260927T144930Z-ALVA077-production/release\nActiveState=active",
+  "implementation": "94415d4",
+  "productManifest": "evidence/20260927T151855Z-ALVA066-alva078-acceptance-416183/source-manifest.json",
+  "neatFreak": {
+    "code": "changed-and-verified",
+    "runtime": "preview-restored; production-out-of-scope",
+    "docs": "changed-and-verified",
+    "rules": "changed-and-verified",
+    "memory": "out-of-scope",
+    "workspace": "review-evidence-retained"
+  }
+}

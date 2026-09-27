@@ -57,3 +57,5 @@
 所有后续用户功能必须按 [主 Chat Agent 与 Harness 合同](docs/ALVA-065-main-chat-agent.md) 在同票接入所属阶段 MCP；MCP 是主 Chat 默认优先调用方式和渠道。每阶段只加载户型导入或生活设计的一包工具，API/按钮与工具共用业务逻辑。错误必须通过 MCP 返回可解释原因、稳定错误码与修复步骤，供 Agent 提示用户；不得吞错或口头冒充成功。只有主 Chat 实际工具调用的端到端验收通过才算功能完成；执行 Prompt 见 [接入模板](docs/MAIN-CHAT-FEATURE-PROMPT.md)，迁移实施见 [ALVA-066](docs/ALVA-066-stage-mcp.md)。现有按钮或 API 不等于 MCP 已接入。
 
 开发或新增文件前必须读 [项目结构规范](docs/PROJECT-STRUCTURE.md)。现役代码只进入 api、web 及规范指定的共享层；按功能目录放置，禁止向旧工程/参考附件写新功能。规划目录按 Ticket 实施时创建，不把目录规范当功能开工授权。新增顶层工程、共享合同迁移或依赖边界改变时，同步该规范与实际构建/测试入口。
+
+生活设计的问卷、选择与确认界面统一复用 `web/src/vision/VisionTemplate.tsx`，保持 Home Vision 的苹果风格；右侧不新增家具等独立选项卡。分段回答由用户 Submit 后统一发送主 Chat，并通过生活 MCP 接续下一段；待答段不得被自动引导抢占。行为与验收见 [ALVA-078](docs/ALVA-078-vision-template.md)。

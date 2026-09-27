@@ -1,0 +1,47 @@
+✔ one section commits all answers of the same respondent without self-staling (109.990294ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1885.591057
+✔ invalid later answer rolls back the whole section (152.574056ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1175.290786
+✔ section rejects mixed respondents and stale versions before saving (96.692028ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 948.284819
+Terminated
+
+Interrupted while running:
+
+⚠ tests/alva-questionnaire-batch.test.ts (tests/alva-questionnaire-batch.test.ts:1:1)
+✖ tests/alva-questionnaire-batch.test.ts (7743.210849ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 0
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7760.85381
+
+✖ failing tests:
+
+test at tests/alva-questionnaire-batch.test.ts:1:1
+✖ tests/alva-questionnaire-batch.test.ts (7743.210849ms)
+  'Promise resolution is still pending but the event loop has already resolved'

@@ -1,3 +1,9 @@
+## 2026-09-27 ALVA-078 已验收集成，未发布
+
+生活设计右侧统一为 Home Vision 分段问卷，最多四题、一次 Submit 合并发送 Chat，真实生活MCP生成下一段；房间范围/采用确认复用 Room Vision 弹窗，旧家具等侧栏选项卡移除。个人实现94415d4；12项相关回归、类型/构建、8项浏览器与6项真实Chat/MCP检查通过，页面错误0。现役合同与证据见[ALVA-078](docs/ALVA-078-vision-template.md)。
+
+生产仍为077固定release；068临时预览已按原配置恢复且4188健康。neat-freak已同步合同/结构/规则；生成记忆与生产发布out-of-scope，既有bundle提示保留，复核现场保留。050未认领、051仍等050，不自动开工。以下为历史检查点。
+
 ## 2026-09-27 ALVA-077 已发布并登录后验收
 
 14:49 UTC发布固定main `c053dc6`：问卷先保存，点击Chat下方新按钮后批量读取生成；×与暂不采用不受版本、预览错误或Chat忙碌阻断；新轮替换旧卡，同轮逐张，小预览无日照遮挡。中英文与即时阶段导航保留。
@@ -176,7 +182,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-078](docs/ALVA-078-vision-template.md) | 全局Vision模板与分段问卷循环 | `questions / chat / proposals` | codex-vision | task/ALVA-078-codex-vision / /home/ubuntu/Alva-worktrees/ALVA-078-codex-vision | in-progress；web/src/main.tsx、intake/chat组件、api/chat.ts与consultation；端口待核验 |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。
