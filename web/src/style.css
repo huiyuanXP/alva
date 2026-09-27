@@ -89,3 +89,5 @@
 .chat .panel-heading{padding:8px 0 6px}
 .chat-stages .segmented{padding:2px;border-radius:10px}
 .chat-stages .segmented button{font-size:12px;padding:5px 10px;border-radius:8px}
+
+.language-switch{display:flex;flex-direction:row;margin:0;align-items:center;gap:6px;font-size:12px;white-space:nowrap}.language-switch select{max-width:110px;padding:6px;border:1px solid var(--border,#ccc);border-radius:8px;background:transparent;color:inherit}.entrance>.language-switch{position:absolute;right:24px;top:24px}.app>header{flex-wrap:wrap;height:auto;min-height:90px}html[lang=en] .segmented button{white-space:normal;line-height:1.25}html[lang=en] .chat-stages button{min-width:0}html[lang=en] button{overflow-wrap:break-word}

@@ -1,0 +1,9 @@
+api/i18n/context.ts(10,165): error TS1005: ',' expected.
+api/i18n/context.ts(10,166): error TS1005: ',' expected.
+api/i18n/context.ts(10,167): error TS1128: Declaration or statement expected.
+api/i18n/context.ts(10,168): error TS1128: Declaration or statement expected.
+api/i18n/context.ts(10,169): error TS1128: Declaration or statement expected.
+api/i18n/context.ts(10,170): error TS1128: Declaration or statement expected.
+api/i18n/context.ts(10,171): error TS1128: Declaration or statement expected.
+api/i18n/context.ts(10,173): error TS1434: Unexpected keyword or identifier.
+api/i18n/context.ts(11,1): error TS1128: Declaration or statement expected.

@@ -1,0 +1,161 @@
+{
+  "pass": true,
+  "checks": [
+    "login language switch persists across reload",
+    "independent questionnaire supports both languages",
+    "English opening, Chinese resume on same thread; draft and project name unchanged",
+    "living Agent actually reads questionnaire and emits English question card",
+    "switch language resumes living thread, same unfinished question, no invented answer"
+  ],
+  "errors": [],
+  "messages": [
+    {
+      "id": "ca558808-e9df-4d52-a001-3408a0bd90fe",
+      "role": "assistant",
+      "text": "Hello! I am Alva, your floorplan planning specialist. \n\nTo get started, please tap the \"+\" icon in the chat to upload your floor plan as an image or PDF. Once you send it over, I will analyze the space and guide you through the next steps.",
+      "stage": "floorplan",
+      "status": "completed",
+      "language": "en",
+      "createdAt": "2026-09-27T09:42:47.252Z",
+      "toolCalls": [
+        {
+          "name": "get_stage_guidance",
+          "stage": "floorplan",
+          "isError": false
+        },
+        {
+          "name": "get_snapshot",
+          "stage": "floorplan",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "8ddbff6916b61650becada70bbc0696d8ecda925c1bb3df69b591345b2d374d0"
+    },
+    {
+      "id": "fd00ec41-c3f8-4fd1-95ef-ca9746ed2b28",
+      "role": "assistant",
+      "text": "当前需要先导入您的户型图纸。请在对话框点击“+”上传户型图（支持图片或PDF格式）。发送后我会为您分析空间结构并推进后续规划。",
+      "stage": "floorplan",
+      "status": "completed",
+      "language": "zh",
+      "createdAt": "2026-09-27T09:43:09.350Z",
+      "toolCalls": [
+        {
+          "name": "get_stage_guidance",
+          "stage": "floorplan",
+          "isError": false
+        },
+        {
+          "name": "get_snapshot",
+          "stage": "floorplan",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "a6f219c807adca45470283a4d96a8b9e485a030168059c05baaec7b9f011313c"
+    },
+    {
+      "id": "5401420a-1e81-426f-ab4d-e8522384147c",
+      "role": "assistant",
+      "text": "建筑结构已经确认完成。您可以点击界面上的“生活设计”进入下一阶段，继续梳理居住需求问卷。随后我们将基于已确认的空间为您进一步展开具体的功能布局与生活方式规划。",
+      "stage": "floorplan",
+      "status": "completed",
+      "language": "zh",
+      "createdAt": "2026-09-27T09:43:27.049Z",
+      "toolCalls": [
+        {
+          "name": "get_stage_guidance",
+          "stage": "floorplan",
+          "isError": false
+        },
+        {
+          "name": "get_snapshot",
+          "stage": "floorplan",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "1a0091c85a0e2cd7963a0f5808b914d2fdb18b089dacd8fab4e4aaa2dad3368a"
+    },
+    {
+      "id": "42abe2ca-189e-430c-963b-e3db4a7caaa5",
+      "role": "assistant",
+      "text": "The building layout has been confirmed. You can click \"Living Design\" on the interface to continue with your lifestyle and needs questionnaire. We will then build upon this confirmed floor plan to explore detailed spatial arrangements and tailored living solutions.",
+      "stage": "floorplan",
+      "status": "completed",
+      "language": "en",
+      "createdAt": "2026-09-27T09:43:47.618Z",
+      "toolCalls": [
+        {
+          "name": "get_stage_guidance",
+          "stage": "floorplan",
+          "isError": false
+        },
+        {
+          "name": "get_snapshot",
+          "stage": "floorplan",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "2095e33547ed2e5c83f193e1118c9db01db1e74c0e5bcf3b94863521ef0eaf36"
+    },
+    {
+      "id": "394151b9-ef16-4c82-8489-c2f83734746d",
+      "role": "assistant",
+      "text": "Welcome to the Living Design stage. Here, we will organize your everyday living needs, plan functional layouts, and explore tailored furniture arrangements and styles for your space. \n\nTo help us set the right design direction, please review the card below and select the option that best describes your primary goal. Once you make your choice, we will proceed with the next steps together.",
+      "stage": "living",
+      "status": "completed",
+      "language": "en",
+      "createdAt": "2026-09-27T09:44:05.109Z",
+      "toolCalls": [
+        {
+          "name": "get_stage_guidance",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "read_question_context",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "ask_question",
+          "stage": "living",
+          "isError": true,
+          "errorCode": "VISION_VERBATIM"
+        },
+        {
+          "name": "ask_question",
+          "stage": "living",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "631d0aeaa4b8cad024b00c2d963ce4e0fdc94e0437bde7b2d9d0a03b24b604b2"
+    },
+    {
+      "id": "069ac89f-c033-46da-b073-23b5c7f31e3a",
+      "role": "assistant",
+      "text": "我们已进入生活设计阶段，接下来将围绕您的居住需求、空间布局和家具偏好展开梳理。请查看下方的选择题卡，点击最符合您本次核心推进目标的方向。完成确认后，我们将基于您的目标继续推进后续具体的生活场景与功能规划。",
+      "stage": "living",
+      "status": "completed",
+      "language": "zh",
+      "createdAt": "2026-09-27T09:44:36.249Z",
+      "toolCalls": [
+        {
+          "name": "get_stage_guidance",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "read_question_context",
+          "stage": "living",
+          "isError": false
+        },
+        {
+          "name": "ask_question",
+          "stage": "living",
+          "isError": false
+        }
+      ],
+      "guidanceKey": "7e31cf283889413cb434a26eeb39ab39336f61785d111bb3531f6e34ab8b5177"
+    }
+  ]
+}

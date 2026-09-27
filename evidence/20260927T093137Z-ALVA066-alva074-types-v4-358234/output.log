@@ -1,0 +1,4 @@
+web/src/intake/IntakeDialog.tsx(99,153): error TS2345: Argument of type 'string' is not assignable to parameter of type 'Item'.
+web/src/intake/IntakeDialog.tsx(99,155): error TS2345: Argument of type 'Item' is not assignable to parameter of type 'string'.
+web/src/intake/IntakeDialog.tsx(104,395): error TS2345: Argument of type 'string' is not assignable to parameter of type 'Item'.
+web/src/intake/IntakeDialog.tsx(104,397): error TS2345: Argument of type 'Item' is not assignable to parameter of type 'string'.

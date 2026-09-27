@@ -1,0 +1,201 @@
+Language
+中文
+English
+alva
+Living, before design
+我的中文项目 ▾
+Unsaved draft
+Save version
+History
+Delivery package
+Share
+Log out
+Consultation
+Your Home Vision
+Floorplan import
+Living design
+alva · Design Consultant
+
+Welcome to the Living Design stage. Here, we will organize your everyday living needs, plan functional layouts, and explore tailored furniture arrangements and styles for your space.
+
+To help us set the right design direction, please review the card below and select the option that best describes your primary goal. Once you make your choice, we will proceed with the next steps together.
+
+For My Answer Filled · Syncs to Your Home Vision after confirmation
+Initial guess of your needs · Not yet confirmed
+
+You may be planning to furnish a newly acquired space or optimize a specific key room, but your overall project scope is still unconfirmed.
+
+Basis:Insufficient information; currently an unverified guess
+
+Needs confirmation:Whether you are starting from a blank canvas in a new home, renovating an existing space, tackling one priority room, or simply exploring layout possibilities.
+
+Q01a · Example preview, not yet adopted
+Which direction best reflects your main goal and current focus for this project?
+
+Clarifying your primary objective will guide how deeply we plan the spatial zones, storage, and furniture arrangement.
+
+Example premise:The confirmed room perimeter serves as the initial layout boundary.；Detailed lifestyle habits and storage demands will be refined progressively.
+
+A · Set up a new home
+
+Outcome if chosen:Establish complete room zones, traffic flow, and primary furniture placements for moving into a new residence.
+
+Specific example:Map out everyday living and dining areas from scratch, then plan core storage capacity.
+
+Trade-offs:Requires laying out full spatial zoning before focusing on localized details.
+
+B · Renovate current layout
+
+Outcome if chosen:Reconfigure existing room functions, partition layouts, and built-in fixtures for a comprehensive overhaul.
+
+Specific example:Upgrade room circulation, rethink functional connections, and redesign built-in storage walls.
+
+Trade-offs:Needs closer coordination with existing walls, plumbing, and structural boundaries.
+
+C · Prioritize one room
+
+Outcome if chosen:Direct all initial planning efforts toward perfecting function, layout, and furniture for one core room.
+
+Specific example:Refine the confirmed living space first with dedicated reading, relaxing, and storage arrangements.
+
+Trade-offs:Puts broader home areas on hold until this key room layout is settled.
+
+D · Explore ideas freely
+
+Outcome if chosen:Test different spatial arrangements and style directions without committing to an immediate build or move.
+
+Specific example:Try various furniture configurations and aesthetic vibes to see what fits your lifestyle best.
+
+Trade-offs:Focuses on conceptual possibilities rather than concrete execution milestones.
+
+Own thoughts
+Confirm this answer
+Not sure yet
+Skip
+Skip for now, collapse this question
+＋
+gemini-3.8-flash-high
+Voice
+Send ↑
+Voice is transcribed to editable text first. Review and confirm before applying.
+Plan
+The whole home
+Walkthrough
+The whole home
+合成验收客厅
+Current draft
+合成验收客厅
+Length reference: ALVA-036 合成测量，非客户户型
+Plan review
+Check walls, doors, windows, and spaces.
+
+Current draft · revision 11 · Calibrated
+
+Internal void
+Checked
+Irregular slant
+Checked
+Isolated wall / door / window
+Checked
+
+No issues found by current rules; still verify against original drawing.
+
+Check criteria and boundaries
+
+Topology confirmed v1 · Source fingerprint 9bb221de5fc9…
+
+← Re-edit floorplan
+Property info
+1 spaces
+Functional Zones
+
+Divide functional spaces like living and dining areas without adding solid walls. Zones only affect spatial semantics and do not alter floorplan topology or 3D walls.
+
+Draw a Functional Zone Line
+When three walls form an approximate rectangle, you can double-click the area to automatically generate the missing virtual fourth edge.
+Codex Architectural Generation
+
+Generate architectural walls, floors, doors, and windows via Codex based on the confirmed topology and original image. Does not generate furniture or construction conclusions.
+
+Input topology v1 · Fingerprint 9bb221de5fc9…Generate 3D ArchitectureArchitectural scene confirmed and reloadable
+Requirements
+Reference images
+Furniture
+Review
+Access
+Wall evidence
+Remodel preview
+Space split
+Room usage
+Confirm usage onlyLock room
+Survey question
+Q01 At the end of this consultation, what do you most hope to take away?
+Q02 Which city is the home in, and what property type is it?
+Q03 Which alterations require approval from the landlord, co-owners, or property management?
+Q04 Which spaces will be tackled in this round, and to what extent?
+Q05 Between existing floorplans and on-site materials, which is most convenient to provide?
+Q06 Which materials can be shared with the designer?
+Q07 Who will primarily use this home?
+Q08 Who makes decisions together, and how are disagreements resolved?
+Q09 What is the most common routine when returning home on a weekday?
+Q10 What kind of work or study space is needed at home?
+Q11 When guests visit, what does the home most often need to support?
+Q12 How much effort are you willing to spend on tidying and cleaning?
+Q13 Using living feelings rather than style names, what do you want your home to feel like?
+Q14 全屋冷暖和明暗偏好，更接近哪一种？
+Q15 Which part of the reference images do you like?
+Q16 Are there any treatments or features you dislike at first sight?
+Q17 What must be kept in the new home for reasons beyond just practicality?
+Q18 When space or conditions are limited, which two things cannot be sacrificed?
+Q23 When do you need to move in, and which dates are non-negotiable?
+Q24 What can be done first, and what can wait for later?
+Q25 What is this room used for most often, and what happens here occasionally?
+Q26 Are the room dimensions from on-site measurements, drawings, or estimates?
+Q27 Which doors, windows, columns, beams, or shafts are confirmed unchangeable?
+Q28 Which appliances and MEP locations will affect the layout?
+Q29 这个房间保留哪些物品，尺寸依据是什么？
+Q30 What takes up the most space, and what needs to be within easy reach?
+Q31 What would you prefer to reserve the center of the living room for?
+Q32 餐桌平时与来客时分别需要怎样的容量？
+Q33 How often do you cook, and what is your biggest pain point?
+Q34 卧室里最影响放松或入睡体验的是什么？
+Q35 Does the bathroom need better storage, easier cleaning, or improved layout flow?
+Q36 Where does the workflow usually stall for laundry and entryway clutter?
+Q37 柜子内部，更在意容量、拿取还是展示？
+Q38 未来变化时，愿意移动或替换哪些家具？
+Q39 材料触感、外观、维护与检测资料，最在意什么？
+Q40 What should the lighting support during daytime, work hours, and nighttime?
+Q41 What comfort issue matters most to you right now?
+Q42 How far do you want to take smart home features?
+Q43 比较方案时，愿意接受哪个代价？
+Q44 报告里哪些画面最能帮助做决定？
+Q45 交给设计师时，哪些内容希望原话保留？
+Q46 What decision are you still unsure about?
+Q47 What part does this confirmation cover?
+Q48 What in this summary sounds like you, and what was misunderstood?
+Q49 Which nursery supplies need to be within reach during care routines?
+Q50 Are specific infant sleeping furniture models or arrangements already decided?
+Q51 Which movements or circulation paths need to be more accessible?
+Q52 How should pet resting, activity, and grooming supplies be arranged?
+Q53 Are there uncomfortable odors or touch sensations you want to avoid?
+Q54 定制柜主要解决什么，哪些尺寸有依据？
+Q55 重台面或悬挂物的重量与支撑资料齐全吗？
+Q56 Do you need to live on-site during construction or installation?
+Q57 参考图里，哪个点喜欢，哪个点不想照搬？
+Q59 不同使用者的偏好，先按什么方式比较？
+Q01 · 项目边界
+At the end of this consultation, what do you most hope to take away?
+A · Recommended
+First create a design brief handoff-ready for designers
+B
+First explore the overall spatial direction
+C
+First solve a key priority room
+D
+First sort out priorities and trade-offs
+Own thoughts
+Lock this answer to prevent it from being overwritten by suggestions
+Confirm answer
+Not sure yet
+Skip
+Not applicable

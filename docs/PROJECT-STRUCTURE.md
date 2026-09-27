@@ -150,3 +150,7 @@ ALVA-066 用户验收修复：`api/topology/inspection.ts` 为页面诊断 API �
 ## ALVA-073 阶段引导
 
 `api/consultation/stage-guidance.ts` 为主 Chat、当前阶段 MCP 与只读进度查询共用的断点计算和执行证据校验；系统轮仍走 `api/chat.ts` 和原阶段 thread。`web/src/chat/use-stage-guidance.ts` 负责空闲触发、去重与失败重试，StageControls 共享切换忙碌状态。合同与验收见 [ALVA-073](ALVA-073-stage-guidance.md)。
+
+## ALVA-074 中英文
+
+`packages/contracts/alva/i18n/` 维护无运行时平台依赖的语言类型、双向词典及输出语言指令；`api/i18n/context.ts` 负责请求与 MCP 的语言上下文。`web/src/i18n/` 提供 React 语言状态和 JSX 展示适配器，现役 Vite 使用 `@alva-i18n` JSX import source，tsconfig paths 为类型检查解析；不修改旧 apps 构建入口。固定展示文本与业务存储值分离，用户文本显式保留。验收入口 `tests/alva-i18n.test.ts`、`scripts/alva-074-browser.ts`；契约见 [ALVA-074](ALVA-074-bilingual-interface.md)。

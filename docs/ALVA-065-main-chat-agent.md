@@ -71,3 +71,7 @@ Agent 应根据错误指出未完成什么、具体原因与下一步（重新�
 ## 新建与切换项目（ALVA-072）
 
 两个阶段各自当前 MCP 工具包提供 `list_projects` 和 `request_project_navigation`，不同时加载两包。工具只列出业主授权目录，或通过 `project_manager` UI action 打开已校验的新建/切换面板并等待页面回执；`awaiting_user_confirmation` 不能解释为创建或切换成功。用户在面板点击后才调用共用项目服务，原会话 Chat 工具不会跨到另一项目写入。新项目有独立阶段 thread，切回原项目恢复原 thread；详见 [ALVA-072](ALVA-072-project-switching.md)。
+
+## 界面输出语言（ALVA-074）
+
+主 Chat 请求显式携带 `language: zh | en`，默认取 `X-Alva-Language`（缺省中文）。每轮追加输出语言指令，覆盖历史语言；start/resume、阶段引导、问卷题卡和后台建议均遵守。阶段 MCP 的 `get_interface_language` 返回本轮语言；不修改业务 ID、原生选项值、用户原话或历史回答。实现与验收见 [ALVA-074](ALVA-074-bilingual-interface.md)。

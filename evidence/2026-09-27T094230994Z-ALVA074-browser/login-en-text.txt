@@ -1,0 +1,13 @@
+Language
+中文
+English
+alva
+Living, before design
+Unified access verification
+Enter verification code,
+to access authorized projects.
+
+Please obtain the unified verification code from the project owner. It can be reused across multiple devices, and each device will establish an independent timed session.
+
+Unified verification code
+Verify & enter →

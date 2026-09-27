@@ -21,6 +21,7 @@ export type OutcomeQuestion = {
   status: 'awaiting_owner_confirmation';
 };
 /** Save exactly the selected meaning; an example stays explicitly illustrative. */
-export function outcomeAnswer(option: OutcomeOption): string {
+export function outcomeAnswer(option: OutcomeOption, language: 'zh'|'en'='zh'): string {
+  if(language==='en')return `${option.title}: ${option.outcome}\nExample (illustrative only, not adopted): ${option.example}\nTrade-off: ${option.tradeoff}`;
   return `${option.title}：${option.outcome}\n示例（仅说明效果，未采用）：${option.example}\n取舍：${option.tradeoff}`;
 }

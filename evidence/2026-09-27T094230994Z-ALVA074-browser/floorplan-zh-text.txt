@@ -1,0 +1,41 @@
+语言
+中文
+English
+alva
+生活，先于设计
+我的中文项目 ▾
+未保存工作稿
+保存版本
+历史
+交付包
+分享
+退出
+咨询
+你的理想家
+户型导入
+生活设计
+alva · 空间顾问
+
+Hello! I am Alva, your floorplan planning specialist.
+
+To get started, please tap the "+" icon in the chat to upload your floor plan as an image or PDF. Once you send it over, I will analyze the space and guide you through the next steps.
+
+alva · 空间顾问
+
+当前需要先导入您的户型图纸。请在对话框点击“+”上传户型图（支持图片或PDF格式）。发送后我会为您分析空间结构并推进后续规划。
+
+＋
+gemini-3.8-flash-high
+语音
+发送 ↑
+语音先转为可编辑文字。建议由你确认后采用。
+⌂
+01 / 认识你的家
+一张户型图，
+一段关于生活的对话。
+
+把房子的轮廓交给 alva，
+把家的选择留给你。
+
+添加户型图 →
+单层住宅 · 先预览，再确认

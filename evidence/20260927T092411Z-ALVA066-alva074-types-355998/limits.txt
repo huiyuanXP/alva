@@ -1,0 +1,6 @@
+run=20260927T092411Z-ALVA066-alva074-types-355998
+CPUQuota=80%
+MemoryMax=20%
+MemorySwapMax=0
+headroomMiB=2175
+2dec29cea6612d362815ee135f62b00f72873228

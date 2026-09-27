@@ -1,6 +1,7 @@
 import type {Value} from './flow.js';
 import type {OutcomeOption} from '../consultation-question.js';
 export type VisionQuestion = {
+ language?:'zh'|'en';
  id:string;questionId:string;respondentId:string;respondentName:string;responseVersion:number;
  roomId:string|null;topologyVersion:number;sourceMessageId:string;
  hypothesis:string;basis:{id:string;quote:string}[];uncertainty:string;

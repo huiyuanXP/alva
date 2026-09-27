@@ -1,0 +1,258 @@
+语言
+中文
+English
+alva
+生活，先于设计
+我的中文项目 ▾
+未保存工作稿
+保存版本
+历史
+交付包
+分享
+退出
+咨询
+你的理想家
+户型导入
+生活设计
+alva · 设计顾问
+
+Welcome to the Living Design stage. Here, we will organize your everyday living needs, plan functional layouts, and explore tailored furniture arrangements and styles for your space.
+
+To help us set the right design direction, please review the card below and select the option that best describes your primary goal. Once you make your choice, we will proceed with the next steps together.
+
+alva · 设计顾问
+
+我们已进入生活设计阶段，接下来将围绕您的居住需求、空间布局和家具偏好展开梳理。请查看下方的选择题卡，点击最符合您本次核心推进目标的方向。完成确认后，我们将基于您的目标继续推进后续具体的生活场景与功能规划。
+
+为 My Answer 填写 · 确认后同步 Your Home Vision
+先猜你的需求 · 尚未确认
+
+You may be planning to furnish a newly acquired space or optimize a specific key room, but your overall project scope is still unconfirmed.
+
+依据：信息不足，目前只是待验证的猜测
+
+还需确认：Whether you are starting from a blank canvas in a new home, renovating an existing space, tackling one priority room, or simply exploring layout possibilities.
+
+Q01a · 效果示例，尚未采用
+Which direction best reflects your main goal and current focus for this project?
+
+Clarifying your primary objective will guide how deeply we plan the spatial zones, storage, and furniture arrangement.
+
+示例前提：The confirmed room perimeter serves as the initial layout boundary.；Detailed lifestyle habits and storage demands will be refined progressively.
+
+A · Set up a new home
+
+选择后的结果：Establish complete room zones, traffic flow, and primary furniture placements for moving into a new residence.
+
+具体示例：Map out everyday living and dining areas from scratch, then plan core storage capacity.
+
+需要取舍：Requires laying out full spatial zoning before focusing on localized details.
+
+B · Renovate current layout
+
+选择后的结果：Reconfigure existing room functions, partition layouts, and built-in fixtures for a comprehensive overhaul.
+
+具体示例：Upgrade room circulation, rethink functional connections, and redesign built-in storage walls.
+
+需要取舍：Needs closer coordination with existing walls, plumbing, and structural boundaries.
+
+C · Prioritize one room
+
+选择后的结果：Direct all initial planning efforts toward perfecting function, layout, and furniture for one core room.
+
+具体示例：Refine the confirmed living space first with dedicated reading, relaxing, and storage arrangements.
+
+需要取舍：Puts broader home areas on hold until this key room layout is settled.
+
+D · Explore ideas freely
+
+选择后的结果：Test different spatial arrangements and style directions without committing to an immediate build or move.
+
+具体示例：Try various furniture configurations and aesthetic vibes to see what fits your lifestyle best.
+
+需要取舍：Focuses on conceptual possibilities rather than concrete execution milestones.
+
+自己的想法
+确认这个回答
+暂不确定
+跳过
+暂不回答，收起这题
+为 我的回答 填写 · 确认后同步 Your Home Vision
+先猜你的需求 · 尚未确认
+
+您可能打算为新居规划整体空间，或先针对重点房间做功能与家具布置，但具体规划目标尚未确认。
+
+依据：信息不足，目前只是待验证的猜测
+
+还需确认：还不确定本次规划主要是新居整体入住、老房局改翻新、单房间深度优化，还是先做方案探索。
+
+Q01a · 效果示例，尚未采用
+为了确定后续方案梳理的侧重点与节奏，这次咨询您最核心的推进目标更接近哪一项？
+
+明确核心目标有助于对齐后续问卷和空间功能规划的深度与先后顺序。
+
+示例前提：已确认的建筑空间轮廓作为本阶段平面规划的基础底图。；具体收纳体量与生活习惯将在后续问卷中逐项细化展开。
+
+A · 新居整体入住规划
+
+选择后的结果：规划全屋动线、核心功能分区与主要家具摆放，为新居入住做准备。
+
+具体示例：从零梳理客厅的阅读与休闲分区，安排基础收纳与桌椅尺度。
+
+需要取舍：需要先建立整体空间功能框架，再逐步深入单一局部细节。
+
+B · 现有房屋翻新改造
+
+选择后的结果：重新梳理现有房屋格局与动线，推进较大幅度的功能翻新改造。
+
+具体示例：优化空间动线，重整收纳体系并考量与既有设施的衔接关系。
+
+需要取舍：需要更紧密地结合现状管线和建筑结构约束进行权衡。
+
+C · 聚焦重点房间优化
+
+选择后的结果：将精力聚焦在最核心的一个房间，深度解决该空间的功能与家具。
+
+具体示例：优先把已确认的客厅空间做透，理清阅读、休闲和收纳的具体场景。
+
+需要取舍：其他空间的需求梳理将暂时后置，优先保障单房间完整落地。
+
+D · 先探索多种布局可能
+
+选择后的结果：在不急于定稿施工的前提下，自由探索不同的平面布置与生活方式。
+
+具体示例：自由比对不同的桌椅摆设与动线，直观感受哪种生活场景更合适。
+
+需要取舍：侧重方案启发与可能性对比，暂不生成细化施工任务书。
+
+自己的想法
+确认这个回答
+暂不确定
+跳过
+暂不回答，收起这题
+＋
+gemini-3.8-flash-high
+语音
+发送 ↑
+语音先转为可编辑文字。建议由你确认后采用。
+平面
+全屋
+漫游
+全屋
+合成验收客厅
+当前工作稿
+合成验收客厅
+长度依据：ALVA-036 合成测量，非客户户型
+平面核对
+核对墙、门窗与空间。
+
+当前工作稿 · revision 13 · 已校准
+
+内部空洞
+已检查
+不合理倾斜
+已检查
+孤立墙体 / 门窗
+已检查
+
+本次规则未发现问题，仍需对照原图核对。
+
+检查依据与边界
+
+已确认拓扑 v1 · 来源指纹 9bb221de5fc9…
+
+← 重新修改户型
+房屋资料
+1 个空间
+功能分区
+
+不加实体墙也可以划分客厅区、餐厅区等功能空间。分区只影响空间语义，不改变户型拓扑和3D墙体。
+
+画一条功能分区线
+三面墙已围成近似矩形时，也可以直接双击该区域，自动生成缺失的虚拟第四边。
+Codex建筑生成
+
+基于当前已确认拓扑和原图真实调用Codex生成建筑墙体、地面与门窗构件；不会生成家具或施工结论。
+
+输入拓扑 v1 · 指纹 9bb221de5fc9…生成建筑3D建筑场景已确认并可重载
+需求
+参考图
+家具
+审查
+访问
+墙体证据
+改造预览
+空间拆分
+房间用途
+只确认用途锁定房间
+问卷问题
+Q01 这次咨询结束，你最希望手里多出什么？
+Q02 房屋在哪个城市、属于什么类型？
+Q03 哪些改动需要房东、共同业主或物业同意？
+Q04 这轮先做哪些空间、做到什么程度？
+Q05 现有户型图或现场资料，哪一种最方便提供？
+Q06 哪些资料可以共享给设计师？
+Q07 这个家主要由哪些人使用？
+Q08 哪些人共同决定，分歧时怎么确认？
+Q09 工作日回家后，最常发生的一个场景是什么？
+Q10 家里需要怎样的工作或学习空间？
+Q11 亲友来访时，最常需要家里支持什么？
+Q12 你愿意为整理、清洁花多少精力？
+Q13 用生活感受而不是风格名，你希望家像什么？
+Q14 全屋冷暖和明暗偏好，更接近哪一种？
+Q15 你喜欢参考图里的哪一部分？
+Q16 有没有一看到就不想要的做法？
+Q17 有什么必须留在新家，理由不仅是实用？
+Q18 当空间或条件受限时，哪两件事最不能牺牲？
+Q23 什么时候需要能入住，哪些日期不能延后？
+Q24 哪些可以先做，哪些愿意以后再补？
+Q25 这个房间最常做什么，偶尔又会做什么？
+Q26 房间尺寸来自实测、图纸还是估计？
+Q27 门窗、柱梁或管井中，哪些位置已知不能变？
+Q28 哪些电器和水电位置会影响布局？
+Q29 这个房间保留哪些物品，尺寸依据是什么？
+Q30 哪些东西最占空间，哪些需要随手拿？
+Q31 客厅中心的位置，更希望留给什么？
+Q32 餐桌平时与来客时分别需要怎样的容量？
+Q33 做饭的频率和最在意的不便是什么？
+Q34 卧室里最影响放松或入睡体验的是什么？
+Q35 卫生间更需要解决收纳、清洁还是使用不便？
+Q36 洗晒与进门的杂物，最常卡在哪一步？
+Q37 柜子内部，更在意容量、拿取还是展示？
+Q38 未来变化时，愿意移动或替换哪些家具？
+Q39 材料触感、外观、维护与检测资料，最在意什么？
+Q40 白天、工作时和夜晚，灯光分别要支持什么？
+Q41 目前最在意的舒适度问题是什么？
+Q42 智能功能希望做到哪一步？
+Q43 比较方案时，愿意接受哪个代价？
+Q44 报告里哪些画面最能帮助做决定？
+Q45 交给设计师时，哪些内容希望原话保留？
+Q46 还有哪个决定让你拿不准？
+Q47 这次确认只覆盖哪部分内容？
+Q48 这份总结哪里像你，哪里还没有理解对？
+Q49 宝宝房里哪些用品需要在照护时随手拿？
+Q50 婴幼儿睡眠家具已有确定型号或安排吗？
+Q51 哪些动作或通行场景需要更方便？
+Q52 宠物的休息、活动和清洁用品如何安排？
+Q53 有哪些不舒适的气味或接触体验需要避开？
+Q54 定制柜主要解决什么，哪些尺寸有依据？
+Q55 重台面或悬挂物的重量与支撑资料齐全吗？
+Q56 施工或安装期间是否还需要住在家里？
+Q57 参考图里，哪个点喜欢，哪个点不想照搬？
+Q59 不同使用者的偏好，先按什么方式比较？
+Q01 · 项目边界
+这次咨询结束，你最希望手里多出什么？
+A · 推荐
+先形成可转交设计师的需求任务书
+B
+先看整体空间方向
+C
+先解决一个重点房间
+D
+先梳理优先级与取舍
+自己的想法
+锁定此回答，避免被建议覆盖
+确认回答
+暂不确定
+跳过
+不适用

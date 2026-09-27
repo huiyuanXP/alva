@@ -1,3 +1,4 @@
+import {withLanguage,requestLanguage,localize} from './i18n/context.js';
 import {registerProjects} from './projects/routes.js';
 import type {FurnitureRenderer} from './furniture/render.js';
 import {LayoutOutputError} from './import/response.js';
@@ -52,6 +53,7 @@ const Command=z.object({requestId:z.string().uuid(),expectedRevision:z.number().
 export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.ALVA_ORIGIN||'http://127.0.0.1:4180',buildingCodex,chatCodex,visionCodex,furnitureCodex,furnitureRender,transcriptionCall,automaticRecommendations=true}:{automaticRecommendations?:boolean;assets?:boolean;origin?:string;buildingCodex?:BuildingCodexCall;chatCodex?:(input:CodexInput)=>Promise<string>;visionCodex?:(input:CodexInput)=>Promise<string>;furnitureCodex?:(input:CodexInput)=>Promise<string>;furnitureRender?:FurnitureRenderer;transcriptionCall?:TranscriptionCall}={}){
  const publicPayload=(value:unknown):unknown=>{if(Array.isArray(value))return value.map(publicPayload);if(value&&typeof value==='object'){const result:Record<string,unknown>={};for(const [key,item] of Object.entries(value as Record<string,unknown>)){if(key==='budget')continue;result[key]=publicPayload(item)}return result}return value};
  const app=Fastify({logger:false,bodyLimit:17_000_000,forceCloseConnections:true});
+ app.addHook('onRequest',(req,_reply,done)=>withLanguage(requestLanguage(req),done));
  app.addHook('preSerialization',async(_req,_reply,payload)=>publicPayload(payload));
  await app.register(cookie);await app.register(rateLimit,{max:180,timeWindow:'1 minute'});
  const sessions=new WeakMap<object,Session>();
@@ -60,7 +62,7 @@ export async function buildAlva(store:AlvaStore,{assets=true,origin=process.env.
  const activeBuilding=new Map<string,AbortController>();
  const activeTranscriptions=new Map<string,AbortController>();
  const failedAccess=new Map<string,{count:number;resetAt:number}>();
- app.setErrorHandler((err,req,reply)=>{if(!(err instanceof DomainError)&&!(err instanceof ContextProjectionError)&&!(err instanceof LayoutOutputError)&&!(err instanceof z.ZodError)){const detail=String(err instanceof Error?err.stack:err).replaceAll(process.env.OPENAI_API_KEY||'__absent_key__','[REDACTED]');console.error('[alva request error]',req.url.split('?')[0],detail)}const code=err instanceof DomainError||err instanceof ContextProjectionError||err instanceof LayoutOutputError?err.statusCode:err instanceof z.ZodError?400:500;reply.code(code).send({...err instanceof ContextProjectionError||err instanceof LayoutOutputError?err.detail:{},error:code===500?'处理失败，草稿已保留，请重试':err instanceof Error?err.message:'请求无效'})});
+ app.setErrorHandler((err,req,reply)=>{if(!(err instanceof DomainError)&&!(err instanceof ContextProjectionError)&&!(err instanceof LayoutOutputError)&&!(err instanceof z.ZodError)){const detail=String(err instanceof Error?err.stack:err).replaceAll(process.env.OPENAI_API_KEY||'__absent_key__','[REDACTED]');console.error('[alva request error]',req.url.split('?')[0],detail)}const code=err instanceof DomainError||err instanceof ContextProjectionError||err instanceof LayoutOutputError?err.statusCode:err instanceof z.ZodError?400:500;reply.code(code).send({...err instanceof ContextProjectionError||err instanceof LayoutOutputError?err.detail:{},error:localize(code===500?'处理失败，草稿已保留，请重试':err instanceof Error?err.message:'请求无效')})});
  app.addHook('onRequest',async(req,reply)=>{
   reply.header('X-Content-Type-Options','nosniff').header('Referrer-Policy','no-referrer');
   if(req.url.startsWith('/api/'))reply.header('Cache-Control','no-store');

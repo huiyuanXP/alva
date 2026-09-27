@@ -1,0 +1,258 @@
+语言
+中文
+English
+alva
+生活，先于设计
+我的中文项目 ▾
+未保存工作稿
+保存版本
+历史
+交付包
+分享
+退出
+咨询
+你的理想家
+户型导入
+生活设计
+alva · 设计顾问
+
+Welcome to Lifestyle Design! In this stage, we will explore your daily living routines, tailor functional layouts, and shape furniture arrangements and interior styles to suit your life.
+
+To get started, please review the question card below and choose the option that best describes your overall plans for this space. Once you select an option or share your thoughts, we will take the next step together.
+
+alva · 设计顾问
+
+我们正在推进生活设计阶段的需求梳理。请查看下方的待确认卡片，选择最贴近您本次空间规划目标的一项，也可以直接在对话中告诉我您的想法。确认您的主要方向后，我们将一步步为您展开具体的生活习惯与功能布局规划。
+
+为 My Answer 填写 · 确认后同步 Your Home Vision
+先猜你的需求 · 尚未确认
+
+I guess you might be starting fresh with a new home layout or focusing on this specific living room, but this is an unconfirmed guess.
+
+依据：信息不足，目前只是待验证的猜测
+
+还需确认：It is not yet confirmed whether you are planning a whole-home transition, a major renovation, or a targeted single-room refresh.
+
+Q01a · 效果示例，尚未采用
+What brings you here today?
+
+Clarifying your overarching goal helps calibrate the scope and level of detail for your lifestyle design.
+
+示例前提：Assumes you are establishing your primary project goal to guide the lifestyle planning process.；All dimensions and structural layouts remain schematic and subject to physical verification.
+
+A · 搬入新家
+
+选择后的结果：Plan whole-home functional zoning and everyday circulation for your upcoming move.
+
+具体示例：e.g., Establishing essential living room zones, entryway drop-off, and primary furniture placement from scratch.
+
+需要取舍：Requires coordinating broader storage capacity and move-in milestones across spaces.
+
+B · 计划全包装修
+
+选择后的结果：Focus on spatial restructuring, utility adjustments, and functional renovations.
+
+具体示例：e.g., Evaluating spatial reconfigurations, opening locations, and built-in joinery needs.
+
+需要取舍：Involves coordinating construction feasibility, utility constraints, and phasing.
+
+C · Refreshing a single room
+
+选择后的结果：Concentrate planning entirely on maximizing the comfort and usability of this one room.
+
+具体示例：e.g., Tailoring this living room specifically for everyday reading, relaxing, and organized storage.
+
+需要取舍：Focuses solely on this room without restructuring whole-house circulation or adjacent spaces.
+
+D · Restyling current home
+
+选择后的结果：Refresh visual style, mood, and loose furniture while keeping existing layouts intact.
+
+具体示例：e.g., Updating wall and floor tones, lighting layers, and loose furniture pairings.
+
+需要取舍：Retains the existing room boundaries and architectural layout as-is.
+
+自己的想法
+确认这个回答
+暂不确定
+跳过
+暂不回答，收起这题
+为 我的回答 填写 · 确认后同步 Your Home Vision
+先猜你的需求 · 尚未确认
+
+我猜您可能正在规划新居入住，或者想重点改善当前的起居空间，不过目前尚未收到您具体的生活诉求。
+
+依据：信息不足，目前只是待验证的猜测
+
+还需确认：目前尚不确定您本次咨询的整体目标是整屋搬新家、全屋翻新，还是仅聚焦在当前单个房间的局部调整。
+
+Q01a · 效果示例，尚未采用
+这次生活设计咨询，您最主要的目标或计划是什么？
+
+先厘清您的整体规划目标，能帮助我们确定后续生活需求问卷的重点范围与设计深度。
+
+示例前提：假设您希望先明确本次规划的总体目标，作为后续生活功能梳理的依据。；所有尺寸与布局均为方案示意，具体实施需结合现场实测与房屋结构条件复核。
+
+A · 准备搬入新家
+
+选择后的结果：从零规划整屋动线、全屋收纳框架与基础家具布局。
+
+具体示例：如：从零规划玄关过渡、客厅核心起居与主活动动线。
+
+需要取舍：需要综合考虑多空间的入住时间节点与整体储物容量平衡。
+
+B · 计划整屋改造翻新
+
+选择后的结果：重点梳理空间重构、改造可行性与固定设施升级。
+
+具体示例：如：评估空间动线优化、设备点位与系统性定制收纳。
+
+需要取舍：涉及施工周期、投入预算及物业报备等实际约束。
+
+C · 聚焦单个重点房间
+
+选择后的结果：集中精力优化当前房间的使用场景、动线与实用收纳。
+
+具体示例：如：优先理顺当前客厅的阅读、休闲、日常收纳与活动空间。
+
+需要取舍：仅针对单一空间深化，暂不展开全屋其他功能区的系统联动。
+
+D · 为现有家调整风格
+
+选择后的结果：保留现有硬装与格局，通过色彩、软装与移动家具提升生活体验。
+
+具体示例：如：优化墙地色彩搭配、补充氛围照明与替换舒适家具。
+
+需要取舍：不对原有空间结构或固定布局做大幅变动。
+
+自己的想法
+确认这个回答
+暂不确定
+跳过
+暂不回答，收起这题
+＋
+gemini-3.8-flash-high
+语音
+发送 ↑
+语音先转为可编辑文字。建议由你确认后采用。
+平面
+全屋
+漫游
+全屋
+合成验收客厅
+当前工作稿
+合成验收客厅
+长度依据：ALVA-036 合成测量，非客户户型
+平面核对
+核对墙、门窗与空间。
+
+当前工作稿 · revision 13 · 已校准
+
+内部空洞
+已检查
+不合理倾斜
+已检查
+孤立墙体 / 门窗
+已检查
+
+本次规则未发现问题，仍需对照原图核对。
+
+检查依据与边界
+
+已确认拓扑 v1 · 来源指纹 9bb221de5fc9…
+
+← 重新修改户型
+房屋资料
+1 个空间
+功能分区
+
+不加实体墙也可以划分客厅区、餐厅区等功能空间。分区只影响空间语义，不改变户型拓扑和3D墙体。
+
+画一条功能分区线
+三面墙已围成近似矩形时，也可以直接双击该区域，自动生成缺失的虚拟第四边。
+Codex建筑生成
+
+基于当前已确认拓扑和原图真实调用Codex生成建筑墙体、地面与门窗构件；不会生成家具或施工结论。
+
+输入拓扑 v1 · 指纹 9bb221de5fc9…生成建筑3D建筑场景已确认并可重载
+需求
+参考图
+家具
+审查
+访问
+墙体证据
+改造预览
+空间拆分
+房间用途
+只确认用途锁定房间
+问卷问题
+Q01 这次咨询结束，你最希望手里多出什么？
+Q02 房屋在哪个城市、属于什么类型？
+Q03 哪些改动需要房东、共同业主或物业同意？
+Q04 这轮先做哪些空间、做到什么程度？
+Q05 现有户型图或现场资料，哪一种最方便提供？
+Q06 哪些资料可以共享给设计师？
+Q07 这个家主要由哪些人使用？
+Q08 哪些人共同决定，分歧时怎么确认？
+Q09 工作日回家后，最常发生的一个场景是什么？
+Q10 家里需要怎样的工作或学习空间？
+Q11 亲友来访时，最常需要家里支持什么？
+Q12 你愿意为整理、清洁花多少精力？
+Q13 用生活感受而不是风格名，你希望家像什么？
+Q14 全屋冷暖和明暗偏好，更接近哪一种？
+Q15 你喜欢参考图里的哪一部分？
+Q16 有没有一看到就不想要的做法？
+Q17 有什么必须留在新家，理由不仅是实用？
+Q18 当空间或条件受限时，哪两件事最不能牺牲？
+Q23 什么时候需要能入住，哪些日期不能延后？
+Q24 哪些可以先做，哪些愿意以后再补？
+Q25 这个房间最常做什么，偶尔又会做什么？
+Q26 房间尺寸来自实测、图纸还是估计？
+Q27 门窗、柱梁或管井中，哪些位置已知不能变？
+Q28 哪些电器和水电位置会影响布局？
+Q29 这个房间保留哪些物品，尺寸依据是什么？
+Q30 哪些东西最占空间，哪些需要随手拿？
+Q31 客厅中心的位置，更希望留给什么？
+Q32 餐桌平时与来客时分别需要怎样的容量？
+Q33 做饭的频率和最在意的不便是什么？
+Q34 卧室里最影响放松或入睡体验的是什么？
+Q35 卫生间更需要解决收纳、清洁还是使用不便？
+Q36 洗晒与进门的杂物，最常卡在哪一步？
+Q37 柜子内部，更在意容量、拿取还是展示？
+Q38 未来变化时，愿意移动或替换哪些家具？
+Q39 材料触感、外观、维护与检测资料，最在意什么？
+Q40 白天、工作时和夜晚，灯光分别要支持什么？
+Q41 目前最在意的舒适度问题是什么？
+Q42 智能功能希望做到哪一步？
+Q43 比较方案时，愿意接受哪个代价？
+Q44 报告里哪些画面最能帮助做决定？
+Q45 交给设计师时，哪些内容希望原话保留？
+Q46 还有哪个决定让你拿不准？
+Q47 这次确认只覆盖哪部分内容？
+Q48 这份总结哪里像你，哪里还没有理解对？
+Q49 宝宝房里哪些用品需要在照护时随手拿？
+Q50 婴幼儿睡眠家具已有确定型号或安排吗？
+Q51 哪些动作或通行场景需要更方便？
+Q52 宠物的休息、活动和清洁用品如何安排？
+Q53 有哪些不舒适的气味或接触体验需要避开？
+Q54 定制柜主要解决什么，哪些尺寸有依据？
+Q55 重台面或悬挂物的重量与支撑资料齐全吗？
+Q56 施工或安装期间是否还需要住在家里？
+Q57 参考图里，哪个点喜欢，哪个点不想照搬？
+Q59 不同使用者的偏好，先按什么方式比较？
+Q01 · 项目边界
+这次咨询结束，你最希望手里多出什么？
+A · 推荐
+先形成可转交设计师的需求任务书
+B
+先看整体空间方向
+C
+先解决一个重点房间
+D
+先梳理优先级与取舍
+自己的想法
+锁定此回答，避免被建议覆盖
+确认回答
+暂不确定
+跳过
+不适用

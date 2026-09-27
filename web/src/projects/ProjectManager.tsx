@@ -1,3 +1,4 @@
+import {raw as untranslated} from '../i18n/language.js';
 import {useEffect,useRef,useState} from 'react';
 import type {UiAction} from '../../../packages/contracts/alva/ui-action.js';
 import {projectFetch} from './session.js';
@@ -25,7 +26,7 @@ export function ProjectManager({currentId,busy,request,onClose}:{currentId:strin
    <small>从导入户型图开始，不复制现有项目内容。</small>
   </form>
   {error&&<p role="alert" className="error">{error}</p>}
-  <h3>我的项目</h3>{loading?<p role="status">正在加载项目…</p>:<ul className="projects-list">{projects.map(project=><li key={project.id} className={request?.mode==='switch'&&request.targetProjectId===project.id?'suggested':''}><div><strong>{project.name}</strong><small>{project.stage==='living'?'生活设计':'户型导入'} · {project.savedVersion?`已保存 v${project.savedVersion}`:'尚无保存版本'} · {new Date(project.createdAt).toLocaleDateString()}</small></div><button disabled={busy||working||project.id===currentId} onClick={()=>void navigate({mode:'switch',targetProjectId:project.id})}>{project.id===currentId?'当前项目':'切换到此项目'}</button></li>)}</ul>}
+  <h3>我的项目</h3>{loading?<p role="status">正在加载项目…</p>:<ul className="projects-list">{projects.map(project=><li key={project.id} className={request?.mode==='switch'&&request.targetProjectId===project.id?'suggested':''}><div><strong>{untranslated(project.name)}</strong><small>{project.stage==='living'?'生活设计':'户型导入'} · {project.savedVersion?`已保存 v${project.savedVersion}`:'尚无保存版本'} · {new Date(project.createdAt).toLocaleDateString()}</small></div><button disabled={busy||working||project.id===currentId} onClick={()=>void navigate({mode:'switch',targetProjectId:project.id})}>{project.id===currentId?'当前项目':'切换到此项目'}</button></li>)}</ul>}
   {busy&&<p role="status">顾问正在处理，完成后即可确认新建或切换。</p>}
  </dialog>;
 }

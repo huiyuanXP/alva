@@ -1,0 +1,64 @@
+✔ ALVA-074 translation preserves interpolation and language contexts are isolated (66.161961ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5045.586755
+✔ ALVA-074 Chat uses selected language through stage MCP and keeps user evidence unchanged (11423.321533ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15698.870022
+✔ ALVA-073 checkpoints follow actual progress and survive message writes and reload (5.885049ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4847.493555
+✔ ALVA-073 living skips answered unknown skipped and hidden questions per respondent (122.177074ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4403.027954
+✔ ALVA-073 automatic Chat uses MCP, no fake user evidence, deduplicates and retries failed checks (11686.838589ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16879.660663
+✔ ALVA-073 concurrent automatic requests run once and stage changes invalidate their guidance (10519.832906ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14928.003493
+✔ ALVA-073 living MCP enforces next question, separates respondents and reuses pending cards (12820.286754ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17094.639671
+Isolated test cases passed: 7

@@ -2,6 +2,8 @@
 
 业主通过 Chat 整理生活需求、校准户型、预览确认修改，再导出设计师可编辑的同版本交付。当前核心链已发布于 https://prod.huiyuanxp.com ，登录需统一验证码。登录后左侧“咨询”栏是主 Chat Agent 入口；其 Agent/Harness 合同见[ALVA-065](docs/ALVA-065-main-chat-agent.md)。完整保留范围仍未完成，不是最终验收状态。
 
+本地当前版本提供中文 / English 切换：登录页、顶部工作区和问卷均有语言入口，Agent 后续回复跟随界面语言，历史对话与用户原文保留。实现与验收见 [ALVA-074](docs/ALVA-074-bilingual-interface.md)，上线状态以交接记录为准。
+
 开发必读[文件结构与工程归属](docs/PROJECT-STRUCTURE.md)，专题索引见[docs](docs/README.md)。
 
 恢复入口 [Handoff.md](Handoff.md)，规格 [SPEC.md](SPEC.md)，范围 [SCOPE.md](SCOPE.md)，验证 [ACCEPTANCE.md](ACCEPTANCE.md)。

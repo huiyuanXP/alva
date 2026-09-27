@@ -1,6 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import type {Project} from '../../../api/model.js';
-type Options={project:Project|null;stage:'floorplan'|'living';respondentId:string;model:string;enabled:boolean;busy:boolean;idle:boolean;request:(path:string)=>Promise<any>;stream:(path:string,body:unknown,receive:(type:string,data:any)=>void)=>Promise<void>;onProject:(p:Project)=>void;setBusy:(busy:boolean)=>void;setProgress:(text:string|null)=>void};
+type Options={language:'zh'|'en';project:Project|null;stage:'floorplan'|'living';respondentId:string;model:string;enabled:boolean;busy:boolean;idle:boolean;request:(path:string)=>Promise<any>;stream:(path:string,body:unknown,receive:(type:string,data:any)=>void)=>Promise<void>;onProject:(p:Project)=>void;setBusy:(busy:boolean)=>void;setProgress:(text:string|null)=>void};
 /** Checkpoints are persisted by the server; local attempts prevent retry loops. */
 export function useStageGuidance(o:Options){
  const latest=useRef(o);latest.current=o;
@@ -13,7 +13,7 @@ export function useStageGuidance(o:Options){
   const timer=setTimeout(()=>void(async()=>{
    let claimed=false,attempt='';
    try{
-    const g=await o.request('/chat/guidance'+(o.respondentId?'?respondentId='+encodeURIComponent(o.respondentId):''));
+    const g=await o.request('/chat/guidance?language='+o.language+(o.respondentId?'&respondentId='+encodeURIComponent(o.respondentId):''));
     const now=latest.current;
     if(cancelled||now.busy||!now.idle||now.project?.id!==o.project!.id||g.stage!==now.stage||!g.needed)return;
     if(g.busy){setTimeout(()=>setRetry(n=>n+1),2000);return}
@@ -22,7 +22,7 @@ export function useStageGuidance(o:Options){
     inFlight.current=true;claimed=true;attemptedKey.current=attempt;setError('');o.setBusy(true);o.setProgress('正在接续当前步骤…');
     const p=await o.request('/project');if(!latest.current.enabled||latest.current.project?.id!==p.id)return;o.onProject(p);
     let failure='';
-    await o.stream('/chat',{requestId:crypto.randomUUID(),expectedRevision:p.revision,guidance:{key:g.key},text:'阶段引导',roomId:null,model:o.model,...(o.respondentId?{respondentId:o.respondentId}:{})},(type,data)=>{
+    await o.stream('/chat',{requestId:crypto.randomUUID(),expectedRevision:p.revision,guidance:{key:g.key},language:o.language,text:'阶段引导',roomId:null,model:o.model,...(o.respondentId?{respondentId:o.respondentId}:{})},(type,data)=>{
      if(latest.current.project?.id!==p.id)return;
      if(type==='project')o.onProject(data);
      if(type==='status')o.setProgress(data.text);
@@ -33,6 +33,6 @@ export function useStageGuidance(o:Options){
    finally{if(claimed){inFlight.current=false;o.setBusy(false);o.setProgress(null)}}
   })(),700);
   return()=>{cancelled=true;clearTimeout(timer)};
- },[o.project?.id,o.project?.revision,o.stage,o.respondentId,o.model,o.enabled,o.busy,o.idle,retry]);
+ },[o.language,o.project?.id,o.project?.revision,o.stage,o.respondentId,o.model,o.enabled,o.busy,o.idle,retry]);
  return {error,retry:()=>{attemptedKey.current='';setError('');setRetry(n=>n+1)}};
 }

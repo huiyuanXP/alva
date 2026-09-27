@@ -15,7 +15,7 @@ function inline(text:string){
 
 export function AssistantText({text}:{text:string}){
  const blocks=text.replace(/\r\n?/g,'\n').trim().split(/\n\s*\n/);
- return <div className="assistant-copy">{blocks.map((block,index)=>{
+ return <div translate="no" className="assistant-copy">{blocks.map((block,index)=>{
   const lines=block.split('\n');
   if(lines.every(line=>/^\s*[-*]\s+/.test(line)))return <ul key={index}>{lines.map((line,n)=><li key={n}>{inline(line.replace(/^\s*[-*]\s+/,''))}</li>)}</ul>;
   if(lines.every(line=>/^\s*\d+[.)]\s+/.test(line)))return <ol key={index}>{lines.map((line,n)=><li key={n}>{inline(line.replace(/^\s*\d+[.)]\s+/,''))}</li>)}</ol>;

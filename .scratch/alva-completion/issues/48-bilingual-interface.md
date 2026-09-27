@@ -2,7 +2,7 @@
 
 **ID:** ALVA-074
 
-**Status:** in-progress
+**Status:** done
 
 **Owner:** codex-i18n
 
@@ -12,4 +12,4 @@
 
 ## Implementation handoff
 
-待实现。
+实现与两轮真实 Chat/MCP 双语验收已完成，最终类型/构建及阶段导航回归通过，已集成 main（个人实现 16ae8db）。语言保持在浏览器与每轮 Prompt，thread 和业务值不变；目录、证据和边界见 [ALVA-074](../../../docs/ALVA-074-bilingual-interface.md)。已合并 ALVA-075 导航修复，未部署生产。

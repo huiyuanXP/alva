@@ -18,3 +18,5 @@
 - [拓扑质量补充票](../.scratch/alva-topology-quality/README.md)：ALVA-055与MiMo复测ALVA-056，不重排原44票。
 
 - [MiMo识图复测记录](MIMO-VISION-RETRY.md)：ALVA-056原生MiMo复测、空候选/门窗语义修复与显式纠错验收；保留历史失败、生产链路和图像准确性边界。
+
+- [中英文界面与 Agent 输出语言](ALVA-074-bilingual-interface.md)：语言切换、原文保护、阶段恢复和同语言交付。

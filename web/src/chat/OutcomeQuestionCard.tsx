@@ -1,11 +1,14 @@
-import React,{useState} from 'react';
+import {useLanguage} from '../i18n/language.js';
+import React,{useEffect,useState} from 'react';
 import './outcome-question.css';
 import {outcomeAnswer,type OutcomeQuestion} from '../../../packages/contracts/alva/consultation-question.js';
 
 type Props={card:OutcomeQuestion;disabled:boolean;allowNotApplicable?:boolean;onConfirm:(text:string,state:'answered'|'unknown'|'skipped'|'not_applicable',optionId?:string)=>Promise<unknown>};
 export function OutcomeQuestionCard({card,disabled,onConfirm,allowNotApplicable=true}:Props){
+ const language=useLanguage();
  const [selected,setSelected]=useState(''),[custom,setCustom]=useState(''),[saving,setSaving]=useState(false),[error,setError]=useState('');
- const option=card.options.find(o=>o.id===selected),answer=selected==='custom'?custom:option?outcomeAnswer(option):'';
+ useEffect(()=>{setSelected(value=>value==='custom'?value:'')},[JSON.stringify(card.options)]);
+ const option=card.options.find(o=>o.id===selected),answer=selected==='custom'?custom:option?outcomeAnswer(option,language):'';
  const confirm=async(text:string,state:'answered'|'unknown'|'skipped'|'not_applicable')=>{setSaving(true);setError('');try{await onConfirm(text,state,state==='answered'&&selected!=='custom'?selected:undefined)}catch(e){setError(e instanceof Error?e.message:'确认失败，请重试')}finally{setSaving(false)}};
  const blocked=disabled||saving;
  return <section className="question-card outcome-question" aria-label="按结果选择" data-testid="outcome-question">

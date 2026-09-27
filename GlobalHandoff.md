@@ -1,6 +1,10 @@
+## 2026-09-27 双语展示与每轮输出语言
+
+ALVA-074已集成、未发布。唯一语言合同和词典在 packages/contracts/alva/i18n；网页展示适配不翻译 value/ID/用户原话，新增用户文本必须标 raw 或 translate=no。请求头 X-Alva-Language 与 Chat language 驱动 start/resume、引导和后台建议；MCP get_interface_language只读返回本轮语言，工具执行恢复同一上下文。导出缓存包含语言，不能跨语言复用旧文件。新增展示文案同步词典并保持用户存储值原样。机制与验收见 [ALVA-074](docs/ALVA-074-bilingual-interface.md)。
+
 ## 2026-09-27 阶段导航统一入口
 
-ALVA-075已集成、未发布。右侧生活工作区随Chat阶段，右侧进入按钮复用StageControls服务端切换；阶段读取独立于确认卡读取，初始化完成前不发自动引导，切换中不发消息。074集成共享入口时须保留这些行为并复验。证据与边界见[ALVA-075](docs/ALVA-075-stage-navigation.md)。
+ALVA-075已集成、未发布。右侧生活工作区随Chat阶段，右侧进入按钮复用StageControls服务端切换；阶段读取独立于确认卡读取，初始化完成前不发自动引导，切换中不发消息。074已保留这些行为并完成阶段导航回归。证据与边界见[ALVA-075](docs/ALVA-075-stage-navigation.md)。
 
 ## 2026-09-27 ALVA-073 已发布生产
 

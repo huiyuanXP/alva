@@ -1,3 +1,7 @@
+## 2026-09-27 ALVA-074 已集成；无新任务自动开工
+
+中英文切换与按界面语言输出的主 Chat 已验收集成，074释放署名和共享文件占用，075导航同步已保留并回归。详见 [ALVA-074](docs/ALVA-074-bilingual-interface.md)。生产仍固定073 release，074/075均未发布；需要上线时按发布流程使用已验候选。050仍ready-for-agent未认领，051依赖050。neat-freak收尾完成，复核现场保留。
+
 ## 2026-09-27 ALVA-075 已修复并集成，未发布
 
 阶段导航现在同步左侧Chat与右侧生活工作区，右侧入口和左侧按钮共用服务端阶段切换；确认卡读取失败不再阻断阶段更新，往返保留各阶段原thread和历史。二维确认文案明确后续建筑步骤。个人实现d490a7a；类型/构建、8项回归、7项最终浏览器与4步真实Chat/HTTP MCP通过，页面错误0。证据和失败run见[ALVA-075](docs/ALVA-075-stage-navigation.md)。
@@ -154,7 +158,6 @@ neat-freak：局部实测/类型verified-current，完整交付及生产pending�
 
 | Ticket | 任务 | 并行组 | 署名（填入即认领） | 分支 / Worktree | 预计共享文件、端口与状态 |
 |---|---|---|---|---|---|
-| [ALVA-074](.scratch/alva-completion/issues/48-bilingual-interface.md) | 中英文界面与Agent输出语言 | `chat` | codex-i18n | task/ALVA-074-codex-i18n / /home/ubuntu/Alva-worktrees/ALVA-074-codex-i18n | web/src、api/chat与语言参数、共享语言合同；动态隔离端口；in-progress |
 | [ALVA-050](.scratch/alva-completion/issues/43-public-verification.md) | 公网与重启恢复复核 | `production` |  |  | 依赖048/049已done；ready-for-agent，未自动开工 |
 
 当前依赖就绪项为“依赖就绪、条件可并行”，不保证任意两项都没有代码冲突。其余可同时认领各自负责的模块。任务编号不是锁，署名及共享文件登记才表示占用。

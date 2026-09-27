@@ -21,7 +21,7 @@ export function confirmVisionQuestion(p:Project,b:z.infer<typeof Confirm>){
  let value:Value=null,text='',synced=true;
  if(b.state==='answered'){
   if((!!b.optionId)===(!!b.customText))visionError('VISION_SELECTION_REQUIRED','请选择一个结果或填写自己的想法，不能同时提交两者。');
-  if(b.optionId){const option=card.options.find(o=>o.id===b.optionId);if(!option)visionError('VISION_OPTION_MISSING','所选选项不属于此题卡。');value=option.value;text=outcomeAnswer(option);validateVisionValue(r,card.questionId,value)}
+  if(b.optionId){const option=card.options.find(o=>o.id===b.optionId);if(!option)visionError('VISION_OPTION_MISSING','所选选项不属于此题卡。');value=option.value;text=outcomeAnswer(option,card.language);validateVisionValue(r,card.questionId,value)}
   else{
    text=b.customText!;const item=items.find(i=>i.id===card.questionId)!;
    if(item.type==='text')value=text;

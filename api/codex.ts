@@ -1,3 +1,5 @@
+import {currentLanguage} from './i18n/context.js';
+import {outputLanguageInstruction,type Locale} from '../packages/contracts/alva/i18n/locale.js';
 import {persistedHandoffs} from './mcp/handoff-history.js';
 import {mainChatAgent} from './main-chat-agent.js';
 import {spawn} from 'node:child_process';
@@ -10,7 +12,7 @@ import {mcpFailure,McpError} from './mcp/contracts.js';
 import {codexTimeoutMs} from './codex-timeout.js';
 export type BusinessTool={name:string;description:string;inputSchema:unknown;run:(args:unknown)=>Promise<unknown>};
 export type CodexSession={key:string;threadId?:string;onThread:(threadId:string)=>Promise<void>;onTurnStarted?:()=>Promise<void>;handoffs?:{id:string;text:string}[];onHandoffsDelivered?:(ids:string[])=>Promise<void>};
-export type CodexInput={compactOnly?:boolean;injectOnly?:boolean;resumeOnly?:boolean;session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
+export type CodexInput={language?:Locale;compactOnly?:boolean;injectOnly?:boolean;resumeOnly?:boolean;session?:CodexSession;text:string;images?:string[];model?:string;reasoningEffort?:string;tools?:BusinessTool[];outputSchema?:unknown;timeoutMs?:number;signal?:AbortSignal;onDelta?:(text:string)=>void;onEvent?:(event:unknown)=>void};
 /** Auxiliary calls are ephemeral; main Chat explicitly supplies its persistent stage session. */
 export async function runCodex(input:CodexInput):Promise<string>{
  if(input.compactOnly&&!input.session?.threadId)throw new Error('压缩历史需要已有持久会话');
@@ -69,7 +71,7 @@ export async function runCodex(input:CodexInput):Promise<string>{
  try{
   if(input.signal?.aborted)throw new Error('已取消');
   await rpc('initialize',{clientInfo:{name:'alva',version:'0.1.0'},capabilities:{experimentalApi:true}});send({method:'initialized',params:{}});
-  const started=await rpc(input.session?.threadId?'thread/resume':'thread/start',{model:input.model||process.env.OPENAI_MODEL||'gpt-5.5',modelProvider:'alva',cwd:work,...(input.session?.threadId?{threadId:input.session.threadId}:{ephemeral:!input.session}),approvalPolicy:'never',sandbox:'read-only',environments:[],runtimeWorkspaceRoots:[],baseInstructions:mainChatAgent.baseInstructions,...(!input.session?.threadId?{dynamicTools:(input.tools||[]).map(({run,...t})=>({type:'function',...t}))}:{})});
+  const started=await rpc(input.session?.threadId?'thread/resume':'thread/start',{model:input.model||process.env.OPENAI_MODEL||'gpt-5.5',modelProvider:'alva',cwd:work,...(input.session?.threadId?{threadId:input.session.threadId}:{ephemeral:!input.session}),approvalPolicy:'never',sandbox:'read-only',environments:[],runtimeWorkspaceRoots:[],baseInstructions:mainChatAgent.baseInstructions+'\n'+outputLanguageInstruction(input.language||currentLanguage()),...(!input.session?.threadId?{dynamicTools:(input.tools||[]).map(({run,...t})=>({type:'function',...t}))}:{})});
   threadId=started.thread.id;
   if(input.session?.threadId&&threadId!==input.session.threadId)throw new Error('Codex未恢复原会话');
   await input.session?.onThread(threadId);

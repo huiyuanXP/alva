@@ -1,3 +1,4 @@
+import {localize} from '../i18n/context.js';
 import {randomUUID} from 'node:crypto';
 import {z} from 'zod';
 import type {Project} from '../model.js';
@@ -22,7 +23,7 @@ export function chooseRespondent(p:Project,id:string|undefined,draftId:string):R
  const people=p.homeVision?.responses||[];
  if(id){const person=people.find(r=>r.id===id);if(!person)visionError('VISION_RESPONDENT_MISSING','所选填写者不存在，请重新选择。','select_respondent');return person}
  if(people.length>1)visionError('VISION_RESPONDENT_REQUIRED','有多位填写者，不能猜测本轮属于谁。','select_respondent');
- return people[0]||{id:draftId,name:'我的回答',answers:{},cursor:'Q01',version:0,updatedAt:''};
+ return people[0]||{id:draftId,name:localize('我的回答'),answers:{},cursor:'Q01',version:0,updatedAt:''};
 }
 const supported=new Set(['single','multi','text','number','date']);
 export function visibleVisionItems(r:Response){const f=flags(r.answers);return path(r.answers).flatMap(c=>c.items).filter(i=>condition(i.show_if,r.answers,f));}
