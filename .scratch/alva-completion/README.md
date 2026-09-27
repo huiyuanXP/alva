@@ -88,4 +88,4 @@
 
 - [ALVA-079 漫游与全屋统一渲染](../../docs/ALVA-079-walkthrough-renderer.md)：done，已验收集成并发布480b8c5；主Chat MCP可进入漫游，生产登录后复验pending。
 
-- [ALVA-080 范围确认后家具生成接续](../../docs/ALVA-080-furniture-confirmation.md)：done，已验收集成，待发布。
+- [ALVA-080 范围确认后家具生成接续](../../docs/ALVA-080-furniture-confirmation.md)：done，已验收集成并发布1993a77，生产登录后复验pending。

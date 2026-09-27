@@ -1,6 +1,6 @@
 # ALVA-080 家具确认后未显示
 
-Status: done（已验收，待main集成后发布）
+Status: done（已验收并发布1993a77，生产登录后复验pending）
 Owner: codex-confirm
 
 ## 根因与修复
@@ -23,6 +23,6 @@ Owner: codex-confirm
 
 ## Implementation handoff
 
-待main集成后按用户持续授权直接发布，备份与回滚先行。neat-freak对代码/验收/文档进行同步；生成记忆与远端同步out-of-scope。独立Worktree、失败run和私有诊断现场保留供复核。
+已按用户持续授权发布，备份和回滚已准备，详见[发布收据](ALVA-080-production-release.md)。neat-freak对代码/验收/文档进行同步；生成记忆与远端同步out-of-scope。独立Worktree、失败run和私有诊断现场保留供复核。
 
 个人实现f8a620e；main集成逐文件核对与已验Worktree产品/脚本/测试字节一致。诊断证据只保留在私有运行目录。
