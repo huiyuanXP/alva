@@ -1,6 +1,6 @@
 ## 2026-09-27 当前发布入口
 
-生产固定到main `0a25f98`，`/etc/systemd/system/alva.service.d/ALVA076-release.conf` 指向 `.runtime/20260927T140152Z-ALVA076-production/release/`。含中英文与不等待模型的阶段导航；正常登录后的两阶段往返、自动回复中切换、原thread/设计不变、公网资源均通过。备份/回滚见[ALVA-076收据](../../docs/ALVA-076-production-release.md)。现役环境 `.runtime/alva-prod.env`，验证码由用户提供正常登录验证；临时副本已删除。后续main提交不自动上线。
+生产固定到main `c053dc6`，`/etc/systemd/system/alva.service.d/ALVA077-release.conf`指向`.runtime/20260927T144930Z-ALVA077-production/release/`。含问卷显式批量发送、逐张候选/无版本阻塞拒绝、小预览隐藏日照说明，以及此前中英文和即时阶段导航。公网登录/资源哈希/两阶段往返/用户数据不变通过，见[ALVA-077收据](../../docs/ALVA-077-production-release.md)。现役环境`.runtime/alva-prod.env`；临时验证码已删除。后续main提交不自动上线。
 
 以下为基础运维与历史约定，路径冲突以上述当前发布入口为准。
 

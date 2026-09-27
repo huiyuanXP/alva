@@ -1,0 +1,15 @@
+{
+  "run": "20260927T144930Z-ALVA077-production",
+  "candidate": "c053dc64c7639903e70541abb37986e3d933db99",
+  "verifiedSourceFiles": 171,
+  "backup": "/home/ubuntu/Alva/.runtime/20260927T144930Z-ALVA077-production",
+  "status": "deployed",
+  "rollback": "/home/ubuntu/Alva/.runtime/20260927T144930Z-ALVA077-production/rollback.sh",
+  "assets": {
+    "index-DAVDR_Mw.js": "90d54ef6eb91d35c0094c0d754035be5e0025fa51e007254b2e92b97902a8b6a",
+    "index-u-HO7c4W.css": "a4e03780648cc83d308ed240825b1abeb0493b76968e925ca98d6d8b7dfafd88"
+  },
+  "localHealth": 200,
+  "publishedAt": "2026-09-27T14:49:56.075948+00:00",
+  "sourcePinned": true
+}
