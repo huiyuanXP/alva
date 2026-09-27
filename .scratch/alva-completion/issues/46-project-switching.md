@@ -23,4 +23,4 @@
 
 实现、证据、失败及限制统一见 [ALVA-072](../../../docs/ALVA-072-project-switching.md)。
 
-个人实现提交 `d6172be`，已squash集成main；16项相关回归与真实主Chat/MCP/浏览器/重启验收通过。生产未发布。
+个人实现提交 `d6172be`，已squash集成main；16项相关回归与真实主Chat/MCP/浏览器/重启验收通过。2026-09-27已按用户授权发布生产；公网资源通过，登录后复验待有效验证码，见[发布收据](../../../docs/ALVA-072-production-release.md)。

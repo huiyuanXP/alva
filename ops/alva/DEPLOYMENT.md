@@ -1,6 +1,6 @@
-## 2026-09-26 当前发布入口
+## 2026-09-27 当前发布入口
 
-生产已固定到main `6eef743`，通过`/etc/systemd/system/alva.service.d/ALVA068-release.conf`指向`.runtime/20260926T082943Z-ALVA068-production/release/`。后续main提交/构建不自动发布，须完成验收后显式切换发布目录；不要只重启服务就宣称新main已上线。原数据、环境、生产Tunnel及Coding Machine MCP配置保持。看板仍链接main实时状态。备份、回滚及生产验收边界见[ALVA-068收据](../../docs/ALVA-068-production-release.md)。
+生产固定到main `30156f7`，由 `/etc/systemd/system/alva.service.d/ALVA072-release.conf` 指向 `.runtime/20260927T081603Z-ALVA072-production/release/`。本次包含顶部新建/切换项目入口，数据、现有验证码与MCP服务配置保持。后续main提交/构建不自动发布；To Do List仍读取main。服务与公网静态资源已核验，登录后检查等待当前验证码。备份、回滚及验证见 [ALVA-072收据](../../docs/ALVA-072-production-release.md)。
 
 以下为基础运维与历史约定，路径冲突以上述当前发布入口为准。
 

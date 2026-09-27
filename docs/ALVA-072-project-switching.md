@@ -35,11 +35,11 @@ Worktree: /home/ubuntu/Alva-worktrees/ALVA-072-codex-projects
 
 ## Implementation handoff
 
-实现与验收已完成并集成main；个人实现提交 `d6172be`。本票未发布生产。
+实现与验收已完成并集成main；个人实现提交 `d6172be`。2026-09-27已发布生产；上线与登录复验边界见 [发布收据](ALVA-072-production-release.md)。
 
 - 最新类型/构建：`evidence/20260927T075534Z-ALVA066-alva072-browser-331730/` 的类型/构建阶段通过，该run后续探针403失败保留；最终新测试/脚本类型：`evidence/20260927T080118Z-ALVA066-alva072-probe-types-334712/`。
 - 登录/权限与专项6项：`evidence/20260927T075328Z-ALVA066-alva072-tests4-330939/`。
 - 最终专项/阶段Chat/MCP12项与重启：`evidence/20260927T075922Z-ALVA066-alva072-final-regression-333876/`；与上组去重共16项通过。
 - 真实浏览器：`evidence/2026-09-27T075705085Z-ALVA072-browser/`，含桌面新建确认、空项目、手机项目列表截图；资源/退出结果 `evidence/20260927T075659Z-ALVA066-alva072-browser2-332440/`。
 
-neat-freak：代码与本票隔离运行态 verified-current；合同、目录、票据 changed-and-verified；规则 verified-current；生产发布与生成记忆 out-of-scope。既有bundle警告和主工作区手机横向溢出未改；新项目面板手机宽度通过。失败run、合成库、原thread与Worktree保留用于复核。
+neat-freak：代码与本票隔离运行态 verified-current；合同、目录、票据 changed-and-verified；规则 verified-current；生产已发布，登录后复验pending（见发布收据）；生成记忆 out-of-scope。既有bundle警告和主工作区手机横向溢出未改；新项目面板手机宽度通过。失败run、合成库、原thread与Worktree保留用于复核。

@@ -1,0 +1,12 @@
+{
+  "origin": "https://prod.huiyuanxp.com",
+  "publicAssetsVerified": true,
+  "authenticated": false,
+  "pageErrors": [],
+  "assets": {
+    "/assets/index-BWPRAzdC.js": "c108d379e2c77f5e14092c0e410a17212c7ae13014dc984e88785509b2009555",
+    "/assets/index-vcxkhEhD.css": "ce1f676dd2c414da56db8efdfa090bc9c7e3d54fab90bf4921d7599c4d4bb92e"
+  },
+  "authenticatedBlocker": "Current access code required; old configured code returned 401. No credentials changed.",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n403 !== 401\n"
+}

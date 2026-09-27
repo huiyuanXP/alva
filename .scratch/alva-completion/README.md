@@ -74,4 +74,4 @@
 
 - [ALVA-068 主 Chat 结果式问答与具体示例](issues/45-outcome-questions.md)：done，已集成main并发布；不重排原44票。
 
-- [ALVA-072 新建与切换项目](issues/46-project-switching.md)：done，已验收并集成main，未发布生产。
+- [ALVA-072 新建与切换项目](issues/46-project-switching.md)：done，已验收、集成main并发布；登录后复验边界见发布收据。
