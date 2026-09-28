@@ -1,3 +1,7 @@
+## ALVA-086 文档与演示发布
+
+本次范围为 README、公开产品预览与 GitHub 演示附件；不更改业务功能或生产部署。README 不再承载任务进度和协作说明。现有后续功能任务状态保持不变，本次完成后无新的自动开工任务。
+
 ## ALVA-087 当前发布认领
 
 Codex-chat-concurrency：实现与验收已完成，main已集成；准备备份、发布及线上核验。Worktree /home/ubuntu/Alva-worktrees/ALVA-087-chat-concurrency；分支 task/ALVA-087-chat-concurrency。保留ALVA-086文档认领，其他任务不自动开工。
