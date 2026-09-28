@@ -1,3 +1,7 @@
+## 当前发布：ALVA-087（2026-09-28）
+
+固定 main `9dd0bb6`，`ALVA087-release.conf` 指向 `.runtime/20260928T081000Z-ALVA087-production/release/`。Chat/问卷/家具并发修复；备份与回滚见[发布收据](../../docs/ALVA-087-production-release.md)。私有环境、MCP与Tunnel不变。下方082及更早入口为历史发布记录。
+
 ## 2026-09-27 当前发布入口
 
 生产固定main `327adf3`，`/etc/systemd/system/alva.service.d/ALVA082-release.conf` 指向 `.runtime/20260927T173500Z-ALVA082-production/release/`。全屋家具目录补齐并完成用户授权布置；公网健康、资源哈希、登录后29件显示及刷新保持通过。见[ALVA-082收据](../../docs/ALVA-082-production-release.md)。环境仍为 `.runtime/alva-prod.env`，MCP/Tunnel不变。后续开发验收完成按用户授权直接发布，main提交本身不改变固定release。

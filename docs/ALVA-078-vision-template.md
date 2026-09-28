@@ -28,7 +28,7 @@
 - [问卷与批次7项回归日志](../evidence/20260927T151323Z-ALVA066-alva078-final-candidate-413707/output.log)（该run随后发现自动引导抢占并中断真实模型阶段，不作为完整最终通过收据）
 - [8项浏览器结果](../evidence/2026-09-27T152026579Z-ALVA078-browser/result.json)
 - [6项真实主Chat/MCP结果](../evidence/2026-09-27T152053111Z-ALVA078-real-chat/result.json)
-- [右侧问卷](../evidence/2026-09-27T152053111Z-ALVA078-real-chat/next-section-desktop.png)、[Room Vision确认弹窗](../evidence/2026-09-27T152026579Z-ALVA078-browser/room-vision-popup.png)
+- 右侧问卷（历史验收产物，已按ALVA-084保留规则退役）、Room Vision确认弹窗（历史验收产物，已按ALVA-084保留规则退役）
 
 生产已切换078固定release；旧068临时预览使用原工作区、原私有配置和原合成数据库恢复。所有失败 run 与合成复核现场保留。
 

@@ -1,10 +1,12 @@
+## 2026-09-28 ALVA-087 已发布并完成复核
+
+固定发布 `9dd0bb6`：Chat工作时问卷、家具拖拽和多数操作可用；忙时分段只保存，显式发送按钮保留，空闲不自动补发；家具候选在最新工作稿应用绝对目标，具体冲突才拒绝。23项相关回归、类型/构建、5项合成浏览器与4项真实主Chat/HTTP MCP通过。公网健康、176项源码一致、资源哈希、认证工作区及刷新保持通过，页面错误0，生产设计/问卷/候选/保存版本/消息未改。见[发布收据](docs/ALVA-087-production-release.md)。
+
+neat-freak已同步合同和交接；临时会话已撤销，备份/回滚与复核Worktree保留，验收run保留24小时。既有bundle提示、生成记忆out-of-scope；原有根目录未跟踪文件未动。087认领释放，无后续自动开工。以下为历史检查点。
+
 ## ALVA-086 文档与演示发布
 
 本次范围为 README、公开产品预览与 GitHub 演示附件；不更改业务功能或生产部署。README 不再承载任务进度和协作说明。现有后续功能任务状态保持不变，本次完成后无新的自动开工任务。
-
-## ALVA-087 当前发布认领
-
-Codex-chat-concurrency：实现与验收已完成，main已集成；准备备份、发布及线上核验。Worktree /home/ubuntu/Alva-worktrees/ALVA-087-chat-concurrency；分支 task/ALVA-087-chat-concurrency。保留ALVA-086文档认领，其他任务不自动开工。
 
 ## ALVA-086 当前认领
 
