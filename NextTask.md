@@ -1,3 +1,7 @@
+## ALVA-087 当前认领
+
+Codex-chat-concurrency：Chat 与页面操作并行、忙时问卷显式待发送、家具候选在最新场景应用。Worktree /home/ubuntu/Alva-worktrees/ALVA-087-chat-concurrency；分支 task/ALVA-087-chat-concurrency。共享入口 api/chat.ts、web/src/main.tsx，相关问卷/家具模块与验收；端口核验后分配。Status: in-progress。保留 ALVA-086 文档认领。
+
 ## ALVA-086 当前认领
 
 Codex：英文默认产品README、中文README、英文许可证与test1产品展示素材。Worktree /home/ubuntu/Alva-worktrees/ALVA-086-codex-readme；分支 task/ALVA-086-codex-readme。仅文档/展示资产，不改业务代码或项目设计。Status: in-progress。
