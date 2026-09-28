@@ -72,19 +72,20 @@ test('actual Chat routes persist successful cards, discard failed turns and sync
  }finally{await app.close();await store.close()}
 });
 
-test('confirmed native Chat answer automatically starts the living Agent and floorplan cannot confirm',async()=>{
+test('confirmed native Chat answer waits for explicit batch send and floorplan cannot confirm',async()=>{
  const store=new AlvaStore();await store.init();const {project}=await store.create('ALVA-068 automatic native answer');await store.ensureAccessCode(project.id);
  const seeded=await store.mutate(project.id,randomUUID(),0,'seed',{},p=>{seedLivingStage(p);p.messages.push({id:'source',role:'user',text:quote,status:'completed',createdAt:new Date().toISOString()})});
  const t=toolset(seeded,'source');await t.ask.run(visionQuestionInput('source'));
  let p=await store.mutate(project.id,randomUUID(),seeded.revision,'seed-card',{},p=>{p.visionQuestions=t.queued});let calls=0;
- const app=await buildAlva(store,{assets:false,chatCodex:async input=>{calls++;const snapshot=await input.tools!.find(t=>t.name==='get_snapshot')!.run({}) as any;assert.equal(snapshot.project.homeVision.responses[0].answers.find((a:any)=>a.id==='Q07a').value,'Q07a.warm_light_wood');await input.tools!.find(t=>t.name==='skip_furniture_suggestion')!.run({reason:'本次只确认墙地配色，不需要增加家具'});return '配色已经记录，本次无需新增家具。'}});
+ const app=await buildAlva(store,{assets:false,chatCodex:async input=>{calls++;await input.tools!.find(t=>t.name==='read_questionnaire_batch')!.run({});const snapshot=await input.tools!.find(t=>t.name==='get_snapshot')!.run({}) as any;assert.equal(snapshot.project.homeVision.responses[0].answers.find((a:any)=>a.id==='Q07a').value,'Q07a.warm_light_wood');await input.tools!.find(t=>t.name==='skip_furniture_suggestion')!.run({reason:'本次只确认墙地配色，不需要增加家具'});return '配色已经记录，本次无需新增家具。'}});
  const headers={cookie:`alva_session=${(await store.issueInternalSession(p.id)).token}`};
  try{
   await store.updateChatState(p.id,s=>{s.active='floorplan';s.generation++});
   const denied=await app.inject({method:'POST',url:'/api/intake/vision/chat/confirm',headers,payload:command(p,t.queued[0].id)});assert.equal(denied.statusCode,409);assert.equal(denied.json().detail.code,'VISION_WRONG_STAGE');assert.equal((await store.get(p.id)).homeVision,undefined);
   await store.updateChatState(p.id,s=>{s.active='living';s.generation++});
   const confirmed=await app.inject({method:'POST',url:'/api/intake/vision/chat/confirm',headers,payload:command(p,t.queued[0].id)});assert.equal(confirmed.statusCode,200,confirmed.body);
-  const deadline=Date.now()+10000;do{await new Promise(r=>setTimeout(r,50));p=await store.get(p.id)}while(p.answerRecommendations?.[0]?.status!=='completed'&&Date.now()<deadline);
+  p=await store.get(p.id);assert.equal(p.answerRecommendations?.[0]?.status,'pending');assert.equal(calls,0);
+  const sent=await app.inject({method:'POST',url:'/api/chat',headers,payload:{requestId:randomUUID(),expectedRevision:p.revision,questionnaireBatch:true,text:'Send saved answers',roomId:null,model:'gemini-3.8-flash-high'}});assert.match(sent.body,/event: done/,sent.body);p=await store.get(p.id);
   assert.equal(p.answerRecommendations?.[0]?.status,'completed');assert.equal(calls,1);assert.equal(p.proposals.length,0);
  }finally{await app.close();await store.close()}
 });

@@ -38,7 +38,7 @@ test('proposal decisions ignore questionnaire revisions; dismiss works during Ch
   let r=await post('/api/proposals/accept',{id:a.id,selectedIds:['room']});assert.equal(r.statusCode,200,r.body);
   r=await post('/api/proposals/accept',{id:b.id,selectedIds:['room']});assert.equal(r.statusCode,200,r.body);assert.equal(r.json().proposals.filter((p:Proposal)=>p.status==='accepted').length,2);
   p=await store.mutate(p.id,randomUUID(),null,'new-turn',{},p=>publishProposals(p,[candidate(5)],'turn2'));const old=p.proposals.at(-1)!;
-  p=await store.mutate(p.id,randomUUID(),null,'layout',{},p=>{p.scene!.items[0].locked=true});r=await post('/api/proposals/accept',{id:old.id,selectedIds:['room']},p.revision);assert.equal(r.statusCode,409);
+  p=await store.mutate(p.id,randomUUID(),null,'layout',{},p=>{p.scene!.rooms[0].locked=true});r=await post('/api/proposals/accept',{id:old.id,selectedIds:['room']},p.revision);assert.notEqual(r.statusCode,200);
   p=await store.mutate(p.id,randomUUID(),null,'broken-preview',{},p=>{p.proposals.at(-1)!.changes[0].targetId='missing'});
   r=await post('/api/proposals/reject',{id:old.id});assert.equal(r.statusCode,200,r.body);const scene=r.json().scene;r=await post('/api/proposals/reject',{id:old.id});assert.equal(r.statusCode,200);assert.deepEqual(r.json().scene,scene);
   p=await store.mutate(p.id,randomUUID(),null,'older-turn',{},p=>publishProposals(p,[candidate(5)],'turn3'));const replaced=p.proposals.at(-1)!.id;

@@ -172,3 +172,5 @@ ALVA-081：`api/furniture/context.ts`提供精简家具MCP上下文、添加sche
 ALVA-082：新增投影、电竞、厨房及卫浴的原创目录几何位于`web/src/scene/furniture/home-fixtures.ts`，复用catalogue分派和既有MCP/业务校验；资产权威仍在`api/model.ts`，store读取旧项目时刷新目录。
 
 ALVA-084：开发产物管理入口`scripts/alva-artifacts.py`，自动任务`ops/alva/alva-artifact-gc.{service,timer}`；仅管理开发验收目录，详见[保留合同](ALVA-084-artifact-retention.md)。
+
+ALVA-087：主入口分离 Chat 与短时页面写入状态；家具候选在 `api/furniture/proposal-decisions.ts` 校验建筑依据，在现役 business 写入服务对最新场景应用绝对目标。分段问卷忙时保存、显式待发与并发响应防倒退见[并发合同](ALVA-087-chat-concurrency.md)。

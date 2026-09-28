@@ -1,3 +1,4 @@
+import {proposalArchitectureKey} from './proposal-decisions.js';
 import {z} from 'zod';
 import {randomUUID} from 'node:crypto';
 import type {BusinessTool,CodexInput} from '../codex.js';
@@ -24,7 +25,7 @@ export function furnitureModelTools(options:{store:AlvaStore;projectId:string;or
   const scope=activeScope(p);const proposal:Proposal={id:randomUUID(),title:'详细模型 · '+item.name,rationale:'',evidenceIds:[options.evidenceId],baseRevision:p.revision+1,changes,status:'proposed',scopeId:scope?.id,scopeRequired:!!scope};
   if(scope)assertProposalScope(p.scene,proposal,p.scopeRequests||[]);applyChanges(p.scene,changes);
   const visualModel=await generateFurnitureModel({originalPrompt:options.originalPrompt,assetName:assets.find(a=>a.id===item.assetId)?.name||item.name,dimensions,baseAppearance:{color:item.color,material:item.material},render:options.render,signal:options.signal,call:options.call,onProgress:options.onProgress});
-  options.signal.throwIfAborted();await options.authorize?.();const current=await options.store.get(options.projectId);if(current.revision!==input.expectedRevision)throw new DomainError(409,'建模期间项目已变化；本次模型未采用，请重读后重新生成');
+  options.signal.throwIfAborted();await options.authorize?.();const current=await options.store.get(options.projectId);if(proposalArchitectureKey(current)!==proposalArchitectureKey(p)||(target.kind==='existing'&&current.scene?.items.find(i=>i.id===target.itemId)?.assetId!==item.assetId))throw new DomainError(409,'建模期间房屋结构或目标家具类别已变化，请重读后重新生成');
   // Only this server-owned path attaches a critic-approved model to a proposal.
   change.values.visualModel=visualModel;applyChanges(current.scene!,changes);proposal.rationale=`三视角视觉自检通过（第${visualModel.attempts}轮），待你预览确认。${visualModel.model.designSummary}`;options.proposals.push(proposal);
   return {status:'pending_owner_confirmation',proposalId:proposal.id,modelHash:visualModel.modelHash,parts:visualModel.model.parts.length,attempts:visualModel.attempts,critique:visualModel.critique,renderHashes:visualModel.renderHashes,rule:'仅待确认候选，未采用、未保存；这是模型视觉自检，不代替用户验收或工程认证'};

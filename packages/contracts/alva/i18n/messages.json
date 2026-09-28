@@ -13666,5 +13666,9 @@
   {
     "zh": "继续生成家具候选",
     "en": "Continue generating furniture candidates"
+  },
+  {
+    "zh": "问卷更改已保存，Chat 空闲后点击发送，统一生成建议。",
+    "en": "Your answers are saved. When Chat is idle, click to send them together."
   }
 ]

@@ -69,14 +69,14 @@ export function registerVisionChat(app:FastifyInstance,store:AlvaStore,session:(
   try{
    const user=session(req);if(user.role!=='owner')reject('仅业主可以确认问卷',403);
    const b=SectionConfirm.parse(req.body);if((await store.chatState(user.projectId)).active!=='living')visionError('VISION_WRONG_STAGE','请切回生活设计阶段后提交问卷。');
-   return await store.mutate(user.projectId,b.requestId,b.expectedRevision,'vision-section-confirm',b,p=>confirmVisionSection(p,b));
+   return await store.mutate(user.projectId,b.requestId,null,'vision-section-confirm',b,p=>confirmVisionSection(p,b));
   }catch(e){if(e instanceof McpError)return reply.code(409).send({error:e.message,detail:e.detail});throw e}
  });
  app.post('/api/intake/vision/chat/confirm',async(req,reply)=>{
   try{
    const user=session(req);if(user.role!=='owner')reject('仅业主可以确认问卷',403);
    const b=Confirm.parse(req.body);if((await store.chatState(user.projectId)).active!=='living')visionError('VISION_WRONG_STAGE','请切回生活设计阶段后确认问卷。');
-   return await store.mutate(user.projectId,b.requestId,b.expectedRevision,'vision-chat-confirm',b,p=>confirmVisionQuestion(p,b));
+   return await store.mutate(user.projectId,b.requestId,null,'vision-chat-confirm',b,p=>confirmVisionQuestion(p,b));
   }catch(e){if(e instanceof McpError)return reply.code(409).send({error:e.message,detail:e.detail});throw e}
  });
  app.post('/api/intake/vision/chat/dismiss',async req=>{
