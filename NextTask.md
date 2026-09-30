@@ -1,3 +1,7 @@
+## ALVA-088 当前认领
+
+Codex：简化户型到生活设计，取消独立建筑生成/校验前置，允许保留问题继续。用户本轮授权实施及沿用直接发布授权。分支 task/ALVA-088-codex-entry；Worktree /home/ubuntu/Alva-worktrees/ALVA-088-codex-entry。共享文件 api/model.ts、api/store.ts、api/chat.ts、web/src/main.tsx、阶段MCP/问卷合同；端口待核验。Status: in-progress。
+
 ## 2026-09-28 ALVA-087 已发布并完成复核
 
 固定发布 `9dd0bb6`：Chat工作时问卷、家具拖拽和多数操作可用；忙时分段只保存，显式发送按钮保留，空闲不自动补发；家具候选在最新工作稿应用绝对目标，具体冲突才拒绝。23项相关回归、类型/构建、5项合成浏览器与4项真实主Chat/HTTP MCP通过。公网健康、176项源码一致、资源哈希、认证工作区及刷新保持通过，页面错误0，生产设计/问卷/候选/保存版本/消息未改。见[发布收据](docs/ALVA-087-production-release.md)。
