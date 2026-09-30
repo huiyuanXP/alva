@@ -13670,5 +13670,45 @@
   {
     "zh": "问卷更改已保存，Chat 空闲后点击发送，统一生成建议。",
     "en": "Your answers are saved. When Chat is idle, click to send them together."
+  },
+  {
+    "zh": "按当前户型进入生活设计",
+    "en": "Enter living design with this floorplan"
+  },
+  {
+    "zh": "按当前户型进入生活设计 →",
+    "en": "Enter living design with this floorplan →"
+  },
+  {
+    "zh": "保留当前户型，进入生活设计",
+    "en": "Keep this floorplan and enter living design"
+  },
+  {
+    "zh": "可以修正或校准户型，也可以保留当前问题进入生活设计。",
+    "en": "You can edit or calibrate the floorplan, or continue to living design with the current issues."
+  },
+  {
+    "zh": "请先上传并识别户型。",
+    "en": "Upload and recognize a floorplan first."
+  },
+  {
+    "zh": "请查看确认卡；可以保留当前问题继续生活设计。",
+    "en": "Review the confirmation card. You can keep the current issues and continue to living design."
+  },
+  {
+    "zh": "按当前户型继续，3D会自动显示。",
+    "en": "Continue with this floorplan. The 3D view is displayed automatically."
+  },
+  {
+    "zh": "当前户型有待核对项：{0}。可以保留这些问题继续，也可以暂不执行并返回修改。",
+    "en": "This floorplan has items to review: {0}. You can keep these issues and continue, or dismiss this card and edit the floorplan."
+  },
+  {
+    "zh": "尺寸尚未校准，将按当前估算尺寸继续。",
+    "en": "Dimensions are not calibrated. Continue using the current estimates."
+  },
+  {
+    "zh": "请先确认按当前户型继续",
+    "en": "Confirm that you want to continue with the current floorplan first"
   }
 ]

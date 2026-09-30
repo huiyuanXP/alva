@@ -20,7 +20,7 @@ const guidance:Record<TopologyWarningCode,string>={
 export function inspectProjectTopology(p:Project){
  const report=topologyDiagnosticsFor(p),scene=p.candidate||p.scene,issue=scene?firstTopologyRepairIssue(scene):null;
  return {...report,issue,repair:{editable:!!p.candidate&&!p.confirmedTopology,requiresReopenConfirmation:!!p.confirmedTopology,
-  nextStep:p.confirmedTopology?'先查看和讨论；修改前调用 request_topology_reopen，由用户确认清除依赖旧拓扑的后续设计。':p.candidate?'修复后重读诊断，重新校准并请求拓扑确认。':'请先上传并识别户型。',
+  nextStep:p.confirmedTopology?'先查看和讨论；修改前调用 request_topology_reopen，由用户确认清除依赖旧拓扑的后续设计。':p.candidate?'可对照原图修复并校准，也可调用 request_living_entry，由用户确认保留问题继续生活设计。':'请先上传并识别户型。',
   issueOptions:issue?.options||[],guidance:report.analysis.issues.map(item=>({issueId:item.id,code:item.code,message:guidance[item.code]})),
   toolPolicy:'生活设计阶段只能读取诊断；需要修改时先切回户型导入。repair_topology 只接受 issue.id 与其启用 option.id，不接受 analysis.issues 的告警 ID。没有自动修复选项时，先让用户确认修复意图，再用 edit_topology 或 draw_wall；不得编造尺寸。'},
   interpretation:report.analysis.status==='complete'?'未发现告警也不代表结构安全或原图一致性已通过。':'检查未完整完成，不能声称没有问题；请按 analysis.checks 与 notes 解释检查限制。'};

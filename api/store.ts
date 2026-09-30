@@ -89,7 +89,7 @@ export class AlvaStore{
     if(!action||action.status!=='pending')throw new DomainError(409,'确认请求已处理或不存在');
     const stage=(await tx.query<{state:StageChatState}>('SELECT state FROM alva_chat_stages WHERE project_id=$1',[id])).rows[0]?.state||initialChatState(p);
     if(stage.active!==action.stage)throw new DomainError(409,'请切回此确认请求所属的阶段');
-    if(action.stage==='living'&&!p.confirmedBuilding)throw new DomainError(422,'请先确认建筑');
+    if(action.stage==='living'&&(!p.scene||!p.confirmedTopology||!!p.candidate))throw new DomainError(422,'请先确认按当前户型继续');
    }
    if(expectedRevision!==null&&p.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后确认');
    const before=JSON.stringify(p),confirmationBefore=structuredClone(confirmationInputs(p)),versions={...p.confirmationVersions!};

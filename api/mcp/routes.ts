@@ -1,3 +1,4 @@
+import {requestChatAction} from './actions.js';
 import {consultationSnapshot} from '../chat.js';
 import type {FastifyInstance} from 'fastify';
 import {z} from 'zod';
@@ -26,6 +27,13 @@ export function registerStageRoutes(app:FastifyInstance,store:AlvaStore,session:
   try{return await retryStageEntry(store,user.projectId,input.stage,input.expectedRevision)}
   finally{if(active.get(user.projectId)===controller)active.delete(user.projectId)}
  });
+ app.post('/api/chat/stages/prepare-living',async req=>{
+  const user=session(req);if(user.role!=='owner')throw new DomainError(403,'仅业主可确认户型');
+  const input=z.object({expectedRevision:z.number().int().min(0)}).strict().parse(req.body);
+  const p=await store.get(user.projectId);if(p.revision!==input.expectedRevision)throw new DomainError(409,'项目已更新，请重读后继续');
+  if((await store.chatState(user.projectId)).active!=='floorplan')throw new DomainError(409,'请先切回户型导入');
+  return requestChatAction(store,p,'enter_living');
+ });
  app.post('/api/chat/stages/switch',async req=>{
   const user=session(req);if(user.role!=='owner')throw new DomainError(403,'仅业主可切换设计阶段');
   const input=z.object({stage:z.enum(['floorplan','living']),expectedRevision:z.number().int().min(0)}).parse(req.body);
@@ -34,7 +42,7 @@ export function registerStageRoutes(app:FastifyInstance,store:AlvaStore,session:
   try{
    const project=await store.get(user.projectId);
    if(project.revision!==input.expectedRevision)throw new DomainError(409,'项目已更新，请重读后切换');
-   if(input.stage==='living'&&!project.confirmedBuilding)throw new DomainError(422,'请先确认建筑 3D');
+   if(input.stage==='living'&&(!project.scene||!project.confirmedTopology||!!project.candidate))throw new DomainError(422,'请先确认按当前户型继续');
    return await switchChatStage(store,user.projectId,input.stage,input.expectedRevision,{deferEntry:true});
   }finally{if(active.get(user.projectId)===controller)active.delete(user.projectId)}
  });

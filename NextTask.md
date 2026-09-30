@@ -1,6 +1,8 @@
-## ALVA-088 当前认领
+## 2026-09-30 ALVA-088 已验收集成，准备发布
 
-Codex：简化户型到生活设计，取消独立建筑生成/校验前置，允许保留问题继续。用户本轮授权实施及沿用直接发布授权。分支 task/ALVA-088-codex-entry；Worktree /home/ubuntu/Alva-worktrees/ALVA-088-codex-entry。共享文件 api/model.ts、api/store.ts、api/chat.ts、web/src/main.tsx、阶段MCP/问卷合同；端口待核验。Status: in-progress。
+用户确认按当前户型继续即可进入生活设计，允许保留告警、特殊墙和未校准尺寸；主3D直接渲染，主流程不再要求独立建筑生成/模型校验/建筑确认。问卷、风格和家具工具使用已采用户型。个人实现 `b77edde`；20项相关回归、最终类型/构建、6步合成浏览器和6步真实Chat/HTTP MCP通过，页面错误0。详见[入口合同](docs/ALVA-088-living-entry.md)。
+
+下一步按用户既有授权直接发布；先确认远端SHA，准备数据/配置备份与回滚，再核验生产页面和数据不变。当前生产仍为087固定release。neat-freak已同步合同；生成记忆out-of-scope、既有bundle提示、Worktree与24小时验收现场保留。088认领释放；其余未认领票不自动开工。
 
 ## 2026-09-28 ALVA-087 已发布并完成复核
 

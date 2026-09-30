@@ -14,14 +14,14 @@ test('ALVA-073 checkpoints follow actual progress and survive message writes and
  p.messages.push({id:randomUUID(),role:'assistant',stage:'floorplan',status:'completed',text:'上传引导',guidanceKey:first.key,createdAt:''});p.revision++;
  assert.equal(stageGuidance(p,s).needed,false);assert.equal(stageGuidance(p,s).first,false);
  p.importState={status:'failed',message:'识图失败',requestId:'synthetic',sourceMime:'image/png',filename:'test.png',startedAt:''};assert.equal(stageGuidance(p,s).step,'retry_import');
- p.candidate=snapshotScene();p.candidate.calibration=null;assert.equal(stageGuidance(p,s).step,'review_calibrate');p.messages.push({...p.messages[0],id:randomUUID(),guidanceKey:stageGuidance(p,s).key});
+ p.candidate=snapshotScene();p.candidate.calibration=null;assert.equal(stageGuidance(p,s).step,'inspect');p.messages.push({...p.messages[0],id:randomUUID(),guidanceKey:stageGuidance(p,s).key});
  p.candidate.calibration=snapshotScene().calibration;const calibrated=stageGuidance(p,s);assert.equal(calibrated.step,'inspect');
  p.messages.push({...p.messages[0],id:randomUUID(),guidanceKey:calibrated.key});p.candidate.calibration=null;assert.equal(stageGuidance(p,s).needed,true,'returning to an earlier unfinished checkpoint must resume');p.candidate.calibration=snapshotScene().calibration;
  assert.throws(()=>verifyGuidance(calibrated,[{stage:'floorplan',name:'get_stage_guidance',isError:false}]),(e:any)=>e.detail.code==='GUIDANCE_UNVERIFIED');
  verifyGuidance(calibrated,['get_stage_guidance','inspect_topology'].map(name=>({stage:'floorplan',name,isError:false})));
  p.candidate.walls[0].b.x+=.1;assert.notEqual(stageGuidance(p,s).key,calibrated.key);
- seedLivingStage(p);assert.equal(stageGuidance(p,s).step,'enter_living');delete p.confirmedBuilding;assert.equal(stageGuidance(p,s).step,'generate_building');
- p.buildingCandidate={units:'meters'} as any;assert.equal(stageGuidance(p,s).step,'confirm_building');
+ seedLivingStage(p);p.candidate=null;assert.equal(stageGuidance(p,s).step,'enter_living');delete p.confirmedBuilding;assert.equal(stageGuidance(p,s).step,'enter_living');
+ p.buildingCandidate={units:'meters'} as any;assert.equal(stageGuidance(p,s).step,'enter_living');
  s.generation++;assert.notEqual(stageGuidance(p,s).key,first.key);
 });
 

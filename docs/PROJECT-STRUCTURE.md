@@ -74,7 +74,7 @@
 
 主 Chat 的身份、现役模型、路由与基础指令集中在 `api/main-chat-agent.ts`；服务端 Chat 装配仍在 `api/chat.ts`，网页主入口在 `web/src/main.tsx`。后续用户功能的 Agent 接入和验收以 [主 Chat 合同](ALVA-065-main-chat-agent.md) 为准，同票实施，不因现有按钮/API 可用而视为 Chat 已接入。
 
-Codex 进程协议统一经过 `api/codex.ts`。`import.ts` 管识图提示与二维初稿；`building/generate.ts` 管第二阶段建筑生成提示与结果编排，`building/validate.ts` 管构件、引用和确认拓扑的一致性。建筑生成必须真实调用 Codex；输出结构化场景描述，前端 `scene/building-meshes.ts` 等模块解释为网格，不执行模型返回的任意代码。具体合同见[研究结论](../Research/LOGIN-IMPORT-3D.md)。
+Codex 进程协议统一经过 `api/codex.ts`。`import.ts` 管识图提示与二维初稿；`building/generate.ts` 管第二阶段建筑生成提示与结果编排，`building/validate.ts` 管构件、引用和确认拓扑的一致性。旧建筑生成 API 保留兼容，调用时仍真实调用 Codex；ALVA-088 已从主流程和阶段 MCP 移除独立建筑生成/确认前置，主工作区直接渲染户型数据；输出结构化场景描述，前端 `scene/building-meshes.ts` 等模块解释为网格，不执行模型返回的任意代码。具体合同见[研究结论](../Research/LOGIN-IMPORT-3D.md)。
 
 ## 首批 Ticket 文件落点
 
@@ -174,3 +174,5 @@ ALVA-082：新增投影、电竞、厨房及卫浴的原创目录几何位于`we
 ALVA-084：开发产物管理入口`scripts/alva-artifacts.py`，自动任务`ops/alva/alva-artifact-gc.{service,timer}`；仅管理开发验收目录，详见[保留合同](ALVA-084-artifact-retention.md)。
 
 ALVA-087：主入口分离 Chat 与短时页面写入状态；家具候选在 `api/furniture/proposal-decisions.ts` 校验建筑依据，在现役 business 写入服务对最新场景应用绝对目标。分段问卷忙时保存、显式待发与并发响应防倒退见[并发合同](ALVA-087-chat-concurrency.md)。
+
+ALVA-088：`api/topology/living-entry.ts` 管理进入生活设计的预览和户型采用；按钮与户型 MCP `request_living_entry` 共用 `enter_living` 确认卡和事务。诊断保留为提示，TopologyVersion.calibration允许null，不伪造校准或建筑结果。生活工具依赖已采用户型与工作场景，详见[入口合同](ALVA-088-living-entry.md)。

@@ -26,7 +26,7 @@ export async function runStageChat(options:StageRunInput){
   if(fresh.projectId!==session.projectId||fresh.role!==session.role||fresh.authGeneration!==session.authGeneration)throw new DomainError(403,'项目授权已变化，请重新登录');
   const latest=await store.chatState(session.projectId),project=await store.get(session.projectId);
   if(latest.active!==stage||latest.generation!==state.generation)throw new DomainError(403,'阶段已切换，请在当前阶段重新发起请求');
-  if(stage==='living'&&!project.confirmedBuilding)throw new DomainError(422,'建筑尚未确认或已失效，请返回户型阶段完成确认');
+  if(stage==='living'&&(!project.scene||!project.confirmedTopology||!!project.candidate))throw new DomainError(422,'户型尚未采用或正在修改，请返回户型阶段确认继续');
   return {revision:project.revision};
  };
  const current=await authorize();

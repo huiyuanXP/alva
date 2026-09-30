@@ -13,7 +13,7 @@ export function confirmVisionQuestion(p:Project,b:z.infer<typeof Confirm>){
  const card=p.visionQuestions?.find(c=>c.id===b.id);if(!card)visionError('VISION_CARD_MISSING','题卡不存在，请在本项目重新提问。');
  if(card.status==='confirmed')return;
  if(card.status!=='awaiting_owner_confirmation')visionError('VISION_CARD_EXPIRED','题卡已取消，请重新提问。');
- if(card.topologyVersion!==(p.confirmationVersions?.topology??0)||!p.confirmedBuilding||(card.roomId&&!p.scene?.rooms.some(r=>r.id===card.roomId)))visionError('VISION_SCENE_CHANGED','房屋或房间已变化，请在确认建筑后重新出题。');
+ if(card.topologyVersion!==(p.confirmationVersions?.topology??0)||(!p.scene||!p.confirmedTopology||!!p.candidate)||(card.roomId&&!p.scene?.rooms.some(r=>r.id===card.roomId)))visionError('VISION_SCENE_CHANGED','房屋或房间已变化，请在采用当前户型后重新出题。');
  const people=p.homeVision?.responses||[],existing=people.find(r=>r.id===card.respondentId);
  if(!existing&&people.length)visionError('VISION_RESPONDENT_CHANGED','独立问卷新增了填写者，请选择本人并重新出题。','select_respondent');
  if((existing?.version||0)!==card.responseVersion)visionError('VISION_VERSION_CONFLICT','独立问卷已有新修改，旧卡不能覆盖；请重新出题。');

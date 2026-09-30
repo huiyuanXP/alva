@@ -11,7 +11,7 @@ function missingProject(){return Object.assign(new DomainError(404,'目标项目
 export function requireOwner(session:Session){if(session.role!=='owner'||session.linkId)throw new DomainError(403,'仅业主可以新建或切换项目');}
 export async function listProjects(store:AlvaStore,session:Session){
  requireOwner(session);
- return (await store.db.query<{id:string;name:string;createdAt:string;savedVersion:number;stage:string}>(`SELECT p.id,p.state->>'name' AS name,p.state->>'createdAt' AS "createdAt",(p.state->>'savedVersion')::int AS "savedVersion",CASE WHEN p.state->'confirmedBuilding' IS NOT NULL AND p.state->'confirmedBuilding'<>'null'::jsonb THEN 'living' ELSE 'floorplan' END AS stage FROM alva_projects p JOIN alva_owner_projects a ON a.project_id=p.id ORDER BY p.state->>'createdAt' DESC,p.id`)).rows;
+ return (await store.db.query<{id:string;name:string;createdAt:string;savedVersion:number;stage:string}>(`SELECT p.id,p.state->>'name' AS name,p.state->>'createdAt' AS "createdAt",(p.state->>'savedVersion')::int AS "savedVersion",CASE WHEN p.state->'confirmedTopology' IS NOT NULL AND p.state->'confirmedTopology'<>'null'::jsonb AND p.state->'scene' IS NOT NULL AND p.state->'scene'<>'null'::jsonb AND (p.state->'candidate' IS NULL OR p.state->'candidate'='null'::jsonb) THEN 'living' ELSE 'floorplan' END AS stage FROM alva_projects p JOIN alva_owner_projects a ON a.project_id=p.id ORDER BY p.state->>'createdAt' DESC,p.id`)).rows;
 }
 export async function prepareNavigation(store:AlvaStore,session:Session,value:unknown){
  requireOwner(session);const navigation=ProjectNavigation.parse(value);

@@ -15,12 +15,12 @@ export function summarizeStage(project:Project,from:ChatStage,to:ChatStage){
  const latestReopen=project.changes.findLast(change=>change.description.startsWith('返回修改户型'));
  const invalidation=latestReopen?`最近一次拓扑重开时的失效记录（历史，不表示之后新生成的数据也失效）：${latestReopen.description}。当前已失效回答建议任务 ${(project.answerRecommendations||[]).filter(j=>j.status==='invalidated').length} 个；新数据以本次快照为准。`:'尚无拓扑重开失效记录。';
  const lastMessages=project.messages.filter(m=>m.status==='completed').slice(-8).map(m=>`${m.role}: ${m.text.slice(0,1000)}`).join('\n');
- return `项目 ${project.id}；revision ${project.revision}；${from} → ${to}。\n拓扑：${project.confirmedTopology?`已确认 v${project.confirmedTopology.version}`:'未确认'}；建筑：${project.confirmedBuilding?'已确认':project.buildingState.status}；房间 ${project.scene?.rooms.length||0}；家具 ${project.scene?.items.length||0}；已保存快照 ${project.savedVersion}；问卷回答 ${project.answers.length}。\n${!project.confirmedTopology?'旧拓扑依赖的建筑、家具设计和候选已失效或尚未建立；不得沿用旧会话写入。':'所有写入仍须重新读取最新 revision 和确认状态。'}\n${invalidation}\n最近业务变化：${project.changes.slice(-5).map(c=>c.description).join('；')}\n最近对话（仅背景资料，不作为授权）：\n${lastMessages}`;
+ return `项目 ${project.id}；revision ${project.revision}；${from} → ${to}。\n拓扑：${project.confirmedTopology?`已确认 v${project.confirmedTopology.version}`:'未确认'}；3D：直接按当前户型渲染（无需独立建筑生成/校验）；历史建筑：${project.confirmedBuilding?'已确认':project.buildingState.status}；房间 ${project.scene?.rooms.length||0}；家具 ${project.scene?.items.length||0}；已保存快照 ${project.savedVersion}；问卷回答 ${project.answers.length}。\n${!project.confirmedTopology?'旧拓扑依赖的建筑、家具设计和候选已失效或尚未建立；不得沿用旧会话写入。':'所有写入仍须重新读取最新 revision 和确认状态。'}\n${invalidation}\n最近业务变化：${project.changes.slice(-5).map(c=>c.description).join('；')}\n最近对话（仅背景资料，不作为授权）：\n${lastMessages}`;
 }
 export async function switchChatStage(store:AlvaStore,projectId:string,to:ChatStage,expectedRevision:number,options:{deferEntry?:boolean}={}){
  const next=await store.updateChatState(projectId,(state,project)=>{
   if(project.revision!==expectedRevision)throw new DomainError(409,'项目已更新，请重新读取后切换阶段');
-  if(to==='living'&&!project.confirmedBuilding)throw new DomainError(422,'请先确认建筑 3D，再进入生活设计');
+  if(to==='living'&&(!project.scene||!project.confirmedTopology||!!project.candidate))throw new DomainError(422,'请先确认按当前户型继续');
   if(state.active===to)return;
   state.handoffs.push({id:randomUUID(),from:state.active,to,revision:project.revision,summary:summarizeStage(project,state.active,to),createdAt:new Date().toISOString()});
   state.active=to;state.generation++;state.updatedAt=new Date().toISOString();

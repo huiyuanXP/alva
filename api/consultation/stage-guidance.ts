@@ -12,11 +12,8 @@ export function stageGuidance(p:Project,s:StageChatState,respondentId?:string,la
  const people=p.homeVision?.responses||[];
  const person=respondentId?people.find(r=>r.id===respondentId):people.length===1?people[0]:undefined;
  if(s.active==='floorplan'){
-  if(p.confirmedBuilding){step='enter_living';instruction='建筑已经确认，可点击生活设计继续需求问卷；不要要求重做上传、校准或建筑确认。'}
-  else if(p.buildingCandidate){step='confirm_building';instruction='请预览建筑3D；调用 request_building_confirmation 出示确认卡。用户确认后进入生活设计。'}
-  else if(p.confirmedTopology){step='generate_building';instruction='拓扑已确认，下一步请点击生成建筑3D或发消息让我生成，完成预览和建筑确认后进入生活设计。'}
-  else if(p.candidate?.calibration?.confirmed){step='inspect';instruction='必须实际调用 inspect_topology 自查。解释 analysis.issues 与 repair；issue=null不代表无告警。存在问题则定位并引导修复；只有实际检查通过才出示 request_topology_confirmation，随后生成并确认建筑3D。不能把几何自查当成原图准确或工程安全保证。'}
-  else if(p.candidate){step='review_calibrate';instruction='户型已分析，不再要求上传。先引导对照原图核对、删除或修改墙体；门窗位置有误可告诉我具体位置让我修改。核对完成后请点击一条已知实际长度的墙，填写墙长和来源进行长度校准；不要猜测尺寸。校准后我会自行检查。'}
+  if(p.scene&&p.confirmedTopology&&!p.candidate){step='enter_living';instruction='当前户型已经采用，可点击生活设计继续；3D直接使用户型数据显示，无需生成、校验或确认独立建筑模型。'}
+  else if(p.candidate){step='inspect';instruction='实际调用 inspect_topology，简短说明待核对项。3D直接使用户型数据显示，无需额外生成或模型校验。可以对照原图修改、用已知墙长校准，也可以保留告警或估算尺寸继续；不要要求清空所有告警或删除真实的特殊墙。调用 request_living_entry 出示确认卡，让用户选择按当前户型进入生活设计；不得替用户确认，也不得把保留问题说成检查通过。'}
   else if(p.importState?.status==='failed'||p.importState?.status==='cancelled'){step='retry_import';instruction='上次户型识别未完成，不能当成已分析。引导用户重试原消息；附件仍在输入区时可直接重发，刷新后可重新添加同一附件。不要把模型输出失败说成图片损坏，也不必要求更换原图。'}
   else if(p.importState?.status==='processing'){step='wait_import';instruction='户型正在识别，请等待本轮完成。若服务曾中断而没有后续结果，可重试原请求；当前不能声称已经分析完成。'}
  }else if(people.length>1&&!person||respondentId&&!person){step='select_respondent';instruction='请在Chat“为谁填写”选择本人后继续，不能混用不同人的回答。实际调用 read_question_context，按返回的填写者错误解释。'}
@@ -34,7 +31,7 @@ export function stageGuidance(p:Project,s:StageChatState,respondentId?:string,la
 }
 export type StageGuidance=ReturnType<typeof stageGuidance>;
 export function guidancePrompt(g:StageGuidance){return `${outputLanguageInstruction(g.language)}\n这是系统发起的阶段引导轮，不是用户原话，不得作为用户需求证据。先通过 MCP get_stage_guidance 读取真实断点，再执行其中要求的只读检查或待确认题卡。${g.first?(g.stage==='floorplan'?(g.language==='en'?'Introduce yourself briefly as the user’s floorplan planning specialist.':'先简短自我介绍“我是你的户型规划专家”。'):'先欢迎用户进入生活设计，说明可以梳理生活需求、规划布局、家具与风格。'):'这是恢复或进度接续，不重复欢迎、自我介绍和已完成步骤，直接从未完成操作接着引导。'}正文用2至4句简短引导，不复述题卡的全部选项，不展示工具名、内部字段或问卷题号；用用户看得懂的操作说明。每轮清楚告诉用户当前下一步怎么做；不要一次罗列整份问卷。不得修改设计、编造长度或替用户确认。${g.instruction}`}
-const allowed=new Set(['get_stage_guidance','get_snapshot','inspect_topology','read_question_context','ask_question','request_topology_confirmation','request_building_confirmation']);
+const allowed=new Set(['get_stage_guidance','get_snapshot','inspect_topology','read_question_context','ask_question','request_living_entry']);
 export function guidancePacks<T extends Record<'floorplan'|'living',BusinessTool[]>>(packs:T,automatic?:boolean):T{return automatic?Object.fromEntries(Object.entries(packs).map(([stage,tools])=>[stage,tools.filter(t=>allowed.has(t.name))])) as T:packs}
 export function guidanceError(message:string):never{throw new McpError({code:'GUIDANCE_UNVERIFIED',message,retryable:true,repairActions:[{action:'retry_guidance',message:'点击重试引导，重新读取当前阶段、检查或问卷后继续。'}]})}
 export function verifyGuidance(g:StageGuidance,calls:NonNullable<Project['messages'][number]['toolCalls']>){

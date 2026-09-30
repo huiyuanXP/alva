@@ -23,5 +23,5 @@ function sourceDigest(project:Project){const source=project.sourceImage;if(!sour
 export function createTopologyVersion(project:Project,scene:SceneData):TopologyVersion{
  const version=(project.topologyVersions?.at(-1)?.version||0)+1,confirmedAt=new Date().toISOString();
  const sourceFingerprint=createHash('sha256').update(JSON.stringify({source:sourceDigest(project),scene,calibration:scene.calibration,version})).digest('hex');
- return {id:`topology-${randomUUID()}`,version,sourceFingerprint,scene:structuredClone(scene),calibration:structuredClone(scene.calibration!),assumptions:[...topologyAssumptions],confirmedAt};
+ return {id:`topology-${randomUUID()}`,version,sourceFingerprint,scene:structuredClone(scene),calibration:structuredClone(scene.calibration),assumptions:[...topologyAssumptions],confirmedAt};
 }
