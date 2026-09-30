@@ -1,3 +1,7 @@
+## 当前发布：ALVA-088（2026-09-30）
+
+固定main `2c70aec`，`ALVA088-release.conf` 指向 `.runtime/20260930T073446Z-ALVA088-production/release/`。简化生活设计入口，允许保留户型问题；备份、回滚与生产复核见[发布收据](../../docs/ALVA-088-production-release.md)。私有环境、MCP与Tunnel不变。下方087及更早入口为历史记录。
+
 ## 当前发布：ALVA-087（2026-09-28）
 
 固定 main `9dd0bb6`，`ALVA087-release.conf` 指向 `.runtime/20260928T081000Z-ALVA087-production/release/`。Chat/问卷/家具并发修复；备份与回滚见[发布收据](../../docs/ALVA-087-production-release.md)。私有环境、MCP与Tunnel不变。下方082及更早入口为历史发布记录。

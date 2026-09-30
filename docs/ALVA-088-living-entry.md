@@ -22,4 +22,4 @@
 
 失败证据：首轮浏览器/真实探针使用随机端口但未传origin，修正脚本配置后重跑；真实b轮提前读取上轮已完成消息，改为等待新assistant数量；真实c轮模型仍在生成问卷时触发180秒探针超时，最终d轮按既有Chat600秒上限等待通过。扩大回归初轮暴露默认阶段推断变化，保留旧项目原默认阶段并由显式入口切换后通过。失败未标成业务成功，不改生产数据。
 
-neat-freak：代码/规则verified-current，受影响合同changed-and-verified；生产发布pending；生成记忆out-of-scope。Worktree和验收现场保留，产物24小时过期，原有主目录未跟踪文件未动。Implementation handoff：由Codex完成，个人实现`b77edde`；已由main串行集成，准备直接发布。
+neat-freak：代码/规则verified-current，受影响合同changed-and-verified；生产已发布固定`2c70aec`并live verified，见[发布收据](ALVA-088-production-release.md)；生成记忆out-of-scope。Worktree和验收现场保留，产物24小时过期，原有主目录未跟踪文件未动。Implementation handoff：由Codex完成，个人实现`b77edde`；已由main串行集成并完成生产发布。

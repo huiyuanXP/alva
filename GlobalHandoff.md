@@ -1,6 +1,6 @@
 ## ALVA-088 户型采用与生活设计入口
 
-当前主流程以用户采用户型为生活设计前置；允许保留诊断问题和未校准尺寸，不再依赖confirmedBuilding。诊断结果不能冒充通过。默认阶段迁移保持旧行为，显式确认后切换；共用服务/MCP和发布状态见 [ALVA-088](docs/ALVA-088-living-entry.md) 与 CURRENT.md。
+ALVA-088已发布固定2c70aec。当前主流程以用户采用户型为生活设计前置；允许保留诊断问题和未校准尺寸，不再依赖confirmedBuilding。诊断结果不能冒充通过。默认阶段迁移保持旧行为，显式确认后切换；共用服务/MCP和发布状态见 [ALVA-088](docs/ALVA-088-living-entry.md) 与 CURRENT.md。
 
 ## 公开项目介绍与媒体（ALVA-086）
 
